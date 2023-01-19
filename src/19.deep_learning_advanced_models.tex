@@ -37,9 +37,9 @@ can represent the original image. We refer to the total number of channels of an
 
 \fig{rgb}{0.4}
 
-Hence, a two-dimensional image can be represented as a $(\textit{height} \times \textit{width} \times 
-\textit{depth})$ dimensional matrix. Subsequently, a collection of $N$ such images can be stacked together to a $(N 
-\times \textit{height} \times \textit{width} \times \textit{depth})$ dimensional matrix. This matrix is the 
+Hence, a two-dimensional image can be represented as a $(\text{height} \times \text{width} \times
+\text{depth})$ dimensional matrix. Subsequently, a collection of $N$ such images can be stacked together to a $(N
+\times \text{height} \times \text{width} \times \text{depth})$ dimensional matrix. This matrix is the
 mathematical representation of collection of images and serves as the input to a CNN. \v
 
 The input layer of a CNN represents the input image. Because we use RGB images as input, the input layer has three 
@@ -297,7 +297,7 @@ to a continuous vector space with a much lower dimension. \v
 
 Let us start with a very simple motivation for why we are interested in a vectorial representations of words. Suppose
 we are given an input stream of words like a sentence or a document, and we are interested in learning some function
-of it e.g: $\hat{y} = \textit{sentiments(words)}$. Say, we employ a machine learning algorithm (some mathematical
+of it e.g: $\hat{y} = \text{sentiments(words)}$. Say, we employ a machine learning algorithm (some mathematical
 model) for learning such a function $\hat{y} = f(x)$. We first need a way of converting the input stream (or each
 word in the stream) to a vector. Let's start with two important definitions. \v
 
@@ -442,33 +442,33 @@ In this particular example the input layer to the network is a one-hot represent
 which is:
 
 \bse
-\textit{``sat''} = [0,1,0,0, \ldots, 0]
+\text{``sat''} = [0,1,0,0, \ldots, 0]
 \ese
 \ee
 
 The CBOW network is shallow since it contains only one single hidden layer. The first set of weights $W^{[1]}$ are of
 course of dimensions $(k \times |V|)$ where $k$ is the number of units in the hidden layer and $|V|$ is the size of
 the vocabulary which is of course also the size of the one-hot representation vectors. It is common practice to call
-$W^{[1]}$ simply $W_{\textit{context}}$. Notice that we carry no biases. The pre-activations are:
+$W^{[1]}$ simply $W_{\text{context}}$. Notice that we carry no biases. The pre-activations are:
 
 \bse
-\textbf{a}^{[1]} =W_{\textit{context}} \cdot \textbf{x}
+\textbf{a}^{[1]} =W_{\text{context}} \cdot \textbf{x}
 \ese
 
 and the activation function $g$ is as simple as $g(\textbf{x}) = \textbf{x}$, hence the activation of the hidden
 layer $\textbf{h}^{[1]}$ is:
 
 \bse
-\textbf{h}^{[1]} =W_{\textit{context}} \cdot \textbf{x}
+\textbf{h}^{[1]} =W_{\text{context}} \cdot \textbf{x}
 \ese
 
-Notice that the product $W_{\textit{context}} \cdot \textbf{x}$, given that $\textbf{x}$ is a one hot-vector, is
-simply the $\textit{i}^{\textit{th}}$ column of $W_{\textit{context}}$ since everything else will be multiplied by 0.
-So when the $\textit{i}^{\textit{th}}$ word is present the $\textit{i}^{\textit{th}}$ element in the one-hot vector
-is on and the $\textit{i}^{\textit{th}}$ column of $W_{\textit{context}}$ gets selected. In other words, there is a
-one-to-one correspondence between the words and the column of $W_{\textit{context}}$. More specifically, we can treat
-the $\textit{i}^{\textit{th}}$ column of $W_{\textit{context}}$ as the representation of the
-$\textit{i}^{\textit{th}}$ context.
+Notice that the product $W_{\text{context}} \cdot \textbf{x}$, given that $\textbf{x}$ is a one hot-vector, is
+simply the $\text{i}^{\text{th}}$ column of $W_{\text{context}}$ since everything else will be multiplied by 0.
+So when the $\text{i}^{\text{th}}$ word is present the $\text{i}^{\text{th}}$ element in the one-hot vector
+is on and the $\text{i}^{\text{th}}$ column of $W_{\text{context}}$ gets selected. In other words, there is a
+one-to-one correspondence between the words and the column of $W_{\text{context}}$. More specifically, we can treat
+the $\text{i}^{\text{th}}$ column of $W_{\text{context}}$ as the representation of the
+$\text{i}^{\text{th}}$ context.
 
 \be
 \vspace{-15pt}
@@ -477,30 +477,30 @@ $\textit{i}^{\textit{th}}$ context.
 
 Moving on, the weights of the output layer $W^{[2]}$ are of course of dimensions $(|V| \times k)$, since we need an
 output (aka a probability) for each possible word in the vocabulary (aka a probability distribution). It is common
-practice to call $W^{[2]}$ simply $W_{\textit{word}}$. The pre-activations now are:
+practice to call $W^{[2]}$ simply $W_{\text{word}}$. The pre-activations now are:
 \bse
-\textbf{a}^{[2]} =W_{\textit{word}} \cdot \textbf{h}^{[1]}
+\textbf{a}^{[2]} =W_{\text{word}} \cdot \textbf{h}^{[1]}
 \ese
 
 and for the output function $O$ it makes sense to use a softmax since we are dealing with a multi-class
 classification problem, hence:
 \bse
-\hat{\textbf{y}} = P(\textit{word \:} | \textit{\: context}) = \frac{e^{W_{\textit{word}} \cdot
-\textbf{h}^{[1]}}}{\sum_{\textit{words}} e^{W_{\textit{word}} \cdot \textbf{h}^{[1]}}}
+\hat{\textbf{y}} = P(\text{word \:} | \text{\: context}) = \frac{e^{W_{\text{word}} \cdot
+\textbf{h}^{[1]}}}{\sum_{\text{words}} e^{W_{\text{word}} \cdot \textbf{h}^{[1]}}}
 \ese
 
 As we can see, since:
 \bse
-W_{\textit{word}} \cdot \textbf{h}^{[1]} = W_{\textit{word}} \cdot W_{\textit{context}} \cdot \textbf{x}
+W_{\text{word}} \cdot \textbf{h}^{[1]} = W_{\text{word}} \cdot W_{\text{context}} \cdot \textbf{x}
 \ese
 
 \v
 
-and since from the product $W_{\textit{context}} \cdot \textbf{x} \:$ survives only the column of
-$W_{\textit{context}}$ associated with the context, it turns out that $P (\textit{word \:} | \textit{\: context})$ is
-proportional to the dot product between of $W_{\textit{context}}$ and $W_{\textit{word}}$. In other words the
-probability for each word depends on the $\textit{i}^{\textit{th}}$ column of $W_{\textit{word}}$. We thus treat the
-$\textit{i}^{\textit{th}}$ column of $W_{\textit{word}}$ as the representation of the $\textit{i}^{\textit{th}}$ word.
+and since from the product $W_{\text{context}} \cdot \textbf{x} \:$ survives only the column of
+$W_{\text{context}}$ associated with the context, it turns out that $P (\text{word \:} | \text{\: context})$ is
+proportional to the dot product between of $W_{\text{context}}$ and $W_{\text{word}}$. In other words the
+probability for each word depends on the $\text{i}^{\text{th}}$ column of $W_{\text{word}}$. We thus treat the
+$\text{i}^{\text{th}}$ column of $W_{\text{word}}$ as the representation of the $\text{i}^{\text{th}}$ word.
 \v
 
 Now the forward propagation is done and the network is built. In order to train it we move to backpropagation. First
@@ -510,8 +510,8 @@ regression. The calculations for a softmax regression are very similar, so we wi
 we will use the principle of maximum likelihood to obtain the cross entropy loss function for softmax which simply
 is:
 \bse
-\mathcal{L}(\theta) = - \ln P(\textit{word \:} | \textit{\: context}) = - \ln \frac{e^{W_{\textit{word}}
-\cdot \textbf{h}^{[1]}}}{\sum_{\textit{words}} e^{W_{\textit{word}} \cdot \textbf{h}^{[1]}}}
+\mathcal{L}(\theta) = - \ln P(\text{word \:} | \text{\: context}) = - \ln \frac{e^{W_{\text{word}}
+\cdot \textbf{h}^{[1]}}}{\sum_{\text{words}} e^{W_{\text{word}} \cdot \textbf{h}^{[1]}}}
 \ese
 
 From here we just follow the backpropagation theory we have already developed, i.e.\ we calculate the update rules
@@ -545,7 +545,7 @@ classification model such that we take in the target word as our input and try t
 architecture is similar to the CBOW model with the difference that now everything is reversed. The input is again
 just one word (e.g.\ the word ``on'') with one-hot representation:
 \bse
-\textit{``on''} = [0,0,1,0, \ldots, 0]
+\text{``on''} = [0,0,1,0, \ldots, 0]
 \ese
 
 but now the name of the weights are reversed since their meaning is reversed (see figure). So far only the naming has
@@ -553,8 +553,8 @@ changed. The mathematical difference is out the outcome, where now instead of ju
 context words. We do that by having multiple predictions, hence multiple softmax output function and subsequently the
 loss function is simply the sum of all individual cross-entropy loss functions:
 \bse
-\mathcal{L}(\theta) = - \sum_{\textit{words in window}} \ln P(\textit{word
-\:} | \textit{\: context})
+\mathcal{L}(\theta) = - \sum_{\text{words in window}} \ln P(\text{word
+\:} | \text{\: context})
 \ese
 
 From this point on everything is exactly the same. We train the model through backpropagation simply by computing the
@@ -849,7 +849,7 @@ useless. Notice that the gradients of both $W$ and $U$ include the weights $W$ t
 expand the formulas, and we do the calculation we will find out that the formulas actually contain a lot of
 increasing powers of $W$, i.e.\ : $W, W^2, W^3, \ldots, W^n$. This has as a result the following:
 \bit
-\item \textbf{Exploding Gradients} If $W > 1$ then $W^i \to \infty, \textit{as } i \to n$ which has as a result for
+\item \textbf{Exploding Gradients} If $W > 1$ then $W^i \to \infty, \text{as } i \to n$ which has as a result for
 the backpropagation through time to have bigger and bigger steps as time passes having as a result non-convergence to
 the optimal point. In general exploding gradients it is not such a big problem since we have the following solution.
 \bit
@@ -860,7 +860,7 @@ exceed this threshold are scaled down to match the norm. This prevents any gradi
 threshold and thus the gradients are clipped. There is an introduced bias in the resulting values from the gradient,
 but gradient clipping can keep things stable.
 \eit
-\item \textbf{Vanishing Gradients}: If $W < 1$ then $W^i \to 0, \textit{as } i \to n$ which has as a result the terms
+\item \textbf{Vanishing Gradients}: If $W < 1$ then $W^i \to 0, \text{as } i \to n$ which has as a result the terms
 due to further back time steps to have smaller and smaller gradients hence to contribute less and less. This adds
 bias parameter to the model since it captures only short term dependencies. For vanishing gradients we have the
 following solutions. \bit \item \textbf{ReLU Activation Function}: By using ReLU as activation function we force the
@@ -933,10 +933,10 @@ network learn what the appropriate $\boldsymbol{o}_{i-1}$ should be by parametri
 mention that there are many variations of the parametrized formula of $\boldsymbol{o}_{i-1}$, ending up in different
 variations of LSTMs. Here we will use the most used one which is:
 \bse
-\boldsymbol{o}_{i-1} = \sigma(U_{\textit{o}} \boldsymbol{x}_{i-1} + W_{\textit{o}} \boldsymbol{h}_{i-2})
+\boldsymbol{o}_{i-1} = \sigma(U_{\text{o}} \boldsymbol{x}_{i-1} + W_{\text{o}} \boldsymbol{h}_{i-2})
 \ese
 
-The new parameters $U_{\textit{o}}, W_{\textit{o}}$ need to be learned along with the existing parameters $W, U, V$. \v
+The new parameters $U_{\text{o}}, W_{\text{o}}$ need to be learned along with the existing parameters $W, U, V$. \v
 
 Moving on, the input $\boldsymbol{x}_{i}$ enters the picture. Recall that in plain RNN we had:
 \bse
@@ -958,7 +958,7 @@ current input $\boldsymbol{x}_i $. However, we may not want to use all this new 
 from it before constructing the new cell state $\boldsymbol{s}_i$. To do this we introduce another gate called the
 ``input gate'':
 \bse
-\boldsymbol{i}_{i} = \sigma(U_{\textit{i}} \boldsymbol{x}_{i} + W_{\textit{i}} \boldsymbol{h}_{i-1})
+\boldsymbol{i}_{i} = \sigma(U_{\text{i}} \boldsymbol{x}_{i} + W_{\text{i}} \boldsymbol{h}_{i-1})
 \ese
 
 which again decides what fraction of each element of $\boldsymbol{\tilde{s}}_i$ should be passed to the next state.
@@ -980,7 +980,7 @@ the new state $\boldsymbol{s}_{i}$. In order to do so, we introduce one final ga
 use in order to forget some parts of $\boldsymbol{s}_{i-1}$. The forget gate follows the same structure as the input
 and output gates:
 \bse
-\boldsymbol{f}_{i} = \sigma(U_{\textit{f}} \boldsymbol{x}_{i} + W_{\textit{f}} \boldsymbol{h}_{i-1})
+\boldsymbol{f}_{i} = \sigma(U_{\text{f}} \boldsymbol{x}_{i} + W_{\text{f}} \boldsymbol{h}_{i-1})
 \ese
 
 and of course decides what fraction of each element of $\boldsymbol{s}_{i-1}$ should be passed to the next state. As
@@ -1009,12 +1009,12 @@ Let's summarise all the steps once again.
 \item From current time-step get the input $\boldsymbol{x}_{i}$.
 \item By using $\boldsymbol{h}_{i-1}$ and the input $\boldsymbol{x}_{i}$ compute $\boldsymbol{\tilde{s}}_i = g
 (U\boldsymbol{x}_i + W \boldsymbol{h}_{i-1})$.
-\item By defining the input gate $\boldsymbol{i}_{i} = \sigma(U_{\textit{i}} \boldsymbol{x}_{i} + W_{\textit{i}}
-\boldsymbol{h}_{i-1})$ and the forget gate $\boldsymbol{f}_{i} = \sigma (U_{\textit{f}} \boldsymbol{x}_{i} +
-W_{\textit{f}} \boldsymbol{h}_{i-1})$ and by using $\boldsymbol{s}_{i-1}$ and $\boldsymbol{\tilde{s}}_i$ compute
+\item By defining the input gate $\boldsymbol{i}_{i} = \sigma(U_{\text{i}} \boldsymbol{x}_{i} + W_{\text{i}}
+\boldsymbol{h}_{i-1})$ and the forget gate $\boldsymbol{f}_{i} = \sigma (U_{\text{f}} \boldsymbol{x}_{i} +
+W_{\text{f}} \boldsymbol{h}_{i-1})$ and by using $\boldsymbol{s}_{i-1}$ and $\boldsymbol{\tilde{s}}_i$ compute
 \item $\boldsymbol{s}_{i} =\boldsymbol{\tilde{s}}_i\odot \boldsymbol{i}_{i} + \boldsymbol{s}_{i-1} \odot
 \boldsymbol{f}_{i}$.
-\item By defining the output gate $\boldsymbol{o}_{i} = \sigma (U_{\textit{o}} \boldsymbol{x}_{i} + W_{\textit{o}}
+\item By defining the output gate $\boldsymbol{o}_{i} = \sigma (U_{\text{o}} \boldsymbol{x}_{i} + W_{\text{o}}
 \boldsymbol{h}_{i-1})$ and by using $\boldsymbol{s}_{i}$ compute $\boldsymbol{h}_{i} = \boldsymbol{s}_{i} \odot
 \boldsymbol{o}_{i}$.
 \item Pass $\boldsymbol{h}_{i}$ and $\boldsymbol{s}_{i}$ to the next time step.
@@ -1072,10 +1072,10 @@ step by step.
 \item Being at time-step $i$, from previous time-step get $\boldsymbol{s}_{i-1}$. From current time-step get the
 \item input $\boldsymbol{x}_{i}$.
 \item By using $\boldsymbol{s}_{i-1}$ and the input $\boldsymbol{x}_{i}$ define the gate $\boldsymbol{o}_{i} = \sigma
-(U_{\textit{o}} \boldsymbol{x}_{i} + W_{\textit{o}} \boldsymbol{s}_{i-1})$.
+(U_{\text{o}} \boldsymbol{x}_{i} + W_{\text{o}} \boldsymbol{s}_{i-1})$.
 \item By using the output gate $\boldsymbol{o}_{i}$ and $\boldsymbol{s}_{i-1}$ compute $\boldsymbol{\tilde{s}}_i = g
 (U\boldsymbol{x}_{i} + W (\boldsymbol{s}_{i-1} \odot \boldsymbol{o}_{i}))$.
-\item By defining the input gate $\boldsymbol{i}_{i} = \sigma(U_{\textit{i}} \boldsymbol{x}_{i} + W_{\textit{i}}
+\item By defining the input gate $\boldsymbol{i}_{i} = \sigma(U_{\text{i}} \boldsymbol{x}_{i} + W_{\text{i}}
 \boldsymbol{s}_{i-1})$ and by using both $\boldsymbol{s}_{i-1}$ and $\boldsymbol{\tilde{s}}_i $ compute the next
 \item state $\boldsymbol{s}_{i} = \boldsymbol{s}_{i-1} \odot (1 - \boldsymbol{i}_{i}) + \boldsymbol{\tilde{s}}_i
 \odot \boldsymbol{i}_{i} $.

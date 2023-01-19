@@ -348,12 +348,33 @@
 \contentsline {subsection}{\numberline {26.6.1}Asymmetric Information}{645}{subsection.26.6.1}%
 \contentsline {subsection}{\numberline {26.6.2}Political Economy}{647}{subsection.26.6.2}%
 \contentsline {subsection}{\numberline {26.6.3}Behavioral Economics}{649}{subsection.26.6.3}%
-\contentsline {chapter}{Appendices}{650}{section*.410}%
-\contentsline {chapter}{\numberline {A}Constrained Optimization}{651}{appendix.a.A}%
-\contentsline {section}{\numberline {A.1}Equality Constrained Optimization}{651}{section.a.A.1}%
-\contentsline {section}{\numberline {A.2}Equality \& Inequality Constrained Optimization}{652}{section.a.A.2}%
-\contentsline {chapter}{\numberline {B}Kernels}{653}{appendix.a.B}%
-\contentsline {chapter}{\numberline {C}Applied Machine Learning}{654}{appendix.a.C}%
-\contentsline {chapter}{\numberline {D}Clean Code}{657}{appendix.a.D}%
-\contentsline {chapter}{\numberline {E}Software Engineering At Google}{660}{appendix.a.E}%
-\contentsline {chapter}{\numberline {F}Thinking Fast And Slow}{666}{appendix.a.F}%
+\contentsline {chapter}{\numberline {27}Financial Statements}{650}{chapter.27}%
+\contentsline {section}{\numberline {27.1}Basic Accountants Principles}{650}{section.27.1}%
+\contentsline {section}{\numberline {27.2}Balance Sheet}{653}{section.27.2}%
+\contentsline {subsection}{\numberline {27.2.1}Assets}{654}{subsection.27.2.1}%
+\contentsline {subsubsection}{\numberline {27.2.1.1}Current Assets}{655}{subsubsection.27.2.1.1}%
+\contentsline {subsubsection}{\numberline {27.2.1.2}Other Assets}{656}{subsubsection.27.2.1.2}%
+\contentsline {subsubsection}{\numberline {27.2.1.3}Fixed Assets}{656}{subsubsection.27.2.1.3}%
+\contentsline {subsubsection}{\numberline {27.2.1.4}Total Assets}{657}{subsubsection.27.2.1.4}%
+\contentsline {subsection}{\numberline {27.2.2}Liabilities \& Equity}{657}{subsection.27.2.2}%
+\contentsline {subsubsection}{\numberline {27.2.2.1}Current Liabilities}{658}{subsubsection.27.2.2.1}%
+\contentsline {subsubsection}{\numberline {27.2.2.2}Long-Term Liabilities}{658}{subsubsection.27.2.2.2}%
+\contentsline {subsubsection}{\numberline {27.2.2.3}Total Liabilities}{659}{subsubsection.27.2.2.3}%
+\contentsline {subsubsection}{\numberline {27.2.2.4}Equity}{659}{subsubsection.27.2.2.4}%
+\contentsline {subsection}{\numberline {27.2.3}Balance Sheet Summary}{661}{subsection.27.2.3}%
+\contentsline {section}{\numberline {27.3}Income Statement}{662}{section.27.3}%
+\contentsline {subsection}{\numberline {27.3.1}Sales}{662}{subsection.27.3.1}%
+\contentsline {subsection}{\numberline {27.3.2}Costs \& Expenses}{662}{subsection.27.3.2}%
+\contentsline {subsection}{\numberline {27.3.3}Income}{664}{subsection.27.3.3}%
+\contentsline {subsection}{\numberline {27.3.4}Income Statement Summary}{665}{subsection.27.3.4}%
+\contentsline {section}{\numberline {27.4}Cash Flow Statement}{665}{section.27.4}%
+\contentsline {subsection}{\numberline {27.4.1}Cash Flow Statement Summary}{668}{subsection.27.4.1}%
+\contentsline {chapter}{Appendices}{670}{section*.413}%
+\contentsline {chapter}{\numberline {A}Constrained Optimization}{671}{appendix.a.A}%
+\contentsline {section}{\numberline {A.1}Equality Constrained Optimization}{671}{section.a.A.1}%
+\contentsline {section}{\numberline {A.2}Equality \& Inequality Constrained Optimization}{672}{section.a.A.2}%
+\contentsline {chapter}{\numberline {B}Kernels}{673}{appendix.a.B}%
+\contentsline {chapter}{\numberline {C}Applied Machine Learning}{674}{appendix.a.C}%
+\contentsline {chapter}{\numberline {D}Clean Code}{677}{appendix.a.D}%
+\contentsline {chapter}{\numberline {E}Software Engineering At Google}{680}{appendix.a.E}%
+\contentsline {chapter}{\numberline {F}Thinking Fast And Slow}{686}{appendix.a.F}%

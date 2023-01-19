@@ -511,8 +511,8 @@ the extra $x_0 = 1$ feature and this is why it does not appear in $\boldsymbol{x
 the weights but we will notate the bias as $b$ instead of $w_0$. We usually refer to weights and bias as the
 ``parameters'' $\theta$ of the model. \v
 
-We call the first layer of the network (the one with the inputs) the ``input layer'' or the ``$0^{\textit{th}}$
-layer''. Each subsequent layer with neurons is called ``$1^{\textit{st}}$ hidden layer'', ``$2^{\textit{nd}}$ hidden
+We call the first layer of the network (the one with the inputs) the ``input layer'' or the ``$0^{\text{th}}$
+layer''. Each subsequent layer with neurons is called ``$1^{\text{st}}$ hidden layer'', ``$2^{\text{nd}}$ hidden
 layer'' and so on up to the final ``$L$ hidden layer'' which is usually called the ``output layer''. In other words
 the network contains one input layer, $L-1$ hidden layers and one output layer. \v
 
@@ -578,9 +578,9 @@ network is simply a sequence of compositions:
 \bse
 \hat{y} = O(W^{[L]} \cdot \underbrace{g(\:\:\: \underbrace{\ldots \:\:\: \underbrace{g(W^{[3]}
 \cdot \underbrace{g(W^{[2]} \cdot \underbrace{g(W^{[1]} \boldsymbol{h}^{[0]} +
-\boldsymbol{b}^{[1]})}_{\textit{output of first layer}} + \boldsymbol{b}^{[2]})}_{\textit{output of second layer}} +
-\boldsymbol{b}^{[3]})}_{\textit{output of third layer}} \:\:\: \ldots}_{\vdots} \:\:\:) +
-\boldsymbol{b}^{[L]})}_{\textit{output of $l-1$ layer}}
+\boldsymbol{b}^{[1]})}_{\text{output of first layer}} + \boldsymbol{b}^{[2]})}_{\text{output of second layer}} +
+\boldsymbol{b}^{[3]})}_{\text{output of third layer}} \:\:\: \ldots}_{\vdots} \:\:\:) +
+\boldsymbol{b}^{[L]})}_{\text{output of $l-1$ layer}}
 \ese
 
 \vspace{8pt}
@@ -880,7 +880,7 @@ w_{n^{[l]}n^{[l-1]}}^{[l]}
 B^{[l]} =
 \underbrace{
 \begin{bmatrix}
-\boldsymbol{b}^{[l]} & \boldsymbol{b}^{[l]} & \ldots & \boldsymbol{b}^{[l]} \end{bmatrix}}_{\textit{$m$ times}}
+\boldsymbol{b}^{[l]} & \boldsymbol{b}^{[l]} & \ldots & \boldsymbol{b}^{[l]} \end{bmatrix}}_{\text{$m$ times}}
 =\begin{bmatrix}
 b_{1}^{[l]} & b_{1}^{[l]} & \ldots & b_{1}^{[l]} \\\\
 b_{2}^{[l]} & b_{2}^{[l]} & \ldots & b_{2}^{[l]} \\\\
@@ -1423,7 +1423,7 @@ time iteration. Factoring in the decay the mathematical formula for the learning
 \item \textbf{Step-based learning schedules} changes the learning rate according to some pre defined steps. The decay
 application formula is here defined as:
 \bse
-\alpha_t = \alpha_{0} \cdot d^{\textit{ floor}(\frac{1+t}{r})}
+\alpha_t = \alpha_{0} \cdot d^{\text{ floor}(\frac{1+t}{r})}
 \ese
 
 \item \textbf{Exponential learning schedules} are similar to step-based but instead of steps a decreasing exponential
@@ -1493,11 +1493,11 @@ where $|| W^{[l]} ||^2_F$ is the so called ``Frobenius Norm'' given by:
 || W^{[l]} ||^2_F = \sum_{i=1}^{n^{[l-1]}} \sum_{j=1}^{n^{[l]}} (W^{[l]}_{ij})^2
 \ese
 
-At this point we can consider the Lagrangian $\mathcal{L}$ as a ``new'' loss function $J_{\textit{new}}$ that we need
+At this point we can consider the Lagrangian $\mathcal{L}$ as a ``new'' loss function $J_{\text{new}}$ that we need
 to optimize hence we can completely forget about regularization and solve this problem with gradient descent where in
 order to update the weights we use:
 \bse
-W^{[l]} \coloneqq W^{[l]} - \alpha \nabla_{W^{[l]}} J_{\textit{new}}
+W^{[l]} \coloneqq W^{[l]} - \alpha \nabla_{W^{[l]}} J_{\text{new}}
 \ese
 
 and then we follow backward propagation for iterations. \v
@@ -1629,7 +1629,7 @@ activation function.
 
 In the case of the logistic function a saturate neuron would have:
 \bse
-g({\boldsymbol{a}}^{[l]}) = 0 \quad \textit{or} \quad g({\boldsymbol{a}}^{[l]}) =1
+g({\boldsymbol{a}}^{[l]}) = 0 \quad \text{or} \quad g({\boldsymbol{a}}^{[l]}) =1
 \ese
 
 The problem with logistic function is similar to the problem we described in AdaGrad where we said that since 

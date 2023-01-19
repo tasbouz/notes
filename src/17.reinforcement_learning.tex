@@ -460,7 +460,7 @@ G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \ldots = \sum_{k=0}^{\infty}
 A few comments about the definition of return and the choice of including a discount factor in the definition are in 
 order. Notice that for the discount factor holds:
 \bse
-\gamma \in [0,1] \Rightarrow \gamma^k \to 0 \textit{\:\: as \:\:} k \to \infty
+\gamma \in [0,1] \Rightarrow \gamma^k \to 0 \text{\:\: as \:\:} k \to \infty
 \ese
 
 In other words the discount factor weights more the near future and less the distant future. This is why the discount
@@ -933,7 +933,7 @@ and the optimal action value function $Q_{*}(s,a)$.
 
 Hence for the optimal policy holds:
 \bse
-\pi_{*}(a \mid s)=\Big\{ \begin{array}{lr} 1, \:\: \textit{ if } a =\argmax_{a} Q_{*}(s,a) \\ 0, \:\: \text{ otherwise}
+\pi_{*}(a \mid s)=\Big\{ \begin{array}{lr} 1, \:\: \text{ if } a =\argmax_{a} Q_{*}(s,a) \\ 0, \:\: \text{ otherwise}
 \end{array}
 \ese
 
@@ -941,13 +941,13 @@ One can prove a theorem that states:
 \bit
 \item There exists a policy that is better than or equal to all other policies:
 \bse
-\exists \pi_{*} : \pi_{*} \geq \pi \:\:\: (\textit{a.k.a: \:} V_{\pi_{*}} (s) \geq V_{\pi}(s),
-\forall s \: \textit{\:\: and \:\:} \: Q_{\pi_{*}}(s,a) \geq Q_{\pi}(s,a), \forall s,a)
+\exists \pi_{*} : \pi_{*} \geq \pi \:\:\: (\text{a.k.a: \:} V_{\pi_{*}} (s) \geq V_{\pi}(s),
+\forall s \: \text{\:\: and \:\:} \: Q_{\pi_{*}}(s,a) \geq Q_{\pi}(s,a), \forall s,a)
 \ese
 
 \item All optimal policies achieve the same optimal value functions:
 \bse
-V_{\pi_{*}}(s) = V_{*}(s), \forall \pi_{*} \textit{\:\: and \:\:} Q_{\pi_{*}}(s,a) = Q_{*}(s,a), \forall \pi_{*}
+V_{\pi_{*}}(s) = V_{*}(s), \forall \pi_{*} \text{\:\: and \:\:} Q_{\pi_{*}}(s,a) = Q_{*}(s,a), \forall \pi_{*}
 \ese
 
 \item There is always a deterministic optimal policy for any MDP.
@@ -1059,7 +1059,7 @@ V_{k+1}(s) = \sum_{a} \pi(a \mid s) \Big[\mathcal{R}_{s}^{a} + \gamma \sum_{s^\p
 One can show, although we will skip the proof for now, that after many iterations the final state value function will
 be the state value function of the policy:
 \bse
-V_k(s) \to V_{\pi}(s) \:\: \textit{as} \:\: k \to \infty
+V_k(s) \to V_{\pi}(s) \:\: \text{as} \:\: k \to \infty
 \ese
 
 \be
@@ -1067,8 +1067,8 @@ Let us give an example with the following small gridworld. We assume an undiscou
 non-terminal states $1, \ldots, 14$ and two terminal states shown as shaded squares. The reward is $-1$ for every
 state until a terminal state is reached. The agent follows a uniform random policy:
 \bse
-\pi(\textit{north}|\textit{any state}) = \pi(\textit{west}|\textit{any state}) = \pi(\textit{south}|\textit{any state})
-= \pi(\textit{east}|\textit{any state}) = 0.25
+\pi(\text{north}|\text{any state}) = \pi(\text{west}|\text{any state}) = \pi(\text{south}|\text{any state})
+= \pi(\text{east}|\text{any state}) = 0.25
 \ese
 
 \fig{rl10}{0.5}
@@ -1473,7 +1473,7 @@ S(s) = N(s) = 0, \:\: \forall s
 
 and after each episode we update them as:
 \bse
-N(s) \gets N(s) + 1 \qquad \textit{and} \qquad S(s) \gets S(s) + G_t
+N(s) \gets N(s) + 1 \qquad \text{and} \qquad S(s) \gets S(s) + G_t
 \ese
 
 When we are done with the data collection, we estimate the state value function as:
@@ -1484,7 +1484,7 @@ V(s) = \frac{S(s)}{N(s)}
 According to the law of large numbers, as we increase the number of episodes for each state our estimation becomes
 more accurate and finally we obtain:
 \bse
-V(s) \to V_{\pi}(s) \:\: \textit{as} \:\: N(s) \to \infty
+V(s) \to V_{\pi}(s) \:\: \text{as} \:\: N(s) \to \infty
 \ese
 
 That's the idea behind Monte Carlo model. Now that we introduced the basic model, there are two improvements that we
