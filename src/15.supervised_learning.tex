@@ -1692,7 +1692,7 @@ the maximum geometric margin? We can pose the following optimization problem:
 subject to:
 \bse
 y^{(i)} (\boldsymbol{w}^{\intercal} \boldsymbol{x}^{(i)} + b) \geq \gamma, \:\:\: i=1,2,\ldots,m
-\qquad \textit{and} \qquad || \boldsymbol{w} || = 1
+\qquad \text{and} \qquad || \boldsymbol{w} || = 1
 \ese
 
 \v
@@ -1841,7 +1841,7 @@ the KKT multipliers. So we ended up with the so called \say{dual optimization pr
 
 subject to:
 \bse
-\lambda_{i} \geq 0, \:\:\: i=1,2,\ldots, m \qquad \textit{and} \qquad \sum_{i} \lambda_{i} y^{(i)} = 0
+\lambda_{i} \geq 0, \:\:\: i=1,2,\ldots, m \qquad \text{and} \qquad \sum_{i} \lambda_{i} y^{(i)} = 0
 \ese
 
 where as per usual we can turn the maximization to minimization by multiplying the Lagrangian with a minus sign so we
@@ -1853,7 +1853,7 @@ end up with:
 
 subject to:
 \bse
-\lambda_{i} \geq 0, \:\:\: i=1,2,\ldots, m \qquad \textit{and} \qquad \sum_{i} \lambda_{i} y^{(i)} = 0
+\lambda_{i} \geq 0, \:\:\: i=1,2,\ldots, m \qquad \text{and} \qquad \sum_{i} \lambda_{i} y^{(i)} = 0
 \ese
 
 \v
@@ -1883,7 +1883,7 @@ we can rewrite the dual optimization problem as:
 
 subject to:
 \bse
-\boldsymbol{\lambda} \geq 0 \qquad \textit{and} \qquad \boldsymbol{y}^\intercal \boldsymbol{\lambda} = 0
+\boldsymbol{\lambda} \geq 0 \qquad \text{and} \qquad \boldsymbol{y}^\intercal \boldsymbol{\lambda} = 0
 \ese
 
 \v
@@ -1954,7 +1954,7 @@ Accordingly the dual optimization problem would change to:
 
 subject to:
 \bse
-\lambda_{i} \geq 0, \:\:\: i=1,2,\ldots, m \qquad \textit{and} \qquad \sum_{i} \lambda_{i} y^{(i)} = 0
+\lambda_{i} \geq 0, \:\:\: i=1,2,\ldots, m \qquad \text{and} \qquad \sum_{i} \lambda_{i} y^{(i)} = 0
 \ese
 
 and then we would follow the same procedure as before in order to obtain a solution. \v
@@ -2228,14 +2228,14 @@ for classification and one for regression. Let's start with the classification o
 \bd [CART Loss Function (For Classification)]
 We define the \textbf{CART loss function} for classification as:
 \bse
-J(k, t_{k}) = \frac{m_{\textit{left}}}{m} G_{\textit{left}} + \frac{m_{\textit{right}}}{m} G_{\textit{right}}
+J(k, t_{k}) = \frac{m_{\text{left}}}{m} G_{\text{left}} + \frac{m_{\text{right}}}{m} G_{\text{right}}
 \ese
 
 \v
 
-where $m$ is the total number of instances in both left and right subsets, $m_{\textit{left}}$ and
-$m_{\textit{right}}$ are the number of instances in the left and right subset, and $G_{\textit{left}}$ and
-$G_{\textit{right}}$ measure the impurity of the left and the right subset ($G$ could be either information gain or
+where $m$ is the total number of instances in both left and right subsets, $m_{\text{left}}$ and
+$m_{\text{right}}$ are the number of instances in the left and right subset, and $G_{\text{left}}$ and
+$G_{\text{right}}$ measure the impurity of the left and the right subset ($G$ could be either information gain or
 Gini impurity).
 \ed
 
@@ -2246,20 +2246,20 @@ regression looks like the following.
 \bd [CART Loss Function (For Regression)]
 We define the \textbf{CART loss function} for regression as:
 \bse
-J(k, t_{k}) = \frac{m_{\textit{left}}}{m} \textit{MSE}_{\textit{left}}
-+ \frac{m_{\textit{right}}}{m}\textit{MSE}_{\textit{right}}
+J(k, t_{k}) = \frac{m_{\text{left}}}{m} \text{MSE}_{\text{left}}
++ \frac{m_{\text{right}}}{m}\text{MSE}_{\text{right}}
 \ese
 
-where $m$ is the total number of instances in both left and right subsets, $m_{\textit{left}}$ and
-$m_{\textit{right}}$ are the number of instances in the left and right subset, and $\textit{MSE}_{\textit{left}}$ and
-$\textit{MSE}_{\textit{right}}$ are the mean squared errors of the left and the right subsets given by:
+where $m$ is the total number of instances in both left and right subsets, $m_{\text{left}}$ and
+$m_{\text{right}}$ are the number of instances in the left and right subset, and $\text{MSE}_{\text{left}}$ and
+$\text{MSE}_{\text{right}}$ are the mean squared errors of the left and the right subsets given by:
 \bse
-\textit{MSE}_{\textit{node}} = \sum_{i \in \textit{node}} ({\hat{y}}_\textit{node} - y^{(i)})^2
+\text{MSE}_{\text{node}} = \sum_{i \in \text{node}} ({\hat{y}}_\text{node} - y^{(i)})^2
 \ese
 
 where:
 \bse
-{\hat{y}}_\textit{node} = \frac{1}{m_{\textit{node}}} \sum_{i \in \textit{node}} y^{(i)}
+{\hat{y}}_\text{node} = \frac{1}{m_{\text{node}}} \sum_{i \in \text{node}} y^{(i)}
 \ese
 \ed
 
