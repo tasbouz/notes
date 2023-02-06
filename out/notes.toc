@@ -280,101 +280,123 @@
 \contentsline {chapter}{\numberline {22}Programming \& Software Enginnering}{496}{chapter.22}%
 \contentsline {section}{\numberline {22.1}Programming Basics}{497}{section.22.1}%
 \contentsline {section}{\numberline {22.2}Algorithms \& Data Structures}{504}{section.22.2}%
-\contentsline {chapter}{\numberline {23}Technologies}{507}{chapter.23}%
-\contentsline {section}{\numberline {23.1}Serialization}{507}{section.23.1}%
-\contentsline {subsection}{\numberline {23.1.1}CSV}{508}{subsection.23.1.1}%
-\contentsline {subsection}{\numberline {23.1.2}JSON}{509}{subsection.23.1.2}%
-\contentsline {subsection}{\numberline {23.1.3}XML}{510}{subsection.23.1.3}%
-\contentsline {subsection}{\numberline {23.1.4}YAML}{512}{subsection.23.1.4}%
-\contentsline {section}{\numberline {23.2}Homebrew}{514}{section.23.2}%
-\contentsline {subsection}{\numberline {23.2.1}Installation}{514}{subsection.23.2.1}%
-\contentsline {subsection}{\numberline {23.2.2}Package Management}{514}{subsection.23.2.2}%
-\contentsline {section}{\numberline {23.3}Git}{516}{section.23.3}%
-\contentsline {subsection}{\numberline {23.3.1}Installation \& Configuration}{516}{subsection.23.3.1}%
-\contentsline {subsection}{\numberline {23.3.2}Git Repository (Repo)}{517}{subsection.23.3.2}%
-\contentsline {subsection}{\numberline {23.3.3}Branches}{522}{subsection.23.3.3}%
-\contentsline {subsection}{\numberline {23.3.4}Remote Repository (Remote)}{523}{subsection.23.3.4}%
-\contentsline {subsection}{\numberline {23.3.5}Useful Commands}{525}{subsection.23.3.5}%
-\contentsline {subsubsection}{\numberline {23.3.5.1}Git Cherry$-$Pick}{525}{subsubsection.23.3.5.1}%
-\contentsline {subsubsection}{\numberline {23.3.5.2}Git Stash}{525}{subsubsection.23.3.5.2}%
-\contentsline {section}{\numberline {23.4}Docker}{527}{section.23.4}%
-\contentsline {subsection}{\numberline {23.4.1}Introduction}{527}{subsection.23.4.1}%
-\contentsline {subsection}{\numberline {23.4.2}Installation}{529}{subsection.23.4.2}%
-\contentsline {subsection}{\numberline {23.4.3}Images}{529}{subsection.23.4.3}%
-\contentsline {subsubsection}{\numberline {23.4.3.1}Building Images}{530}{subsubsection.23.4.3.1}%
-\contentsline {subsection}{\numberline {23.4.4}Containers}{532}{subsection.23.4.4}%
-\contentsline {subsubsection}{\numberline {23.4.4.1}Multiple Containers}{535}{subsubsection.23.4.4.1}%
-\contentsline {subsection}{\numberline {23.4.5}Volumes}{537}{subsection.23.4.5}%
-\contentsline {section}{\numberline {23.5}Kubernetes}{539}{section.23.5}%
-\contentsline {subsection}{\numberline {23.5.1}Components}{539}{subsection.23.5.1}%
-\contentsline {subsection}{\numberline {23.5.2}Kubectl}{551}{subsection.23.5.2}%
-\contentsline {subsubsection}{\numberline {23.5.2.1}Installation}{552}{subsubsection.23.5.2.1}%
-\contentsline {subsubsection}{\numberline {23.5.2.2}Basic Commands}{552}{subsubsection.23.5.2.2}%
-\contentsline {subsection}{\numberline {23.5.3}Configuration Files}{553}{subsection.23.5.3}%
-\contentsline {chapter}{\numberline {24}Networks}{557}{chapter.24}%
-\contentsline {section}{\numberline {24.1}Basic Definitions}{557}{section.24.1}%
-\contentsline {section}{\numberline {24.2}Open Systems Interconnection (OSI)}{559}{section.24.2}%
-\contentsline {subsection}{\numberline {24.2.1}Layer 1: Physical Layer}{560}{subsection.24.2.1}%
-\contentsline {subsection}{\numberline {24.2.2}Layer 2: Data Link Layer}{561}{subsection.24.2.2}%
-\contentsline {section}{\numberline {24.3}Network Devices (Hardware)}{563}{section.24.3}%
-\contentsline {part}{V\hspace {1em}Economics \& Finance}{568}{part.5}%
-\contentsline {chapter}{\numberline {25}Principles Of Economics}{569}{chapter.25}%
-\contentsline {section}{\numberline {25.1}A Brief History Of Economics}{569}{section.25.1}%
-\contentsline {section}{\numberline {25.2}Basic Terminology}{572}{section.25.2}%
-\contentsline {section}{\numberline {25.3}The Ten Principles Of Economics}{576}{section.25.3}%
-\contentsline {chapter}{\numberline {26}Microeconomics}{586}{chapter.26}%
-\contentsline {section}{\numberline {26.1}The Market Forces Of Supply And Demand}{586}{section.26.1}%
-\contentsline {subsection}{\numberline {26.1.1}Demand}{588}{subsection.26.1.1}%
-\contentsline {subsection}{\numberline {26.1.2}Supply}{594}{subsection.26.1.2}%
-\contentsline {subsection}{\numberline {26.1.3}Supply And Demand}{598}{subsection.26.1.3}%
-\contentsline {subsection}{\numberline {26.1.4}Application: Changes In Market Equilibrium Due To Shifts}{600}{subsection.26.1.4}%
-\contentsline {section}{\numberline {26.2}Elasticity}{603}{section.26.2}%
-\contentsline {subsection}{\numberline {26.2.1}The Elasticity Of Demand}{603}{subsection.26.2.1}%
-\contentsline {subsection}{\numberline {26.2.2}The Elasticity Of Supply}{606}{subsection.26.2.2}%
-\contentsline {section}{\numberline {26.3}Applications Of Supply, Demand, And Elasticity}{609}{section.26.3}%
-\contentsline {subsection}{\numberline {26.3.1}Various}{609}{subsection.26.3.1}%
-\contentsline {subsection}{\numberline {26.3.2}Price Controls}{615}{subsection.26.3.2}%
-\contentsline {subsection}{\numberline {26.3.3}Taxes}{621}{subsection.26.3.3}%
-\contentsline {section}{\numberline {26.4}Consumers, Producers, And The Efficiency Of Markets}{625}{section.26.4}%
-\contentsline {subsection}{\numberline {26.4.1}Consumer Surplus}{625}{subsection.26.4.1}%
-\contentsline {subsection}{\numberline {26.4.2}Producer Surplus}{628}{subsection.26.4.2}%
-\contentsline {subsection}{\numberline {26.4.3}Market Efficiency}{631}{subsection.26.4.3}%
-\contentsline {subsection}{\numberline {26.4.4}Application: Efficiency Of Markets \& Externalities}{633}{subsection.26.4.4}%
-\contentsline {section}{\numberline {26.5}Consumer Theory}{635}{section.26.5}%
-\contentsline {subsection}{\numberline {26.5.1}The Budget Constraint}{635}{subsection.26.5.1}%
-\contentsline {subsection}{\numberline {26.5.2}Indifference Curves}{637}{subsection.26.5.2}%
-\contentsline {subsection}{\numberline {26.5.3}Optimization}{641}{subsection.26.5.3}%
-\contentsline {section}{\numberline {26.6}Frontiers Of Microeconomics}{645}{section.26.6}%
-\contentsline {subsection}{\numberline {26.6.1}Asymmetric Information}{645}{subsection.26.6.1}%
-\contentsline {subsection}{\numberline {26.6.2}Political Economy}{647}{subsection.26.6.2}%
-\contentsline {subsection}{\numberline {26.6.3}Behavioral Economics}{649}{subsection.26.6.3}%
-\contentsline {chapter}{\numberline {27}Financial Statements}{650}{chapter.27}%
-\contentsline {section}{\numberline {27.1}Basic Accountants Principles}{650}{section.27.1}%
-\contentsline {section}{\numberline {27.2}Balance Sheet}{653}{section.27.2}%
-\contentsline {subsection}{\numberline {27.2.1}Assets}{654}{subsection.27.2.1}%
-\contentsline {subsubsection}{\numberline {27.2.1.1}Current Assets}{655}{subsubsection.27.2.1.1}%
-\contentsline {subsubsection}{\numberline {27.2.1.2}Other Assets}{656}{subsubsection.27.2.1.2}%
-\contentsline {subsubsection}{\numberline {27.2.1.3}Fixed Assets}{656}{subsubsection.27.2.1.3}%
-\contentsline {subsubsection}{\numberline {27.2.1.4}Total Assets}{657}{subsubsection.27.2.1.4}%
-\contentsline {subsection}{\numberline {27.2.2}Liabilities \& Equity}{657}{subsection.27.2.2}%
-\contentsline {subsubsection}{\numberline {27.2.2.1}Current Liabilities}{658}{subsubsection.27.2.2.1}%
-\contentsline {subsubsection}{\numberline {27.2.2.2}Long-Term Liabilities}{658}{subsubsection.27.2.2.2}%
-\contentsline {subsubsection}{\numberline {27.2.2.3}Total Liabilities}{659}{subsubsection.27.2.2.3}%
-\contentsline {subsubsection}{\numberline {27.2.2.4}Equity}{659}{subsubsection.27.2.2.4}%
-\contentsline {subsection}{\numberline {27.2.3}Balance Sheet Summary}{661}{subsection.27.2.3}%
-\contentsline {section}{\numberline {27.3}Income Statement}{662}{section.27.3}%
-\contentsline {subsection}{\numberline {27.3.1}Sales}{662}{subsection.27.3.1}%
-\contentsline {subsection}{\numberline {27.3.2}Costs \& Expenses}{662}{subsection.27.3.2}%
-\contentsline {subsection}{\numberline {27.3.3}Income}{664}{subsection.27.3.3}%
-\contentsline {subsection}{\numberline {27.3.4}Income Statement Summary}{665}{subsection.27.3.4}%
-\contentsline {section}{\numberline {27.4}Cash Flow Statement}{665}{section.27.4}%
-\contentsline {subsection}{\numberline {27.4.1}Cash Flow Statement Summary}{668}{subsection.27.4.1}%
-\contentsline {chapter}{Appendices}{670}{section*.413}%
-\contentsline {chapter}{\numberline {A}Constrained Optimization}{671}{appendix.a.A}%
-\contentsline {section}{\numberline {A.1}Equality Constrained Optimization}{671}{section.a.A.1}%
-\contentsline {section}{\numberline {A.2}Equality \& Inequality Constrained Optimization}{672}{section.a.A.2}%
-\contentsline {chapter}{\numberline {B}Kernels}{673}{appendix.a.B}%
-\contentsline {chapter}{\numberline {C}Applied Machine Learning}{674}{appendix.a.C}%
-\contentsline {chapter}{\numberline {D}Clean Code}{677}{appendix.a.D}%
-\contentsline {chapter}{\numberline {E}Software Engineering At Google}{680}{appendix.a.E}%
-\contentsline {chapter}{\numberline {F}Thinking Fast And Slow}{686}{appendix.a.F}%
+\contentsline {chapter}{\numberline {23}Networks}{507}{chapter.23}%
+\contentsline {section}{\numberline {23.1}Basic Definitions}{507}{section.23.1}%
+\contentsline {section}{\numberline {23.2}Open Systems Interconnection (OSI)}{509}{section.23.2}%
+\contentsline {subsection}{\numberline {23.2.1}Layer 1: Physical Layer}{510}{subsection.23.2.1}%
+\contentsline {subsection}{\numberline {23.2.2}Layer 2: Data Link Layer}{511}{subsection.23.2.2}%
+\contentsline {section}{\numberline {23.3}Network Devices (Hardware)}{513}{section.23.3}%
+\contentsline {chapter}{\numberline {24}Technologies}{518}{chapter.24}%
+\contentsline {section}{\numberline {24.1}Serialization}{518}{section.24.1}%
+\contentsline {subsection}{\numberline {24.1.1}CSV}{519}{subsection.24.1.1}%
+\contentsline {subsection}{\numberline {24.1.2}JSON}{520}{subsection.24.1.2}%
+\contentsline {subsection}{\numberline {24.1.3}XML}{521}{subsection.24.1.3}%
+\contentsline {subsection}{\numberline {24.1.4}YAML}{523}{subsection.24.1.4}%
+\contentsline {section}{\numberline {24.2}Homebrew}{525}{section.24.2}%
+\contentsline {subsection}{\numberline {24.2.1}Installation}{525}{subsection.24.2.1}%
+\contentsline {subsection}{\numberline {24.2.2}Package Management}{525}{subsection.24.2.2}%
+\contentsline {section}{\numberline {24.3}Git}{527}{section.24.3}%
+\contentsline {subsection}{\numberline {24.3.1}Installation \& Configuration}{527}{subsection.24.3.1}%
+\contentsline {subsection}{\numberline {24.3.2}Git Repository (Repo)}{528}{subsection.24.3.2}%
+\contentsline {subsection}{\numberline {24.3.3}Branches}{533}{subsection.24.3.3}%
+\contentsline {subsection}{\numberline {24.3.4}Remote Repository (Remote)}{534}{subsection.24.3.4}%
+\contentsline {subsection}{\numberline {24.3.5}Useful Commands}{536}{subsection.24.3.5}%
+\contentsline {subsubsection}{\numberline {24.3.5.1}Git Cherry$-$Pick}{536}{subsubsection.24.3.5.1}%
+\contentsline {subsubsection}{\numberline {24.3.5.2}Git Stash}{536}{subsubsection.24.3.5.2}%
+\contentsline {section}{\numberline {24.4}Docker}{538}{section.24.4}%
+\contentsline {subsection}{\numberline {24.4.1}Introduction}{538}{subsection.24.4.1}%
+\contentsline {subsection}{\numberline {24.4.2}Installation}{540}{subsection.24.4.2}%
+\contentsline {subsection}{\numberline {24.4.3}Images}{540}{subsection.24.4.3}%
+\contentsline {subsubsection}{\numberline {24.4.3.1}Building Images}{541}{subsubsection.24.4.3.1}%
+\contentsline {subsection}{\numberline {24.4.4}Containers}{543}{subsection.24.4.4}%
+\contentsline {subsubsection}{\numberline {24.4.4.1}Multiple Containers}{546}{subsubsection.24.4.4.1}%
+\contentsline {subsection}{\numberline {24.4.5}Volumes}{548}{subsection.24.4.5}%
+\contentsline {section}{\numberline {24.5}Kubernetes}{550}{section.24.5}%
+\contentsline {subsection}{\numberline {24.5.1}Components}{550}{subsection.24.5.1}%
+\contentsline {subsection}{\numberline {24.5.2}Kubectl}{562}{subsection.24.5.2}%
+\contentsline {subsubsection}{\numberline {24.5.2.1}Installation}{563}{subsubsection.24.5.2.1}%
+\contentsline {subsubsection}{\numberline {24.5.2.2}Basic Commands}{563}{subsubsection.24.5.2.2}%
+\contentsline {subsection}{\numberline {24.5.3}Configuration Files}{564}{subsection.24.5.3}%
+\contentsline {chapter}{\numberline {25}Google Cloud Platform}{568}{chapter.25}%
+\contentsline {section}{\numberline {25.1}Cloud Computing}{568}{section.25.1}%
+\contentsline {subsection}{\numberline {25.1.1}Deployment Models}{569}{subsection.25.1.1}%
+\contentsline {subsection}{\numberline {25.1.2}Service Models}{571}{subsection.25.1.2}%
+\contentsline {subsection}{\numberline {25.1.3}Geography \& Regions}{574}{subsection.25.1.3}%
+\contentsline {section}{\numberline {25.2}Resources}{575}{section.25.2}%
+\contentsline {section}{\numberline {25.3}Billing}{576}{section.25.3}%
+\contentsline {section}{\numberline {25.4}Identity \& Access Management (IAM)}{578}{section.25.4}%
+\contentsline {subsection}{\numberline {25.4.1}Principal}{578}{subsection.25.4.1}%
+\contentsline {subsection}{\numberline {25.4.2}Permissions}{582}{subsection.25.4.2}%
+\contentsline {subsection}{\numberline {25.4.3}Role}{582}{subsection.25.4.3}%
+\contentsline {subsection}{\numberline {25.4.4}Binding}{584}{subsection.25.4.4}%
+\contentsline {subsection}{\numberline {25.4.5}Policy}{584}{subsection.25.4.5}%
+\contentsline {subsection}{\numberline {25.4.6}Identity \& Access Management (IAM)}{586}{subsection.25.4.6}%
+\contentsline {section}{\numberline {25.5}APIs \& Services}{587}{section.25.5}%
+\contentsline {subsection}{\numberline {25.5.1}Client Libraries}{587}{subsection.25.5.1}%
+\contentsline {section}{\numberline {25.6}Google Cloud SDK}{588}{section.25.6}%
+\contentsline {subsection}{\numberline {25.6.1}Authorization}{589}{subsection.25.6.1}%
+\contentsline {subsection}{\numberline {25.6.2}Properties \& Configurations}{590}{subsection.25.6.2}%
+\contentsline {subsection}{\numberline {25.6.3}Components}{592}{subsection.25.6.3}%
+\contentsline {subsection}{\numberline {25.6.4}Projects}{593}{subsection.25.6.4}%
+\contentsline {subsection}{\numberline {25.6.5}IAM}{593}{subsection.25.6.5}%
+\contentsline {part}{V\hspace {1em}Economics \& Finance}{594}{part.5}%
+\contentsline {chapter}{\numberline {26}Principles Of Economics}{595}{chapter.26}%
+\contentsline {section}{\numberline {26.1}A Brief History Of Economics}{595}{section.26.1}%
+\contentsline {section}{\numberline {26.2}Basic Terminology}{598}{section.26.2}%
+\contentsline {section}{\numberline {26.3}The Ten Principles Of Economics}{602}{section.26.3}%
+\contentsline {chapter}{\numberline {27}Microeconomics}{612}{chapter.27}%
+\contentsline {section}{\numberline {27.1}The Market Forces Of Supply And Demand}{612}{section.27.1}%
+\contentsline {subsection}{\numberline {27.1.1}Demand}{614}{subsection.27.1.1}%
+\contentsline {subsection}{\numberline {27.1.2}Supply}{620}{subsection.27.1.2}%
+\contentsline {subsection}{\numberline {27.1.3}Supply And Demand}{624}{subsection.27.1.3}%
+\contentsline {subsection}{\numberline {27.1.4}Application: Changes In Market Equilibrium Due To Shifts}{626}{subsection.27.1.4}%
+\contentsline {section}{\numberline {27.2}Elasticity}{629}{section.27.2}%
+\contentsline {subsection}{\numberline {27.2.1}The Elasticity Of Demand}{629}{subsection.27.2.1}%
+\contentsline {subsection}{\numberline {27.2.2}The Elasticity Of Supply}{632}{subsection.27.2.2}%
+\contentsline {section}{\numberline {27.3}Applications Of Supply, Demand, And Elasticity}{635}{section.27.3}%
+\contentsline {subsection}{\numberline {27.3.1}Various}{635}{subsection.27.3.1}%
+\contentsline {subsection}{\numberline {27.3.2}Price Controls}{641}{subsection.27.3.2}%
+\contentsline {subsection}{\numberline {27.3.3}Taxes}{647}{subsection.27.3.3}%
+\contentsline {section}{\numberline {27.4}Consumers, Producers, And The Efficiency Of Markets}{651}{section.27.4}%
+\contentsline {subsection}{\numberline {27.4.1}Consumer Surplus}{651}{subsection.27.4.1}%
+\contentsline {subsection}{\numberline {27.4.2}Producer Surplus}{654}{subsection.27.4.2}%
+\contentsline {subsection}{\numberline {27.4.3}Market Efficiency}{657}{subsection.27.4.3}%
+\contentsline {subsection}{\numberline {27.4.4}Application: Efficiency Of Markets \& Externalities}{659}{subsection.27.4.4}%
+\contentsline {section}{\numberline {27.5}Consumer Theory}{661}{section.27.5}%
+\contentsline {subsection}{\numberline {27.5.1}The Budget Constraint}{661}{subsection.27.5.1}%
+\contentsline {subsection}{\numberline {27.5.2}Indifference Curves}{663}{subsection.27.5.2}%
+\contentsline {subsection}{\numberline {27.5.3}Optimization}{667}{subsection.27.5.3}%
+\contentsline {section}{\numberline {27.6}Frontiers Of Microeconomics}{671}{section.27.6}%
+\contentsline {subsection}{\numberline {27.6.1}Asymmetric Information}{671}{subsection.27.6.1}%
+\contentsline {subsection}{\numberline {27.6.2}Political Economy}{673}{subsection.27.6.2}%
+\contentsline {subsection}{\numberline {27.6.3}Behavioral Economics}{675}{subsection.27.6.3}%
+\contentsline {chapter}{\numberline {28}Financial Statements}{676}{chapter.28}%
+\contentsline {section}{\numberline {28.1}Basic Accountants Principles}{676}{section.28.1}%
+\contentsline {section}{\numberline {28.2}Balance Sheet}{679}{section.28.2}%
+\contentsline {subsection}{\numberline {28.2.1}Assets}{680}{subsection.28.2.1}%
+\contentsline {subsubsection}{\numberline {28.2.1.1}Current Assets}{681}{subsubsection.28.2.1.1}%
+\contentsline {subsubsection}{\numberline {28.2.1.2}Other Assets}{682}{subsubsection.28.2.1.2}%
+\contentsline {subsubsection}{\numberline {28.2.1.3}Fixed Assets}{682}{subsubsection.28.2.1.3}%
+\contentsline {subsubsection}{\numberline {28.2.1.4}Total Assets}{683}{subsubsection.28.2.1.4}%
+\contentsline {subsection}{\numberline {28.2.2}Liabilities \& Equity}{683}{subsection.28.2.2}%
+\contentsline {subsubsection}{\numberline {28.2.2.1}Current Liabilities}{684}{subsubsection.28.2.2.1}%
+\contentsline {subsubsection}{\numberline {28.2.2.2}Long-Term Liabilities}{684}{subsubsection.28.2.2.2}%
+\contentsline {subsubsection}{\numberline {28.2.2.3}Total Liabilities}{685}{subsubsection.28.2.2.3}%
+\contentsline {subsubsection}{\numberline {28.2.2.4}Equity}{685}{subsubsection.28.2.2.4}%
+\contentsline {subsection}{\numberline {28.2.3}Balance Sheet Summary}{687}{subsection.28.2.3}%
+\contentsline {section}{\numberline {28.3}Income Statement}{688}{section.28.3}%
+\contentsline {subsection}{\numberline {28.3.1}Sales}{688}{subsection.28.3.1}%
+\contentsline {subsection}{\numberline {28.3.2}Costs \& Expenses}{688}{subsection.28.3.2}%
+\contentsline {subsection}{\numberline {28.3.3}Income}{690}{subsection.28.3.3}%
+\contentsline {subsection}{\numberline {28.3.4}Income Statement Summary}{691}{subsection.28.3.4}%
+\contentsline {section}{\numberline {28.4}Cash Flow Statement}{691}{section.28.4}%
+\contentsline {subsection}{\numberline {28.4.1}Cash Flow Statement Summary}{694}{subsection.28.4.1}%
+\contentsline {chapter}{Appendices}{696}{section*.438}%
+\contentsline {chapter}{\numberline {A}Constrained Optimization}{697}{appendix.1.A}%
+\contentsline {section}{\numberline {A.1}Equality Constrained Optimization}{697}{section.1.A.1}%
+\contentsline {section}{\numberline {A.2}Equality \& Inequality Constrained Optimization}{698}{section.1.A.2}%
+\contentsline {chapter}{\numberline {B}Kernels}{699}{appendix.1.B}%
+\contentsline {chapter}{\numberline {C}Applied Machine Learning}{700}{appendix.1.C}%
+\contentsline {chapter}{\numberline {D}Clean Code}{703}{appendix.1.D}%
+\contentsline {chapter}{\numberline {E}Software Engineering At Google}{706}{appendix.1.E}%
+\contentsline {chapter}{\numberline {F}Thinking Fast And Slow}{712}{appendix.1.F}%
