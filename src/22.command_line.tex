@@ -1,0 +1,346 @@
+%! suppress = EscapeHashOutsideCommand
+\section{Basics}
+
+\bd[Command]
+A \textbf{command} is a directive, in the form of lines of text, to a computer program to perform a specific task.
+\ed
+
+Commands can be followed by one or more ``options'' that modify their behavior and, further, by one or more
+``arguments'', the items upon which the command acts.
+
+\bd[Option / Flag]
+An \textbf{option} or \textbf{flag} modifies the operation of a command; the effect is determined by the command's
+program.
+\ed
+
+Options follow the command name separated by spaces and started by either a single dash \code{-} and the single
+character version of the option or a double dash \code{--} and the long version of the option. Both single character
+and long format are identical options and do the exact same thing. Also, many commands allow multiple short options to
+be strung together.
+
+\bd[Argument]
+An \textbf{argument} is an item of information provided to a command when it is started.
+\ed
+
+Arguments follow the options (if any) or the command (if no options) separated by spaces. A command can have many
+arguments that identify sources or destinations of information, or that alter the operation of the command. \v
+
+So, most commands look kind of like this:
+\begin{bash}
+# common format of commands
+command -options arguments
+\end{bash}
+
+A user can provide commands to a ``command-line interface''
+
+\bd[Command-Line Interface (CLI)]
+A \textbf{command-line interface (CLI)]} is a text-based user interface (UI) used to accept commands.
+\ed
+
+CLI runs programs, manages computer files and interacts with the computer through the ``command-line interpreter''.
+
+\bd[Command-Line Interpreter]
+A \textbf{command-line interpreter} is a computer program that exposes an operating system's services to a human user
+or other programs, by receiving keyboard commands through a CLI and passing them to the operating system to carry out.
+\ed
+
+When we speak of the command line interpreter, we are really referring to the shell.
+
+\bd[Shell]
+The \textbf{shell} is a command-line interpreter acting as the outermost layer around the operating system.
+\ed
+
+The name ``shell'' for a command-line interpreter and the concept of making the shell a user program outside of the
+operating system kernel were introduced in a Unix's precursor called Multics. \v
+
+Since shells are just computer programs, it makes sense that there are a lot of them. The very fist shell of Unix was
+the so called ``Thompson shell''.
+
+\bd[Thompson Shell]
+The \textbf{Thompson shell} was the first Unix shell, introduced in the first version of Unix in 1971, and was written
+by Ken Thompson.
+\ed
+
+Thompson shell was a simple command line interpreter, not designed for scripting, but nonetheless introduced several
+innovative features to the command-line interface and led to the development of the later Unix shells. The successor of
+Thompson shell was the so called ``Bourne shell''.
+
+\bd[Bourne Shell]
+The \textbf{Bourne shell} is a Unix shell, released in 1979 in the Version 7 of Unix, developed by Stephen Bourne at
+Bell Labs and acting as a replacement for the Thompson shell.
+\ed
+
+Bourne shell was used as an interactive command interpreter and it was also intended as a scripting language and
+contains most of the features that are commonly considered to produce structured programs. Unix-like systems continue
+to have a Bourne shell, or a symbolic link or hard link to a compatible shell—even when other shells are used by
+most users. \v
+
+Coming to today, almost all Unix systems supply a shell program called ``bash'' which has been used as the default login
+shell for most of them.
+
+\bd[Bash]
+\textbf{Bash} is a Unix shell and command language, released in 1989, and written by Brian Fox for the GNU
+Project\footnote{The GNU Project is a free software, mass collaboration project announced by Richard Stallman on
+September 27, 1983. Its goal is to give computer users freedom and control in their use of their computers and computing
+devices by collaboratively developing and publishing software that gives everyone the rights to freely run the software,
+copy and distribute it,study it, and modify it.} as a free software replacement for the Bourne shell.
+\ed
+
+The name bash is an acronym for ``bourne-again shell'', a reference to the fact that bash is an enhanced replacement
+for the original Unix shell program; Bourne. \v
+
+Bash was also the default shell in versions of Apple macOS until it changed to ``Z shell'' or ``zsh'' (although Bash
+remains available as an alternative shell).
+
+\bd[Z Shell (zsh)]
+The \textbf{Z shell (zsh)} is a Unix shell, developed in 1990, by Paul Falstad.
+\ed
+
+The name zsh derives from the name of Yale professor Zhong Shao. Paul Falstad regarded Shao's login-id, ``zsh'', as a
+good name for a shell. Zsh is an extended Bourne shell with many improvements, including some features of Bash. \v
+
+Moving on, in order to get access to and interact with a shell we need another program called ``terminal''.
+
+\bd[Terminal Emulator / Terminal Application / Terminal]
+A \textbf{terminal emulator}, or \textbf{terminal application}, or simply \textbf{terminal} is a graphical user
+interface (GUI) computer program that gives us access to the shell.
+\ed
+
+A huge number of terminals are available, but they all basically do the same thing: give us access to the shell. The
+most famous ones include ``Linux console'' for Linux, ``MacTerminal'' for Mac and ``iTerm2'' which is an open-source
+terminal specifically for macOS. \v
+
+Once a terminal is launched the first thing one sees is the so called ``shell prompt''.
+
+\bd[Shell Prompt]
+A \textbf{shell prompt} appears in the terminal whenever the shell is ready to accept input.
+\ed
+
+The default appearance of a shell prompt (although it might vary depending on the distribution), will typically include
+your \code{username@machinename}, followed by the current working directory (more about that in a little bit) and a
+dollar sign (\$):
+\begin{bash}
+[username@machinename current_directory]$\$$
+\end{bash}
+
+If the last character of the prompt is a hash mark (\#) rather than a dollar sign, the terminal session has superuser
+privileges (more about that later). \v
+
+Nowadays, the shell prompt's appearance can be configured to anyone's likings, so more often than not one can see many
+different variations of a shell prompt. \v
+
+Once we give a command to the terminal, this command is saved to the ``command line history''.
+
+\bd[Command Line History]
+\textbf{Command line history} is a feature in many operating shells that allows the user to recall, edit and rerun
+previous commands.
+\ed
+
+Command line history was added to Unix by Bill Joy in 1978. It quickly became popular because it made the shell fast
+and easy to use. Command line history has since become a standard feature in almost every shell. \v
+
+History addresses two important scenarios:
+\bit
+\item Executing the same command or a short sequence of commands over and over.
+\item Correcting mistakes or rerunning a command with only a small modification.
+\eit
+
+To access command line history we press the up and down arrows. If we try the left and right arrows, we’ll see that we
+can position the cursor anywhere on the command line. This makes editing commands easy.
+
+\section{Navigation}
+
+\bd[File]
+A \textbf{file} is a computer resource for recording data in a computer storage device.
+\ed
+
+Just as words can be written to paper, so can data be written to a file. Each file is distinguished from any other file
+by its ``filename''.
+
+\bd[Filename]
+\textbf{Filename} is the name of a file.
+\ed
+
+Some important facts about filenames:
+\bit
+\item Filenames that begin with a period character are hidden.
+\item Filenames and commands are case sensitive.
+\item Though Unix supports long filenames that may contain embedded spaces and punctuation characters, limit the
+punctuation characters in the names of files you create to period, dash, and underscore.
+\item Do not mbed spaces in filenames. If you want to represent spaces between words in a filename, use underscore
+characters.
+\item Unix has no concept of a ``file extension'' like some other operating systems.
+\eit
+
+To get information of a specific file you can use the \code{file} command on the filename:
+\begin{bash}
+# display information of a file
+file <filename>
+\end{bash}
+
+Files are structured in ``file systems''.
+
+\bd[File System / Filesystem]
+A \textbf{file system} or \textbf{filesystem} is the structure and logic rules that an operating system uses to control
+how files are stored and retrieved.
+\ed
+
+Without a file system, files placed in a storage medium would be one large body of data with no way to tell where one
+piece of data stopped and the next began, or where any piece of data was located when it was time to retrieve it. By
+separating the data into pieces and giving each piece a name, the data are easily isolated and identified. There are
+many kinds of file systems, each with unique structure and logic, properties of speed, flexibility, security, size
+and more. \v
+
+A central concept of any file system is the so called ``directory''.
+
+\bd[Directory / Folder]
+A \textbf{directory} (on many computers also known as \textbf{folder}) is a file system cataloging structure which
+contains references to other files, and possibly other directories.
+\ed
+
+Directories follow a specific structure called ``directory structure''.
+
+\bd[Directory Structure]
+A \textbf{directory structure} is the way an operating system arranges files that are accessible to the user.
+\ed
+
+A Unix-like operating system organizes its files in what is called a ``hierarchical directory structure''.
+
+\bd[Hierarchical Directory Structure]
+A \textbf{hierarchical directory structure} is a directory structure that follows a tree structure.\footnote{A tree
+structure is a way of representing the hierarchical nature of a structure in a graphical form. It is named a
+``tree structure'' because the classic representation resembles a tree, although the chart is generally upside down
+compared to a biological tree, with the ``stem'' at the top and the ``leaves'' at the bottom.}
+\ed
+
+\fig{unix1}{0.5}
+
+The first directory in a file system that follows the hierarchical directory structure is called the ``root directory''.
+
+\bd[Root Directory (\code{/})]
+The \textbf{root directory} is the top-most directory in a hierarchical directory structure. It is denoted by the slash
+sign (\code{/}), but the directory entry itself has no name.
+\ed
+
+The root directory can be likened to the trunk of a tree, as the starting point where all branches originate from. The
+root directory contains files and subdirectories.
+
+\bd[Subdirectory]
+A directory contained inside another directory is called a \textbf{subdirectory}.
+\ed
+
+\bd[Parent Directory (\code{..})]
+The term \textbf{parent directory} is often used to describe the relationship between a subdirectory and the
+directory in which it is cataloged, the latter being the parent. It is denoted by the double dot sign (\code{..}).
+\ed
+
+In this context, the root directory is the only directory that does not have a parent of its own. Every other directory
+has multiple parents until it reaches the root directory. The path from a directory to the root is called ``path''. \v
+
+At any given time, we are inside a single directory, called the ``current working directory''.
+
+\bd[Current Working Directory (\code{.})]
+The \textbf{current working directory} is the directory, where the shell is currently working. It is denoted by the dot
+sign (\code{.}).
+\ed
+
+When we start a terminal session, our current working directory is set to a special directory called ``home'' directory.
+
+\bd[Home Directory (\code{~})]
+The \textbf{home directory} is the directory, where the shell sets as currently working directory when it stars a
+session. It is denoted by the tilde sign (\code{~}).
+\ed
+
+Each user account is given its own home directory, and it is the only place a regular user is allowed to write files.
+\v
+
+To display the current working directory, we use the \code{pwd} (display working directory) command:
+\begin{bash}
+# display current working directory
+pwd
+\end{bash}
+
+What we will see as a result of this command is the so called ``path'' of the directory.
+
+\bd[Path / Pathanme]
+The \textbf{path} or \textbf{pathname} of a directory or a file is its position in relation to other directories traced
+back in a line to the root.
+\ed
+
+The path is a string of characters used to uniquely identify a location in a hierarchical directory structure. It is
+composed by following the directory tree hierarchy in which components, separated by a slash (\code{/}), represent each
+directory. \v
+
+\bd[Absolute Path]
+An \textbf{absolute path} points to the same location in a file system, regardless of the current working directory.
+To do that, it must include the root directory.
+\ed
+
+An absolute path begins with the root directory and follows the hierarchical directory structure branch by branch
+until the path to the desired directory or file is completed.
+
+\be
+For example, there is a directory on your system in which most of the system's programs are installed. The directory's
+path is \code{/usr/bin}. This means from the root directory (represented by the leading slash in the path) there is
+a directory called \code{code} that contains a directory called \code{bin}. \v
+
+Important to notice that when we use relative paths we omit the current working directory \code{.} part because it is
+implied. In general, if we do not specify a path to something, the working directory will be assumed.
+\ee
+
+\bd[Relative Path]
+A \textbf{relative path} starts from some given working directory, avoiding the need to provide the full absolute path.
+\ed
+
+Where an absolute path starts from the root directory and leads to its destination, a relative path starts from the
+working directory.
+
+\be
+For example, if you are already in \code{/usr/bin} directory, the root directory \textbf{relatively} to the current
+working directory \code{/usr/bin} is \code{../..}, where the first double dots denote the parent directory of
+\code{/usr/bin}, i.e.\ \code{/usr} and and the second double dots represent the parent's parent directory \code{/}.
+\ee
+
+To change our current working directory, we use the \code{cd} (change directory) command with either an absolute or
+relative path:
+\begin{bash}
+# change directory
+cd <absolute\_or\_relative\_path>
+\end{bash}
+
+In any given current working directory we can see the files contained in the directory and the pathway
+to the parent directory and any child subdirectories below us by making use of the \code{ls} (list) command:
+\begin{bash}
+# display files and directories of current working directory
+ls
+\end{bash}
+
+Actually, we can use the ls command to list the contents of any directory, not just the current working directory.
+\begin{bash}
+# display files and directories of a directory
+ls <absolute\_or\_relative\_path>
+\end{bash}
+
+The \code{ls} command has a large number of possible options, the most common of which are listed below:
+
+\v
+
+\begin{tabular}{ |p{1cm}|p{3cm}||p{10.6cm}| }
+\hline
+\multicolumn{3}{|c|}{ls} \\
+\hline
+Option& Long Format& Description\\
+\hline
+-a & --all & List all files, even those with names that begin with a period, which are normally not listed (that is, hidden).\\
+-A & --almost-all & Like the -a option except it does not list . (current directory) and .. (parent directory).\\
+-d & --directory & Ordinarily, if a directory is specified, ls will list the contents of the directory, not the directory itself. Use this option in conjunction with the -l option to see details about the directory rather than its contents.\\
+-F & --classify & This option will append an indicator character to the end of each listed name. For example, it will append a forward slash (/) if the name is a directory.\\
+-h & --human-readable & In long format listings, display file sizes in human-readable format rather than in bytes.\\
+-l  & & Display results in long format.\\
+-r & & Display the results in reverse order. Normally, ls displays its results in ascending alphabetical order.\\
+-S  & & Sort results by file size.\\
+-t  & & Sort by modification time.\\
+\hline
+\end{tabular}
+
+\v
