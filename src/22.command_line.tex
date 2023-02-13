@@ -1,7 +1,7 @@
 %! suppress = EscapeHashOutsideCommand
 \section{Basics}
 
-\subsection{Command}
+\subsection{Commands}
 
 \bd[Command]
 A \textbf{command} is a directive, in the form of lines of text, to a computer program to perform a specific task.
@@ -29,10 +29,14 @@ df
 free
 \end{bash}
 
-Finally a command that will make sense a bit later:
 \begin{bash}
 # end a terminal session
 exit
+\end{bash}
+
+\begin{bash}
+# shutdown the computer
+shutdown
 \end{bash}
 \ee
 
@@ -144,9 +148,9 @@ In Unix-like systems we can create our own custom commands built from other comm
 An \textbf{alias} is a command that we can define ourselves, built from other commands.
 \ed
 
-Aliases can be created by making use of the command \code{alias}. After the command, we give our alias a name
-followed immediately (no whitespace allowed) by an equal sign, followed immediately (no whitespace allowed) by a quoted
-string containing the meaning to be assigned to the name:
+Aliases can be created by making use of the command \code{alias}. After the command, we give our alias a name (by
+convention in capital letters) followed immediately (no whitespace allowed) by an equal sign, followed immediately (
+no whitespace allowed) by a quoted string containing the meaning to be assigned to the name:
 \begin{bash}
 # create alias
 alias <name>='<meaning>'
@@ -183,7 +187,7 @@ For instance, a keyboard or computer mouse is an input device for a computer sin
 movements that the human user outputs and convert them into input signals that a computer can understand. The output
 from these devices is the computer's input. \v
 
-On the other hand, monitors and printers are output devices sice they take signals that computers output as input,
+On the other hand, monitors and printers are output devices since they take signals that computers output as input,
 and they convert these signals into a representation that human users can understand. From the human user's perspective,
 the process of reading or seeing these representations is receiving output. \v
 
@@ -347,7 +351,7 @@ At first glance, it may be hard to understand the redirection performed by the p
 redirection operator \code{>}. Simply put, the redirection operator connects a command with a file, while the pipeline
 operator connects the output of one command with the input of a second command.
 
-\subsection{Command-Line}
+\subsection{Shell}
 
 A user can provide commands to a ``command-line interface''
 
@@ -370,6 +374,25 @@ The \textbf{shell} is a command-line interpreter acting as the outermost layer a
 
 The name ``shell'' for a command-line interpreter and the concept of making the shell a user program outside of the
 operating system kernel were introduced in a Unix's precursor called Multics. \v
+
+Shells are divided into 2 broad categories: ``login'' and ``non-login'' shells.
+
+\bd[Login Shell]
+A \textbf{login shell} is a shell given to a user upon login into their user account.
+\ed
+
+\bd[Non-Login Shell]
+A \textbf{non-login shell} is a shell open in a terminal.
+\ed
+
+Furthermore, based on if a user can interact with a login or non-login shell we can have 4 possible options:
+\bit
+\item \textbf{Interactive Login Shell}: This is one in which we are prompted for our username and password. Logging into
+a remote computer is an example of this.
+\item \textbf{Non-Interactive Login Shell}: Extremely rare, and you're unlikely to encounter one.
+\item \textbf{Interactive Non-Login Login Shell}: This typically occurs when we launch a terminal session.
+\item \textbf{Non-Interactive Non-Login Shell}: Running a script.
+\eit
 
 Since shells are just computer programs, it makes sense that there are a lot of them. The very fist shell of Unix was
 the so called ``Thompson shell''.
@@ -407,15 +430,15 @@ copy and distribute it,study it, and modify it.} as a free software replacement 
 The name bash is an acronym for ``bourne-again shell'', a reference to the fact that bash is an enhanced replacement
 for the original Unix shell program; Bourne. \v
 
-Bash was also the default shell in versions of Apple macOS until it changed to ``Z shell'' or ``zsh'' (although Bash
+Bash was also the default shell in versions of Apple macOS until it changed to ``Z shell'' or ``ZSH'' (although Bash
 remains available as an alternative shell).
 
-\bd[Z Shell (zsh)]
-The \textbf{Z shell (zsh)} is a Unix shell, developed in 1990, by Paul Falstad.
+\bd[Z Shell (ZSH)]
+The \textbf{Z shell (ZSH)} is a Unix shell, developed in 1990, by Paul Falstad.
 \ed
 
-The name zsh derives from the name of Yale professor Zhong Shao. Paul Falstad regarded Shao's login-id, ``zsh'', as a
-good name for a shell. Zsh is an extended Bourne shell with many improvements, including some features of Bash. \v
+The name ZSH derives from the name of Yale professor Zhong Shao. Paul Falstad regarded Shao's login-id, ``ZSH'', as a
+good name for a shell. ZSH is an extended Bourne shell with many improvements, including some features of Bash. \v
 
 Moving on, in order to get access to and interact with a shell we need another program called ``terminal''.
 
@@ -491,6 +514,85 @@ those few characters. The user can type more characters and press \code{Tab} aga
 the typed characters are still ambiguous, or else complete the command or filename with a trailing space.
 \item An alternate form of tab completion rotates through all matching results when the input is ambiguous.
 \eit
+
+\subsubsection{Environment}
+
+\bd[Environment]
+An \textbf{environment} is a body of information that the shell maintains during a session.
+\ed
+
+Programs use the data stored in the environment to determine facts about the system's configuration. While most
+programs use configuration files to store program settings, some programs also look for values stored in the
+environment to adjust their behavior. Knowing this, we can use the environment to customize our shell experience. \v
+
+The shell stores data in the environment in the form of ``aliases''\footnote{Recall that from the definition of
+aliases we gave previously, an alias is a command that we can define ourselves, built from other commands.}, ``shell
+functions'' (which we will cover in the next section), and ``environment variables''.
+
+\bd[Environment Variables]
+An \textbf{environment variable}, introduced in its modern form in 1979 with Version 7 Unix, is part of the environment
+in which a process runs, and it is a dynamic-named value that can affect the way running processes will behave on a
+computer.
+\ed
+
+A running process can query the value of an environment variable to discover information. \v
+
+To see what is stored in the environment, we can use \code{printenv} command which displays all the environment
+variables:
+\begin{bash}
+# display all environment variables
+printenv
+\end{bash}
+
+What we see is a list of environment variables and their values.\footnote{Notice that \code{printenv} does not
+display aliases. To see them, enter the \code{alias} command.} Environment variables follow the same format as
+aliases, i.e.\ the name of the environment variable (by convention in capital letters), followed immediately (no
+whitespace allowed) by an equal sign, followed immediately (no whitespace allowed) by the value assigned to them. \v
+
+The \code{printenv} command can also list the value of a specific variable:
+\begin{bash}
+# display the value of a specific environment variable
+printenv <environment_variable>
+\end{bash}
+
+It is also possible to view the contents of a variable using the echo command:
+\begin{bash}
+# display the value of a specific environment variable
+echo \$<environment_variable>
+\end{bash}
+
+When we log on to the system, the shell starts and reads a series of configuration scripts called ``startup files''.
+
+\bd[Startup Files]
+\textbf{Startup files} are configuration scripts that are run automatically by the shell when it starts.
+\ed
+
+Startup files have certain characteristics:
+\bit
+\item They are (usually) located in the home directory.
+\item Their names begin with a period, which makes them hidden files.
+\item Their names end in \code{rc} which means ``resource configuration''.
+\eit
+
+Which startup files are gonna run, depend on the type of shell session being started (i.e.\ a login or a non-login
+shell). There is no sane reason why shells sources different startup files based on what kind of shell it thinks it
+is in, it’s just historical. Now, let's list all the startup files of a Unix system and distinguish them based on the
+type of shell: \footnote{\textbf{Important}: The names and the logic behind startup files depend on the unix shell
+one uses. Different things happen for bash and different for ZSH. Since ZSH is the one I prefer, I will use this for
+the notes, and I will ignore bash.}
+\bit
+\item \textbf{/etc/zprofile}: A global configuration script for login shells that applies to all users.
+\item \textbf{~/.zprofile}: A user's personal configuration script for login shells that applies only to the user. It
+can be used to extend or override settings in the global configuration script in \code{/etc/zprofile}.
+\item \textbf{/etc/zshrc}: A global configuration script for interactive non-login shells that applies to all users.
+\item \textbf{~/.zshrc}: A user's personal configuration script for interactive non-login shells that applies only to
+the user. It can be used to extend or override settings in the global configuration script in \code{/etc/zshrc}.
+\eit
+
+The \code{~/.zshrc} startup file is probably the most important startup file from the ordinary user's point of view,
+because it is almost always read. Non-login shells read it by default, and most startup files for login shells are
+written in such a way as to read the \code{~/.zshrc} file as well. Inside \code{~/.zshrc} we can include anything we
+want to run after every login in the shell.
 
 \section{Navigation}
 
@@ -935,6 +1037,37 @@ Option& Long Format& Description\\
 \hline
 \end{tabular}
 
+Before we finish this section here is a list of useful commands that you might need:
+\begin{bash}
+# sort results
+sort
+\end{bash}
+
+\begin{bash}
+# omit repeated lines
+uniq
+\end{bash}
+
+\begin{bash}
+# print line, word, and byte counts
+wc
+\end{bash}
+
+\begin{bash}
+# print lines matching a pattern
+grep
+\end{bash}
+
+\begin{bash}
+# print first part of files
+head
+\end{bash}
+
+\begin{bash}
+# print last part of files
+tail
+\end{bash}
+
 \section{Multiuser}
 
 \bd[User]
@@ -1353,14 +1486,103 @@ chmod go=rw <file_or_directory>
 
 \section{Multitasking}
 
-Processes are how Unix systems organize the different programs waiting for their turn to be executed.
-
-\bd[Task / Process]
-A \textbf{task} or \textbf{process} is the instance of a computer program that is being executed.
+\bd[Thread]
+A \textbf{thread} is the smallest sequence of programmed instructions that can be managed independently by an operating
+system.
 \ed
 
-Some processes can themselves launch other processes. The fact that a program can launch other programs is expressed
-in the process scheme as a ``parent'' process producing a ``child'' process.
+\bd[Process / Task]
+A \textbf{process} or \textbf{task} is the instance of a computer program that is being executed by one or many threads.
+\ed
+
+Processes are how Unix systems organize the different programs waiting for their turn to be executed. Usually we can
+collect many processes together in a ``process group''.
+
+\bd[Process Group]
+A \textbf{process group} denotes a collection of one or more processes.
+\ed
+
+Processes are divided in two big categories: ``foreground'' and ``background''.
+
+\bd[Foreground Process]
+Processes that require a user to start them or to interact with them are called \textbf{foreground processes}.
+\ed
+
+\be
+Programs and commands run as foreground processes by default.
+\ee
+
+To interrupt a foreground process we can press \code{CTRL-C}. This means we are politely asking the foreground process
+to terminate. \v
+
+\bd[Background Process]
+Processes that are run independently of a user are referred to as \textbf{background processes}.
+\ed
+
+A process in the background is immune from terminal keyboard input.
+
+\be
+Typical tasks for these background processes include logging, system monitoring, scheduling, and user notification.
+\ee
+
+An important concept that is quite confusing. Although background processes run independently of a user, a user can
+still run a process (i.e.\ a foreground process) in the background (i.e.\ turn a foreground into a background process).
+In order to make clear that a process (foreground or background) was run by a user, Unix systems use the concept of
+``jobs''.
+
+\bd[Job]
+Any process started by a user (foreground or background) is called a \textbf{job}
+\ed
+
+To start a job (process) in the background (so its output is being suppressed) we follow the command of the job with an
+ampersand character:
+\begin{bash}
+# run job in the background
+<command> &
+\end{bash}
+
+Once we hit enter and the command is executed, the shell is telling us that we have started a job, and it assigns to
+the job a number of the form \code{\%n} called the ``jobspec''.
+
+\bd[Jobspec]
+A \textbf{jobspec} \%n is a numeric way of referring to a job.
+\ed
+
+To interrupt a background job we use the \code{kill} command. This means we are politely asking the background job to
+terminate:
+\begin{bash}
+# kill background job
+kill <jobspec>
+\end{bash}
+
+The shell gives us a way to list the jobs that have been launched from our terminal. Using the \code{jobs} command,
+we can see this list:
+\begin{bash}
+# display a list of all running jobs
+jobs
+\end{bash}
+
+To return a job to the foreground, use the \code{fg} command in this way:
+\begin{bash}
+# bring job to foreground
+fg <jobspec>
+\end{bash}
+
+If we have only one background job, the jobspec is optional. \v
+
+Last but not least, a useful tip. To place an already running foreground job in the background, we first have to pause
+it by pressing \code{CTRL-Z} and then return running in the background by using the \code{bg} command:
+\begin{bash}
+# run paused job in the background
+bg <jobspec>
+\end{bash}
+
+Moving a job from the foreground to the background is handy if we launch a program from the command line but forget
+to place it in the background by appending the trailing \code{&}). \v
+
+Moving on from jobs back to general processes, some processes can themselves launch other processes. The fact that a
+program can launch other programs is expressed in the process scheme as a ``parent'' process producing a ``child''
+process.
 
 \bd[Parent Process]
 A \textbf{parent process} is a process that has created one or more other processes (the child processes).
@@ -1371,30 +1593,11 @@ A \textbf{child process} or \textbf{subtask} or \textbf{subtask} is a process cr
 process).
 \ed
 
-Processes can be launched either with a user intervention or without it. In the second case we say that we have a
-``background process''.
-
-\bd[Background Process]
-A \textbf{background process} is a process that runs in the background, and without user intervention.
-\ed
-
-\be
-Typical tasks for these background processes include logging, system monitoring, scheduling, and user notification.
-\ee
-
-Programs that run in a background proces, just sit in the background and do their thing without having any user
-interface. The programs themselves are usually called ``daemons''.
-
-\bd[Daemon]
-A \textbf{daemon} is a computer program that runs as a background process, rather than being under the direct control
-of an interactive user through the use of a user interface.
-\ee
-
 Modern operating systems are usually multitasking, meaning they create the illusion of doing more than one thing at
 once by rapidly switching from one executing program to another.
 
 \bd[Multitasking]
-\textbf{Multitasking} is the concurrent execution of multiple tasks (or processes) over a certain period of time.
+\textbf{Multitasking} is the concurrent execution of multiple processes (tasks) over a certain period of time.
 \ed
 
 The main ``orchestrator'' of multitasking is the ``kernel'' which manages processes.
@@ -1412,7 +1615,20 @@ number called a ``process ID'' (PID).
 The \textbf{process identifier (PID)} is a number used by the kernel to uniquely identify an active process.
 \ed
 
-PIDs are assigned in ascending order. \v
+PIDs are assigned in ascending order. Using PID we can terminate any process by using \code{kill} command with the PID:
+\begin{bash}
+# terminate process
+kill <PID>
+\end{bash}
+
+It’s also possible to send signals to multiple processes matching a specified program or username by using the
+\code{killall} command. Here is the syntax:
+\begin{bash}
+# terminate multiple processes
+killall <name>
+\end{bash}
+
+Both \code{kill} and \code{killall} command need superuser privileges to work. \v
 
 When a system starts up, the kernel initiates a few of its own activities as processes and launches a program called
 \code{init}.
@@ -1421,11 +1637,17 @@ When a system starts up, the kernel initiates a few of its own activities as pro
 \textbf{init} (short for initialization) is the first process started by the kernel, with PID 1.
 \ed
 
-Init is a daemon that continues running until the system is shut down. It is the direct or indirect parent of all
-other child processes and automatically adopts all orphaned processes. In it turn, \code{init} runs a series of shell
-scripts (located in \code{/etc}) called init scripts, which start all the system services. Many of these services are
-implemented as daemon programs. So, even if we are not logged in, the system is at least a little busy performing
-routine stuff. \v
+\code{init} is a background process that continues running until the system is shut down. It is the direct or indirect
+parent of all other child processes and automatically adopts all orphaned processes. More specifically a background
+child process of \code{init} is called a \textbf{daemon}.
+
+\bd[Daemon]
+All background child processes of \code{init} are called \textbf{daemons}.
+\ee
+
+\code{init} runs a series of shell scripts located in \code{/etc} (usually called init scripts), which start all the
+daemons of the system. So, even if we are not logged in, the system is at least a little busy performing routine stuff.
+\v
 
 To monitor processes, we can use a dynamic (i.e.\ continuously updating) view of all running processes in order of
 process activity by making use of the \code{top} command:
@@ -1436,40 +1658,4 @@ top
 
 The \code{top} output consists of two parts: a system summary at the top of the display, followed by a table of
 processes with some extra details sorted by CPU activity. For an explanation of what kind of details \code{top}
-displays check the manual using the \code{man} command. \v
-
-\subsection{Controlling Processes}
-
-Now that we can see and monitor processes, let’s gain some control over them. \v
-
-To interrupt a process we can press \code{CTRL-C}. This means we are politely asking the program to terminate.
-To launch a program as a daemon (i.e.\ so that it is immediately placed in the background as a background process), we
-follow the command with an ampersand character.
-\begin{bash}
-# run command as daemon
-<command> &
-\end{bash}
-
-Once we hit enter and the command is executed the shell is telling us that we have started a job number X [X], and it
-provides its PID. We can then observe the process with the \code{top} command. The shell also gives us a way to list
-the jobs that have been launched from our terminal. Using the \code{jobs} command, we can see this list:
-\begin{bash}
-# display a list of all currently launched jobs (daemons)
-jobs
-\end{bash}
-
-A process in the background is immune from terminal keyboard input, including any attempt to interrupt it with \code{
-CTRL-C}. To return a process to the foreground, use the \code{fg} command in this way:
-\begin{bash}
-# bring job to foreground
-jobs \%<job_number>
-\end{bash}
-
-The \code{fg} command followed by a percent sign and the job number (called a jobspec) does the trick. If we have
-only one background job, the jobspec is optional. To terminate the job then simply press \code{CTRL-C}.
-
-uniq: Report or Omit Repeated Lines
-wc: Print Line, Word, and Byte Counts
-grep: Print Lines Matching a Pattern
-head/tail: Print First/Last Part of Files
-tee: Read from Stdin and Output to Stdout and Files
+displays check the manual using the \code{man} command.
