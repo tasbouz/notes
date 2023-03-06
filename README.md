@@ -1,5 +1,5 @@
 # Notes
-My notes on various topics of science.
+My [notes](https://github.com/tasbouz/notes/blob/master/out/notes.pdf) on various topics of science.
 
 ## - Part 1: Mathematics
 
