@@ -237,18 +237,18 @@ node-to-node flow control and error management.
 %layer transfers messages to other nodes connected to the network by merely providing the content of a message and the
 %address of the destination node and letting the network find the way to deliver the message to the destination node,
 %possibly routing it through intermediate nodes. If the message is too large to be transmitted from one node to
-%another on the data link layer between those nodes, the network may implement message delivery by splitting the
+%another on the config link layer between those nodes, the network may implement message delivery by splitting the
 %message into several fragments at one node, sending the fragments independently, and reassembling the fragments at
 %another node. It may, but does not need to, report delivery errors. Message delivery at the network layer is not
 %necessarily guaranteed to be reliable; a network layer protocol may provide reliable message delivery, but it need
 %not do so. Functions of the network layer include connectionless communication, host addressing and message forwarding.
 %
 %* Layer 4: Transport Layer The transport layer provides the functional and procedural means of transferring
-%variable-length data sequences from a source to a destination host, while maintaining the quality of service
+%variable-length config sequences from a source to a destination host, while maintaining the quality of service
 %functions. The transport layer may control the reliability of a given link through flow control,
 %segmentation/desegmentation, and error control. Some protocols are state- and connection-oriented. This means that
 %the transport layer can keep track of the segments and retransmit those that fail delivery. The transport layer may
-%also provide the acknowledgement of the successful data transmission and sends the next data if no errors occurred.
+%also provide the acknowledgement of the successful config transmission and sends the next config if no errors occurred.
 %The transport layer creates segments out of the message received from the application layer. Segmentation is the
 %process of dividing a long message into smaller messages. Reliability, however, is not a strict requirement within
 %the transport layer. It provides services such as connection-oriented communication, reliability, flow control, and
@@ -267,8 +267,8 @@ node-to-node flow control and error management.
 %layer ensures the information that the application layer of one system sends out is readable by the application layer
 %of another system. On the sending system it is responsible for conversion to standard, transmittable formats. On the
 %receiving system it is responsible for the translation, formatting, and delivery of information for processing or
-%display. In theory, it relieves application layer protocols of concern regarding syntactical differences in data
-%representation within the end-user systems. Some of the services it provides are data conversion, character code
+%display. In theory, it relieves application layer protocols of concern regarding syntactical differences in config
+%representation within the end-user systems. Some of the services it provides are config conversion, character code
 %translation, compression, encryption and decryption a serialization.
 %
 %* Layer 7: Application layer The application layer is the OSI layer closest to the end user, which means both the OSI
@@ -277,7 +277,7 @@ node-to-node flow control and error management.
 %model. In simple words, the application layer is not the application itself but rather how the application accesses
 %the network. Application-layer functions typically include identifying communication partners, determining resource
 %availability, and synchronizing communication. When identifying communication partners, the application layer
-%determines the identity and availability of communication partners for an application with data to transmit.
+%determines the identity and availability of communication partners for an application with config to transmit.
 
 \newpage
 \section{Network Devices (Hardware)}

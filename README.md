@@ -16,10 +16,10 @@ more detailed, and more in order with the lectures:
 For the second part on "Probability Theory & Statistics", the notes are based on a collection of various books I read, 
 and lectures I watched and found useful.
 
-Some of the books are the following:
+Some books are the following:
 * [The Elements of Statistical Learning](https://www.goodreads.com/book/show/148009.The_Elements_of_Statistical_Learning)
 
-Some of the lectures are the following:
+Some lectures are the following:
 * [Statistics 110: Probability](https://www.youtube.com/playlist?list=PL2SOU6wwxB0uwwH80KTQ6ht66KWxbzTIo)
 * [Statistics for Applications](https://www.youtube.com/playlist?list=PLUl4u3cNGP60uVBMaoNERc6knT_MgPKS0)
 
@@ -27,13 +27,13 @@ Some of the lectures are the following:
 
 For the third part on "Machine Learning", the notes are based on a collection of various books I read, and lectures I watched and found useful.
 
-Some of the books are the following:
+Some books are the following:
 * [The Elements of Statistical Learning](https://www.goodreads.com/book/show/148009.The_Elements_of_Statistical_Learning)
 * [Hands-On Machine Learning with Scikit-Learn and TensorFlow](https://www.goodreads.com/book/show/32899495-hands-on-machine-learning-with-scikit-learn-and-tensorflow)
 * [Reinforcement Learning](https://www.goodreads.com/book/show/739791.Reinforcement_Learning)
 * [Deep Learning](https://www.goodreads.com/book/show/24072897-deep-learning)
 
-Some of the lectures are the following:
+Some lectures are the following:
 * [Machine Learning Course by Yaser Abu-Mostafa](https://www.youtube.com/playlist?list=PLD63A284B7615313A)
 * [Machine Learning by Andrew Ng (Old)](https://www.youtube.com/playlist?list=PLA89DCFA6ADACE599)
 * [Machine Learning by Andrew Ng (New)](https://www.youtube.com/playlist?list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN)
@@ -44,7 +44,7 @@ Some of the lectures are the following:
 
 For the fourth part on "Computer Science", the notes are based on a collection of various books I read, and lectures I watched and found useful.
 
-Some of the books are the following:
+Some books are the following:
 * [Clean Agile by Robert C. Martin](https://www.goodreads.com/en/book/show/45280021-clean-agile)
 * [Clean Code by Robert C. Martin](https://www.goodreads.com/book/show/3735293-clean-code)
 * [Fundamentals of Software Architecture by Mark Richards, Neal Ford](https://www.goodreads.com/en/book/show/44144493-fundamentals-of-software-architecture)
@@ -52,7 +52,7 @@ Some of the books are the following:
 * [Software Engineering at Google by Titus Winters, Tom Manshreck, Hyrum Wright](https://www.goodreads.com/en/book/show/48816586-software-engineering-at-google)
 * [The Pragmatic Programmer by Andy Hunt, Dave Thomas](https://www.goodreads.com/book/show/4099.The_Pragmatic_Programmer?ac=1&from_search=true&qid=ISkjti6DIt&rank=1)
 
-Some of the lectures are the following:
+Some lectures are the following:
 * [Intro to Git by David Mahler](https://www.youtube.com/playlist?list=PLcMTQ5mNbPl_JbjkLOyDh3rDCFhAhDshW)
 * [Clean Code by Uncle Bob](https://www.youtube.com/playlist?list=PLmmYSbUCWJ4x1GO839azG_BBw8rkh-zOj)
 * [Computer Science by Crash Course](https://www.youtube.com/playlist?list=PL8dPuuaLjXtNlUrzyH5r6jN9ulIgZBpdo)
@@ -66,9 +66,9 @@ Some of the lectures are the following:
 
 For the fourth part on "Economics & Finance", the notes are based on a collection of various books I read, and lectures I watched and found useful.
 
-Some of the books are the following:
+Some books are the following:
 * [Microeconomics by Jeffrey M. Perloff](https://www.goodreads.com/book/show/2926223-microeconomics)
 * [Principles of Economics by N. Gregory Mankiw](https://www.goodreads.com/book/show/1753460.Principles_of_Economics)
 
-Some of the lectures are the following:
+Some lectures are the following:
 * [Microeconomics by Jonathan Gruber](https://www.youtube.com/playlist?list=PLUl4u3cNGP62oJSoqb4Rf-vZMGUBe59G-)
