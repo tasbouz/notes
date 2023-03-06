@@ -277,132 +277,146 @@
 \contentsline {subsection}{\numberline {21.3.1}Operating Systems}{489}{subsection.21.3.1}%
 \contentsline {subsection}{\numberline {21.3.2}Files \& File Systems}{492}{subsection.21.3.2}%
 \contentsline {subsection}{\numberline {21.3.3}Compression}{495}{subsection.21.3.3}%
-\contentsline {chapter}{\numberline {22}Networks}{497}{chapter.22}%
-\contentsline {section}{\numberline {22.1}Basic Definitions}{497}{section.22.1}%
-\contentsline {section}{\numberline {22.2}Open Systems Interconnection (OSI)}{499}{section.22.2}%
-\contentsline {subsection}{\numberline {22.2.1}Layer 1: Physical Layer}{500}{subsection.22.2.1}%
-\contentsline {subsection}{\numberline {22.2.2}Layer 2: Data Link Layer}{501}{subsection.22.2.2}%
-\contentsline {section}{\numberline {22.3}Network Devices (Hardware)}{503}{section.22.3}%
-\contentsline {chapter}{\numberline {23}Programming \& Software Enginnering}{508}{chapter.23}%
-\contentsline {section}{\numberline {23.1}Programming Basics}{509}{section.23.1}%
-\contentsline {section}{\numberline {23.2}Algorithms \& Data Structures}{516}{section.23.2}%
-\contentsline {chapter}{\numberline {24}Technologies}{519}{chapter.24}%
-\contentsline {section}{\numberline {24.1}Serialization}{519}{section.24.1}%
-\contentsline {subsection}{\numberline {24.1.1}CSV}{520}{subsection.24.1.1}%
-\contentsline {subsection}{\numberline {24.1.2}JSON}{521}{subsection.24.1.2}%
-\contentsline {subsection}{\numberline {24.1.3}XML}{522}{subsection.24.1.3}%
-\contentsline {subsection}{\numberline {24.1.4}YAML}{524}{subsection.24.1.4}%
-\contentsline {section}{\numberline {24.2}Cryptography}{526}{section.24.2}%
-\contentsline {subsection}{\numberline {24.2.1}Secure Shell (SSH)}{527}{subsection.24.2.1}%
-\contentsline {section}{\numberline {24.3}Homebrew}{529}{section.24.3}%
-\contentsline {subsection}{\numberline {24.3.1}Installation}{529}{subsection.24.3.1}%
-\contentsline {subsection}{\numberline {24.3.2}Package Management}{529}{subsection.24.3.2}%
-\contentsline {section}{\numberline {24.4}Git}{531}{section.24.4}%
-\contentsline {subsection}{\numberline {24.4.1}Installation \& Configuration}{531}{subsection.24.4.1}%
-\contentsline {subsection}{\numberline {24.4.2}Git Repository (Repo)}{532}{subsection.24.4.2}%
-\contentsline {subsection}{\numberline {24.4.3}Branches}{537}{subsection.24.4.3}%
-\contentsline {subsection}{\numberline {24.4.4}Remote Repository (Remote)}{538}{subsection.24.4.4}%
-\contentsline {subsection}{\numberline {24.4.5}Useful Commands}{540}{subsection.24.4.5}%
-\contentsline {subsubsection}{\numberline {24.4.5.1}Git Cherry$-$Pick}{540}{subsubsection.24.4.5.1}%
-\contentsline {subsubsection}{\numberline {24.4.5.2}Git Stash}{540}{subsubsection.24.4.5.2}%
-\contentsline {section}{\numberline {24.5}Docker}{542}{section.24.5}%
-\contentsline {subsection}{\numberline {24.5.1}Introduction}{542}{subsection.24.5.1}%
-\contentsline {subsection}{\numberline {24.5.2}Installation}{544}{subsection.24.5.2}%
-\contentsline {subsection}{\numberline {24.5.3}Images}{544}{subsection.24.5.3}%
-\contentsline {subsubsection}{\numberline {24.5.3.1}Building Images}{545}{subsubsection.24.5.3.1}%
-\contentsline {subsection}{\numberline {24.5.4}Containers}{547}{subsection.24.5.4}%
-\contentsline {subsubsection}{\numberline {24.5.4.1}Multiple Containers}{550}{subsubsection.24.5.4.1}%
-\contentsline {subsection}{\numberline {24.5.5}Volumes}{552}{subsection.24.5.5}%
-\contentsline {chapter}{\numberline {25}Google Cloud}{554}{chapter.25}%
-\contentsline {section}{\numberline {25.1}Cloud Computing}{554}{section.25.1}%
-\contentsline {subsection}{\numberline {25.1.1}Deployment Models}{555}{subsection.25.1.1}%
-\contentsline {subsection}{\numberline {25.1.2}Service Models}{557}{subsection.25.1.2}%
-\contentsline {subsection}{\numberline {25.1.3}Geography \& Regions}{560}{subsection.25.1.3}%
-\contentsline {section}{\numberline {25.2}Resources}{561}{section.25.2}%
-\contentsline {section}{\numberline {25.3}Billing}{562}{section.25.3}%
-\contentsline {section}{\numberline {25.4}Identity \& Access Management (IAM)}{564}{section.25.4}%
-\contentsline {subsection}{\numberline {25.4.1}Principal}{564}{subsection.25.4.1}%
-\contentsline {subsection}{\numberline {25.4.2}Permissions}{568}{subsection.25.4.2}%
-\contentsline {subsection}{\numberline {25.4.3}Role}{568}{subsection.25.4.3}%
-\contentsline {subsection}{\numberline {25.4.4}Binding}{570}{subsection.25.4.4}%
-\contentsline {subsection}{\numberline {25.4.5}Policy}{570}{subsection.25.4.5}%
-\contentsline {subsection}{\numberline {25.4.6}Identity \& Access Management (IAM)}{572}{subsection.25.4.6}%
-\contentsline {section}{\numberline {25.5}APIs \& Services}{573}{section.25.5}%
-\contentsline {subsection}{\numberline {25.5.1}Client Libraries}{573}{subsection.25.5.1}%
-\contentsline {section}{\numberline {25.6}Google Cloud SDK}{574}{section.25.6}%
-\contentsline {subsection}{\numberline {25.6.1}Authorization}{575}{subsection.25.6.1}%
-\contentsline {subsection}{\numberline {25.6.2}Properties \& Configurations}{576}{subsection.25.6.2}%
-\contentsline {subsection}{\numberline {25.6.3}Components}{578}{subsection.25.6.3}%
-\contentsline {subsection}{\numberline {25.6.4}Projects}{579}{subsection.25.6.4}%
-\contentsline {subsection}{\numberline {25.6.5}IAM}{579}{subsection.25.6.5}%
-\contentsline {section}{\numberline {25.7}Google Compute Engine (GCE)}{580}{section.25.7}%
-\contentsline {subsection}{\numberline {25.7.1}Machine Configuration}{580}{subsection.25.7.1}%
-\contentsline {subsection}{\numberline {25.7.2}Boot Disc}{582}{subsection.25.7.2}%
-\contentsline {subsection}{\numberline {25.7.3}Billing}{582}{subsection.25.7.3}%
-\contentsline {subsection}{\numberline {25.7.4}Connecting To An Instance}{582}{subsection.25.7.4}%
-\contentsline {section}{\numberline {25.8}Google Kubernetes Engine (GKE)}{583}{section.25.8}%
-\contentsline {subsection}{\numberline {25.8.1}Kubernetes}{583}{subsection.25.8.1}%
-\contentsline {subsection}{\numberline {25.8.2}Components}{583}{subsection.25.8.2}%
-\contentsline {subsection}{\numberline {25.8.3}Google Kubernetes Engine (GKE)}{595}{subsection.25.8.3}%
-\contentsline {subsection}{\numberline {25.8.4}Kubectl}{595}{subsection.25.8.4}%
-\contentsline {part}{V\hspace {1em}Economics \& Finance}{601}{part.5}%
-\contentsline {chapter}{\numberline {26}Principles Of Economics}{602}{chapter.26}%
-\contentsline {section}{\numberline {26.1}A Brief History Of Economics}{602}{section.26.1}%
-\contentsline {section}{\numberline {26.2}Basic Terminology}{605}{section.26.2}%
-\contentsline {section}{\numberline {26.3}The Ten Principles Of Economics}{609}{section.26.3}%
-\contentsline {chapter}{\numberline {27}Microeconomics}{619}{chapter.27}%
-\contentsline {section}{\numberline {27.1}The Market Forces Of Supply And Demand}{619}{section.27.1}%
-\contentsline {subsection}{\numberline {27.1.1}Demand}{621}{subsection.27.1.1}%
-\contentsline {subsection}{\numberline {27.1.2}Supply}{627}{subsection.27.1.2}%
-\contentsline {subsection}{\numberline {27.1.3}Supply And Demand}{631}{subsection.27.1.3}%
-\contentsline {subsection}{\numberline {27.1.4}Application: Changes In Market Equilibrium Due To Shifts}{633}{subsection.27.1.4}%
-\contentsline {section}{\numberline {27.2}Elasticity}{636}{section.27.2}%
-\contentsline {subsection}{\numberline {27.2.1}The Elasticity Of Demand}{636}{subsection.27.2.1}%
-\contentsline {subsection}{\numberline {27.2.2}The Elasticity Of Supply}{639}{subsection.27.2.2}%
-\contentsline {section}{\numberline {27.3}Applications Of Supply, Demand, And Elasticity}{642}{section.27.3}%
-\contentsline {subsection}{\numberline {27.3.1}Various}{642}{subsection.27.3.1}%
-\contentsline {subsection}{\numberline {27.3.2}Price Controls}{648}{subsection.27.3.2}%
-\contentsline {subsection}{\numberline {27.3.3}Taxes}{654}{subsection.27.3.3}%
-\contentsline {section}{\numberline {27.4}Consumers, Producers, And The Efficiency Of Markets}{658}{section.27.4}%
-\contentsline {subsection}{\numberline {27.4.1}Consumer Surplus}{658}{subsection.27.4.1}%
-\contentsline {subsection}{\numberline {27.4.2}Producer Surplus}{661}{subsection.27.4.2}%
-\contentsline {subsection}{\numberline {27.4.3}Market Efficiency}{664}{subsection.27.4.3}%
-\contentsline {subsection}{\numberline {27.4.4}Application: Efficiency Of Markets \& Externalities}{666}{subsection.27.4.4}%
-\contentsline {section}{\numberline {27.5}Consumer Theory}{668}{section.27.5}%
-\contentsline {subsection}{\numberline {27.5.1}The Budget Constraint}{668}{subsection.27.5.1}%
-\contentsline {subsection}{\numberline {27.5.2}Indifference Curves}{670}{subsection.27.5.2}%
-\contentsline {subsection}{\numberline {27.5.3}Optimization}{674}{subsection.27.5.3}%
-\contentsline {section}{\numberline {27.6}Frontiers Of Microeconomics}{678}{section.27.6}%
-\contentsline {subsection}{\numberline {27.6.1}Asymmetric Information}{678}{subsection.27.6.1}%
-\contentsline {subsection}{\numberline {27.6.2}Political Economy}{680}{subsection.27.6.2}%
-\contentsline {subsection}{\numberline {27.6.3}Behavioral Economics}{682}{subsection.27.6.3}%
-\contentsline {chapter}{\numberline {28}Financial Statements}{683}{chapter.28}%
-\contentsline {section}{\numberline {28.1}Basic Accountants Principles}{683}{section.28.1}%
-\contentsline {section}{\numberline {28.2}Balance Sheet}{686}{section.28.2}%
-\contentsline {subsection}{\numberline {28.2.1}Assets}{687}{subsection.28.2.1}%
-\contentsline {subsubsection}{\numberline {28.2.1.1}Current Assets}{688}{subsubsection.28.2.1.1}%
-\contentsline {subsubsection}{\numberline {28.2.1.2}Other Assets}{689}{subsubsection.28.2.1.2}%
-\contentsline {subsubsection}{\numberline {28.2.1.3}Fixed Assets}{689}{subsubsection.28.2.1.3}%
-\contentsline {subsubsection}{\numberline {28.2.1.4}Total Assets}{690}{subsubsection.28.2.1.4}%
-\contentsline {subsection}{\numberline {28.2.2}Liabilities \& Equity}{690}{subsection.28.2.2}%
-\contentsline {subsubsection}{\numberline {28.2.2.1}Current Liabilities}{691}{subsubsection.28.2.2.1}%
-\contentsline {subsubsection}{\numberline {28.2.2.2}Long-Term Liabilities}{691}{subsubsection.28.2.2.2}%
-\contentsline {subsubsection}{\numberline {28.2.2.3}Total Liabilities}{692}{subsubsection.28.2.2.3}%
-\contentsline {subsubsection}{\numberline {28.2.2.4}Equity}{692}{subsubsection.28.2.2.4}%
-\contentsline {subsection}{\numberline {28.2.3}Balance Sheet Summary}{694}{subsection.28.2.3}%
-\contentsline {section}{\numberline {28.3}Income Statement}{695}{section.28.3}%
-\contentsline {subsection}{\numberline {28.3.1}Sales}{695}{subsection.28.3.1}%
-\contentsline {subsection}{\numberline {28.3.2}Costs \& Expenses}{695}{subsection.28.3.2}%
-\contentsline {subsection}{\numberline {28.3.3}Income}{697}{subsection.28.3.3}%
-\contentsline {subsection}{\numberline {28.3.4}Income Statement Summary}{698}{subsection.28.3.4}%
-\contentsline {section}{\numberline {28.4}Cash Flow Statement}{698}{section.28.4}%
-\contentsline {subsection}{\numberline {28.4.1}Cash Flow Statement Summary}{701}{subsection.28.4.1}%
-\contentsline {chapter}{Appendices}{703}{section*.438}%
-\contentsline {chapter}{\numberline {A}Constrained Optimization}{704}{appendix.1.A}%
-\contentsline {section}{\numberline {A.1}Equality Constrained Optimization}{704}{section.1.A.1}%
-\contentsline {section}{\numberline {A.2}Equality \& Inequality Constrained Optimization}{705}{section.1.A.2}%
-\contentsline {chapter}{\numberline {B}Kernels}{706}{appendix.1.B}%
-\contentsline {chapter}{\numberline {C}Applied Machine Learning}{707}{appendix.1.C}%
-\contentsline {chapter}{\numberline {D}Clean Code}{710}{appendix.1.D}%
-\contentsline {chapter}{\numberline {E}Software Engineering At Google}{713}{appendix.1.E}%
-\contentsline {chapter}{\numberline {F}Thinking Fast And Slow}{719}{appendix.1.F}%
+\contentsline {chapter}{\numberline {22}Command Line}{497}{chapter.22}%
+\contentsline {section}{\numberline {22.1}Basics}{497}{section.22.1}%
+\contentsline {subsection}{\numberline {22.1.1}Commands}{497}{subsection.22.1.1}%
+\contentsline {subsubsection}{\numberline {22.1.1.1}Redirection}{500}{subsubsection.22.1.1.1}%
+\contentsline {subsection}{\numberline {22.1.2}Shell}{503}{subsection.22.1.2}%
+\contentsline {subsubsection}{\numberline {22.1.2.1}Environment}{506}{subsubsection.22.1.2.1}%
+\contentsline {section}{\numberline {22.2}Navigation}{507}{section.22.2}%
+\contentsline {subsection}{\numberline {22.2.1}Files}{507}{subsection.22.2.1}%
+\contentsline {subsection}{\numberline {22.2.2}Directories}{509}{subsection.22.2.2}%
+\contentsline {section}{\numberline {22.3}Manipulation}{514}{section.22.3}%
+\contentsline {section}{\numberline {22.4}Multiuser}{515}{section.22.4}%
+\contentsline {subsubsection}{\numberline {22.4.0.1}Changing Identities}{517}{subsubsection.22.4.0.1}%
+\contentsline {subsection}{\numberline {22.4.1}Permissions}{519}{subsection.22.4.1}%
+\contentsline {section}{\numberline {22.5}Multitasking}{523}{section.22.5}%
+\contentsline {chapter}{\numberline {23}Networks}{526}{chapter.23}%
+\contentsline {section}{\numberline {23.1}Basic Definitions}{526}{section.23.1}%
+\contentsline {section}{\numberline {23.2}Open Systems Interconnection (OSI)}{528}{section.23.2}%
+\contentsline {subsection}{\numberline {23.2.1}Layer 1: Physical Layer}{529}{subsection.23.2.1}%
+\contentsline {subsection}{\numberline {23.2.2}Layer 2: Data Link Layer}{530}{subsection.23.2.2}%
+\contentsline {section}{\numberline {23.3}Network Devices (Hardware)}{532}{section.23.3}%
+\contentsline {chapter}{\numberline {24}Programming \& Software Enginnering}{537}{chapter.24}%
+\contentsline {section}{\numberline {24.1}Programming Basics}{538}{section.24.1}%
+\contentsline {section}{\numberline {24.2}Algorithms \& Data Structures}{545}{section.24.2}%
+\contentsline {chapter}{\numberline {25}Technologies}{548}{chapter.25}%
+\contentsline {section}{\numberline {25.1}Serialization}{548}{section.25.1}%
+\contentsline {subsection}{\numberline {25.1.1}CSV}{549}{subsection.25.1.1}%
+\contentsline {subsection}{\numberline {25.1.2}JSON}{550}{subsection.25.1.2}%
+\contentsline {subsection}{\numberline {25.1.3}XML}{551}{subsection.25.1.3}%
+\contentsline {subsection}{\numberline {25.1.4}YAML}{553}{subsection.25.1.4}%
+\contentsline {section}{\numberline {25.2}Cryptography}{555}{section.25.2}%
+\contentsline {subsection}{\numberline {25.2.1}Secure Shell (SSH)}{556}{subsection.25.2.1}%
+\contentsline {section}{\numberline {25.3}Homebrew}{558}{section.25.3}%
+\contentsline {subsection}{\numberline {25.3.1}Installation}{558}{subsection.25.3.1}%
+\contentsline {subsection}{\numberline {25.3.2}Package Management}{558}{subsection.25.3.2}%
+\contentsline {section}{\numberline {25.4}Git}{560}{section.25.4}%
+\contentsline {subsection}{\numberline {25.4.1}Installation \& Configuration}{560}{subsection.25.4.1}%
+\contentsline {subsection}{\numberline {25.4.2}Git Repository (Repo)}{561}{subsection.25.4.2}%
+\contentsline {subsection}{\numberline {25.4.3}Branches}{566}{subsection.25.4.3}%
+\contentsline {subsection}{\numberline {25.4.4}Remote Repository (Remote)}{567}{subsection.25.4.4}%
+\contentsline {subsection}{\numberline {25.4.5}Useful Commands}{569}{subsection.25.4.5}%
+\contentsline {subsubsection}{\numberline {25.4.5.1}Git Cherry$-$Pick}{569}{subsubsection.25.4.5.1}%
+\contentsline {subsubsection}{\numberline {25.4.5.2}Git Stash}{569}{subsubsection.25.4.5.2}%
+\contentsline {section}{\numberline {25.5}Docker}{571}{section.25.5}%
+\contentsline {subsection}{\numberline {25.5.1}Introduction}{571}{subsection.25.5.1}%
+\contentsline {subsection}{\numberline {25.5.2}Installation}{573}{subsection.25.5.2}%
+\contentsline {subsection}{\numberline {25.5.3}Images}{573}{subsection.25.5.3}%
+\contentsline {subsubsection}{\numberline {25.5.3.1}Building Images}{574}{subsubsection.25.5.3.1}%
+\contentsline {subsection}{\numberline {25.5.4}Containers}{576}{subsection.25.5.4}%
+\contentsline {subsubsection}{\numberline {25.5.4.1}Multiple Containers}{579}{subsubsection.25.5.4.1}%
+\contentsline {subsection}{\numberline {25.5.5}Volumes}{581}{subsection.25.5.5}%
+\contentsline {chapter}{\numberline {26}Google Cloud}{583}{chapter.26}%
+\contentsline {section}{\numberline {26.1}Cloud Computing}{583}{section.26.1}%
+\contentsline {subsection}{\numberline {26.1.1}Deployment Models}{584}{subsection.26.1.1}%
+\contentsline {subsection}{\numberline {26.1.2}Service Models}{586}{subsection.26.1.2}%
+\contentsline {subsection}{\numberline {26.1.3}Geography \& Regions}{589}{subsection.26.1.3}%
+\contentsline {section}{\numberline {26.2}Resources}{590}{section.26.2}%
+\contentsline {section}{\numberline {26.3}Billing}{591}{section.26.3}%
+\contentsline {section}{\numberline {26.4}Identity \& Access Management (IAM)}{593}{section.26.4}%
+\contentsline {subsection}{\numberline {26.4.1}Principal}{593}{subsection.26.4.1}%
+\contentsline {subsection}{\numberline {26.4.2}Permissions}{597}{subsection.26.4.2}%
+\contentsline {subsection}{\numberline {26.4.3}Role}{597}{subsection.26.4.3}%
+\contentsline {subsection}{\numberline {26.4.4}Binding}{599}{subsection.26.4.4}%
+\contentsline {subsection}{\numberline {26.4.5}Policy}{599}{subsection.26.4.5}%
+\contentsline {subsection}{\numberline {26.4.6}Identity \& Access Management (IAM)}{601}{subsection.26.4.6}%
+\contentsline {section}{\numberline {26.5}APIs \& Services}{602}{section.26.5}%
+\contentsline {subsection}{\numberline {26.5.1}Client Libraries}{602}{subsection.26.5.1}%
+\contentsline {section}{\numberline {26.6}Google Cloud SDK}{603}{section.26.6}%
+\contentsline {subsection}{\numberline {26.6.1}Authorization}{604}{subsection.26.6.1}%
+\contentsline {subsection}{\numberline {26.6.2}Properties \& Configurations}{605}{subsection.26.6.2}%
+\contentsline {subsection}{\numberline {26.6.3}Components}{607}{subsection.26.6.3}%
+\contentsline {subsection}{\numberline {26.6.4}Projects}{608}{subsection.26.6.4}%
+\contentsline {subsection}{\numberline {26.6.5}IAM}{608}{subsection.26.6.5}%
+\contentsline {section}{\numberline {26.7}Google Compute Engine (GCE)}{609}{section.26.7}%
+\contentsline {subsection}{\numberline {26.7.1}Machine Configuration}{609}{subsection.26.7.1}%
+\contentsline {subsection}{\numberline {26.7.2}Boot Disc}{611}{subsection.26.7.2}%
+\contentsline {subsection}{\numberline {26.7.3}Billing}{611}{subsection.26.7.3}%
+\contentsline {subsection}{\numberline {26.7.4}Connecting To An Instance}{611}{subsection.26.7.4}%
+\contentsline {section}{\numberline {26.8}Google Kubernetes Engine (GKE)}{612}{section.26.8}%
+\contentsline {subsection}{\numberline {26.8.1}Kubernetes}{612}{subsection.26.8.1}%
+\contentsline {subsection}{\numberline {26.8.2}Components}{612}{subsection.26.8.2}%
+\contentsline {subsection}{\numberline {26.8.3}Google Kubernetes Engine (GKE)}{624}{subsection.26.8.3}%
+\contentsline {subsection}{\numberline {26.8.4}Kubectl}{624}{subsection.26.8.4}%
+\contentsline {part}{V\hspace {1em}Economics \& Finance}{630}{part.5}%
+\contentsline {chapter}{\numberline {27}Principles Of Economics}{631}{chapter.27}%
+\contentsline {section}{\numberline {27.1}A Brief History Of Economics}{631}{section.27.1}%
+\contentsline {section}{\numberline {27.2}Basic Terminology}{634}{section.27.2}%
+\contentsline {section}{\numberline {27.3}The Ten Principles Of Economics}{638}{section.27.3}%
+\contentsline {chapter}{\numberline {28}Microeconomics}{648}{chapter.28}%
+\contentsline {section}{\numberline {28.1}The Market Forces Of Supply And Demand}{648}{section.28.1}%
+\contentsline {subsection}{\numberline {28.1.1}Demand}{650}{subsection.28.1.1}%
+\contentsline {subsection}{\numberline {28.1.2}Supply}{656}{subsection.28.1.2}%
+\contentsline {subsection}{\numberline {28.1.3}Supply And Demand}{660}{subsection.28.1.3}%
+\contentsline {subsection}{\numberline {28.1.4}Application: Changes In Market Equilibrium Due To Shifts}{662}{subsection.28.1.4}%
+\contentsline {section}{\numberline {28.2}Elasticity}{665}{section.28.2}%
+\contentsline {subsection}{\numberline {28.2.1}The Elasticity Of Demand}{665}{subsection.28.2.1}%
+\contentsline {subsection}{\numberline {28.2.2}The Elasticity Of Supply}{668}{subsection.28.2.2}%
+\contentsline {section}{\numberline {28.3}Applications Of Supply, Demand, And Elasticity}{671}{section.28.3}%
+\contentsline {subsection}{\numberline {28.3.1}Various}{671}{subsection.28.3.1}%
+\contentsline {subsection}{\numberline {28.3.2}Price Controls}{677}{subsection.28.3.2}%
+\contentsline {subsection}{\numberline {28.3.3}Taxes}{683}{subsection.28.3.3}%
+\contentsline {section}{\numberline {28.4}Consumers, Producers, And The Efficiency Of Markets}{687}{section.28.4}%
+\contentsline {subsection}{\numberline {28.4.1}Consumer Surplus}{687}{subsection.28.4.1}%
+\contentsline {subsection}{\numberline {28.4.2}Producer Surplus}{690}{subsection.28.4.2}%
+\contentsline {subsection}{\numberline {28.4.3}Market Efficiency}{693}{subsection.28.4.3}%
+\contentsline {subsection}{\numberline {28.4.4}Application: Efficiency Of Markets \& Externalities}{695}{subsection.28.4.4}%
+\contentsline {section}{\numberline {28.5}Consumer Theory}{697}{section.28.5}%
+\contentsline {subsection}{\numberline {28.5.1}The Budget Constraint}{697}{subsection.28.5.1}%
+\contentsline {subsection}{\numberline {28.5.2}Indifference Curves}{699}{subsection.28.5.2}%
+\contentsline {subsection}{\numberline {28.5.3}Optimization}{703}{subsection.28.5.3}%
+\contentsline {section}{\numberline {28.6}Frontiers Of Microeconomics}{707}{section.28.6}%
+\contentsline {subsection}{\numberline {28.6.1}Asymmetric Information}{707}{subsection.28.6.1}%
+\contentsline {subsection}{\numberline {28.6.2}Political Economy}{709}{subsection.28.6.2}%
+\contentsline {subsection}{\numberline {28.6.3}Behavioral Economics}{711}{subsection.28.6.3}%
+\contentsline {chapter}{\numberline {29}Financial Statements}{712}{chapter.29}%
+\contentsline {section}{\numberline {29.1}Basic Accountants Principles}{712}{section.29.1}%
+\contentsline {section}{\numberline {29.2}Balance Sheet}{715}{section.29.2}%
+\contentsline {subsection}{\numberline {29.2.1}Assets}{716}{subsection.29.2.1}%
+\contentsline {subsubsection}{\numberline {29.2.1.1}Current Assets}{717}{subsubsection.29.2.1.1}%
+\contentsline {subsubsection}{\numberline {29.2.1.2}Other Assets}{718}{subsubsection.29.2.1.2}%
+\contentsline {subsubsection}{\numberline {29.2.1.3}Fixed Assets}{718}{subsubsection.29.2.1.3}%
+\contentsline {subsubsection}{\numberline {29.2.1.4}Total Assets}{719}{subsubsection.29.2.1.4}%
+\contentsline {subsection}{\numberline {29.2.2}Liabilities \& Equity}{719}{subsection.29.2.2}%
+\contentsline {subsubsection}{\numberline {29.2.2.1}Current Liabilities}{720}{subsubsection.29.2.2.1}%
+\contentsline {subsubsection}{\numberline {29.2.2.2}Long-Term Liabilities}{720}{subsubsection.29.2.2.2}%
+\contentsline {subsubsection}{\numberline {29.2.2.3}Total Liabilities}{721}{subsubsection.29.2.2.3}%
+\contentsline {subsubsection}{\numberline {29.2.2.4}Equity}{721}{subsubsection.29.2.2.4}%
+\contentsline {subsection}{\numberline {29.2.3}Balance Sheet Summary}{723}{subsection.29.2.3}%
+\contentsline {section}{\numberline {29.3}Income Statement}{724}{section.29.3}%
+\contentsline {subsection}{\numberline {29.3.1}Sales}{724}{subsection.29.3.1}%
+\contentsline {subsection}{\numberline {29.3.2}Costs \& Expenses}{724}{subsection.29.3.2}%
+\contentsline {subsection}{\numberline {29.3.3}Income}{726}{subsection.29.3.3}%
+\contentsline {subsection}{\numberline {29.3.4}Income Statement Summary}{727}{subsection.29.3.4}%
+\contentsline {section}{\numberline {29.4}Cash Flow Statement}{727}{section.29.4}%
+\contentsline {subsection}{\numberline {29.4.1}Cash Flow Statement Summary}{730}{subsection.29.4.1}%
+\contentsline {chapter}{Appendices}{732}{section*.442}%
+\contentsline {chapter}{\numberline {A}Constrained Optimization}{733}{appendix.a.A}%
+\contentsline {section}{\numberline {A.1}Equality Constrained Optimization}{733}{section.a.A.1}%
+\contentsline {section}{\numberline {A.2}Equality \& Inequality Constrained Optimization}{734}{section.a.A.2}%
+\contentsline {chapter}{\numberline {B}Kernels}{735}{appendix.a.B}%
+\contentsline {chapter}{\numberline {C}Applied Machine Learning}{736}{appendix.a.C}%
+\contentsline {chapter}{\numberline {D}Clean Code}{739}{appendix.a.D}%
+\contentsline {chapter}{\numberline {E}Software Engineering At Google}{742}{appendix.a.E}%
+\contentsline {chapter}{\numberline {F}Thinking Fast And Slow}{748}{appendix.a.F}%

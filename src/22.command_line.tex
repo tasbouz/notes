@@ -1,5 +1,13 @@
 %! suppress = EscapeHashOutsideCommand
+
+In this chapter we will be discussing about the command line. A command-line interpreter or command-line processor
+uses a command-line interface (CLI) to receive commands from a user in the form of lines of text. This provides a
+means of setting parameters for the environment, invoking executables and providing information to them as to what
+actions they are to perform.
+
 \section{Basics}
+
+In this section we will begin by some basic definitions and concepts.
 
 \subsection{Commands}
 
@@ -72,7 +80,7 @@ So, most commands look kind of like this:\footnote{When three periods follow an 
 command, it means that the argument can be repeated.}
 \begin{bash}
 # common format of commands
-command -options arguments...
+<command> $-$<options> <arguments>...
 \end{bash}
 
 Multiple commands can be provided in succession as long as they follow the correct syntactical rules. These are:
@@ -113,7 +121,7 @@ character indicates mutually exclusive items.
 command's supported syntax and options:
 \begin{bash}
 # display help for a command
-<command> -h, --help
+<command> $-$h, $--$help
 \end{bash}
 
 Some programs don't support the option, but try it anyway.
@@ -134,22 +142,21 @@ in format, generally they contain the following:
 \item A listing and description of each of the command's options.
 \eit
 
-\item{which}: Sometimes there is more than one version of a command installed on a system. To determine the exact
-location of a given command (more on what we mean by ``location'' later), the \code{which} command is used:
+\item \textbf{which}: Sometimes there is more than one version of a command installed on a system. To determine the
+exact location of a given command (more on what we mean by ``location'' later), the \code{which} command is used:
 \begin{bash}
 # display the location of a command
 which <command>
 \end{bash}
 \eit
 
-In Unix-like systems we can create our own custom commands built from other commands, called ``aliases''.
+In Unix-like systems we can create our own custom commands built from other commands.
 
 \bd[Alias]
 An \textbf{alias} is a command that we can define ourselves, built from other commands.
 \ed
 
-Aliases can be created by making use of the command \code{alias}. After the command, we give our alias a name (by
-convention in capital letters) followed immediately (no whitespace allowed) by an equal sign, followed immediately (
+Aliases can be created by making use of the command \code{alias}. After the command, we give our alias a name followed immediately (no whitespace allowed) by an equal sign, followed immediately (
 no whitespace allowed) by a quoted string containing the meaning to be assigned to the name:
 \begin{bash}
 # create alias
@@ -253,7 +260,7 @@ There are 3 redirection operators:
 The first operator is connected to the standard input and used in order to redirect it:
 \begin{bash}
 # create or overwrite file with the standard output of the command
-command < <file>
+<command> < <file>
 \end{bash}
 
 The result is the same as passing a single argument to a command. This redirection operator is not particularly useful
@@ -265,24 +272,24 @@ To redirect the standard output of a command to a file we can simply any of the 
 depending on our needs, as follows:
 \begin{bash}
 # create or overwrite file with the standard output of the command
-command > <file>
+<command> > <file>
 \end{bash}
 
 \begin{bash}
 # create or append to file the standard output of the command
-command >> <file>
+<command> >> <file>
 \end{bash}
 
 To redirect the standard error of a command to a file we must specifically refer to its file descriptor (i.e.\ 2),
 and only then use any of the last two redirection operators, depending on our needs, as follows:
 \begin{bash}
 # create or overwrite file with the standard error of the command
-command 2> <file>
+<command> 2> <file>
 \end{bash}
 
 \begin{bash}
 # create or append to file the standard error of the command
-command 2>> <file>
+<command> 2>> <file>
 \end{bash}
 
 Notice that the file descriptor 2 is placed immediately before the redirection operator to perform the redirection of
@@ -296,24 +303,24 @@ your comments to \code{/dev/null}, now you know what it means.}, which accepts i
 suppress error messages from a command, we do this:
 \begin{bash}
 # suppress standard error messages from a command
-command 2> /dev/null
+<command> 2> /dev/null
 \end{bash}
 
 There are cases in which we may want to capture all of the output of a command (i.e.\ both standard output and
 standard error) to a single file. To do this, we must redirect both standard output and standard error at the same
-time. There are two ways to do this.
+time. There are two ways to do this. \v
 
 The first method is the traditional way. Using this method, we perform two redirections. First we redirect standard
 output to a file, and then we redirect file descriptor 2 (standard error) to file descriptor 1 (standard output)
 using the notation \code{2>$\&$1}:
 \begin{bash}
 # create or overwrite to file both the standard output and standard error of the command
-command > <file> 2>&1
+<command> > <file> 2>&1
 \end{bash}
 
 \begin{bash}
 # create or append to file both the standard output and standard error of the command
-command >> <file> 2>&1
+<command> >> <file> 2>&1
 \end{bash}
 
 Notice that the redirection of standard error must always occur after redirecting standard output or it doesn't work.\v
@@ -321,30 +328,30 @@ Notice that the redirection of standard error must always occur after redirectin
 The second method is a recent and more streamlined way. Using this method we perform both redirections at once as:
 \begin{bash}
 # create or overwrite to file both the standard output and standard error of the command
-command &> <file>
+<command> &> <file>
 \end{bash}
 
 \begin{bash}
 # create or append to file both the standard output and standard error of the command
-command &>> <file>
+<command> &>> <file>
 \end{bash}
 
 \bd[Pipeline]
-Α \textbf{pipeline}, invented by Douglas McIlroy at Bell Labs, is a set of commands chained together by their standard
+A \textbf{pipeline}, invented by Douglas McIlroy at Bell Labs, is a set of commands chained together by their standard
 streams, so that the standard output text of each process (stdout) is passed directly as standard input (stdin) to the
 next one. The second process is started as the first process is still executing, and they are executed concurrently.
 \ed
 
 Pipelines are often used to perform complex operations on data.
 
-\bd[Pipe Operator (\code{|})]
-The \textbf{pipe operator} (\code{|})) is used to connect multiple commands into a single pipeline.
+\bd[Pipe Operator]
+The \textbf{pipe operator} \code{|} is used to connect multiple commands into a single pipeline.
 \ed
 
 Using the pipe operator, the standard output of one command can be piped into the standard input of another:
 \begin{bash}
 # pipeline
-command_1 | command_2 | command_3...
+<command_1> | <command_2> | <command_3>...
 \end{bash}
 
 At first glance, it may be hard to understand the redirection performed by the pipeline operator \code{|} versus the
@@ -428,10 +435,8 @@ copy and distribute it,study it, and modify it.} as a free software replacement 
 \ed
 
 The name bash is an acronym for ``bourne-again shell'', a reference to the fact that bash is an enhanced replacement
-for the original Unix shell program; Bourne. \v
-
-Bash was also the default shell in versions of Apple macOS until it changed to ``Z shell'' or ``ZSH'' (although Bash
-remains available as an alternative shell).
+for the original Unix shell program; Bourne. Bash was also the default shell in versions of Apple macOS until it
+changed to ``Z shell'' or ``ZSH'' (although Bash remains available as an alternative shell).
 
 \bd[Z Shell (ZSH)]
 The \textbf{Z shell (ZSH)} is a Unix shell, developed in 1990, by Paul Falstad.
@@ -582,19 +587,22 @@ one uses. Different things happen for bash and different for ZSH. Since ZSH is t
 the notes, and I will ignore bash.}
 \bit
 \item \textbf{/etc/zprofile}: A global configuration script for login shells that applies to all users.
-\item \textbf{~/.zprofile}: A user's personal configuration script for login shells that applies only to the user. It
+\item \textbf{$\sim$/.zprofile}: A user's personal configuration script for login shells that applies only to the user. It
 can be used to extend or override settings in the global configuration script in \code{/etc/zprofile}.
 \item \textbf{/etc/zshrc}: A global configuration script for interactive non-login shells that applies to all users.
-\item \textbf{~/.zshrc}: A user's personal configuration script for interactive non-login shells that applies only to
+\item \textbf{$\sim$/.zshrc}: A user's personal configuration script for interactive non-login shells that applies only to
 the user. It can be used to extend or override settings in the global configuration script in \code{/etc/zshrc}.
 \eit
 
-The \code{~/.zshrc} startup file is probably the most important startup file from the ordinary user's point of view,
+The \code{$\sim$/.zshrc} startup file is probably the most important startup file from the ordinary user's point of view,
 because it is almost always read. Non-login shells read it by default, and most startup files for login shells are
-written in such a way as to read the \code{~/.zshrc} file as well. Inside \code{~/.zshrc} we can include anything we
+written in such a way as to read the \code{$\sim$/.zshrc} file as well. Inside \code{$\sim$/.zshrc} we can include anything we
 want to run after every login in the shell.
 
 \section{Navigation}
+
+In this section we will be focusing in on of the most important parts of any unix-like system, which is the different
+ways of navigating it. \v
 
 \subsection{Files}
 
@@ -612,7 +620,8 @@ Each file carries some basic properties called \textbf{attributes}.
 
 Here are the all the attributes of a file:
 \bit
-\item The file type and access permissions.
+\item The file type of the file.
+\item The access permissions of the file.
 \item The link count of the file.
 \item The file's owner and group.
 \item The size of the file.
@@ -703,9 +712,9 @@ compared to a biological tree, with the ``stem'' at the top and the ``leaves'' a
 
 The first directory in a file system that follows the hierarchical directory structure is called the ``root directory''.
 
-\bd[Root Directory (\code{/})]
+\bd[Root Directory]
 The \textbf{root directory} is the top-most directory in a hierarchical directory structure. It is denoted by the slash
-sign (\code{/}), but the directory entry itself has no name.
+sign \code{/}, but the directory entry itself has no name.
 \ed
 
 The root directory can be likened to the trunk of a tree, as the starting point where all branches originate from. The
@@ -715,9 +724,9 @@ root directory contains files and subdirectories.
 A directory contained inside another directory is called a \textbf{subdirectory}.
 \ed
 
-\bd[Parent Directory (\code{..})]
+\bd[Parent Directory]
 The term \textbf{parent directory} is often used to describe the relationship between a subdirectory and the
-directory in which it is cataloged, the latter being the parent. It is denoted by the double dot sign (\code{..}).
+directory in which it is cataloged, the latter being the parent. It is denoted by the double dot sign \code{..}.
 \ed
 
 In this context, the root directory is the only directory that does not have a parent of its own. Every other directory
@@ -726,12 +735,12 @@ has multiple parents until it reaches the root directory. \v
 An important thing to notice is that when we start a terminal session, the shell does not start from the root. Instead
 it starts from a special directory called ``home'' directory.
 
-\bd[Home Directory (\code{~})]
+\bd[Home Directory]
 The \textbf{home directory} is the directory, where the shell sets as currently working directory when it stars a
-session. It is denoted by the tilde sign (\code{~}).
+session. It is denoted by the tilde sign \code{$\sim$}.
 \ed
 
-Beside root and home here is an extensive list of all directories that one could find inside a Unix system:
+Beside root and home, here follows an extensive list of all directories that one could find inside a Unix-like system:
 \bit
 \item \textbf{/}: The root directory, where everything begins.
 \item \textbf{/bin}: Contains binaries (programs) that must be present for the system to boot and run.
@@ -785,13 +794,13 @@ should be monitored from time to time. The most useful ones are \code{/var/log/m
 Note that for security reasons on some systems, you must be the superuser to view log files.
 \eit
 
-\fig{unix1}{0.5}
+\fig{unix1}{0.4}
 
 At any given time, we are inside a single directory, called the ``current working directory''.
 
-\bd[Current Working Directory (\code{.})]
+\bd[Current Working Directory]
 The \textbf{current working directory} is the directory, where the shell is currently working. It is denoted by the dot
-sign (\code{.}).
+sign \code{.}.
 \ed
 
 To display the current working directory, we use the \code{pwd} (display working directory) command:
@@ -808,8 +817,8 @@ back in a line to the root.
 \ed
 
 The path is a string of characters used to uniquely identify a location in a hierarchical directory structure. It is
-composed by following the directory tree hierarchy in which components, separated by a slash (\code{/}), represent each
-directory. \v
+composed by following the directory tree hierarchy in which components, separated by a slash \code{/}, represent each
+directory.
 
 \bd[Absolute Path]
 An \textbf{absolute path} points to the same location in a file system, regardless of the current working directory.
@@ -838,18 +847,19 @@ working directory.
 \be
 For example, if you are already in \code{/usr/bin} directory, the root directory \textbf{relatively} to the current
 working directory \code{/usr/bin} is \code{../..}, where the first double dots denote the parent directory of
-\code{/usr/bin}, i.e.\ \code{/usr} and and the second double dots represent the parent's parent directory \code{/}.
+\code{/usr/bin}, i.e.\ \code{/usr} and and the second double dots represent the parent's parent directory i.e.\
+\code{/}.
 \ee
 
 To change our current working directory, we use the \code{cd} (change directory) command with either an absolute or
 relative path:
 \begin{bash}
 # change directory
-cd <absolute\_or\_relative\_path>
+cd <absolute_or_relative_path>
 \end{bash}
 
 In any given current working directory we can see the files contained in the directory and the pathway
-to the parent directory and any child subdirectories below us by making use of the \code{ls} (list) command:
+to the parent directory and any child subdirectories below us by making use of the \code{ls} (list) command as such:
 \begin{bash}
 # display files and directories of current working directory
 ls
@@ -858,12 +868,10 @@ ls
 Actually, we can use the ls command to list the contents of any directory, not just the current working directory.
 \begin{bash}
 # display files and directories of a directory
-ls <absolute\_or\_relative\_path>
+ls <absolute_or_relative_path>
 \end{bash}
 
-The \code{ls} command has a large number of possible options, the most common of which are listed below:
-
-\v
+The \code{ls} command has a large number of possible options, the most common and useful of which are listed below:
 
 \begin{tabular}{ |p{1cm}|p{3cm}||p{10.6cm}| }
 \hline
@@ -883,6 +891,8 @@ Option& Long Format& Description\\
 \hline
 \end{tabular}
 
+\v
+
 Before we move on the next chapter, we will note a very important ``feature'' of \code{ls}. Recall from a few pages back
 where we defined the attributes of a file and we gave the following list:
 \bit
@@ -898,17 +908,17 @@ The order of this list is not random. We can actually list all the attributes of
 with the option \code{-l} to display results in long format:
 \begin{bash}
 # display attributes of file
-ls -l <file>
+ls $-$l <file>
 \end{bash}
 
 The result of this command is the 7 attributes of the list in this exact order.
 
-\fig{unix2}{0.5}
+\fig{unix2}{0.6}
 
 To display the attributes of all files within a directory we can run the same command on the directory
 \begin{bash}
 # display attributes of all files in directory
-ls -l <directory>
+ls $-$l <directory>
 \end{bash}
 
 \section{Manipulation}
@@ -929,14 +939,9 @@ filenames based on patterns of characters. Here is a full list of wildcards:
 \item \textbf{[characters]}: Matches any character that is a member of the set characters.
 \item \textbf{[!characters]}: Matches any character that is not a member of the set characters.
 \item \textbf{[[:class:]]}: Matches any character that is a member of the specified class. Some commonly used character
-classes are:
-\bit
-\item \textbf{[:alnum:]}: Matches any alphanumeric character.
-\item \textbf{[:alpha:]}: Matches any alphabetic character.
-\item \textbf{[:digit:]}: Matches any numeral.
-\item \textbf{[:lower:]}: Matches any lowercase letter.
-\item \textbf{[:upper:]}: Matches any uppercase letter.
-\eit
+classes are \code{[:alnum:]} for any alphanumeric character, \code{[:alpha:]} for any alphabetic character,
+\code{[:digit:]} for any numeral, \code{[:lower:]} for any lowercase letter, and \code{[:upper:]} for any uppercase
+letter.
 \eit
 
 Now moving on to commands. \v
@@ -955,7 +960,7 @@ cp <file>... <directory>
 
 \begin{bash}
 # copy directory's contents including all subdirectories and their contents to a directory
-cp -r <directory_1> <directory_2>
+cp $-$r <directory_1> <directory_2>
 \end{bash}
 
 The \code{cp} command has a large number of possible options, the most common of which are listed below:
@@ -1016,10 +1021,10 @@ mv <file>...
 
 \begin{bash}
 # remove directory's contents including all subdirectories and their contents
-rm -r <directory>...
+rm $-$r <directory>...
 \end{bash}
 
-Unix-like operating systems do not have an undelete command. Once you delete something with \code{rm}, it’s gone.
+Unix-like operating systems do not have an undelete command. Once you delete something with \code{rm}, it’s gone. \v
 
 The \code{rm} command has a large number of possible options, the most common of which are listed below:
 
@@ -1150,7 +1155,7 @@ user. \v
 The \code{su} command is used to start a shell as another user. The command syntax looks like this:
 \begin{bash}
 # login as another user
-su -l <user>
+su $-$l <user>
 \end{bash}
 
 If the \code{-l} option is included, the resulting shell session is a login shell for the specified user. This means
@@ -1160,7 +1165,7 @@ it is most often used.
 
 \begin{bash}
 # login as another user
-su - <user>
+su $-$ <user>
 \end{bash}
 
 If the user is not specified, the ``superuser''\footnote{In the Unix world, there has always been a large division
@@ -1179,7 +1184,7 @@ system-wide changes.
 To start a shell for the superuser, we would do this:
 \begin{bash}
 # login as superuser
-su -
+su $-$
 \end{bash}
 
 After entering the command, we are prompted for the superuser's password. If it is successfully entered, a new shell
@@ -1197,7 +1202,7 @@ To execute a single command rather than starting a new interactive command we us
 \code{-c} (command) option:
 \begin{bash}
 # execute single command as superuser
-su -c <command>
+su $-$c <command>
 \end{bash}
 
 Moving on the the third and last technique, the \code{sudo} command is like \code{su} in many ways but has some
@@ -1208,7 +1213,7 @@ specific commands and no others. To display what privileges are granted by \code
 list them:
 \begin{bash}
 # display granted privileges of sudo
-sudo -l
+sudo $-$l
 \end{bash}
 
 Once we know which commands are permitted we can execute them as simply as:
@@ -1226,7 +1231,7 @@ it load another user's environment. Note, however, that \code{sudo} can be used 
 session (much like\code{su -}) by specifying the \code{-i} option:
 \begin{bash}
 # enter interactive superuser session
-sudo -i
+sudo $-$i
 \end{bash}
 
 Before we end this section, a few words as to which of the two commands (\code{su} and \code{sudo}) you should choose.
@@ -1253,7 +1258,7 @@ to files and directories by their owners. Recall that owner and group of a file 
 \bit
 \item The file type and access permissions.
 \item The link count of the file.
-\item \textbf{The file's owner and group.}
+\item The file's owner and group.
 \item The size of the file.
 \item The date on which the file was last modified.
 \item The name of the file.
@@ -1342,7 +1347,7 @@ To see the permissions of a file or directory we use the \code{ls} command with 
 the attributes of a file or a directory in long format:
 \begin{bash}
 # display attributes of file or directory
-ls -l <file_or_directory>
+ls $-$l <file_or_directory>
 \end{bash}
 
 As we have already said, the result of this command is the 7 attributes of a file or directory in the order: type and
@@ -1362,30 +1367,38 @@ The remaining nine characters of the file attributes are the file permissions an
 execute permissions for the owner, group, and world. The permissions are broken into groups of threes, and each
 position in the group denotes a specific permission, in this order: read (r), write (w), execute (x).
 
-\fig{unix3}{0.5}
+\v
+
+\fig{unix3}{0.65}
+
+\v
 
 So the first three characters (2-4) represent the permissions for the owner, the second group of three characters (5-
 7) consists of the permissions for the group and the last group of three characters (8-10) represents the permissions
 for everyone else (i.e.\ world).
 
-\fig{unix4}{0.5}
+\v
+
+\fig{unix4}{0.65}
 
 Some examples are in order.
 
 \be
 \begin{bash}
-# a regular file that is readable, writable, and executable by the owner (no one else has any access)
--rwx------
+# a file that is readable, writable, and executable only by the owner
+$-$rwx$------$
 \end{bash}
 
 \begin{bash}
-# a regular file that is readable, writable, and executable by the file's owner and may be read and executed by world
--rwxr-xr-x
+# a file that is readable, writable, and executable by the owner and readable and
+# executable by the world
+$-$rwxr$-$xr$-$x
 \end{bash}
 
 \begin{bash}
-# a directory that the owner and the members of the owner group may enter the directory and create, rename, and remove files
-drwxrwx---
+# a directory that the owner and the members of the owner group may enter the directory
+# and create, rename, and remove files
+drwxrwx$---$
 \end{bash}
 \ee
 
@@ -1435,7 +1448,7 @@ chmod u+x <file_or_directory>
 
 \begin{bash}
 # remove execute permission from the owner
-chmod u-x <file_or_directory>
+chmod u$-$x <file_or_directory>
 \end{bash}
 
 \begin{bash}
@@ -1445,11 +1458,12 @@ chmod +x <file_or_directory>
 
 \begin{bash}
 # remove the read and write permissions from anyone besides the owner and group owner.
-chmod o-rw <file_or_directory>
+chmod o$-$rw <file_or_directory>
 \end{bash}
 
 \begin{bash}
-# set the group owner and anyone besides the owner to have read and write permissions and remove everything else.
+# set the group owner and anyone besides the owner to have read and write permissions and
+# remove everything else.
 chmod go=rw <file_or_directory>
 \end{bash}
 \ee
@@ -1515,7 +1529,7 @@ Once we hit enter and the command is executed, the shell is telling us that we h
 the job a number of the form \code{\%n} called the ``jobspec''.
 
 \bd[Jobspec]
-A \textbf{jobspec} \%n is a numeric way of referring to a job.
+A \textbf{jobspec} \code{\%n} is a numeric way of referring to a job.
 \ed
 
 To interrupt a background job we use the \code{kill} command. This means we are politely asking the background job to
@@ -1548,7 +1562,7 @@ bg <jobspec>
 \end{bash}
 
 Moving a job from the foreground to the background is handy if we launch a program from the command line but forget
-to place it in the background by appending the trailing \code{\text{\&}}). \v
+to place it in the background by appending the trailing \code{\text{\&}}. \v
 
 Moving on from jobs back to general processes, some processes can themselves launch other processes. The fact that a
 program can launch other programs is expressed in the process scheme as a ``parent'' process producing a ``child''
