@@ -80,9 +80,9 @@ Multiple commands can be provided in succession as long as they follow the corre
 \item \textbf{[space]}: Spaces separate commands, options, and arguments from each other.
 \item \textbf{;}: Semi-colons and newlines separate commands synchronously. That means that the first commands needs to
 finish before the next one starts running.
-\item \textbf{&}: A single ampersand separate commands asynchronously. That means that the next command will start
+\item \textbf{\&}: A single ampersand separate commands asynchronously. That means that the next command will start
 immediately after the first, without waiting for the former to end.
-\item \textbf{&&}: A double ampersand symbolizes an AND conditional which causes the second command to be executed only
+\item \textbf{\&\&}: A double ampersand symbolizes an AND conditional which causes the second command to be executed only
 if the first command ends and exits successfully.
 \item \textbf{|}: A vertical line symbolizes a pipe which connects the output of one command to the input of the next
 (more on that later).
@@ -305,7 +305,7 @@ time. There are two ways to do this.
 
 The first method is the traditional way. Using this method, we perform two redirections. First we redirect standard
 output to a file, and then we redirect file descriptor 2 (standard error) to file descriptor 1 (standard output)
-using the notation \code{2>&1}:
+using the notation \code{2>$\&$1}:
 \begin{bash}
 # create or overwrite to file both the standard output and standard error of the command
 command > <file> 2>&1
@@ -558,7 +558,7 @@ printenv <environment_variable>
 It is also possible to view the contents of a variable using the echo command:
 \begin{bash}
 # display the value of a specific environment variable
-echo \$<environment_variable>
+echo $\$$<environment_variable>
 \end{bash}
 
 When we log on to the system, the shell starts and reads a series of configuration scripts called ``startup files''.
@@ -937,6 +937,7 @@ classes are:
 \item \textbf{[:lower:]}: Matches any lowercase letter.
 \item \textbf{[:upper:]}: Matches any uppercase letter.
 \eit
+\eit
 
 Now moving on to commands. \v
 
@@ -1182,8 +1183,8 @@ su -
 \end{bash}
 
 After entering the command, we are prompted for the superuser's password. If it is successfully entered, a new shell
-prompt appears indicating that this shell has superuser privileges. This new prompt has a trailing \code{#} rather than
-a \code{\$}, and the current working directory is now the home directory for the superuser \code{/root}. \v
+prompt appears indicating that this shell has superuser privileges. This new prompt has a trailing \code{$\#$} rather than
+a \code{$\$$}, and the current working directory is now the home directory for the superuser \code{/root}. \v
 
 Once in the new shell, we can carry out commands as the superuser. When finished, enter exit to return to the previous
 shell.
@@ -1547,7 +1548,7 @@ bg <jobspec>
 \end{bash}
 
 Moving a job from the foreground to the background is handy if we launch a program from the command line but forget
-to place it in the background by appending the trailing \code{&}). \v
+to place it in the background by appending the trailing \code{\text{\&}}). \v
 
 Moving on from jobs back to general processes, some processes can themselves launch other processes. The fact that a
 program can launch other programs is expressed in the process scheme as a ``parent'' process producing a ``child''
@@ -1612,7 +1613,7 @@ child process of \code{init} is called a \textbf{daemon}.
 
 \bd[Daemon]
 All background child processes of \code{init} are called \textbf{daemons}.
-\ee
+\ed
 
 \code{init} runs a series of shell scripts located in \code{/etc} (usually called init scripts), which start all the
 daemons of the system. So, even if we are not logged in, the system is at least a little busy performing routine stuff.
