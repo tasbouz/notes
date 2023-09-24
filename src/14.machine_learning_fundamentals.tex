@@ -1,22 +1,22 @@
 %! suppress = EscapeUnderscore
 \section{Basics}
 
+Machine learning is an area of artificial intelligence which focuses on the study of computer algorithms that can
+improve automatically through experience and by the use of data. Now, let's try to define machine learning in a more
+formal way.
+
 \bd[Machine Learning (Arthur Samuel)]
 \textbf{Machine learning} is the field of study that gives computers the ability to learn without being explicitly
 programmed.
 \ed
 
 \bd[Machine Learning (Tom Mitchell)]
-A computer program is said to learn from experience $E$ with respect to a task $T$ and a performance measure $P$, if its
-performance on $T$, as measured by $P$, improves with experience $E$.
+A computer program is said to \textbf{learn} from experience $E$ with respect to a task $T$ and a performance measure
+$P$, if its performance on $T$, as measured by $P$, improves with experience $E$.
 \ed
 
-Machine learning is the study of computer algorithms that can improve automatically through experience and by the use
-of data. It is seen as a part of artificial intelligence. Machine learning algorithms build a model based on sample
-data, known as training data, in order to make predictions or decisions without being explicitly programmed to do so.
-Machine learning algorithms are used in a wide variety of applications, such as in medicine, email filtering,
-speech recognition, and computer vision, where it is difficult or unfeasible to develop conventional algorithms to
-perform the needed tasks.
+Machine learning algorithms build a model based on sample data, known as training data, in order to make predictions
+or decisions without being explicitly programmed to do so.
 
 \subsection{Use Cases}
 
@@ -35,7 +35,7 @@ for it to learn from. In most cases, machine learning systems learn from data.
 \item \textbf{Data is available, or it's possible to collect data}: Because machine learning learns from data, there
 must be data for it to learn from.
 \item \textbf{There are patterns to learn, and they are complex}: Complex problems for which using a traditional
-approach yields no good solution, the best machine learning techniques can perhaps find a solution.
+approach yields no good solution, machine learning techniques can perhaps find one.
 \item \textbf{Existing solutions require a long lists of rules}: One machine learning algorithm can often simplify code
 and perform better than the traditional approach.
 \item \textbf{It's a predictive problem}: Machine learning models make predictions, so they can only solve problems that
@@ -73,7 +73,9 @@ enterprises are diverse, serving both internal use cases (reducing costs, genera
 internal processing automation) and external use cases (improving customer experience, retaining customers, interacting 
 with customers) as shown in the following figure.
 
-\fig{ml_use_cases}{0.5}
+\v
+
+\fig{ml_use_cases}{0.55}
 
 \subsection{Requirements}
 
@@ -143,7 +145,7 @@ model.
 
 Let's summarize these bullet points in the following figure.
 
-\fig{ml_industry_vs_academia}{0.65}
+\fig{ml_industry_vs_academia}{0.7}
 
 \subsubsection{Objectives}
 
@@ -187,7 +189,7 @@ Last but not least, make sure to list the assumptions you (or others) have made 
 
 \subsubsection{Mind VS Data}
 
-Progress in the last decade shows that the success of an machine learning system depends largely on the data it was
+Progress in the last decade shows that the success of a machine learning system depends largely on the data it was
 trained on. Instead of focusing on improving machine learning algorithms, most companies focus on managing and
 improving their data. Despite the success of models using massive amounts of data, many are skeptical of the emphasis
 on data as the way forward. This is the main argument of many public debates on the power of mind versus data. \v
@@ -473,7 +475,7 @@ Data lakes are usually used to store raw data before processing. \v
 
 Unstructured data doesn't adhere to a predefined data schema. It's usually text but can also be numbers, dates,
 images, audio, etc. Even though unstructured data doesn't adhere to a schema, it might still contain intrinsic
-patterns that help you extract structures.
+patterns that help you extract structures. \v
 
 The following table shows a summary of the key differences between structured and unstructured data.
 
@@ -771,7 +773,7 @@ Deployment is a loose term that generally means making your model running and ac
 deployment, more often than not we mean deployment of a machine learning pipeline.
 
 \bd[Machine Learning Pipeline]
-A \textbf{Machine learning pipeline} is a way to codify and automate the workflow it takes to produce a machine learning
+A \textbf{machine learning pipeline} is a way to codify and automate the workflow it takes to produce a machine learning
 model, consisting of multiple sequential steps that do everything from data extraction and preprocessing to model
 training and deployment.
 \ed
@@ -1022,7 +1024,7 @@ The conditions to determine whether a system is up are defined in the so called 
 
 \be
 For example, an SLO may specify that the service is considered to be up if it has a median latency of less than 200
-ms and a 99th percentile under 2 s. A service provider might offer an SLA that specifies their uptime guarantee, such
+ms and a 99th percentile under 2 s. A service provider might offer an SLO that specifies their uptime guarantee, such
 as 99.99\% of the time, and if this guarantee is not met, they'll give their customers back money.
 \ee
 
@@ -1076,7 +1078,7 @@ of tools to help them do so. It's common for the industry to herald metrics, log
 monitoring. In this section, we will focus on the set of tools from the perspective of monitoring machine learning
 systems: logs, dashboards, and alerts.
 \bit
-\item \textbf{Logs}:Traditional software systems rely on logs to record events produced at runtime. An event is
+\item \textbf{Logs}: Traditional software systems rely on logs to record events produced at runtime. An event is
 anything that can be of interest to the system developers, either at the time the event happens or later for
 debugging and analysis purposes. When we log an event, we want to make it as easy as possible for us to find it later.
 This practice with microservice architecture is called ``distributed tracing''. We want to give each process a
@@ -1085,7 +1087,7 @@ the log messages associated with it. We also want to record with each event all 
 have grown so large and so difficult to manage, there have been many tools developed to help companies manage and
 analyze logs. Analyzing billions of logged events manually is futile, so many companies use machine learning to analyze
 logs.
-\item \textbf{Dashboards}:Visualizing metrics are critical for monitoring. Since monitoring isn't just for the
+\item \textbf{Dashboards}: Visualizing metrics are critical for monitoring. Since monitoring isn't just for the
 developers of a system, but also for non-engineering stakeholders including product managers and business developers,
 dashboards is a great tool for making monitoring accessible to non-engineers. Even though graphs can help a lot
 with understanding metrics, they aren't sufficient on their own. You still need experience and statistical knowledge.
@@ -1288,20 +1290,21 @@ and experiments are run. Code needs to be versioned and tested. Experiments need
 Everything we discussed in this section so far, can be included under a common umbrella term called ``Machine Learning 
 Operations'' or ``MLOps''.
 
-\bd[Machine Learning Operations (MLOps\footnote{If the definition (or even the name MLOps) sounds familiar, that's
-because it pulls heavily from the concept of DevOps, which streamlines the practice of software changes and updates.
-Indeed, the two have quite a bit in common like robust automation and trust between teams, the idea of collaboration
-and increased communication between teams, the end-to-end service life cycle (build, test, release), and prioritizing
-continuous delivery and high quality. Yet there is one critical difference between MLOps and DevOps that makes the
-latter not immediately transferable to data science teams: deploying software code into production is fundamentally
-different than deploying machine learning models into production. While software code is relatively static, data is
-always changing, which means machine learning models are constantly learning and adapting—or not, as the case may be
-—to new inputs. The complexity of this environment, including the fact that machine learning models are made up of
-both code and data, is what makes MLOps a new and unique discipline.})]
+\bd[Machine Learning Operations (MLOps)]
 \textbf{Machine learning operations} (\textbf{MLOps}) is a portmanteau of ``machine learning'' and ``operations'' and
 it's a set of practices that aims to make machine learning systems production-ready and maintainable.
 \ed
 
 MLOps is a term that's been gaining popularity in the industry, quickly becoming a critical component of successful
 data science project deployment in the enterprise. It's a process that helps organizations and business leaders
-generate long-term value and reduce risk associated with data science, machine learning, and AI initiatives.
+generate long-term value and reduce risk associated with data science, machine learning, and AI initiatives. If the
+definition (or even the name MLOps) sounds familiar, that's because it pulls heavily from the concept of DevOps,
+which streamlines the practice of software changes and updates. Indeed, the two have quite a bit in common like
+robust automation and trust between teams, the idea of collaboration and increased communication between teams, the
+end-to-end service life cycle (build, test, release), and prioritizing continuous delivery and high quality. Yet
+there is one critical difference between MLOps and DevOps that makes the latter not immediately transferable to data
+science teams: deploying software code into production is fundamentally different than deploying machine learning
+models into production. While software code is relatively static, data is always changing, which means machine
+learning models are constantly learning and adapting—or not, as the case may be —to new inputs. The complexity of
+this environment, including the fact that machine learning models are made up of both code and data, is what makes
+MLOps a new and unique discipline.

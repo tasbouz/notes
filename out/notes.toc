@@ -183,277 +183,277 @@
 \contentsline {subsection}{\numberline {15.3.1}Normal Equation}{312}{subsection.15.3.1}%
 \contentsline {subsection}{\numberline {15.3.2}Gradient Descent}{313}{subsection.15.3.2}%
 \contentsline {section}{\numberline {15.4}Feature Engineering}{315}{section.15.4}%
-\contentsline {subsection}{\numberline {15.4.1}Removing Features}{316}{subsection.15.4.1}%
-\contentsline {subsection}{\numberline {15.4.2}Missing Values}{316}{subsection.15.4.2}%
+\contentsline {subsection}{\numberline {15.4.1}Removing Features}{315}{subsection.15.4.1}%
+\contentsline {subsection}{\numberline {15.4.2}Missing Values}{315}{subsection.15.4.2}%
 \contentsline {subsection}{\numberline {15.4.3}Feature Scaling}{317}{subsection.15.4.3}%
-\contentsline {subsection}{\numberline {15.4.4}Discretizating Features}{318}{subsection.15.4.4}%
-\contentsline {subsection}{\numberline {15.4.5}Feature Crossing}{318}{subsection.15.4.5}%
+\contentsline {subsection}{\numberline {15.4.4}Discretizating Features}{317}{subsection.15.4.4}%
+\contentsline {subsection}{\numberline {15.4.5}Feature Crossing}{317}{subsection.15.4.5}%
 \contentsline {subsection}{\numberline {15.4.6}Feature Importance \& Generalization}{318}{subsection.15.4.6}%
 \contentsline {section}{\numberline {15.5}Logistic Regression}{318}{section.15.5}%
 \contentsline {subsection}{\numberline {15.5.1}Normal Equation}{321}{subsection.15.5.1}%
 \contentsline {subsection}{\numberline {15.5.2}Gradient Descent}{321}{subsection.15.5.2}%
 \contentsline {subsection}{\numberline {15.5.3}Multinomial Classification}{322}{subsection.15.5.3}%
-\contentsline {section}{\numberline {15.6}Generalized Linear Model}{323}{section.15.6}%
+\contentsline {section}{\numberline {15.6}Generalized Linear Model}{322}{section.15.6}%
 \contentsline {section}{\numberline {15.7}Errors}{323}{section.15.7}%
 \contentsline {subsection}{\numberline {15.7.1}Point-Wise, Overall, In-Sample \& Out-Of-Sample Error}{323}{subsection.15.7.1}%
 \contentsline {subsection}{\numberline {15.7.2}Bias \& Variance}{324}{subsection.15.7.2}%
-\contentsline {section}{\numberline {15.8}Evaluation}{327}{section.15.8}%
-\contentsline {section}{\numberline {15.9}Regularization}{330}{section.15.9}%
-\contentsline {subsection}{\numberline {15.9.1}Ridge Regression / Tikhonov Regularization (L2 Regularization)}{330}{subsection.15.9.1}%
-\contentsline {subsection}{\numberline {15.9.2}Lasso Regression (L1 Regularization)}{332}{subsection.15.9.2}%
-\contentsline {subsection}{\numberline {15.9.3}Elastic Net}{332}{subsection.15.9.3}%
-\contentsline {subsection}{\numberline {15.9.4}Early Stopping}{333}{subsection.15.9.4}%
-\contentsline {section}{\numberline {15.10}Classification Error Metrics}{333}{section.15.10}%
-\contentsline {subsection}{\numberline {15.10.1}Accuracy \& Precision/Recall Trade-Off}{336}{subsection.15.10.1}%
-\contentsline {subsection}{\numberline {15.10.2}Receiver Operating Characteristic (ROC) Curve}{336}{subsection.15.10.2}%
-\contentsline {subsection}{\numberline {15.10.3}Baselines}{337}{subsection.15.10.3}%
-\contentsline {section}{\numberline {15.11}Support Vector Machine}{338}{section.15.11}%
-\contentsline {section}{\numberline {15.12}$k$-Nearest Neighbors}{346}{section.15.12}%
-\contentsline {section}{\numberline {15.13}Decision Trees \& Random Forests}{347}{section.15.13}%
-\contentsline {subsection}{\numberline {15.13.1}Decision Trees}{347}{subsection.15.13.1}%
-\contentsline {subsection}{\numberline {15.13.2}Ensemble Learning}{352}{subsection.15.13.2}%
-\contentsline {subsection}{\numberline {15.13.3}Random Forests}{355}{subsection.15.13.3}%
-\contentsline {chapter}{\numberline {16}Unsupervised Learning}{356}{chapter.16}%
-\contentsline {section}{\numberline {16.1}Basic Definitions}{356}{section.16.1}%
-\contentsline {section}{\numberline {16.2}Clustering}{356}{section.16.2}%
-\contentsline {subsection}{\numberline {16.2.1}k-Means}{357}{subsection.16.2.1}%
-\contentsline {subsection}{\numberline {16.2.2}DBSCAN}{358}{subsection.16.2.2}%
-\contentsline {section}{\numberline {16.3}Dimensionality Reduction}{359}{section.16.3}%
-\contentsline {subsection}{\numberline {16.3.1}Principal Component Analysis}{359}{subsection.16.3.1}%
-\contentsline {chapter}{\numberline {17}Reinforcement Learning}{362}{chapter.17}%
-\contentsline {section}{\numberline {17.1}Basic Definitions}{363}{section.17.1}%
-\contentsline {section}{\numberline {17.2}Markov Decision Process}{367}{section.17.2}%
-\contentsline {subsection}{\numberline {17.2.1}Markov Process}{367}{subsection.17.2.1}%
-\contentsline {subsection}{\numberline {17.2.2}Markov Reward Process}{369}{subsection.17.2.2}%
-\contentsline {subsection}{\numberline {17.2.3}Markov Decision Process}{374}{subsection.17.2.3}%
-\contentsline {section}{\numberline {17.3}Optimal Policies}{378}{section.17.3}%
-\contentsline {section}{\numberline {17.4}Solving Markov Decision Processes}{380}{section.17.4}%
-\contentsline {subsection}{\numberline {17.4.1}Model-Based Prediction}{380}{subsection.17.4.1}%
-\contentsline {subsubsection}{\numberline {17.4.1.1}Policy Evaluation}{380}{subsubsection.17.4.1.1}%
-\contentsline {subsection}{\numberline {17.4.2}Model-Based Control}{381}{subsection.17.4.2}%
-\contentsline {subsubsection}{\numberline {17.4.2.1}Policy Iteration}{381}{subsubsection.17.4.2.1}%
-\contentsline {subsubsection}{\numberline {17.4.2.2}Value Iteration}{382}{subsubsection.17.4.2.2}%
-\contentsline {subsection}{\numberline {17.4.3}Model-Free Prediction}{386}{subsection.17.4.3}%
-\contentsline {subsubsection}{\numberline {17.4.3.1}Monte Carlo}{387}{subsubsection.17.4.3.1}%
-\contentsline {subsubsection}{\numberline {17.4.3.2}Temporal Difference}{389}{subsubsection.17.4.3.2}%
-\contentsline {subsubsection}{\numberline {17.4.3.3}TD($\lambda $)}{393}{subsubsection.17.4.3.3}%
-\contentsline {chapter}{\numberline {18}Deep Learning: Basics}{396}{chapter.18}%
-\contentsline {section}{\numberline {18.1}Basic Definitions}{396}{section.18.1}%
-\contentsline {section}{\numberline {18.2}McCulloch Pitts Neuron}{397}{section.18.2}%
-\contentsline {section}{\numberline {18.3}Perceptron}{400}{section.18.3}%
-\contentsline {section}{\numberline {18.4}Sigmoid Neuron}{404}{section.18.4}%
-\contentsline {section}{\numberline {18.5}Feedforward Neural Networks}{405}{section.18.5}%
-\contentsline {subsection}{\numberline {18.5.1}Motivation: XOR Function With A Network Of Perceptons}{405}{subsection.18.5.1}%
-\contentsline {subsection}{\numberline {18.5.2}Feedforward Neural Network (Forward Propagation)}{408}{subsection.18.5.2}%
-\contentsline {subsection}{\numberline {18.5.3}Backward Propagation}{410}{subsection.18.5.3}%
-\contentsline {subsection}{\numberline {18.5.4}Generalize To Full Dataset}{413}{subsection.18.5.4}%
-\contentsline {section}{\numberline {18.6}Modified Gradient Descent Algorithms}{414}{section.18.6}%
-\contentsline {subsection}{\numberline {18.6.1}Mini-Batch \& Stochastic Gradient Descent}{415}{subsection.18.6.1}%
-\contentsline {subsection}{\numberline {18.6.2}Gradient Descent With Momentum}{415}{subsection.18.6.2}%
-\contentsline {subsection}{\numberline {18.6.3}Nesterov Accelerated Gradient Descent}{417}{subsection.18.6.3}%
-\contentsline {subsection}{\numberline {18.6.4}Adaptive Gradient Descent (AdaGrad)}{417}{subsection.18.6.4}%
-\contentsline {subsection}{\numberline {18.6.5}Root Mean Square Propagation (RMSProp)}{418}{subsection.18.6.5}%
-\contentsline {subsection}{\numberline {18.6.6}Adaptive Moment Estimation (Adam)}{419}{subsection.18.6.6}%
-\contentsline {subsection}{\numberline {18.6.7}Learning Rate Decay}{421}{subsection.18.6.7}%
-\contentsline {section}{\numberline {18.7}Errors, Evaluation \& Regularization}{422}{section.18.7}%
-\contentsline {subsection}{\numberline {18.7.1}L2 Regularization}{422}{subsection.18.7.1}%
-\contentsline {subsection}{\numberline {18.7.2}Dataset Augmentation}{423}{subsection.18.7.2}%
-\contentsline {subsection}{\numberline {18.7.3}Adding Noise To The Inputs/Outputs}{423}{subsection.18.7.3}%
-\contentsline {subsection}{\numberline {18.7.4}Early Stopping}{423}{subsection.18.7.4}%
-\contentsline {subsection}{\numberline {18.7.5}Ensemble Methods}{423}{subsection.18.7.5}%
-\contentsline {subsection}{\numberline {18.7.6}Dropout}{423}{subsection.18.7.6}%
-\contentsline {section}{\numberline {18.8}Improvements On A Feedforward Neural Network}{424}{section.18.8}%
-\contentsline {subsection}{\numberline {18.8.1}Activation Functions}{424}{subsection.18.8.1}%
-\contentsline {subsection}{\numberline {18.8.2}Initialization Strategies}{426}{subsection.18.8.2}%
-\contentsline {subsection}{\numberline {18.8.3}Batch Normalization}{428}{subsection.18.8.3}%
-\contentsline {chapter}{\numberline {19}Deep Learning: Models}{430}{chapter.19}%
-\contentsline {section}{\numberline {19.1}Convolutional Neural Networks}{430}{section.19.1}%
-\contentsline {subsection}{\numberline {19.1.1}Building A Convolutional Neural Network}{430}{subsection.19.1.1}%
-\contentsline {subsection}{\numberline {19.1.2}Convolutional Neural Network Architectures}{436}{subsection.19.1.2}%
-\contentsline {subsubsection}{\numberline {19.1.2.1}LeNet}{436}{subsubsection.19.1.2.1}%
-\contentsline {subsubsection}{\numberline {19.1.2.2}AlexNet}{436}{subsubsection.19.1.2.2}%
-\contentsline {subsubsection}{\numberline {19.1.2.3}ZFNet}{437}{subsubsection.19.1.2.3}%
-\contentsline {subsubsection}{\numberline {19.1.2.4}VGGNet}{437}{subsubsection.19.1.2.4}%
-\contentsline {subsubsection}{\numberline {19.1.2.5}GoogLeNet}{437}{subsubsection.19.1.2.5}%
-\contentsline {section}{\numberline {19.2}Word Embedding}{437}{section.19.2}%
-\contentsline {subsection}{\numberline {19.2.1}One-Hot Representation}{438}{subsection.19.2.1}%
-\contentsline {subsection}{\numberline {19.2.2}Distributed Representation}{438}{subsection.19.2.2}%
-\contentsline {subsection}{\numberline {19.2.3}Word2vec}{439}{subsection.19.2.3}%
-\contentsline {subsubsection}{\numberline {19.2.3.1}Continuous Bag-Of-Words (CBOW)}{440}{subsubsection.19.2.3.1}%
-\contentsline {subsubsection}{\numberline {19.2.3.2}Continuous Skip-Gram}{442}{subsubsection.19.2.3.2}%
-\contentsline {section}{\numberline {19.3}Recurrent Neural Networks}{443}{section.19.3}%
-\contentsline {subsection}{\numberline {19.3.1}Building A Recurrent Neural Network}{444}{subsection.19.3.1}%
-\contentsline {subsection}{\numberline {19.3.2}Backpropagation Through Time}{446}{subsection.19.3.2}%
-\contentsline {subsection}{\numberline {19.3.3}Long Short Term Memory}{448}{subsection.19.3.3}%
-\contentsline {subsection}{\numberline {19.3.4}Gated Recurrent Unit}{453}{subsection.19.3.4}%
-\contentsline {part}{IV\hspace {1em}Computer Science}{455}{part.4}%
-\contentsline {chapter}{\numberline {20}History Of Computer (Science)}{456}{chapter.20}%
-\contentsline {section}{\numberline {20.1}Early Computing}{456}{section.20.1}%
-\contentsline {section}{\numberline {20.2}Alan Turing \& The Turing Machine}{462}{section.20.2}%
-\contentsline {section}{\numberline {20.3}Transistors \& Chips}{466}{section.20.3}%
-\contentsline {section}{\numberline {20.4}The Personal Computer Revolution}{471}{section.20.4}%
-\contentsline {section}{\numberline {20.5}Programming}{482}{section.20.5}%
-\contentsline {subsection}{\numberline {20.5.1}Early Programming}{482}{subsection.20.5.1}%
-\contentsline {subsection}{\numberline {20.5.2}The First Programming Languages}{485}{subsection.20.5.2}%
-\contentsline {chapter}{\numberline {21}Hardware \& Software}{489}{chapter.21}%
-\contentsline {section}{\numberline {21.1}Binary Representation}{490}{section.21.1}%
-\contentsline {subsection}{\numberline {21.1.1}NOT Gate}{491}{subsection.21.1.1}%
-\contentsline {subsection}{\numberline {21.1.2}AND Gate}{492}{subsection.21.1.2}%
-\contentsline {subsection}{\numberline {21.1.3}OR Gate}{492}{subsection.21.1.3}%
-\contentsline {subsection}{\numberline {21.1.4}Representing Numbers \& Letters With Binary}{493}{subsection.21.1.4}%
-\contentsline {section}{\numberline {21.2}Hardware}{496}{section.21.2}%
-\contentsline {subsection}{\numberline {21.2.1}Arithmetic Logic Unit (ALU)}{497}{subsection.21.2.1}%
-\contentsline {subsection}{\numberline {21.2.2}Registers \& RAM}{498}{subsection.21.2.2}%
-\contentsline {subsection}{\numberline {21.2.3}Central Processing Unit (CPU)}{502}{subsection.21.2.3}%
-\contentsline {subsubsection}{\numberline {21.2.3.1}Application: Building A CPU}{506}{subsubsection.21.2.3.1}%
-\contentsline {subsection}{\numberline {21.2.4}Advanced CPU Designs}{509}{subsection.21.2.4}%
-\contentsline {subsubsection}{\numberline {21.2.4.1}Cache}{510}{subsubsection.21.2.4.1}%
-\contentsline {subsubsection}{\numberline {21.2.4.2}Instruction Pipelining}{511}{subsubsection.21.2.4.2}%
-\contentsline {subsubsection}{\numberline {21.2.4.3}Multi-Core \& Multiple Processors}{511}{subsubsection.21.2.4.3}%
-\contentsline {subsection}{\numberline {21.2.5}Memory \& Storage}{512}{subsection.21.2.5}%
-\contentsline {subsection}{\numberline {21.2.6}Motherboard}{518}{subsection.21.2.6}%
-\contentsline {section}{\numberline {21.3}Software}{519}{section.21.3}%
-\contentsline {subsection}{\numberline {21.3.1}Operating Systems}{519}{subsection.21.3.1}%
-\contentsline {subsection}{\numberline {21.3.2}Files \& File Systems}{522}{subsection.21.3.2}%
-\contentsline {subsection}{\numberline {21.3.3}Compression}{525}{subsection.21.3.3}%
-\contentsline {chapter}{\numberline {22}Command Line}{527}{chapter.22}%
-\contentsline {section}{\numberline {22.1}Basics}{527}{section.22.1}%
-\contentsline {subsection}{\numberline {22.1.1}Commands}{527}{subsection.22.1.1}%
-\contentsline {subsubsection}{\numberline {22.1.1.1}Redirection}{530}{subsubsection.22.1.1.1}%
-\contentsline {subsection}{\numberline {22.1.2}Shell}{533}{subsection.22.1.2}%
-\contentsline {subsubsection}{\numberline {22.1.2.1}Environment}{536}{subsubsection.22.1.2.1}%
-\contentsline {section}{\numberline {22.2}Navigation}{537}{section.22.2}%
-\contentsline {subsection}{\numberline {22.2.1}Files}{537}{subsection.22.2.1}%
-\contentsline {subsection}{\numberline {22.2.2}Directories}{539}{subsection.22.2.2}%
-\contentsline {section}{\numberline {22.3}Manipulation}{544}{section.22.3}%
-\contentsline {section}{\numberline {22.4}Multiuser}{545}{section.22.4}%
-\contentsline {subsubsection}{\numberline {22.4.0.1}Changing Identities}{547}{subsubsection.22.4.0.1}%
-\contentsline {subsection}{\numberline {22.4.1}Permissions}{549}{subsection.22.4.1}%
-\contentsline {section}{\numberline {22.5}Multitasking}{553}{section.22.5}%
-\contentsline {chapter}{\numberline {23}Networks}{556}{chapter.23}%
-\contentsline {section}{\numberline {23.1}Basic Definitions}{556}{section.23.1}%
-\contentsline {section}{\numberline {23.2}Open Systems Interconnection (OSI)}{558}{section.23.2}%
-\contentsline {subsection}{\numberline {23.2.1}Layer 1: Physical Layer}{559}{subsection.23.2.1}%
-\contentsline {subsection}{\numberline {23.2.2}Layer 2: Data Link Layer}{560}{subsection.23.2.2}%
-\contentsline {section}{\numberline {23.3}Network Devices (Hardware)}{562}{section.23.3}%
-\contentsline {chapter}{\numberline {24}Programming \& Software Enginnering}{567}{chapter.24}%
-\contentsline {section}{\numberline {24.1}Programming Basics}{568}{section.24.1}%
-\contentsline {section}{\numberline {24.2}Algorithms \& Data Structures}{575}{section.24.2}%
-\contentsline {chapter}{\numberline {25}Technologies}{578}{chapter.25}%
-\contentsline {section}{\numberline {25.1}Serialization}{578}{section.25.1}%
-\contentsline {subsection}{\numberline {25.1.1}CSV}{579}{subsection.25.1.1}%
-\contentsline {subsection}{\numberline {25.1.2}JSON}{580}{subsection.25.1.2}%
-\contentsline {subsection}{\numberline {25.1.3}XML}{581}{subsection.25.1.3}%
-\contentsline {subsection}{\numberline {25.1.4}YAML}{583}{subsection.25.1.4}%
-\contentsline {section}{\numberline {25.2}Cryptography}{585}{section.25.2}%
-\contentsline {subsection}{\numberline {25.2.1}Secure Shell (SSH)}{586}{subsection.25.2.1}%
-\contentsline {section}{\numberline {25.3}Homebrew}{588}{section.25.3}%
-\contentsline {subsection}{\numberline {25.3.1}Installation}{588}{subsection.25.3.1}%
-\contentsline {subsection}{\numberline {25.3.2}Package Management}{588}{subsection.25.3.2}%
-\contentsline {section}{\numberline {25.4}Git}{590}{section.25.4}%
-\contentsline {subsection}{\numberline {25.4.1}Installation \& Configuration}{590}{subsection.25.4.1}%
-\contentsline {subsection}{\numberline {25.4.2}Git Repository (Repo)}{591}{subsection.25.4.2}%
-\contentsline {subsection}{\numberline {25.4.3}Branches}{596}{subsection.25.4.3}%
-\contentsline {subsection}{\numberline {25.4.4}Remote Repository (Remote)}{597}{subsection.25.4.4}%
-\contentsline {subsection}{\numberline {25.4.5}Useful Commands}{599}{subsection.25.4.5}%
-\contentsline {subsubsection}{\numberline {25.4.5.1}Git Cherry$-$Pick}{599}{subsubsection.25.4.5.1}%
-\contentsline {subsubsection}{\numberline {25.4.5.2}Git Stash}{599}{subsubsection.25.4.5.2}%
-\contentsline {section}{\numberline {25.5}Docker}{601}{section.25.5}%
-\contentsline {subsection}{\numberline {25.5.1}Introduction}{601}{subsection.25.5.1}%
-\contentsline {subsection}{\numberline {25.5.2}Installation}{603}{subsection.25.5.2}%
-\contentsline {subsection}{\numberline {25.5.3}Images}{603}{subsection.25.5.3}%
-\contentsline {subsubsection}{\numberline {25.5.3.1}Building Images}{604}{subsubsection.25.5.3.1}%
-\contentsline {subsection}{\numberline {25.5.4}Containers}{606}{subsection.25.5.4}%
-\contentsline {subsubsection}{\numberline {25.5.4.1}Multiple Containers}{609}{subsubsection.25.5.4.1}%
-\contentsline {subsection}{\numberline {25.5.5}Volumes}{611}{subsection.25.5.5}%
-\contentsline {chapter}{\numberline {26}Google Cloud}{613}{chapter.26}%
-\contentsline {section}{\numberline {26.1}Cloud Computing}{613}{section.26.1}%
-\contentsline {subsection}{\numberline {26.1.1}Deployment Models}{614}{subsection.26.1.1}%
-\contentsline {subsection}{\numberline {26.1.2}Service Models}{616}{subsection.26.1.2}%
-\contentsline {subsection}{\numberline {26.1.3}Geography \& Regions}{619}{subsection.26.1.3}%
-\contentsline {section}{\numberline {26.2}Resources}{620}{section.26.2}%
-\contentsline {section}{\numberline {26.3}Billing}{621}{section.26.3}%
-\contentsline {section}{\numberline {26.4}Identity \& Access Management (IAM)}{623}{section.26.4}%
-\contentsline {subsection}{\numberline {26.4.1}Principal}{623}{subsection.26.4.1}%
-\contentsline {subsection}{\numberline {26.4.2}Permissions}{627}{subsection.26.4.2}%
-\contentsline {subsection}{\numberline {26.4.3}Role}{627}{subsection.26.4.3}%
-\contentsline {subsection}{\numberline {26.4.4}Binding}{629}{subsection.26.4.4}%
-\contentsline {subsection}{\numberline {26.4.5}Policy}{629}{subsection.26.4.5}%
-\contentsline {subsection}{\numberline {26.4.6}Identity \& Access Management (IAM)}{631}{subsection.26.4.6}%
-\contentsline {section}{\numberline {26.5}APIs \& Services}{632}{section.26.5}%
-\contentsline {subsection}{\numberline {26.5.1}Client Libraries}{632}{subsection.26.5.1}%
-\contentsline {section}{\numberline {26.6}Google Cloud SDK}{633}{section.26.6}%
-\contentsline {subsection}{\numberline {26.6.1}Authorization}{634}{subsection.26.6.1}%
-\contentsline {subsection}{\numberline {26.6.2}Properties \& Configurations}{635}{subsection.26.6.2}%
-\contentsline {subsection}{\numberline {26.6.3}Components}{637}{subsection.26.6.3}%
-\contentsline {subsection}{\numberline {26.6.4}Projects}{638}{subsection.26.6.4}%
-\contentsline {subsection}{\numberline {26.6.5}IAM}{638}{subsection.26.6.5}%
-\contentsline {section}{\numberline {26.7}Google Compute Engine (GCE)}{639}{section.26.7}%
-\contentsline {subsection}{\numberline {26.7.1}Machine Configuration}{639}{subsection.26.7.1}%
-\contentsline {subsection}{\numberline {26.7.2}Boot Disc}{641}{subsection.26.7.2}%
-\contentsline {subsection}{\numberline {26.7.3}Billing}{641}{subsection.26.7.3}%
-\contentsline {subsection}{\numberline {26.7.4}Connecting To An Instance}{641}{subsection.26.7.4}%
-\contentsline {section}{\numberline {26.8}Google Kubernetes Engine (GKE)}{642}{section.26.8}%
-\contentsline {subsection}{\numberline {26.8.1}Kubernetes}{642}{subsection.26.8.1}%
-\contentsline {subsection}{\numberline {26.8.2}Components}{642}{subsection.26.8.2}%
-\contentsline {subsection}{\numberline {26.8.3}Google Kubernetes Engine (GKE)}{654}{subsection.26.8.3}%
-\contentsline {subsection}{\numberline {26.8.4}Kubectl}{654}{subsection.26.8.4}%
-\contentsline {section}{\numberline {26.9}Kubeflow}{660}{section.26.9}%
-\contentsline {subsection}{\numberline {26.9.1}Components}{661}{subsection.26.9.1}%
-\contentsline {part}{V\hspace {1em}Economics \& Finance}{663}{part.5}%
-\contentsline {chapter}{\numberline {27}Principles Of Economics}{664}{chapter.27}%
-\contentsline {section}{\numberline {27.1}A Brief History Of Economics}{664}{section.27.1}%
-\contentsline {section}{\numberline {27.2}Basic Terminology}{667}{section.27.2}%
-\contentsline {section}{\numberline {27.3}The Ten Principles Of Economics}{671}{section.27.3}%
-\contentsline {chapter}{\numberline {28}Microeconomics}{681}{chapter.28}%
-\contentsline {section}{\numberline {28.1}The Market Forces Of Supply And Demand}{681}{section.28.1}%
-\contentsline {subsection}{\numberline {28.1.1}Demand}{683}{subsection.28.1.1}%
-\contentsline {subsection}{\numberline {28.1.2}Supply}{689}{subsection.28.1.2}%
-\contentsline {subsection}{\numberline {28.1.3}Supply And Demand}{693}{subsection.28.1.3}%
-\contentsline {subsection}{\numberline {28.1.4}Application: Changes In Market Equilibrium Due To Shifts}{695}{subsection.28.1.4}%
-\contentsline {section}{\numberline {28.2}Elasticity}{698}{section.28.2}%
-\contentsline {subsection}{\numberline {28.2.1}The Elasticity Of Demand}{698}{subsection.28.2.1}%
-\contentsline {subsection}{\numberline {28.2.2}The Elasticity Of Supply}{701}{subsection.28.2.2}%
-\contentsline {section}{\numberline {28.3}Applications Of Supply, Demand, And Elasticity}{704}{section.28.3}%
-\contentsline {subsection}{\numberline {28.3.1}Various}{704}{subsection.28.3.1}%
-\contentsline {subsection}{\numberline {28.3.2}Price Controls}{710}{subsection.28.3.2}%
-\contentsline {subsection}{\numberline {28.3.3}Taxes}{716}{subsection.28.3.3}%
-\contentsline {section}{\numberline {28.4}Consumers, Producers, And The Efficiency Of Markets}{720}{section.28.4}%
-\contentsline {subsection}{\numberline {28.4.1}Consumer Surplus}{720}{subsection.28.4.1}%
-\contentsline {subsection}{\numberline {28.4.2}Producer Surplus}{723}{subsection.28.4.2}%
-\contentsline {subsection}{\numberline {28.4.3}Market Efficiency}{726}{subsection.28.4.3}%
-\contentsline {subsection}{\numberline {28.4.4}Application: Efficiency Of Markets \& Externalities}{728}{subsection.28.4.4}%
-\contentsline {section}{\numberline {28.5}Consumer Theory}{730}{section.28.5}%
-\contentsline {subsection}{\numberline {28.5.1}The Budget Constraint}{730}{subsection.28.5.1}%
-\contentsline {subsection}{\numberline {28.5.2}Indifference Curves}{732}{subsection.28.5.2}%
-\contentsline {subsection}{\numberline {28.5.3}Optimization}{736}{subsection.28.5.3}%
-\contentsline {section}{\numberline {28.6}Frontiers Of Microeconomics}{740}{section.28.6}%
-\contentsline {subsection}{\numberline {28.6.1}Asymmetric Information}{740}{subsection.28.6.1}%
-\contentsline {subsection}{\numberline {28.6.2}Political Economy}{742}{subsection.28.6.2}%
-\contentsline {subsection}{\numberline {28.6.3}Behavioral Economics}{744}{subsection.28.6.3}%
-\contentsline {chapter}{\numberline {29}Financial Statements}{745}{chapter.29}%
-\contentsline {section}{\numberline {29.1}Basic Accountants Principles}{745}{section.29.1}%
-\contentsline {section}{\numberline {29.2}Balance Sheet}{748}{section.29.2}%
-\contentsline {subsection}{\numberline {29.2.1}Assets}{749}{subsection.29.2.1}%
-\contentsline {subsubsection}{\numberline {29.2.1.1}Current Assets}{750}{subsubsection.29.2.1.1}%
-\contentsline {subsubsection}{\numberline {29.2.1.2}Other Assets}{751}{subsubsection.29.2.1.2}%
-\contentsline {subsubsection}{\numberline {29.2.1.3}Fixed Assets}{751}{subsubsection.29.2.1.3}%
-\contentsline {subsubsection}{\numberline {29.2.1.4}Total Assets}{752}{subsubsection.29.2.1.4}%
-\contentsline {subsection}{\numberline {29.2.2}Liabilities \& Equity}{752}{subsection.29.2.2}%
-\contentsline {subsubsection}{\numberline {29.2.2.1}Current Liabilities}{753}{subsubsection.29.2.2.1}%
-\contentsline {subsubsection}{\numberline {29.2.2.2}Long-Term Liabilities}{753}{subsubsection.29.2.2.2}%
-\contentsline {subsubsection}{\numberline {29.2.2.3}Total Liabilities}{754}{subsubsection.29.2.2.3}%
-\contentsline {subsubsection}{\numberline {29.2.2.4}Equity}{754}{subsubsection.29.2.2.4}%
-\contentsline {subsection}{\numberline {29.2.3}Balance Sheet Summary}{756}{subsection.29.2.3}%
-\contentsline {section}{\numberline {29.3}Income Statement}{757}{section.29.3}%
-\contentsline {subsection}{\numberline {29.3.1}Sales}{757}{subsection.29.3.1}%
-\contentsline {subsection}{\numberline {29.3.2}Costs \& Expenses}{757}{subsection.29.3.2}%
-\contentsline {subsection}{\numberline {29.3.3}Income}{759}{subsection.29.3.3}%
-\contentsline {subsection}{\numberline {29.3.4}Income Statement Summary}{760}{subsection.29.3.4}%
-\contentsline {section}{\numberline {29.4}Cash Flow Statement}{760}{section.29.4}%
-\contentsline {subsection}{\numberline {29.4.1}Cash Flow Statement Summary}{763}{subsection.29.4.1}%
-\contentsline {chapter}{Appendices}{765}{section*.458}%
-\contentsline {chapter}{\numberline {A}Constrained Optimization}{766}{appendix.a.A}%
-\contentsline {section}{\numberline {A.1}Equality Constrained Optimization}{766}{section.a.A.1}%
-\contentsline {section}{\numberline {A.2}Equality \& Inequality Constrained Optimization}{767}{section.a.A.2}%
-\contentsline {chapter}{\numberline {B}Kernels}{768}{appendix.a.B}%
+\contentsline {section}{\numberline {15.8}Evaluation}{326}{section.15.8}%
+\contentsline {section}{\numberline {15.9}Regularization}{329}{section.15.9}%
+\contentsline {subsection}{\numberline {15.9.1}Ridge Regression / Tikhonov Regularization (L2 Regularization)}{329}{subsection.15.9.1}%
+\contentsline {subsection}{\numberline {15.9.2}Lasso Regression (L1 Regularization)}{331}{subsection.15.9.2}%
+\contentsline {subsection}{\numberline {15.9.3}Elastic Net}{331}{subsection.15.9.3}%
+\contentsline {subsection}{\numberline {15.9.4}Early Stopping}{332}{subsection.15.9.4}%
+\contentsline {section}{\numberline {15.10}Classification Error Metrics}{332}{section.15.10}%
+\contentsline {subsection}{\numberline {15.10.1}Accuracy \& Precision/Recall Trade-Off}{335}{subsection.15.10.1}%
+\contentsline {subsection}{\numberline {15.10.2}Receiver Operating Characteristic (ROC) Curve}{335}{subsection.15.10.2}%
+\contentsline {subsection}{\numberline {15.10.3}Baselines}{336}{subsection.15.10.3}%
+\contentsline {section}{\numberline {15.11}Support Vector Machine}{337}{section.15.11}%
+\contentsline {section}{\numberline {15.12}$k$-Nearest Neighbors}{345}{section.15.12}%
+\contentsline {section}{\numberline {15.13}Decision Trees \& Random Forests}{346}{section.15.13}%
+\contentsline {subsection}{\numberline {15.13.1}Decision Trees}{346}{subsection.15.13.1}%
+\contentsline {subsection}{\numberline {15.13.2}Ensemble Learning}{351}{subsection.15.13.2}%
+\contentsline {subsection}{\numberline {15.13.3}Random Forests}{354}{subsection.15.13.3}%
+\contentsline {chapter}{\numberline {16}Unsupervised Learning}{355}{chapter.16}%
+\contentsline {section}{\numberline {16.1}Basic Definitions}{355}{section.16.1}%
+\contentsline {section}{\numberline {16.2}Clustering}{355}{section.16.2}%
+\contentsline {subsection}{\numberline {16.2.1}k-Means}{356}{subsection.16.2.1}%
+\contentsline {subsection}{\numberline {16.2.2}DBSCAN}{357}{subsection.16.2.2}%
+\contentsline {section}{\numberline {16.3}Dimensionality Reduction}{358}{section.16.3}%
+\contentsline {subsection}{\numberline {16.3.1}Principal Component Analysis}{358}{subsection.16.3.1}%
+\contentsline {chapter}{\numberline {17}Reinforcement Learning}{361}{chapter.17}%
+\contentsline {section}{\numberline {17.1}Basic Definitions}{362}{section.17.1}%
+\contentsline {section}{\numberline {17.2}Markov Decision Process}{366}{section.17.2}%
+\contentsline {subsection}{\numberline {17.2.1}Markov Process}{366}{subsection.17.2.1}%
+\contentsline {subsection}{\numberline {17.2.2}Markov Reward Process}{368}{subsection.17.2.2}%
+\contentsline {subsection}{\numberline {17.2.3}Markov Decision Process}{373}{subsection.17.2.3}%
+\contentsline {section}{\numberline {17.3}Optimal Policies}{377}{section.17.3}%
+\contentsline {section}{\numberline {17.4}Solving Markov Decision Processes}{379}{section.17.4}%
+\contentsline {subsection}{\numberline {17.4.1}Model-Based Prediction}{379}{subsection.17.4.1}%
+\contentsline {subsubsection}{\numberline {17.4.1.1}Policy Evaluation}{379}{subsubsection.17.4.1.1}%
+\contentsline {subsection}{\numberline {17.4.2}Model-Based Control}{380}{subsection.17.4.2}%
+\contentsline {subsubsection}{\numberline {17.4.2.1}Policy Iteration}{380}{subsubsection.17.4.2.1}%
+\contentsline {subsubsection}{\numberline {17.4.2.2}Value Iteration}{381}{subsubsection.17.4.2.2}%
+\contentsline {subsection}{\numberline {17.4.3}Model-Free Prediction}{385}{subsection.17.4.3}%
+\contentsline {subsubsection}{\numberline {17.4.3.1}Monte Carlo}{386}{subsubsection.17.4.3.1}%
+\contentsline {subsubsection}{\numberline {17.4.3.2}Temporal Difference}{388}{subsubsection.17.4.3.2}%
+\contentsline {subsubsection}{\numberline {17.4.3.3}TD($\lambda $)}{392}{subsubsection.17.4.3.3}%
+\contentsline {chapter}{\numberline {18}Deep Learning: Basics}{395}{chapter.18}%
+\contentsline {section}{\numberline {18.1}Basic Definitions}{395}{section.18.1}%
+\contentsline {section}{\numberline {18.2}McCulloch Pitts Neuron}{396}{section.18.2}%
+\contentsline {section}{\numberline {18.3}Perceptron}{399}{section.18.3}%
+\contentsline {section}{\numberline {18.4}Sigmoid Neuron}{403}{section.18.4}%
+\contentsline {section}{\numberline {18.5}Feedforward Neural Networks}{404}{section.18.5}%
+\contentsline {subsection}{\numberline {18.5.1}Motivation: XOR Function With A Network Of Perceptons}{404}{subsection.18.5.1}%
+\contentsline {subsection}{\numberline {18.5.2}Feedforward Neural Network (Forward Propagation)}{407}{subsection.18.5.2}%
+\contentsline {subsection}{\numberline {18.5.3}Backward Propagation}{409}{subsection.18.5.3}%
+\contentsline {subsection}{\numberline {18.5.4}Generalize To Full Dataset}{412}{subsection.18.5.4}%
+\contentsline {section}{\numberline {18.6}Modified Gradient Descent Algorithms}{413}{section.18.6}%
+\contentsline {subsection}{\numberline {18.6.1}Mini-Batch \& Stochastic Gradient Descent}{414}{subsection.18.6.1}%
+\contentsline {subsection}{\numberline {18.6.2}Gradient Descent With Momentum}{414}{subsection.18.6.2}%
+\contentsline {subsection}{\numberline {18.6.3}Nesterov Accelerated Gradient Descent}{416}{subsection.18.6.3}%
+\contentsline {subsection}{\numberline {18.6.4}Adaptive Gradient Descent (AdaGrad)}{416}{subsection.18.6.4}%
+\contentsline {subsection}{\numberline {18.6.5}Root Mean Square Propagation (RMSProp)}{417}{subsection.18.6.5}%
+\contentsline {subsection}{\numberline {18.6.6}Adaptive Moment Estimation (Adam)}{418}{subsection.18.6.6}%
+\contentsline {subsection}{\numberline {18.6.7}Learning Rate Decay}{420}{subsection.18.6.7}%
+\contentsline {section}{\numberline {18.7}Errors, Evaluation \& Regularization}{421}{section.18.7}%
+\contentsline {subsection}{\numberline {18.7.1}L2 Regularization}{421}{subsection.18.7.1}%
+\contentsline {subsection}{\numberline {18.7.2}Dataset Augmentation}{422}{subsection.18.7.2}%
+\contentsline {subsection}{\numberline {18.7.3}Adding Noise To The Inputs/Outputs}{422}{subsection.18.7.3}%
+\contentsline {subsection}{\numberline {18.7.4}Early Stopping}{422}{subsection.18.7.4}%
+\contentsline {subsection}{\numberline {18.7.5}Ensemble Methods}{422}{subsection.18.7.5}%
+\contentsline {subsection}{\numberline {18.7.6}Dropout}{422}{subsection.18.7.6}%
+\contentsline {section}{\numberline {18.8}Improvements On A Feedforward Neural Network}{423}{section.18.8}%
+\contentsline {subsection}{\numberline {18.8.1}Activation Functions}{423}{subsection.18.8.1}%
+\contentsline {subsection}{\numberline {18.8.2}Initialization Strategies}{425}{subsection.18.8.2}%
+\contentsline {subsection}{\numberline {18.8.3}Batch Normalization}{427}{subsection.18.8.3}%
+\contentsline {chapter}{\numberline {19}Deep Learning: Models}{429}{chapter.19}%
+\contentsline {section}{\numberline {19.1}Convolutional Neural Networks}{429}{section.19.1}%
+\contentsline {subsection}{\numberline {19.1.1}Building A Convolutional Neural Network}{429}{subsection.19.1.1}%
+\contentsline {subsection}{\numberline {19.1.2}Convolutional Neural Network Architectures}{435}{subsection.19.1.2}%
+\contentsline {subsubsection}{\numberline {19.1.2.1}LeNet}{435}{subsubsection.19.1.2.1}%
+\contentsline {subsubsection}{\numberline {19.1.2.2}AlexNet}{435}{subsubsection.19.1.2.2}%
+\contentsline {subsubsection}{\numberline {19.1.2.3}ZFNet}{436}{subsubsection.19.1.2.3}%
+\contentsline {subsubsection}{\numberline {19.1.2.4}VGGNet}{436}{subsubsection.19.1.2.4}%
+\contentsline {subsubsection}{\numberline {19.1.2.5}GoogLeNet}{436}{subsubsection.19.1.2.5}%
+\contentsline {section}{\numberline {19.2}Word Embedding}{436}{section.19.2}%
+\contentsline {subsection}{\numberline {19.2.1}One-Hot Representation}{437}{subsection.19.2.1}%
+\contentsline {subsection}{\numberline {19.2.2}Distributed Representation}{437}{subsection.19.2.2}%
+\contentsline {subsection}{\numberline {19.2.3}Word2vec}{438}{subsection.19.2.3}%
+\contentsline {subsubsection}{\numberline {19.2.3.1}Continuous Bag-Of-Words (CBOW)}{439}{subsubsection.19.2.3.1}%
+\contentsline {subsubsection}{\numberline {19.2.3.2}Continuous Skip-Gram}{441}{subsubsection.19.2.3.2}%
+\contentsline {section}{\numberline {19.3}Recurrent Neural Networks}{442}{section.19.3}%
+\contentsline {subsection}{\numberline {19.3.1}Building A Recurrent Neural Network}{443}{subsection.19.3.1}%
+\contentsline {subsection}{\numberline {19.3.2}Backpropagation Through Time}{445}{subsection.19.3.2}%
+\contentsline {subsection}{\numberline {19.3.3}Long Short Term Memory}{447}{subsection.19.3.3}%
+\contentsline {subsection}{\numberline {19.3.4}Gated Recurrent Unit}{452}{subsection.19.3.4}%
+\contentsline {part}{IV\hspace {1em}Computer Science}{454}{part.4}%
+\contentsline {chapter}{\numberline {20}History Of Computer (Science)}{455}{chapter.20}%
+\contentsline {section}{\numberline {20.1}Early Computing}{455}{section.20.1}%
+\contentsline {section}{\numberline {20.2}Alan Turing \& The Turing Machine}{461}{section.20.2}%
+\contentsline {section}{\numberline {20.3}Transistors \& Chips}{465}{section.20.3}%
+\contentsline {section}{\numberline {20.4}The Personal Computer Revolution}{470}{section.20.4}%
+\contentsline {section}{\numberline {20.5}Programming}{481}{section.20.5}%
+\contentsline {subsection}{\numberline {20.5.1}Early Programming}{481}{subsection.20.5.1}%
+\contentsline {subsection}{\numberline {20.5.2}The First Programming Languages}{484}{subsection.20.5.2}%
+\contentsline {chapter}{\numberline {21}Hardware \& Software}{488}{chapter.21}%
+\contentsline {section}{\numberline {21.1}Binary Representation}{489}{section.21.1}%
+\contentsline {subsection}{\numberline {21.1.1}NOT Gate}{490}{subsection.21.1.1}%
+\contentsline {subsection}{\numberline {21.1.2}AND Gate}{491}{subsection.21.1.2}%
+\contentsline {subsection}{\numberline {21.1.3}OR Gate}{491}{subsection.21.1.3}%
+\contentsline {subsection}{\numberline {21.1.4}Representing Numbers \& Letters With Binary}{492}{subsection.21.1.4}%
+\contentsline {section}{\numberline {21.2}Hardware}{495}{section.21.2}%
+\contentsline {subsection}{\numberline {21.2.1}Arithmetic Logic Unit (ALU)}{496}{subsection.21.2.1}%
+\contentsline {subsection}{\numberline {21.2.2}Registers \& RAM}{497}{subsection.21.2.2}%
+\contentsline {subsection}{\numberline {21.2.3}Central Processing Unit (CPU)}{501}{subsection.21.2.3}%
+\contentsline {subsubsection}{\numberline {21.2.3.1}Application: Building A CPU}{505}{subsubsection.21.2.3.1}%
+\contentsline {subsection}{\numberline {21.2.4}Advanced CPU Designs}{508}{subsection.21.2.4}%
+\contentsline {subsubsection}{\numberline {21.2.4.1}Cache}{509}{subsubsection.21.2.4.1}%
+\contentsline {subsubsection}{\numberline {21.2.4.2}Instruction Pipelining}{510}{subsubsection.21.2.4.2}%
+\contentsline {subsubsection}{\numberline {21.2.4.3}Multi-Core \& Multiple Processors}{510}{subsubsection.21.2.4.3}%
+\contentsline {subsection}{\numberline {21.2.5}Memory \& Storage}{511}{subsection.21.2.5}%
+\contentsline {subsection}{\numberline {21.2.6}Motherboard}{517}{subsection.21.2.6}%
+\contentsline {section}{\numberline {21.3}Software}{518}{section.21.3}%
+\contentsline {subsection}{\numberline {21.3.1}Operating Systems}{518}{subsection.21.3.1}%
+\contentsline {subsection}{\numberline {21.3.2}Files \& File Systems}{521}{subsection.21.3.2}%
+\contentsline {subsection}{\numberline {21.3.3}Compression}{524}{subsection.21.3.3}%
+\contentsline {chapter}{\numberline {22}Command Line}{526}{chapter.22}%
+\contentsline {section}{\numberline {22.1}Basics}{526}{section.22.1}%
+\contentsline {subsection}{\numberline {22.1.1}Commands}{526}{subsection.22.1.1}%
+\contentsline {subsubsection}{\numberline {22.1.1.1}Redirection}{529}{subsubsection.22.1.1.1}%
+\contentsline {subsection}{\numberline {22.1.2}Shell}{532}{subsection.22.1.2}%
+\contentsline {subsubsection}{\numberline {22.1.2.1}Environment}{535}{subsubsection.22.1.2.1}%
+\contentsline {section}{\numberline {22.2}Navigation}{536}{section.22.2}%
+\contentsline {subsection}{\numberline {22.2.1}Files}{536}{subsection.22.2.1}%
+\contentsline {subsection}{\numberline {22.2.2}Directories}{538}{subsection.22.2.2}%
+\contentsline {section}{\numberline {22.3}Manipulation}{543}{section.22.3}%
+\contentsline {section}{\numberline {22.4}Multiuser}{544}{section.22.4}%
+\contentsline {subsubsection}{\numberline {22.4.0.1}Changing Identities}{546}{subsubsection.22.4.0.1}%
+\contentsline {subsection}{\numberline {22.4.1}Permissions}{548}{subsection.22.4.1}%
+\contentsline {section}{\numberline {22.5}Multitasking}{552}{section.22.5}%
+\contentsline {chapter}{\numberline {23}Networks}{555}{chapter.23}%
+\contentsline {section}{\numberline {23.1}Basic Definitions}{555}{section.23.1}%
+\contentsline {section}{\numberline {23.2}Open Systems Interconnection (OSI)}{557}{section.23.2}%
+\contentsline {subsection}{\numberline {23.2.1}Layer 1: Physical Layer}{558}{subsection.23.2.1}%
+\contentsline {subsection}{\numberline {23.2.2}Layer 2: Data Link Layer}{559}{subsection.23.2.2}%
+\contentsline {section}{\numberline {23.3}Network Devices (Hardware)}{561}{section.23.3}%
+\contentsline {chapter}{\numberline {24}Programming \& Software Enginnering}{566}{chapter.24}%
+\contentsline {section}{\numberline {24.1}Programming Basics}{567}{section.24.1}%
+\contentsline {section}{\numberline {24.2}Algorithms \& Data Structures}{574}{section.24.2}%
+\contentsline {chapter}{\numberline {25}Technologies}{577}{chapter.25}%
+\contentsline {section}{\numberline {25.1}Serialization}{577}{section.25.1}%
+\contentsline {subsection}{\numberline {25.1.1}CSV}{578}{subsection.25.1.1}%
+\contentsline {subsection}{\numberline {25.1.2}JSON}{579}{subsection.25.1.2}%
+\contentsline {subsection}{\numberline {25.1.3}XML}{580}{subsection.25.1.3}%
+\contentsline {subsection}{\numberline {25.1.4}YAML}{582}{subsection.25.1.4}%
+\contentsline {section}{\numberline {25.2}Cryptography}{584}{section.25.2}%
+\contentsline {subsection}{\numberline {25.2.1}Secure Shell (SSH)}{585}{subsection.25.2.1}%
+\contentsline {section}{\numberline {25.3}Homebrew}{587}{section.25.3}%
+\contentsline {subsection}{\numberline {25.3.1}Installation}{587}{subsection.25.3.1}%
+\contentsline {subsection}{\numberline {25.3.2}Package Management}{587}{subsection.25.3.2}%
+\contentsline {section}{\numberline {25.4}Git}{589}{section.25.4}%
+\contentsline {subsection}{\numberline {25.4.1}Installation \& Configuration}{589}{subsection.25.4.1}%
+\contentsline {subsection}{\numberline {25.4.2}Git Repository (Repo)}{590}{subsection.25.4.2}%
+\contentsline {subsection}{\numberline {25.4.3}Branches}{595}{subsection.25.4.3}%
+\contentsline {subsection}{\numberline {25.4.4}Remote Repository (Remote)}{596}{subsection.25.4.4}%
+\contentsline {subsection}{\numberline {25.4.5}Useful Commands}{598}{subsection.25.4.5}%
+\contentsline {subsubsection}{\numberline {25.4.5.1}Git Cherry$-$Pick}{598}{subsubsection.25.4.5.1}%
+\contentsline {subsubsection}{\numberline {25.4.5.2}Git Stash}{598}{subsubsection.25.4.5.2}%
+\contentsline {section}{\numberline {25.5}Docker}{600}{section.25.5}%
+\contentsline {subsection}{\numberline {25.5.1}Introduction}{600}{subsection.25.5.1}%
+\contentsline {subsection}{\numberline {25.5.2}Installation}{602}{subsection.25.5.2}%
+\contentsline {subsection}{\numberline {25.5.3}Images}{602}{subsection.25.5.3}%
+\contentsline {subsubsection}{\numberline {25.5.3.1}Building Images}{603}{subsubsection.25.5.3.1}%
+\contentsline {subsection}{\numberline {25.5.4}Containers}{605}{subsection.25.5.4}%
+\contentsline {subsubsection}{\numberline {25.5.4.1}Multiple Containers}{608}{subsubsection.25.5.4.1}%
+\contentsline {subsection}{\numberline {25.5.5}Volumes}{610}{subsection.25.5.5}%
+\contentsline {chapter}{\numberline {26}Google Cloud}{612}{chapter.26}%
+\contentsline {section}{\numberline {26.1}Cloud Computing}{612}{section.26.1}%
+\contentsline {subsection}{\numberline {26.1.1}Deployment Models}{613}{subsection.26.1.1}%
+\contentsline {subsection}{\numberline {26.1.2}Service Models}{615}{subsection.26.1.2}%
+\contentsline {subsection}{\numberline {26.1.3}Geography \& Regions}{618}{subsection.26.1.3}%
+\contentsline {section}{\numberline {26.2}Resources}{619}{section.26.2}%
+\contentsline {section}{\numberline {26.3}Billing}{620}{section.26.3}%
+\contentsline {section}{\numberline {26.4}Identity \& Access Management (IAM)}{622}{section.26.4}%
+\contentsline {subsection}{\numberline {26.4.1}Principal}{622}{subsection.26.4.1}%
+\contentsline {subsection}{\numberline {26.4.2}Permissions}{626}{subsection.26.4.2}%
+\contentsline {subsection}{\numberline {26.4.3}Role}{626}{subsection.26.4.3}%
+\contentsline {subsection}{\numberline {26.4.4}Binding}{628}{subsection.26.4.4}%
+\contentsline {subsection}{\numberline {26.4.5}Policy}{628}{subsection.26.4.5}%
+\contentsline {subsection}{\numberline {26.4.6}Identity \& Access Management (IAM)}{630}{subsection.26.4.6}%
+\contentsline {section}{\numberline {26.5}APIs \& Services}{631}{section.26.5}%
+\contentsline {subsection}{\numberline {26.5.1}Client Libraries}{631}{subsection.26.5.1}%
+\contentsline {section}{\numberline {26.6}Google Cloud SDK}{632}{section.26.6}%
+\contentsline {subsection}{\numberline {26.6.1}Authorization}{633}{subsection.26.6.1}%
+\contentsline {subsection}{\numberline {26.6.2}Properties \& Configurations}{634}{subsection.26.6.2}%
+\contentsline {subsection}{\numberline {26.6.3}Components}{636}{subsection.26.6.3}%
+\contentsline {subsection}{\numberline {26.6.4}Projects}{637}{subsection.26.6.4}%
+\contentsline {subsection}{\numberline {26.6.5}IAM}{637}{subsection.26.6.5}%
+\contentsline {section}{\numberline {26.7}Google Compute Engine (GCE)}{638}{section.26.7}%
+\contentsline {subsection}{\numberline {26.7.1}Machine Configuration}{638}{subsection.26.7.1}%
+\contentsline {subsection}{\numberline {26.7.2}Boot Disc}{640}{subsection.26.7.2}%
+\contentsline {subsection}{\numberline {26.7.3}Billing}{640}{subsection.26.7.3}%
+\contentsline {subsection}{\numberline {26.7.4}Connecting To An Instance}{640}{subsection.26.7.4}%
+\contentsline {section}{\numberline {26.8}Google Kubernetes Engine (GKE)}{641}{section.26.8}%
+\contentsline {subsection}{\numberline {26.8.1}Kubernetes}{641}{subsection.26.8.1}%
+\contentsline {subsection}{\numberline {26.8.2}Components}{641}{subsection.26.8.2}%
+\contentsline {subsection}{\numberline {26.8.3}Google Kubernetes Engine (GKE)}{653}{subsection.26.8.3}%
+\contentsline {subsection}{\numberline {26.8.4}Kubectl}{653}{subsection.26.8.4}%
+\contentsline {section}{\numberline {26.9}Kubeflow}{659}{section.26.9}%
+\contentsline {subsection}{\numberline {26.9.1}Components}{660}{subsection.26.9.1}%
+\contentsline {part}{V\hspace {1em}Economics \& Finance}{662}{part.5}%
+\contentsline {chapter}{\numberline {27}Principles Of Economics}{663}{chapter.27}%
+\contentsline {section}{\numberline {27.1}A Brief History Of Economics}{663}{section.27.1}%
+\contentsline {section}{\numberline {27.2}Basic Terminology}{666}{section.27.2}%
+\contentsline {section}{\numberline {27.3}The Ten Principles Of Economics}{670}{section.27.3}%
+\contentsline {chapter}{\numberline {28}Microeconomics}{680}{chapter.28}%
+\contentsline {section}{\numberline {28.1}The Market Forces Of Supply And Demand}{680}{section.28.1}%
+\contentsline {subsection}{\numberline {28.1.1}Demand}{682}{subsection.28.1.1}%
+\contentsline {subsection}{\numberline {28.1.2}Supply}{688}{subsection.28.1.2}%
+\contentsline {subsection}{\numberline {28.1.3}Supply And Demand}{692}{subsection.28.1.3}%
+\contentsline {subsection}{\numberline {28.1.4}Application: Changes In Market Equilibrium Due To Shifts}{694}{subsection.28.1.4}%
+\contentsline {section}{\numberline {28.2}Elasticity}{697}{section.28.2}%
+\contentsline {subsection}{\numberline {28.2.1}The Elasticity Of Demand}{697}{subsection.28.2.1}%
+\contentsline {subsection}{\numberline {28.2.2}The Elasticity Of Supply}{700}{subsection.28.2.2}%
+\contentsline {section}{\numberline {28.3}Applications Of Supply, Demand, And Elasticity}{703}{section.28.3}%
+\contentsline {subsection}{\numberline {28.3.1}Various}{703}{subsection.28.3.1}%
+\contentsline {subsection}{\numberline {28.3.2}Price Controls}{709}{subsection.28.3.2}%
+\contentsline {subsection}{\numberline {28.3.3}Taxes}{715}{subsection.28.3.3}%
+\contentsline {section}{\numberline {28.4}Consumers, Producers, And The Efficiency Of Markets}{719}{section.28.4}%
+\contentsline {subsection}{\numberline {28.4.1}Consumer Surplus}{719}{subsection.28.4.1}%
+\contentsline {subsection}{\numberline {28.4.2}Producer Surplus}{722}{subsection.28.4.2}%
+\contentsline {subsection}{\numberline {28.4.3}Market Efficiency}{725}{subsection.28.4.3}%
+\contentsline {subsection}{\numberline {28.4.4}Application: Efficiency Of Markets \& Externalities}{727}{subsection.28.4.4}%
+\contentsline {section}{\numberline {28.5}Consumer Theory}{729}{section.28.5}%
+\contentsline {subsection}{\numberline {28.5.1}The Budget Constraint}{729}{subsection.28.5.1}%
+\contentsline {subsection}{\numberline {28.5.2}Indifference Curves}{731}{subsection.28.5.2}%
+\contentsline {subsection}{\numberline {28.5.3}Optimization}{735}{subsection.28.5.3}%
+\contentsline {section}{\numberline {28.6}Frontiers Of Microeconomics}{739}{section.28.6}%
+\contentsline {subsection}{\numberline {28.6.1}Asymmetric Information}{739}{subsection.28.6.1}%
+\contentsline {subsection}{\numberline {28.6.2}Political Economy}{741}{subsection.28.6.2}%
+\contentsline {subsection}{\numberline {28.6.3}Behavioral Economics}{743}{subsection.28.6.3}%
+\contentsline {chapter}{\numberline {29}Financial Statements}{744}{chapter.29}%
+\contentsline {section}{\numberline {29.1}Basic Accountants Principles}{744}{section.29.1}%
+\contentsline {section}{\numberline {29.2}Balance Sheet}{747}{section.29.2}%
+\contentsline {subsection}{\numberline {29.2.1}Assets}{748}{subsection.29.2.1}%
+\contentsline {subsubsection}{\numberline {29.2.1.1}Current Assets}{749}{subsubsection.29.2.1.1}%
+\contentsline {subsubsection}{\numberline {29.2.1.2}Other Assets}{750}{subsubsection.29.2.1.2}%
+\contentsline {subsubsection}{\numberline {29.2.1.3}Fixed Assets}{750}{subsubsection.29.2.1.3}%
+\contentsline {subsubsection}{\numberline {29.2.1.4}Total Assets}{751}{subsubsection.29.2.1.4}%
+\contentsline {subsection}{\numberline {29.2.2}Liabilities \& Equity}{751}{subsection.29.2.2}%
+\contentsline {subsubsection}{\numberline {29.2.2.1}Current Liabilities}{752}{subsubsection.29.2.2.1}%
+\contentsline {subsubsection}{\numberline {29.2.2.2}Long-Term Liabilities}{752}{subsubsection.29.2.2.2}%
+\contentsline {subsubsection}{\numberline {29.2.2.3}Total Liabilities}{753}{subsubsection.29.2.2.3}%
+\contentsline {subsubsection}{\numberline {29.2.2.4}Equity}{753}{subsubsection.29.2.2.4}%
+\contentsline {subsection}{\numberline {29.2.3}Balance Sheet Summary}{755}{subsection.29.2.3}%
+\contentsline {section}{\numberline {29.3}Income Statement}{756}{section.29.3}%
+\contentsline {subsection}{\numberline {29.3.1}Sales}{756}{subsection.29.3.1}%
+\contentsline {subsection}{\numberline {29.3.2}Costs \& Expenses}{756}{subsection.29.3.2}%
+\contentsline {subsection}{\numberline {29.3.3}Income}{758}{subsection.29.3.3}%
+\contentsline {subsection}{\numberline {29.3.4}Income Statement Summary}{759}{subsection.29.3.4}%
+\contentsline {section}{\numberline {29.4}Cash Flow Statement}{759}{section.29.4}%
+\contentsline {subsection}{\numberline {29.4.1}Cash Flow Statement Summary}{762}{subsection.29.4.1}%
+\contentsline {chapter}{Appendices}{764}{section*.458}%
+\contentsline {chapter}{\numberline {A}Constrained Optimization}{765}{appendix.a.A}%
+\contentsline {section}{\numberline {A.1}Equality Constrained Optimization}{765}{section.a.A.1}%
+\contentsline {section}{\numberline {A.2}Equality \& Inequality Constrained Optimization}{766}{section.a.A.2}%
+\contentsline {chapter}{\numberline {B}Kernels}{767}{appendix.a.B}%
