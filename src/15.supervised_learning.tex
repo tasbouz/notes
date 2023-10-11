@@ -1,4 +1,5 @@
 %! suppress = EscapeUnderscore
+%! suppress = EscapeUnderscore
 %! suppress = EncloseWithLeftRight
 Supervised learning is one of the four basic categories of machine learning, and it consists of a family of models
 and techniques that we will introduce in this chapter. First let's start with a formal definition of supervised
@@ -64,7 +65,7 @@ It is a usual procedure to define $x_0 = 1$, so the linear regression hypothesis
 h(x) = w_0 x_0 + w_1 x_1 + \ldots + w_n x_n = \sum_{i=0}^{n} w_i x_i
 \ese
 
-Moreover by defining the feature vector $\boldsymbol{x}$ and parameter vector $\boldsymbol{w}$ as:
+Moreover, by defining the feature vector $\boldsymbol{x}$ and parameter vector $\boldsymbol{w}$ as:
 \bse
 \boldsymbol{x} = \begin{bmatrix} x_{0} \\ x_{1} \\ \vdots \\ x_{n} \end{bmatrix}, \qquad
 \boldsymbol{w} = \begin{bmatrix} w_{0} \\ w_{1} \\ \vdots \\ w_{n} \end{bmatrix}
@@ -265,7 +266,7 @@ J(\boldsymbol{w}) = \frac{1}{2m} \sum_{i=1}^{m} | y^{(i)} - \boldsymbol{w}^{\int
 MAE measures the average magnitude of the errors in a set of predictions, without considering their direction. It's
 the average over the test sample of the absolute differences between prediction and actual observation where all
 individual differences have equal weight. If the absolute value is not taken (the signs of the errors are not
-removed), the average error becomes the MBE.
+removed), the average error becomes the MBE\@.
 
 \bd [Mean Absolute Percentage Error]
 \textbf{Mean absolute percentage error loss function} (MAPE) $J(\boldsymbol{w})$ is defined as:
@@ -461,19 +462,82 @@ information into a format usable by a machine learning model.
 \ed
 
 For complex tasks the number of features used can go up to millions while, for domain-specific tasks you might need
-subject matter expertise to be able to come up with useful features. In general, because of the importance and the
-ubiquity of feature engineering in machine learning projects, there have been many techniques developed to streamline
-the process.
+subject matter expertise to be able to come up with useful features. We usually refer to the set of all possible
+features as the ``feature space''.
 
-\subsection{Removing Features}
+\bd[Feature Space]
+The \textbf{feature space} is the $N$ dimensional space defined by the set of $N$ possible features, not including
+the target.
+\ed
 
-In general it's a good practice to explore and visualize the data in order to identify useless information. In this
-step you can drop the attributes that provide no useful information for the task, drop variables that have a very low
-variation (i.e.\ not too much information), drop variables that have very low correlation with the target, and
-finally find variables that are highly correlated with each other (i.e.\ same behaviour), and keep the ones that have
-higher correlation with the target.
+In general, because of the importance and the ubiquity of feature engineering in machine learning projects, there
+have been many techniques developed to streamline the process. In this section we will introduce some of the most
+common techniques ones.
 
-\subsection{Missing Values}
+\subsection{Feature Selection}
+
+\bd[Feature Selection]
+\textbf{Feature selection} is the process of reducing the size of feature space by selecting a subset of relevant
+features for use in model construction.
+\ed
+
+Feature selection techniques are used for several reasons like, simplifying models by reducing complexity to make
+them easier to interpret, avoiding the curse of dimensionality, and enhancing generalization by reducing overfitting.
+There are also production-related reasons like reducing resource requirements, speeding up predicting and training
+times, and minimizing both training and inference costs. \v
+
+There are some general guidelines that can be followed when selecting features, like relevance and independence.
+Starting with relevance, we want to remove features that don't influence the outcome. In general it's a good practice
+to explore and visualize the data in order to identify useless information. In this step we can drop the attributes
+that provide no useful information for the task, drop variables that have a very low variation (i.e.\ not too much
+information), and drop variables that have very low correlation with the target. \v
+
+Moving on to independence, we want to remove features that are highly correlated with each other. The reason is that
+highly correlated features provide redundant information and they can cause overfitting. In order to do so, we use
+a set of different methods called ``filter methods'', ``wrapper methods'', and ``embedded methods''.
+
+\bd[Filter Methods]
+\textbf{Filter methods} are feature selection methods that use statistical techniques to evaluate the relationship
+between each feature and the target variable. They are generally univariate and consider the feature independently,
+or with regard to the dependent variable.
+\ed
+
+The most common filter methods are:
+\bit
+\item \textbf{Pearson Correlation}: Used for linear correlation between the features.
+\item \textbf{Kendall Tau Rank Correlation}: Used for monotonic relationships and small sample sizes.
+\item \textbf{Spearman's Rank Correlation Coefficient}: Used for monotonic relationships.
+\item \textbf{Mutual Information}: Used for non-linear relationships.
+\item \textbf{F-Test}: Used for calculating the F-statistic between categorical features and the target.
+\item \textbf{Chi-Squared Test}: Used for calculating the chi-squared statistic between categorical features and the
+target.
+\eit
+
+\bd[Wrapper Methods]
+\textbf{Wrapper methods} are feature selection methods that use a machine learning algorithm to evaluate the
+performance of the model with a given subset of features.
+\ed
+
+Wrapper methods are generally computationally expensive and consider the selection of a set of features as a search
+problem. The most common wrapper methods are:
+\bit
+\item \textbf{Forward Selection}: Starts with an empty set of features and adds features one by one until the
+termination criterion is reached.
+\item \textbf{Backward Elimination}: Starts with the full set of features and removes features one by one until the
+termination criterion is reached.
+\item \textbf{Recursive Feature Elimination}: Starts with the full set of features and recursively removes features
+one by one until the termination criterion is reached.
+\eit
+
+\bd[Embedded Methods]
+\textbf{Embedded methods} are feature selection methods that use machine learning algorithms that have built-in
+feature selection methods.
+\ed
+
+Embedded methods are generally computationally expensive and consider the selection of a set of features as part of
+the learning process.
+
+\subsubsection{Missing Values}
 
 One of the first things you might notice when dealing with data in production is that some values are missing.
 However, not all types of missing values are equal. There are three types of missing values.
@@ -547,9 +611,12 @@ before inputting features into models, it's important to scale them to be simila
 \textbf{Feature scaling} is the process of scaling the features to get all attributes to have the same scale.
 \ed
 
-This is one of the simplest things you can do that often results in a performance boost for your model. Neglecting to
-do so can cause your model to make gibberish predictions. There are two common ways to get all attributes to have the
-same scale: ``normalization'' and ``standardization''.
+This is one of the simplest things you can do that often results in a performance boost for your model. More
+specificaly some of the benefits of feature scaling is that it helps neural nets converge faster, avoids null errors
+during training and the model learns the right weights for each feature. On the other hand, neglecting to do so can
+cause your model to make gibberish predictions. \v
+
+There are two common ways to get all attributes to have the same scale: ``normalization'' and ``standardization''.
 
 \bd[Normalization]
 \textbf{Normalization} is the process where the values are shifted and rescaled so that they end up ranging from 0 to 1
@@ -559,6 +626,12 @@ x^\prime = \frac{x - \min(x)}{\max(x) - \min(x)}
 \ese
 \ed
 
+Normalization is also called ``min-max scaling''. It is very sensitive to outliers in the data. If there are
+outliers in the data, they will be mapped to a very small or large value, and the rest of the data will be mapped to
+a very small interval.
+
+\fig{normalization}{0.5}
+
 \bd[Standardization]
 \textbf{Standardization} is the process where the values are shifted and rescaled so that they end up having zero mean
 and unit variance following the formula:
@@ -566,6 +639,8 @@ and unit variance following the formula:
 x^\prime = \frac{x - \bar{x}}{\sigma}
 \ese
 \ed
+
+\fig{standardization}{0.5}
 
 Unlike normalization, standardization does not bound values to a specific range, which may be a problem for some
 algorithms. However, standardization is much less affected by outliers. \v
@@ -577,13 +652,15 @@ predictions for the test samples. This information isn't available in production
 likely degrade. This type of leakage is similar to the type of leakage caused by imputation, and in order to be
 avoided, always split your data first before scaling, then use the statistics from the train split to scale all the
 splits. Some even suggest that we split our data before any exploratory data analysis and data processing, so that we
-don't accidentally gain information about the test split.
+don't accidentally gain information about the test split. \v
 
-\subsection{Discretizating Features}
+Last but not least, another technique usually used in feature scaling is the so called ``discretization''.
 
 \bd[Discretization]
 \textbf{Discretization} is the process of turning a continuous feature into a discrete feature.
 \ed
+
+\fig{cvsd.png}{0.5}
 
 With discretization instead of having to learn an infinite number of possible incomes, our model can focus on
 learning only a certain amount of categories (buckets), which is a much easier task to learn. This technique is
@@ -608,15 +685,24 @@ crossing increases the number of features models use, it can make models overfit
 
 Generally, adding more features leads to better model performance. Usually the list of features used for a model in
 production only grows over time. However, more features doesn't always mean better model performance. Having too many
-features can be bad both during training and serving your model for many reasons. First of all, the more features you
-have, the more opportunities there are for data leakage. Secondly, too many features can cause overfitting. From a
-technical perspective, too many features can increase memory required to serve a model, which, in turn, might require
-you to use a more expensive machine/instance to serve your model. Also, too many features can increase inference
-latency when doing predictions. Last but not least, useless features become technical debts. Whenever your data
-pipeline changes, all the affected features need to be adjusted accordingly. \v
+features can be bad both during training and serving your model for many reasons. \v
+
+First of all, the more features you have, the more opportunities there are for data leakage. Secondly, too many
+features can cause overfitting. From a technical perspective, too many features can increase memory required to serve
+a model, which, in turn, might require you to use a more expensive machine/instance to serve your model. Also, too
+many features can increase inference latency when doing predictions. Last but not least, useless features become
+technical debts. Whenever your data pipeline changes, all the affected features need to be adjusted accordingly. \v
 
 In general, there are two factors you might want to consider when evaluating whether a feature is good for a model:
-importance to the model and generalization to unseen data.
+``feature importance'' and ``feature generalization''.
+
+\bd[Feature Importance]
+\textbf{Feature importance} is the measure of how much information a feature provides to a model.
+\ed
+
+\bd[Feature Generalization]
+\textbf{Feature generalization} is the measure of how well a model performs on data it hasn't seen before.
+\ed
 
 \section{Logistic Regression}
 
@@ -1681,7 +1767,7 @@ to cost/benefit analysis of diagnostic decision making. \v
 
 When using normalized units, the area under the curve (often referred to as simply the AUC) is equal to the
 probability that a classifier will rank a randomly chosen positive instance higher than a randomly chosen negative
-one (assuming 'positive' ranks higher than 'negative').
+one (assuming ``positive'' ranks higher than ``negative'').
 
 \fig{roc}{0.4}
 
@@ -1765,10 +1851,10 @@ Consider logistic regression, where the probability $P(y = 1| \boldsymbol{x}; \b
 h(\boldsymbol{w}^{\intercal} \boldsymbol{x}) = \frac{1}{1 + exp(-\boldsymbol{w}^{\intercal} \boldsymbol{x})}
 \ese
 
-We would then predict 1 on an input $\boldsymbol{x}$ if and only if $h (\boldsymbol{w}^{\intercal} \boldsymbol{x})
+We would then predict 1 on an input $\boldsymbol{x}$ if and only if $h \left(\boldsymbol{w}^{\intercal} \boldsymbol{x}\right)
 \geq 0.5$ or equivalently, if and only if $\boldsymbol{w}^{\intercal} \boldsymbol{x} \geq 0$. Consider a positive
 training example ($y = 1$). The larger $\boldsymbol{w}^{\intercal} \boldsymbol{x}$ is, the larger also is $h
-(\boldsymbol{w}^{\intercal} \boldsymbol{x})$ a.k.a the larger $P(y = 1| \boldsymbol{x}; \boldsymbol{w})$ is, and thus
+\left(\boldsymbol{w}^{\intercal} \boldsymbol{x}\right)$ a.k.a the larger $P(y = 1| \boldsymbol{x}; \boldsymbol{w})$ is, and thus
 also the higher our degree of confidence that the label is 1. Thus, informally we can think of our prediction as
 being a very confident one that $y = 1$ if $\boldsymbol{w}^{\intercal} \boldsymbol{x} \gg 0$. \v
 
@@ -1830,8 +1916,8 @@ a large functional margin represents a confident and a correct prediction. \v
 
 For a linear classifier with the choice of $g$ given above, there's one property of the functional margin that makes
 it not a very good measure of confidence, however. Given our choice of $g$, we note that if we replace
-$\boldsymbol{w}$ with $2\boldsymbol{w}$ and $b$ with $2b$, then since $g (\boldsymbol{w}^{\intercal} \boldsymbol{x} +
-b) = g(2\boldsymbol{w}^{\intercal} \boldsymbol{x} + 2b)$ this would not change $h_{\boldsymbol{w}, b}
+$\boldsymbol{w}$ with $2\boldsymbol{w}$ and $b$ with $2b$, then since $g \left(\boldsymbol{w}^{\intercal} \boldsymbol{x} +
+b\right) = g\left(2\boldsymbol{w}^{\intercal} \boldsymbol{x} + 2b\right)$ this would not change $h_{\boldsymbol{w}, b}
 (\boldsymbol{x})$ at all meaning that $g$, and hence also $h_{\boldsymbol{w}, b} (\boldsymbol{x})$, depends only on
 the sign, but not on the magnitude, of $\boldsymbol{w}^{\intercal} \boldsymbol{x} + b$. However, replacing the
 scaling by a factor also results in multiplying our functional margin by the same factor. Thus, it seems that by

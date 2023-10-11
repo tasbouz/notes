@@ -423,7 +423,7 @@ word based on the source context words (surrounding words).
 Let's see an example. Consider the simple sentence ``the man sat on a chair''. This can be seen as pairs of (context,
 word) where if we consider a context window of size 1 (for simplicity) we have ([the], man), ([man], sat), ([sat],
 on), ([on], a), ([a], chair). We have used a list for context just to make obvious that if one picks a window greater
-than 1 then we would have more context words, e.g.\ for a window of size 2 we would example like (the, man], sat),
+than 1 then we would have more context words, e.g.\ for a window of size 2 we would example like ([the, man], sat),
 ([man, sat], on) and so on \ldots Thus the model tries to predict the target word based on the context word.
 \ee
 
@@ -535,7 +535,7 @@ context window words based on the target word. \v
 Notice that in the case of where the context window is equal to 1, the two models are in practice identical since
 both of them try to predict one word based on another word. However, in the case where the window is greater than 1,
 then CBOW tries to predict one word based on all the context words, while skip-gram tried to predict all the context
-words based on one word. This is why we said that skip-gram is actually the reverse of CBOW.
+words based on one word. This is why we said that skip-gram is actually the reverse of CBOW\@.
 
 \fig{skipgram}{0.45}
 \ee
@@ -569,7 +569,7 @@ There are 3 popular ways to overcome this problem. We will just mention them for
 \item Solution 3: Hierarchical softmax.
 \eit
 
-Finally it is worth mentioning the existence of a model that combines SVD and Word2vec called ``GloVe''.
+Finally, it is worth mentioning the existence of a model that combines SVD and Word2vec called ``GloVe''.
 
 \section{Recurrent Neural Networks}
 
@@ -592,7 +592,7 @@ number of characters).
 \fig{rnn0}{0.53}
 \ee
 
-This kind of problems are known as ``sequence learning problems'', because we need to look at a sequence of
+These kind of problems are known as ``sequence learning problems'', because we need to look at a sequence of
 (dependent) inputs and produce an output (or outputs). Let us look another example.
 
 \be
@@ -776,7 +776,7 @@ network to W. More precisely:
 \cdot \left[ \boldsymbol{s_{i-1}} + W \cdot \frac{\partial(\boldsymbol{s_{i-1}})} {\partial W} \right]
 \end{align*}}
 
-However $\boldsymbol{s_{i-1}}$ is also a function of $W$ since:
+However, $\boldsymbol{s_{i-1}}$ is also a function of $W$ since:
 \bse
 \boldsymbol{s_{i-1}}= g(U \boldsymbol{x_{i-1}} + W \boldsymbol{s_{i-2}})
 \ese
@@ -800,7 +800,7 @@ By substituting back we obtain:
 \cdot \frac{\partial(\boldsymbol{s_{i-2}})} {\partial W} \right] \right] \\ &= \ldots
 \end{align*}}
 
-Similarly $\boldsymbol{s_{i-1}}$ is also a function of $W$:
+Similarly, $\boldsymbol{s_{i-1}}$ is also a function of $W$:
 \bse
 \boldsymbol{s_{i-2}}= g(U \boldsymbol{x_{i-2}} + W \boldsymbol{s_{i-3}})
 \ese
@@ -810,7 +810,7 @@ where the backpropagation is over. The main difference with the usual backpropag
 backpropagating back to the network we also backpropagate over all previous time-steps (i.e.\ back in time). For this
 reason we call this backpropagation method ``backpropagation through time''. \v
 
-Finally for $\nabla_U J(y_i, \hat{y}_i ; \theta)$ we have exactly the same situation as with $W$, i.e.\ :
+Finally, for $\nabla_U J(y_i, \hat{y}_i ; \theta)$ we have exactly the same situation as with $W$, i.e.\ :
 \begingroup
 \allowdisplaybreaks
 {\setlength{\jot}{5pt}
@@ -899,7 +899,7 @@ beliefs into the working memory that are immediately useful.
 \ed
 
 Now let's try to build and LSTM step by step by making use of the gates! As a reminder, up to this point, we have
-computed a state $\boldsymbol{s}_{i-1}$ at time-step $i - 1$ and now we want to overload it with new information
+computed a state $\boldsymbol{s}_{i-1}$ at time-step $i - 1$, and now we want to overload it with new information
 $\boldsymbol{x}_{i}$ and compute a new state $\boldsymbol{s}_{i}$. We did this by using:
 \bse
 \boldsymbol{s}_{i} = g(U \boldsymbol{x}_{i} + W \boldsymbol{s}_{i-1})

@@ -1,0 +1,461 @@
+A computer network is a set of computers sharing resources located on or provided by network nodes. The computers use
+common communication protocols over digital interconnections to communicate with each other. These interconnections
+are made up of telecommunication network technologies, based on physically wired, optical, and wireless
+radio-frequency methods that may be arranged in a variety of network topologies. \v
+
+The nodes of a computer network may include personal computers, servers, networking hardware, or other specialised or
+general-purpose hosts. They are identified by network addresses, and may have hostnames. Hostnames serve as memorable
+labels for the nodes, rarely changed after initial assignment. Network addresses serve for locating and identifying
+the nodes by communication protocols such as the Internet Protocol. \v
+
+Computer networks may be classified by many criteria, including the transmission medium used to carry signals,
+bandwidth, communications protocols to organize network traffic, the network size, the topology, traffic control
+mechanism, and organizational intent. \v
+
+Computer networks support many applications and services, such as access to the World Wide Web, digital video,
+digital audio, shared use of application and storage servers, printers, and fax machines, and use of email and
+instant messaging applications.
+
+\section{Basic Definitions}
+
+Let's begin with some basic definitions.
+
+\bd[Computer Network]
+A \textbf{computer network} (or more simply \textbf{network}) is a set of computers (and other devices) that are
+connected through cables (wired network) or wirelessly (wireless network) in order to exchange data and share
+information.
+\ed
+
+There are several types of networks depending on their range. Here follow some of the most important ones.
+\bit
+\item \textbf{Body Area Network (BAN)}: A Body Area Network (BAN) (or in the case of wireless a Wireless Body Area
+Network (WBAN)) is a wired/wireless network of wearable computing devices.
+\item \textbf{Personal Area Network (PAN)}: A Personal Area Network (PAN) is a network for interconnecting electronic
+devices within an individual person's workspace. A PAN provides data transmission among devices such as computers,
+smartphones, tablets and personal digital assistants.
+\item \textbf{Small Office/Home Office (SOHO)}: Small Office/Home Office (SOHO) networks are small networks typically
+consisted of less than 10 computers.
+\item \textbf{Local Area Network (LAN)}: A Local Area Network (LAN) (or in the case of wireless a Wireless Local Area
+Network (WLAN)) is a network that interconnects computers within a limited area such as a residence, school,
+laboratory, university campus or office building.
+\item \textbf{Campus Area Network (CAN)}: A Campus Area Network (CAN) is a network made up of an interconnection of
+local area networks (LANs) within a limited geographical area.
+\item \textbf{Metropolitan Area Network (MAN)}: A Metropolitan Area Network (MAN) is a computer network that
+interconnects users with computer resources in a geographic region of the size of a metropolitan area.
+\item \textbf{Wide Area Network (WAN)}: A Wide Area Network (WAN) is a telecommunications network that extends over a
+large geographic area for the primary purpose of computer networking.
+\eit
+
+Here is a graph summarizing all the type of networks ordered by their range. \v
+
+\fig{net}{1}
+
+\v
+
+Given the definition of a network we can now introduce the abstract notion of a network node.
+
+\bd[Network Node]
+\textbf{Network nodes} (or more simply \textbf{nodes}) are the physical pieces that are attached to a network, and are
+capable of creating, receiving, or transmitting information over a communication channel.
+\ed
+
+\bd[Network Topology]
+The arrangement of the nodes and their links in a network is called \textbf{network topology}.
+\ed
+
+Nodes are divided into two categories: servers and clients.
+
+\bd[Server]
+A \textbf{server} is a node that provides functionality for other nodes in a network. These functionalities are often
+called ``services''.
+\ed
+
+\bd[Client]
+A \textbf{client} is a node that accesses a service made available by a server in a computer network.
+\ed
+
+Servers can provide various services such as sharing data or resources among multiple clients, or performing
+computation for a client. A single server can serve multiple clients, and a single client can use multiple servers. A
+client process may run on the same device or may connect over a network to a server on a different device. Typical
+servers are database servers, file servers, mail servers, print servers, web servers, game servers, and application
+servers. \v
+
+Servers and clients are integrated in the so called ``client-server'' model.
+
+\bd[Client–Server Model]
+The \textbf{client–server model} is a distributed application structure that partitions tasks or workloads between
+the providers of a resource or service, called servers, and service requesters, called clients.
+\ed
+
+All nodes in a network must be able to communicate with each other. In order for this to be able they must all
+``speak'' the same ``language''. In networks, these ``languages'' are called ``protocols''.
+
+\bd[Protocol]
+A \textbf{protocol} is a system of rules and instructions that defines the syntax, semantics and synchronization of
+communication (and possible error recovery methods) among the entities of a network and thus allows the transmission
+of information.
+\ed
+
+\bd[Protocol Data Unit (PDU)]
+A \textbf{Protocol Data Unit (PDU)} is a single unit of information transmitted among peer entities of a network.
+\ed
+
+A PDU is composed of protocol-specific control information and user data. In the layered architectures of
+communication protocol stacks, each layer implements protocols tailored to the specific type or mode of data exchange.
+
+\bd[Standard]
+A \textbf{standard} is a formalized protocol accepted by most of the parties that implement it.
+\ed
+
+There are many protocols and standards depending on the task in hand.
+
+\section{Open Systems Interconnection (OSI)}
+
+\bd[Open Systems Interconnection (OSI)]
+The \textbf{Open Systems Interconnection Model (OSI)} is a conceptual framework used to describe the functions of a
+networking system. The OSI model characterizes computing functions into a universal set of rules and requirements in
+order to support interoperability between different products and software.
+\ed
+
+OSI developed in the late 1970s to support the emergence of the diverse networks that were competing for application
+in the large national networking efforts in the world, is a conceptual model that characterizes and standardises the
+communication functions of a network without regard to its underlying internal structure and technology. Its goal is
+the interoperability of diverse communication systems with standard communication protocols. \v
+
+The model partitions the flow of data in a network into seven abstraction layers, from the physical implementation of
+transmitting bits across a communications medium to the highest-level representation of data of a distributed
+application. Each intermediate layer serves a class of functionality to the layer above it and is served by the layer
+below it. \v
+
+Classes of functionality are realized in software by standardised communication protocols which enable an entity in
+one host to interact with a corresponding entity at the same layer in another host. OSI abstractly describe the
+functionality provided to an ($N$) layer by an ($N-1$) layer, where $N$ is one of the seven layers of protocols
+operating in the local host. At each level $N$, two entities at the communicating devices (layer $N$ peers) exchange
+PDUs by means of a layer $N$ protocol. \v
+
+Here are the 7 layers of OSI model in a diagram.
+
+\fig{net1}{0.5}
+
+\subsection{Layer 1: Physical Layer}
+
+\bd[Physical Layer]
+The \textbf{physical layer} is the first layer of the OSI model and defines the means of transmitting a stream of raw
+bits (physical layer's PDU) over a physical data link connecting network nodes.
+\ed
+
+The physical layer is the first and lowest layer in the OSI model, and it is the layer most closely associated with
+the physical connection between devices, providing an electrical, mechanical, and procedural interface to the
+transmission medium. The physical layer is responsible for the transmission and reception of unstructured streams of
+raw bits between a device and a physical transmission medium. It then converts the digital bits into electrical,
+radio, or optical signals. It consists of the electronic circuit transmission technologies of a network. It is a
+fundamental layer underlying the higher level functions in a network, and can be implemented through a great number
+of different hardware technologies with widely varying characteristics. Layer specifications define characteristics
+such as voltage levels, the timing of voltage changes, physical data rates, maximum transmission distances,
+modulation scheme, channel access method and physical connectors. This includes the layout of pins, voltages, line
+impedance, cable specifications, signal timing and frequency for wireless devices. Bit rate control is done at the
+physical layer and may define transmission mode as simplex, half duplex, and full duplex. The components of a
+physical layer can be described in terms of a network topology. \v
+
+Here follows a list of the most common protocols and standards of the physical layer.
+\bit
+\item \textbf{Integrated Services Digital Network (ISDN)} is a set of communication standards for simultaneous
+digital transmission of voice, video, data, and other network services over the digitalised circuits of the public
+switched telephone network. Work on the standard began in 1980 at Bell Labs and was formally standardised in 1988. By
+the time the standard was released, newer networking systems with much greater speeds were available, and ISDN saw
+relatively little uptake in the wider market. ISDN has largely been replaced with digital subscriber line (DSL)
+systems of much higher performance.
+\item \textbf{Digital Subscriber Line (DSL)} is a family of technologies that are used to transmit digital data over
+telephone lines. DSL service can be delivered simultaneously with wired telephone service on the same telephone line
+since DSL uses higher frequency bands for data. The bit rate of consumer DSL services typically ranges from 256
+kbit/s to over 100 Mbit/s in the direction to the customer (downstream), depending on DSL technology, line
+conditions, and service-level implementation.
+\item \textbf{Asymmetric Digital Subscriber Line (ADSL)} the most commonly installed DSL technology, for Internet
+access. In ADSL, the data throughput in the upstream direction (the direction to the service provider) is lower,
+hence the designation of asymmetric service.
+\item \textbf{IEEE \footnote{IEEE 802 is a family of IEEE (Institute of Electrical and Electronics Engineers) protocols
+and standards for local area networks (LAN), personal area network (PAN), and metropolitan area networks (MAN). The
+number 802 has no significance, it was simply the next number in the sequence that the IEEE used for standards projects.
+The services and protocols specified in IEEE 802 map to the lower two layers(physical and data link) of OSI. The IEEE
+802 family of standards has twelve members, numbered 802.1 through 802.12} 802.3} or \textbf{Ethernet} where nodes in
+the LAN connect to a central router, hub, switch, or gateway which acts as a connecting point between devices on the
+network through Unshielded Twisted Pair (UTP) cables. In this protocol, when a node on the network wants to send data to
+another node, it senses the carrier, which is the main wire connecting the devices. If it is free, meaning no one is
+sending anything, it sends the data packet on the network, and the other devices check the packet to see whether they
+are the recipient. The recipient consumes the packet. If there is a packet on the highway, the device that wants to
+send holds back for some thousandths of a second to try again until it can send.
+\item \textbf{IEEE 802.11} or \textbf{Wireless LAN (WLAN)} tandards are the most widely used computer networks in the
+world. These are commonly called Wi-Fi, which is a trademark belonging to the Wi-Fi Alliance.
+\item \textbf{Universal Serial Bus (USB)} is an industry standard that establishes specifications for cables,
+connectors and protocols for connection, communication and power supply (interfacing) between computers, peripherals
+and other computers. Released in 1996, there have been four generations of USB specifications: USB 1.x, USB 2.0, USB
+3.x, and USB4. A broad variety of USB hardware exists, including fourteen different connectors, of which USB-C, as of
+now, is the most recent and best one.
+\eit
+
+\subsection{Layer 2: Data Link Layer}
+
+\bd[Data Link Layer]
+The \textbf{data link layer} is the second layer of the OSI model, and it is the protocol layer that transfers data
+in the form of frames (data link layer's PDU) between nodes on a network segment across the physical layer.
+\ed
+
+The data link layer is the second layer and is the protocol layer that provides the functional and procedural means
+to transfer data between directly connected nodes on a network segment across the physical layer. It also detects and
+possibly corrects errors that may occur in the physical layer. The data link layer is concerned with local delivery
+of frames between nodes on the same level of the network. Data-link frames, as these protocol data units are called,
+do not cross the boundaries of a LAN. \v
+
+IEEE 802 divides the data link layer into two sub-layers.
+
+\bd[Medium Access Control (MAC) Sublayer]
+The \textbf{Medium Access Control (MAC) sublayer} is the sublayer that controls the hardware which is responsible for
+controlling how devices in a network gain access to a medium and permission to transmit data.
+\ed
+
+MAC sublayer provides flow control and multiplexing for the transmission medium. When sending data to another device
+on the network, the MAC sublayer encapsulates higher-level frames into frames appropriate for the transmission
+medium, adds a frame check sequence to identify transmission errors, and then forwards the data to the physical layer
+as soon as the appropriate channel access method permits it. Additionally, the MAC is also responsible for
+compensating for collisions by initiating retransmission if a jam signal is detected. When receiving data from the
+physical layer, the MAC block ensures data integrity by verifying the sender's frame check sequences, and strips off
+the sender's preamble and padding before passing the data up to the higher layers.
+
+\bd[Logical Link Control (LLC) Sublayer]
+The \textbf{Logical link control (LLC) sublayer} is the upper sublayer of the data link layer, which acts as an
+interface between the MAC sublayer and the network layer.
+\ed
+
+LLC sublayer is responsible for identifying and encapsulating network layer protocols, and controls error checking
+and frame synchronization. It provides multiplexing mechanisms that make it possible for several network protocols to
+coexist within a multipoint network and to be transported over the same network medium. It can also provide
+node-to-node flow control and error management.
+
+% TODO: WIP
+%* Layer 3: Network Layer The network layer provides the functional and procedural means of transferring
+%variable-length network packets from one node to another including routing through intermediate routers. The network
+%layer transfers messages to other nodes connected to the network by merely providing the content of a message and the
+%address of the destination node and letting the network find the way to deliver the message to the destination node,
+%possibly routing it through intermediate nodes. If the message is too large to be transmitted from one node to
+%another on the config link layer between those nodes, the network may implement message delivery by splitting the
+%message into several fragments at one node, sending the fragments independently, and reassembling the fragments at
+%another node. It may, but does not need to, report delivery errors. Message delivery at the network layer is not
+%necessarily guaranteed to be reliable; a network layer protocol may provide reliable message delivery, but it need
+%not do so. Functions of the network layer include connectionless communication, host addressing and message forwarding.
+%
+%* Layer 4: Transport Layer The transport layer provides the functional and procedural means of transferring
+%variable-length config sequences from a source to a destination host, while maintaining the quality of service
+%functions. The transport layer may control the reliability of a given link through flow control,
+%segmentation/desegmentation, and error control. Some protocols are state- and connection-oriented. This means that
+%the transport layer can keep track of the segments and retransmit those that fail delivery. The transport layer may
+%also provide the acknowledgement of the successful config transmission and sends the next config if no errors occurred.
+%The transport layer creates segments out of the message received from the application layer. Segmentation is the
+%process of dividing a long message into smaller messages. Reliability, however, is not a strict requirement within
+%the transport layer. It provides services such as connection-oriented communication, reliability, flow control, and
+%multiplexing.
+%
+%* Layer 5: Session Layer The session layer controls the dialogues (connections) between computers. It establishes,
+%manages and terminates the connections between the local and remote application. It provides for full-duplex,
+%half-duplex, or simplex operation, and establishes procedures for checkpointing, suspending, restarting, and
+%terminating a session. In the OSI model, this layer is responsible for gracefully closing a session. This layer is
+%also responsible for session checkpointing and recovery. Within the service layering semantics of the OSI network
+%architecture, the session layer responds to service requests from the presentation layer and issues service requests
+%to the transport layer.
+%
+%* Layer 6: Presentation Layer The presentation layer responds to service requests from the application layer and
+%issues service requests to the session layer through a unique presentation service access point. The presentation
+%layer ensures the information that the application layer of one system sends out is readable by the application layer
+%of another system. On the sending system it is responsible for conversion to standard, transmittable formats. On the
+%receiving system it is responsible for the translation, formatting, and delivery of information for processing or
+%display. In theory, it relieves application layer protocols of concern regarding syntactical differences in config
+%representation within the end-user systems. Some of the services it provides are config conversion, character code
+%translation, compression, encryption and decryption a serialization.
+%
+%* Layer 7: Application layer The application layer is the OSI layer closest to the end user, which means both the OSI
+%application layer and the user interact directly with the software application. This layer interacts with software
+%applications that implement a communicating component. Such application programs fall outside the scope of the OSI
+%model. In simple words, the application layer is not the application itself but rather how the application accesses
+%the network. Application-layer functions typically include identifying communication partners, determining resource
+%availability, and synchronizing communication. When identifying communication partners, the application layer
+%determines the identity and availability of communication partners for an application with config to transmit.
+
+\newpage
+\section{Network Devices (Hardware)}
+
+\bd[Network Devices (Hardware)]
+\textbf{Network devices} (or \textbf{hardware}) are physical devices that are required for communication and
+interaction between hardware on a computer network.
+\ed
+
+Network devices or hardware are the physical representation of nodes. \v
+
+There are many network devices. Let's take a look at some of the most important ones.
+
+\bd[Network Cables]
+\textbf{Networking cables} (or more simply \textbf{cables}) are networking devices used to connect one network device to
+other network devices.
+\ed
+
+The are two major types of cables: copper and fiber. \v
+
+Copper cabling is cheap and flexible, but it is susceptible to electromagnetic interference (EMI), has limited range
+because of attenuation, and generates electromagnetic radiation that can be intercepted by nearby equipment. The
+types of copper cables commonly used in networking include ``twisted-pair'', such as ``unshielded twisted-pair''
+(UTP) and shielded ``twisted-pair'' (STP). \v
+
+Optical fiber cables consist of a center glass core surrounded by several layers of protective material. Optical
+fiber deployment is more expensive than copper but offers higher bandwidth and can cover longer distances. There are
+two major types of optical fiber cables: ``shorter-range multimode fiber'' and ``long-range single-mode fiber''. \v
+
+\bd[Hub]
+A \textbf{hub} is the most basic hardware that connects multiple network devices together and acts as a repeater in
+that it amplifies signals that deteriorate after traveling long distances over connecting cables.
+\ed
+
+\fig{hub}{0.35}
+
+A hub is the simplest in the family of network connecting devices because it connects LAN components with identical
+protocols. A hub can be used with both digital and analog data, provided its settings have been configured to prepare
+for the formatting of the incoming data. \v
+
+Hubs do not perform packet filtering or addressing functions; they just send data packets to all connected devices.
+Hubs operate at the Physical layer of the Open Systems Interconnection (OSI) model. (More on that later) \v
+
+Hubs are quite old technology, and they are not used anymore. Their main problem is something called collision domain.
+
+\bd[Collision Domain]
+A \textbf{collision domain} is a network segment connected by a shared medium or through repeaters where simultaneous
+data transmissions collide with one another.
+\ed
+
+A network collision occurs when more than one device attempts to send a packet on a network segment at the same time.
+Members of a collision domain may be involved in collisions with one another. Devices outside the collision domain do
+not have collisions with those inside.
+
+\bd[Bridge]
+A \textbf{bridge} is a computer networking device that creates a single,aggregate network from multiple communication
+networks or network segments.
+\ed
+
+\fig{bridge}{0.35}
+
+Bridges are used to connect two or more hosts or network segments together.The basic role of bridges in network
+architecture is storing and forwarding frames between the different segments that the bridge connects. They use
+hardware Media Access Control (MAC) addresses for transferring frames. By looking at the MAC address of the devices
+connected to each segment, bridges can forward the data or block it from crossing. Bridges can also be used to
+connect two physical LANs into a larger logical LAN. \v
+
+Bridges work only at the Physical and Data Link layers of the OSI model. Bridges are used to divide larger networks
+into smaller sections by sitting between two physical network segments and managing the flow of data between the two. \v
+
+Bridges are like hubs in many respects, including the fact that they connect LAN components with identical protocols.
+However, bridges filter incoming data packets, known as frames, for addresses before they are forwarded. As it
+filters the data packets, the bridge makes no modifications to the format or content of the incoming data. The bridge
+filters and forwards frames on the network with the help of a dynamic bridge table. The bridge table, which is
+initially empty, maintains the LAN addresses for each computer in the LAN and the addresses of each bridge interface
+that connects the LAN to other LANs. Bridges, like hubs, can be either simple or multiple port. \v
+
+Bridges have mostly fallen out of favor in recent years and have been replaced by switches, which offer more
+functionality. In fact, switches are sometimes referred to as ``multiport bridges'' because of how they operate.
+
+\bd[Switch]
+A \textbf{switch} is hardware that connects devices on a computer network by using packet switching to receive and
+forward data to the destination device.
+\ed
+
+\fig{switch}{0.35}
+
+Switches generally have a more intelligent role than hubs. A switch is a multiport device that improves network
+efficiency. The switch maintains limited routing information about nodes in the internal network, and it allows
+connections to systems like hubs. Strands of LANs are usually connected using switches. Generally, switches can read
+the hardware addresses of incoming packets to transmit them to the appropriate destination. \v
+
+Using switches improves network efficiency over hubs because of the virtual circuit capability. Switches also improve
+network security because the virtual circuits are more difficult to examine with network monitors. You can think of a
+switch as a device that has some of the best capabilities of hubs. A switch can work at either the Data Link layer or
+the Network layer of the OSI model. A multilayer switch is one that can operate at both layers, which means that it
+can operate as both a switch and a router which we will define right next. \v
+
+Hubs, bridges and switches are the primary devices used to connect network devices on a single network, usually a LAN.
+However, we often want to send or receive data between independent layers. That's where routers are coming in use.
+
+\bd[Router]
+A \textbf{router} is a networking device that forwards data packets between computer networks.
+\ed
+
+\fig{router}{0.35}
+
+Routers help transmit packets to their destinations by charting a path through the sea of interconnected networking
+devices using different network topologies. Routers are intelligent devices, and they store information about the
+networks they're connected to. Most routers can be configured to operate as packet-filtering firewalls and use access
+control lists. Routers are also used to translate from LAN framing to WAN framing. This is needed because LANs and
+WANs use different network protocols. \v
+
+Router are also used to divide internal networks into two or more subnetworks. Routers can also be connected
+internally to other routers, creating zones that operate independently. Routers establish communication by
+maintaining tables about destinations and local connections. A router contains information about the systems
+connected to it and where to send requests if the destination isn't known. \v
+
+Routers are your first line of defense, and they must be configured to pass only traffic that is authorized by
+network administrators. The routes themselves can be configured as static or dynamic. If they are static, they can
+only be configured manually and stay that way until changed. If they are dynamic, they learn of other routers around
+them and use information about those routers to build their routing tables. Routers work at the Network layer of the
+OSI model.
+
+\bd[Gateway]
+A \textbf{gateway} is a piece of hardware used in that allows data to flow from one discrete network to another.
+\ed
+
+\fig{gateway}{0.25}
+
+Gateways are distinct from routers or switches in that they communicate using more than one protocol to connect
+multiple networks and can operate at any of the seven layers of OSI, although they normally work at the Transport and
+Session layers. At the Transport layer and above, there are numerous protocols and standards from different vendors;
+gateways are used to deal with them. Gateways provide translation between networking technologies such as OSI and
+TCP/IP. Because of this, gateways connect two or more autonomous networks, each with its own routing algorithms,
+protocols, topology, domain name service, and network administration procedures and policies. \v
+
+Gateways perform all the functions of routers and more. In fact, a router with added translation functionality is a
+gateway. The function that does the translation between different network technologies is called a protocol converter. \v
+
+The term gateway can also loosely refer to a computer or computer program configured to perform the tasks of a
+gateway, such as a default gateway or router, and in the case of HTTP, gateway is also often used as a synonym for
+reverse proxy.
+
+\bd[Modem]
+A \textbf{modulator-demodulator} (or simply \textbf{modem}), is a hardware device that converts data from a digital
+format into a format suitable for an analog device such as computers.
+\ed
+
+\fig{modem}{0.25}
+
+A modem transmits data by modulating one or more carrier wave signals to encode digital information, while the
+receiver demodulates the signal to recreate the original digital information. The goal is to produce an electrical
+signal that can be transmitted easily and decoded reliably. Modems can be used with almost any means of transmitting
+analog signals, from light-emitting diodes to radio. Modems work on both the Physical and Data Link layers. \v
+
+The Institute of Electrical and Electronics Engineers (IEEE) is a professional association for electronic and
+electrical engineering formed in 1963 with its corporate office in New York City. IEEE 802 is a family of IEEE's
+standards for local area networks (LAN), personal area network (PAN), and metropolitan area networks (MAN). (The
+number 802 has no significance, it was simply the next number in the sequence that the IEEE used for standards
+projects). The IEEE 802 family of standards has had twenty-four members, numbered 802.1 through 802.24, however, not
+all of these are currently active. Two of the most widely used, and still active, of these standards are the IEEE 802.3
+for the Ethernet family, and the IEEE 802.11 for Wireless LAN (WLAN) \& Mesh (Wi-Fi certification). \v
+
+IEEE 802.3 is a working group and a collection of Institute of Electrical and Electronics Engineers (IEEE) standards
+produced by the working group defining the physical layer and data link layer's media access control (MAC) of wired
+Ethernet. This is generally a local area network (LAN) technology with some wide area network (WAN) applications.
+Physical connections are made between nodes and/or infrastructure devices (hubs, switches, routers) by various types
+of copper or fiber cable. \v
+
+The services and protocols specified in IEEE 802 map to the lower two layers (data link and physical) of the
+seven-layer Open Systems Interconnection (OSI) networking reference model. More specifically IEEE 802 divides the OSI
+data link layer into two sub-layers: logical link control (LLC) and medium access control (MAC). \v
+
+Finally, there is the concept of a ``Network Service Provider''.
+
+\bd[Network Service Provider (NSP)]
+A \textbf{Network Service Provider (NSP)} is a business or organization that sells bandwidth or network access by
+providing direct Internet backbone access to internet service providers and usually access to its network access
+points.
+\ed

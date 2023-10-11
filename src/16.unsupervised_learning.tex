@@ -1,3 +1,4 @@
+%! suppress = SentenceEndWithCapital
 %! suppress = EscapeUnderscore
 Although most of the applications of machine learning today are based on supervised learning, the vast majority of 
 the available data is unlabeled: we have the input features $X$, but we do not have the labels $y$. In contrast to 
@@ -69,7 +70,7 @@ will not oscillate forever. \v
 
 In a more proper mathematically description, given a set of observations $\{ x_1, x_2, \ldots, x_n \}$, where each 
 observation is a $d$-dimensional real vector, $k$-means clustering aims to partition the $n$ observations into $k \:
-(\leq n)$ sets $S = \{ S_1, S_2, \ldots, S_n \}$ so as to minimize the within-cluster sum of squares (i.e.\ the 
+(\leq n)$ sets $S = \{ S_1, S_2, \ldots, S_n \}$ as to minimize the within-cluster sum of squares (i.e.\ the
 variance). \v
 
 By randomly initializing a set of $k$ centroids $\mu_i$, k-means assigns each observation to the cluster whose 
@@ -79,7 +80,7 @@ C_i = \argmin_{j} \left( || \boldsymbol{x^{(i)}} - \boldsymbol{\mu_j} ||^2 \righ
 \ese
 
 Then it calculates the new centroids of these observations in the new clusters, and it repeats the process until the 
-centroids do not move any more. \v
+centroids do not move anymore. \v
 
 Since the first development of k-means algorithm, many improvements have been proposed. One improvement was a 
 smarter initialization step that tends to select centroids that are distant from one another, and this improvement 
@@ -226,7 +227,7 @@ where $\Sigma$ is a matrix that depends only on the observations $\{\boldsymbol{
 \Sigma = \frac{1}{m} \sum_{i} \boldsymbol{x}^{(i)} {\boldsymbol{x}^{(i)}}^{\intercal}
 \ese
 
-Hence PCAs optimization goal is:
+Hence, PCAs optimization goal is:
 \bse
 \max_{\boldsymbol{u}} \left(\boldsymbol{u}^{\intercal} \Sigma \boldsymbol{u}\right)
 \ese
@@ -256,8 +257,8 @@ By setting the derivative of the Lagrangian to zero we get:
 
 \vspace{-15pt}
 
-Hence we end up with an eigenvalue equation. In other words the direction $\boldsymbol{u}$ we are looking for is 
-simply the eigenvectors of $\Sigma$ and the Lagrange multipliers $\lambda$ are the eigenvalues. Moreover observe that:
+Hence, we end up with an eigenvalue equation. In other words the direction $\boldsymbol{u}$ we are looking for is
+simply the eigenvectors of $\Sigma$ and the Lagrange multipliers $\lambda$ are the eigenvalues. Moreover, observe that:
 \bse
 S = \boldsymbol{u}^{\intercal} \left( \Sigma \boldsymbol{u} \right) =
 \boldsymbol{u}^{\intercal} \left( \lambda \boldsymbol{u} \right) = 
