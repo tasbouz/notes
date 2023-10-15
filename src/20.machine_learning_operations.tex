@@ -968,8 +968,274 @@ canary is aborted.
 \bd[Blue-Green Deployment]
 \textbf{Blue-Green deployment} is a deployment strategy in which you create two separate, but identical environments.
 Old environment (blue) is running the current application version and new environment (green) is running the new
-application version.
+application version. Once production traffic is fully transferred from blue to green, blue can be standby in case of
+rollback or pulled from production and updated to become the template upon which the next update is made.
 \ed
 
-Once production traffic is fully transferred from blue to green, blue can be standby in case of rollback or pulled from
-production and updated to become the template upon which the next update is made.
+\section{Distributed Systems}
+
+\bd[Distributed System]
+A \textbf{distributed system} is a system whose its several autonomous nodes (computers) are located on different
+networks, which communicate and coordinate their actions by passing messages to one another.
+\ed
+
+The word ``distributed'' originally referred to computer networks where individual computers were physically
+distributed within some geographical area. The terms are nowadays used in a much wider sense, referring to autonomous
+processes that run on the same physical computer. In general, the structure of the system is not known in advance,
+the system may consist of different kinds of computers and network links, and the system may change during the
+execution of a distributed program. As a result, each computer has only a limited, incomplete view of the system.
+
+\bd[Ditributed Computing]
+\textbf{Distributed computing} is the use of distributed systems to solve computational problems by dividing them
+into several tasks where each task is computed in an individual computer.
+\ed
+
+Three significant challenges of distributed programming are: maintaining concurrency of components, overcoming the lack
+of a global clock, and managing the independent failure of components.
+
+\bd[Distributed Program]
+A \textbf{distributed program} is a computer program that runs within a distributed system.
+\ed
+
+\bd[Distributed Programming]
+\textbf{Distributed programming} is the process of writing distributed programs.
+\ed
+
+Distributed programing is especially relevant in ML, from collecting and preprocessing data with great variety at
+increasing speeds, to training complex ML models, running efficient hyperparameter selection, building
+entirely new and custom models, and serving models to showcase them. At the same time, it might be inevitable to
+scale these workloads to a compute cluster.
+
+\subsection{Ray}
+    
+\bd[Ray]
+\textbf{Ray} is a simple, flexible, unified, Python-first, distributed computing framework built in C++, used for
+scaling AI and Python applications.
+\ed
+
+Ray is as lean as it gets and helps you reason effectively about the distributed programs you want to write. You can
+efficiently parallelize Python programs on your laptop and run the code you tested locally on a cluster practically
+without any changes. While Ray works out of the box on single machines, to run Ray applications on multiple nodes you
+must first deploy a Ray cluster. Ray provides native cluster deployment support on AWS, GCP and on Kubernetes, via
+the officially supported KubeRay project. Its high-level libraries are easy to configure and can seamlessly be used
+together. \v
+
+Ray is built with several design principles in mind. Its API is designed for:
+\bit
+\item \textbf{Simplicity \& Abstraction}: Ray's API prioritizes simplicity and intuitiveness, making it easy for 
+users to grasp. Whether you're utilizing CPU cores on a single laptop or multiple machines in a cluster, the core Ray
+code remains largely consistent. Ray takes care of task distribution and coordination behind the scenes, relieving 
+users from the complexities of distributed computing and allowing them to concentrate on their tasks.
+\item \textbf{Flexibility \& Heterogeneity}: Ray's API is designed to enable flexible and composable code for AI 
+workloads. It supports Python expressions, allowing users to distribute their work with Ray and ensure adequate 
+resource availability. Ray also offers flexibility in handling heterogeneous computations, accommodating both light 
+and intensive workloads within different workflows.
+\item \textbf{Speed \& Scalability}: Ray emphasizes speed in task execution, capable of handling millions of tasks 
+per second with minimal latencies, typically measured in milliseconds. Ray efficiently distributes and schedules 
+tasks across compute clusters while maintaining fault tolerance, ensuring that it scales effectively for demanding 
+distributed computing needs.
+\eit
+
+Ray consists of three main layers:
+\bit
+\item \textbf{Ray Core}: A low-level distributed computing framework for Python with a concise core API and tooling 
+for cluster deployment. You can imagine Ray's core engine with its API at the center of things, on which everything
+else builds.
+\item \textbf{Ray Libraries \& Ray AIR}: A set of high-level, distributed, ML lifecycle specific, libraries built and
+maintained by the creators of Ray, built on top of Ray Core and provide a domain-specific abstraction layer. To be more
+specific, the aforementioned libraries are:
+\bit
+\item{\textbf{Ray Dataset}}: A library for parallel and distributed data processing.
+\item{\textbf{Ray Training}}: A library for distributed model training for supervised learning.
+\item{\textbf{Ray RLlib}}: A library for reinforcement learning workloads.
+\item{\textbf{Ray Tune}}: A library for hyperparameter tuning.
+\item{\textbf{Ray Serve}}: A library for serving models.
+\eit
+
+Beside the libraries, the so-called ``Ray AI Runtime'' (Ray AIR) makes it able to use these libraries in a common
+runtime, with a unified API, and the ability to scale workloads when needed. Ray AIR can be seen as an umbrella that
+links Ray libraries and offers a consistent framework for dealing with common AI workloads.
+
+\fig{ray2}{0.4}
+
+\item \textbf{Ray Ecosystem}: A growing ecosystem of integrations and partnerships with other notable projects that
+leverage Ray Core and Ray Libraries to provide a unified experience for users.
+\eit
+
+\subsubsection{Ray Core}
+
+\bd[Ray Core]
+\textbf{Ray Core} is a low-level distributed computing framework for Python with a concise core API and tooling
+for cluster deployment, that makes scaling easy and efficient.
+\ed
+
+Ray Core with its API is at the center of things, on which everything else builds. It is designed to be flexible and
+easy to use, and it's built to support a wide variety of use cases. \v
+
+In order to understand what Ray Core is and how it works, we need first to provide some basic definitions, starting
+with the concept of ``synchronous'' and ``asynchronous'' executions.
+
+\bd[Synchronous Execution]
+Two tasks are \textbf{executed synchronously} if the first one must finish before the later one can start.
+\ed
+
+\bd[Asynchronous Execution]
+Two tasks are \textbf{executed asynchronously} if the latter one can begin executing in parallel, without waiting for
+the first task to finish.
+\ed
+
+Python functions and classes are executed synchronously. This means that when you call a function, or you instantiate
+a class, the caller waits for the function, or class, to finish before continuing. \v
+
+Ray enables these arbitrary, synchronous Python functions and classes to be executed asynchronously. These
+asynchronous functions are called ``Ray remote functions'', and these asynchronous classes are called ``Ray remote
+classes''.
+
+\bd[Ray Remote Function]
+A \textbf{Ray remote function} is an asynchronous Python function.
+\ed
+
+\bd[Ray Remote Class]
+A \textbf{Ray remote class} is an asynchronous Python class.
+\ed
+
+The asynchronous invocations of Ray remote functionss are called ``Ray tasks'' while the asynchronous invocations of
+Ray remote classes are called ``Ray actors''.
+
+\bd[Ray Task]
+A \textbf{Ray task} is an asynchronous, remote, stateless invocation of a Ray remote function.
+\ed
+
+\bd[Ray Actor]
+A \textbf{Ray actor} is an asynchronous, remote, stateful invocation of a Ray remote class.
+\ed
+
+Both Ray tasks and Ray actors are executed asynchronously, and they can be executed in parallel. When a Ray task and
+Ray actor are scheduled, they are executed on a process different from the caller, and potentially on a different
+machine, and the caller can continue without waiting for them to finish. This process, in the Ray ecosystem, is
+called ``Ray worker''.
+
+\bd[Ray Worker]
+A \textbf{Ray worker} is a process that runs user defined tasks and actors in the background.
+\ed
+
+In Ray, tasks and actors create and compute on objects. We refer to these objects as ``Ray remote objects'' because
+they can be stored anywhere in the distributed system.
+
+\bd[Ray Remote Object]
+A \textbf{Ray remote object} is the value that is returned by a task or the methods of an actor.
+\ed
+
+\bd[Lineage]
+A \textbf{lineage} is the set of tasks or methods of an actor that was originally executed to produce a remote object.
+\ed
+
+If an object's value is lost due to a failure, Ray may attempt to recover the value by re-executing the object's
+lineage. \v
+
+Each remote object carries some characteristics such as:
+\bit
+\item \textbf{Object ID}: A unique identifier for a remote object.
+\item \textbf{ObjectRef}: A reference (i.e.\ a pointer) to a remote object (i.e\ an application value).
+\item \textbf{Object Ownership}: The concept used to decide where metadata for a certain ObjectRef (and the task that
+creates the value) should be stored.
+\eit
+
+Remote objects are cached in Ray's distributed shared-memory object store.
+
+\bd[Object Store]
+An \textbf{object store} is a distributed shared-memory object store for storing Ray objects.
+\ed
+
+Having introduced the concept of tasks, actors, and objects, we are now in a position to define what a ``Ray
+application'' and a ``Ray job'' are.
+
+\bd[Ray Application]
+A \textbf{Ray application} is a collection of Ray tasks, actors, and objects originated from the same script.
+\ed
+
+\bd[Ray Job]
+A \textbf{Ray job} is a packaged Ray application that can be executed on a remote Ray cluster.
+\ed
+
+Ray jobs are the unit of isolation in Ray. The are isolated from each other, and can be run without interfering with
+each other. \v
+
+Now, we are in a position to define the most important concept of Ray Core which is that of a ``Ray cluster''.
+
+\bd[Ray Cluster]
+A \textbf{Ray cluster} is a cluster of nodes (computers) that can run Ray jobs.
+\ed
+
+In practice, Ray Core sets up and manages Ray clusters, which are consisted of nodes that are connected to each other
+via a network, and they are in charge of allocating resources, creating nodes, and ensuring they are healthy.
+
+\bd[Ray Node]
+A \textbf{Ray node} is a physical or virtual machine that is part of a Ray cluster.
+\ed
+
+Ray clusters are composed of two types of nodes: ``workers nodes'' and a single ``head node''.
+
+\bd[Worker Node]
+A \textbf{worker node} is a node used only to run Ray jobs.
+\ed
+
+Worker nodes do not run any management processes, but are used solely for running Ray jobs. They also participate in
+distributed scheduling, as well as the storage and distribution of Ray objects in cluster memory. \v
+
+Worker nodes consist of Ray workers to be able to run Ray tasks and actors, and ``Raylets'' to be able to store and
+retrieve Ray objects.
+
+\bd[Raylet]
+A \textbf{Raylet} is a system process that runs on each Ray node, responsible for scheduling and object management.
+\ed
+
+Raylets are responsible for scheduling Ray jobs on the node, and monitor the object usage of the node. They consist
+of an object store, we mentioned earlier, for storing and retrieving objects, and the so-called ``Ray scheduler''
+for scheduling Ray jobs.
+
+\bd[Ray Scheduler]
+The \textbf{Ray scheduler} is a component of the Raylet that is responsible for scheduling tasks and actors on the
+node.
+\ed
+
+Beside a number of worker nodess, every Ray cluster has one special node which is designated as the ``head node'' of
+the cluster.
+
+\bd[Head Node]
+The \textbf{head node} is the node that runs extra cluster-level processes in addition to those processes running on a
+worker node.
+\ed
+
+Every Ray cluster has only one head node which is identical to other worker nodes except that it also runs singleton
+processes responsible for cluster management. More specifically, the head node is responsible for:
+\bit
+\item \textbf{Resource Management}: Allocates and monitors resources to applications running on the cluster.
+\item \textbf{Node Management}: Starts, terminates, and monitors the health of nodes on the cluster.
+\item \textbf{Metadata Management}: Stores metadata of objects and jobs in the object store.
+\eit
+
+The extra cluster-level processes the head node contains are the ``Ray driver'', the ``Global Control Store'' or GCS,
+and the ``autoscaler''.
+
+\bd[Ray Driver]
+The \textbf{Ray driver} is the name of the process running the main script that starts all other processes.
+\ed
+
+\bd[Global Control Store (GCS)]
+The \textbf{Global Control Store} (or \textbf{GCS}) runs on the head node and has functions like managing node
+membership and actor directory, acting like a centralized metadata server for a Ray cluster.
+\ed
+
+\bd[Autoscaler]
+The \textbf{autoscaler} is a Ray component on the head node that scales up and down the Ray cluster by adding and
+removing Ray nodes according to the resources requested by applications running on the cluster.
+\ed
+
+While Ray clusters can be fixed-size, at the same time they can autoscale up and down according to the resources
+requested by applications running on the cluster. When the resource demands of the Ray workload exceed the current
+capacity of the cluster, the autoscaler will try to increase the number of worker nodes. When worker nodes sit idle,
+the autoscaler will remove worker nodes from the cluster. It is important to understand that the autoscaler only
+reacts to task and actor resource requests, and not application metrics or physical resource utilization.
+
+\fig{ray4}{0.4}
