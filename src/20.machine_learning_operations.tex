@@ -1,3 +1,4 @@
+%! suppress = EscapeHashOutsideCommand
 \section{Research VS Production}
 
 In the previous chapters we covered the theoretical aspects of ML, focusing a lot on the research part of ML. In this
@@ -1007,7 +1008,7 @@ entirely new and custom models, and serving models to showcase them. At the same
 scale these workloads to a compute cluster.
 
 \subsection{Ray}
-    
+
 \bd[Ray]
 \textbf{Ray} is a simple, flexible, unified, Python-first, distributed computing framework built in C++, used for
 scaling AI and Python applications.
@@ -1015,7 +1016,9 @@ scaling AI and Python applications.
 
 Ray is as lean as it gets and helps you reason effectively about the distributed programs you want to write. You can
 efficiently parallelize Python programs on your laptop and run the code you tested locally on a cluster practically
-without any changes. While Ray works out of the box on single machines, to run Ray applications on multiple nodes you
+without any changes. \v
+
+While Ray works out of the box on single machines, to run Ray applications on multiple nodes you
 must first deploy a Ray cluster. Ray provides native cluster deployment support on AWS, GCP and on Kubernetes, via
 the officially supported KubeRay project. Its high-level libraries are easy to configure and can seamlessly be used
 together. \v
@@ -1036,31 +1039,8 @@ tasks across compute clusters while maintaining fault tolerance, ensuring that i
 distributed computing needs.
 \eit
 
-Ray consists of three main layers:
-\bit
-\item \textbf{Ray Core}: A low-level distributed computing framework for Python with a concise core API and tooling 
-for cluster deployment. You can imagine Ray's core engine with its API at the center of things, on which everything
-else builds.
-\item \textbf{Ray Libraries \& Ray AIR}: A set of high-level, distributed, ML lifecycle specific, libraries built and
-maintained by the creators of Ray, built on top of Ray Core and provide a domain-specific abstraction layer. To be more
-specific, the aforementioned libraries are:
-\bit
-\item{\textbf{Ray Dataset}}: A library for parallel and distributed data processing.
-\item{\textbf{Ray Training}}: A library for distributed model training for supervised learning.
-\item{\textbf{Ray RLlib}}: A library for reinforcement learning workloads.
-\item{\textbf{Ray Tune}}: A library for hyperparameter tuning.
-\item{\textbf{Ray Serve}}: A library for serving models.
-\eit
-
-Beside the libraries, the so-called ``Ray AI Runtime'' (Ray AIR) makes it able to use these libraries in a common
-runtime, with a unified API, and the ability to scale workloads when needed. Ray AIR can be seen as an umbrella that
-links Ray libraries and offers a consistent framework for dealing with common AI workloads.
-
-\fig{ray2}{0.4}
-
-\item \textbf{Ray Ecosystem}: A growing ecosystem of integrations and partnerships with other notable projects that
-leverage Ray Core and Ray Libraries to provide a unified experience for users.
-\eit
+Ray consists of three main layers: Ray Core, Ray Libraries \& Ray AIR, and Ray Ecosystem. In what follows we will
+study each one of them in detail.
 
 \subsubsection{Ray Core}
 
@@ -1239,3 +1219,110 @@ the autoscaler will remove worker nodes from the cluster. It is important to und
 reacts to task and actor resource requests, and not application metrics or physical resource utilization.
 
 \fig{ray4}{0.4}
+
+Now that we have provided the main definitons of Ray Core, and we explored its main components and its system
+architecture, let's switch to the more practical aspects of Ray Core, and see how can we use so called ``Ray Core API''
+to write Ray applications.
+
+\bd[Ray Core API]
+The \textbf{Ray Core API} is the API that allows users to write Ray applications.
+\ed
+
+Ray Core API is a Python library, so to use it you need to install it first. You can install Ray Core API using pip:
+\begin{bash}
+pip install ray
+\end{bash}
+
+Once you've installed Ray Core API, you can import it in your Python script:
+\begin{bash}
+import ray
+\end{bash}
+
+Althoug the Ray Core API contains a lot of differen methods, the six major ones used while using the Ray Core API are:
+
+\begin{bash}
+# initializes your Ray Cluster. Pass in an address to connect to an existing cluster
+ray.init()
+\end{bash}
+
+\begin{bash}
+# turn functions into tasks and classes into actors
+@ray.remote
+\end{bash}
+
+\begin{bash}
+# put values into Ray's object store
+ray.put()
+\end{bash}
+
+\begin{bash}
+# get values from the object store
+\end{bash}
+
+\begin{bash}
+# run actor methods or tasks on your Ray Cluster and instantiate actors
+.remote()
+\end{bash}
+
+\begin{bash}
+# return two lists of object references, one with finished and one with unfinished tasks
+ray.wait()
+\end{bash}
+
+\subsubsection{Ray Libraries \& Ray AIR}
+
+\bd[Ray Libraries]
+\textbf{Ray Libraries} are a set of high-level, distributed, ML lifecycle specific, libraries built and maintained
+by the creators of Ray, built on top of Ray Core and provide a domain-specific abstraction layer.
+\ed
+
+To be more specific, the aforementioned libraries are:
+
+\bd[Ray Dataset]
+The \textbf{Ray Dataset} is a library for parallel and distributed data processing.
+\ed
+
+\bd[Ray Training]
+The \textbf{Ray Training} is a library for distributed model training for supervised learning.
+\ed
+
+\bd[Ray RLlib]
+The \textbf{Ray RLlib} is a library for reinforcement learning workloads.
+\ed
+
+\bd[Ray Tune]
+The \textbf{Ray Tune} is a library for hyperparameter tuning.
+\ed
+
+\bd[Ray Serve]
+The \textbf{Ray Serve} is a library for serving models.
+\ed
+
+Beside the libraries, the so-called ``Ray AI Runtime'' (Ray AIR) makes it able to use these libraries in a common
+runtime, with a unified API, and the ability to scale workloads when needed.
+
+\bd[Ray AIR]
+The \textbf{Ray AI Runtime} (Ray AIR) makes it able to use these libraries in a common runtime, with a unified API,
+and the ability to scale workloads when needed.
+\ed
+
+Ray AIR can be seen as an umbrella that links Ray libraries and offers a consistent framework for dealing with common
+AI workloads.
+
+\subsubsection{Ray Ecosystem}
+
+As we saw, Ray's high-level libraries are powerful and their usefulness for the MDLC is undeniable. On top of those
+libraries Ray integrates well with existing solutions and ideas. As a reuslt there are many useful third-party
+libraries built on top of Ray, creating a growing Ray ecosystem.
+
+\bd[Ray Ecosystem]
+The \textbf{Ray Ecosystem} is a growing ecosystem of integrations and partnerships with other notable projects that
+leverage Ray Core and Ray Libraries to provide a unified experience for users.
+\ed
+
+In simple words, Ray doesn't try to replace all eixsting tools, but rather integrates with them while still giving
+you access to its native library.
+
+With Ray Ecosystem we have completed our study of Ray.
+
+\fig{ray7}{0.5}
