@@ -1,7 +1,9 @@
 # Notes
 My [notes](https://github.com/tasbouz/notes/blob/master/out/notes.pdf) on various topics of science.
 
-## - Part 1: Mathematics
+## Theory
+
+### - Part 1: Mathematics
 
 For the first part of my notes on "Mathematics" I have used the amazing notes of [sreahw](https://github.com/sreahw) 
 that you can find [here](https://github.com/sreahw/schuller-geometric), and [here](https://github.com/sreahw/Lecture_Notes_GR), 
@@ -11,7 +13,7 @@ more detailed, and more in order with the lectures:
 * [Geometrical Anatomy of Theoretical Physics by Frederic Schuller](https://www.youtube.com/playlist?list=PLPH7f_7ZlzxTi6kS4vCmv4ZKm9u8g5yic)
 * [International Winter School on Gravity and Light 2015 by Frederic Schuller](https://www.youtube.com/playlist?list=PLFeEvEPtX_0S6vxxiiNPrJbLu9aK1UVC_)
 
-## - Part 2: Probability Theory & Statistics
+### - Part 2: Probability Theory & Statistics
 
 For the second part on "Probability Theory & Statistics", the notes are based on a collection of various books I read, 
 and lectures I watched and found useful.
@@ -23,7 +25,7 @@ Some lectures are the following:
 * [Statistics 110: Probability by Joe Blitzstein](https://www.youtube.com/playlist?list=PL2SOU6wwxB0uwwH80KTQ6ht66KWxbzTIo)
 * [Statistics for Applications by Philippe Rigollet](https://www.youtube.com/playlist?list=PLUl4u3cNGP60uVBMaoNERc6knT_MgPKS0)
 
-## - Part 3: Machine Learning
+### - Part 3: Machine Learning
 
 For the third part on "Machine Learning", the notes are based on a collection of various books I read, and lectures I watched and found useful.
 
@@ -40,7 +42,7 @@ Some lectures are the following:
 * [Machine Learning by Andrew Ng (New)](https://www.youtube.com/playlist?list=PLLssT5z_DsK-h9vYZkQkYNWcItqhlRJLN)
 * [Machine Learning Course by Yaser Abu-Mostafa](https://www.youtube.com/playlist?list=PLD63A284B7615313A)
 
-## - Part 4: Computer Science
+### - Part 4: Computer Science
 
 For the fourth part on "Computer Science", the notes are based on a collection of various books I read, and lectures I watched and found useful.
 
@@ -65,7 +67,7 @@ Some lectures are the following:
 * [Kubernetes by Nana](https://www.youtube.com/watch?v=X48VuDVv0do)
 * [Network Fundamentals by Network Direction](https://www.youtube.com/playlist?list=PLDQaRcbiSnqF5U8ffMgZzS7fq1rHUI3Q8)
 
-## - Part 5: Economics & Finance
+### - Part 5: Economics & Finance
 
 For the fifth part on "Economics & Finance", the notes are based on a collection of various books I read, and lectures I watched and found useful.
 
@@ -76,3 +78,27 @@ Some books are the following:
 
 Some lectures are the following:
 * [Microeconomics by Jonathan Gruber](https://www.youtube.com/playlist?list=PLUl4u3cNGP62oJSoqb4Rf-vZMGUBe59G-)
+
+## Technical
+
+This part of the repository does not contain any definitions or theory, but focus solely on technical aspects. For 
+theory check my theoretical [notes](theory/out/theory.pdf).
+
+### Programming Languages
+
+#### - Go
+You will need to install [Go](https://golang.org/doc/install) (version 1.11 or later). I run the code using [GoLand](https://www.jetbrains.com/go/).
+
+#### - JavaScript
+Open the html files with a browser to run them.
+
+#### - R
+You will need to install [R](https://www.r-project.org/).
+
+### Machine Leagning
+
+Create a Python virtual environment with your favorite tool, and install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
