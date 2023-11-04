@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.9.28)  25 OCT 2023 14:25
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.9.28)  26 OCT 2023 08:28
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1452,6 +1452,96 @@ LaTeX Warning: Label `placeholder' multiply defined.
 
 LaTeX Warning: Label `placeholder@cref' multiply defined.
 
+
+LaTeX Warning: Label `placeholder' multiply defined.
+
+
+LaTeX Warning: Label `placeholder@cref' multiply defined.
+
+
+LaTeX Warning: Label `placeholder' multiply defined.
+
+
+LaTeX Warning: Label `placeholder@cref' multiply defined.
+
+
+LaTeX Warning: Label `placeholder' multiply defined.
+
+
+LaTeX Warning: Label `placeholder@cref' multiply defined.
+
+
+LaTeX Warning: Label `placeholder' multiply defined.
+
+
+LaTeX Warning: Label `placeholder@cref' multiply defined.
+
+
+LaTeX Warning: Label `placeholder' multiply defined.
+
+
+LaTeX Warning: Label `placeholder@cref' multiply defined.
+
+
+LaTeX Warning: Label `placeholder' multiply defined.
+
+
+LaTeX Warning: Label `placeholder@cref' multiply defined.
+
+
+LaTeX Warning: Label `placeholder' multiply defined.
+
+
+LaTeX Warning: Label `placeholder@cref' multiply defined.
+
+
+LaTeX Warning: Label `placeholder' multiply defined.
+
+
+LaTeX Warning: Label `placeholder@cref' multiply defined.
+
+
+LaTeX Warning: Label `placeholder' multiply defined.
+
+
+LaTeX Warning: Label `placeholder@cref' multiply defined.
+
+
+LaTeX Warning: Label `placeholder' multiply defined.
+
+
+LaTeX Warning: Label `placeholder@cref' multiply defined.
+
+
+LaTeX Warning: Label `placeholder' multiply defined.
+
+
+LaTeX Warning: Label `placeholder@cref' multiply defined.
+
+
+LaTeX Warning: Label `placeholder' multiply defined.
+
+
+LaTeX Warning: Label `placeholder@cref' multiply defined.
+
+
+LaTeX Warning: Label `placeholder' multiply defined.
+
+
+LaTeX Warning: Label `placeholder@cref' multiply defined.
+
+
+LaTeX Warning: Label `placeholder' multiply defined.
+
+
+LaTeX Warning: Label `placeholder@cref' multiply defined.
+
+
+LaTeX Warning: Label `placeholder' multiply defined.
+
+
+LaTeX Warning: Label `placeholder@cref' multiply defined.
+
 )
 \openout1 = `theory.aux'.
 
@@ -1534,347 +1624,246 @@ Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
 \c@lstlisting=\count394
 Chapter 1.
-(./src/20.rnn.tex
+(./src/21.transformers.tex
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 10.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 13.
-File: ./img//rnn0.png Graphic file (type bmp)
-<./img//rnn0.png>
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 22.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 27.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 30.
-File: ./img//rnn00.png Graphic file (type bmp)
-<./img//rnn00.png>
+File: ./img//trf01.png Graphic file (type bmp)
+<./img//trf01.png>
+File: ./img//trf02.png Graphic file (type bmp)
+<./img//trf02.png>
  [1
 
 
 ]
-File: ./img//rnn3.png Graphic file (type bmp)
-<./img//rnn3.png>
-LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 6
-1.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 30.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 33.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 46.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 49.
+LaTeX Font Info:    Trying to load font information for OT1+lmr on input line 5
+3.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 6
-1.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 5
+3.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMS+lmsy on input line 
-61.
+53.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/omslmsy.fd
 File: omslmsy.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Trying to load font information for OMX+lmex on input line 
-61.
+53.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/lm/omxlmex.fd
 File: omxlmex.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 61.
+(Font)              <10> on input line 53.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 61.
+(Font)              <7> on input line 53.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 61.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 61.
+(Font)              <5> on input line 53.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 53.
 
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 61.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 53.
 
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 61
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 53
 .
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Trying to load font information for U+stmry on input line 6
-1.
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 5
+3.
 
 (/usr/local/texlive/2023/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 64.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 64.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 57.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 59.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 61.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 63.
+ [2]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 74.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 78.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 88.
-File: ./img//rnn4.png Graphic file (type bmp)
-<./img//rnn4.png>
- [2]
+(mdframed)              on input line 80.
+File: ./img//onehot.png Graphic file (type bmp)
+<./img//onehot.png>
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 122.
+(mdframed)              on input line 84.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 126.
-File: ./img//rnn5.png Graphic file (type bmp)
-<./img//rnn5.png>
+(mdframed)              on input line 99.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 104.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 106.
+File: ./img//cooccurance.png Graphic file (type bmp)
+<./img//cooccurance.png>
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 120.
  [3]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 148.
-File: ./img//rnn17.png Graphic file (type bmp)
-<./img//rnn17.png>
+(mdframed)              on input line 141.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 158.
+(mdframed)              on input line 145.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 172.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 175.
 
 [4]
-Overfull \hbox (35.90765pt too wide) detected at line 230
-[]
- []
-
-
-LaTeX Font Warning: Font shape `U/stmry/b/n' undefined
-(Font)              using `U/stmry/m/n' instead on input line 263.
-
-
-Overfull \hbox (26.2242pt too wide) detected at line 263
-[]
- []
-
-[5]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 271.
+(mdframed)              on input line 181.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 275.
+(mdframed)              on input line 187.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 193.
+File: ./img//cbow.png Graphic file (type bmp)
+<./img//cbow.png>
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 205.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 231.
+File: ./img//cbow2.png Graphic file (type bmp)
+<./img//cbow2.png>
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 234.
+ [5]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 282.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 284.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 286.
+File: ./img//skipgram.png Graphic file (type bmp)
+<./img//skipgram.png>
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 295.
  [6]
+File: ./img//trf03.png Graphic file (type bmp)
+<./img//trf03.png>
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 331.
+(mdframed)              on input line 339.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 334.
-File: ./img//rnn6.png Graphic file (type bmp)
-<./img//rnn6.png>
+(mdframed)              on input line 342.
+ [7]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 352.
+(mdframed)              on input line 361.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 354.
+(mdframed)              on input line 363.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 364.
+(mdframed)              on input line 365.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 367.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 380.
+(mdframed)              on input line 369.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 383.
- [7]
-File: ./img//rnn7.png Graphic file (type bmp)
-<./img//rnn7.png>
-File: ./img//rnn8.png Graphic file (type bmp)
-<./img//rnn8.png>
+(mdframed)              on input line 371.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 416.
+(mdframed)              on input line 376.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 419.
- [8]
+(mdframed)              on input line 382.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 438.
+(mdframed)              on input line 395.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 441.
-File: ./img//rnn9.png Graphic file (type bmp)
-<./img//rnn9.png>
+(mdframed)              on input line 400.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 449.
+(mdframed)              on input line 404.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 452.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 473.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 476.
-File: ./img//rnn11.png Graphic file (type bmp)
-<./img//rnn11.png>
- [9]
-File: ./img//rnn12.png Graphic file (type bmp)
-<./img//rnn12.png>
-File: ./img//rnn14.png Graphic file (type bmp)
-<./img//rnn14.png>
-File: ./img//rnn15.png Graphic file (type bmp)
-<./img//rnn15.png>
- [10]
-File: ./img//rnn16.png Graphic file (type bmp)
-<./img//rnn16.png>
- [11]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 564.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 567.
-File: ./img//rnn20.png Graphic file (type bmp)
-<./img//rnn20.png>
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 582.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 585.
-File: ./img//rnn21.png Graphic file (type bmp)
-<./img//rnn21.png>
- [12]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 601.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 605.
-File: ./img//rnn19.png Graphic file (type bmp)
-<./img//rnn19.png>
- [13]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 638.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 641.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 645.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 648.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 653.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 659.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 667.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 672.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 680.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 686.
-File: ./img//rnn22.png Graphic file (type bmp)
-<./img//rnn22.png>
- [14]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 719.
-File: ./img//rnn23.png Graphic file (type bmp)
-<./img//rnn23.png>
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 723.
- [15]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 736.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 739.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 749.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 751.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 753.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 755.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 757.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 759.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 764.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 770.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 783.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 788.
- [16]
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 792.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 797.
-)
+(mdframed)              on input line 409.
+ [8])
 
 Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (movie15)                @@ Package `movie15' is obsolete and @@
 (movie15)                @@ superseded by `media9'.           @@
 (movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
 
-[17] (/Users/tasos/Repos/Personal/notes/theory/out/theory.aux)
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
+[9] (/Users/tasos/Repos/Personal/notes/theory/out/theory.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
-
-Package rerunfilecheck Warning: File `theory.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `theory.out':
-(rerunfilecheck)             Before: 938A790DCEE2FD60E81DB259622F9CF7;103
-(rerunfilecheck)             After:  3DA2438854379C4F6F8B69B671222B09;1598.
+Package rerunfilecheck Info: File `theory.out' has not changed.
+(rerunfilecheck)             Checksum: 122A423FB76E780987809BF0BE859579;1318.
  ) 
 Here is how much of TeX's memory you used:
- 47860 strings out of 476683
- 1137701 string characters out of 5804047
+ 47563 strings out of 476683
+ 1133252 string characters out of 5804047
  1869018 words of memory out of 5000000
- 67230 multiletter control sequences out of 15000+600000
- 552356 words of font info for 123 fonts, out of 8000000 for 9000
+ 66957 multiletter control sequences out of 15000+600000
+ 530297 words of font info for 93 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 125i,14n,129p,717b,1109s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 125i,8n,129p,717b,1111s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on /Users/tasos/Repos/Personal/notes/theory/out/theory.pdf (17 p
-ages).
+Output written on /Users/tasos/Repos/Personal/notes/theory/out/theory.pdf (9 pa
+ges).
