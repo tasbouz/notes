@@ -1,5 +1,5 @@
 # Notes
-My [notes](https://github.com/tasbouz/notes/blob/master/out/notes.pdf) on various topics of science.
+My [notes](https://github.com/tasbouz/notes/blob/master/theory/out/theory.pdf) on various topics of science.
 
 ## Theory
 
