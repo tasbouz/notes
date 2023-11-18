@@ -107,10 +107,10 @@ weights, the term $U \boldsymbol{x}_{t}$ is actually the usual activation we had
 Coming to the second, extra, term $W \boldsymbol{s}_{t-1}$ in the activation, notice that this is what produces the
 dependency between the inputs, making the network able to ``remember'' the previous inputs. Notice that the formula
 for the hidden states is recursive, i.e.\ the hidden state at time-step $t$ depends on the hidden state at time-step
-$t-1$, and hence the naming ``recurrent neural network''. As with $U$ and $V$, the matrix $W$ is also shared across all
+$t-1$, and hence, the naming ``recurrent neural network''. As with $U$ and $V$, the matrix $W$ is also shared across all
 time-steps in order to make sure that the network is independent of the input size. \v
 
-Of course for the targets of the network still holds:
+Of course, for the targets of the network still holds:
 \bse
 \hat{y}_t = O(V \boldsymbol{s}_{t})
 \ese
@@ -138,7 +138,7 @@ follows.
 
 As with any other neural network we have developed so far, now that the network is built we need to train it. First of
 all, we need a loss function. Suppose we initialize all parameters $\theta = \{U, V, W\}$ randomly and the network
-predicts the targets $\hat{y}_t$. Each network carries, the same, loss $J$ hence we have $n$ losses of the form
+predicts the targets $\hat{y}_t$. Each network carries, the same, loss $J$ hence, we have $n$ losses of the form
 $J(y_t, \hat{y}_t ; \theta)$ for each of the $n$ copies of the subnetworks. The total loss is simply the sum of the
 loss over all time-steps:
 \bse
@@ -286,7 +286,7 @@ contain a lot of increasing powers of $W$, i.e.\ : $W, W^2, W^3, \ldots, W^n$. T
 the backpropagation through time to have bigger and bigger steps as time passes having as a result non-convergence to
 the optimal point.
 \item \textbf{Vanishing Gradients}: If $W < 1$ then $W^i \to 0, \text{as } i \to n$ which has as a result the terms
-due to further back time-steps to have smaller and smaller gradients hence to contribute less and less. This adds
+due to further back time-steps to have smaller and smaller gradients hence, to contribute less and less. This adds
 bias parameter to the model since it captures only short term dependencies. For vanishing gradients we have the
 following solutions.
 \eit
@@ -311,7 +311,7 @@ after a predetermined number of steps $\tau$. This leads to an approximation of 
 higher terms of $W$.
 \item \textbf{Parameter Initialization}: It is shown that by initializing weights to 1 and biases to 0 helps from
 preventing the parameters to shrink to 0.
-\item \textbf{Alternative Architectures}: However the best, and most used, way of dealing with this problem is to
+\item \textbf{Alternative Architectures}: However, the best, and most used, way of dealing with this problem is to
 build more complex RNNs that are able to control what information is passed through. In what follows we will explore two
 of the most heavily used allternative RNN architectures:
 \bit

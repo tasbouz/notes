@@ -59,7 +59,7 @@ A^{C} = \{x:x\in S \mid x \notin A \}
 \fig{complement}{0.1}
 
 \bd[Union]
-The \textbf{union} of two events A and B is the event containing elements which are in A, in B, or in both A and B.
+The \textbf{union} of two events A and B is the event containing elements which are in A, in B, or in both A and B\@.
 \bse
 A\cup B=\{x:x\in A{\text{ or }}x\in B\}
 \ese
@@ -106,7 +106,7 @@ one of the fundamental concepts in mathematics called ``measure theory''. \v
 
 To sum up, what we really want to do is to attach a number (measure) to every event (subset) of sample space (set) 
 that we will eventually interpret as probability. Since a sample space, and an event are just sets, for now we can 
-forget everything related to probability, and treat them like plain sets. Hence, what we are trying to do is to 
+forget everything related to probability, and treat them like plain sets. Hence, what we are trying to do is to
 assign a number to every subset of a set. This is exactly what measure theory deals with!
 
 \section{Measure Theory}
@@ -278,7 +278,7 @@ infinite, then:
 \v
 
 and thus, the triple $(\N,\mathscr{P}(\N),\mu)$ is a measure space. The measure $\mu$ on $(\N,\mathscr{P}(\N))$ is
-called \say{counting measure} and it is the usual measure on countable measurable spaces.
+called ``counting measure'', and it is the usual measure on countable measurable spaces.
 \ee
 
 Now let's give some basic definitions involving measures and measure spaces.
@@ -296,7 +296,7 @@ The counting measure on $(\N,\mathscr{P}(\N))$ is finite. To see this, define $A
 $\bigcup_{n=0}^{\infty}A_n=\N$ and $\mu(A_n)=|\{n\}|=1<\infty$ for all $n\in \N$.
 \ee
 
-What follows is two definitions that are not really about measures and measure spaces but we need them in order to
+What follows is two definitions that are not really about measures and measure spaces, but we need them in order to
 define the notion of ``complete measure''.
 
 \bd [Null Set / Set Of Measure Zero]
@@ -336,7 +336,7 @@ Let $(M,\Sigma,\mu)$ be a measure space and let $(M,+,\cdot)$ be a vector space.
 where $A+m \coloneqq \{a+m\mid a\in A\}$.
 \ed
 
-Finally let's see and prove some properties of the measure.
+Finally, let's see and prove some properties of the measure.
 
 \bt[]
 Let $(M,\Sigma,\mu)$ be a measure space.
@@ -504,7 +504,7 @@ Then, $\Sigma$ is a $\s$-algebra on $M$.
 \bq
 We simply check that $\Sigma$ satisfies the defining properties of a $\sigma$-algebra:
 \ben[label=(\roman*)]
-\item We have $M \in \Sigma_i$ for all $i \in I$ and hence $ M \in \Sigma$.
+\item We have $M \in \Sigma_i$ for all $i \in I$ and hence, $ M \in \Sigma$.
 \item Let $A \in \Sigma$. Then, $A \in \Sigma_i$ for all $i \in I$ and, since each $\Sigma_i$ is a $\s$-algebra, we
 also have $M\setminus A \in \Sigma_i$ for all $i\in I$. Hence, $M\setminus A \in \Sigma$.
 \item Let $\{A_n\}_{n\in\N}$ be a sequence in $\Sigma$. Then, $\{A_n\}_{n\in\N}$ is a sequence in each $\Sigma_i$. Thus:
@@ -757,7 +757,7 @@ suitable integral. Also, one might wish to integrate on spaces more general than
 provides the necessary abstractions for this. \v
 
 The term Lebesgue integration can mean either the general theory of integration of a function with respect to a
-general measure, as introduced by Lebesgue, or the specific case of integration of a function defined on a sub-domain
+general measure, as introduced by Lebesgue, or the specific case of integration of a function defined on a subdomain
 of the real line with respect to the Lebesgue measure. \v
 
 We will introduce Lebesgue integral step by step by introducing all the necessary intermediate concepts. We will
@@ -870,7 +870,7 @@ It is often very convenient to introduce the notation:
 \ese
 
 where $x$ is a dummy variable and could be replaced by any other symbol. The reason why this is a convenient notation
-is that, while some functions have standard symbols but cannot be easily represented by an algebraic expression (e.g
+is that, while some functions have standard symbols but cannot be easily represented by an algebraic expression (e.g.\
 characteristic functions), others are easily expressed in terms of an algebraic formula but do not have a standard
 name. For instance, it is much easier to just write:
 \bse
@@ -976,7 +976,7 @@ The definition of the integral as a supremum is clear and geometrically reasonab
 difficult to evaluate the integral of any particular function using it. The monotone convergence theorem provides a
 much simpler way to evaluate the integral. One can show that, for any non-negative, measurable function $f$, there
 exists an increasing sequence $\{s_n\}_{n\in\N}$ of non-negative, measurable, simple functions (which can be
-explicitly constructed from $f$) whose pointwise limit is $f$, and hence we have:
+explicitly constructed from $f$) whose pointwise limit is $f$, and hence, we have:
 \bse
 \int_M\! f \, \d \mu = \lim_{n\to\infty}\int_M\! s_n \, \d \mu
 \ese
@@ -985,7 +985,7 @@ explicitly constructed from $f$) whose pointwise limit is $f$, and hence we have
 
 where the right-hand side can usually be evaluated fairly easily. \v
 
-The monotone convergence theorem can be used to extend some of properties of integrals of non-negative, measurable
+The monotone convergence theorem can be used to extend some of the properties of integrals of non-negative, measurable
 simple functions to non-negative, measurable functions which are not-necessarily simple. \v
 
 We also have the following theorem.
@@ -1024,7 +1024,7 @@ Again, note that this result does \emph{not} hold for the Riemann integral unles
 the sequence $\{f_n\}_{n\in\N}$. This means that, for the purposes of Lebesgue integration, null sets can be
 neglected as they do not change the value of an integral. \v
 
-Finally we are now in a position to define the full Lebesgue integrable functions (not just for non-negative
+Finally, we are now in a position to define the full Lebesgue integrable functions (not just for non-negative
 functions but for all of them). Since the difference $\infty-\infty$ is not defined, we cannot integrate all
 measurable functions. There is, however, a very small extra condition (beyond measurability) that determines the
 class of functions to which we can extend our previous definition.
@@ -1135,7 +1135,7 @@ converges almost everywhere to a measurable function $f$. If there exists $g \in
 
 \section{Axiomatic Probability Theory}
 
-In the previous two sections we defined the concept of sample space and we developed measure theory in a very
+In the previous two sections we defined the concept of sample space, and we developed measure theory in a very
 abstract and generic way, independently of any probability notion. Now by combining those two notions we can develop
 the so called ``axiomatic probability theory''. In other words, axiomatic probability theory can be seen as an
 application of the measure theory on the sample space set. \v
@@ -1244,7 +1244,7 @@ P(A \cap B) = P(A) P(B)
 \ese
 \ed
 
-Subsequently for the union of two independent events by using the lemma we proved previously:
+Subsequently, for the union of two independent events by using the lemma we proved previously:
 \bse
 P(A \cup B) = P(A) + P(B) - P(A) P(B)
 \ese

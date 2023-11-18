@@ -1,6 +1,9 @@
+%! suppress = SentenceEndWithCapital
+%! suppress = IncorrectSectionNesting
+%! suppress = EscapeUnderscore
 %! suppress = Ellipsis
 A principal fiber bundle (often called simply principal bundle) is a mathematical object that formalizes some of the
-essential features of the Cartesian product $X \times G$ of a space $X$ with a group $G$. in other words, very
+essential features of the Cartesian product $X \times G$ of a space $X$ with a group $G$. In other words, very
 roughly speaking, a principal bundle is a fiber bundle whose typical fiber is a Lie group. \v
 
 A common example of a principal bundle is the frame bundle of a vector bundle, which consists of all ordered bases of
@@ -203,7 +206,7 @@ $p\mapsto (p,e)$, which are both smooth. We also have:
 (\pi\circ\sigma)(pm=\pi( u^{-1}(m,e)) = \pi_1 (m,e) = m
 \ese
 
-for all $m\in M$, hence $\pi\circ\sigma=\id_M$ and thus $\sigma\in \Gamma(P)$.
+for all $m\in M$, hence, $\pi\circ\sigma=\id_M$ and thus $\sigma\in \Gamma(P)$.
 
 \item[$(\Leftarrow)$] Suppose that there exists a smooth section $\sigma\cl M\to P$. Let $p\in P$ and consider the
 point $\sigma(\pi(p))\in P$. We have:
@@ -213,7 +216,7 @@ point $\sigma(\pi(p))\in P$. We have:
 
 \v
 
-hence $\sigma(\pi(p))$ and $p$ belong to the same fiber, and thus there exists a unique group element in $G$ which
+Hence, $\sigma(\pi(p))$ and $p$ belong to the same fiber, and thus there exists a unique group element in $G$ which
 links the two points via $\racts$. Since this element depends on both $\sigma$ and $p$, let us denote it by
 $\chi_\sigma(p)$. Then, $\chi_\sigma$ defines a function:
 \bi{rrCl}
@@ -274,7 +277,7 @@ u_\sigma(p\racts g) & = & (\pi(p\racts g),\chi_\sigma(p\racts g))\\[5pt]
 & = & u_\sigma(p)\racts' g
 \ei
 
-for all $p\in P$ and $g\in G$, so the upper square also commutes and hence $(P,\pi,M)$ is a trivial bundle. \qedhere
+for all $p\in P$ and $g\in G$, so the upper square also commutes and hence, $(P,\pi,M)$ is a trivial bundle. \qedhere
 \eit
 
 \section{Associated Bundles}
@@ -450,8 +453,8 @@ things we mentioned earlier. \v
 
 Recall that we defined the set of all invertible maps $\mathrm{Aut}(V) \coloneqq \{\phi \in \mathrm{End}(V) \mid \phi
 \text{ is an isomorphism}\}$, and we further said that we can equip this set with matrix multiplication and show that
-it is closed under the operation, hence we turn it into a group that we call $GL(V)$. On top of that, we can show
-that $GL(V)$ is actually a topological group, hence a Lie group, so it can be used as the group of a principal
+it is closed under the operation, hence, we turn it into a group that we call $GL(V)$. On top of that, we can show
+that $GL(V)$ is actually a topological group, hence, a Lie group, so it can be used as the group of a principal
 $G$-bundle. \v
 
 Recall also that the elements $g$ of $GL(V)$ are actually ``one-one" tensors (i.e.\ $g \in T^1_1 V$) and that once we
@@ -459,7 +462,7 @@ pick a basis, and we switch to the matrix notation then we can denote them as $g
 denote the group as $\GL(n,V)$ where $n$ indicates the number of basis vectors (which is of course the dimension of
 the manifold) and V the same underlying space as before. \v
 
-Hence in our case, we use as a group $G$ the group $\GL(\dim M,\R)$. We define a right $\GL(\dim M,\R)$-action on
+Hence, in our case, we use as a group $G$ the group $\GL(\dim M,\R)$. We define a right $\GL(\dim M,\R)$-action on
 $LM$ by:
 \bse
 (e_1,\ldots,e_{\dim M}) \racts g \coloneqq (g^a_{\phantom{a}1}e_a,\ldots, g^a_{\phantom{a}\dim M}e_a)
@@ -469,7 +472,7 @@ $LM$ by:
 
 where $g^a_{\phantom{a}b}$ are the components of the automorphism (usually called endomorphism but the invertibility
 is implied) $g\in \GL(\dim M, \R)$ with respect to the standard basis on $\R^n$. Note that if $(e_1,\ldots,e_{\dim
-M})\in L_p M$, we must also have $(e_1,\ldots,e_{\dim M}) \racts g\in L_p M$, hence we just defined a mathematically
+M})\in L_p M$, we must also have $(e_1,\ldots,e_{\dim M}) \racts g\in L_p M$, hence, we just defined a mathematically
 proper way to talk about a change of basis (linear basis transformations). \v
 
 This action is free since:
@@ -672,7 +675,7 @@ Coming to our case:
 $, the frame bundle can be restricted to a principal $\SO(d)$-bundle. This is related to the fact that any manifold
 can be equipped with a Riemannian metric.
 \item The bundle $(LM/\SO(1,d-1),\pi,M)$ may or may not have a section. For example, the bundle $(LS^2/\SO(1,1),\pi,
-S^2)$ does not admit any section, and hence we cannot restrict $(LS^2/\SO(1, 1),\pi,S^2)$ to a principal $\SO(1,1)
+S^2)$ does not admit any section, and hence, we cannot restrict $(LS^2/\SO(1, 1),\pi,S^2)$ to a principal $\SO(1,1)
 $-bundle, even though $\SO(1,1)$ is a closed Lie subgroup of $\GL(2,\R)$. This is related to the fact that the
 $2$-sphere cannot be equipped with a Lorentzian metric.
 \een
@@ -700,14 +703,14 @@ principal bundle, which in turn induces a parallel transport map on any of its a
 the associated bundle carry a vector space structure, then the parallel transport can be used to define a covariant
 derivative on the associated bundle. \v
 
-Hence the conceptual sequence ``connection, parallel transport, covariant derivative'' is in decreasing order of
+Hence, the conceptual sequence ``connection, parallel transport, covariant derivative'' is in decreasing order of
 generality, and it should be clear that treating these terms as synonyms will inevitably lead to confusion. We will
 now discuss the first of these in some detail. \v
 
 Let $(P,\pi,M)$ be a principal $G$-bundle. Recall that every element of $X_e \in T_e G$ gives rise to a left
 invariant vector field on $G$ which we denoted by $X = j(X_e) = ({\ell_{g*}})_e (X_{e})$. At this point we will
 change our notation a bit since we will invoke vectors from different space. Namely, we will denote the element $X_e$
-as $A_e$ hence $A_e \in T_e G$. \v
+as $A_e$ hence, $A_e \in T_e G$. \v
 
 We now define for every point $p \in P$ a map $i_p$ as follows:
 \bi{rrCl}
@@ -749,7 +752,7 @@ for any $t$. Let $f\in \mathcal{C}^\infty(M)$ be arbitrary. Then:
 & = & 0
 \ei
 
-since $f(\pi(p))$ is constant. Hence $X^{A_e}_p \in V_p P$. Alternatively, one can also argue that $(\pi_*) _p
+since $f(\pi(p))$ is constant. Hence, $X^{A_e}_p \in V_p P$. Alternatively, one can also argue that $(\pi_*) _p
 X^{A_e}_p$ is the tangent vector to a constant curve on $M$. \eq
 
 In particular, the map:
@@ -1081,7 +1084,7 @@ can thus be given in terms of $(\dim M)^2$ functions:
 \ese
 
 The associated Yang-Mills field $\omega^U \coloneqq \sigma^*\omega$ is, at each point $m\in U$, a Lie-algebra-valued
-one-form on the vector space $T_m U$. By using the co-ordinate induced basis and its dual basis, we can express $
+one-form on the vector space $T_m U$. By using the coordinate induced basis and its dual basis, we can express $
 (\omega^U)_m$ in terms of components as:
 \bse
 (\omega^U)_m=\omega^U_\mu(m)\,(\d x^\mu)_m
@@ -1116,7 +1119,7 @@ Maurer-Cartan form of the Lie group $\GL(d, \R)$.
 
 \be
 Let $(\GL^+(d,\R),x)$ be a chart on $\GL(d,\R)$, where $\GL^+(d,\R)$ denotes an open subset of $\GL(d,\R)$ containing
-the identity $\id_{\R^d}$, and let $x^i_{\phantom{i}j}\cl \GL^+(d,\R)\to \R$ denote the corresponding co-ordinate
+the identity $\id_{\R^d}$, and let $x^i_{\phantom{i}j}\cl \GL^+(d,\R)\to \R$ denote the corresponding coordinate
 functions:
 
 \bse
@@ -1129,7 +1132,7 @@ functions:
 
 \vspace{10pt}
 
-so that $x^i_{\phantom{i}j}(g) \coloneqq g^i_{\phantom{i}j}$. Recall that the co-ordinate functions are smooth maps
+so that $x^i_{\phantom{i}j}(g) \coloneqq g^i_{\phantom{i}j}$. Recall that the coordinate functions are smooth maps
 on the chart domain, i.e.\ we have $x^i_{\phantom{i}j}\in \mathcal{C}^\infty (\GL^+(d,\R))$. Also recall that to each
 $A\in T_{\id_{\R^d}}\GL(d,\R)$ there is associated a left-invariant vector field:
 \bse
@@ -1141,7 +1144,7 @@ which, at each point $g\in \GL(d,\R)$, is the tangent vector to the curve:
 \gamma^A(t) \coloneqq g\bullet \exp(tA)
 \ese
 
-Consider the action of $L^A$ on the co-ordinate functions:
+Consider the action of $L^A$ on the coordinate functions:
 \bi{rCl}
 (L^Ax^i_{\phantom{i}j})(g) & = & [x^i_{\phantom{i}j}(g\bullet \exp(tA))]'(0)\\
 & = & [x^i_{\phantom{i}j}(g\bullet\e^{tA})]'(0)\\
@@ -1208,7 +1211,7 @@ where, for each $m\in U_1\cap U_2$, the Lie group element $\Omega(m)\in G$ satis
 \ed
 
 Note that since the $G$-action $\racts$ on $P$ is free, for each $m$ there exists an unique $\Omega(m)$ satisfying the
-above condition, and hence the gauge map $\Omega$ is well-defined.
+above condition, and hence, the gauge map $\Omega$ is well-defined.
 
 \bt[]
 Under the above assumptions, we have:
@@ -1262,7 +1265,7 @@ given by:
 (\Omega^{-1})^i_{\phantom{i}k}\partial_\mu (\Omega^{-1})^k_{\phantom{k}j}
 \ese
 
-As an application, consider the spacial case in which the sections $\sigma_1,\sigma_2$ are induced by co-ordinate
+As an application, consider the spacial case in which the sections $\sigma_1,\sigma_2$ are induced by coordinate
 charts $(U_1,x)$ and $(U_2,y)$. Then we have:
 \bi{rCl}
 \Omega^i_{\phantom{i}j} & = & \frac{\partial y^i}{\partial x^j} \coloneqq \partial_j(y^i\circ x^{-1})\circ x\\
@@ -1514,7 +1517,7 @@ The parallel transport is, in fact, a bijection between the fibers $\preim_\pi(\
 $p\in\preim_\pi(\{\gamma(0)\})$, and horizontal lifts through different points do not intersect. It is surjective
 since for each $q\in \preim_\pi(\{\gamma(1)\})$ we can find a $p$ such that $q=\gamma^\uparrow_p(1)$ as follows. Let
 $\widetilde p\in\preim_\pi(\{\gamma(0)\})$. Then $\gamma^\uparrow_{\widetilde p}(1)$ belongs to the same fiber as $q$
-and hence there exists a unique $g\in G$ such that $q = \gamma^\uparrow_{\widetilde p}(1) \racts g$. Recall that:
+and hence, there exists a unique $g\in G$ such that $q = \gamma^\uparrow_{\widetilde p}(1) \racts g$. Recall that:
 \bse
 \gamma^\uparrow_{\widetilde p}(\lambda) = (\sigma\circ\gamma)(\lambda)\racts (\mathrm{P}\exp (\cdots ) g_0)
 \ese
@@ -1625,7 +1628,7 @@ Let's start by properly defining those terms.
 
 \bd [Exterior Covariant Derivative]
 Let $(P,\pi,M)$ be a principal $G$-bundle with connection one-form $\omega$. Let $\phi$ be a $k$-form (i.e.\ an
-anti-symmetric, $\mathcal{C}^\infty(P)$-multilinear map) with values in some module $V$. Then then \textbf{exterior
+antisymmetric, $\mathcal{C}^\infty(P)$-multilinear map) with values in some module $V$. Then then \textbf{exterior
 covariant derivative} of $\phi$ is:
 \bi{rrCl}
 \D\phi\cl & \Gamma(TP)^{\times (k+1)} & \to & V\\ & (X_1,\ldots,X_{k+1}) & \mapsto & \d \phi (\hor(X_1),\ldots,\hor(X_{k+1})).
@@ -1661,7 +1664,7 @@ with the second term on the right hand side defined as:
 where $X,Y\in \Gamma(TP)$ and the double bracket denotes the Lie bracket on $T_e G$.
 \et
 
-If $G$ is a matrix Lie group, and hence $T_e G$ is an algebra of matrices of the same size as those of $G$, then we
+If $G$ is a matrix Lie group, and hence, $T_e G$ is an algebra of matrices of the same size as those of $G$, then we
 can write:
 \bse
 \Omega^i_{\phantom{i}j} = \d \omega^i_{\phantom{i}j} + \omega^i_{\phantom{i}k}\wedge \omega^k_{\phantom{k}j}
@@ -1712,7 +1715,7 @@ and:
 (\omega\Wedge\omega )(X,Y) = \left\llbracket \omega(X),\omega(Y) \right\rrbracket = \left\llbracket 0, 0\right\rrbracket = 0
 \ese
 
-Hence the equation holds in this case.
+Hence, the equation holds in this case.
 
 \item W.l.o.g suppose that $X\in \Gamma(TP)$ is horizontal while $Y=X^A\in\Gamma(TP)$ is vertical. Then the left hand
 side is:
@@ -1944,7 +1947,7 @@ Let $m\in U$. Then, we have:
 & = & \sigma(m)
 \ei
 
-and hence $\sigma_{\phi_{\sigma}} = \sigma$. Now let $p\in \preim_{\pi}(U)$.  Then, we have:
+and hence, $\sigma_{\phi_{\sigma}} = \sigma$. Now let $p\in \preim_{\pi}(U)$.  Then, we have:
 \bi{rCl}
 \phi_{\sigma_{\phi}}(p) & = & i^{-1}_p(\sigma_{\phi}(\pi(p)))\\
 & = & i^{-1}_p([p,\phi(p)])\\
@@ -1957,7 +1960,7 @@ and hence, $\phi_{\sigma_{\phi}} = \phi$. \qedhere
 
 \subsection{Linear Actions On Associated Vector Fiber Bundles}
 
-We now specialise to the case where $F$ is a vector space, and hence we can require the left action $G\!\lacts \cl
+We now specialise to the case where $F$ is a vector space, and hence, we can require the left action $G\!\lacts \cl
 F\xrightarrow{\sim} F$ to be linear.
 
 \bt[]
@@ -2011,7 +2014,7 @@ for any sections $\sigma,\tau\cl U\to P_F$, any $f\in \mathcal{C}^{\infty} (U)$,
 These (together with $\nabla_X f \coloneqq X(f)$) are usually presented as the defining properties of the covariant
 derivative in more elementary treatments. \v
 
-Recall that functions are a special case of forms, namely the $0$-forms, and hence the exterior covariant derivative
+Recall that functions are a special case of forms, namely the $0$-forms, and hence, the exterior covariant derivative
 a function $\phi\cl P\to F$ is:
 \bse
 \D\phi \coloneqq \d \phi \circ \hor

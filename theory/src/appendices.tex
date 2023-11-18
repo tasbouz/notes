@@ -1,10 +1,11 @@
+%! suppress = EscapeUnderscore
 \chapter{Constrained Optimization} \label{ch:constrained-optimization}
 
 Constrained optimization is the problem of finding a minimum (or maximum) of a function $f(x)$ called the
-\say{objective function}, subject to a number of constraints of the following types:
+``objective function'', subject to a number of constraints of the following types:
 \bit
-\item $h_{i}(x) =0, \:\:\: i=1,2,\ldots$ called \say{equality constraints}
-\item $g_{i}(x) \leq 0, \:\:\: i=1,2,\ldots$ called \say{inequality constraints}
+\item $h_{i}(x) =0, \:\:\: i=1,2,\ldots$ called ``equality constraints''
+\item $g_{i}(x) \leq 0, \:\:\: i=1,2,\ldots$ called ``inequality constraints''
 \eit
 
 Let's start first with the equality constraints, and then we will add inequality constraints.
@@ -36,12 +37,12 @@ or by bringing everything in one side:
 & \nabla_{\boldsymbol{w}} (f(x) - \sum_{i} \mu_{i} h_{i}(x)) = 0
 \end{align*}
 
-At this point we define the \say{Lagrangian} as follows:
+At this point we define the ``Lagrangian'' as follows:
 \bse
 \mathcal{L}(x, \mu_{i}) = f(x) + \sum_{i} \mu_{i} h_{i}(x)
 \ese
 
-where $\mu_{i}$ are called \say{Lagrange multipliers}. Subsequently the necessary conditions for optimization of $
+where $\mu_{i}$ are called ``Lagrange multipliers''. Subsequently, the necessary conditions for optimization of $
 \mathcal{L}$ turns to:
 \bse
 \nabla_{\boldsymbol{w}} \mathcal{L} = 0 \:\:\: \text{and} \:\:\: \frac{\partial \mathcal{L}}{\partial \mu_{i}} = 0
@@ -54,7 +55,7 @@ The solution of this system of equations minimizes (or maximizes) $f(x)$ subject
 Now on top of equality constraints we also have inequality constraints. The formulation of the optimization problem
 is to optimize $f(x)$ subject to $h_{i}(x) = 0, \:\:\: i=1,2,\ldots$ and $g_{i}(x) \leq 0, \:\:\: i=1,2,\ldots$.
 Following a similar way of thinking as before, although a bit more technical, we can show (but we won't) that if the
-following four conditions, called \say{Karush - Kuhn - Talker conditions} (KKT), hold:
+following four conditions, called ``Karush - Kuhn - Talker conditions'' (KKT), hold:
 \bit
 \item $h_{i}(x) = 0, \:\:\: \forall i$
 \item $g_{i}(x) \leq 0, \:\:\: \forall i$
@@ -62,13 +63,13 @@ following four conditions, called \say{Karush - Kuhn - Talker conditions} (KKT),
 \item $\lambda_{i} g_{i}(x) = 0, \:\:\: \forall i$
 \eit
 
-then there exist constants $\mu_{i}$ and $\lambda_{i}$ called \say{KKT multipliers} such that:
+then there exist constants $\mu_{i}$ and $\lambda_{i}$ called ``KKT multipliers'' such that:
 \bse
 \nabla_{\boldsymbol{w}} f(x) =
 \sum_{i} \mu_{i} \nabla_{\boldsymbol{w}} h_{i} (x) + \sum_{i} \lambda_{i} \nabla_{\boldsymbol{w}} g_{i}(x)
 \ese
 
-By following the same philosophy as for the equality constrained optimization we define the \say{Lagrangian} as follows:
+By following the same philosophy as for the equality constrained optimization we define the ``Lagrangian'' as follows:
 \bse
 \mathcal{L}(x, \mu_{i}, \lambda_{i}) = f(x) + \sum_{i} \mu_{i} h_{i} (x) + \sum_{i} \lambda_{i} g_{i}(x)
 \ese
@@ -81,7 +82,7 @@ and the necessary conditions for optimization of $ \mathcal{L}$ turn to:
 = 0
 \ese
 
-This final form of the optimization problem is usually called the \say{dual optimization problem}. \v
+This final form of the optimization problem is usually called the ``dual optimization problem''. \v
 
 This is the most general case of constrained optimization. If there are no equality constraints $h_{i}(x)$ then we
 simply have a theory for inequality constrained optimization. If there are no inequality constraints $g_{i}(x)$ then
@@ -107,7 +108,7 @@ K(\bar{x}, \bar{x}^\prime) = \bar{z}^T \bar{z}^\prime
 \ese
 \ed
 
-Let's for example assume the following non-linear transformation:
+Let us for example assume the following non-linear transformation:
 \begin{align*}
 & \bar{x} = (x_1, x_2) \xrightarrow{\text{$\Phi$}} \bar{z} = \Phi (\bar{x}) = (1, x_1^2, x_2^2, \sqrt{2} x_1,
 \sqrt{2} x_2, \sqrt{2} x_1 x_2) \\
@@ -121,7 +122,7 @@ Then for the inner product:
 x_1 x_2 x_1^\prime x_2^\prime
 \ese
 
-However we can get to the same result by simply defining a Kernel of the form:
+However, we can get to the same result by simply defining a Kernel of the form:
 \begin{align*}
 K(\bar{x}, \bar{x}^\prime) &= (1 + \bar{x} \bar{x}^\prime)^2 \\
 &= (1 + x_1 x_1^\prime + x_2 x_2^\prime )^2 \\
@@ -129,7 +130,7 @@ K(\bar{x}, \bar{x}^\prime) &= (1 + \bar{x} \bar{x}^\prime)^2 \\
 + 2 x_1 x_2 x_1^\prime x_2^\prime
 \end{align*}
 
-Hence by knowing the Kernel of a space $Z$ of some non-linear transformation $\Phi$ we can compute inner products
+Hence, by knowing the Kernel of a space $Z$ of some non-linear transformation $\Phi$ we can compute inner products
 without the need of transforming vectors from $X$ to $Z$. \v
 
 The kernel trick is to use this idea in the opposite direction. Namely, to assume that a function $K(\bar{x},

@@ -1,3 +1,4 @@
+%! suppress = EscapeUnderscore
 Topology is concerned with the properties of a geometric object that are preserved under continuous deformations,
 such as stretching, twisting, crumpling and bending, but not tearing or gluing. \v
 
@@ -38,7 +39,7 @@ assumed.
 \ed
 
 Unless $|M|=1$, there are (usually many) different topologies $\cO$ that one can choose on the set $M$. The following
-table summarizes the number of possible topologies (some of them might not satisfy the axioms so they fail to be
+table summarizes the number of possible topologies (some of them might not satisfy the axioms, so they fail to be
 topologies) given the cardinality of a set.
 \btab[H]
 \centering
@@ -78,8 +79,8 @@ This is called the \emph{chaotic topology} and can be defined on any set.
 Let $M$ be a set. Then $\cO=\cP(M)$ is a topology on $M$. Indeed, we have:
 \ben
 \item[i)] $\vn \in \cP(M)$ and $M \in \cP(M)$.
-\item[ii)] If $U,V \in \cP(M)$, then $\bigcap\, \{U,V\} \se M$ and hence $\bigcap\, \{U,V\} \in \cP(M)$.
-\item[iii)] If $C\se\cP(M)$, then $\bigcup C \se M$, and hence $\bigcup C\in \cP(M)$.
+\item[ii)] If $U,V \in \cP(M)$, then $\bigcap\, \{U,V\} \se M$ and hence, $\bigcap\, \{U,V\} \in \cP(M)$.
+\item[iii)] If $C\se\cP(M)$, then $\bigcup C \se M$, and hence, $\bigcup C\in \cP(M)$.
 \een
 
 This is called the \emph{discrete topology} and can be defined on any set.
@@ -100,8 +101,8 @@ Let $(M,\cO)$ be a topological space. A subset $S$ of $M$ is said to be \textbf{
 \in \cO$ and \textbf{closed} (with respect to $\cO$) if $M\sm S \in \cO$.
 \ed
 
-Notice that the notions of open and closed sets, as defined, are not mutually exclusive. A set could be both or
-neither, or one and not the other.
+Notice that the notions of open and closed sets, as defined, are not mutually exclusive. A set could be either ``both or
+neither'', or ``one and not the other''.
 
 \be
 Let $(M,\cO)$ be a topological space. Then $\vn$ is open since $\vn \in \cO$. However, $\vn$ is also closed since
@@ -169,7 +170,7 @@ This proposition is of the form $\forall \, p \in \vn : Q(p)$, which was defined
 \forall \, p : p \in \vn \imp Q(p)
 \ese
 
-However, since $p\in\vn$ is false, the implication is true independent of $p$. Hence the initial proposition is true
+However, since $p\in\vn$ is false, the implication is true independent of $p$. Hence, the initial proposition is true
 and thus $\vn \in \cO_\mathrm{std}$. \v
 
 Second, by definition, we have $B_r(x)\se\R^d$ independent of $x$ and $r$, hence:
@@ -193,7 +194,7 @@ Let $r=\min\{r_1,r_2\}$. Then:
 B_r(p)\se B_{r_1}(p)\se U \quad \land \quad B_r(p)\se B_{r_2}(p)\se V
 \ese
 
-and hence $B_r(p)\se U \cap V$. Therefore $U\cap V \in \cO_\mathrm{std}$.
+and hence, $B_r(p)\se U \cap V$. Therefore $U\cap V \in \cO_\mathrm{std}$.
 \item[iii)] Let $C \se \cO_\mathrm{std}$ and let $p \in \bigcup C$. Then, $p\in U$ for some $U \in C$ and, since $U
 \in \cO_\mathrm{std}$, we have:
 \bse
@@ -222,7 +223,7 @@ Let $(M,\cO)$ be a topological space and let $N\ss M$. Then we call the \textbf{
 \ese
 \ed
 
-Of course we need to prove that this is indeed a topology.
+Of course, we need to prove that this is indeed a topology.
 
 \bq
 \ben
@@ -240,7 +241,7 @@ U \cap V = (S\cap N) \cap (T \cap N) = (S\cap T) \cap N
 
 \v
 
-Since $S,T\in \cO$ and $\cO$ is a topology, we have $S\cap T \in \cO$ and hence $U\cap V \in \cO|_N$.
+Since $S,T\in \cO$ and $\cO$ is a topology, we have $S\cap T \in \cO$ and hence, $U\cap V \in \cO|_N$.
 \item[iii)] Let $C \coloneqq \{S_\a\mid \a \in \cA\} \se \cO|_N$. By definition, we have:
 \bse
 \forall \, \a \in \cA : \exists \, U_\a \in \cO : S_\a = U_\a \cap N
@@ -256,9 +257,9 @@ and De Morgan's law, we have:
 \bigcup_{\a\in\cA}S_\a = \bigcup_{\a\in\cA}(U_\a \cap N) = \bigg(\bigcup_{\a\in\cA}U_\a\biggr) \cap N
 \ese
 
-Since $\cO$ is a topology, we have $\bigcup_{\a\in\cA}U_\a \in \cO$ and hence $\bigcup C \in \cO|_N$. \v
+Since $\cO$ is a topology, we have $\bigcup_{\a\in\cA}U_\a \in \cO$ and hence, $\bigcup C \in \cO|_N$. \v
 
-Thus $\cO|_N$ is a topology on $N$.
+Thus, $\cO|_N$ is a topology on $N$.
 \een
 \eq
 
@@ -278,7 +279,7 @@ since $(0,1]\notin\cO_\mathrm{std}$. However, we have:
 
 \v
 
-where $(0,2) \in \cO_\mathrm{std}$ and hence $(0,1]\in\cO_\mathrm{std}|_N$, i.e.\ the set $(0,1]$ is open in $(N,
+where $(0,2) \in \cO_\mathrm{std}$ and hence, $(0,1]\in\cO_\mathrm{std}|_N$, i.e.\ the set $(0,1]$ is open in $(N,
 \cO_\mathrm{std}|_N)$.
 \ee
 
@@ -447,15 +448,14 @@ and let $\phi\cl M \to N$ by defined by:
 \ese
 
 Then $\phi$ is continuous. Indeed, we have:
-\begin{align*}
-\mathrm{preim}_\phi(\vn)
-&= \vn, & \mathrm{preim}_\phi(\{2\}) &= \{a,c\}, & \mathrm{preim}_\phi(\{3\}) &= \vn\mathrm{preim}_\phi(\{1,3\})
-&= \{b\}, & \mathrm{preim}_\phi(\{2,3\})
-&=\{a,c\}, & \mathrm{preim}_\phi(\{1,2,3\})
-&= \{a,b,c\}
-\end{align*}
+\bse
+\mathrm{preim}_\phi(\vn) = \vn, \:\:\: \mathrm{preim}_\phi(\{2\}) = \{a,c\}, \:\:\: \mathrm{preim}_\phi(\{3\}) = \vn, \:\:\: \mathrm{preim}_\phi(\{1,3\}) = \{b\},
+\ese
+\bse
+\mathrm{preim}_\phi(\{2,3\}) = \{a,c\}, \:\:\: \mathrm{preim}_\phi(\{1,2,3\}) = \{a,b,c\}
+\ese
 
-and hence $\mathrm{preim}_\phi(S) \in \cO_M$ for all $S \in \cO_N$.
+and hence, $\mathrm{preim}_\phi(S) \in \cO_M$ for all $S \in \cO_N$.
 \ee
 
 \be
@@ -519,7 +519,7 @@ exist non-intersecting open neighbourhoods of these two points:
 \ed
 
 \be
-The topological space $(\R^d,\cO_\mathrm{std})$ is T2 and hence also T1.
+The topological space $(\R^d,\cO_\mathrm{std})$ is T2 and hence, also T1.
 \ee
 
 \be
@@ -579,8 +579,8 @@ A subset $S$ of $\R^d$ is said to be \emph{bounded} if:
 
 \be
 The interval $[0,1]$ is compact in $(\R,\cO_\mathrm{std})$. The one-element set containing $(-1,2)$ is a cover of
-$[0,1]$, but it is also a finite subcover and hence $[0,1]$ is compact from the definition. Alternatively, $[0,1]$ is
-clearly closed and bounded, and hence it is compact by the Heine-Borel theorem.
+$[0,1]$, but it is also a finite subcover and hence, $[0,1]$ is compact from the definition. Alternatively, $[0,1]$ is
+clearly closed and bounded, and hence, it is compact by the Heine-Borel theorem.
 \ee
 
 \be
@@ -657,7 +657,7 @@ said to be:
 is finite as a set.
 \eit
 
-Compactness is a very strong property. Hence often times it does not hold, but a weaker and still useful property,
+Compactness is a very strong property. Hence, often times it does not hold, but a weaker and still useful property,
 called paracompactness, may still hold.
 
 \bd [Paracompact Topological Space]
@@ -848,7 +848,7 @@ equipped with the subset topology inherited from $\R^3$.
 \end{tikzpicture}
 \end{center}
 
-The sphere has the property that all the loops at any point are homotopic, hence the fundamental group (at every
+The sphere has the property that all the loops at any point are homotopic, hence, the fundamental group (at every
 point) of the sphere is the trivial group:
 \bse
 \forall \, p \in S^2 : \pi_1(p) = 1 \coloneqq \{[\g_e]\}
@@ -874,11 +874,11 @@ The cylinder is defined as $C \coloneqq \R\times S^1$ equipped with the product 
 
 A loop in $C$ can either go around the cylinder (i.e.\ around its central axis) or not. If it does not, then it can
 be continuously deformed to a point (the identity loop). If it does, then it cannot be deformed to the identity loop
-(intuitively because the cylinder is infinitely long) and hence it is a homotopically different loop. The number of
+(intuitively because the cylinder is infinitely long) and hence, it is a homotopically different loop. The number of
 times a loop winds around the cylinder is called the \emph{winding number}. Loops with different winding numbers are
 not homotopic. \v
 
-Moreover, loops with different \emph{orientations} are also not homotopic and hence we have:
+Moreover, loops with different \emph{orientations} are also not homotopic and hence, we have:
 \bse
 \forall \, p \in C : (\pi_1(p),\bullet) \cong_\mathrm{grp}(\Z,+)
 \ese

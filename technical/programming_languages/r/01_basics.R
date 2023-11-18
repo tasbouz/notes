@@ -48,7 +48,7 @@ x[1:2]                                                  # Prints the first and t
 x[c(1,2)]                                               # Prints the first and the second element 
 x[c(TRUE,FALSE)]                                        # Prints only the TRUE position of the vector ie Tasos-28
 x[condition]                                            # Prints only values that satisfy the condition. E.g: x[x=28] prints only Tasos-28
-x[-1]                                                   # Removes the first set and prints the other ones, i.e Georgia-29. It doesnt remove the element in general. Only for the preview.
+x[-1]                                                   # Removes the first set and prints the other ones, i.e.\ Georgia-29. It doesnt remove the element in general. Only for the preview.
 
 
      
@@ -131,7 +131,7 @@ df[['sent']]<- weight                                            # Same thing
 df$sent<- weight                                                 # Same thing
 
 ranks<- order(df[2])                                             # Orders w.r.t ages
-df[ranks,]                                                       # Reorders the list w.r.t the ranks, i.e the ages
+df[ranks,]                                                       # Reorders the list w.r.t the ranks, i.e.\ the ages
 
 
 ###################################################################################################################################################

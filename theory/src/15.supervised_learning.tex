@@ -9,7 +9,7 @@ learning.
 
 \bd[Supervised Learning]
 \textbf{Supervised learning} is the machine learning task of learning a function that maps an input to an output
-based on examples of \say{input - output} pairs called a \say{training set}.
+based on examples of ``input - output'' pairs called a ``training set''.
 \ed
 
 \fig{supervisedmodel}{0.6}
@@ -27,7 +27,7 @@ Some more specific notation that we will be using throughout supervised learning
 \eit
 
 Now let's dive in the models and techniques of supervised learning, starting with one of the most basic ones called
-\say{linear regression}.
+``linear regression''.
 
 \section{Linear Regression}
 
@@ -51,8 +51,8 @@ In linear regression the hypothesis function $h$ is a linear combinations of the
 h(x) = w_0 + w_{1} x_1 + \ldots + w_n x_n
 \ese
 
-where $w_0$ is called \say{bias} or \say{intercept} and the rest $w_i$'s are called \say{weights}. We usually refer
-to weights and bias as the \say{parameters} of the regression (or the model) and they are the ones that we try to
+where $w_0$ is called ``bias'' or ``intercept'' and the rest $w_i$'s are called ``weights''. We usually refer
+to weights and bias as the ``parameters'' of the regression (or the model) and they are the ones that we try to
 determine through the training examples by using a learning algorithm. Once we find them then $h$ is ready to predict
 new inputs with unknown outcomes.
 
@@ -76,10 +76,10 @@ we can rewrite the linear regression the hypothesis function in the very simple 
 h(x) = \boldsymbol{w}^{\intercal} \boldsymbol{x}
 \ese
 
-Notice that linear regression does not \say{allow} any polynomial terms of second or higher degree, thus the naming.
+Notice that linear regression does not ``allow'' any polynomial terms of second or higher degree, thus the naming.
 However, what if our data is more complex than a straight line? Surprisingly, we can use a linear model to fit
 nonlinear data. The way to do this is to add powers of each feature as new features, and then move on with linear
-regression. This technique is called \say{polynomial regression}. \v
+regression. This technique is called ``polynomial regression''. \v
 
 Now that we have a hypothesis function, we need a rule in order to be able to find the parameters $\boldsymbol{w}$.
 This rule can be obtained through the probabilistic interpretation of linear regression. \v
@@ -151,7 +151,7 @@ By substituting the probability:
 \boldsymbol{w}^{\intercal} \boldsymbol{x}^{(i)})^2}{2 \sigma^2} \Big)
 \ese
 
-Subsequently for the log-likelihood:
+Subsequently, for the log-likelihood:
 {\setlength{\jot}{10pt}
 \begin{align*}
 l (\boldsymbol{w} |y ) &= \ln \mathcal{L} (\boldsymbol{w} |y ) \\
@@ -166,7 +166,7 @@ exp \Big( - \frac{(y^{(i)} - \boldsymbol{w}^{\intercal} \boldsymbol{x}^{(i)})^2}
 \end{align*}}
 
 According to the principle of maximum likelihood, the best parameters can be found by maximizing the log-likelihood.
-The first term of the log-likelihood is just a constant term so it does not contribute at all to the maximization,
+The first term of the log-likelihood is just a constant term, so it does not contribute at all to the maximization,
 and the same holds for the denominator of the second term. Hence:
 {\setlength{\jot}{10pt}
 \begin{align*}
@@ -234,7 +234,7 @@ J(\boldsymbol{w}) = \sqrt{MSE} = \sqrt{\frac{1}{2m} \sum_{i=1}^{m} (y^{(i)} -
 \ed
 
 RMSE is a frequently used measure of the differences between values predicted by a model and the values observed, and
-it is probably the most easily interpreted statistic, since it has the same units as the data so it is a better
+it is probably the most easily interpreted statistic, since it has the same units as the data, so it is a better
 measure of goodness of fit than a correlation coefficient. RMSE is simply the square root of the average of squared
 errors, or in other words it is the average distance of a data point from the fitted line, measured along a vertical
 line. The effect of each error on RMSE is proportional to the size of the squared error, thus larger errors have a
@@ -287,7 +287,7 @@ The smaller the MAPE the better the forecast.
 
 Given the MSE loss function (or any other loss function), the goal of machine learning is to optimize it (usually
 minimize it) in order to obtain the best parameters that fit the data. Optimizing loss functions is one of the
-biggest parts of machine learning and we can do so with the so called \say{optimization techniques}.
+biggest parts of machine learning, and we can do so with the so called ``optimization techniques''.
 
 \bd [Optimization Techniques]
 \textbf{Optimization techniques} are techniques used for finding the optimum solution or unconstrained maxima or
@@ -297,7 +297,7 @@ in locating the optimal solution.
 
 \subsection{Normal Equation}
 
-Probably the most straight forward optimization technique is the so called \say{normal equation}. Since we are
+Probably the most straight forward optimization technique is the so called ``normal equation''. Since we are
 looking a minimum for $J(\boldsymbol{w})$ the natural thing to do, is to simply calculate the derivative with respect
 to the parameter vector and then set it to zero (as we did when we introduced the principle of maximum likelihood). \v
 
@@ -332,7 +332,7 @@ By setting the derivative to 0 we obtain:
 & \boldsymbol{w} = (X^{\intercal} X)^{-1} X^{\intercal} \boldsymbol{y}
 \end{align*}}
 
-This final expression is called \say{Normal Equation}, and it is an exact analytical solution that gives the
+This final expression is called ``Normal Equation'', and it is an exact analytical solution that gives the
 parameter vector. \v
 
 Despite the fact that normal equation gives an exact analytical result, computing the seemingly harmless inverse of
@@ -344,7 +344,7 @@ then using the normal equation would be feasible. \v
 
 In practise, for the vast majority of any industrial application with large datasets, the normal equation would take
 extremely, sometimes nonsensically, long. This is the reason why normal equation is almost never used. Now let's move
-on the the most standard optimization technique used today called \say{gradient descent}.
+on the the most standard optimization technique used today called ``gradient descent''.
 
 \subsection{Gradient Descent}
 
@@ -369,10 +369,10 @@ is over and the best parameters have been found.
 
 \fig{gradientdescent}{0.22}
 
-The hyperparameter $\alpha$ is called \say{learning rate} and defines how big or small steps we take after each
+The hyperparameter $\alpha$ is called ``learning rate'' and defines how big or small steps we take after each
 iteration of gradient descent. If $\alpha$ is too large, we might fail to find the minimum due to oscillations around
 it. If $\alpha$ is too small then gradient descent might take too much time to reach the minimum of $J$. Tuning
-learning rate in a \say{right} value is a topic by itself and it is quite heavily researched today.
+learning rate in a ``right'' value is a topic by itself, and it is quite heavily researched today.
 
 \bd[Learning Rate]
 The \textbf{learning rate} is a tuning parameter in an optimization algorithm that determines the step size at each
@@ -389,13 +389,13 @@ Of course, not all cost functions look like nice, regular bowls. There may be ho
 of irregular terrains, making convergence to the minimum difficult. In general gradient descent works best with
 convex functions, where if you pick any two points on the curve of a convex function, the line segment joining them
 never crosses the curve. This implies that there are no local minima, just one global minimum. They are also
-continuous functions with slopes that never changes abruptly. Hence in convex functions gradient descent is
+continuous functions with slopes that never changes abruptly. Hence, in convex functions gradient descent is
 guaranteed to approach arbitrarily close the global minimum (if you wait long enough and if the learning rate is not
 too high). \v
 
 Coming back to our case, let's find the update rule specifically for linear regression. Fortunately, the MSE cost
 function of linear regression happens to be a convex function. The only thing missing is the derivative of MSE loss
-function $J$. However in the previous chapter with normal equation we showed that:
+function $J$. However, in the previous chapter with normal equation we showed that:
 \bse
 \nabla_{\boldsymbol{w}} J(\boldsymbol{w})
 = \frac{1}{m} \Big(X^{\intercal} X\boldsymbol{w} - X^{\intercal} \boldsymbol{y} \Big)
@@ -404,7 +404,7 @@ function $J$. However in the previous chapter with normal equation we showed tha
 
 \v
 
-Hence the update rule reads:
+Hence, the update rule reads:
 \bse
 \boldsymbol{w} \coloneqq \boldsymbol{w} - \frac{\alpha}{m} X^{\intercal} \Big( X \boldsymbol{w} -\boldsymbol{y} \Big)
 \ese
@@ -416,18 +416,18 @@ are going to cover a lot of them in these notes. For now, let's start with 3 bas
 \bit
 \item \textbf{Batch Gradient Descent} Batch gradient descent is actually the one we just saw. As we see in gradient
 descent, the whole training set $X$ is used in order to make just one update of the parameters. We usually refer to
-the whole training set as the \say{batch}. For that reason, the usual terminology for what we have seen so far is
+the whole training set as the ``batch''. For that reason, the usual terminology for what we have seen so far is
 batch gradient descent, meaning that the whole batch is used in order to update the parameter. \v
 
 Notice that in batch gradient descent the algorithm goes over the entire data once before updating the parameters
 because this is the true gradient of the loss as derived earlier (sum of the gradients of the losses corresponding to
-each data point). Since there are no approximations each step guarantees that the loss will decrease. However it
+each data point). Since there are no approximations each step guarantees that the loss will decrease. However, it
 carries a flipside. As the number of training examples grows the dimensions of $X$ grows and using the whole training
-set for every iteration becomes computationally expensive. For really large dataset with million of points in the
-training data, in order to make just one update to the parameters the algorithm needs to make million of calculations. 
+set for every iteration becomes computationally expensive. For really large dataset with a million of points in the
+training data, in order to make just one update to the parameters the algorithm needs to make a million of calculations.
 Obviously this is very slow.
 \item \textbf{Mini-Batch Gradient Descent} In mini-batch gradient descent we divide the whole dataset to $b$ subsets
-of $\frac{m}{b}$ training examples each, called \say{mini-batches}, and we update the parameters using each of the
+of $\frac{m}{b}$ training examples each, called ``mini-batches'', and we update the parameters using each of the
 mini-batches in each iteration.
 
 \item \textbf{Stochastic Gradient Descent} In stochastic gradient descent, which can be seen as an extreme case of
@@ -448,7 +448,7 @@ speed of stochastic gradient descent.
 \eit
 
 In general, in most supervised learning models batch gradient descent works just fine so we don't need the
-alternative techniques we just introduced. However in more complicated models, such as deep learning models, these
+alternative techniques we just introduced. However, in more complicated models, such as deep learning models, these
 techniques can be really useful. For this reason we will meet again these techniques in the chapter of deep learning.
 
 \section{Feature Engineering}
@@ -672,7 +672,7 @@ supposed to be more helpful with limited training data.
 \textbf{Feature crossing} is the technique to combine two or more features to generate new features.
 \ed
 
-Feature crossing technique is useful to model the nonlinear relationships between features hence it's essential for
+Feature crossing technique is useful to model the nonlinear relationships between features hence, it's essential for
 models that can't learn or are bad at learning nonlinear relationships, such as linear regression (that we just saw),
 logistic regression (that we will see right after), and tree-based models (that we will see in the end of this chapter).
 Feature crossing is less important in neural networks (that we will see in next chapters) due to their natures of being
@@ -752,7 +752,7 @@ term), but instead of outputting the result directly like the linear regression 
 the logistic of this result. Notice that $h(\boldsymbol{x}) < 0.5$ when $\boldsymbol{w}^{\intercal} \boldsymbol{x} <
 0$, and $h(\boldsymbol{x}) \geq 0.5$ when $\boldsymbol{w}^{\intercal} \boldsymbol{x} \geq 0$, so a logistic
 regression model predicts $1$ if $\boldsymbol{w}^{\intercal} \boldsymbol{x}$ is positive and 0 if it is negative.
-(The argument of the logistic function is often called \say{logit}). \v
+(The argument of the logistic function is often called ``logit''). \v
 
 It is worth mentioning that one can alter the discrimination threshold of 0.5 to any value between 0 and 1. This is
 quite usual in logistic regression models when obtaining the correct class is more important than a possible
@@ -762,14 +762,14 @@ Now let's try to give a meaning to the hypothesis function. As we can see the lo
 the interval $[0,1]$. It is quite close to what we need, but not exactly so, since we do not need all the values
 between 0 and 1. For this reason we will interpret the hypothesis function of logistic regression as a probability
 measure of the target to belong to class 1. The closest to 0 the hypothesis function, the more unlikely for the
-target to belong in class 1 (hence it belongs to class 0) and the closest to 1 the more likely to belong to the class
+target to belong in class 1 (Hence, it belongs to class 0) and the closest to 1 the more likely to belong to the class
 1. Hence, by defining a threshold (say at 0.5) the idea is that for $h (\boldsymbol{x}) <0.5$ the algorithm will
 predict 0 and for $h(\boldsymbol{x}) \geq 0.5$ the algorithm will predict 1. Based on this intuition, we can write:
 \bse
 h(\boldsymbol{x}) = P(y=1 | \boldsymbol{x}; \boldsymbol{w})
 \ese
 
-Of course since the output must be either 0 or 1 we get:
+Of course, since the output must be either 0 or 1 we get:
 \begin{align*}
 & P(y=0 | \boldsymbol{x}; \boldsymbol{w}) + P(y=1 | \boldsymbol{x}; \boldsymbol{w}) = 1 \Rightarrow \\
 & P(y=0 | \boldsymbol{x}; \boldsymbol{w}) = 1 - P(y=1 | \boldsymbol{x}; \boldsymbol{w}) \Rightarrow \\
@@ -838,7 +838,7 @@ J(\boldsymbol{w}) = - \frac{1}{m} \sum_{i=1}^{m} \Big( y^{(i)} \cdot \ln h (\bol
 \ed
 
 The cross entropy is the loss function of the logistic regression in the similar way where MSE loss function is the
-loss function for linear regression. The name \say{cross entropy} comes from the definition of cross entropy which is
+loss function for linear regression. The name ``cross entropy'' comes from the definition of cross entropy which is
 the average amount of information needed to identify an event between two probability distributions $p$ and $q$ over
 the same underlying set of events. \v
 
@@ -902,7 +902,7 @@ h(\boldsymbol{x}^{(i)})}{1 - h(\boldsymbol{x}^{(i)})} \Big)\\
 \end{align*}}
 \endgroup
 
-Hence the update rule reads:
+Hence, the update rule reads:
 \bse
 \boldsymbol{w} \coloneqq \boldsymbol{w} - \frac{\alpha}{m} \sum_{i=1}^{m}
 \Big( \frac{1}{1 + exp(- \boldsymbol{w}^{\intercal} \boldsymbol{x}^{(i)})} - y^{(i)} \Big) \cdot \boldsymbol{x}^{(i)}
@@ -959,14 +959,14 @@ classification.
 
 As a final comment, it is worth mentioning that logistic regression itself can be generalized to support multiple
 classes directly, without having to train and combine multiple binary classifiers. The final result is called
-\say{softmax regression}. However, since softmax regression is used heavily in deep learning we will develop its
+``softmax regression''. However, since softmax regression is used heavily in deep learning we will develop its
 corresponding theory in the deep learning chapter.
 
 \section{Generalized Linear Model}
 
 As we showed, in linear regression the target follows a normal distribution while in logistic regression the target
-follows a Bernoulli distribution. We can generalize both regressions in one coherent model called \say{generalized
-linear model} in which the target is allowed to follow a broad family of probability distributions.
+follows a Bernoulli distribution. We can generalize both regressions in one coherent model called ``generalized
+linear model'' in which the target is allowed to follow a broad family of probability distributions.
 
 \bd[Generalized Linear Model]
 \textbf{Generalized linear model} (GLM) is a model that allows the dependent variable to follow an exponential family
@@ -1067,7 +1067,7 @@ to fit the given dataset well.
 \vspace{-10pt}
 
 Underfitting is one of the two main problems that a machine learning model can have and it leads to a high in-sample
-error $E_{in}$ which subsequently leads to a high out-of-sample error $E_{out}$. Hence even that the problem is
+error $E_{in}$ which subsequently leads to a high out-of-sample error $E_{out}$. Hence, even that the problem is
 coming from the in-sample error it leads to not being able to generalize for out-of-sample data. \v
 
 In parametric inference chapter, we also defined the variance of an estimator $\hat{\theta}_{n}$ as the expected
@@ -1103,7 +1103,7 @@ new data.
 \vspace{-10pt}
 
 Overfitting leads to a very low in-sample $E_{in} \approx 0$, since it does a very good job on fitting the data.
-However it fails to generalize, hence to predict new data, which leads to a very high out-of-sample error $E_{out}$. \v
+However, it fails to generalize, hence, to predict new data, which leads to a very high out-of-sample error $E_{out}$. \v
 
 Back in parametric inference we also showed that the mean squared error can be decomposed to bias and variance, and
 of course the same holds in our case since for the out of sample error of linear regression we can show:
@@ -1136,16 +1136,16 @@ machine learning is to balance this trade off so the model fits the data well an
 \fig{overunderfitting}{0.55}
 
 Let's sum up. In the graph above we see that in the case of high bias (underfitting) we have restricted our model to
-linear predictors, however the data do not follow a linear trend, hence the hypothesis set is too small and the model
+linear predictors, however the data do not follow a linear trend, hence, the hypothesis set is too small and the model
 cannot find a good curve to fit the data. On the other hand, in the case of high variance (overfitting) the
 hypothesis set is so big allowing complex predictors so the model managed to find a high degree polynomial that fit
 the data really good, however it will fail to generalize since it depends a lot on the initial values of the data and
-it is sensitive to fluctuations of them. Finally in the last graph we have a good balance of bias and variance and
+it is sensitive to fluctuations of them. Finally, in the last graph we have a good balance of bias and variance and
 the model found a good curve. One has to keep in mind that increasing a model's complexity will typically increase
 its variance and reduce its bias. Conversely, reducing a model's complexity increases its bias and reduces its
-variance. This is why it is called a \say{trade-off}. \v
+variance. This is why it is called a ``trade-off''. \v
 
-It is worth mentioning that we have neglected the so-called \say{irreducible error} for the equations. This part is
+It is worth mentioning that we have neglected the so-called ``irreducible error'' for the equations. This part is
 due to the noisiness of the data itself. The only way to reduce this part of the error is to clean up the data (e.g
 fix the data sources, such as broken sensors, or detect and remove outliers).
 
@@ -1153,7 +1153,7 @@ fix the data sources, such as broken sensors, or detect and remove outliers).
 
 Evaluation is about how good a model generalizes to new data, trying to answer the question ``how do we know that our
 machine learning model is any good?''. After applying the learning algorithm to the data and having obtained a
-hypothesis $h$, the machine learning model is ready to make new predictions. However before that, we have to evaluate
+hypothesis $h$, the machine learning model is ready to make new predictions. However, before that, we have to evaluate
 the model by analysing the errors that we introduced in the previous chapter.\footnote{Ideally, the evaluation
 methods should be the same during both development and production. But in many cases, the ideal is impossible because
 during development, you have ground truth labels, but in production, you don't.} \v
@@ -1180,8 +1180,8 @@ E_{in} = \frac{1}{m} \sum_{i=1}^m J^{{(i)}}( f(x^{(i)}), h(x^{(i)}) ) \qquad \te
 E_{out} = \frac{1}{m} \sum_{i=1}^m J^{{(i)}}( f(x^{(i)}), h(x^{(i)}) )
 \ese
 
-Of course since we estimate the expected value with an average that brings an error to the estimation of the
-out-of-sample error. However for our purposes we assume that this error is neglectful, and from now on we will treat
+Of course, since we estimate the expected value with an average that brings an error to the estimation of the
+out-of-sample error. However, for our purposes we assume that this error is neglectful, and from now on we will treat
 the estimated out-of-sample error as the actual out-of-sample error. In general we have to keep in mind though that
 out-of-sample error carries an error. \v
 
@@ -1195,9 +1195,9 @@ obtain $E_{out}$. Since the model is trained with the train set, it has never se
 the out-of-sample error with the evaluation set will be unbiased. \v
 
 One of the things to consider is the proportions of splitting the dataset into training and test sets. This again is
-an area of heavy research, but in general in machine learning we usually split them in a proportion of \say{80\% -
-20\%}. In other areas of machine learning like deep learning where we usually have a very large amount of data we use
-splitting rules of \say{99\% - 1\%}. But we will address this issue in details in deep learning chapter. \v
+an area of heavy research, but in general in machine learning we usually split them in a proportion of ``80\% -
+20\%''. In other areas of machine learning like deep learning where we usually have a very large amount of data we use
+splitting rules of ``99\% - 1\%''. But we will address this issue in details in deep learning chapter. \v
 
 Hence, before training we split the dataset as:
 \bit
@@ -1246,17 +1246,17 @@ J_{\text{test}} = - \frac{1}{m_{test}} \sum_{i=1}^{m_{test}} \Big( y^{(i)}
 Coming to a more applied side of machine learning, it is worth mentioning that it is very important to not use the
 test dataset until the very end when the final model is ready. The test set is actually something we use in order to
 provide it as a performance measure together with the model and not something to use for gaining insights or
-improving the model. For the later, what people usually do is to further split the train set to a \say{new} (even
-smaller) train set, and a so called \say{evaluation set} (using again a proportion of \say{80\% - 20\%}) and then the
-use the new smaller train set to train the model and the evaluation set in order to improve the model (e.g tune the
-parameters, find best features, etc). There are many best practices on how to use the evaluation set (e.g K-fold
+improving the model. For the later, what people usually do is to further split the train set to a ``new'' (even
+smaller) train set, and a so called ``evaluation set'' (using again a proportion of ``80\% - 20\%'') and then the
+use the new smaller train set to train the model and the evaluation set in order to improve the model (e.g.\ tune the
+parameters, find best features, etc). There are many best practices on how to use the evaluation set (e.g.\ K-fold
 cross validation, grid search, etc) however these techniques are of an applied nature and they get a bit out of topic
 for these notes. Long story short, once you are confident about your final model, measure its performance on the test
 set to estimate the generalization error. Don't tweak your model after measuring the generalization error since you
 would just start overfitting the test set. \v
 
 Coming back to the theoretical aspect of machine learning, now that we have $J_{\text{train}} $ and $J_{\text{eval}}
-$ we know how well the models performs in and out of sample. However we can also use them in order to find if the
+$ we know how well the models performs in and out of sample. However, we can also use them in order to find if the
 model suffers from underfitting or overfitting. There are two ways that we can do so. \v
 
 The first way, is by gradually increasing the complexity of the model (higher polynomial degrees so bigger hypothesis
@@ -1270,11 +1270,11 @@ by plotting out the different values for different levels of complexity we usual
 \vspace{-10pt}
 
 In the high bias area both $J_{train}$ and $J_{eval}$ are high. This means that the model does not fit the training
-data well hence it fails to generalize. This is the case of underfitting. In the high variance area, $J_{train}$ is
+data well hence, it fails to generalize. This is the case of underfitting. In the high variance area, $J_{train}$ is
 low but $J_{eval}$ is high. This means that the model fits the training data well but fails to generalize to unseen
-data. This is the case of overfitting. Hence by using the graph we can diagnose both cases!\v
+data. This is the case of overfitting. Hence, by using the graph we can diagnose both cases!\v
 
-The second way to diagnose the problem of the model, is through the so called \say{learning curves}.
+The second way to diagnose the problem of the model, is through the so called ``learning curves''.
 
 \bd[Learning Curve]
 A \textbf{learning curve} is a graphical representation of how an increase in learning comes from greater experience;
@@ -1326,16 +1326,16 @@ As we saw in the previous section, when we allow a very broad hypothesis set wit
 might find a hypothesis function $h$ that gives a 0 in-sample error but fails to generalize. This is due to high
 variance, i.e.\ large dependence on the very specific dataset used for training, and we call this a case of
 overfitting. A way to deal with overfitting is a collection of techniques that undergo with the name
-\say{regularization}.
+``regularization''.
 
 \bd[Regularization]
 \textbf{Regularization} is the process of adding information in order to solve an ill-posed problem and to prevent
 overfitting.
 \ed
 
-There are many different regularization techniques. We will begin with four main ones called \say{Ridge regression}
-(or \say{Tikhonov regression} or \say{L2 regularization}), \say{Lasso regression } (or \say{L1 regularization}),
-\say{elastic net}, and \say{early stopping}.
+There are many different regularization techniques. We will begin with four main ones called ``Ridge regression''
+(or ``Tikhonov regression'' or ``L2 regularization''), ``Lasso regression'' (or ``L1 regularization''),
+``elastic net'', and ``early stopping''.
 
 \subsection{Ridge Regression / Tikhonov Regularization (L2 Regularization)}
 
@@ -1345,14 +1345,14 @@ penalize the parameters by imposing an extra constraint on $\boldsymbol{w}$ of t
 \boldsymbol{w}^{\intercal} \boldsymbol{w} \leq C
 \ese
 
-where $C$ is a constant defined by us and it controls the effect of regularization. It is called \say{L2
-regularization} because the quantity $\boldsymbol{w}^{\intercal} \boldsymbol{w}$ is actually the squared L2 norm of
+where $C$ is a constant defined by us and it controls the effect of regularization. It is called ``L2
+regularization'' because the quantity $\boldsymbol{w}^{\intercal} \boldsymbol{w}$ is actually the squared L2 norm of
 the vector $\boldsymbol{w}$:
 \bse
 ||\boldsymbol{w}||^2_2 = \boldsymbol{w}^{\intercal} \boldsymbol{w}
 \ese
 
-Hence now the optimization problem becomes to minimize the loss function $J (\boldsymbol{w})$ subject to the above
+Hence, now the optimization problem becomes to minimize the loss function $J (\boldsymbol{w})$ subject to the above
 mentioned constraint. According to Appendix~\ref{ch:constrained-optimization} in order to do so we define the
 Lagrangian:
 \bse
@@ -1379,12 +1379,12 @@ J (\boldsymbol{w}) = \frac{1}{2m} \Big[ (X \boldsymbol{w} - \boldsymbol{y})^{\in
 \ese
 
 and then the problem is to minimize this loss function which is actually a regression problem. The corresponding
-regression is called \say{Ridge regression} (or \say{Tikhonov regularization}), where the only difference with linear
+regression is called ``Ridge regression'' (or ``Tikhonov regularization''), where the only difference with linear
 regression is that we have to add the extra term in the loss function to reduce overfitting. \v
 
 The coefficient $\lambda$ is the one that controls the regularization effect on the regression. In one extreme where
 $\lambda=0$ the regularization term vanishes, and the loss function ends up to the mean squared error loss function,
-hence the ridge regression turns to linear regression. In the other extreme where $\lambda \to \infty$ then the
+Hence, the ridge regression turns to linear regression. In the other extreme where $\lambda \to \infty$ then the
 regularization term penaltizes all parameters in an extreme way, so the ridge regression, in order to minimize the
 loss, is forced to set all the parameters to 0. In the end we end up with $\boldsymbol{w}^{\intercal} \boldsymbol{x}
 = 0$. For all intermediate values of $\lambda$ we get different levels of regularization. It is actually our job to
@@ -1438,7 +1438,7 @@ Gradient descent also works for ridge regression. For the derivative of $J$:
 \Big( (X + \lambda I) \boldsymbol{w} - \boldsymbol{y} \Big)
 \ese
 
-Hence the update rule reads:
+Hence, the update rule reads:
 \bse
 \boldsymbol{w} \coloneqq \boldsymbol{w} - \frac{\alpha}{m} X^{\intercal}
 \Big( (X + \lambda I) \boldsymbol{w} - \boldsymbol{y} \Big)
@@ -1492,8 +1492,8 @@ J (\boldsymbol{w}) = - \frac{1}{m} \Big[ \boldsymbol{y}^{\intercal} \cdot \ln h(
 (I - \boldsymbol{y})^{\intercal} \cdot \ln (I - h(X)) - \frac{\lambda}{2} ||\boldsymbol{w}||_1\Big ]
 \ese
 
-The corresponding regression is called \say{Least Absolute Shrinkage and Selection Operator Regression}, usually
-simply called \say{Lasso regression}. An important characteristic of Lasso regression is that it tends to eliminate
+The corresponding regression is called ``Least Absolute Shrinkage and Selection Operator Regression'', usually
+simply called ``Lasso regression''. An important characteristic of Lasso regression is that it tends to eliminate
 the weights of the least important features (i.e.\ set them to zero). In other words, Lasso regression automatically
 performs feature selection and outputs a sparse model (i.e.\ with few nonzero feature weights). \v
 
@@ -1532,7 +1532,7 @@ number of training instances or when several features are strongly correlated.
 \subsection{Early Stopping}
 
 A very different way to regularize iterative learning algorithms such as gradient descent is to stop training as soon
-as the validation error reaches a minimum. This is called \say{early stopping}. In general as the algorithm learns,
+as the validation error reaches a minimum. This is called ``early stopping''. In general as the algorithm learns,
 its prediction error on the training set goes down, along with its prediction error on the validation set. After a
 while though, the validation error stops decreasing and starts to go back up. This indicates that the model has
 started to overfit the training data. Early stopping just stops training as soon as the validation error reaches the
@@ -1571,7 +1571,7 @@ predicts a negative result when the actual outcome is positive.
 \ed
 
 Once the model is trained, we test it on the evaluation set and we measure the number of occurrences of each category. 
-Then we gather them all together to the so called \say{confusion matrix}.
+Then we gather them all together to the so called ``confusion matrix''.
 
 \bd[Confusion Matrix]
 \textbf{Confusion matrix} is a table that reports the number of true positives TP, true negatives TN, false positives
@@ -1739,20 +1739,20 @@ a classifier that has a much higher recall but lets a few really bad videos show
 trains a classifier to detect shoplifters in surveillance images: it is probably fine if their classifier has only
 30\% precision as long as it has 99\% recall (sure, the security guards will get a few false alerts, but almost all
 shoplifters will get caught). Unfortunately, one can't have it both ways: increasing precision reduces recall, and
-vice versa. This is called the \say{precision/recall trade-off}. \v
+vice versa. This is called the ``precision/recall trade-off''. \v
 
 Subsequently \textbf{$F_1$ score} that combines precision and recall is also quite useful, in particular if one needs
 a simple way to compare two classifiers. The $F_1$ score is the harmonic mean of precision and recall and,
 unfortunately, it does not have a straight forward intuitive meaning. The way to interpret it is to keep in mind that
-the harmonic mean gives much more weight to low values. and as a result, a classifier will only get a high $F_1$
+the harmonic mean gives much more weight to low values. As a result, a classifier will only get a high $F_1$
 score if both recall and precision are high.
 
 \subsection{Receiver Operating Characteristic (ROC) Curve}
 
-Another very widely used technique in classification evaluation is the so called \say{receiver operating
-characteristic curve} (ROC) which is a graphical plot that illustrates the diagnostic ability of a binary classifier
+Another very widely used technique in classification evaluation is the so called ``receiver operating
+characteristic curve'' (ROC) which is a graphical plot that illustrates the diagnostic ability of a binary classifier
 system as its discrimination threshold is varied. In other words, each point in the curve represents a different
-value of the discrimination threshold (from 0 to 1), hence a completely different behaviour of the model which leads
+value of the discrimination threshold (from 0 to 1), hence, a completely different behaviour of the model which leads
 to a different confusion matrix and subsequently different error metrics for each value. The method was originally
 developed for operators of military radar receivers, which is why it is so named. \v
 
@@ -1854,7 +1854,7 @@ h(\boldsymbol{w}^{\intercal} \boldsymbol{x}) = \frac{1}{1 + exp(-\boldsymbol{w}^
 We would then predict 1 on an input $\boldsymbol{x}$ if and only if $h \left(\boldsymbol{w}^{\intercal} \boldsymbol{x}\right)
 \geq 0.5$ or equivalently, if and only if $\boldsymbol{w}^{\intercal} \boldsymbol{x} \geq 0$. Consider a positive
 training example ($y = 1$). The larger $\boldsymbol{w}^{\intercal} \boldsymbol{x}$ is, the larger also is $h
-\left(\boldsymbol{w}^{\intercal} \boldsymbol{x}\right)$ a.k.a the larger $P(y = 1| \boldsymbol{x}; \boldsymbol{w})$ is, and thus
+\left(\boldsymbol{w}^{\intercal} \boldsymbol{x}\right)$ a.k.a.\ the larger $P(y = 1| \boldsymbol{x}; \boldsymbol{w})$ is, and thus
 also the higher our degree of confidence that the label is 1. Thus, informally we can think of our prediction as
 being a very confident one that $y = 1$ if $\boldsymbol{w}^{\intercal} \boldsymbol{x} \gg 0$. \v
 
@@ -1918,7 +1918,7 @@ For a linear classifier with the choice of $g$ given above, there's one property
 it not a very good measure of confidence, however. Given our choice of $g$, we note that if we replace
 $\boldsymbol{w}$ with $2\boldsymbol{w}$ and $b$ with $2b$, then since $g \left(\boldsymbol{w}^{\intercal} \boldsymbol{x} +
 b\right) = g\left(2\boldsymbol{w}^{\intercal} \boldsymbol{x} + 2b\right)$ this would not change $h_{\boldsymbol{w}, b}
-(\boldsymbol{x})$ at all meaning that $g$, and hence also $h_{\boldsymbol{w}, b} (\boldsymbol{x})$, depends only on
+(\boldsymbol{x})$ at all meaning that $g$, and hence, also $h_{\boldsymbol{w}, b} (\boldsymbol{x})$, depends only on
 the sign, but not on the magnitude, of $\boldsymbol{w}^{\intercal} \boldsymbol{x} + b$. However, replacing the
 scaling by a factor also results in multiplying our functional margin by the same factor. Thus, it seems that by
 exploiting our freedom to scale $\boldsymbol{w}$ and $b$, we can make the functional margin arbitrarily large without
@@ -2067,7 +2067,7 @@ g_{i}(\boldsymbol{w}) = -y^{(i)} (\boldsymbol{w}^{\intercal} \boldsymbol{x}^{(i)
 According to Appendix~\ref{ch:constrained-optimization} we are dealing with an inequality constrained optimization
 problem (with no equality part) so we will use the KKT multipliers in order to solve it. \v
 
-Notice that that all KKT conditions are satisfied, since we do not have any equality constraints (hence $\mu_{i} = 0,
+Notice that that all KKT conditions are satisfied, since we do not have any equality constraints (Hence, $\mu_{i} = 0,
 \:\:\: \forall i$), and we have $\lambda_{i} > 0$ only for the training examples that have functional margin exactly
 equal to one, i.e.\ the ones corresponding to constraints that hold with equality $ g_{i}(\boldsymbol{w}) = 0$.
 Consider the figure below, in which a maximum margin separating hyperplane is shown by the solid line.
@@ -2079,7 +2079,7 @@ Consider the figure below, in which a maximum margin separating hyperplane is sh
 The points with the smallest margins are exactly the ones closest to the decision boundary. Here these are the three
 points: one negative and two positive examples, that lie on the dashed lines parallel to the decision boundary. Thus,
 only three of the $\lambda_{i}$ (the ones corresponding to these three training examples) will be non-zero at the
-optimal solution to our optimization problem. These three points are called \say{support vectors}. The fact that the
+optimal solution to our optimization problem. These three points are called ``support vectors''. The fact that the
 number of support vectors can be much smaller than the size the training set will be useful later. \v
 
 Moving on by applying what we developed in Appendix~\ref{ch:constrained-optimization} the Lagrangian of the
@@ -2139,14 +2139,14 @@ By substituting the results from the two first derivatives in the previous expre
 \left(\boldsymbol{x}^{(i)} \right)^{\intercal} \boldsymbol{x}^{(j)}
 \end{align*}}
 
-Hence now the Lagrangian reads:
+Hence, now the Lagrangian reads:
 \bse
 \mathcal{L}(\lambda_{i}) = \sum_{i} \lambda_{i} - \frac{1}{2} \sum_{i} \sum_{j} \lambda_{i} \lambda_{j} y^{(i)} y^{(j)}
 \left( \boldsymbol{x}^{(i)} \right)^{\intercal} \boldsymbol{x}^{(j)}
 \ese
 
 where the dependencies on the parameters $\boldsymbol{w}$ and $b $ are gone and the Lagrangian is just a function of
-the KKT multipliers. So we ended up with the so called \say{dual optimization problem} which is:
+the KKT multipliers. So we ended up with the so called ``dual optimization problem'' which is:
 \bse
 \max_{\lambda_{i}} \left( \sum_{i} \lambda_{i} - \frac{1}{2} \sum_{i} \sum_{j} \lambda_{i} \lambda_{j} y^{(i)} y^{(j)}
 \left( \boldsymbol{x}^{(i)} \right)^{\intercal} \boldsymbol{x}^{(j)} \right)
@@ -2237,12 +2237,12 @@ above the plane) we finally have for the prediction:
 h(\boldsymbol{x}) = sign(\boldsymbol{w}^{\intercal} \boldsymbol{x} + b)
 \ese
 
-This model of classification is called \say{hard margin support vector machine}. A careful reader would notice that
+This model of classification is called ``hard margin support vector machine''. A careful reader would notice that
 in hard margin support vector machine we strictly impose that all instances must be off the street and on the right
-side, i.e.\ no violations are allowed (hence the naming). There are two main issues with hard margin classification.
+side, i.e.\ no violations are allowed (Hence, the naming). There are two main issues with hard margin classification.
 First, it only works if the data is linearly separable. Second, it is sensitive to outliers. \v
 
-However in real life the data are almost never linearly separable and the hard margin support vector machine would
+However, in real life the data are almost never linearly separable and the hard margin support vector machine would
 not be able to find a solution. \v
 
 To avoid these issues, one should use a more flexible model. The objective is to find a good balance between keeping
@@ -2293,8 +2293,8 @@ more open to errors and it allows some wrongly labeled data. \v
 
 \fig{svm4}{0.6}
 
-In this case the final model is called \say{soft margin support vector machine} (in contrast with the SVM we
-developed in the beginning called \say{hard margin support vector machine}), due to the fact that it allows the
+In this case the final model is called ``soft margin support vector machine'' (in contrast with the SVM we
+developed in the beginning called ``hard margin support vector machine''), due to the fact that it allows the
 margin to be violated by outliers.
 \eit
 
@@ -2302,8 +2302,8 @@ Now let's move on to a new subject.
 
 \section{$k$-Nearest Neighbors}
 
-In this section we will introduce yet another famous supervised learning algorithm called \say{k-nearest neighbors
-algorithm} ($k$-NN), which is a non-parametric\footnote{A model is called ``nonparametric'' not because it does not
+In this section we will introduce yet another famous supervised learning algorithm called ``k-nearest neighbors
+algorithm'' ($k$-NN), which is a non-parametric\footnote{A model is called ``nonparametric'' not because it does not
 have any parameters (it often has a lot) but because the number of parameters is not determined prior to training, so
 the model structure is free to stick closely to the data. In contrast, a parametric model, such as a linear model,
 has a predetermined number of parameters, so its degree of freedom is limited, reducing the risk of overfitting
@@ -2319,23 +2319,23 @@ integer, typically small). If $k = 1$, then the object is simply assigned to the
 of $k$ nearest neighbors.
 \eit
 
-One good question is \say{how to measure the distance between two points}? There are many ways of calculating
+One good question is ``how to measure the distance between two points''? There are many ways of calculating
 distance, and one way might be preferable depending on the problem we are solving. However, the straight-line
 distance (i.e.\ the Euclidean distance) is a popular and familiar choice. \v
 
-Another good questions is \say{how many neighbors should I choose for the model}? In other words what should be the
+Another good questions is ``how many neighbors should I choose for the model''? In other words what should be the
 value of $k$? The best choice of $k$ depends upon the data. Generally, larger values of $k$ reduces effect of the
 noise on the classification, but make boundaries between classes less distinct. A good $k$ can be selected by various
 heuristic techniques. In binary classification problems, it is helpful to choose $k$ to be an odd number as this
 avoids tied votes. One popular way of choosing the empirically optimal $k$ in this setting is via bootstrap method.
 The special case where the class is predicted to be the class of the closest training sample (i.e.\ when $k = 1$) is
-called the \say{nearest neighbor} algorithm. \v
+called the ``nearest neighbor'' algorithm. \v
 
 \fig{knn}{0.55}
 
 $k$-NN has many advantages. First of all the algorithm is very simple and easy to implement. Also, there is no need
-to build a model, tune several parameters, or make additional assumptions. and finally the algorithm is versatile, i.e.\ 
-it can be used for classification, regression. However of course, it carries and some disadvantages. One has to
+to build a model, tune several parameters, or make additional assumptions. Finally the algorithm is versatile, i.e.\
+it can be used for classification, regression. However, of course, it carries and some disadvantages. One has to
 keep in mind that the algorithm gets significantly slower as the number of examples and/or predictors/independent
 variables increase and that the accuracy of $k$-NN algorithm can be severely degraded by the presence of noisy or
 irrelevant features, or if the feature scales are not consistent with their importance. \v
@@ -2386,7 +2386,7 @@ It represents the entire population or sample and this further gets divided into
 \ed
 
 The root node learns to partition based on the attribute value. It partitions the tree in a recursive manner called
-\say{recursive partitioning}.
+``recursive partitioning''.
 
 \bd [Splitting]
 \textbf{Splitting} is a process of dividing a node into two or more sub-nodes.
@@ -2420,10 +2420,10 @@ A \textbf{branch}, or subtree, is a subsection of the decision tree and it repre
 
 Decision trees classify (or regress) the examples by sorting them down the tree, from the root to some leaf node,
 with the leaf node providing the classification (or regression) to the example. This approach is called a
-\say{top-down} approach. Each node in the tree acts as a test case for some attribute, and each edge descending from
+``top-down'' approach. Each node in the tree acts as a test case for some attribute, and each edge descending from
 that node corresponds to one of the possible answers to the test case. \v
 
-The algorithm begins by selecting the best attribute using something called \say{attribute selection measures} to
+The algorithm begins by selecting the best attribute using something called ``attribute selection measures'' to
 split the records. Then it makes that attribute a decision node and breaks the dataset into smaller subsets. Is
 starts tree building by repeating this process recursively for each child until one of the condition will match:
 \bit
@@ -2433,12 +2433,12 @@ starts tree building by repeating this process recursively for each child until 
 \eit
 
 Attribute selection measure is a heuristic for selecting the splitting criterion that partition data into the best
-possible manner. It is also known as \say{splitting rules} because it helps us to determine breakpoints for tuples on
+possible manner. It is also known as ``splitting rules'' because it helps us to determine breakpoints for tuples on
 a given node. Attribute selection measure provides a rank to each feature by explaining the given dataset. Best score
 attribute will be selected as a splitting attribute. In the case of a continuous-valued attribute, split points for
 branches also need to define. \v
 
-Two of the most popular selection measures are: \say{information gain}, and \say{Gini impurity} and we will now
+Two of the most popular selection measures are: ``information gain'', and ``Gini impurity'' and we will now
 explain what they are. Both information gain and Gini impurity measure the impurity of a node. So let's start by
 defining what impurity is.
 
@@ -2489,8 +2489,8 @@ where $H(T)$ is the entropy of the parent node and $H(T|a)$ is the sum of the en
 \ed
 
 Informally speaking, information gain is a statistical property that measures how well a given attribute separates
-the training examples according to their target classification. It is a synonym for \say{Kullback-Leibler
-divergence}, that we introduced in the parametric inference chapter,, which shows the amount of information gained
+the training examples according to their target classification. It is a synonym for ``Kullback-Leibler
+divergence'', that we introduced in the parametric inference chapter,, which shows the amount of information gained
 about a random variable or signal from observing another random variable. However, in the context of decision trees,
 the term is sometimes used synonymously with mutual information, which is the conditional expected value of the
 Kullback-Leibler divergence of the univariate probability distribution of one variable from the conditional
@@ -2529,7 +2529,7 @@ randomly labeled according to the distribution of labels in the subset. \v
 Now that we have defined both information gain and Gini impurity, a good question is ``which one should one use''? In
 general keep in mind that it only matters in 2\% of the cases whether you use Gini impurity or information gain. And
 given that information gain uses information entropy (which uses logarithms), it might be a little slower to compute.
-Hence most of the algorithms use Gini impurity as a selection measure. \v
+Hence, most of the algorithms use Gini impurity as a selection measure. \v
 
 In any case, by using either information gain or Gini impurity one can start building (training) the tree. The
 building (training) is usually done through a procedure called ``Classification and Regression Tree'' (CART) algorithm.
@@ -2553,7 +2553,7 @@ Gini impurity).
 \ed
 
 For regression, CART algorithm instead of trying to split the training set in a way that minimizes impurity, it now
-tries to split the training set in a way that minimizes the MSE. Hence the corresponding CART loss function for
+tries to split the training set in a way that minimizes the MSE. Hence, the corresponding CART loss function for
 regression looks like the following.
 
 \bd [CART Loss Function (For Regression)]
@@ -2586,7 +2586,7 @@ even for small training sets. This is why we must settle for a ``reasonably good
 
 Once the CART algorithm finished, the building (training) part is over and the decision tree is ready. One can now
 feed a new instance to the tree and by asking the corresponding question of each node they will end up in one of the
-leafs, hence to a decision. In order to have a better understanding of the procedure (although it is really simple)
+leafs, hence, to a decision. In order to have a better understanding of the procedure (although it is really simple)
 we will provide two small examples (one for classification and one for regression). \v
 
 Let's start with classification. One starts at the root node (depth 0, at the top). This node asks whether the
@@ -2625,7 +2625,7 @@ instability by averaging predictions over many trees, as we will see in a while.
 \subsection{Ensemble Learning}
 
 Suppose one poses a complex question to thousands of random people, then aggregate their answers. In many cases they
-will find that this aggregated answer is better than an expert's answer. This is called the \say{wisdom of the crowd}. 
+will find that this aggregated answer is better than an expert's answer. This is called the ``wisdom of the crowd''.
 Similarly, if one aggregates the predictions of a group of predictors, they will often get better predictions than
 with the best individual predictor. A group of predictors is called an ``ensemble'', thus, this technique is called
 ``ensemble learning'', and an ensemble learning algorithm is called an ``ensemble method''. \v

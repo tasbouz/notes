@@ -1,3 +1,6 @@
+%! suppress = IncorrectSectionNesting
+%! suppress = PrimitiveStyle
+%! suppress = EscapeUnderscore
 A Lie group is a group whose elements are organized continuously and smoothly, as opposed to discrete groups, where
 the elements are separated, thus this makes Lie groups differentiable manifolds and as such can be studied using
 differential calculus, in contrast with the case of more general topological groups. Lie groups are named after
@@ -53,7 +56,7 @@ Let $S^1 \coloneqq \{z\in\C\mid |z|=1\}$ and let $\cdot$ be the usual multiplica
 \be
 As we discussed in the chapter of vector spaces, $\mathrm{Aut}(V) \coloneqq \{ \phi\cl V \xrightarrow{\sim} V \mid
 \det \phi \neq 0 \}$ is the set of all of linear isomorphisms on $V$ that we denoted as $GL(V)$. To make it more
-concrete, we can take as the vector space $V = \R^n$ hence $\mathrm{GL}(n, \R)=\{\phi\cl\R^n\xrightarrow{\sim}\R^n
+concrete, we can take as the vector space $V = \R^n$ hence, $\mathrm{GL}(n, \R)=\{\phi\cl\R^n\xrightarrow{\sim}\R^n
 \mid \det \phi \neq 0 \}$. This set can be endowed with the structure of a smooth $n^2$-dimensional manifold, by
 noting that there is a bijection between linear maps $\phi\cl\R^n\xrightarrow{\sim}\R^n$ and $\R^{2n}$. Then, $
 (\mathrm{GL}(n,\R),\circ)$ is a Lie group called the \emph{general linear group}.
@@ -83,9 +86,9 @@ Let $(G,\bullet)$ be a Lie group and let $g\in G$. The map:
 is called the \textbf{left translation} by $g$.
 \ed
 
-One might thing that this is an overkill of notation since we already had the operation between two element from the
-group structure. However the left translation map is different, since we first have to fix an element of the group
-$g$ (hence the index in $\ell_g$) and then apply this element to the whole group (a.k.a to each element of the group). \v
+One might think that this is an overkill of notation since we already had the operation between two element from the
+group structure. However, the left translation map is different, since we first have to fix an element of the group
+$g$ (Hence, the index in $\ell_g$) and then apply this element to the whole group (a.k.a.\ to each element of the group). \v
 
 If there is no danger of confusion, we usually suppress the $\bullet$ notation.
 
@@ -128,7 +131,7 @@ Note that, $\ell_g$ is not an isomorphism of groups, i.e.\ :
 \ell_g(hh') \neq \ell_g(h)\,\ell_g(h')
 \ese
 
-in general. However that does not stop $\ell_g$ from being an isomorphism, which actually means that is a
+in general. However, that does not stop $\ell_g$ from being an isomorphism, which actually means that is a
 diffeomorphism of the underlying manifolds. \v
 
 Since a lie group is a topological manifold, on top of being a group, this means that at any point $g$ we can define
@@ -141,7 +144,7 @@ push-forward of a vector field X as:
 
 where $X_p$ is the vector created by the field $X$ at point $p$. \v
 
-Coming in our case, we just showed that the map $\ell_g\cl G\to G$ is a diffeomorphism so we can push-forward any
+Coming in our case, we just showed that the map $\ell_g\cl G\to G$ is a diffeomorphism, so we can push-forward any
 vector field $X$ on $G$ to another vector field (again on $G$ since the maps is between the same manifold). So in our
 case $\phi_* (X) = (\ell_g)_* (X)$ and for any point $h$ in $G$: $\ell_g (h) = gh$ so the push-forward equation reads:
 \bse
@@ -167,7 +170,7 @@ Equivalently, we can require this to hold pointwise:
 \ese
 
 where basically what this means is that if we take the vector $X_h$ at $h$ and the vector $X_{gh}$ at $gh$, then by
-pushing forward $X_h$ with $({\ell_{g}}_{*})_{h}$ (hence bringing it to the point $gh$), the final result should be
+pushing forward $X_h$ with $({\ell_{g}}_{*})_{h}$ (Hence, bringing it to the point $gh$), the final result should be
 equal to the vector $X_{gh}$.
 \ed
 
@@ -196,7 +199,7 @@ for any $h$ we obtain the last reformulation of the push-forward:
 X (f \circ \ell_g) = X(f) \circ \ell_g
 \ese
 
-Once again, let's emphasize that this equations holds only for left invariant vector fields and not all vector fields
+Once again, let's emphasize that these equations holds only for left invariant vector fields and not all vector fields
 $X$ of $\Gamma(TG)$.
 
 \bd [$\mathcal{L}(G)$ (As A Set)]
@@ -235,7 +238,7 @@ Let's try to prove this. We will construct a linear isomorphism $j\cl T_e G\xrig
 j \cl & T_e G& \to & \Gamma(TG) \\ & X_{\gamma,e} & \mapsto & j(X_{\gamma,e})
 \ei
 
-where $j(X_{\gamma,e})$ is define as:
+where $j(X_{\gamma,e})$ is defined as:
 \bi{rrCl}
 j(X_{\gamma,e}) \cl & G& \to & TG\\
 & g & \mapsto & j(X_{\gamma,e}) (g) \coloneqq ({\ell_{g*}})_e (X_{\gamma,e}) \, \forall g \in G
@@ -249,14 +252,14 @@ Now we have to prove that this is actually a linear isomorphism, and we will do 
 
 \ben[label=\roman*)]
 \item First we need to check that the definition we provided is consistent. Focusing on the left side of the
-equation, $j(X_{\gamma,e})$ as a field associates to every point $g$ of the manifold $G$ a tangent vector, hence the
+equation, $j(X_{\gamma,e})$ as a field associates to every point $g$ of the manifold $G$ a tangent vector, hence, the
 first part of the definition $j(X_{\gamma,e})(g)$ is a tangent vector of the tangent space $T_g G$. \v
 
 Now we need to see if the second part of the equation is again a vector on $T_g G$. Recall that under a push-forward
-a vector of $T_p M$ goes to a vector of $T_{\phi(p)}N$, hence in our case the vector $X_{\gamma,e}$ of $T_e G$ goes
+a vector of $T_p M$ goes to a vector of $T_{\phi(p)}N$, hence, in our case the vector $X_{\gamma,e}$ of $T_e G$ goes
 to the vector $({\ell_{g*}})_e X_{\gamma,e}$ which lies on $T_{l_g(e)}G = T_{ge}G = T_g G$. \v
 
-Hence there is consistency in our definition.
+Hence, there is consistency in our definition.
 \item Second, we show that for any $X_{\gamma,e}\in T_e G$, $j(X_{\gamma,e}) $ is a smooth vector field on $G$. It
 suffices to check that for any $f\in \mathcal{C}^\infty(G)$, we have $j (X_{\gamma,e})(f)\in \mathcal{C}^\infty(G)$.
 Indeed:
@@ -274,7 +277,7 @@ The map:
 &&&& = & f(g\gamma(t))
 \ei
 
-is a composition of smooth maps, hence it is smooth. Then:
+is a composition of smooth maps, hence, it is smooth. Then:
 \bse
 j(X_{\gamma,e})(g)(f) = (\partial_1\varphi)(0,g)
 \ese
@@ -311,7 +314,7 @@ j(X_{\gamma,e}) = j(Y_{\gamma,e}) & \Leftrightarrow & \forall \, g \in G : j (X_
 \ei
 
 Hence, the map $j$ is injective.
-\item Finally we need to check that the map is surjective. Let $X \in \mathcal{L}(G)$. Then, we have:
+\item Finally, we need to check that the map is surjective. Let $X \in \mathcal{L}(G)$. Then, we have:
 \bi{rCl"s}
 j(X_{\gamma,e})(g) & = & ({\ell_{g*}})_e (X_{\gamma,e}) & (definition of $j$)\\[5pt]
 & = & ({\ell_{g*}})_e (X(e)) & ($X(e) = X_{\gamma,e}$)\\[5pt]
@@ -319,13 +322,13 @@ j(X_{\gamma,e})(g) & = & ({\ell_{g*}})_e (X_{\gamma,e}) & (definition of $j$)\\[
 & = & X(g)
 \ei
 
-Hence $X=j(X_{\gamma,e})$ and thus $j$ is surjective.
+Hence, $X=j(X_{\gamma,e})$ and thus $j$ is surjective.
 \een
 
 Therefore, $j\cl T_e G\xrightarrow{\sim}\mathcal{L}(G)$ is indeed a linear isomorphism.
 
 \bt[]
-It is $\dim \mathcal{L}(G)=\dim G$, hence $\mathcal{L}(G)$ turns out to be a finite-dimensional vector space over
+It is $\dim \mathcal{L}(G)=\dim G$, hence, $\mathcal{L}(G)$ turns out to be a finite-dimensional vector space over
 $\R$ (as an $\R$-vector subspace of $\Gamma(TG)$).
 \et
 
@@ -373,8 +376,8 @@ Hence, $[X,Y]$ is left-invariant.
 \eq
 
 To summarise, we began with $\mathcal{L}(G)$ as a set of all left invariant vector fields of $G$, which is a subset
-of $\Gamma(TG)$, then we inherited the $+$ and $\cdot$ of $\Gamma(TG)$ to $\mathcal{L}(G)$ and we showed that it is
-also a submodule and a subvector space of $\Gamma(TG)$, and finally we inherited the Lie bracket from $\Gamma(TG)$
+of $\Gamma(TG)$, then we inherited the $+$ and $\cdot$ of $\Gamma(TG)$ to $\mathcal{L}(G)$, and we showed that it is
+also a submodule and a subvector space of $\Gamma(TG)$, and finally we inherited the Lie bracket from $\Gamma(TG)$,
 and we showed that it is also a subalgebra of $\Gamma(TG)$. From now on when we will be referring to $\mathcal{L}(G)
 $, we will mean its algebra structure.
 
@@ -386,13 +389,13 @@ Let $G$ be a Lie group. We call the Lie algebra $\mathcal{L}(G)$ of all left inv
 We already showed that the underlying vector space of the Lie algebra of a Lie group $\mathcal{L}(G)$ is isomorphic
 to the tangent vector of the Lie group $G$ at the identity $T_e G$. We will now see that the identification of
 $\mathcal{L}(G)$ and $T_e G$ goes beyond the level of linear isomorphism as vector spaces, as they are isomorphic as
-algebras. Of course we cannot simply inherit the commutator form $\mathcal{L}(G)$ to $T_e G$ because the commutator
-is defined for fields and it works because one field can act on another. In the case of $T_e G$ we cannot act with a
+algebras. Of course, we cannot simply inherit the commutator form $\mathcal{L}(G)$ to $T_e G$ because the commutator
+is defined for fields, and it works because one field can act on another. In the case of $T_e G$ we cannot act with a
 vector on another vector. However, we can use the commutator from $\mathcal{L}(G)$ to construct an appropriate Lie
 bracket on $T_e G$ such that they be isomorphic as algebras. \v
 
 Recall from the Lie algebras chapter in the notes that two algebras are called isomorphic if there exists an
-isomorphism between them, a.k.a a bijective map $\phi$ such that:
+isomorphism between them, a.k.a.\ a bijective map $\phi$ such that:
 \bse
 \forall \, x,y\in L_1 : \ \phi([x,y]_{L_1}) = [\phi(x),\phi(y)]_{L_2}
 \ese
@@ -413,7 +416,7 @@ Equipped with these Lie bracket, by definition, we have:
 \ese
 
 Hence, given a Lie group we have seen how we can construct its corresponding Lie algebra as the space of
-left-invariant vector fields and we also showed that this algebra is isomorphic to the algebra of tangent vectors at
+left-invariant vector fields, and we also showed that this algebra is isomorphic to the algebra of tangent vectors at
 the identity. We will later explore the opposite direction, i.e.\ given a Lie algebra, we will see how to construct a
 Lie group whose associated Lie algebra is the one we started from.
 
@@ -428,7 +431,7 @@ In the first part of of the application in a previous chapter, we defined the se
 \item $\SL(2,\C)$ can be made into a complex differentiable manifold.
 \eit
 
-Hence we have left with $\SL(2,\C)$ as a 3-dimensional, complex differentiable manifold.
+Hence, we have left with $\SL(2,\C)$ as a 3-dimensional, complex differentiable manifold.
 
 \subsubsection*{$\SL(2,\C)$ As A Lie Group}
 
@@ -492,7 +495,7 @@ Hence, we can simply let $(U,x)$ and $(V,y)$ be the two charts on $\SL(2,\C) $ d
 
 which is certainly complex differentiable as a map between open subsets of $\C^3$ (recall that $a\neq 0$ on $x(U)$).
 We have to do the whole process again for $x\circ i \circ y^{-1}$ and show that is complex differentiable (which it
-is), hence we conclude that indeed the map $i$ is is complex differentiable. \v
+is), hence, we conclude that indeed the map $i$ is is complex differentiable. \v
 
 Checking that $\mu$ is complex differentiable is slightly more involved, since we first have to equip $\SL(2,\C)
 \times \SL(2,\C)$ with a suitable ``product differentiable structure'' and then proceed as above. Once that is done,
@@ -513,7 +516,7 @@ where the left translation map $\ell_g$ was given by:
 \ell_g(h) \coloneqq g\bullet h \equiv gh
 \ese
 
-Coming to our case we have that $G = \SL(2,\C)$ hence the corresponding Lie algebra of $\SL(2,\C)$ usually denoted by
+Coming to our case we have that $G = \SL(2,\C)$ hence, the corresponding Lie algebra of $\SL(2,\C)$ usually denoted by
 small letters $\sl(2,\C)$ is:
 \bse
 \sl(2,\C) \coloneqq \mathcal{L}(\SL(2,\C)) \coloneqq \{X\in \Gamma(T\SL (2,\C))\mid \forall \,
@@ -581,11 +584,11 @@ So we need to compute this bracket. First thing first, for any vector $X_{\left(
 \end{smallmatrix}\right)} \in T_{\left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)}\SL(2,\C)$ we have
 to compute $j(X_{\left (\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)})$. \v
 
-Recall that if $(U,x)$ is a chart on a manifold $M$ and $p\in U$, then the chart $(U,x)$ induces the co-ordinate
+Recall that if $(U,x)$ is a chart on a manifold $M$ and $p\in U$, then the chart $(U,x)$ induces the coordinate
 induced basis which is a basis of the tangent space $T_p M$. In our case we can use the chart $(U,x)$ that contains
 the identity $\left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)$ (we must include the identity since
 we are interested in the tangent space at the identity $T_{\left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}
-\right)}\SL(2,\C)$) and hence we get an induced co-ordinate basis:
+\right)}\SL(2,\C)$) and hence, we get an induced coordinate basis:
 \bse
 \biggl\{\tvb{x}{i}{\left(\begin{smallmatrix} 1 & 0 \\ 0 & 1
 \end{smallmatrix}\right)}\in T_{\left(\begin{smallmatrix} 1 & 0 \\ 0 & 1
@@ -602,14 +605,14 @@ X_{\left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)} = X^i
 \,\,\,\,\, X^i \in \C
 \ese
 
-Hence it suffices to compute the bracket only for the basis, since every other vector can be reconstructed by using
+Hence, it suffices to compute the bracket only for the basis, since every other vector can be reconstructed by using
 the basis. \v
 
-(In what follows. note that the $d$ appearing is completely redundant, since the membership condition of $\SL(2,\C)$
+(In what follows, note that the $d$ appearing is completely redundant, since the membership condition of $\SL(2,\C)$
 forces $d=\frac{1+bc}{a}$. However, we will keep writing the $d$ to avoid having a fraction in a matrix in a
 subscript). \v
 
-Let us now determine the image of these co-ordinate induced basis elements under the isomorphism $j$. The object:
+Let us now determine the image of these coordinate induced basis elements under the isomorphism $j$. The object:
 \bse
 j\biggl(\tvb{x}{i}{\left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)}\biggr) \in \sl(2,\C)
 \ese
@@ -685,7 +688,7 @@ x^{-1})\Bigr) (x\left(\begin{smallmatrix} 1 & 0 \\ 0 & 1
 \v
 
 where $f\circ x^{-1}\cl x(U)\se \C^3 \to \C$ and $(x \circ \ell_{\left (\begin{smallmatrix} a & b \\ c & d
-\end{smallmatrix}\right)} \circ x^{-1})\cl x(U)\se \C^3 \to x(U)\se\C^3$ and hence, we can use the multi-dimensional
+\end{smallmatrix}\right)} \circ x^{-1})\cl x(U)\se \C^3 \to x(U)\se\C^3$ and hence, we can use the multidimensional
 chain rule to obtain: \v
 
 \bse
@@ -737,7 +740,7 @@ x(U)$ as:
 \v
 
 We now have to apply $\partial_i$ to this map, with $i\in \{1,2,3\}$, i.e.\ we have to differentiate with respect to
-each of the three complex variables $e$, $f$, and $g$. Of course depending to which derivative we take, and to which
+each of the three complex variables $e$, $f$, and $g$. Of course, depending on which derivative we take, and to which
 slot we apply it we end up with $3 \times 3$ different results, that we will collect in one matrix just for notation
 purposes. More specifically we can write the result as:
 \bse
@@ -748,8 +751,8 @@ purposes. More specifically we can write the result as:
 \v
 
 where $m$ labels the rows and $i$ the columns of the matrix. (So for example the first row of the first column means
-the derivative of the first component (a.k.a $ae+bg$) with respect to the first variable (a.k.a $e$) hence the result
-(a.k.a $a$). If we do that for all components and all derivatives we end up with:
+the derivative of the first component (a.k.a.\ $ae+bg$) with respect to the first variable (a.k.a.\ $e$) hence, the result
+(a.k.a.\ $a$). If we do that for all components and all derivatives we end up with:
 
 \bse
 D(e,f,g) =
@@ -775,7 +778,7 @@ D^m_{\phantom{m}i}
 
 \v
 
-Hence we computed the two parts of the equation above, so we can combine them and we get:
+Hence, we computed the two parts of the equation above, so we can combine them and we get:
 \bse
 j\biggl( \tvb{x}{i}{\left(\begin{smallmatrix} 1 & 0 \\ 0 & 1\end{smallmatrix}\right)}\biggr)
 \biggl( {\left(\begin{smallmatrix} a & b \\ c & d \end{smallmatrix}\right)} \biggr) (f)
@@ -802,7 +805,7 @@ D^m_{\phantom{m}i}\, \frac{\partial}{\partial x^m} \in \sl(2,\C)
 
 \v
 
-where $D$ is now the corresponding matrix of co-ordinate functions:
+where $D$ is now the corresponding matrix of coordinate functions:
 \bse
 D \coloneqq \left(\begin{matrix} x^1 & 0 & x^2\ \\ -x^2 & x^1 & 0\\ x^3 & 0 & \frac{1+x^2 x^3}{x^1} \end{matrix}\right)
 \ese
@@ -832,7 +835,7 @@ Note that while the three vector fields:
 are not individually left-invariant, their linear combination with coefficients $D^m_{\phantom{m}i}$ is indeed
 left-invariant. \v
 
-Hence we found :
+Hence, we found :
 \bse
 j\biggl(\tvb{x}{i}{\left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)}\biggr) \in \sl(2,\C)
 \ese
@@ -1026,14 +1029,14 @@ which can be rewritten as:
 \v
 
 Hence, the structure constants of $T_{\left(\begin{smallmatrix} 1 & 0 \\ 0 & 1 \end{smallmatrix}\right)}\SL(2,\C)$ with
-respect to the co-ordinate basis are:
+respect to the coordinate basis are:
 \bse
 C^2_{\phantom{2}12} = 2, \qquad C^3_{\phantom{3}13}=-2, \qquad C^1_{\phantom{1}23}=1
 \ese
 
 with all other being either zero or related to these by anti-symmetry. \v
 
-However remember from the Lie algebra part of the notes that two Lie algebras $L$ and $L'$ are isomorphic if, and
+However, remember from the Lie algebra part of the notes that two Lie algebras $L$ and $L'$ are isomorphic if, and
 only if, there exists a basis of $L$ and a basis of $L'$ in which the structure constants of $L$ and $L'$ are the
 same. \v
 
@@ -1071,7 +1074,7 @@ As an example, for $i=j=1$ we have:
 = C^{2}_{\phantom{2}12}C^{2}_{\phantom{2}12} + C^{3}_{\phantom{3}13}C^{3}_{\phantom{3}13} = 8
 \ei
 
-Similarly we can compute all the other components and we can write them in a $3\times 3$ array, i.e.\ :
+Similarly, we can compute all the other components, and we can write them in a $3\times 3$ array, i.e.\ :
 \bse
 [\kappa_{ij}] = \left(\begin{matrix} 8 & 0 & 0 \\ 0 & -8 & 0 \\ 0 & 0 & 8 \end{matrix}\right)
 \ese
@@ -1083,10 +1086,10 @@ which is just shorthand for:
 \ese
 
 Since the diagonal entries of $\kappa$ are all non-zero, the Killing form is non-degenerate. By Cartan's criterion,
-this implies that $\sl(2,\C)$ is semi-simple. This is actually a theorem.
+this implies that $\sl(2,\C)$ is semisimple. This is actually a theorem.
 
 \bt[]
-The Lie algebra $\sl(2,\C)$ is semi-simple.
+The Lie algebra $\sl(2,\C)$ is semisimple.
 \et
 
 There is one more thing that can be read off from the components of $\kappa$, namely, that it is an \emph{indefinite}
@@ -1125,11 +1128,11 @@ linearly independent, so that $I$ contains three linearly independent vectors. S
 subspace of an $n$-dimensional vector space is the vector space itself, we have $I=L$. Thus, we are left with the
 following cases:
 \ben[label=\roman*)]
-\item If $\alpha = 0$, then $I\se \lspan_\C(\{X_2,X_3\})$ and hence we must have $\beta = \gamma = 0$ as well.
-\item If $\beta = 0$, then $I\se \lspan_\C(\{X_1,X_3\})$, hence we must have $\alpha = 0$, so that in fact $I\se
-\lspan_\C(\{X_3\})$, and hence $\gamma = 0$ as well.
-\item If $\gamma = 0$, then $I\se \lspan_\C(\{X_1,X_2\})$, hence we must have $\alpha = 0$, so that in fact $I\se
-\lspan_\C(\{X_2\})$, and hence $\beta = 0$ as well.
+\item If $\alpha = 0$, then $I\se \lspan_\C(\{X_2,X_3\})$ and hence, we must have $\beta = \gamma = 0$ as well.
+\item If $\beta = 0$, then $I\se \lspan_\C(\{X_1,X_3\})$, hence, we must have $\alpha = 0$, so that in fact $I\se
+\lspan_\C(\{X_3\})$, and hence, $\gamma = 0$ as well.
+\item If $\gamma = 0$, then $I\se \lspan_\C(\{X_1,X_2\})$, hence, we must have $\alpha = 0$, so that in fact $I\se
+\lspan_\C(\{X_2\})$, and hence, $\beta = 0$ as well.
 \een
 
 In all cases, we have $I=0$. Therefore, there are no non-trivial ideals of $\sl(2,\C)$.
@@ -1141,7 +1144,7 @@ H \coloneqq \lspan_\C(\{X_1\})
 \ese
 
 is a Cartan subalgebra of $\sl(2,\C)$. Indeed, for any $h\in H$, there exists a $\xi \in \C$ such that $h=\xi X_1$,
-and hence we have:
+and hence, we have:
 \bi{rCl}
 \ad(h) X_2 & = & \xi [X_1,X_2] = 2\xi X_2\\[5pt]
 \ad(h) X_3 & = & \xi [X_1,X_3] = -2\xi X_3
@@ -1215,7 +1218,7 @@ Given a vector space $V$, recall that the subset of $\Aut(V)$ consisting of the 
 \v
 
 forms a group under composition, called the automorphism group (or general linear group) of $V$. Moreover, if $V$ is
-a finite-dimensional $K$-vector space, then $V\cong_{\mathrm{vec}}K^{\dim V}$ and hence the group $\GL(V)$ can be
+a finite-dimensional $K$-vector space, then $V\cong_{\mathrm{vec}}K^{\dim V}$ and hence, the group $\GL(V)$ can be
 given the structure of a Lie group via:
 \bse
 \GL(V)\cong_{\mathrm{Lie \, grp}}\GL(K^{\dim V}) \coloneqq \GL(\dim V,K)
@@ -1303,7 +1306,7 @@ Thus, we have $\Ad_g\in\End(T_e G)$. In fact, you can check that:
 ({\Ad_{g^{-1}}}_*)_e\circ ({\Ad_g}_*)_e = ({\Ad_g}_*)_e \circ ({\Ad_{g^{-1}}}_*)_e = \id_{T_e G}
 \ese
 
-and hence we have, in particular, $\Ad_g\in\GL(T_e G)\cong_{\mathrm{Lie\, grp}}\GL(\mathcal{L}(G))$ \v
+and hence, we have, in particular, $\Ad_g\in\GL(T_e G)\cong_{\mathrm{Lie\, grp}}\GL(\mathcal{L}(G))$ \v
 
 \noindent We can therefore construct a map:
 \bi{rrCl}
@@ -1355,7 +1358,7 @@ and based on that we defined a complete vector field as the vector field where t
 \varepsilon)$ of $\gamma$ can be extended to the whole $R$ which from there followed that for any $p$ on $M$ it is $X
 (p) = X_p$. \v
 
-Finally we gave a theorem that stated that on a compact manifold, every vector field is complete, and given that we
+Finally, we gave a theorem that stated that on a compact manifold, every vector field is complete, and given that we
 only work with compact manifolds we have been using the fact that $X(p) = X_p$. \v
 
 However, on a Lie group, even if non-compact, there are always complete vector fields.
@@ -1418,7 +1421,7 @@ Let $B\cl V\times V$ be a pseudo inner product on $V$. Then:
 \ese
 
 is called the \emph{orthogonal group} of $V$ with respect to $B$. Of course, if $B$ or the base field of $V$ need to
-be emphasised, they can be included in the notation. Every $\phi\in \Ort(V)$ has determinant $1$ or $-1$. Since the
+be emphasized, they can be included in the notation. Every $\phi\in \Ort(V)$ has determinant $1$ or $-1$. Since the
 determinant is multiplicative, we have a subgroup:
 \bse
 \SO(V) \coloneqq \{\phi\in \Ort(V)\mid \det\phi = 1\}
@@ -1452,9 +1455,9 @@ where $B(x,y) \coloneqq \eta_{\mu\nu}x^\mu y^\nu$, with $0\leq \mu,\nu\leq 3$ an
 \begin{matrix} -1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & 1 & 0 \\ 0 & 0 & 0 & 1 \end{matrix}\right)
 \ese
 
-The Lorentz group $\Ort(3,1)$ is $6$-dimensional, hence so is the Lorentz algebra $\ort(3,1)$. We could simply denote
+The Lorentz group $\Ort(3,1)$ is $6$-dimensional, hence, so is the Lorentz algebra $\ort(3,1)$. We could simply denote
 the basis of $\ort(3,1)$ as $\{X_i\mid i=1,\ldots,6\}$, but it is used to denote it as $\{M^{\mu\nu}\mid 0\leq \mu,
-\nu\leq 3\}$ and require that the indices $\mu,\nu$ be anti-symmetric, i.e.\ :
+\nu\leq 3\}$ and require that the indices $\mu,\nu$ be antisymmetric, i.e.\ :
 \bse
 M^{\mu\nu} = -M^{\nu\mu }
 \ese
@@ -1472,8 +1475,8 @@ Any element $\lambda\in \ort(3,1)$ can be expressed as linear combination of the
 \lambda = \tfrac{1}{2}\omega_{\mu\nu}M^{\mu\nu}
 \ese
 
-where the indices on the coefficients $\omega_{\mu\nu}$ are also anti-symmetric, and the factor of $\tfrac{1}{2}$
-ensures that the sum over all $\mu,\nu$ counts each anti-symmetric pair only once. Then, we can recover part of the
+where the indices on the coefficients $\omega_{\mu\nu}$ are also antisymmetric, and the factor of $\tfrac{1}{2}$
+ensures that the sum over all $\mu,\nu$ counts each antisymmetric pair only once. Then, we can recover part of the
 Lie Group $\Ort(3,1)$ by the use of the exponential map:
 \bse
 \Lambda = \exp(\lambda) = \exp(\tfrac{1}{2}\omega_{\mu\nu}M^{\mu\nu}) \in \Ort(3,1)
@@ -1635,7 +1638,7 @@ We easily check that $e\lacts v \coloneqq R(e)v = \id_V v = v$ and:
 \ei
 
 for any $v\in V$ and any $g_1,g_2\in G$. Moreover, if we equip $V$ with the usual smooth structure, the map $\lacts$ 
-is smooth and hence a Lie group action on $V$. It follows that representations of Lie groups are just a special case 
+is smooth and hence, a Lie group action on $V$. It follows that representations of Lie groups are just a special case
 of left Lie group actions. We can therefore think of left $G$-actions as generalised representations of $G$ on some 
 manifold. 
 \ee
@@ -1673,7 +1676,7 @@ p \racts (g_1\bullet g_2) & \coloneqq & (g_1\bullet g_2)^{-1} \lacts p\\[5pt]
 & = & (p \vartriangleleft g_1) \vartriangleleft g_2
 \ei
 
-for all $p\in M$ and $g_1,g_2\in G$, and hence $\racts$ is a right $G$-action.
+for all $p\in M$ and $g_1,g_2\in G$, and hence, $\racts$ is a right $G$-action.
 \eq
 
 Since for each $g\in G$ we also have $g^{-1}\in G$, if we need \emph{some} action of $G$ on $M$, then a left action 
@@ -1844,7 +1847,7 @@ A left $G$-action $\lacts\cl G\times M\to M$ is said to be:
 
 \be
 The action $\lacts\cl G\times V \to V$ induced by a representation $R\cl G\to \GL(V)$ is never free since $\GL(V)$ 
-contains all the invertible linear transformation which, by definition, map $0$ to $0$ hence we always have $S_0=G$.
+contains all the invertible linear transformation which, by definition, map $0$ to $0$ hence, we always have $S_0=G$.
 \ee
 
 \be
@@ -1871,7 +1874,7 @@ g_1 \lacts p = g_2 \lacts p &\quad \Leftrightarrow \quad & g_2^{-1} \lacts
 & \Leftrightarrow & (g_2^{-1}\bullet g_1) \lacts p = p
 \ei
 
-Hence $g_2^{-1}\bullet g_1\in S_p$, but since $\lacts$ is free we have $S_p=\{e\}$, and thus $g_1=g_2$.
+Hence, $g_2^{-1}\bullet g_1\in S_p$, but since $\lacts$ is free we have $S_p=\{e\}$, and thus $g_1=g_2$.
 \eq
 
 \bt[]

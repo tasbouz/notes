@@ -556,7 +556,7 @@ how honour would become such a person. that it was
 no better than picture-like to hang by the wall, if
 renown made it not stir, was pleased to let him seek
 danger where he was like to find fame. To a cruel
-war I sent him; from whence he returned, his brows
+war I sent him; from wHence, he returned, his brows
 bound with oak. I tell thee, daughter, I sprang not
 more in joy at first hearing he was a man-child
 than now in first seeing he had proved himself a
@@ -2434,7 +2434,7 @@ First Citizen:
 I twice five hundred and their friends to piece 'em.
 
 BRUTUS:
-Get you hence instantly, and tell those friends,
+Get you Hence, instantly, and tell those friends,
 They have chose a consul that will from them take
 Their liberties; make them of no more voice
 Than dogs that are as often beat for barking
@@ -2470,7 +2470,7 @@ BRUTUS:
 Ay, spare us not. Say we read lectures to you.
 How youngly he began to serve his country,
 How long continued, and what stock he springs of,
-The noble house o' the Marcians, from whence came
+The noble house o' the Marcians, from wHence, came
 That Ancus Marcius, Numa's daughter's son,
 Who, after great Hostilius, here was king;
 Of the same house Publius and Quintus were,
@@ -4146,7 +4146,7 @@ A goodly house: the feast smells well; but I
 Appear not like a guest.
 
 First Servingman:
-What would you have, friend? whence are you?
+What would you have, friend? wHence, are you?
 Here's no place for you: pray, go to the door.
 
 CORIOLANUS:
@@ -4154,7 +4154,7 @@ I have deserved no better entertainment,
 In being Coriolanus.
 
 Second Servingman:
-Whence are you, sir? Has the porter his eyes in his
+WHence, are you, sir? Has the porter his eyes in his
 head; that he gives entrance to such companions?
 Pray, get you out.
 
@@ -4251,7 +4251,7 @@ Here, sir: I'ld have beaten him like a dog, but for
 disturbing the lords within.
 
 AUFIDIUS:
-Whence comest thou? what wouldst thou? thy name?
+WHence, comest thou? what wouldst thou? thy name?
 Why speak'st not? speak, man: what's thy name?
 
 CORIOLANUS:
@@ -4348,7 +4348,7 @@ We have been down together in my sleep,
 Unbuckling helms, fisting each other's throat,
 And waked half dead with nothing. Worthy Marcius,
 Had we no quarrel else to Rome, but that
-Thou art thence banish'd, we would muster all
+Thou art tHence, banish'd, we would muster all
 From twelve to seventy, and pouring war
 Into the bowels of ungrateful Rome,
 Like a bold flood o'er-bear. O, come, go in,
@@ -5082,7 +5082,7 @@ For mercy to his country. Therefore, let's hence,
 And with our fair entreaties haste them on.
 
 First Senator:
-Stay: whence are you?
+Stay: wHence, are you?
 
 Second Senator:
 Stand, and go back.
@@ -5119,7 +5119,7 @@ Is not here passable.
 MENENIUS:
 I tell thee, fellow,
 The general is my lover: I have been
-The book of his good acts, whence men have read
+The book of his good acts, wHence, men have read
 His name unparallel'd, haply amplified;
 For I have ever verified my friends,
 Of whom he's chief, with all the size that verity
@@ -5931,7 +5931,7 @@ Myself your loyal servant, or endure
 Your heaviest censure.
 
 First Lord:
-Bear from hence his body;
+Bear from Hence, his body;
 And mourn you for him: let him be regarded
 As the most noble corse that ever herald
 Did follow to his urn.
@@ -6035,7 +6035,7 @@ That tempers him to this extremity.
 Was it not she and that good man of worship,
 Anthony Woodville, her brother there,
 That made him send Lord Hastings to the Tower,
-From whence this present day he is deliver'd?
+From wHence, this present day he is deliver'd?
 We are not safe, Clarence; we are not safe.
 
 CLARENCE:
@@ -6481,7 +6481,7 @@ And twenty times made pause to sob and weep,
 That all the standers-by had wet their cheeks
 Like trees bedash'd with rain: in that sad time
 My manly eyes did scorn an humble tear;
-And what these sorrows could not thence exhale,
+And what these sorrows could not tHence, exhale,
 Thy beauty hath, and made them blind with weeping.
 I never sued to friend nor enemy;
 My tongue could never learn sweet smoothing word;
@@ -7228,7 +7228,7 @@ Methoughts that I had broken from the Tower,
 And was embark'd to cross to Burgundy;
 And, in my company, my brother Gloucester;
 Who from my cabin tempted me to walk
-Upon the hatches: thence we looked toward England,
+Upon the hatches: tHence, we looked toward England,
 And cited up a thousand fearful times,
 During the wars of York and Lancaster
 That had befall'n us. As we paced along
@@ -8447,7 +8447,7 @@ To those whose dealings have deserved the place,
 And those who have the wit to claim the place:
 This prince hath neither claim'd it nor deserved it;
 And therefore, in mine opinion, cannot have it:
-Then, taking him from thence that is not there,
+Then, taking him from tHence, that is not there,
 You break no privilege nor charter there.
 Oft have I heard of sanctuary men;
 But sanctuary children ne'er till now.
@@ -12048,7 +12048,7 @@ Unpeopled offices, untrodden stones?
 And what hear there for welcome but my groans?
 Therefore commend me; let him not come there,
 To seek out sorrow that dwells every where.
-Desolate, desolate, will I hence and die:
+Desolate, desolate, will I Hence, and die:
 The last leave of thee takes my weeping eye.
 
 Lord Marshal:
@@ -12451,7 +12451,7 @@ And not the king exiled thee; or suppose
 Devouring pestilence hangs in our air
 And thou art flying to a fresher clime:
 Look, what thy soul holds dear, imagine it
-To lie that way thou go'st, not whence thou comest:
+To lie that way thou go'st, not wHence, thou comest:
 Suppose the singing birds musicians,
 The grass whereon thou tread'st the presence strew'd,
 The flowers fair ladies, and thy steps no more
@@ -13830,7 +13830,7 @@ My liege, one word.
 KING RICHARD II:
 He does me double wrong
 That wounds me with the flatteries of his tongue.
-Discharge my followers: let them hence away,
+Discharge my followers: let them Hence, away,
 From Richard's night to Bolingbroke's fair day.
 
 HENRY BOLINGBROKE:
@@ -13841,7 +13841,7 @@ With some few private friends upon this coast.
 
 NORTHUMBERLAND:
 The news is very fair and good, my lord:
-Richard not far from hence hath hid his head.
+Richard not far from Hence, hath hid his head.
 
 DUKE OF YORK:
 It would beseem the Lord Northumberland
@@ -14800,7 +14800,7 @@ Which art a lion and a king of beasts?
 KING RICHARD II:
 A king of beasts, indeed; if aught but beasts,
 I had been still a happy king of men.
-Good sometime queen, prepare thee hence for France:
+Good sometime queen, prepare thee Hence, for France:
 Think I am dead and that even here thou takest,
 As from my death-bed, thy last living leave.
 In winter's tedious nights sit by the fire
@@ -15521,7 +15521,7 @@ Both have I spill'd; O would the deed were good!
 For now the devil, that told me I did well,
 Says that this deed is chronicled in hell.
 This dead king to the living king I'll bear
-Take hence the rest, and give them burial here.
+Take Hence, the rest, and give them burial here.
 
 HENRY BOLINGBROKE:
 Kind uncle York, the latest news we hear
@@ -15860,7 +15860,7 @@ So far from sounding and discovery,
 As is the bud bit with an envious worm,
 Ere he can spread his sweet leaves to the air,
 Or dedicate his beauty to the sun.
-Could we but learn from whence his sorrows grow.
+Could we but learn from wHence, his sorrows grow.
 We would as willingly give cure as know.
 
 BENVOLIO:
@@ -15882,7 +15882,7 @@ But new struck nine.
 
 ROMEO:
 Ay me! sad hours seem long.
-Was that my father that went hence so fast?
+Was that my father that went Hence, so fast?
 
 BENVOLIO:
 It was. What sadness lengthens Romeo's hours?
@@ -16344,7 +16344,7 @@ Servant:
 Madam, the guests are come, supper served up, you
 called, my young lady asked for, the nurse cursed in
 the pantry, and every thing in extremity. I must
-hence to wait; I beseech you, follow straight.
+Hence, to wait; I beseech you, follow straight.
 
 LADY CAPULET:
 We follow thee.
@@ -17173,7 +17173,7 @@ That I shall say good night till it be morrow.
 ROMEO:
 Sleep dwell upon thine eyes, peace in thy breast!
 Would I were sleep and peace, so sweet to rest!
-Hence will I to my ghostly father's cell,
+Hence, will I to my ghostly father's cell,
 His help to crave, and my dear hap to tell.
 
 FRIAR LAURENCE:
@@ -17807,7 +17807,7 @@ JULIET:
 I have.
 
 Nurse:
-Then hie you hence to Friar Laurence' cell;
+Then hie you Hence, to Friar Laurence' cell;
 There stays a husband to make you a wife:
 Now comes the wanton blood up in your cheeks,
 They'll be in scarlet straight at any news.
@@ -18194,9 +18194,9 @@ But I'll amerce you with so strong a fine
 That you shall all repent the loss of mine:
 I will be deaf to pleading and excuses;
 Nor tears nor prayers shall purchase out abuses:
-Therefore use none: let Romeo hence in haste,
+Therefore use none: let Romeo Hence, in haste,
 Else, when he's found, that hour is his last.
-Bear hence this body and attend our will:
+Bear Hence, this body and attend our will:
 Mercy but murders, pardoning those that kill.
 
 JULIET:
@@ -18420,7 +18420,7 @@ For exile hath more terror in his look,
 Much more than death: do not say 'banishment.'
 
 FRIAR LAURENCE:
-Hence from Verona art thou banished:
+Hence, from Verona art thou banished:
 Be patient, for the world is broad and wide.
 
 ROMEO:
@@ -18511,7 +18511,7 @@ Hark, how they knock! Who's there? Romeo, arise;
 Thou wilt be taken. Stay awhile! Stand up;
 Run to my study. By and by! God's will,
 What simpleness is this! I come, I come!
-Who knocks so hard? whence come you? what's your will?
+Who knocks so hard? wHence, come you? what's your will?
 
 Nurse:
 
@@ -18603,7 +18603,7 @@ But, like a misbehaved and sullen wench,
 Thou pout'st upon thy fortune and thy love:
 Take heed, take heed, for such die miserable.
 Go, get thee to thy love, as was decreed,
-Ascend her chamber, hence and comfort her:
+Ascend her chamber, Hence, and comfort her:
 But look thou stay not till the watch be set,
 For then thou canst not pass to Mantua;
 Where thou shalt live, till we can find a time
@@ -18739,7 +18739,7 @@ This doth not so, for she divideth us:
 Some say the lark and loathed toad change eyes,
 O, now I would they had changed voices too!
 Since arm from arm that voice doth us affray,
-Hunting thee hence with hunt's-up to the day,
+Hunting thee Hence, with hunt's-up to the day,
 O, now be gone; more light and light it grows.
 
 ROMEO:
@@ -19258,7 +19258,7 @@ In the mean time, against thou shalt awake,
 Shall Romeo by my letters know our drift,
 And hither shall he come: and he and I
 Will watch thy waking, and that very night
-Shall Romeo bear thee hence to Mantua.
+Shall Romeo bear thee Hence, to Mantua.
 And this shall free thee from this present shame;
 If no inconstant toy, nor womanish fear,
 Abate thy valour in the acting it.
@@ -19539,7 +19539,7 @@ LADY CAPULET:
 O woful time!
 
 CAPULET:
-Death, that hath ta'en her hence to make me wail,
+Death, that hath ta'en her Hence, to make me wail,
 Ties up my tongue, and will not let me speak.
 
 FRIAR LAURENCE:
@@ -19750,7 +19750,7 @@ Since you did leave it for my office, sir.
 ROMEO:
 Is it even so? then I defy you, stars!
 Thou know'st my lodging: get me ink and paper,
-And hire post-horses; I will hence to-night.
+And hire post-horses; I will Hence, to-night.
 
 BALTHASAR:
 I do beseech you, sir, have patience:
@@ -19919,7 +19919,7 @@ Whate'er thou hear'st or seest, stand all aloof,
 And do not interrupt me in my course.
 Why I descend into this bed of death,
 Is partly to behold my lady's face;
-But chiefly to take thence from her dead finger
+But chiefly to take tHence, from her dead finger
 A precious ring, a ring that I must use
 In dear employment: therefore hence, be gone:
 But if thou, jealous, dost return to pry
@@ -20745,7 +20745,7 @@ NORFOLK:
 And I to Norfolk with my followers.
 
 MONTAGUE:
-And I unto the sea from whence I came.
+And I unto the sea from wHence, I came.
 
 KING HENRY VI:
 And I, with grief and sorrow, to the court.
@@ -21216,7 +21216,7 @@ Upon their woes whom fortune captivates!
 But that thy face is, vizard-like, unchanging,
 Made impudent with use of evil deeds,
 I would assay, proud queen, to make thee blush.
-To tell thee whence thou camest, of whom derived,
+To tell thee wHence, thou camest, of whom derived,
 Were shame enough to shame thee, wert thou not shameless.
 Thy father bears the type of King of Naples,
 Of both the Sicils and Jerusalem,
@@ -21797,7 +21797,7 @@ RICHARD:
 Iron of Naples hid with English gilt,
 Whose father bears the title of a king,--
 As if a channel should be call'd the sea,--
-Shamest thou not, knowing whence thou art extraught,
+Shamest thou not, knowing wHence, thou art extraught,
 To let thy tongue detect thy base-born heart?
 
 EDWARD:
@@ -21921,7 +21921,7 @@ And, if we thrive, promise them such rewards
 As victors wear at the Olympian games:
 This may plant courage in their quailing breasts;
 For yet is hope of life and victory.
-Forslow no longer, make we hence amain.
+Forslow no longer, make we Hence, amain.
 3 KING HENRY VI
 
 RICHARD:
@@ -22107,7 +22107,7 @@ Edward and Richard, like a brace of greyhounds
 Having the fearful flying hare in sight,
 With fiery eyes sparkling for very wrath,
 And bloody steel grasp'd in their ireful hands,
-Are at our backs; and therefore hence amain.
+Are at our backs; and therefore Hence, amain.
 
 EXETER:
 Away! for vengeance comes along with them:
@@ -22182,7 +22182,7 @@ Revoke that doom of mercy, for 'tis Clifford;
 Who not contented that he lopp'd the branch
 In hewing Rutland when his leaves put forth,
 But set his murdering knife unto the root
-From whence that tender spray did sweetly spring,
+From wHence, that tender spray did sweetly spring,
 I mean our princely father, Duke of York.
 
 WARWICK:
@@ -22252,7 +22252,7 @@ Ay, but he's dead: off with the traitor's head,
 And rear it in the place your father's stands.
 And now to London with triumphant march,
 There to be crowned England's royal king:
-From whence shall Warwick cut the sea to France,
+From wHence, shall Warwick cut the sea to France,
 And ask the Lady Bona for thy queen:
 So shalt thou sinew both these lands together;
 And, having France thy friend, thou shalt not dread
@@ -22787,7 +22787,7 @@ Where I must take like seat unto my fortune,
 And to my humble seat conform myself.
 
 KING LEWIS XI:
-Why, say, fair queen, whence springs this deep despair?
+Why, say, fair queen, wHence, springs this deep despair?
 
 QUEEN MARGARET:
 From such a cause as fills mine eyes with tears
@@ -23178,7 +23178,7 @@ Of this new marriage with the Lady Grey?
 Hath not our brother made a worthy choice?
 
 CLARENCE:
-Alas, you know, 'tis far from hence to France;
+Alas, you know, 'tis far from Hence, to France;
 How could he stay till Warwick made return?
 
 SOMERSET:
@@ -23374,7 +23374,7 @@ That young Prince Edward marries Warwick's daughter.
 CLARENCE:
 Belike the elder; Clarence will have the younger.
 Now, brother king, farewell, and sit you fast,
-For I will hence to Warwick's other daughter;
+For I will Hence, to Warwick's other daughter;
 That, though I want a kingdom, yet in marriage
 I may not prove inferior to yourself.
 You that love me and Warwick, follow me.
@@ -23442,7 +23442,7 @@ We may surprise and take him at our pleasure?
 Our scouts have found the adventure very easy:
 That as Ulysses and stout Diomede
 With sleight and manhood stole to Rhesus' tents,
-And brought from thence the Thracian fatal steeds,
+And brought from tHence, the Thracian fatal steeds,
 So we, well cover'd with the night's black mantle,
 At unawares may beat down Edward's guard
 And seize himself; I say not, slaughter him,
@@ -23614,7 +23614,7 @@ To set the crown once more on Henry's head:
 Guess thou the rest; King Edward's friends must down,
 But, to prevent the tyrant's violence,--
 For trust not him that hath once broken faith,--
-I'll hence forthwith unto the sanctuary,
+I'll Hence, forthwith unto the sanctuary,
 To save at least the heir of Edward's right:
 There shall I rest secure from force and fraud.
 Come, therefore, let us fly while we may fly:
@@ -23653,7 +23653,7 @@ But whither shall we then?
 
 HASTINGS:
 To Lynn, my lord,
-And ship from thence to Flanders.
+And ship from tHence, to Flanders.
 
 GLOUCESTER:
 Well guess'd, believe me; for that was my meaning.
@@ -23820,7 +23820,7 @@ Did glad my heart with hope of this young Richmond,
 So doth my heart misgive me, in these conflicts
 What may befall him, to his harm and ours:
 Therefore, Lord Oxford, to prevent the worst,
-Forthwith we'll send him hence to Brittany,
+Forthwith we'll send him Hence, to Brittany,
 Till storms be past of civil enmity.
 
 OXFORD:
@@ -23914,7 +23914,7 @@ Our title to the crown and only claim
 Our dukedom till God please to send the rest.
 
 MONTAGUE:
-Then fare you well, for I will hence again:
+Then fare you well, for I will Hence, again:
 I came to serve a king and not a duke.
 Drummer, strike up, and let us march away.
 
@@ -24069,7 +24069,7 @@ And once again proclaim us King of England.
 You are the fount that makes small brooks to flow:
 Now stops thy spring; my sea sha$l suck them dry,
 And swell so much the higher by their ebb.
-Hence with him to the Tower; let him not speak.
+Hence, with him to the Tower; let him not speak.
 And, lords, towards Coventry bend we our course
 Where peremptory Warwick now remains:
 The sun shines hot; and, if we use delay,
@@ -24083,7 +24083,7 @@ Brave warriors, march amain towards Coventry.
 
 WARWICK:
 Where is the post that came from valiant Oxford?
-How far hence is thy lord, mine honest fellow?
+How far Hence, is thy lord, mine honest fellow?
 
 First Messenger:
 By this at Dunsmore, marching hitherward.
@@ -24363,7 +24363,7 @@ And, as we hear, march on to fight with us.
 
 CLARENCE:
 A little gale will soon disperse that cloud
-And blow it to the source from whence it came:
+And blow it to the source from wHence, it came:
 The very beams will dry those vapours up,
 For every cloud engenders not a storm.
 
@@ -24469,7 +24469,7 @@ QUEEN MARGARET:
 This cheers my heart, to see your forwardness.
 
 OXFORD:
-Here pitch our battle; hence we will not budge.
+Here pitch our battle; Hence, we will not budge.
 
 KING EDWARD IV:
 Brave followers, yonder stands the thorny wood,
@@ -24591,7 +24591,7 @@ What, doth she swoon? use means for her recovery.
 
 GLOUCESTER:
 Clarence, excuse me to the king my brother;
-I'll hence to London on a serious matter:
+I'll Hence, to London on a serious matter:
 Ere ye come there, be sure to hear some news.
 
 CLARENCE:
@@ -24620,7 +24620,7 @@ Look in his youth to have him so cut off
 As, deathmen, you have rid this sweet young prince!
 
 KING EDWARD IV:
-Away with her; go, bear her hence perforce.
+Away with her; go, bear her Hence, perforce.
 
 QUEEN MARGARET:
 Nay, never bear me hence, dispatch me here,
@@ -24825,7 +24825,7 @@ QUEEN ELIZABETH:
 Thanks, noble Clarence; worthy brother, thanks.
 
 GLOUCESTER:
-And, that I love the tree from whence thou sprang'st,
+And, that I love the tree from wHence, thou sprang'st,
 Witness the loving kiss I give the fruit.
 
 KING EDWARD IV:
@@ -24839,7 +24839,7 @@ Hath pawn'd the Sicils and Jerusalem,
 And hither have they sent it for her ransom.
 
 KING EDWARD IV:
-Away with her, and waft her hence to France.
+Away with her, and waft her Hence, to France.
 And now what rests but that we spend the time
 With stately triumphs, mirthful comic shows,
 Such as befits the pleasure of the court?
@@ -24923,7 +24923,7 @@ The shepherd's note since we have left our throne
 Without a burthen: time as long again
 Would be find up, my brother, with our thanks;
 And yet we should, for perpetuity,
-Go hence in debt: and therefore, like a cipher,
+Go Hence, in debt: and therefore, like a cipher,
 Yet standing in rich place, I multiply
 With one 'We thank you' many thousands moe
 That go before it.
@@ -24987,7 +24987,7 @@ HERMIONE:
 To tell, he longs to see his son, were strong:
 But let him say so then, and let him go;
 But let him swear so, and he shall not stay,
-We'll thwack him hence with distaffs.
+We'll thwack him Hence, with distaffs.
 Yet of your royal presence I'll adventure
 The borrow of a week. When at Bohemia
 You take my lord, I'll give him my commission
@@ -25644,7 +25644,7 @@ I do believe thee:
 I saw his heart in 's face. Give me thy hand:
 Be pilot to me and thy places shall
 Still neighbour mine. My ships are ready and
-My people did expect my hence departure
+My people did expect my Hence, departure
 Two days ago. This jealousy
 Is for a precious creature: as she's rare,
 Must it be great, and as his person's mighty,
@@ -26257,7 +26257,7 @@ Here 'tis; commends it to your blessing.
 
 LEONTES:
 Out!
-A mankind witch! Hence with her, out o' door:
+A mankind witch! Hence, with her, out o' door:
 A most intelligencing bawd!
 
 PAULINA:
@@ -26310,7 +26310,7 @@ A callat
 Of boundless tongue, who late hath beat her husband
 And now baits me! This brat is none of mine;
 It is the issue of Polixenes:
-Hence with it, and together with the dam
+Hence, with it, and together with the dam
 Commit them to the fire!
 
 PAULINA:
@@ -26442,7 +26442,7 @@ Of any point in't shall not only be
 Death to thyself but to thy lewd-tongued wife,
 Whom for this time we pardon. We enjoin thee,
 As thou art liege-man to us, that thou carry
-This female bastard hence and that thou bear it
+This female bastard Hence, and that thou bear it
 To some remote and desert place quite out
 Of our dominions, and that there thou leave it,
 Without more mercy, to its own protection
@@ -26681,7 +26681,7 @@ Of pity, not revenge!
 Officer:
 You here shall swear upon this sword of justice,
 That you, Cleomenes and Dion, have
-Been both at Delphos, and from thence have brought
+Been both at Delphos, and from tHence, have brought
 The seal'd-up oracle, by the hand deliver'd
 Of great Apollo's priest; and that, since then,
 You have not dared to break the holy seal
@@ -29211,7 +29211,7 @@ and undoes description to do it.
 
 Second Gentleman:
 What, pray you, became of Antigonus, that carried
-hence the child?
+Hence, the child?
 
 Third Gentleman:
 Like an old tale still, which will have matter to
@@ -29277,7 +29277,7 @@ house. Shall we thither and with our company piece
 the rejoicing?
 
 First Gentleman:
-Who would be thence that has the benefit of access?
+Who would be tHence, that has the benefit of access?
 every wink of an eye some new grace will be born:
 our absence makes us unthrifty to our knowledge.
 Let's along.
@@ -29715,7 +29715,7 @@ DUKE VINCENTIO:
 No more evasion:
 We have with a leaven'd and prepared choice
 Proceeded to you; therefore take your honours.
-Our haste from hence is of so quick condition
+Our haste from Hence, is of so quick condition
 That it prefers itself and leaves unquestion'd
 Matters of needful value. We shall write to you,
 As time and our concernings shall importune,
@@ -29999,7 +29999,7 @@ The words of heaven; on whom it will, it will;
 On whom it will not, so; yet still 'tis just.
 
 LUCIO:
-Why, how now, Claudio! whence comes this restraint?
+Why, how now, Claudio! wHence, comes this restraint?
 
 CLAUDIO:
 From too much liberty, my Lucio, liberty:
@@ -30179,7 +30179,7 @@ At our more leisure shall I render you;
 Only, this one: Lord Angelo is precise;
 Stands at a guard with envy; scarce confesses
 That his blood flows, or that his appetite
-Is more to bread than stone: hence shall we see,
+Is more to bread than stone: Hence, shall we see,
 If power change purpose, what our seemers be.
 
 ISABELLA:
@@ -32354,7 +32354,7 @@ DUKE VINCENTIO:
 Bliss and goodness on you!
 
 ESCALUS:
-Of whence are you?
+Of wHence, are you?
 
 DUKE VINCENTIO:
 Not of this country, though my chance is now
@@ -32999,7 +32999,7 @@ But hear you.
 
 BARNARDINE:
 Not a word: if you have any thing to say to me,
-come to my ward; for thence will not I to-day.
+come to my ward; for tHence, will not I to-day.
 
 DUKE VINCENTIO:
 Unfit to live or die: O gravel heart!
@@ -33509,7 +33509,7 @@ Then, O you blessed ministers above,
 Keep me in patience, and with ripen'd time
 Unfold the evil which is here wrapt up
 In countenance! Heaven shield your grace from woe,
-As I, thus wrong'd, hence unbelieved go!
+As I, thus wrong'd, Hence, unbelieved go!
 
 DUKE VINCENTIO:
 I know you'ld fain be gone. An officer!
@@ -33728,7 +33728,7 @@ Though they would swear down each particular saint,
 Were testimonies against his worth and credit
 That's seal'd in approbation? You, Lord Escalus,
 Sit with my cousin; lend him your kind pains
-To find out this abuse, whence 'tis derived.
+To find out this abuse, wHence, 'tis derived.
 There is another friar that set them on;
 Let him be sent for.
 
@@ -34041,7 +34041,7 @@ DUKE VINCENTIO:
 Against all sense you do importune her:
 Should she kneel down in mercy of this fact,
 Her brother's ghost his paved bed would break,
-And take her hence in horror.
+And take her Hence, in horror.
 
 MARIANA:
 Isabel,
@@ -34433,11 +34433,11 @@ Second Servant:
 O, this is it that makes your servants droop!
 
 Lord:
-Hence comes it that your kindred shuns your house,
-As beaten hence by your strange lunacy.
+Hence, comes it that your kindred shuns your house,
+As beaten Hence, by your strange lunacy.
 O noble lord, bethink thee of thy birth,
 Call home thy ancient thoughts from banishment
-And banish hence these abject lowly dreams.
+And banish Hence, these abject lowly dreams.
 Look how thy servants do attend on thee,
 Each in his office ready at thy beck.
 Wilt thou have music? hark! Apollo plays,
@@ -34964,7 +34964,7 @@ And I for my escape have put on his;
 For in a quarrel since I came ashore
 I kill'd a man and fear I was descried:
 Wait you on him, I charge you, as becomes,
-While I make way from hence to save my life:
+While I make way from Hence, to save my life:
 You understand me?
 
 BIONDELLO:
@@ -35500,7 +35500,7 @@ KATHARINA:
 If that be jest, then all the rest was so.
 
 BAPTISTA:
-Why, how now, dame! whence grows this insolence?
+Why, how now, dame! wHence, grows this insolence?
 Bianca, stand aside. Poor girl! she weeps.
 Go ply thy needle; meddle not with her.
 For shame, thou helding of a devilish spirit,
@@ -35570,7 +35570,7 @@ Or else you like not of my company.
 
 BAPTISTA:
 Mistake me not; I speak but as I find.
-Whence are you, sir? what may I call your name?
+WHence, are you, sir? what may I call your name?
 
 PETRUCHIO:
 Petruchio is my name; Antonio's son,
@@ -36579,7 +36579,7 @@ And seem'd to ask him sops as he was drinking.
 This done, he took the bride about the neck
 And kiss'd her lips with such a clamorous smack
 That at the parting all the church did echo:
-And I seeing this came thence for very shame;
+And I seeing this came tHence, for very shame;
 And after me, I know, the rout is coming.
 Such a mad marriage never was before:
 Hark, hark! I hear the minstrels play.
@@ -37572,7 +37572,7 @@ Because his painted skin contents the eye?
 O, no, good Kate; neither art thou the worse
 For this poor furniture and mean array.
 if thou account'st it shame. lay it on me;
-And therefore frolic: we will hence forthwith,
+And therefore frolic: we will Hence, forthwith,
 To feast and sport us at thy father's house.
 Go, call my men, and let us straight to him;
 And bring our horses unto Long-lane end;
@@ -38712,7 +38712,7 @@ No harm.
 I have done nothing but in care of thee,
 Of thee, my dear one, thee, my daughter, who
 Art ignorant of what thou art, nought knowing
-Of whence I am, nor that I am more better
+Of wHence, I am, nor that I am more better
 Than Prospero, master of a full poor cell,
 And thy no greater father.
 
@@ -38851,7 +38851,7 @@ Made such a sinner of his memory,
 To credit his own lie, he did believe
 He was indeed the duke; out o' the substitution
 And executing the outward face of royalty,
-With all prerogative: hence his ambition growing--
+With all prerogative: Hence, his ambition growing--
 Dost thou hear?
 
 MIRANDA:
@@ -39199,7 +39199,7 @@ PROSPERO:
 Go make thyself like a nymph o' the sea: be subject
 To no sight but thine and mine, invisible
 To every eyeball else. Go take this shape
-And hither come in't: go, hence with diligence!
+And hither come in't: go, Hence, with diligence!
 Awake, dear heart, awake! thou hast slept well; Awake!
 
 MIRANDA:
@@ -39332,7 +39332,7 @@ Some god o' the island. Sitting on a bank,
 Weeping again the king my father's wreck,
 This music crept by me upon the waters,
 Allaying both their fury and my passion
-With its sweet air: thence I have follow'd it,
+With its sweet air: tHence, I have follow'd it,
 Or it hath drawn me rather. But 'tis gone.
 No, it begins again.
 Full fathom five thy father lies;

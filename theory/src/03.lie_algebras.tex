@@ -1,7 +1,10 @@
+%! suppress = PrimitiveStyle
+%! suppress = DiscouragedUseOfDef
+%! suppress = EscapeUnderscore
 We already defined in the previous chapter that an algebra is a vector space $A$ with an additional bilinear map
 (called binary operation or product) $\bullet \cl A\times A \to A$. A very important class of algebras, that we will
 also see later, are the so-called Lie algebras, in which the product $v \bullet w$ is called ``Lie bracket'' and
-denoted as $[v,w]$. In general Lie algebras are just a very specific class of algebras, hence we might have them
+denoted as $[v,w]$. In general Lie algebras are just a very specific class of algebras, hence, we might have them
 introduced in the previous chapter under ``algebras''. However, since they are so important, and lengthy, we will
 introduce them separately in their own chapter. \v
 
@@ -12,7 +15,7 @@ correspondence allows one to study the structure and classification of Lie group
 see all of that as we proceed in the notes). \v
 
 In physics, Lie groups appear as symmetry groups of physical systems, and their Lie algebras (tangent vectors near
-the identity) may be thought of as infinitesimal symmetry motions. Thus Lie algebras and their representations are
+the identity) may be thought of as infinitesimal symmetry motions. Thus, Lie algebras and their representations are
 used extensively in physics, notably in quantum mechanics and particle physics.
 
 \section{Basic Definitions}
@@ -42,7 +45,7 @@ by the 3 conditions. In other words, anything that satisfies these 3 conditions 
 course one example is the commutator (you can check it yourself). \v
 
 Notice that we specifically defined the Lie algebra on top of a field $K$. One can construct an algebra over a ring,
-by imposing all the axioms on a module instead of a vector space. However, in this notes we will stick with Lie
+by imposing all the axioms on a module instead of a vector space. However, in these notes we will stick with Lie
 algebras on top of a vector space, and more specifically on top of a complex vector space (i.e.\ where the $K$ field is
 the complex and to the real numbers), since they are more related to our purposes. In general, same definitions apply
 for an algebra over a ring with the appropriate changes when needed. \v
@@ -51,7 +54,7 @@ Now let's give some examples of Lie algebras.
 
 \be
 The usual cross product between vectors $u \times w$ in $\R^3$ can be shown that satisfies all the requirements for a
-Lie bracket, hence the vector space $\R^3$ equipped with the cross product $[u,w] = u \times w$ is actually a Lie
+Lie bracket, hence, the vector space $\R^3$ equipped with the cross product $[u,w] = u \times w$ is actually a Lie
 algebra.
 \ee
 
@@ -69,7 +72,7 @@ then we can ``represent'' the elements of $\End(V)$ as $n \times n$ matrices ove
 $[v,w]= vw - wv$ where here the composition is the usual matrix multiplication).
 \ee
 
-As usual we can define the concept of homomorphism and isomorphism in the level of Lie algebras.
+As usual, we can define the concept of homomorphism and isomorphism in the level of Lie algebras.
 
 \bd [Lie Algebra Homomorphism]
 A map $\phi$ between two Lie algebras that preserves both the vector space structure and the bracket structure is
@@ -126,7 +129,7 @@ An \textbf{ideal} $I$ of a Lie algebra $L$ is a Lie subalgebra such that $\foral
 [x,y]\in I$ or equivalently in bracket notation $[I,L]\se I$.
 \ed
 
-Note that no matter the Lie algebra, we can show that: $[0, L] = 0 \se 0$ and $[L, L] \se L$ hence both $0$ and $L$
+Note that no matter the Lie algebra, we can show that: $[0, L] = 0 \se 0$ and $[L, L] \se L$ hence, both $0$ and $L$
 are always ideals of any Lie algebra. \v
 
 Recall from the definition of an algebra (any algebra) that the operation (or product) of the algebra $\bullet \cl
@@ -139,22 +142,22 @@ The ideals $0$ and $L$ are called the \textbf{trivial ideals} of $L$.
 \ed
 
 \bd [Simple Lie Algebra]
-A Lie algebra $L$ is said to be \textbf{simple} if it is non-abelian and it contains no non-trivial ideals.
+A Lie algebra $L$ is said to be \textbf{simple} if it is non-abelian, and it contains no non-trivial ideals.
 \ed
 
-\bd [Semi-Simple Lie Algebra]
-A Lie algebra $L$ is said to be \textbf{semi-simple} if it contains no non-trivial abelian ideals.
+\bd [Semisimple Lie Algebra]
+A Lie algebra $L$ is said to be \textbf{semisimple} if it contains no non-trivial abelian ideals.
 \ed
 
-Note that any simple Lie algebra is also semi-simple. The requirement that a simple Lie algebra be non-abelian is due
+Note that any simple Lie algebra is also semisimple. The requirement that a simple Lie algebra be non-abelian is due
 to the $1$-dimensional abelian Lie algebra, which would otherwise be the only simple Lie algebra which is not
-semi-simple.
+semisimple.
 
 \bd [Derived Subalgebra]
 Let $L$ be a Lie algebra. The Lie subalgebra $L' \coloneqq [L,L]$ is called the \textbf{derived subalgebra} of $L$.
 \ed
 
-Hence, once we have a Lie algebra we can compute the derived subalgebra $L' \coloneqq [L,L]$. However since $L'$ is
+Hence, once we have a Lie algebra we can compute the derived subalgebra $L' \coloneqq [L,L]$. However, since $L'$ is
 by itself an algebra we can compute its own derived subalgebra $L'' \coloneqq [L',L']$ (which is the derived
 subalgebra of the derived subalgebra of $L$). And of course we can go on forever.
 
@@ -213,12 +216,12 @@ As of today, no general classification of solvable Lie algebras is known, except
 dimensions). In contrast, the finite dimensional, simple, complex Lie algebras have been classified completely.
 
 \bt[]
-A Lie algebra is semi-simple if, and only if, it can be expressed as a direct sum of simple Lie algebras.
+A Lie algebra is semisimple if, and only if, it can be expressed as a direct sum of simple Lie algebras.
 \et
 
-Hence, the simple Lie algebras are the basic building blocks from which one can build any semi-simple Lie algebra.
+Hence, the simple Lie algebras are the basic building blocks from which one can build any semisimple Lie algebra.
 Then, by Levi's theorem, the classification of simple Lie algebras easily extends to a classification of all
-semi-simple Lie algebras. \v
+semisimple Lie algebras. \v
 
 In order to do computations, it is useful to introduce a basis $\{e_i\}$ on $L$. Recall that an algebra is nothing
 else but a vector space with an extra operation. Hence, we can simply pick a basis $\{e_i\}$ on the vector space, and
@@ -243,9 +246,9 @@ Since the operation of the algebra:
 sends two elements of the algebra to an element of the algebra, this can be translated as sending two elements of the
 vector space to an element of the vector space, i.e.\ $[e_i,e_j] = v \in V$ for some fixed $i$ and $j$. \v
 
-However since the final result $v$ is again an element of the vector space it can also be expressed as a linear
+However, since the final result $v$ is again an element of the vector space it can also be expressed as a linear
 combination of the basis $v = v^k e_k$. This $v^k$ is actually the structure constants (again for some fixed $i$ and
-$j$, if we do not fix them we have to include them on the $v^k$ hence we obtain $v^k \rightarrow
+$j$, if we do not fix them we have to include them on the $v^k$ hence, we obtain $v^k \rightarrow
 C^{k}_{\phantom{k}ij}$). This is why it is guaranteed that the structure constants $C^{k}_{\phantom{k}ij}\in K$ exist. \v
 
 In terms of the structure constants, the anti-symmetry of the Lie bracket reads:
@@ -308,9 +311,9 @@ basis as follows. Start by noting that:
 \ad\cl & L & \xrightarrow{\sim} & \End(L) \\ & x & \mapsto & \ad(x) \coloneqq \ad_x
 \ei
 
-which means that $\ad_x$ is an element of $\End(L)$ hence an endomorphism of $L$. Recall that for any vector space
+which means that $\ad_x$ is an element of $\End(L)$ hence, an endomorphism of $L$. Recall that for any vector space
 $V$: $\mathrm{End}(V)\cong_\mathrm{vec}T^1_1 V$ which means that if $\phi \in \mathrm{End}(V)$, we can think of $\phi
-\in T^1_1 V$, using the same symbol, as $\phi(\omega,v) \coloneqq \omega (\phi(v))$ hence the components of
+\in T^1_1 V$, using the same symbol, as $\phi(\omega,v) \coloneqq \omega (\phi(v))$ hence, the components of
 $\phi\in\mathrm{End}(V)$ are $\phi^a_{\phantom{a}b} \coloneqq \epsilon^a (\phi(e_b))$. \v
 
 So, in our case, let $\{e_i\}$ and $\{\varepsilon^i\}$ be a basis and its dual basis of the underlying vector space
@@ -385,13 +388,13 @@ where we used the same notation for the linear maps and their matrices. \v
 We can use $\kappa$ to give a further equivalent characterisation of semi-simplicity.
 
 \bt[Cartan's criterion]
-A Lie algebra $L$ is semi-simple if, and only if, the Killing form $\kappa$ is non-degenerate, i.e.\ :
+A Lie algebra $L$ is semisimple if, and only if, the Killing form $\kappa$ is non-degenerate, i.e.\ :
 \bse
 (\forall \, y \in L : \kappa(x,y)=0) \Rightarrow x = 0
 \ese
 \et
 
-Hence, if $L$ is semi-simple, then $\kappa$ is a pseudo inner product on $L$. Recall the following definition from
+Hence, if $L$ is semisimple, then $\kappa$ is a pseudo inner product on $L$. Recall the following definition from
 linear algebra.
 
 \bd [Symmetric Linear Map]
@@ -408,18 +411,18 @@ If, instead, we have:
 
 \v
 
-then $\phi$ is said to be \emph{anti-symmetric} with respect to $B$.
+then $\phi$ is said to be \emph{antisymmetric} with respect to $B$.
 \ed
 
 The associativity property of $\kappa$ with respect to the bracket can be restated by saying that, for any $z\in L$,
-the linear map $\ad_z$ is anti-symmetric with respect to $\kappa$, i.e.\ :
+the linear map $\ad_z$ is antisymmetric with respect to $\kappa$, i.e.\ :
 \bse
 \forall \, x,y\in L : \ \kappa(\ad_z(x),y) = - \kappa(x,\ad_z(y))
 \ese
 
 \section{The Fundamental Roots \& The Weyl Group}
 
-We will now focus on finite-dimensional semi-simple complex Lie algebras, whose classification hinges on the
+We will now focus on finite-dimensional semisimple complex Lie algebras, whose classification hinges on the
 existence of a special type of subalgebra.
 
 \bd [Cartan Subalgebra]
@@ -438,7 +441,7 @@ The basis $\{h_1,\ldots,h_r,e_1,\ldots,e_{d-r}\}$ is known as a \emph{Cartan-Wey
 like to know when we can find such a subalgebra.
 
 \bt[]
-Let $L$ be a finite-dimensional semi-simple complex Lie algebra. Then:
+Let $L$ be a finite-dimensional semisimple complex Lie algebra. Then:
 \ben[label=\roman*)]
 \item $L$ possesses a Cartan subalgebra.
 \item All Cartan subalgebras of $L$ have the same dimension, called the \emph{rank} of $L$.
@@ -456,7 +459,7 @@ any $z\in \C$ and $h,h'\in H$, we have:
 & = & (z\lambda_\alpha(h)+\lambda_\alpha(h')) e_\alpha
 \ei
 
-Hence $\lambda_\alpha$ is a $\C$-linear map $\lambda_\alpha\cl H \xrightarrow{\sim}\C$, and thus $\lambda_\alpha\in
+Hence, $\lambda_\alpha$ is a $\C$-linear map $\lambda_\alpha\cl H \xrightarrow{\sim}\C$, and thus $\lambda_\alpha\in
 H^*$.
 
 \bd [Roots]
@@ -479,7 +482,7 @@ $\kappa$ is that:
 \lambda \in \Phi\ \Rightarrow\ -\lambda\in \Phi
 \ese
 
-Hence $\Phi$ is not a linearly independent subset of $H^*$.
+Hence, $\Phi$ is not a linearly independent subset of $H^*$.
 
 \bd [Fundamental Roots]
 A set of \textbf{fundamental roots} $\Pi \coloneqq \{\pi_1,\ldots,\pi_f\}$ is a subset $\Pi\se\Phi$ such that :
@@ -499,7 +502,7 @@ $\pi_1,\ldots,\pi_f$ in the expansion above always have the same sign. We can wr
 as $\lambda \in \lspan_{\varepsilon,\N}(\Pi)$ where in general $\lspan_{\varepsilon,\N}(\Pi)\neq \lspan_{\Z}(\Pi)$.
 
 \bt[]
-Let $L$ be a finite-dimensional semi-simple complex Lie algebra. Then:
+Let $L$ be a finite-dimensional semisimple complex Lie algebra. Then:
 \ben[label=\roman*)]
 \item A set $\Pi\se\Phi$ of fundamental roots always exists.
 \item We have $\lspan_\C(\Pi) = H^*$, that is, $\Pi$ is a basis of $H^*$.
@@ -657,7 +660,7 @@ The set:
 W \coloneqq \{s_\lambda \mid \lambda \in \Phi\}
 \ese
 
-is a group under composition of maps, an it is called the \textbf{Weyl group}.
+is a group under composition of maps, and it is called the \textbf{Weyl group}.
 \ed
 
 \bt[]
@@ -701,7 +704,7 @@ s_{\pi_i}(\pi_j) = \pi_j-2\frac{\kappa^*(\pi_i,\pi_j)}{\kappa^*(\pi_i,\pi_i)}\,\
 + \left(-2\frac{\kappa^*(\pi_i,\pi_j)}{\kappa^*(\pi_i,\pi_i)}\right)\,\pi_i
 \ese
 
-and from the first coefficient (a.k.a the number 1) which is positive, we conclude that for all $1\leq i\neq j\leq r$
+and from the first coefficient (a.k.a.\ the number 1) which is positive, we conclude that for all $1\leq i\neq j\leq r$
 we must have:
 \bse
 -2\frac{\kappa^*(\pi_i,\pi_j)}{\kappa^*(\pi_i,\pi_i)}\in \N
@@ -750,7 +753,7 @@ n_{ij} & = & 4\,\frac{\kappa^*(\pi_i,\pi_j)}{\kappa^*(\pi_i,\pi_i)}\,
 
 where $\varphi$ is the angle between $\pi_i$ and $\pi_j$. \v
 
-For $i\neq j$, the angle $\varphi$ is neither zero nor $180^\circ$, hence $0\leq \cos^2\varphi< 1$, and therefore:
+For $i\neq j$, the angle $\varphi$ is neither zero nor $180^\circ$, hence, $0\leq \cos^2\varphi< 1$, and therefore:
 \bse
 n_{ij}\in \{0,1,2,3\}
 \ese
@@ -968,18 +971,18 @@ These are all the possible (connected) Dynkin diagrams.
 \et
 
 At last, we have achieved a classification of all simple finite-dimensional complex Lie algebras. The
-finite-dimensional semi-simple complex Lie algebras are direct sums of simple Lie algebras, and correspond to
+finite-dimensional semisimple complex Lie algebras are direct sums of simple Lie algebras, and correspond to
 disconnected Dynkin diagrams whose connected components are the ones listed above. \v
 
 Before we move on, let's spend some time to go through a detailed application of everything we have said so far. \v
 
-The application is gonna be the reconstruction of \texorpdfstring{$A_2$}{A2} from its Dynkin diagram.
+The application is going to be the reconstruction of \texorpdfstring{$A_2$}{A2} from its Dynkin diagram.
 
 \section{Application: Reconstruction Of \texorpdfstring{$A_2$}{A2} From Its Dynkin Diagram}
 
 We have seen how to construct the Dyknin diagram of a Lie algebra. Let us now consider the opposite direction, where
 we want to retrieve the Lie algebra given a Dyknin diagram. There is no general theory for that, we simply have to
-follow the opposite procedure of the theory we developed in the previous section, hence we will provide a specific
+follow the opposite procedure of the theory we developed in the previous section, hence, we will provide a specific
 example. \v
 
 We will start from the $A_2$ Dynkin diagram:
@@ -1013,7 +1016,7 @@ To determine the angle $\varphi$ between $\pi_1$ and $\pi_2$, recall that:
 1 = n_{12} = 4 \cos^2\varphi
 \ese
 
-and hence $|\cos\varphi|=\frac{1}{2}$. There are two solutions, namely $\varphi=60^\circ$ and $\varphi=120^\circ$.
+and hence, $|\cos\varphi|=\frac{1}{2}$. There are two solutions, namely $\varphi=60^\circ$ and $\varphi=120^\circ$.
 \begin{center}
 \begin{tikzpicture}[xscale=0.8,yscale=1.6]
 \draw[->] (-1,0) -- (7.2,0) node[below] {$x$};
@@ -1046,7 +1049,7 @@ and therefore:
 
 \v
 
-It follows that $\cos\varphi<0$, and hence $\varphi = 120^\circ$. We can thus plot the two fundamental roots in a
+It follows that $\cos\varphi<0$, and hence, $\varphi = 120^\circ$. We can thus plot the two fundamental roots in a
 plane as follows:
 \begin{center}
 \begin{tikzpicture}[scale=2]
@@ -1155,7 +1158,7 @@ Then, for example:
 
 \v
 
-and hence $[e_3,e_4]$ is an eigenvector of $\ad(h)$ with eigenvalues $ (\pi_1+\pi_2)(h)$. But so is $e_5$! Hence, we
+and hence, $[e_3,e_4]$ is an eigenvector of $\ad(h)$ with eigenvalues $ (\pi_1+\pi_2)(h)$. But so is $e_5$! hence, we
 must have $[e_3,e_4]=\xi e_5$ for some $\xi \in \C$. Similarly, $[e_5, e_7]=\xi e_3$, and so on. \v
 
 If $\lambda_\alpha+\lambda_\beta\notin\Phi$, then in order for the equation above to hold, we must have either
@@ -1361,7 +1364,7 @@ The \textbf{adjoint representation} of $L$ is:
 \ei
 \ed
 
-Hence the adjoint map we have been using is actually a representation (we have already shown that $\ad$ is a Lie
+Hence, the adjoint map we have been using is actually a representation (we have already shown that $\ad$ is a Lie
 algebra homomorphism):
 
 \bd [Faithful Representation]
@@ -1382,7 +1385,7 @@ $L$ is not itself trivial. Consider, for instance, the adjoint representation. W
 & \Leftrightarrow & \forall \, z \in L : [x-y,z] = 0
 \ei
 
-If $L$ is trivial, then any representation is faithful. Otherwise, there is some non-zero $z\in L$, hence we must
+If $L$ is trivial, then any representation is faithful. Otherwise, there is some non-zero $z\in L$, hence, we must
 have $x-y=0$, so $x=y$, and thus $\ad$ is injective.
 \ee
 
@@ -1446,8 +1449,8 @@ A representation is \textbf{irreducible} if it is not reducible.
 \een
 \ee
 
-Just like the simple Lie algebras are the building blocks of all semi-simple Lie algebras, the irreducible
-representations of a semi-simple Lie algebra are the building blocks of all finite-dimensional representations of the
+Just like the simple Lie algebras are the building blocks of all semisimple Lie algebras, the irreducible
+representations of a semisimple Lie algebra are the building blocks of all finite-dimensional representations of the
 Lie algebra. Any such representation con be decomposed as the direct sum of irreducible representations, which can
 then be classified according to their so-called \emph{highest weights}.
 
@@ -1469,7 +1472,7 @@ Of course, the Killing form we have considered so far is just $\kappa_{\ad}$. Si
 $\kappa_\rho$ is symmetric and associative with respect to the Lie bracket of $L$.
 
 \bt[]
-Let $\rho\cl L \xrightarrow{\sim} \End(V)$ be a faithful representation of a complex semi-simple Lie algebra $L$.
+Let $\rho\cl L \xrightarrow{\sim} \End(V)$ be a faithful representation of a complex semisimple Lie algebra $L$.
 Then, $\kappa_\rho$ is non-degenerate.
 \et
 
@@ -1673,7 +1676,7 @@ J_i$. Then, we have:
 & = & \begin{pmatrix} 1 & 0 & 0\\ 0 & 1 & 0\\ 0 & 0 & 1 \end{pmatrix}
 \ei
 
-Hence $\Omega_{\rho_{\mathrm{vec}}}=c_{\rho_{\mathrm{vec}}}\id_{\R^3}$ with $c_{\rho_{\mathrm{vec}}} = 1$, which
+Hence, $\Omega_{\rho_{\mathrm{vec}}}=c_{\rho_{\mathrm{vec}}}\id_{\R^3}$ with $c_{\rho_{\mathrm{vec}}} = 1$, which
 agrees with our previous theorem since:
 \bse
 \frac{\dim \so(3,\R)}{\dim \R^3} = \frac{3}{3} = 1

@@ -1,5 +1,5 @@
 %! suppress = EscapeUnderscore
-In this chapter we will introduce another way of inference called \say{parametric inference}. In this model the goal
+In this chapter we will introduce another way of inference called ``parametric inference''. In this model the goal
 is given a sample of $n$ realizations of i.i.d r.v's to learn the underlying distribution $P$ of $X$.
 
 \section{Basic Definitions}
@@ -119,7 +119,7 @@ MSE &= E[(\hat{\theta}_{n} - \theta)^2] \\
 &= Var + B^2
 \end{align*}
 
-Hence we showed that the MSE of an estimator can actually be split into the variance and the bias of the estimator.
+Hence, we showed that the MSE of an estimator can actually be split into the variance and the bias of the estimator.
 
 \section{Maximum Likelihood}
 
@@ -128,7 +128,7 @@ P_{\theta})$ associated with a sample of i.i.d r.v's $\{ X_{1}, X_{2}, \ldots, X
 that there always exists a true parameter $\theta^{*}$ such that $X \sim P_{\theta^{*}}$, to find this true parameter. \v
 
 Our initial step is to define an estimator $\hat{\theta}_{n}$, that subsequently defines a probability distribution
-$P_{\hat{\theta}_{n}}$. Hence now we have two quantities: the probability distribution we actually want to find
+$P_{\hat{\theta}_{n}}$. Hence, now we have two quantities: the probability distribution we actually want to find
 $P_{\theta^{*}}$ and the probability distribution that we begin with $P_{\hat{\theta}_{n}}$. Since the difference of
 these two is what we want to minimize, it makes sense to define the absolute distance between them as follows.
 
@@ -150,11 +150,11 @@ The total variation distance satisfies the following properties:
 \eit
 
 These properties imply that total variation distance is indeed a distance measure between probability distributions
-(hence the name).
+(Hence, the name).
 
 \fig{totalvariationdistance}{0.4}
 
-Due to the \say{max} term that appears in total variation distance it's very hard to manipulate it. Fortunately,
+Due to the ``max'' term that appears in total variation distance it's very hard to manipulate it. Fortunately,
 there is an alternative way of describing the same concept. As we see in the figure above, since total variation
 distance is just the absolute difference of two probabilities it can also be expressed as the two times the area
 under the curve that it is not common in the two distributions. (The white area in the graph) Moreover, by defining
@@ -172,7 +172,7 @@ TV(P_{\theta}, P_{\theta}^{\prime}) & = \max_{A \subseteq E} |P_{\theta} (A) - P
 &= \frac{1}{2} \int_{E} |p_{\theta}(x) - p_{\theta}^{\prime}(x)| dx
 \end{align*}}
 
-Hence we showed that:
+Hence, we showed that:
 \bse
 TV(P_{\theta}, P_{\theta}^{\prime}) = \frac{1}{2} \int_{E} |p_{\theta}(x) - p_{\theta}^{\prime}(x)| dx
 \ese
@@ -186,7 +186,7 @@ Coming back to our case if we set $\theta = \hat{\theta}$ to be our estimator an
 be our true parameter, we have an equation for the total variation distance that includes something that we can work
 with (i.e.\ PDFs). And since, as we argued, total variation distance is just the distance between the two
 probabilities, our goal is to minimize it as much as possible. That way the distance between our estimator
-probability and true probability will be as low as it can be, hence very the estimation will be very close to the
+probability and true probability will be as low as it can be, hence, very the estimation will be very close to the
 real distribution. \v
 
 The problem with total variation distance as it is, is that it carries an absolute value which makes it impossible to
@@ -194,7 +194,7 @@ minimize it. For this reason we are going to introduce another quantity.
 
 \bd[Kullback - Leibler Divergence]
 The \textbf{Kullback - Leibler divergence} KL of two probability distributions $P_{\theta}$ and $P_{\theta^{\prime}}$
-is defined in term of their PDFs as follows:
+is defined in terms of their PDFs as follows:
 \bse
 KL(P_{\theta}, P_{\theta}^{\prime}) = \int_{E} p_{\theta}(x) \ln \frac{p_{\theta}}{p_{\theta}^{\prime}(x)} dx
 \ese
@@ -210,7 +210,7 @@ KL(P_{\theta^{\prime\prime}}, P_{\theta}^{\prime})$.
 \eit
 
 These properties imply that Kullback - Leibler divergence is not a distance measure between probability distributions
-(hence the name divergence). \v
+(Hence, the name divergence). \v
 
 By manipulating the Kullback - Leibler divergence we get:
 \bse
@@ -231,7 +231,7 @@ c - E_{\theta^{*}}[\ln {p_{\hat{\theta}}}]
 \v
 
 As we said, Kullback - Leibler divergence is not a distance measure however it still is a good quantity to minimize
-in order to find a good estimation for the true probability distribution. Hence the estimator is simply the argument
+in order to find a good estimation for the true probability distribution. Hence, the estimator is simply the argument
 that minimizes Kullback - Leibler divergence: \v
 
 \bse
@@ -261,7 +261,7 @@ As we discussed previously we can approximate the expected value with sample mea
 \end{align*}
 \endgroup
 
-Based on this last two equation we define the concept of \say{likelihood} as follows.
+Based on this last two equation we define the concept of ``likelihood'' as follows.
 
 \bd[Likelihood]
 Let X be a random variable following a probability distribution with probability density function $f_{\theta}(x)$
@@ -273,7 +273,7 @@ joint probability of a sample of data of $X$:
 \ed
 
 More often than not, it is more handy to use the logarithm of the likelihood which we define as the
-\say{log-likelihood}.
+``log-likelihood''.
 
 \bd[Log-likelihood]
 The \textbf{log-likelihood} $l(\theta \mid x)$ is simply the logarithm of the likelihood:
@@ -288,8 +288,8 @@ So we can find the estimator $\hat{\theta}$ by maximizing the likelihood or the 
 \frac{dl}{d\theta} \Big|_{\theta=0}
 \ese
 
-The solution of either of these equations gives back the best estimator. This process is called \say{the principle of
-maximum likelihood} or simply \say{the maximum likelihood method}.
+The solution of either of these equations gives back the best estimator. This process is called ``the principle of
+maximum likelihood'' or simply ``the maximum likelihood method''.
 
 \subsection{Application: Maximum Likelihood In Bernoulli Distribution}
 
@@ -301,7 +301,7 @@ We start by forming the likelihood:
 \mathcal {L} = \prod_{i=1}^{n} P(x_{i}) = \prod_{i=1}^{n} p^{x_{i}} (1-p)^{1-x_{i}}
 \ese
 
-Subsequently for the log-likelihood:
+Subsequently, for the log-likelihood:
 \bse
 l = \ln \mathcal {L} = \ln \prod_{i=1}^{n} p^{x_{i}} (1-p)^{1-x_{i}}
 \ese
@@ -359,7 +359,7 @@ For the bias:
 E[\hat{\theta}_{n}] - \theta = E[\bar{x}] - p = p - p = 0
 \ese
 
-Hence the estimator $\bar{x}$ is unbiased. \v
+Hence, the estimator $\bar{x}$ is unbiased. \v
 
 For the variance:
 \bse
@@ -372,5 +372,5 @@ For the mean squared error:
 MSE = Var + B^2 = \frac{p(1-p)}{n}+ 0^2 = \frac{p(1-p)}{n}
 \ese
 
-Finally observe that since $MSE \propto \frac{1}{n}$ we have that as $n \to \infty$, $MSE \to 0$, so the estimator
+Finally, observe that since $MSE \propto \frac{1}{n}$ we have that as $n \to \infty$, $MSE \to 0$, so the estimator
 $\bar{x}$ is consistent.

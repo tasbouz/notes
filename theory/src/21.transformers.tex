@@ -32,7 +32,7 @@ The first step of the transformer architecture is the so called ``input embeddin
 representation for each element of the input.
 \ed
 
-Transformers are mainly used for natural language processing (NLP) tasks, hence the input sequence is usually a
+Transformers are mainly used for natural language processing (NLP) tasks, hence, the input sequence is usually a
 sequence of words. The input embedding layer takes as input a sequence of words, and it outputs a vector
 representation for each word. For this reason we will spend some time on the concept of word embedding, since it is
 very important for NLP tasks. \v
@@ -84,7 +84,7 @@ Here is an example of a one-hot representation of the vocabulary $V = [$ cat, do
 \ee
 
 While one-hot representation is very simple and intuitive, it carries a lot of problems. First of all, usually
-vocabularies tend to be very large hence the vector space turns enormous which is computationally very inefficient.
+vocabularies tend to be very large hence, the vector space turns enormous which is computationally very inefficient.
 Second, the representation is very sparse, meaning that the vast majority of the entries are zeros. Third, and most
 important, the representation does not capture any notion of similarity among the words. In our example, ideally, we
 would want the representations of cat and dog to be closer to each other than the representations of cat and truck.
@@ -120,7 +120,7 @@ The vocabulary is: $V = [$ Human, Machine, Interface, For, \ldots $]$, and the c
 \ee
 
 Of course, as with one-hot, also this representation carries its own problems. First of all, stop words like (``a'',
-``the'', `` for'', \ldots) are very frequent hence these counts will be very high. This however, is easily solvable
+``the'', `` for'', \ldots) are very frequent hence, these counts will be very high. This however, is easily solvable
 since we can either ignore very frequent words or simply set a threshold $t$ (for example $t=100$) and whenever the
 count of a word gets more that $t$ we simply stop counting further, and we use the threshold $t$ as the value,
 ignoring all the other occurrences. \v
@@ -183,7 +183,7 @@ Consider the simple sentence ``the man sat on a chair''. This can be seen as pai
 consider a context window of size 1 (for simplicity) we have ([the], man), ([man], sat), ([sat], on), ([on], a), ([a
 ], chair). We have used a list for context just to make obvious that if one picks a window greater than 1 then we
 would have more context words, e.g.\ for a window of size 2 we would example like ([the, man], sat), ([man, sat], on
-) and so on \ldots Thus the model tries to predict the target word based on the context word.
+) and so on \ldots Thus, the model tries to predict the target word based on the context word.
 \ee
 
 The CBOW model solves this problem by using a feedforward neural network. The input to the network will be a one-hot
@@ -213,7 +213,7 @@ $W^{[1]}$ simply $W_{\text{context}}$. Notice that we carry no biases. The pre-a
 \textbf{a}^{[1]} =W_{\text{context}} \cdot \textbf{x}
 \ese
 
-and the activation function $g$ is as simple as $g(\textbf{x}) = \textbf{x}$, hence the activation of the hidden
+and the activation function $g$ is as simple as $g(\textbf{x}) = \textbf{x}$, hence, the activation of the hidden
 layer $\textbf{h}^{[1]}$ is:
 
 \bse
@@ -309,7 +309,7 @@ just one word (e.g.\ the word ``on'') with one-hot representation:
 
 but now the name of the weights are reversed since their meaning is reversed (see figure). So far only the naming has
 changed. The mathematical difference is out the outcome, where now instead of just on word we want to predict all the
-context words. We do that by having multiple predictions, hence multiple softmax output function and subsequently the
+context words. We do that by having multiple predictions, hence, multiple softmax output function and subsequently the
 loss function is simply the sum of all individual cross-entropy loss functions:
 \bse
 \mathcal{L}(\theta) = - \sum_{\text{words in window}} \ln P(\text{word
@@ -407,3 +407,5 @@ Given a query $Q$, a key $K$, and a value $V$, attention $\alpha$ is a vector de
 \boldsymbol{\alpha}(Q,K,V) = S \times V = \text{softmax}\Big( \frac{QK^T}{\sqrt{d_k}} \Big) \times V
 \ese
 \ed
+
+% TODO: Finish up transformers

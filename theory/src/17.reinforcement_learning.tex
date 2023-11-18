@@ -62,7 +62,7 @@ environment using observations through sensors and consequent actuators.
 
 An agent should, among others, accommodate new problem solving rules incrementally and adapt online and in real 
 time. It should be also able to analyse itself in terms of behaviour, error and success. When it comes to learning 
-it should learn quickly from large amounts of data and improve through interaction with the environment. Finally it 
+it should learn quickly from large amounts of data and improve through interaction with the environment. Finally, it
 should have a memory-based exemplar storage and retrieval capacities and parameters to represent short and long term 
 memory.
 
@@ -100,8 +100,8 @@ reward. When the reward is negative, it is corresponding to what we usually call
 cumulative reward. 
 \ed
 
-Hence the agent's goal is to select actions in order to maximize the future total expected cumulative reward, given 
-that each action might have long term consequences hence a reward might be delayed. This makes reinforcement learning
+Hence, the agent's goal is to select actions in order to maximize the future total expected cumulative reward, given
+that each action might have long term consequences hence, a reward might be delayed. This makes reinforcement learning
 problems quite complicated since in some cases it might be better to sacrifice an immediate reward to gain more long 
 term reward. \v
 
@@ -391,7 +391,7 @@ We will now add some more complexity to a Markov process to end up in the so cal
 \subsection{Markov Reward Process}
 
 A Markov Reward Process is similar to a Markov Process in the sense that it extends the model by adding a reward rate
-to each state. An additional variable records the reward accumulated up to the current time. Hence a Markov Reward 
+to each state. An additional variable records the reward accumulated up to the current time. Hence, a Markov Reward
 Process is a Markov Process with some extra ingredients. \v
 
 These extra ingredients are the ``expected reward'' (which we have already introduced in the previous section, but we
@@ -517,7 +517,7 @@ V(s) = \mathcal{R}_{s} + \gamma \sum_{s^\prime} E[G_{t+1} | S_t = s, S_{t+1} = s
 \cdot P(S_{t+1} = s^\prime | S_t = s)
 \ese
 
-Finally by using the Markov property and the definition of state transition probability:
+Finally, by using the Markov property and the definition of state transition probability:
 {\setlength{\jot}{10pt}
 \begin{align*}
 V(s) &= \mathcal{R}_{s} + \gamma \sum_{s^\prime} E[G_{t+1} | S_{t+1} = s^\prime] \cdot \mathcal{P}_{ss^\prime} \\
@@ -605,7 +605,7 @@ and the state transition matrix (we use the state transition matrix since it's m
 
 \vspace{10pt}
 
-In this specific example the state $s_7$ is a terminal state, hence a possible episode could be:
+In this specific example the state $s_7$ is a terminal state, hence, a possible episode could be:
 \bse
 S_1=s_1, \to S_2=s_2, \to S_3=s_3, \to S_4=s_4, \to S_5=s_7
 \ese
@@ -639,7 +639,7 @@ In the extreme case where $\gamma=0$ we already showed that:
 V(s) = \mathcal{R}_{s} + (0) \sum_{s^\prime} \mathcal{P}_{s s^\prime} V(s^\prime) = \mathcal{R}_{s}
 \ese
 
-Hence in the myopic evaluation, the state value functions are equal to the immediate expected rewards of each state,
+Hence, in the myopic evaluation, the state value functions are equal to the immediate expected rewards of each state,
 no matter what the agent will do after that.
 
 \fig{rl3}{0.4}
@@ -736,12 +736,12 @@ At this point it is clear what a (stochastic) policy really is. Recall the defin
 \pi(a|s) = P(A_t=a|S_t=s)
 \ese
 
-Thus a policy is really a distribution over actions given states and it fully defines the behaviour of an agent. In
+Thus, a policy is really a distribution over actions given states and it fully defines the behaviour of an agent. In
 other words it is in our control and not in environment's control. In MDPs policies depend on the current state and
 not the history due to the Markov property. In other words policies are stationary (time-independent). \v
 
 Now that we have a policy in hand, it is the agent who decides which action it will take and not the environment
-(although in real life problems it can be a combination of both). Hence now we will update the concept of the state
+(although in real life problems it can be a combination of both). Hence, now we will update the concept of the state
 value function by substituting the expected value over state transition probability to the expected value over policy.
 
 \bd[State Value Function (For Markov Decision Process)]
@@ -871,8 +871,8 @@ V_{\pi}(s) &= \sum_{a} \pi(a \mid s) \cdot Q_{\pi}(s, a) \\
 \gamma \sum_{s^\prime} \mathcal{P}_{ss^\prime}^{a} \cdot V_{\pi}(s^\prime) \Big]
 \end{align*}
 
-Finally for the Bellman expectation equations of the action value function we can again start from the definition and
-derive them, however we can derive them much simpler by following the same trick as above, a.k.a by substituting:
+Finally, for the Bellman expectation equations of the action value function we can again start from the definition and
+derive them, however we can derive them much simpler by following the same trick as above, a.k.a.\ by substituting:
 \bse
 V_{\pi}(s) = \sum_{a} \pi(a \mid s) \cdot Q_{\pi}(s, a)
 \ese
@@ -902,7 +902,7 @@ states and successor actions. \v
 
 As we have seen so far and MDP is all we need in order to formulate a reinforcement learning problem. Then, by having
 a policy $\pi$ we can evaluate how good it is by using the Bellman expectation equations and compute either the state
-or the action value functions. However in reinforcement learning we are not interested in finding the state or the
+or the action value functions. However, in reinforcement learning we are not interested in finding the state or the
 action value function for a random policy $\pi$, rather than finding an optimal policy $\pi$ whatever that means. \v
 
 So, it is clear that we need to find a way to define and compute an optimal policy. In order to do so we will start
@@ -932,7 +932,7 @@ The \textbf{optimal policy} $\pi_{*}$ is the policy that generates both the opti
 and the optimal action value function $Q_{*}(s,a)$.
 \ed
 
-Hence for the optimal policy holds:
+Hence, for the optimal policy holds:
 \bse
 \pi_{*}(a \mid s)=\Big\{ \begin{array}{lr} 1, \:\: \text{ if } a =\argmax_{a} Q_{*}(s,a) \\ 0, \:\: \text{ otherwise}
 \end{array}
@@ -942,7 +942,7 @@ One can prove a theorem that states:
 \bit
 \item There exists a policy that is better than or equal to all other policies:
 \bse
-\exists \pi_{*} : \pi_{*} \geq \pi \:\:\: (\text{a.k.a: \:} V_{\pi_{*}} (s) \geq V_{\pi}(s),
+\exists \pi_{*} : \pi_{*} \geq \pi \:\:\: (\text{a.k.a.\: \:} V_{\pi_{*}} (s) \geq V_{\pi}(s),
 \forall s \: \text{\:\: and \:\:} \: Q_{\pi_{*}}(s,a) \geq Q_{\pi}(s,a), \forall s,a)
 \ese
 
@@ -999,7 +999,7 @@ able to solve the maximization problem. This is the goal of the next chapter.
 In reality, reinforcement learning is all about developing iterative algorithms able to solve the non linear Bellman
 optimality equations. In this chapter we will focus on ways to solve the Bellman expectation and optimality equations. 
 Recall from the introduction that we are distinguishing between ``model-based'' scenarios where the agent has access
-to a model of the environment hence it performs computations with it in order to improve its policy (planning), and
+to a model of the environment hence, it performs computations with it in order to improve its policy (planning), and
 ``model-free'' scenarios where the agent has not access to a model of the environment. Recall also that we
 distinguished between ``prediction'' where the agent tries to evaluate a given policy and ``control'' where the agent
 tries to find an optimal policy. \v
@@ -1034,7 +1034,7 @@ As a first step, we will create a temporal series of of state value vectors:
 V_0(s), V_1(s), \ldots
 \ese
 
-and by randomly initializing $V_0(s)$ to some initial values (e.g by setting 0 to all entries):
+and by randomly initializing $V_0(s)$ to some initial values (e.g.\ by setting 0 to all entries):
 \bse
 V_0(s_1) = V_0(s_2) = \ldots = V_0(s_n)=0
 \ese
@@ -1167,7 +1167,7 @@ V_{k+1} (s) \gets \max_{a} \left[ \mathcal{R}_{s}^{a} + \gamma \sum_{s^{\prime}}
 (s^\prime) \right]
 \ese
 
-One can prove that after many iterations this process will lead us to an optimal state value function. Of course for
+One can prove that after many iterations this process will lead us to an optimal state value function. Of course, for
 the optimal state value function the Bellman optimality equation is true:
 \bse
 V_{*} (s) = \max_{a} \left[ \mathcal{R}_{s}^{a} + \gamma \sum_{s^{\prime}} \mathcal{P}_{s s^\prime}^{a} V_*
@@ -1221,10 +1221,10 @@ and the following expected rewards:
 \qquad \mathcal{R}^{a_2}_{s_2} = -1
 \ese
 
-Finally the MDP carries a discount factor of $\gamma = 0.5$. \v
+Finally, the MDP carries a discount factor of $\gamma = 0.5$. \v
 
 We want to find what the optimal way for an agent to behave in this MDP. We will use value iteration to find the
-optimal policy. We begin by initializing $V_0 (s)$ to 0 $\forall s$, a.k.a:
+optimal policy. We begin by initializing $V_0 (s)$ to 0 $\forall s$, a.k.a.\:
 \bse
 V_0 (s_1) = 0 \qquad V_0 (s_2) = 0
 \ese
@@ -1261,7 +1261,7 @@ V_1 (s_2) &\gets \max_{a} \left[ \mathcal{R}_{s_2}^{a} +
 
 \vspace{-10pt}
 
-Hence after the first iteration of value iteration:
+Hence, after the first iteration of value iteration:
 \bse
 V_1 (s_1) = -3 \qquad V_1 (s_2) = -1
 \ese
@@ -1295,7 +1295,7 @@ V_2 (s_2) & \gets \max_{a} \left[ \mathcal{R}_{s_2}^{a} + 0.5 \sum_{s^{\prime}}
 
 \vspace{-10pt}
 
-Hence after the second iteration of value iteration:
+Hence, after the second iteration of value iteration:
 \bse
 V_2 (s_1) = 3.5 \qquad V_2 (s_2) = 0.5
 \ese
@@ -1314,7 +1314,7 @@ Similarly we move on to further iterations. Here are the values we obtain:
 \v
 
 As we can see $\boldsymbol{V}_6 = \boldsymbol{V}_7$ which means that the value iteration provides no further
-improvement, hence $\boldsymbol{V}_6$ is the optimal policy. One can verify this by using now the Bellman optimality
+improvement, hence, $\boldsymbol{V}_6$ is the optimal policy. One can verify this by using now the Bellman optimality
 equation not as an update rule, but as an equation the optimal state value function must satisfy. Indeed:
 
 {\setlength{\jot}{10pt}
@@ -1344,7 +1344,7 @@ V_6 (s^\prime) \right] \\
 & = 1.2
 \end{align*}}
 
-Hence through value iteration we found the optimal state value function:
+Hence, through value iteration we found the optimal state value function:
 \bse
 \boldsymbol{V}_* = (4.4, 1.2)
 \ese
@@ -1354,7 +1354,7 @@ Moving on, for the optimal action value function holds:
 Q_{*}(s, a) = \mathcal{R}_{s}^{a} + \gamma \sum_{s^{\prime}} \mathcal{P}_{s s^\prime}^{a} V_{*}(s^\prime)
 \ese
 
-Hence for $s_1$:
+Hence, for $s_1$:
 \begin{align*}
 Q_{*}(s_1, a_1) & = \mathcal{R}_{s_1}^{a_1} + 0.5 \left(\mathcal{P}_{s_1 s_1}^{a_1} V_{*}(s_1) +
 \mathcal{P}_{s_1 s_2}^{a_1} V_{*}(s_2) \right) \\
@@ -1411,7 +1411,7 @@ we have:
 &= a_2
 \end{align*}
 
-Hence the optimal way for the agent to behave is to take action $a_1$ when in state $s_1$ and action $a_2$ when in
+Hence, the optimal way for the agent to behave is to take action $a_1$ when in state $s_1$ and action $a_2$ when in
 state $s_2$.
 
 \subsection{Model-Free Prediction}
@@ -1420,7 +1420,7 @@ In this chapter we will be dealing with the real reinforcement learning problem.
 given. In real world problems however this is really unrealistic, since some of the entities of an MDP might be
 unknown to us (mostly state transition probabilities since they are the ones controlled by the environment). \v
 
-Hence our goals in model-free problems are:
+Hence, our goals in model-free problems are:
 \bit
 \item To estimate the value functions of an unknown MDP given a policy $\pi$ (model-free prediction) without knowing
 how the environment might behave.
@@ -1436,7 +1436,7 @@ Carlo'', ``Temporal Difference'' and ``TD($\lambda$)''.
 \subsubsection{Monte Carlo}
 
 Monte Carlo is a model-free algorithm that learns directly from episodes of experience without bootstrapping, i.e.\
-from complete episodes. This makes Monte Carlo able to be applied only to episodic MDPs a.k.a all episodes must
+from complete episodes. This makes Monte Carlo able to be applied only to episodic MDPs a.k.a.\ all episodes must
 terminate. Let's give a proper definition.
 
 \bd[Monte Carlo]
@@ -1456,15 +1456,15 @@ V_{\pi}(s) = E_{\pi} [G_t | S_t = s]
 and at some point we made use of the law of conditional expected value so we substituted the expected value by making
 use of the state transition probabilities. The problem in model-free reinforcement learning is that the MDP is
 unknown to us. That means that while we can steal define actions, policies, reward functions and discount factors we
-are not in a position to know what are the state transition probabilities. Hence Bellman equations (both expectation
+are not in a position to know what are the state transition probabilities. Hence, Bellman equations (both expectation
 and optimality) cannot be used. \v
 
-Monte Carlo's idea is simply to approximate expected values with averages. Of course in order to do so we need data.
+Monte Carlo's idea is simply to approximate expected values with averages. Of course, in order to do so we need data.
 In Monte Carlo we let the agent to move around in the environment (or if this is not possible we simulate the
 environment and we let the agent to run the simulation) and by completing episodes we collect a sample of returns and
 then we use it in order to estimate the expected return by averaging them. \v
 
-Hence the idea is that the first time $t$ a state $s$ is visited by the agent, is the beginning of an episode with
+Hence, the idea is that the first time $t$ a state $s$ is visited by the agent, is the beginning of an episode with
 starting state $s$. When a terminal state is reached the episode is finished and the agent collects the reward. Since
 we will average the rewards we need both the total reward $S(s)$ from all episodes of each state $s$ and the number
 of episodes $N(s)$ for each state $s$. So initially we set:
@@ -1498,7 +1498,7 @@ being a terminal state. A possible $s_1$ episode could be:
 s_1 \to s_3 \to s_2 \to s_1 \to s_3 \to s_2 \to s_4
 \ese
 
-However since during this episode we visited $s_1$ again, once can also assume as a separate episode the last 4 states:
+However, since during this episode we visited $s_1$ again, once can also assume as a separate episode the last 4 states:
 \bse
 s_1 \to s_3 \to s_2 \to s_4
 \ese
@@ -1558,7 +1558,7 @@ mentioning some of the key characteristics of Monte Carlo.
 \item Monte Carlo samples but does not bootstrap. In other words it must wait until the end of an episode before
 $G_t$ is known in order to update $V$ (i.e.\ to learn). This is why it works only in episodic environments.
 \item By the law of large numbers Monte Carlo converges to the real $V_\pi$ as experience gets to infinity.
-\item $G_t$ is an unbiased estimator of $V_\pi$ hence Monte Carlo has zero bias. However is quite noisy (as the sum
+\item $G_t$ is an unbiased estimator of $V_\pi$ hence, Monte Carlo has zero bias. However, is quite noisy (as the sum
 of random variables) since it carries variance. Hence, Monte Carlo has high variance.
 \item Due to it's zero bias / high variance, Monte Carlo has very good convergence properties and it is not very
 sensitive to initial conditions (initial values).
@@ -1581,7 +1581,7 @@ predictions of failure, cost overruns and schedule overruns are routinely better
 
 In principle, Monte Carlo methods can be used to solve any problem having a probabilistic interpretation. By the law
 of large numbers, integrals described by the expected value of some random variable can be approximated by taking the
-empirical mean (a.k.a the sample mean) of independent samples of the variable. When the probability distribution of
+empirical mean (a.k.a.\ the sample mean) of independent samples of the variable. When the probability distribution of
 the variable is parametrized, mathematicians often use a Markov chain Monte Carlo (MCMC) sampler. The central idea is
 to design a judicious Markov chain model with a prescribed stationary probability distribution. That is, in the
 limit, the samples being generated by the MCMC method will be samples from the desired (target) distribution. By the
@@ -1656,7 +1656,7 @@ temporal difference.
 an episode in order to update $V$ (i.e.\ to learn). This is why it works in continuing (non-terminal) environments and
 with incomplete sequences.
 \item Temporal difference converges to the real $V_\pi$ as experience gets to infinity.
-\item Temporal difference's target is a biased estimator of $V_\pi$ but it is less nosier hence it carries less
+\item Temporal difference's target is a biased estimator of $V_\pi$ but it is less nosier hence, it carries less
 variance.
 \item Due to it's high bias / low variance, temporal difference is much more efficient than Monte Carlo but it is also
 very sensitive to initial conditions (initial values).
@@ -1678,7 +1678,7 @@ times and predictions is as follows:
 
 The rewards in this example are the elapsed times on each leg of the journey (if this were control problem with the
 objective of minimizing time travel then we would make the rewards the negative of the elapsed times). We are not
-discounting ($\gamma=1$) hence the return from each state is the actual time to go to that state. The value of each
+discounting ($\gamma=1$) hence, the return from each state is the actual time to go to that state. The value of each
 state is the expected remaining time to reach home. \v
 
 Now let's see how Monte Carlo and temporal difference treat this problem.
@@ -1707,7 +1707,7 @@ V (s) = 0, \forall s
 
 Then we let the agent to follow the policy. In the first step the agent will begin from the ``START'' (i.e.\ ``A1'') and
 will find itself in the state ``B1''. It will observe the initialized state value functions $V(B1) = 0$ and it will
-receive a reward $R_{B1} = 0$. Hence the temporal difference update rule will read:
+receive a reward $R_{B1} = 0$. Hence, the temporal difference update rule will read:
 \bse
 V(A1) \gets V(A1) + \alpha \left(R_{B1} + \gamma V(B1) - V(A1) \right) =
 0 + 0.5 \cdot \left(0 + 1 \cdot 0 - 0 \right) = 0
@@ -1735,7 +1735,7 @@ V(C3) \gets V(C3) + \alpha \left(R_{C4} + \gamma V(C4) - V(C3) \right) =
 0 + 0.5 \cdot \left(1 + 1 \cdot 0 - 0\right) = 0.5
 \ese
 
-Hence after the end of the first episode we had 5 updates and we end up with:
+Hence, after the end of the first episode we had 5 updates and we end up with:
 \bse
 \boldsymbol{V} = (0,0,0,0,0,0) \to (0,0,0,0,0.5,0)
 \ese
@@ -1838,7 +1838,7 @@ to do the update. So TD($\lambda$) can only be computed from completed episodes.
 
 \fig{rl26}{0.3}
 
-However there exists another equivalent mechanistic view that seems to achieve the same results as Forward-View TD
+However, there exists another equivalent mechanistic view that seems to achieve the same results as Forward-View TD
 ($\lambda$) but without the need to wait until the end of an episode to update the state value functions. This way is
 called ``Backward-View TD($\lambda$)''. While Forward-View TD($\lambda$) provides the theoretical framework of TD
 ($\lambda$), Backward-View TD($\lambda$) provides a mechanism to apply TD ($\lambda$) online, at every step, from
@@ -1873,14 +1873,14 @@ functions for every state $s$ in proportion to the eligibility trace, by using t
 V(s_t) \gets V(s_t) + \alpha \left(G_t^{\lambda} - V(s_t) \right) E_t(s)
 \ese
 
-Hence now the TD($\lambda$) error $\delta_t = G_t^{\lambda} - V(s_t) $ is broadcasted backwards to all states (hence
+Hence, now the TD($\lambda$) error $\delta_t = G_t^{\lambda} - V(s_t) $ is broadcasted backwards to all states (hence
 the naming).
 
 \vspace{10pt}
 
 \fig{rl27}{0.3}
 
-Finally notice that TD($\lambda$) is actually a generalized model of what we have described so far, since based on
+Finally, notice that TD($\lambda$) is actually a generalized model of what we have described so far, since based on
 the value of $\lambda$ we end up with different models. The following table summarizes the model based on the value
 of $\lambda$. \v
 

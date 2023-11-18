@@ -1,3 +1,4 @@
+%! suppress = EscapeUnderscore
 %! suppress = EncloseWithLeftRight
 In probability theory, a random variable is understood as a measurable function defined on a probability space that
 maps from the sample space to the real numbers. \v
@@ -42,8 +43,8 @@ X \colon S \to R
 \ed
 
 Intuitively a r.v is a numerical representation of the outcomes of a random experiment. For example if the random
-experiment is tossing a coin, we can map the outcomes to a r.v $X$ that takes two possible values: 0 for \say{head}
-and 1 for \say{tail}. That way we mapped the outcomes of the random experiment to something that we can work with! \v
+experiment is tossing a coin, we can map the outcomes to a r.v $X$ that takes two possible values: 0 for ``head''
+and 1 for ``tail''. That way we mapped the outcomes of the random experiment to something that we can work with! \v
 
 Since r.v's are used to model a random experiment, following from the definition of the latest the actual value of a
 r.v is not known before the execution of the experiment however the spectrum of possible outcomes is known. \v
@@ -58,7 +59,7 @@ Discrete r.v's are r.v's that can only take discrete, countable values (as for e
 dice). As we mentioned, the actual values of a r.v is not known to us before the execution of the experiments however
 the spectrum of all possible outcomes is known. On top of that, we can define a quantity that is connected to the
 probability of obtaining each of the possible outcomes after each experiment. In the case of discrete r.v's, this
-quantity is called \say{probability mass function}.
+quantity is called ``probability mass function''.
 
 \bd[Probability Mass Function]
 Given a discrete r.v $X$ defined on a sample space $S$ as $X \colon S \to R$, we define the \textbf{probability mass
@@ -74,7 +75,7 @@ with:
 \ed
 
 The physical meaning of a PMF is the probability that a r.v $X$ will take the value $x$ after the execution of a
-random experiment ($P_{X}(X=x)$). The term \say{mass} helps to get the intuition since the physical mass is conserved
+random experiment ($P_{X}(X=x)$). The term ``mass'' helps to get the intuition since the physical mass is conserved
 as is the total probability for all hypothetical outcomes $x$. \v
 
 From now on we keep in mind that every r.v $X$ carries a corresponding PMF $P_{X}(x)$. The common terminology is that
@@ -136,7 +137,7 @@ Var[X]= E[(X - E[X])^2]
 The variance shows how far the possible outcomes of a random variable are spread out from their expected value. The
 highest the variance the widest the spread and vice versa. \v
 
-Notice that the variance is \textbf{not} linear, hence $Var(X+Y) \neq Var(X) + Var(Y)$. However in the case where $X$
+Notice that the variance is \textbf{not} linear, hence, $Var(X+Y) \neq Var(X) + Var(Y)$. However, in the case where $X$
 and $Y$ are independent the equality holds. \v
 
 While the definition of the expected value is also useful for computation purposes, the definition of the variance is
@@ -161,8 +162,8 @@ Var[X \mid s]= E[(X - E[X \mid s])^2 \mid s]
 
 One of the main problems of variance (and conditional variance) is that it doesn't have the same units as the r.v or
 the expected value, but is has the square of this unit. Sometimes it makes it difficult to appreciate the meaning of
-variance in absolute terms. For that reason we define a more handy measure of dispersion called \say{standard
-deviation}.
+variance in absolute terms. For that reason we define a more handy measure of dispersion called ``standard
+deviation''.
 
 \bd[Standard Deviation]
 Let $X$ be a discrete r.v with a finite number of finite outcomes and $P_{X} (x)$ its corresponding PMF. The
@@ -199,8 +200,8 @@ P_{X}(X=x) = \frac{1}{n}
 \ese
 \ed
 
-Another way of describing the discrete uniform distribution would be \say{a known, finite number of outcomes equally
-likely to happen}.
+Another way of describing the discrete uniform distribution would be ``a known, finite number of outcomes equally
+likely to happen''.
 
 \be
 A simple example of the discrete uniform distribution is throwing a fair die. The possible values are $\{1, 2, 3, 4,
@@ -230,7 +231,7 @@ Var(X) = E[X^{2}] - E[X]^{2} = \frac{(n+1)(2n+1)}{6} - \frac{(n+1)^2}{4} = \ldot
 
 \v
 
-Finally for the standard deviation of a discrete uniform distribution:
+Finally, for the standard deviation of a discrete uniform distribution:
 \bse
 SD(X) = \sqrt{Var(X)} = \sqrt{\frac{n^2 - 1}{12}}
 \ese
@@ -238,8 +239,8 @@ SD(X) = \sqrt{Var(X)} = \sqrt{\frac{n^2 - 1}{12}}
 \subsection{Bernoulli Distribution - Bern(p)}
 
 The Bernoulli distribution parametrized by p and denoted by Bern(p) is a discrete probability distribution having two
-possible outcomes labelled by $x=1$ (called \say{success}) that occurs with probability p ($ 0<p<1$) and $x=0$
-(called \say{failure}) that occurs with probability $q=1-p$. \v
+possible outcomes labelled by $x=1$ (called ``success'') that occurs with probability p ($ 0<p<1$) and $x=0$
+(called ``failure'') that occurs with probability $q=1-p$. \v
 
 It therefore has PMF:
 
@@ -265,7 +266,7 @@ Bernoulli distribution can be used to model any single experiment that asks a ye
 in a Boolean - valued outcome, with probability of success $p$ and probability of failure $q$.
 
 \be
-For example, it can be used to represent a coin toss where 1 and 0 would represent \say{heads} and \say{tails} (or
+For example, it can be used to represent a coin toss where 1 and 0 would represent ``heads'' and ``tail'' (or
 vice versa), respectively, and $p$ would be the probability of the coin landing on heads or tails, respectively. (In
 a fair coin case we would have $p=q=1/2$).
 \ee
@@ -288,7 +289,7 @@ Substituting $E[X^2]$ and $E[X]^2$ to the variance relation we get:
 Var(X) = E[X^{2}] - E[X]^{2} = p - p^2 = p(1-p)
 \ese
 
-Finally for the standard deviation of a Bernoulli distribution:
+Finally, for the standard deviation of a Bernoulli distribution:
 \bse
 SD(X) = \sqrt{Var(X)} = \sqrt{p(1-p)}
 \ese
@@ -349,7 +350,7 @@ Var(Y) &= Var(X_{1} + X_{2} + \ldots + X_{n}) \\
 where beside the linearity of variance of independent events we also we used the variance of a Bernoulli distribution
 parametrized by $p$ which is $p(1-p)$ on the third step. \v
 
-Finally for the standard deviation of a binomial distribution:
+Finally, for the standard deviation of a binomial distribution:
 \bse
 SD(X) = \sqrt{Var(X)} = \sqrt{n p(1-p)}
 \ese
@@ -410,7 +411,7 @@ with $n^k/n^k = 1$. Similarly for the last fraction for $n \to \infty \Rightarro
 &= \frac{\lambda^k}{k!} e^{-\lambda}
 \end{align*}}
 
-Thus indeed, by taking the limit of a binomial distribution for $n \to \infty$ we end up with a Poisson distribution. \v
+Thus, indeed, by taking the limit of a binomial distribution for $n \to \infty$ we end up with a Poisson distribution. \v
 
 \be
 An example of a Poisson distribution is the case where an individual keeps track of the amount of mail they receive
@@ -446,10 +447,10 @@ $E[X^2] = \lambda^2 + \lambda$. Hence, by substituting $E[X^2]$ and $E[X]^2$ to 
 Var(X) = E[X^{2}] - E[X]^{2} = \lambda^2 + \lambda - \lambda^2= \lambda
 \ese
 
-Hence we showed that the parameter $\lambda$ of Pois($\lambda$) is both the expected value and the variance of the
+Hence, we showed that the parameter $\lambda$ of Pois($\lambda$) is both the expected value and the variance of the
 distribution. \v
 
-Finally for the standard deviation of a Poisson distribution:
+Finally, for the standard deviation of a Poisson distribution:
 \bse
 SD(X) = \sqrt{Var(X)} = \sqrt{\lambda}
 \ese
@@ -469,7 +470,7 @@ P_{X}(X=k) = p (1-p)^k
 
 \be
 An example that a geometric distribution can be used is in the case where an ordinary die is thrown repeatedly until
-the first time a \say{1} appears. The probability distribution of the number of times it is thrown is supported on
+the first time a ``1'' appears. The probability distribution of the number of times it is thrown is supported on
 the infinite set ${1,2,3, \ldots}$ and is a geometric distribution with $p$ = 1/6.
 \ee
 
@@ -570,7 +571,7 @@ SD(X) = \frac{\sqrt{pr}}{1-p}
 In accordance with discrete r.v's, continuous r.v's are r.v's that can take continuous, uncountable values (as for
 example the price of a stock). Similarly to the discrete case, we can define a quantity that is connected to the
 probability of obtaining an outcome that lies between a range of possible values $[a,b]$. In the case of continuous
-r.v's, this quantity is called \say{probability density function}.
+r.v's, this quantity is called ``probability density function''.
 
 \bd[Probability Density Function]
 Given a continuous r.v $X$ defined on a sample space $S$ as $X \colon S \to R$, we define the \textbf{probability
@@ -587,7 +588,7 @@ with:
 
 \v
 
-Once again, as before, the conservation of density in the continuous case gives a kind of \say{physical} meaning to
+Once again, as before, the conservation of density in the continuous case gives a kind of ``physical'' meaning to
 $f_{X}$. \v
 
 Notice that for the probability of a continuous r.v to take a specific value
@@ -596,7 +597,7 @@ $a$ :
 P(a \leq X \leq a) = \int_{a}^{a} f_{X}(x) dx = 0
 \ese
 
-Hence in continuous r.v's it only makes sense to find the probability of a r.v to be inside a specific range $[a,b]$.
+Hence, in continuous r.v's it only makes sense to find the probability of a r.v to be inside a specific range $[a,b]$.
 As it follows from the definition of an integral, the probability of a continuous r.v to be equal to a specific
 number $a$ is always 0. \v
 
@@ -690,7 +691,7 @@ Var(X) = E[X^2] - E[X]^2 = \frac{1}{3} (a^2 + ab + b^2) - \frac{1}{4} (a+b)^2 = 
 
 \v
 
-Finally for the standard deviation:
+Finally, for the standard deviation:
 \bse
 SD(X) = \sqrt{Var(X)} = \frac{b - a}{\sqrt{12}}
 \ese
@@ -698,7 +699,7 @@ SD(X) = \sqrt{Var(X)} = \frac{b - a}{\sqrt{12}}
 \subsection{Normal Distribution - N($\mu$, $\sigma^2$)}
 
 The normal distribution parametrized by $\mu$, and $\sigma^2$ and denoted by N($\mu$, $\sigma^2$) (often called
-\say{bell curve}) is probably the most important distribution in statistics and it is often used in the natural and
+``bell curve'') is probably the most important distribution in statistics and it is often used in the natural and
 social sciences to represent real-valued random variables whose distributions are not known.
 
 \v
@@ -766,14 +767,14 @@ Var(X) = E[X^2] - E[X]^2 = \sigma^2 + \mu^2 - \mu^2 = \sigma^2
 \ese
 
 So we proved that the parameters of the N($\mu$, $\sigma^2$), $\mu$ and $\sigma^2$ are actually the expected value
-and variance of the distribution (hence the naming). \v
+and variance of the distribution (Hence, the naming). \v
 
-Finally for the standard deviation of a normal distribution :
+Finally, for the standard deviation of a normal distribution :
 \bse
 SD(X) = \sqrt{Var(X)} = \sqrt{\sigma^2} = \sigma
 \ese
 
-Now, we will introduce a specific case of a normal distribution called \say{standard normal distribution}.
+Now, we will introduce a specific case of a normal distribution called ``standard normal distribution''.
 
 \subsection{Standard Normal Distribution - N(0,1)}
 
@@ -808,7 +809,7 @@ P(-\infty \leq X \leq z) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{z} e^{-\frac{x^
 \v
 
 This is a standard Gaussian integral that is quite easy to calculate for any possible value of $z$. Since it is so
-useful, we can actually find the value for the integral for any $z$, in the so called \say{$Z$-table}.
+useful, we can actually find the value for the integral for any $z$, in the so called ``$Z$-table''.
 
 \bd[$Z$-Table]
 A \textbf{$Z$-table}, is a mathematical table for the values of the cumulative distribution function of the standard
@@ -831,7 +832,7 @@ P(-\infty \leq X \leq 0.69) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{0.69} e^ {-\
 
 $Z$-tables are very useful since we can find values of the integral without actually solving it! On top of that since
 we are dealing with a standard normal distribution where mean is 0 and variance is 1, the value of $z$ can actually
-be seen as \say{standard deviations away from the mean}. For example $z=0.69$ means 0.69 standard deviations away
+be seen as ``standard deviations away from the mean''. For example $z=0.69$ means 0.69 standard deviations away
 from the mean and the corresponding value from $Z$-table is the probability of obtaining a value for the r.v, up to
 and including 0.69 standard deviations (which is 1) away from the mean. \v
 
@@ -876,7 +877,7 @@ We can summarize all of these to the following graph:
 
 \fig{standardnormal}{0.35}
 
-Probably the most important message to get out of the graph is the so called \say{68–95–99.7 rule}.
+Probably the most important message to get out of the graph is the so called ``68–95–99.7 rule''.
 
 \bt[68–95–99.7 Rule]
 The 68–95–99.7 rule (or empirical rule), is a shorthand used to remember the percentage of values that lie within a
@@ -885,9 +886,9 @@ more accurately, 68.27\%, 95.45\% and 99.73\% of the values lie within one, two 
 mean, respectively.
 \et
 
-The \say{68–95–99.7 rule} is used in order to get some informal intuitions out of a standard normal distribution.
-Also, we can use the \say{68–95–99.7 rule} even for a normal distribution since, as we will show next, any normal
-distribution can be turned to a standard normal distribution by a process called \say{standardization}. \v
+The ``68–95–99.7 rule'' is used in order to get some informal intuitions out of a standard normal distribution.
+Also, we can use the ``68–95–99.7 rule'' even for a normal distribution since, as we will show next, any normal
+distribution can be turned to a standard normal distribution by a process called ``standardization''. \v
 
 In order to formulate the process of standardization, first we need to define the concept of z-score of a r.v $X$.
 
@@ -921,8 +922,8 @@ And subsequently for the standard deviation:
 SD(z) = \sqrt{Var(z)} = \sqrt{1} = 1
 \ese
 
-Hence by switching from $X$ to $Z$ through the use of z-scores we also switch from any normal distribution to a
-standard normal distribution. This process is called formally \say{standardization}.
+Hence, by switching from $X$ to $Z$ through the use of z-scores we also switch from any normal distribution to a
+standard normal distribution. This process is called formally ``standardization''.
 
 \bd[Standardization]
 \textbf{Standardization} is the process where starting from a r.v $X$ that follows a $N(\mu, \sigma^2)$, by making
@@ -936,7 +937,7 @@ all observations by the same numbers. The only difference is that now the number
 new values in a consistent way. This is why standard normal distribution is so important. Since any normal
 distribution can be translated to a standard normal distribution everything we said for a standard normal
 distribution holds for any normal distribution. For example we can compute the probabilities of $X$ to be within a
-range by switching to $Z$ and compute the Gaussian integral. Also the \say{68–95–99.7 rule} holds for any normal
+range by switching to $Z$ and compute the Gaussian integral. Also the ``68–95–99.7 rule'' holds for any normal
 distribution and simply states:
 \begin{align*}
 & P(\mu -1\sigma \leq X\leq \mu +1\sigma ) = 68\% \\
@@ -984,7 +985,7 @@ For the variance of an exponential distribution we can show:
 Var(X) = \frac{1}{\lambda^2}
 \ese
 
-Finally for the standard deviation of an exponential distribution:
+Finally, for the standard deviation of an exponential distribution:
 \bse
 SD(X) = \sqrt{Var(X)} = \sqrt{\frac{1}{\lambda^2}} = \frac{1}{\lambda}
 \ese
@@ -1062,7 +1063,7 @@ For the variance of a t-distribution we can show:
 Var(X) = \frac{\nu}{\nu - 2}
 \ese
 
-Finally for the standard deviation:
+Finally, for the standard deviation:
 \bse
 SD(X) = \sqrt{ \frac{\nu}{\nu - 2}}
 \ese
@@ -1107,7 +1108,7 @@ For the variance of a Beta distribution we can show:
 Var(X)= \frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta + 1)}
 \ese
 
-Finally for the standard deviation:
+Finally, for the standard deviation:
 \bse
 SD(X) = \sqrt{\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta + 1)}}
 \ese
@@ -1146,7 +1147,7 @@ For the variance of a Gamma distribution we can show:
 E[X] = \frac{\alpha}{\beta^2}
 \ese
 
-Finally for the standard deviation:
+Finally, for the standard deviation:
 \bse
 SD(X) = \frac{\sqrt{\alpha}}{\beta}
 \ese
@@ -1157,7 +1158,7 @@ Now let's move on to another section.
 
 Up to this point we have defined everything for one single r.v $X$ (either discrete or continuous). However, the
 definitions can be generalized to a collection of any number of r.v's $\{ X_{1}, X_{2}, \ldots, X_{n} \}$, (treating
-the whole collection of r.v's as an entity) leading to the concept of a \say{joint probability distribution}.
+the whole collection of r.v's as an entity) leading to the concept of a ``joint probability distribution''.
 
 \bd[Joint Probability Distribution]
 Given a number of r.v's $\{ X_{1}, X_{2}, \ldots, X_{n} \}$, that are defined on a probability space, the
@@ -1167,8 +1168,8 @@ of values specified for that variable. In the case of only two r.v's, this is ca
 the concept generalizes to any number of r.v's, giving a multivariate distribution.
 \ed
 
-Subsequently, we can define the concept of a \say{joint probability mass function} and a \say{joint probability
-density function} for a collection of discrete and continuous r.v's respectively.
+Subsequently, we can define the concept of a ``joint probability mass function'' and a ``joint probability
+density function'' for a collection of discrete and continuous r.v's respectively.
 
 \bd[Joint Probability Mass Function]
 For a number of discrete r.v's $\{ X_{1}, \ldots, X_{n} \}$, that are defined on a probability space $S$, we define
@@ -1196,7 +1197,7 @@ P_{X_{1}, \ldots, X_{n}}(X_{1} = x_{1}, \ldots, X_{n} = x_{n}) = \prod_{i=1}^{n}
 Notice that the individual r.v's $\{ X_{1}, \ldots, X_{n} \}$ can follow different distributions. However, more often
 than not we will be dealing with the case where all $\{ X_{1}, \ldots, X_{n} \}$ individually follow the same
 distribution $P_{X_{1}} = P_{X_{2}} = \ldots = P_{X_{n}} = P_{X}$. In this case we formally say that we are dealing
-with \say{independent identical distributed random variables} or i.i.d r.v's. This abbreviation is used a lot in
+with ``independent identical distributed random variables'' or i.i.d r.v's. This abbreviation is used a lot in
 statistics since many real world problems are problems that can be modelled with the use of i.i.d r.v's. \v
 
 In a similar way as in the discrete case, we can define a joint probability density function for the continuous case.
@@ -1251,7 +1252,7 @@ the two PMF's:
 P_{X,Y}(X=x, Y=y) = P_{X}(X=x) \cdot P_{Y}(Y=y)
 \ese
 
-Now we can generalize the concept of expected value to the one of \say{joint expected value}. (Since we are dealing
+Now we can generalize the concept of expected value to the one of ``joint expected value''. (Since we are dealing
 with bivariate joint distributions we will define the joint expected value for two r.v's, however we can generalize
 the definition for any function of any numbers of r.v's)
 
@@ -1286,7 +1287,7 @@ In case where $g(X,Y) = g_{X}(X) \cdot g_{Y}(Y)$ then for independent events als
 E[g_{Y}(Y)]$. A generalization to a function $g$ for any number of r.v's is also possible. \v
 
 Similarly to the joint expected value, it follows that we can also expand the definition of variance to the case of 2
-r.v's. The corresponding quantity is called \say{covariance}.
+r.v's. The corresponding quantity is called ``covariance''.
 
 \bd[Covariance]
 Let $X$ and $Y$ be two discrete r.v's with a finite number of finite outcomes and $P(x,y)$ its corresponding PMF. The
@@ -1315,7 +1316,7 @@ Cov(X,X) = E[(X - E[X])(X - E[X])] = E[(X - E[X])^2] = Var(X)
 \v
 
 Hence, the covariance of one r.v with itself is simply the variance of the r.v.\ So indeed, variance can be
-interpreted as a special case of covariance hence covariance is a generalization of variance. \v
+interpreted as a special case of covariance hence, covariance is a generalization of variance. \v
 
 A similar formula as for variance can also be derived for covariance:
 \begin{align*}
@@ -1333,7 +1334,7 @@ In case of independent events, by making use of the last lemma we get for the co
 Cov(X, Y) = E[X \cdot Y] - E[X] \cdot E[Y] = E[X] \cdot E[Y] - E[X] \cdot E[Y] = 0
 \ese
 
-Hence we proved that the covariance of two independent events is always zero. However, the opposite does not
+Hence, we proved that the covariance of two independent events is always zero. However, the opposite does not
 necessarily hold. To make it more clear let's give the definition of uncorrelated r.v's.
 
 \bd[Uncorrelated Random Variables]
@@ -1353,7 +1354,7 @@ Var(X + Y) &= Cov(X+Y, X+Y) \\
 \end{align*}
 
 From this formula we can easily see why variance is not actually linear, since the covariance of the two terms
-appears in the formula. This is why when we are dealing with independent r.v's, hence uncorrelated r.v's with $Cov(X,
+appears in the formula. This is why when we are dealing with independent r.v's, hence, uncorrelated r.v's with $Cov(X,
 Y)=0$, we can actually treat variance as linear, meaning:
 \bse
 Var(X + Y) = Var(X) + Var(Y)
@@ -1361,7 +1362,7 @@ Var(X + Y) = Var(X) + Var(Y)
 
 Covariance carries the same problems as variance, with the main one being that it carries square units. However,
 there is a way to overcome this problem by normalizing the covariance with the standard deviation of the two r.v's.
-The result is a very useful measure in statistics called \say{correlation}.
+The result is a very useful measure in statistics called ``correlation''.
 
 \bd[Correlation]
 Let $X$ and $Y$ be two discrete r.v's with a finite number of finite outcomes and $P(x,y)$ its corresponding PMF. The
@@ -1385,7 +1386,7 @@ manipulated to:
 \end{align*}}
 \endgroup
 
-Hence we showed that the correlation is actually the covariance of the standardized (z-scores) r.v's $X$ and $Y$. \v
+Hence, we showed that the correlation is actually the covariance of the standardized (z-scores) r.v's $X$ and $Y$. \v
 
 By using all variance, covariance and the definition of standard deviation being the square root of variance follows:
 \bse
@@ -1417,7 +1418,7 @@ Var(X \pm Y) &= Var(X) + Var(Y) \pm 2 \cdot Cov(X,Y) \\
 \end{align*}
 
 But since variance is the expected value of a square term, it follows that it's always positive, subsequently $(1 \pm
-\rho(X,Y))$ must always be positive hence we end up with $ -1 \leq \rho \leq +1.$
+\rho(X,Y))$ must always be positive hence, we end up with $ -1 \leq \rho \leq +1.$
 \eq
 
 The fact that correlation does not carry any units, and it is always between -1 and 1 makes it a very useful measure
@@ -1494,7 +1495,7 @@ and:
 P_{X}(X=1) = \sum_{y} P_{X,Y}(X=1, Y=y) = P_{X,Y}(X=1, Y=0) + P_{X,Y}(X=1,Y=1) = \frac{1}{3} + \frac{1}{6} = \frac{1}{2}
 \ese
 
-Hence $X$ follows a Bern\Big($\frac{1}{2}$\Big). \v
+Hence, $X$ follows a Bern\Big($\frac{1}{2}$\Big). \v
 
 For $Y$ it is:
 \bse
@@ -1506,7 +1507,7 @@ and:
 P_{Y}(Y=1) = \sum_{x} P_{X,Y}(X=x, Y=1) = P_{X,Y}(X=0, Y=1) + P_{X,Y}(X=1, Y=1) = \frac{1}{6} + \frac{1}{6} = \frac{1}{3}
 \ese
 
-Hence $Y$ follows a Bern\Big($\frac{1}{3}$\Big). \v
+Hence, $Y$ follows a Bern\Big($\frac{1}{3}$\Big). \v
 
 By using these values we can show:
 \bit
@@ -1518,7 +1519,7 @@ By using these values we can show:
 
 \v
 
-Hence we proved:
+Hence, we proved:
 \bse
 P_{X,Y}(X=x, Y=y) = P_{X}(X=x) \cdot P_{Y}(Y=y)
 \ese
@@ -1549,7 +1550,7 @@ Subsequently for their correlation:
 In a previous section we defined the three most important measures for a r.v: the expected value, the variance and
 the standard deviation. However, that are not the only ones that exist. In this chapter we will introduce some of the
 rest measures which are of secondary importance but they will help us to generalize all of them in one single concept
-that is called \say{moments}.
+that is called ``moments''.
 
 \bd[Skewness]
 \textbf{Skewness} is a measure of the asymmetry of the probability distribution of a r.v about its mean:
@@ -1565,7 +1566,7 @@ Skew(X) = E \Big[ \Big( \frac{X-\mu }{\sigma} \Big)^{3} \Big]
 \vspace{10pt}
 
 \bd[Kurtosis]
-\textbf{Kurtosis} is a measure of the \say{tailedness} of the probability distribution of a r.v about its mean:
+\textbf{Kurtosis} is a measure of the ``tailedness'' of the probability distribution of a r.v about its mean:
 \bse
 Kurt(X) = E \Big[ \Big( \frac{X-\mu }{\sigma} \Big)^{4} \Big]
 \ese
@@ -1578,14 +1579,14 @@ Kurt(X) = E \Big[ \Big( \frac{X-\mu }{\sigma} \Big)^{4} \Big]
 \vspace{5pt}
 
 \bd[Hyperskewness]
-\textbf{Hyperskewness} is a measure of the \say{hyperskewness} of the probability distribution of a r.v about its mean:
+\textbf{Hyperskewness} is a measure of the ``hyperskewness'' of the probability distribution of a r.v about its mean:
 \bse
 Hyperskewness(X) = E \Big[ \Big( \frac{X-\mu }{\sigma} \Big)^{5} \Big]
 \ese
 \ed
 
 \bd[Hypertailedness]
-\textbf{Hypertailedness} is a measure of the \say{hypertailedness} of the probability distribution of a r.v about its
+\textbf{Hypertailedness} is a measure of the ``hypertailedness'' of the probability distribution of a r.v about its
 mean:
 \bse
 Hypertailedness(X) = E \Big[ \Big( \frac{X-\mu }{\sigma} \Big)^{6} \Big]
@@ -1593,7 +1594,7 @@ Hypertailedness(X) = E \Big[ \Big( \frac{X-\mu }{\sigma} \Big)^{6} \Big]
 \ed
 
 All these measures, including expected value, variance and standard deviation, can be grouped together under one
-entity which is called \say{moments}. We distinguish between three different kinds of moments: raw, central and
+entity which is called ``moments''. We distinguish between three different kinds of moments: raw, central and
 standardized.
 
 \bd[Raw Moments]
@@ -1609,7 +1610,7 @@ For $n=1$ the first raw moment reads:
 \mu_1 = E[X^1] = E[X] = \mu
 \ese
 
-Hence the first raw moment is actually the mean of a r.v.
+Hence, the first raw moment is actually the mean of a r.v.
 
 \bd[Central Moments]
 Given a discrete or continuous r.v $X$ with PMF $P_{X}(x)$ or PDF $f_{X}(x)$ respectively, we define the n-th
@@ -1629,7 +1630,7 @@ For $n=2$ the second central moment reads:
 \mu_2 = E[(X-\mu)^2] = \sigma^2
 \ese
 
-Hence the first central moment is actually 0 while the second central moment is the definition of variance.
+Hence, the first central moment is actually 0 while the second central moment is the definition of variance.
 
 \bd[Standardized Moments]
 Given a discrete or continuous r.v $X$ with PMF $P_{X}(x)$ or PDF $f_{X}(x)$ respectively, we define the n-th

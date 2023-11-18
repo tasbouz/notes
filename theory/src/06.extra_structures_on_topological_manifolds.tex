@@ -1,3 +1,4 @@
+%! suppress = EscapeUnderscore
 In this chapter we will introduce a very important concept called ``connection'' (or ``covariant derivative'') on a
 differentiable topological manifold. However, we need to make something very clear. ``Connection'' and ``covariant
 derivative'' are not actually the same thing. In elementary courses on differential geometry the notions of
@@ -6,9 +7,9 @@ synonyms. This happens because one is not in a position to properly define these
 so-called ``principal fiber bundles'' that we will do in a later chapter. \v
 
 So for now, in this section, we will make a kind of ``naive'' introduction to the concept, which however, most of the
-times, this is how it is introduced in many courses and on top of that it will give us a very first understanding of
+time, this is how it is introduced in many courses and on top of that it will give us a very first understanding of
 the topic. Later in the notes, once we introduce ``principal fiber bundles'' we will revisit these terms in a more
-systematic way and we will gain a better understanding of what they are exactly and how they generalize. \v
+systematic way, and we will gain a better understanding of what they are exactly and how they generalize. \v
 
 Having said that, for now we will introduce ``connection'' and ``covariant derivative'' as identical concepts which,
 again, even though they are different, for the purposes of this section we shall not distinguish the two, and we will
@@ -18,7 +19,7 @@ also introduce ``parallel transport'' within this framework (later we will also 
 
 So far, we saw that a vector field $X$ can be used to provide a directional derivative of a function $f \in
 C^{\infty}(M)$ in the direction $X$ as $Xf(p) = X_p f$. Recall that once we introduced the $(p,q)$ tensor field, we
-saw that a function $f \in C^{\infty}(M)$ is nothing else but a $(0,0)$ tensor field. Hence the equation $Xf$ can be
+saw that a function $f \in C^{\infty}(M)$ is nothing else but a $(0,0)$ tensor field. Hence, the equation $Xf$ can be
 seen as the directional derivative acting on a $(0,0)$ tensor field, which leads to the natural question: can we
 apply the directional derivative to any $(p,q)$ tensor field? \v
 
@@ -98,10 +99,10 @@ So far so good. Let as consider now the next simplest case of an $(1,0)$ tensor 
 \v
 
 Regarding the last term $\nabla_{\left(\cibasis{x^i}\right)} \cibasis{x^m}$, note that it simply is of the form
-$\nabla_X X$ where $X$ is the co-ordinate induced basis vector. There isn't something more we can do on that, however
+$\nabla_X X$ where $X$ is the coordinate induced basis vector. There isn't something more we can do on that, however
 since $\cibasis{x^m}$ is a basis vector, i.e.\ a $(1,0)$ tensor field, the result of the action of $\nabla_{\left
 (\cibasis{x^i}\right)}$ on it must by definition, yield again a $(1,0)$ tensor field i.e.\ a vector that we can express
-in the co-ordinate induced basis also as:
+in the coordinate induced basis also as:
 \bse
 \nabla_{\left(\cibasis{x^i}\right)} \cibasis{x^m} = \Gamma^{q}_{im} \cibasis{x^q}
 \ese
@@ -136,7 +137,7 @@ dx^m\right) & (first condition)
 \v
 
 Once again we have left with the term $\nabla_{\cibasis{x^i}}\left (dx^m\right)$ which with similar reasoning as
-before, it must be again a covector field that can be expressed in term of the dual co-ordinate induced basis i.e.\ :
+before, it must be again a covector field that can be expressed in terms of the dual coordinate induced basis i.e.\ :
 \bse
 \nabla_{\cibasis{x^i}}\left(dx^m\right) = \Sigma^{m}_{ij} dx^j
 \ese
@@ -156,7 +157,7 @@ Consider the following:
 \left( \nabla_{\cibasis{x^i}} \delta^m_j \right) dx^j =\left( \cibasis{x^i}(\delta^m_j) \right) dx^j = 0
 \ese
 
-However it also is:
+However, it also is:
 \begingroup
 \allowdisplaybreaks
 \bi{rCl}
@@ -246,7 +247,7 @@ Notice that the change of connection coefficient function under the change of ch
 
 do not follow the usual transformation law of a tensor due to the second term of the equation. If that part was
 missing then $\Gamma$'s would be the components of a tensor. Notice also that this extra term carries a second
-derivative hence for linear transformation between coordinates in two charts, the term:
+derivative hence, for linear transformation between coordinates in two charts, the term:
 \bse
 \frac{\partial^2 x^q}{\partial y^j \partial y^k}
 \ese
@@ -256,7 +257,7 @@ the components of a tensor suddenly). \v
 
 $\Gamma$'s transformation law has another great impact. Since the second term, the one destroying the tensor
 components transformation law, does not carry and $\Gamma$'s, that means that even if $\Gamma$'s are zero in one
-chart, they might be non zero in the other charts (unless the chart transition maps are all linear, however, there is
+chart, they might be non-zero in the other charts (unless the chart transition maps are all linear, however, there is
 no reason not to select a coordinate which is not a linear transformation of another one). In other words just the
 change of coordinate system can suddenly give non-vanishing $\Gamma$'s even if we didn't have them in the fist
 coordinate system. \v
@@ -313,7 +314,7 @@ to be \textbf{parallel} along a smooth curve $\gamma: \mathbb{R} \to M$ if:
 where $\mu$ is a function $\mu : \mathbb{R} \to \mathbb{R}$.
 \ed
 
-Finally we also introduce the crucial concept of autoparallel transport.
+Finally, we also introduce the crucial concept of autoparallel transport.
 
 \bd [Autoparallel Transport]
 Let $(M, \mathcal{O}, \mathscr{A}, \nabla_X)$ be a smooth manifold with connection. A vector field $X$ on $M$ is said
@@ -323,7 +324,7 @@ to be \textbf{autoparallely transported} along a smooth curve $\gamma: \mathbb{R
 \ese
 \ed
 
-We can manipulate the autoparallel transport equation by invoking a co-ordinate induced basis and get one of the most
+We can manipulate the autoparallel transport equation by invoking a coordinate induced basis and get one of the most
 heavily used equation in physics as follows:
 \bi{rCl}
 \left(\nabla_X X\right)^i &=& X (X^i) + \Gamma^{i}_{mn} \cdot X^m \cdot X^n \\[5pt]
@@ -342,7 +343,7 @@ and we also used a fact that we can show (but we won't):
 X^m \left(\cibasis{x^m} X^i\right) = \ddot{\gamma}^i
 \ese
 
-Hence the autoparallel transport equations reads:
+Hence, the autoparallel transport equations reads:
 \bse
 \ddot{\gamma}^i + \Gamma^{i}_{mn} \cdot \dot{\gamma}^m \cdot \dot{\gamma}^n = 0
 \ese
@@ -430,7 +431,7 @@ T(\omega, X+Z, Y) & = \omega(\nabla_{X+Z} Y - \nabla_Y (X+Z) - [(X+Z), Y]) \\
 
 Since $T(\omega,X,Y) = - T(\omega,Y,X)$, scaling in the last factor need not be checked separately.
 
-\item Finally it is:
+\item Finally, it is:
 \begin{align*}
 T(\omega, fX, Y) & = \omega(\nabla_{fX} Y - \nabla_Y (fX) - [fX,Y]) \\
 & = \omega(f\nabla_{X} Y - (\nabla_Y (f))X - f(\nabla_Y X) - [fX,Y]) \\
@@ -460,7 +461,7 @@ T^{i}_{ab} & \coloneqq T\left(dx^i, \cibasis{x^a}, \cibasis{x^b}\right) \\[5pt]
 
 \v
 
-Hence the torsion is simply the antisymmetric part of connection coefficients which is also the part that one cannot
+Hence, the torsion is simply the antisymmetric part of connection coefficients which is also the part that one cannot
 get rid of with coordinate transformation, which of course make sense since if it is not zero in one chart it will
 not be zero everywhere.
 
@@ -511,15 +512,15 @@ So indeed, as we can see:
 \ese
 
 In other word the difference we are interested in is the Riemann tensor plus a correction term. For this correction
-term note that by invoking a chart $(U,x)$, and by using the co-ordinate induced basis:
+term note that by invoking a chart $(U,x)$, and by using the coordinate induced basis:
 \bse
 \left(\nabla_{\cibasis{x^a}} \nabla_{\cibasis{x^b}} Z \right)^m - \left (\nabla_{\cibasis{x^b}} \nabla_{\cibasis{x^a}}
 Z \right)^m = R^{m}_{nab} \, Z^n + \nabla_{\left[ \cibasis{x^a}, \cibasis{x^b} \right]} Z
 \ese
 
-However basis vectors always commute so the last term vanishes, and now we can see how the $Riem$ tensor components
+However, basis vectors always commute so the last term vanishes, and now we can see how the $Riem$ tensor components
 $R^{m}_{nab}$ contain all the information about how the $\nabla_{\cibasis{x^a}}$ and $\nabla_{\cibasis{x^b}}$ fail to
-commute if they act on a vector field. Similarly if they act on a tensor field, there are several terms on the right
+commute if they act on a vector field. Similarly, if they act on a tensor field, there are several terms on the right
 hand side of the equation like the one term above and if they act on a function, of course they commute. Observe
 that, being a tensor, $Riem$ vanishes in all coordinate systems if it vanishes in one coordinate system. \v
 
@@ -617,14 +618,14 @@ where:
 In components: $g_{\mu \nu} = g_{\nu \mu}$ and $(g^{-1})^{\mu \nu} g_{\nu \rho} = \delta^\mu_\rho$. \v
 
 The musical map turns a vector $X$ to a covector $(\flat(X))$. Given that $ (\flat(X))$ is a covector it carries, by
-the predefined convention, a ``lower index'' $(\flat(X))_\mu$. Hence in tensor components:
+the predefined convention, a ``lower index'' $(\flat(X))_\mu$. Hence, in tensor components:
 \bse
 (\flat(X))_\mu \coloneqq g_{\mu \nu} X^\nu
 \ese
 
-Similarly the the inverse musical map turns a covector $\omega$ to a vector $(\flat^{-1}(\omega))$. Given that $
+Similarly, the the inverse musical map turns a covector $\omega$ to a vector $(\flat^{-1}(\omega))$. Given that $
 (\flat^{-1}(\omega))$ is a vector it carries, by the predefined convention, an ``upper index'' $(\flat^{-1}(\omega))
-^\mu$. Hence in tensor components:
+^\mu$. Hence, in tensor components:
 \bse
 (\flat^{-1}(\omega))^\mu \coloneqq g^{\mu \nu} \omega_\nu
 \ese
@@ -632,14 +633,14 @@ Similarly the the inverse musical map turns a covector $\omega$ to a vector $(\f
 \v
 
 Most of the time people drop the $\flat$ and $\flat^{-1}$ symbol and simply write $(\flat(X))_\mu \rightarrow X_\mu$
-and $(\flat^{-1}(\omega))^\mu \rightarrow \omega^\mu$, hence the equations read:
+and $(\flat^{-1}(\omega))^\mu \rightarrow \omega^\mu$, hence, the equations read:
 \bse
 X_\mu \coloneqq g_{\mu \nu} X^m \qquad \text{and} \qquad \omega^\mu \coloneqq g^{\mu \nu} \omega_\nu
 \ese
 
 \v
 
-which is the familiar ``lower the index'' and ``raise the index'' formula. However the problem with these formulae is
+which is the familiar ``lower the index'' and ``raise the index'' formula. However, the problem with these formulae is
 that when we see $X_\mu$ (or $\omega^\mu$) we don't really know if it is actually a vector (or a covector) or if it's
 the musical map (or inverse musical map) applied to a covector (or a vector). For this reason we will stick to the
 musical map (and the inverse musical map) notation.
@@ -658,7 +659,7 @@ g_{ij}(x^{-1}(\theta,\varphi)) = \left[ \begin{matrix} R^2 & 0 \\ 0 & R^2\sin^2{
 where the matrix is just a way of collecting this information.
 \ee
 
-As we mentioned in the ``vector space'' chapter, bilinear forms carry a signature. Subsequently the metric tensor as
+As we mentioned in the ``vector space'' chapter, bilinear forms carry a signature. Subsequently, the metric tensor as
 a bilinear form carries a signature. The signature $(v, p, r)$ of a metric tensor $g$ is the number (counted with
 multiplicity) of positive, negative and zero eigenvalues of the real symmetric matrix $g_{\mu \nu}$ of the metric
 tensor with respect to a basis. Alternatively, it can be defined as the dimensions of a maximal positive and null
@@ -721,7 +722,7 @@ L[\gamma] & = \int_0^1 d\lambda \sqrt{g_{ij}(x^{-1}(\theta(\lambda), \varphi(\la
 \ee
 
 Observe that for any reparametrization of $\gamma$, the factors from the reparametrization will cancel with the
-corresponding factors coming from the metric an the result will be independent of the reparametrization (as it should
+corresponding factors coming from the metric and the result will be independent of the reparametrization (as it should
 be since the length of the curve should not depend on the parametrization). This actually is a theorem that can be
 easily proved (we skip the proof).
 
@@ -744,7 +745,7 @@ X^m \cl & \mathcal{C}^\infty(M) & \xrightarrow{\sim} & \mathcal{C}^\infty(M) \\
 & f & \mapsto & ((f\circ\gamma)'(0))^m \coloneqq \dot{\gamma}^m
 \ei
 
-Thus the length reads:
+Thus, the length reads:
 \bse
 L[\gamma] \coloneqq \int_0^1 d\lambda \, s(\lambda) = \int_0^1 d\lambda \sqrt{g(\dot{\gamma}, \dot{\gamma})} =
 \int_0^1 d\lambda \sqrt{g_{\mu \nu}\dot{\gamma^{\mu}} \dot{\gamma^{\nu}}}
@@ -789,7 +790,7 @@ x^{\mu }g_{\mu \nu } \ddot{\gamma^{\nu}}\right)\\[5pt]
 
 \v
 
-Hence by Hamilton's principle we find that the Euler-Lagrange equation is:
+Hence, by Hamilton's principle we find that the Euler-Lagrange equation is:
 \bse
 g_{\mu \nu } \ddot{\gamma^{\nu}} + \frac{1}{2} \dot{\gamma^{\alpha}} \dot{\gamma^{\nu}} \left( \partial _{\mu }
 g_{\alpha \nu } + \partial _{\nu } g_{\mu \alpha } - \partial _{\alpha } g_{\mu \nu } \right) = 0
@@ -802,7 +803,7 @@ Multiplying by the inverse metric tensor $g^{\mu \beta}$ we get that:
 \dot{\gamma^{\nu}} = 0
 \ese
 
-Thus we get the geodesic equation:
+Thus, we get the geodesic equation:
 \bse
 \ddot{\gamma^{\beta}} + \Gamma^{\beta}_{\alpha \nu} \dot{\gamma^{\alpha}} \dot{\gamma^{\nu}} = 0
 \ese
@@ -821,20 +822,20 @@ Having introduced a metric on a manifold we can introduce the following two impo
 
 \bd [Ricci Curvature Tensor]
 The \textbf{Ricci curvature tensor}, is a geometric object which is determined by a choice of Riemannian or
-pseudo-Riemannian metric on a manifold and it is given by:
+pseudo-Riemannian metric on a manifold, and it is given by:
 \bse
 R_{\mu \nu} = R^{\alpha}_{\mu \alpha \nu}
 \ese
 \ed
 
 The Ricci curvature tensor can be considered, broadly, as a measure of the degree to which the geometry of a given
-metric tensor differs locally from that of ordinary Euclidean space or pseudo-Euclidean space and it can be
+metric tensor differs locally from that of ordinary Euclidean space or pseudo-Euclidean space, and it can be
 characterized by measurement of how a shape is deformed as one moves along geodesics in the space. Like the metric
 tensor, the Ricci tensor assigns to each tangent space of the manifold a symmetric bilinear form. Broadly, one could
 analogize the role of the Ricci curvature in Riemannian geometry to that of the Laplacian in the analysis of
 functions. In this analogy, the Riemann curvature tensor, of which the Ricci curvature is a natural by-product, would
 correspond to the full matrix of second derivatives of a function. However, there are other ways to draw the same
-analogy. In three-dimensional topology, the Ricci tensor contains all of the information which in higher dimensions
+analogy. In three-dimensional topology, the Ricci tensor contains all the information which in higher dimensions
 is encoded by the more complicated Riemann curvature tensor. \v
 
 In differential geometry, lower bounds on the Ricci tensor on a Riemannian manifold allow one to extract global
@@ -844,7 +845,7 @@ geometry, as first shown in 1941 via Myers's theorem.
 
 \bd [Ricci Scalar]
 The \textbf{Ricci scalar}, is a geometric object which is determined by a choice of Riemannian or pseudo-Riemannian
-metric on a manifold and it is given by:
+metric on a manifold, and it is given by:
 \bse
 R = g^{\mu \nu} R_{\mu \nu}
 \ese

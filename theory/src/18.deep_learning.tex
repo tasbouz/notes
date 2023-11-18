@@ -2,7 +2,7 @@
 \section{Basic Definitions}
 
 \bd [Deep Learning]
-\textbf{Deep learning} is a class of machine learning algorithms that uses multiple layers (hence the adjective
+\textbf{Deep learning} is a class of machine learning algorithms that uses multiple layers (Hence, the adjective
 ``deep'') to progressively extract higher-level features from the raw input. It is part of a broader family of
 machine learning methods based on artificial neural networks with representation learning.
 \ed
@@ -128,7 +128,7 @@ above, just $(1,1)$, output 1 when passed through the AND function MP neuron. It
 \ee
 
 \be
-Of course this generalizes to higher dimensions. As an example let's take a look at a 3 input OR function MP unit. In
+Of course, this generalizes to higher dimensions. As an example let's take a look at a 3 input OR function MP unit. In
 this case, the possible inputs are 8 points:
 \bse
 (0,0,0), (0,0,1), (0,1,0), (1,0,0), (1,0,1), (1, 1, 0), (0,1,1) (1,1,1)
@@ -238,7 +238,7 @@ with a similar set of inequalities and find the value of $\theta$ for a MP neuro
 
 The linear equations in the previous example, have multiple solutions. In general for different values of the
 parameters we obtain different lines that separate the points in different ways. Some of them work (i.e\ they
-separate the points correctly) and some of the don't (i.e\ they misclassify some of the points) hence they produce
+separate the points correctly) and some of the don't (i.e\ they misclassify some of the points) hence, they produce
 errors. Different values of the parameters produce different number of errors. \v
 
 \be
@@ -280,10 +280,10 @@ Notice that the fourth equation contradicts the second and the third equation.
 \ee
 
 Point is, there are no perceptron solutions for non-linearly separated data. So the key take away is that a single
-perceptron cannot learn to separate the data that are non-linear in nature. Hence perceptron, similarly to an MP
+perceptron cannot learn to separate the data that are non-linear in nature. Hence, perceptron, similarly to an MP
 neuron, is able to conveniently represent the boolean functions which are again linearly separable. \v
 
-However it is worth mentioning the following. What does ``perceptron cannot deal with data not linearly separable''
+However, it is worth mentioning the following. What does ``perceptron cannot deal with data not linearly separable''
 mean? It means that the final result would inevitably misclassify some of the observations. In other words the final
 choice of parameters would produce a number of errors different than zero. The thing is that most real world data is
 not linearly separable and will always contain some outliers. In fact, sometimes there may not be any outliers but
@@ -294,12 +294,12 @@ reach the minimum possible error.
 \fig{errors4}{0.5}
 
 It is worth mentioning that there exists an algorithm able to find the values of the parameters which minimize the
-error, called simply ``perceptron learning algorithm``. However since is not of use any more we will not get into
+error, called simply ``perceptron learning algorithm``. However, since is not of use any more we will not get into
 details. Just for the sake completeness here is a sketch of how perceptron learning algorithm works.
 
 \fig{perceptronlearningalgorithm}{0.65}
 
-One can prove that this algorithm always converges, hence it finds the parameters that minimize the error. We will
+One can prove that this algorithm always converges, hence, it finds the parameters that minimize the error. We will
 skip the proof. \v
 
 Now let's go back to the questions we posed in the previous section.
@@ -312,7 +312,7 @@ weights to be assigned to inputs!}
 \item What about functions which are not linearly separable? \textbf{Not possible with a single perceptron!}
 \eit
 
-Hence we solved all the problems but the non linearly separable data! We showed that a single perceptron cannot deal
+Hence, we solved all the problems but the non linearly separable data! We showed that a single perceptron cannot deal
 with such data, however in what follows we will show that a network of perceptrons can indeed deal with such data.
 Before that, we will introduce yet another advancement on the models we developed called the ``sigmoid neuron''.
 
@@ -338,7 +338,7 @@ hyperbolic tangent function, the arctangent function, and many more.
 
 \fig{sigmoids}{0.42}
 
-A sigmoid neurons uses as an output function a sigmoid function hence it is much smoother than a perceptron that uses
+A sigmoid neurons uses as an output function a sigmoid function hence, it is much smoother than a perceptron that uses
 the step function. As a consequence, we no longer see a sharp transition around the $w_0$. Also, the output is no
 longer binary but a real value between 0 and 1 which can be interpreted as a probability. So instead of yes/no
 decision, we get the probability of yes. The output here is smooth, continuous and differentiable and just how any
@@ -349,7 +349,7 @@ learning algorithm likes it.
 \fig{pervssig}{0.35}
 
 Observe that one could use the logistic function as the sigmoid function. In that case the final sigmoid neuron would
-be exactly the same as logistic regression. Hence we see that a sigmoid logistic neuron is just another
+be exactly the same as logistic regression. Hence, we see that a sigmoid logistic neuron is just another
 representation of logistic regression. The advantage of this representation is that it can be generalized to a
 network by stacking together a lot of these neurons. As we will see in the section that follows this idea of a
 network of neurons can deal with the non linear separable data problem.
@@ -506,7 +506,7 @@ $\boldsymbol{x}$:
 \boldsymbol{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}
 \ese
 
-From now on, as it is common in deep learning, we will separate the bias from the weights, hence there is no need for
+From now on, as it is common in deep learning, we will separate the bias from the weights, hence, there is no need for
 the extra $x_0 = 1$ feature and this is why it does not appear in $\boldsymbol{x}$. We will keep the notation $w$ for
 the weights but we will notate the bias as $b$ instead of $w_0$. We usually refer to weights and bias as the
 ``parameters'' $\theta$ of the model. \v
@@ -562,13 +562,13 @@ network that can be ``on'' (1) or ``off'' (0), depending on input (this is simil
 perceptron). For the activation at the input layer holds: $\boldsymbol{h}^{[0]} = \boldsymbol{x}$. \v
 
 The activation function at the output layer is usually called ``output activation function`` and it is denoted by $O$
-instead of $g$. Of course its output is the prediction of the neural network:
+instead of $g$. Of course, its output is the prediction of the neural network:
 \bse
 \hat{y} = h^{[L]} = O(a^{[L]})
 \ese
 
 The role of the output activation function of the output layer is to provide some additional transformation from the
-features to complete the task that the network must perform. Of course the choice of the output activation function
+features to complete the task that the network must perform. Of course, the choice of the output activation function
 depends on the nature of the problem (e.g: linear function, logistic function, softmax function, etc). Any kind of
 neural network unit that may be used as an output can also be used as a hidden unit. \v
 
@@ -586,7 +586,7 @@ network is simply a sequence of compositions:
 \vspace{8pt}
 
 Having in mind the equation above, we can at this point elaborate on why a sigmoid activation function (or any other
-non-linear function that we will introduce later) is essential for a feedforward neural network (hence we introduced
+non-linear function that we will introduce later) is essential for a feedforward neural network (Hence, we introduced
 it), and deep learning models in general. \v
 
 Consider, for example, a feedforward neural network where we replace all the sigmoid activation functions $g$ in each
@@ -617,7 +617,7 @@ By continuing like this in the end the prediction of the network will be:
 \ese
 
 for some matrices ${W^\prime}^{[L]}$ and ${\boldsymbol{b}^\prime}^{[L]}$. In other words we just learn a linear
-transformation of the inputs hence we are constrained to learning linear decision boundaries. We cannot learn
+transformation of the inputs hence, we are constrained to learning linear decision boundaries. We cannot learn
 arbitrary decision boundaries. Hence, only non-linear activation functions allow such networks to compute non-trivial
 problems using only a small number of nodes. Actually one can prove (we will skip the proof though) that neural
 networks with non-linear activation functions can represent a wide variety of interesting functions when given
@@ -681,7 +681,7 @@ b \coloneqq b - \alpha \frac{ \partial{J(\boldsymbol{w}, b)}}{\partial b}
 \v
 
 Coming to neural networks the difference is that now we have a collection of weights $W^{[l]}$ and biases
-$\boldsymbol{b}^{[l]}$ hence the update rules turn to:
+$\boldsymbol{b}^{[l]}$ hence, the update rules turn to:
 \bse
 W^{[l]} \coloneqq W^{[l]} - \alpha \nabla_{W^{[l]}} J
 \ese
@@ -770,7 +770,7 @@ with:
 
 \v
 
-Hence the update rules for gradient descent for the weights turn to:
+Hence, the update rules for gradient descent for the weights turn to:
 \bse
 W^{[l]} \coloneqq W^{[l]} - \alpha \cdot\boldsymbol{\delta^{[l]}} \cdot {\boldsymbol{h}^{[l-1]}}^{\intercal}
 \ese
@@ -802,7 +802,7 @@ that we have seen so far:
 \ldots, (\boldsymbol{x}^{(m)}, y^{(m)})\}
 \ese
 
-Of course nothing really changes, in theory, one must pass all the training examples through the network in order to
+Of course, nothing really changes, in theory, one must pass all the training examples through the network in order to
 obtain the prediction, however when it comes to notation one can equip a handy way of combining together all the
 training examples and quantities that appear during forward propagation in vectors and matrices. \v
 
@@ -910,7 +910,7 @@ J(\boldsymbol{y}, \hat{\boldsymbol{y}}) = \frac{1}{m} \sum_{i=1}^{m} J(y^{(i)}, 
 where $J(y^{(i)}, \hat{y}^{(i)})$ is the loss of the training example $\{ (\boldsymbol{x}^{(i)}, y^{(i)}) \}$, i.e.\
 exactly what we developed in the previous section of forward and backward propagation with one single observation. \v
 
-Finally one can use gradient descent for backward propagation in exactly the same way with the update rules being:
+Finally, one can use gradient descent for backward propagation in exactly the same way with the update rules being:
 \bse
 W^{[l]} \coloneqq W^{[l]} - \alpha \cdot \Delta^{[l]} \cdot {\boldsymbol{H}^{[l-1]}}^{\intercal}
 \ese
@@ -956,13 +956,13 @@ heavily used in deep learning.
 
 We have already introduced the concepts of mini-match \& stochastic gradient descent in supervised learning. Back in
 that chapter we mentioned that in most supervised learning models batch gradient descent works just fine so we don't
-need these alternative techniques. However in deep learning models both of them are heavily used in order to train
+need these alternative techniques. However, in deep learning models both of them are heavily used in order to train
 neural networks. \v
 
 Let us briefly remind ourselves of the algorithms.
 \bit
 \item \textbf{Mini-Batch Gradient Descent} In mini-batch gradient descent we divide the whole dataset to $b$ subsets
-of $\frac{m}{b}$ training examples each, called \say{mini-batches}, and we update the parameters using each of the
+of $\frac{m}{b}$ training examples each, called ``mini-batches'', and we update the parameters using each of the
 mini-batches in each iteration.
 \item \textbf{Stochastic Gradient Descent} In stochastic gradient descent, which can be seen as an extreme case of
 mini-batch gradient descent where $b=m$, we only use one training example per iteration to update the parameters. In
@@ -982,7 +982,7 @@ An \textbf{epoch} is one full pass over the entire dataset.
 For (batch) gradient descent 1 epoch is equal to 1 parameters' update since we use the whole dataset in order to
 perform the update, while for stochastic gradient descent 1 epoch is equal to $m$ parameters' updates (where $m$ is
 the number of training examples / observations) since we update the parameters in every single pass of one training
-example. Finally in mini-batch gradient descent in 1 epoch happen $\frac{m}{b}$ parameters' update.
+example. Finally, in mini-batch gradient descent in 1 epoch happen $\frac{m}{b}$ parameters' update.
 
 \subsection{Gradient Descent With Momentum}
 
@@ -1040,7 +1040,7 @@ It would be easier to demonstrate what this algorithm does by calculating the fi
 making use of the equations we just wrote. \v
 
 For the first step $t=1$, straight from the definition we get $[V_{\theta^{[l]}}]_1 = \nabla_{\theta^{[l]}_1} J$
-hence the update rule:
+Hence, the update rule:
 \bse
 \theta^{[l]}_2 = \theta^{[l]}_1 - \alpha \nabla_{\theta^{[l]}_1} J
 \ese
@@ -1084,7 +1084,7 @@ forgot about the update and we moved on. Notation wise this is the reason why in
 really changes in practice, but the notation indicates the fact that we actually need the history of the updates for
 future updates! \v
 
-Of course gradient descent with momentum carries its own drawbacks. The main problem is that towards the end (i.e.\
+Of course, gradient descent with momentum carries its own drawbacks. The main problem is that towards the end (i.e.\
 when we are very close to the minimum) the algorithm has gained a lot of momentum towards the right direction and it
 oscillates in and out of the minima valley as the momentum carries it out of the valley. This oscillations in the end
 slow down gradient descent with momentum a bit. Fortunately we can deal with this issue. The result is called
@@ -1134,7 +1134,7 @@ While the update rules stay the same:
 \ese
 
 Looking ahead helps Nesterov accelerated gradient descent in correcting its course quicker than momentum based
-gradient descent, hence the oscillations are smaller and the chances of escaping the minima valley also smaller!
+gradient descent, hence, the oscillations are smaller and the chances of escaping the minima valley also smaller!
 
 \subsection{Adaptive Gradient Descent (AdaGrad)}
 
@@ -1157,8 +1157,8 @@ ${\boldsymbol{h}^{[0]}} = \boldsymbol{x}$ and actually it holds:
 {\boldsymbol{h}^{[l]}}, \boldsymbol{\delta^{[l]}} \sim \boldsymbol{x}, \:\:\: \forall l
 \ese
 
-In the case where some specific feature $x$ is very sparse (e.g if its value is 0 for most inputs) then the terms
-${\boldsymbol{h}^{[l]}}$ and $\boldsymbol{\delta^{[l]}}$ will be 0 for most inputs and hence the parameters that
+In the case where some specific feature $x$ is very sparse (e.g.\ if its value is 0 for most inputs) then the terms
+${\boldsymbol{h}^{[l]}}$ and $\boldsymbol{\delta^{[l]}}$ will be 0 for most inputs and hence, the parameters that
 correspond to this specific feature will not get enough updates. In addition if the feature $x$ happens to be sparse
 as well as important we would want to take the updates to the parameters more seriously. For this reason we want to
 have a different learning rate for each parameter that takes care of the frequency of features. \v
@@ -1189,7 +1189,7 @@ Notice that now in the update rule we use the gradient of the loss function and 
 AdaGrad only in the denominator. \v
 
 Using a parameter specific learning rate ensures that despite sparsity the parameters get a higher learning rates and
-hence larger updates. Further, it also ensures that if the parameters undergo a lot of updates its effective learning
+Hence, larger updates. Further, it also ensures that if the parameters undergo a lot of updates its effective learning
 rate decreases because of the growing denominator. In practice, this does not work so well if we remove the square
 root from the denominator. \v
 
@@ -1208,7 +1208,7 @@ To avoid this we decay the denominator and prevent its rapid growth. \v
 
 Root mean square propagation (RMSProp) is also a method in which the learning rate is adapted for each of the
 parameters. The idea is to divide the learning rate for a weight by an exponentially weighted moving average of the
-magnitudes of recent gradients for that weight, hence the updates for RMSProp reads:
+magnitudes of recent gradients for that weight, hence, the updates for RMSProp reads:
 \bse
 [V_{\theta^{[l]}}]_t =
 \begin{cases}
@@ -1227,7 +1227,7 @@ while the update rule for RMSProp has the same form:
 \subsection{Adaptive Moment Estimation (Adam)}
 
 Adaptive moment estimation (Adam) is one of the most used optimization techniques in deep learning and it's actually
-a combination of almost every algorithm that we developed earlier, hence it deals with all the problems of gradient
+a combination of almost every algorithm that we developed earlier, hence, it deals with all the problems of gradient
 descent we mentioned at the same time (slow updates due to learning rate, oscillations at minimum valley, sparse
 features, etc). In a way Adam can be seen as RMSProp optimizer with momentum thus the updates and the update rule is
 simply a combination of the updates and the updates rules of RMSProp and gradient descent with momentum. \v
@@ -1366,7 +1366,7 @@ E \Big[ [m_{\theta^{[l]}}]_t \Big] &= (1-\beta_m) \sum_{i=1}^{t} \beta_m^{t-i}
 &= E \Big[\nabla_{\theta^{[l]}_t} \Big] \cdot(1-\beta_m^t)
 \end{align*}
 
-Hence we see that:
+Hence, we see that:
 \bse
 E \Big[ [m_{\theta^{[l]}}]_t \Big] \neq E\left[\nabla_{\theta^{[l]}_t} J \right]
 \ese
@@ -1494,7 +1494,7 @@ where $|| W^{[l]} ||^2_F$ is the so called ``Frobenius Norm'' given by:
 \ese
 
 At this point we can consider the Lagrangian $\mathcal{L}$ as a ``new'' loss function $J_{\text{new}}$ that we need
-to optimize hence we can completely forget about regularization and solve this problem with gradient descent where in
+to optimize hence, we can completely forget about regularization and solve this problem with gradient descent where in
 order to update the weights we use:
 \bse
 W^{[l]} \coloneqq W^{[l]} - \alpha \nabla_{W^{[l]}} J_{\text{new}}
@@ -1558,7 +1558,7 @@ they could be different instances of the same classifier trained with different 
 
 Dropout (also called dilution) is yet another, heavily used, regularization method that approximates training a large
 number of neural networks with different architectures in parallel. During training, some number of layer outputs are
-randomly ignored or ``dropped out'', hence the naming. This has the effect of making the layer look-like and be 
+randomly ignored or ``dropped out'', hence, the naming. This has the effect of making the layer look-like and be
 treated-like a layer with a different number of nodes and connectivity to the prior layer. In effect, each update to 
 a layer during training is performed with a different view of the configured layer. \v
 
@@ -1571,7 +1571,7 @@ actually learn a sparse representation as a side-effect. As such, it may be used
 regularization for encouraging sparse representations in autoencoder models. \v
 
 Because the outputs of a layer under dropout are randomly subsampled, it has the effect of reducing the capacity or 
-thinning the network during training. As such, a wider network, e.g more nodes, may be required when using dropout.
+thinning the network during training. As such, a wider network, e.g.\ more nodes, may be required when using dropout.
 
 \section{Improvements On A Feedforward Neural Network}
 
@@ -1583,7 +1583,7 @@ neural network.
 Up to this point we have considered as activation functions only functions from the broad family of sigmoid functions.
 Recall, for example, that in the perceptron section we said that one could use the logistic function as the sigmoid
 function playing the part of activation function which would lead to logistic regression. Indeed, a logistic function
-used to be the most widely used sigmoid function. However it carries three huge drawbacks. \v
+used to be the most widely used sigmoid function. However, it carries three huge drawbacks. \v
 
 Starting with the first one, recall that the updates of the weights in gradient descent follow:
 \bse
@@ -1604,7 +1604,7 @@ where:
 
 \v
 
-Hence the derivative of the activation function is also part of the the update rule of the parameters. Since the 
+Hence, the derivative of the activation function is also part of the the update rule of the parameters. Since the
 logistic function is of the form:
 \bse
 S(x) = \frac {1}{1+e^{-x}}
@@ -1616,7 +1616,7 @@ S^{\prime}(x) = - \frac {(-e^{-x})}{(1+e^{-x})^2} = \frac {1}{1+e^{-x}} \cdot \f
 = \frac{1}{1+e^{-x}} \cdot \left(1-\frac {1}{1+e^{-x}} \right) = S(x) \cdot (1-S(x))
 \ese
 
-Hence $\boldsymbol{\delta^{[l]}}$ can be written as:
+Hence, $\boldsymbol{\delta^{[l]}}$ can be written as:
 \bse
 \boldsymbol{\delta^{[l]}} = \boldsymbol{\delta^{[l+1]}} \cdot W^{[l]} 
 \cdot g({\boldsymbol{a}}^{[l]}) \cdot (1-g({\boldsymbol{a}}^{[l]}))
@@ -1634,8 +1634,8 @@ g({\boldsymbol{a}}^{[l]}) = 0 \quad \text{or} \quad g({\boldsymbol{a}}^{[l]}) =1
 
 The problem with logistic function is similar to the problem we described in AdaGrad where we said that since 
 ${\boldsymbol{h}^{[l]}}, \boldsymbol{\delta^{[l]}} \sim \boldsymbol{x}, \:\:\: \forall l$, in the case where some 
-specific feature $x$ is very sparse (e.g if its value is 0 for most inputs) then the terms ${\boldsymbol{h}^{[l]}}$ 
-and $\boldsymbol{\delta^{[l]}}$ will be 0 for most inputs and hence the parameters that correspond to this specific 
+specific feature $x$ is very sparse (e.g.\ if its value is 0 for most inputs) then the terms ${\boldsymbol{h}^{[l]}}$
+and $\boldsymbol{\delta^{[l]}}$ will be 0 for most inputs and hence, the parameters that correspond to this specific
 feature will not get enough updates. Exactly the same behaviour one has for the case of saturated neurons where the 
 update terms get to zero and the update of the parameters do not happen any more. In other words saturated neurons 
 cause the gradient to vanish. \v
@@ -1645,7 +1645,7 @@ of a logistic function is always positive (since logistic function compresses al
 essentially, either all the gradients at a layer are positive or all the gradients at a layer are negative having as 
 a result the restriction of the possible update directions. \v
 
-Finally the third and last problem with logistic function is that it is computationally expensive due to the 
+Finally, the third and last problem with logistic function is that it is computationally expensive due to the
 exponential. \v
 
 As an alternative to the logistic function, it was proposed the hyperbolic tangent function $\tanh$ which is also 
@@ -1654,15 +1654,15 @@ part of the sigmoid family.
 \fig{tanh}{0.3}
 
 Hyperbolic tangent function solves the problem of the logistic function not being zero centered since it compresses 
-all its inputs to the range $[-1,1]$ hence it is zero centered. However its gradient still vanishes at saturation since:
+all its inputs to the range $[-1,1]$ hence, it is zero centered. However, its gradient still vanishes at saturation since:
 \bse
 (tanh(x))^{\prime} = (1 - tanh^{2}(x))
 \ese
 
-Finally it is also computationally expensive. Despite all its problems hyperbolic tangent function is still used in 
+Finally, it is also computationally expensive. Despite all its problems hyperbolic tangent function is still used in
 LSTM's and RNNs model that we will introduce later. \v
 
-In general all sigmoid functions, due to its shapes, will have the problems of saturation. Thus there was a need for 
+In general all sigmoid functions, due to its shapes, will have the problems of saturation. Thus, there was a need for
 some alternatives to sigmoid functions.
 
 \bd[Rectified Linear Unit (ReLU)]
@@ -1685,7 +1685,7 @@ networks that we will introduce later. \v
 The advantages of ReLU is that it does not saturate in the positive region, it is computationally efficient and it 
 converges much faster than the sigmoid functions we have mentioned. In practice one should keep in mind that a large 
 fraction of ReLU units can die if the learning rate is set too high so it is advised to initialize the bias to a 
-positive value. Finally it is worth mentioning two variations of ReLU\@.
+positive value. Finally, it is worth mentioning two variations of ReLU\@.
 
 \bd[Leaky Rectified Linear Unit (Leaky ReLU)]
 The \textbf{leaky rectified linear unit }(leaky ReLU) is an activation function defined as:
@@ -1715,7 +1715,7 @@ The simplest way to initialize the parameters is by setting all the weight and b
 parameters start with the value of zero, the system can never learn. This is because error is propagated back through
 the parameters in proportion to the values of the parameters. This means that all hidden units connected directly to 
 the output units will get identical error signals, and, since the parameters changes depend on the error signals, the
-parameters from those units to the output units will always be the same (not zero, but the same). Hence the system is
+parameters from those units to the output units will always be the same (not zero, but the same). Hence, the system is
 starting out at a kind of unstable equilibrium point that keeps the parameters equal through training. Notice that 
 the same exact problem appears when we initialize all the parameters to the same constant value, even if it is not 
 zero. This known problem is usually called the ``symmetry breaking problem''. \v
@@ -1747,7 +1747,7 @@ By doing so we can see that after many iterations the distribution of the parame
 \fig{weights3}{0.55}
 
 
-Finally for a ReLU activation function the initialization must follow:
+Finally, for a ReLU activation function the initialization must follow:
 \bse
 \theta \sim \frac{1}{\sqrt{n/2}} N(0, 1)
 \ese
@@ -1804,7 +1804,7 @@ don't work well in deep networks tend to become viable again.
 \item \textbf{Simplifies the creation of deeper networks.} \\ The previous 4 points make it easier to build and 
 faster to train deeper neural networks, and deeper networks generally produce better results.
 \item \textbf{Provides some regularisation.} \\ Batch normalisation adds a little noise to your network, and in some 
-cases, (e.g Inception modules) it has been shown to work as well as dropout. You can consider batch normalisation as 
+cases, (e.g.\ Inception modules) it has been shown to work as well as dropout. You can consider batch normalisation as
 a bit of extra regularization, allowing you to reduce some of the dropout you might add to a network. 
 \eit
 

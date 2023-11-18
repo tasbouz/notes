@@ -11,8 +11,8 @@ read.table('path',                                    # The most general command
            header = TRUE,                             # header means that the first line is the names of the variables and not observations
            sep = '/',                                 # sep specifies what seperates the data. Here we chose a slash /
            stringsAsFactors = FALSE,                  # Do not factorizes the strings.
-           col_names = c()                            # col_names is the names of the columns i.e the names of the variables
-           col_types = c())                           # col_types is the types of the columns i.e character, integer etc
+           col_names = c()                            # col_names is the names of the columns i.e.\ the names of the variables
+           col_types = c())                           # col_types is the types of the columns i.e.\ character, integer etc
                                                                                                  
 
 read.csv('path', stringsAsFactors = FALSE)            # Reads a csv file (comma seperated values). By default sep = ','. Works with computer paths or links
@@ -53,7 +53,7 @@ library('readxl')
 
 excel_sheets('path')                                     # It explores the excel file. It just lists the different names of sheets of excel
 
-read_excel('path',                                       # Reads the data of an excel file, i.e xlsx.
+read_excel('path',                                       # Reads the data of an excel file, i.e.\ xlsx.
            sheet =,                                      # Which sheet of the excel to load. We can use the number of the sheet or its name
            col_names = TRUE                              # Means that the first line of excel contains the names of columns. It's true by default
            col_types = NULL                              # R guesses the types of variables by the data. We can use c() to inforce the types

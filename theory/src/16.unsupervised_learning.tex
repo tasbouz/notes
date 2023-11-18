@@ -50,7 +50,7 @@ partition $n$ observations into $k$ clusters in which each observation belongs t
 (``cluster centers'' or ``cluster centroid''), serving as a prototype of the cluster.
 \ed
 
-k-means results in a partitioning of the data space into Voronoi cells. k-means clustering minimizes within-cluster 
+k-means results in a partitioning of the data space into Voronoi cells. K-means clustering minimizes within-cluster
 variances (squared Euclidean distances), but not regular Euclidean distances, which would be the more difficult 
 Weber problem: the mean optimizes squared errors, whereas only the geometric median minimizes Euclidean distances. 
 For instance, better Euclidean solutions can be found using k-medians and k-medoids.
@@ -237,7 +237,7 @@ subject to:
 \boldsymbol{u}^{\intercal} \boldsymbol{u} = 1
 \ese
 
-Once again we are dealing with an equality constrained optimization problem, hence we move on by applying what we 
+Once again we are dealing with an equality constrained optimization problem, hence, we move on by applying what we
 developed in Appendix~\ref{ch:constrained-optimization}. Given the objective function and the equality constraint, 
 the Lagrangian of the equality constrained optimization problem reads:
 \bse
@@ -272,8 +272,8 @@ each eigenvector. \v
 Summing up, by solving the eigenvector equation we will obtain the full set of eigenvectors $(\boldsymbol{u}_1, 
 \boldsymbol{u}_2, \ldots)$ with their corresponding eigenvalues $(\lambda_1, \lambda_2, \ldots)$. Since $\lambda$'s 
 are simply the variances of the projections, the eigenvector with the largest $\lambda$ (aka the largest variance) is
-the one with the minimum loss of information hence the first principal component. The eigenvector with the second to
-the largest variance is the one with the second to minimum loss of information hence the second principal component, 
+the one with the minimum loss of information hence, the first principal component. The eigenvector with the second to
+the largest variance is the one with the second to minimum loss of information hence, the second principal component,
 and so on up to the last eigenvector (aka the last principal component). Once all the principal components have been 
 identified, one can reduce the dimensionality of the dataset down to $d$ dimensions by projecting it onto the 
 hyperplane defined by the first $d$ principal components. As a final note, for each principal component, $\lambda$

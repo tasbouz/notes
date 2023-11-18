@@ -111,7 +111,7 @@ T & T & F & F & T & T
 \etb
 \etab
 
-The columns for $p\imp q$ and $ (\neg q)\imp (\neg p)$ are identical and hence we are done.
+The columns for $p\imp q$ and $ (\neg q)\imp (\neg p)$ are identical and hence, we are done.
 \eq
 
 
@@ -209,7 +209,7 @@ Let $P(x,y)$ be a predicate. Then, for fixed $y$, $P(x,y)$ is a predicate of one
 Q(y) :\eqv \forall \, x : P(x,y)
 \ese
 
-Hence we may have the following:
+Hence, we may have the following:
 \bse
 \exists \, y : \forall \, x : P(x,y) :\eqv \exists \, y : Q(y)
 \ese
@@ -323,7 +323,7 @@ contradiction and thus $(s\land \neg s) \imp q$ is a tautology. Therefore, $q$ f
 that any proposition can be proven within a system with contradictory axioms. \v
 
 In other words, the inability to prove every proposition is a property possessed by no contradictory system, and
-hence we define a consistent system as one with this property. \v
+Hence, we define a consistent system as one with this property. \v
 
 Having come this far, we can now state (and prove) an impressively sounding theorem.
 
@@ -340,7 +340,7 @@ anywhere in the proof sequence, the propositions $q_m$ and $q_n$ must be tautolo
 q_n) \imp q_j$ to be true, $q_j$ must also be a tautology. Hence, the proof sequence consists entirely of tautologies
 and thus only tautologies can be proven. \v
 
-Now let $q$ be any proposition. Then $q\land \neg q$ is a contradiction, hence not a tautology and thus cannot be
+Now let $q$ be any proposition. Then $q\land \neg q$ is a contradiction, hence, not a tautology and thus cannot be
 proven. Therefore, propositional logic is consistent.
 \eq
 
@@ -378,7 +378,7 @@ Using the $\in$-relation we can immediately define the following relations:
 \eit
 
 A comment about notation. Since $\in$ is a predicate of two variables, for consistency of notation we should write
-$\in\!\!(x,y)$. However, the notation $x\in y$ is much more common (as well as intuitive) and hence we simply define:
+$\in\!\!(x,y)$. However, the notation $x\in y$ is much more common (as well as intuitive) and hence, we simply define:
 \bse
 x\in y, :\eqv\ \in\!\!(x,y)
 \ese
@@ -426,7 +426,7 @@ is a set or not. In order to do so, consider the expression $u\in u$. If $u$ is 
 u$ is a proposition. \v
 
 However, we will show that his is not the case. Suppose first that $u\in u$ is true. Then $\neg(u\notin u)$ is true
-and thus $u$ does not satisfy the condition for being an element of $u$, and hence is not an element of $u$. Thus:
+and thus $u$ does not satisfy the condition for being an element of $u$, and hence, is not an element of $u$. Thus:
 \bse
 u \in u \imp \neg(u \in u)
 \ese
@@ -440,7 +440,7 @@ u \notin u \imp \neg(u \notin u)
 \ese
 
 which is, again, a contradiction. Therefore, $u\in u$ does not have the property of being either true or false (it
-can be neither) and hence it is not a proposition. Thus, our first axiom implies that $u$ is not a set, for if it
+can be neither) and hence, it is not a proposition. Thus, our first axiom implies that $u$ is not a set, for if it
 were, then $u\in u$ would be a proposition.
 \ee
 
@@ -476,7 +476,7 @@ is true, and in particular it is true independently of $y$. Therefore:
 \forall \, y : (y \in x) \imp (y \in x')
 \ese
 
-and hence $x \se x'$. \v
+and hence, $x \se x'$. \v
 
 Conversely, by the same argument, we have:
 \bse
@@ -485,7 +485,7 @@ Conversely, by the same argument, we have:
 
 and thus $x' \se x$. \v
 
-Hence $(x \se x') \land (x' \se x)$ and therefore $x = x'$.
+Hence, $(x \se x') \land (x' \se x)$ and therefore $x = x'$.
 \eq
 
 \textbf{Axiom on pair sets.} \\
@@ -505,7 +505,7 @@ same set. Indeed, by definition, we have:
 (a \in \{x,y\} \imp a \in \{y,x\} ) \land (a \in \{y,x\} \imp a \in \{x,y\} )
 \ese
 
-independently of $a$, hence $(\{x,y\} \se \{y,x\}) \land (\{y,x\} \se \{x, y\})$ and thus $\{x,y\} = \{y,x\}$. \v
+independently of $a$, hence, $(\{x,y\} \se \{y,x\}) \land (\{y,x\} \se \{x, y\})$ and thus $\{x,y\} = \{y,x\}$. \v
 
 The pair set $\{x,y\}$ is thus an unordered pair. However, using the axiom on pair sets, it is also possible to
 define an \emph{ordered pair} $(x,y)$ such that $(x,y)\neq(y,x)$. The defining property of an ordered pair is the
@@ -532,7 +532,7 @@ symbols:}
 
 The set $u$ is denoted by $\bigcup x$.
 
-\be Let $a,b$ be sets. Then $\{a\}$ and $\{b\}$ are sets by the pair set axiom, and hence $x\coloneqq\{\{a\},\{b\}\}$
+\be Let $a,b$ be sets. Then $\{a\}$ and $\{b\}$ are sets by the pair set axiom, and hence, $x\coloneqq\{\{a\},\{b\}\}$
 is a set, again by the pair set axiom. Then the following expression is a set by the union axiom:
 \bse
 \bigcup x = \{a,b\}
@@ -543,7 +543,7 @@ Notice that, since $a$ and $b$ are sets, we could have immediately concluded tha
 axiom. The union set axiom is really needed to construct sets with more than 2 elements.
 
 \be
-Let $a,b,c$ be sets. Then $\{a\}$ and $\{b,c\}$ are sets by the pair set axiom, and hence $x\coloneqq\{\{a\},\{b,
+Let $a,b,c$ be sets. Then $\{a\}$ and $\{b,c\}$ are sets by the pair set axiom, and hence, $x\coloneqq\{\{a\},\{b,
 c\}\}$ is a set, again by the pair set axiom. Then the expression:
 \bse
 \bigcup x \eqqcolon \{a,b,c\}
@@ -609,7 +609,7 @@ We have two cases:
 R(x,y) \coloneqq (P(x)\land x=y)\lor(\neg P(x)\land \hat y = y)
 \ese
 
-and hence define $\{y \in m \mid P(y)\} \coloneqq \img_R(m)$. \qedhere
+and hence, define $\{y \in m \mid P(y)\} \coloneqq \img_R(m)$. \qedhere
 \een
 \eq
 
@@ -706,7 +706,7 @@ set $\{y\}$ as an element. In symbols:}
 \exists \, x : \vn \in x \land \forall \, y : (y\in x \imp \{y\} \in x)
 \ese
 
-Let us consider one such set $x$. Then $\vn \in x$ and hence $\{\vn\}\in x$. Thus, we also have $\{\{\vn\}\}\in x$
+Let us consider one such set $x$. Then $\vn \in x$ and hence, $\{\vn\}\in x$. Thus, we also have $\{\{\vn\}\}\in x$
 and so on. Therefore:
 \bse
 x = \{\vn,\{\vn\},\{\{\vn\}\},\{\{\{\vn\}\}\},\ldots\}
@@ -766,7 +766,7 @@ where $P(x) \eqv (\exists \,a : a \in x) \land \left(\forall \, a : \forall \, b
 \bigcap \, \{a,b\} = \vn \right)$. \v
 
 The axiom of choice is independent of the other 8 axioms, which means that one could have set theory with or without
-the axiom of choice. However, standard mathematics uses the axiom of choice and hence so will we. There is a number
+the axiom of choice. However, standard mathematics uses the axiom of choice and hence, so will we. There is a number
 of theorems that can only be proved by using the axiom of choice. Amongst these we have:
 \bit
 \item Every vector space has a basis.
@@ -870,7 +870,7 @@ infinite, we further define $A$ to be:
 \item[$*$] \textbf{Countably infinite} if $A \iset \N$.
 \item[$*$] \textbf{Uncountably infinite} otherwise.
 \eit
-\item \textbf{Finite} if it is not infinite. In this case, we have $A \iset \{1,2,\ldots,N\}$ for some $N \in \N$ and
+\item \textbf{Finite} if it is not infinite. In this case, we have $A \iset \{1,2,\ldots,N\}$ for some $N \in \N$, and
 we say that the \emph{cardinality} of $A$, denoted by $|A|$, is $N$.
 \eit
 \ed
@@ -912,7 +912,7 @@ and:
 & a & \mapsto & \xi(\psi(\phi(a)))
 \ei
 
-Thus $\xi \circ (\psi\circ\phi) = (\xi \circ\psi)\circ\phi $.
+Thus, $\xi \circ (\psi\circ\phi) = (\xi \circ\psi)\circ\phi $.
 \eq
 
 The operation of composition is necessary in order to defined inverses of maps.
@@ -1041,15 +1041,15 @@ Let $\sim$ be an equivalence relation on $M$. Then:
 
 \bq
 \ben
-\item[i)] Since $a\in[m]$, we have $a\sim m$. Let $x \in [a]$. Then $x \sim a$ and hence $x \sim m$ by transitivity.
-Therefore $x \in [m]$ and hence $[a]\se[m]$. Similarly, we have $[m]\se[a]$ and hence $[a]=[m]$.
+\item[i)] Since $a\in[m]$, we have $a\sim m$. Let $x \in [a]$. Then $x \sim a$ and hence, $x \sim m$ by transitivity.
+Therefore $x \in [m]$ and hence, $[a]\se[m]$. Similarly, we have $[m]\se[a]$ and hence, $[a]=[m]$.
 \item[ii)] Suppose that $[m]\cap[n]\neq\vn$. That is:
 \bse
 \exists \, z : z \in [m] \land z \in [n]
 \ese
 
-Thus $z \sim m$ and $z \sim n$ and hence, by symmetry and transitivity, $m \sim n$. This implies that $m \in [n]$ and
-hence that $[m] = [n]$. \qedhere
+Thus, $z \sim m$ and $z \sim n$ and hence, by symmetry and transitivity, $m \sim n$. This implies that $m \in [n]$ and
+Hence, that $[m] = [n]$. \qedhere
 \een
 \eq
 
@@ -1061,7 +1061,7 @@ M/\!\sim\ \coloneqq \{[m]\mid m \in M\}
 
 \v
 
-This is indeed a set since $[m]\se\cP(M)$ and hence we can write more precisely:
+This is indeed a set since $[m]\se\cP(M)$ and hence, we can write more precisely:
 \bse
 M/\!\sim\ \coloneqq \{[m]\in\cP(M)\mid m \in M\}
 \ese
@@ -1096,7 +1096,7 @@ and:
 
 \v
 
-Thus we have: $\Z/\!\sim\ = \{[0],[1]\}$. We wish to define an addition $\oplus$ on $\Z/\!\sim$ by inheriting the
+Thus, we have: $\Z/\!\sim\ = \{[0],[1]\}$. We wish to define an addition $\oplus$ on $\Z/\!\sim$ by inheriting the
 usual addition on $\Z$. As a tentative definition we could have:
 \bse
 \oplus \cl \Z/\!\sim \times \ \Z/\!\sim\ \to \Z/\!\sim
@@ -1128,7 +1128,7 @@ where the last equality follows since:
 (a+b)-2(m+n) -(a+b) = -2(m+n) \in 2\Z
 \ese
 
-Therefore $[a']\oplus[b'] = [a]\oplus[b] $ and hence the operation $\oplus$ is well-defined.
+Therefore $[a']\oplus[b'] = [a]\oplus[b] $ and hence, the operation $\oplus$ is well-defined.
 \ee
 
 \be
@@ -1260,7 +1260,7 @@ It is easy to check that this is an equivalence relation as:
 m+q=p+n \land p+s=r+q
 \ese
 
-hence $m+q+p+s=p+n+r+q$, and thus $m+s=r+n$.
+Hence, $m+q+p+s=p+n+r+q$, and thus $m+s=r+n$.
 \een
 
 By equipping this relation we can define the set of integers in the following way.

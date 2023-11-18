@@ -148,7 +148,7 @@ As usual by now, we will look at the structure-preserving maps between vector sp
 
 \bd [Linear Maps]
 Let $(V,\oplus,\odot)$, $(W,\boxplus,\boxdot)$ be vector spaces over the same field $K$ and let $f\cl V\to W$ be a
-map. We say that $f$ is a \textbf{linear map}, or a \textbf{homomorphism} and we denote it as $f\cl
+map. We say that $f$ is a \textbf{linear map}, or a \textbf{homomorphism}, and we denote it as $f\cl
 V\xrightarrow{\sim}W$, if for all $v_1,v_2\in V$ and all $\lambda \in K$:
 \bse
 f((\lambda\odot v_1)\oplus v_2) = (\lambda\boxdot f( v_1))\boxplus f(v_2)
@@ -168,12 +168,12 @@ Two vector spaces are said to be \textbf{isomorphic} if there exists a linear is
 $V\cong_\mathrm{vec}W$.
 \ed
 
-Based on the linear maps (a.k.a homomorphisms) and bijective linear maps (a.k.a an isomorphisms) we can define three
+Based on the linear maps (a.k.a.\ homomorphisms) and bijective linear maps (a.k.a.\ an isomorphisms) we can define three
 important notions of vector spaces: $\mathrm{Hom}(V,W)$, $\mathrm{End}(V)$ and $\mathrm{Aut}(V)$.
 
 \bd [$\mathrm{Hom}(V,W)$]
 Let $V$ and $W$ be vector spaces over the same field $K$. We define the set $\mathrm{Hom}(V,W)$ as the set of all
-linear maps (a.k.a all homomorphisms) between $V$ and $W$:
+linear maps (a.k.a.\ all homomorphisms) between $V$ and $W$:
 \bse
 \mathrm{Hom}(V,W) \coloneqq \{f \mid f\cl V\xrightarrow{\sim}W \}
 \ese
@@ -301,7 +301,7 @@ T\cl \underbrace{V^*\times\cdots \times V^*}_{p \text{ copies}} \times
 \ese
 \ed
 
-By convention, a $(0,0)$ on $V$ is just an element of $K$, and hence $T^0_0 V=K$.
+By convention, a $(0,0)$ on $V$ is just an element of $K$, and hence, $T^0_0 V=K$.
 
 \bd [Covariant / Contravariant Tensor]
 A type $(p,0)$ tensor is called a \textbf{covariant $p$-tensor}, while a tensor of type $(0,q)$ is called a
@@ -383,14 +383,14 @@ where, for any fixed $\omega$, we have:
 T (-,\omega) \cl &V &\xrightarrow{\sim}& K \\ & v & \mapsto & T(v,\omega)
 \ei
 
-The linearity of both $\widehat T$ and $T(-,\omega)$ follows immediately from the bilinearity of $T$. Hence $T(-,
+The linearity of both $\widehat T$ and $T(-,\omega)$ follows immediately from the bilinearity of $T$. Hence, $T(-,
 \omega)\in V^*$ for all $\omega$, and $\widehat T \in \mathrm{End}(V^*)$. This correspondence is invertible, since
 can reconstruct $T$ from $\widehat T$ by defining:
 \bi{rrCl}
 T \cl &V \times V^* &\to & K \\ & (v,\omega) & \mapsto & T(v,\omega) \coloneqq (\widehat T(\omega))(v)
 \ei
 
-The correspondence is in fact linear, hence an isomorphism, and thus:
+The correspondence is in fact linear, hence, an isomorphism, and thus:
 
 \bse
 T^1_1V\cong_\mathrm{vec}\mathrm{End}(V^*)
@@ -465,7 +465,7 @@ a Hamel basis for $V$.
 \ed
 
 Even though we will not prove it, it is the case that every Hamel basis for a given vector space has the same
-cardinality, and hence the notion of dimension is well-defined.
+cardinality, and hence, the notion of dimension is well-defined.
 
 \bt[]
 If $\dim V < \infty$ and $S\se V$, then we have the following:
@@ -505,7 +505,7 @@ You will (and probably already have) read that a vector space is \emph{canonical
 but \emph{not} canonically isomorphic to its dual, because an arbitrary choice of basis on $V$ is necessary in order
 to provide an isomorphism. \v
 
-Finally by using a basis (and its dual) we can define the components of a tensor as follows.
+Finally, by using a basis (and its dual) we can define the components of a tensor as follows.
 
 \bd [Components Of A Tensor]
 Let $V$ be a finite-dimensional vector space over $K$ with basis $\mathcal{B}=\{e_1,\ldots,e_{\dim V}\}$ and dual
@@ -551,8 +551,8 @@ v=\sum_{a=1}^dv^ae_a, \qquad \omega= \sum_{a=1}^d \omega_a \epsilon^a \qquad &\t
 Indices that are summed over are called \emph{dummy indices}. They always appear in pairs, and clearly it doesn't
 matter which particular letter we choose to denote them, provided it doesn't already appear in the expression. \v
 
-Indices that are not summed over are called \emph{free indices}. expressions containing free indices represent
-multiple expressions, one for each value of the free indices. free indices must match on both sides of an equation.
+Indices that are not summed over are called \emph{free indices}. Expressions containing free indices represent
+multiple expressions, one for each value of the free indices. Free indices must match on both sides of an equation.
 The ranges over which the indices run are usually understood and not written out. \v
 
 The convention on which indices go upstairs and which downstairs (which we have already been using) is that:
@@ -587,7 +587,7 @@ $w=w^i\widetilde e_i\in W$. Then we have:
 \ese
 
 Note that by suppressing the greyed out summation signs, the second and third term above are indistinguishable. But
-this is only true if $\phi$ is bilinear! Hence, the summation convention should not be used (at least, not without
+this is only true if $\phi$ is bilinear! hence, the summation convention should not be used (at least, not without
 extra care) in other areas of mathematics.
 
 \subsubsection*{Matrix Representation}
@@ -621,30 +621,30 @@ with respect to the chosen basis. It is then also very tempting to think of $\ph
 The convention here is to think of the $i$ index on $\phi^i_{\phantom{i}j}$ as a \emph{row index}, and of $j$ as a
 \emph{column index} (we cannot stress enough that this is pure convention). Hence, once we start using the ``matrix
 representation`` (although technically it shouldn't be called representation since as we will see the word
-``representation'' means something else), we can then express all the linear maps $\phi$ of $V$ (a.k.a all the
+``representation'' means something else), we can then express all the linear maps $\phi$ of $V$ (a.k.a.\ all the
 elements of $\mathrm{End}(V)$) as $n \times n$ matrices. This coincides with the usual picture we have in physics,
 where all the vectors are represented by a column vector of size $n$ and all the linear transformations are
-represented by $n \times n$ matrices that act on $v$ and produce another vector $w$ (hence the $\mathrm{End}(V)$). \v
+represented by $n \times n$ matrices that act on $v$ and produce another vector $w$ (Hence, the $\mathrm{End}(V)$). \v
 
 Going one step further, notice that not all matrices have an inverse. This coincides with the fact that not all
 linear maps have an inverse. Since $\mathrm{End}(V)$ contains all linear maps, it also contains maps that are not
-linear isomorphisms (a.k.a maps that are not bijections, a.k.a maps that do not have an inverse). However, if we
+linear isomorphisms (a.k.a.\ maps that are not bijections, a.k.a.\ maps that do not have an inverse). However, if we
 restrict ourselves more, from linear maps to linear isomorphisms then we move from $\mathrm{End}(V)$ to $
 \mathrm{Aut}(V) \coloneqq \{\phi \in \mathrm{End}(V) \mid \phi \text{ is an isomorphism}\}$. And if we switch again
 to the ``matrix representation'', now we are dealing with matrices that do have an inverse. We call the set of all
 these matrices ``General Linear Group'' and we denote by $GL(V)$ (we can indeed equip this set with matrix
-multiplication and show that it is closed under the operation, hence the ``group'' in the name). From there we can
+multiplication and show that it is closed under the operation, hence, the ``group'' in the name). From there we can
 then restrict our transformations even more, and then we can get for example the ``Special Linear Group'' denoted by
 $SL(V)$ etc \ldots \v
 
 For the sake of completeness, let us make a final note that uses the concept of the determinant that we introduce in
 the next section. Another way to say that a map is an isomorphism is to say that the determinant of the map $\det
 \phi\neq 0$. This condition is a so-called \emph{open condition}, meaning that $\mathrm{GL}(V)$ can be identified
-with an open subset of $V$, from which it then inherits a smooth structure and hence the inverse. By using this we
+with an open subset of $V$, from which it then inherits a smooth structure and hence, the inverse. By using this we
 can write $\mathrm{GL}(V)= \mathrm{Aut}(V) = \{\phi \in \mathrm{End}(V) \mid \det \phi \neq 0 \}$. Or in other words
 since automorphisms are linear isomorphisms between a space and itself, $ GL(V) = \{\phi: V \xrightarrow{\sim} V \mid
 \det \phi \neq 0\}$, which coincides with the ``matrix representation'' of $\mathrm{GL}(V)$ where a matrix has an
-inverse only when its determinant is non vanishing.
+inverse only when its determinant is non-vanishing.
 
 \be
 If $\dim V<\infty$, then we have $\mathrm{End}(V)\cong_\mathrm{vec}T^1_1 V$. Explicitly, if $\phi \in \mathrm{End}(V)
@@ -655,7 +655,7 @@ $, we can think of $\phi \in T^1_1 V$, using the same symbol, as:
 
 \v
 
-Hence the components of $\phi\in\mathrm{End}(V)$ are $\phi^a_{\phantom{a}b} \coloneqq \epsilon^a(\phi(e_b))$. \v
+Hence, the components of $\phi\in\mathrm{End}(V)$ are $\phi^a_{\phantom{a}b} \coloneqq \epsilon^a(\phi(e_b))$. \v
 
 Similarly, $\omega(v)=\omega_m v^m$ can be thought of as the \emph{dot product} $\omega \cdot v\equiv\omega^T v$, and:
 \bse
@@ -767,7 +767,7 @@ g_{d1} & g_{d2} & \cdots & g_{dd} \ea \right)
 
 Needless to say that these two objects could not be more different if they tried. Indeed:
 
-\bit \item $\phi$ is an endomorphism of $V$. the first index in $\phi^a_{\phantom{a}b}$ transforms like a vector
+\bit \item $\phi$ is an endomorphism of $V$. The first index in $\phi^a_{\phantom{a}b}$ transforms like a vector
 \item index, while the second index transforms like a covector index. \item $g$ is a \emph{bilinear form} on $V$.
 both indices in $g_{ab}$ transform like covector indices.
 \eit
@@ -849,7 +849,7 @@ $\{v_1,\ldots,v_d\}$ is not linearly independent. Indeed, in that case $v_1, \ld
 $-dimensional hypersurface in $V$ at most, which should have $0$ volume. \v
 
 You may have rightfully thought that the notion of volume would require some extra structure on $V$, such as a notion
-of length or angles, and hence an inner product. But instead, we only need a top form. \v
+of length or angles, and hence, an inner product. But instead, we only need a top form. \v
 
 We are finally ready to define the determinant.
 
@@ -881,10 +881,10 @@ It is very important to notice that $\phi$ needs to be an endomorphism because w
 defined for endomorphisms. \v
 
 Of course, under the identification of $\phi$ as a matrix, this definition coincides with the usual definition of
-determinant, and all your favourite results about determinants can be derived from it. However once we switch to
+determinant, and all your favourite results about determinants can be derived from it. However, once we switch to
 ``matrix representation'' as we said one is not able to distinguish between an endomorphism $\phi \in T^1_1 V$ and
-the so called ``bilinear form'' $g\in T^0_2 V$, hence one might think that they can calculate the determinant of the
-second guy. Let's see why such a determinant is not well defined. \v
+the so called ``bilinear form'' $g\in T^0_2 V$, hence, one might think that they can calculate the determinant of the
+second guy. Let's see why such a determinant is not well-defined. \v
 
 In your linear algebra course, you may have shown the determinant is basis-independent as follows: if $A$ denotes the
 change of basis matrix, then:
@@ -907,7 +907,7 @@ We will later meet quantities $X$ that transform as:
 X \to \frac{1}{(\det A)^2} \, X
 \ese
 
-under a change of basis, and hence they are also not well-defined. However, we obviously have:
+under a change of basis, and hence, they are also not well-defined. However, we obviously have:
 \bse
 \det(g) X \to \frac{\cancel{(\det A)^2}}{\cancel{(\det A)^2}} \, \det(g)X = \det(g)X
 \ese
@@ -1010,7 +1010,7 @@ Modules are vector spaces over rings instead of fields. For this reason, definit
 Any ring $R$ is a module over itself, in the sense that every field $K$ is a vector space over itself.
 \ee
 
-In the following, we will usually denote $\oplus$ by $+$ and suppress the $\odot$, as we did with vector spaces.
+In the following, we will usually denote $\oplus$ by $+$ and suppress the $\odot$ as we did with vector spaces.
 
 \bd [Direct Sum Of Modules]
 The \textbf{direct sum of two $R$-modules} $M$ and $N$ is the $R$-module $M\oplus N$, which has $M\times N$ as its

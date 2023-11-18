@@ -1,3 +1,5 @@
+%! suppress = EscapeUnderscore
+%! suppress = IncorrectSectionNesting
 A topological manifold is a topological space that locally resembles Euclidean space near each point. More precisely,
 each point of an $n$-dimensional manifold has a neighborhood that is homeomorphic to the Euclidean space of dimension
 $n$. In this more precise terminology, a manifold is referred to as an $n$-manifold. One-dimensional manifolds
@@ -83,14 +85,14 @@ Let $(M,\cO)$ be a $d$-dimensional manifold. Then, a pair $(U,x)$ where $U\in \c
 a homeomorphism, is said to be a \textbf{chart} of the manifold.
 \ed
 
-\bd [Components / Co-Ordinates Of A Chart]
+\bd [Components / Coordinates Of A Chart]
 The \textbf{component functions (or maps)} of $x\cl U\to x(U) \se \R^d$ are the maps:
 \bi{rcCl}
 x^i \cl & U & \to & \R\\ & p & \mapsto & \proj_i(x(p))
 \ei
 
 for $1\leq i\leq d$, where $\mathrm{proj}_i(x(p))$ is the $i$-th component of $x(p)\in \R^d$. The $x^i(p)$ are called
-the \textbf{co-ordinates} of the point $p\in U$ with respect to the chart $(U,x)$.
+the \textbf{coordinates} of the point $p\in U$ with respect to the chart $(U,x)$.
 \ed
 
 \bd [Atlas]
@@ -163,9 +165,9 @@ directly, we study the map:
 x\circ \g\cl \mathrm{preim}_\g(U) \to x(U) \se \R^d
 \ese
 
-where $(U,x)$ is a chart of $M$. More likely, you would be checking the continuity of the co-ordinate maps $x^i\circ
+where $(U,x)$ is a chart of $M$. More likely, you would be checking the continuity of the coordinate maps $x^i\circ
 \g$, which would then imply the continuity of the ``real'' curve $\g\cl\mathrm{preim}_\g(U)\to U$ (real, as opposed
-to its co-ordinate representation).
+to its coordinate representation).
 
 \bse
 \begin{tikzcd}
@@ -179,8 +181,8 @@ to its co-ordinate representation).
 
 \v
 
-At some point you may wish to use a different ``co-ordinate system'' to answer a different question. In this case,
-you would chose a different chart $(U,y)$ and then study the map $y\circ \g$ or its co-ordinate maps. Notice however
+At some point you may wish to use a different ``coordinate system'' to answer a different question. In this case,
+you would chose a different chart $(U,y)$ and then study the map $y\circ \g$ or its coordinate maps. Notice however
 that some results (e.g.\ the continuity of $\g$) obtained in the previous chart $(U,x)$ can be immediately
 ``transported'' to the new chart $(U,y)$ via the chart transition map $y\circ x^{-1}$. Moreover, the map $y\circ
 x^{-1}$ allows us to, intuitively speaking, forget about the inner structure (i.e.\ $U$ and the maps $\g$, $x$ and
@@ -263,7 +265,7 @@ one from each atlas.
 \be
 Let $(M,\cO)=(\R,\cO_\mathrm{std})$. Consider the two atlases $\mathscr{A}=\{(\R,\id_\R)\}$ and $\mathscr{B}=\{(\R,x)
 \}$, where $x\cl a \mapsto \sqrt[3]{a}$. Since they both contain a single chart, the compatibility condition on the
-transition maps is easily seen to hold (in both cases, the only transition map is $\id_\R$). Hence they are both
+transition maps is easily seen to hold (in both cases, the only transition map is $\id_\R$). Hence, they are both
 $\mathcal{C}^\infty$-atlases. \v
 
 Consider now $\mathscr{A}\cup\mathscr{B}$. The transition map $\id_\R\circ x^{-1}$ is the map $a\mapsto a^3$, which
@@ -395,7 +397,7 @@ x(U)\se\R^{d} \ar[rrr,"\id_{x(U)}\circ x\circ x^{-1}"]&&& x(U)\se\R^{d}
 
 \vspace{12pt}
 
-Hence $x\cl U \to x(U)$ is smooth if, and only if, the map $\id_{x(U)}\circ x\circ x^{-1}=\id_{x(U)}$ is smooth in
+Hence, $x\cl U \to x(U)$ is smooth if, and only if, the map $\id_{x(U)}\circ x\circ x^{-1}=\id_{x(U)}$ is smooth in
 the usual sense, which it certainly is. \v
 
 The coordinate maps $x^i \coloneqq {\proj_i}\circ x\cl U \to \R$ are also smooth. Indeed, consider the diagram:
@@ -512,7 +514,7 @@ X_{\gamma,p}\cl & \mathcal{C}^\infty(M) & \xrightarrow{\sim} & \R\\ & f & \mapst
 where $\R$ is understood as a $1$-dimensional vector space over the field $\R$.
 \ed
 
-Note that $f\circ\gamma$ is a map $\R\to\R$, hence we can calculate the usual derivative and evaluate it at $0$.
+Note that $f\circ\gamma$ is a map $\R\to\R$, hence, we can calculate the usual derivative and evaluate it at $0$.
 
 In differential geometry, $X_{\gamma,p}$ is called the \emph{tangent vector} to the curve $\gamma$ at the point $p\in
 M$. Intuitively, $X_{\gamma,p}$ is the velocity $\gamma$ at $p$. Consider the curve $\delta(t) \coloneqq \gamma(2t)$,
@@ -521,7 +523,7 @@ which is the same curve parametrised twice as fast. We have, for any $f\in \math
 X_{\delta,p}(f) = (f\circ\delta)'(0)=2(f\circ\gamma)'(0)=2 X_{\gamma,p}(f)
 \ese
 
-by using the chain rule. Hence $X_{\gamma,p}$ scales like a velocity should.
+by using the chain rule. Hence, $X_{\gamma,p}$ scales like a velocity should.
 
 \bd [Tangent Space]
 Let $M$ be a manifold and $p\in M$. The \textbf{tangent space} to $M$ at $p$ is the vector space over $\R$ with
@@ -575,7 +577,7 @@ Note that $\sigma$ is smooth since it is constructed via addition and compositio
 &=& p
 \ei
 
-Thus $\sigma$ is a smooth curve through $p$. Let $f\in \mathcal{C}^\infty(U)$ be arbitrary. Then we have:
+Thus, $\sigma$ is a smooth curve through $p$. Let $f\in \mathcal{C}^\infty(U)$ be arbitrary. Then we have:
 \bi{rCl}
 X_{\sigma,p}(f)& \coloneqq & (f\circ \sigma)'(0)\\[5pt]
 & = & [f\circ x^{-1} \circ ( (x\circ \gamma) + (x \circ \delta) -x(p))]'(0)\\[5pt]
@@ -597,7 +599,7 @@ X_{\sigma,p}(f) & \coloneqq & (f \circ \sigma)'(0)\\ [5pt]
 & \coloneqq & (\lambda \odot X_{\gamma,p} )(f)
 \ei
 
-for any $f\in \mathcal{C}^\infty(U)$. Hence $\lambda \odot X_{\gamma,p}=X_{\sigma,p}\in T_p M$. Hence indeed $T_p M$ is a vector space. \qedhere
+for any $f\in \mathcal{C}^\infty(U)$. Hence, $\lambda \odot X_{\gamma,p}=X_{\sigma,p}\in T_p M$. Hence, indeed $T_p M$ is a vector space. \qedhere
 \een
 \eq
 
@@ -638,10 +640,10 @@ D(fg)=D(f)g(p)+f(p)D(g)
 The usual derivative operator is a derivation on $\mathcal{C}^\infty(\R)$, the algebra of smooth real functions,
 since it is linear and satisfies the Leibniz rule. (The second derivative operator, however, is not a derivation on
 $\mathcal{C}^\infty(\R)$, since it does not satisfy the Leibniz rule. This shows that the composition of derivations
-need not be a derivation.) Hence, we managed to show that indeed $X_{\gamma,p}$ is actually a derivation of the
+need not be a derivation.) hence, we managed to show that indeed $X_{\gamma,p}$ is actually a derivation of the
 algebra of smooth real functions on $M$.
 
-\subsection{Co-Ordinate Induced Basis For The Tangent Space}
+\subsection{Coordinate Induced Basis For The Tangent Space}
 
 The following is a crucially important result about tangent spaces.
 
@@ -757,31 +759,31 @@ i.e.\ $\lambda^b=0$ for all $1\leq b \leq \dim M$. So $\mathcal{B}$ is indeed a 
 construction $|\mathcal{B}|=\dim M$, the proof is complete. \v
 
 While it is possible to define infinite-dimensional manifolds, in this course we will only consider
-finite-dimensional ones. Hence $\dim T_p M=\dim M$ will always be finite in this course. \v
+finite-dimensional ones. Hence, $\dim T_p M=\dim M$ will always be finite in this course. \v
 
 Note that the basis that we have constructed in the proof is \emph{not} chart-independent. Indeed, each different
 chart will induce a different tangent space basis, and we distinguish between them by keeping the chart map in the
 notation for the basis elements. \v
 
 This is not a cause of concern for our proof however, since every basis of a vector space must have the same
-cardinality, and hence it suffices to find one basis to determine the dimension.
+cardinality, and hence, it suffices to find one basis to determine the dimension.
 
-\bd [Co-Ordinate Induced Basis]
+\bd [Coordinate Induced Basis]
 Let $X_{\gamma,p}\in T_p M$ be a tangent vector and let $(U,x)$ be a chart containing $p$. Then the basis
-$\{\tvb{x}{a}{p}\}$ created by the usage of the chart is called a \textbf{co-ordinate induced basis}. In this basis
+$\{\tvb{x}{a}{p}\}$ created by the usage of the chart is called a \textbf{coordinate induced basis}. In this basis
 an element $X_{\gamma,p}\in T_p M$ can be expressed as:
 \bse
 X_{\gamma,p} = X^a \tvb{x}{a}{p}
 \ese
 
 where the real numbers $X^1,\ldots,X^{\dim M}$ are called the \textbf{vector components} of $X_{\gamma,p}$ with respect
-to the co-ordinate induced basis by the chart $(U,x)$.
+to the coordinate induced basis by the chart $(U,x)$.
 \ed
 
 \subsection{Change Of Vector Components Under A Change Of Chart}
 
-One of the most heavily used concepts is the transformation of the components of a vector under different co-ordinate
-systems (i.e.\ under a chart transition map that subsequently changes the co-ordinate induced basis). Let's find out
+One of the most heavily used concepts is the transformation of the components of a vector under different coordinate
+systems (i.e.\ under a chart transition map that subsequently changes the coordinate induced basis). Let's find out
 the rule. \v
 
 Let $X_{\gamma,p}\in T_p M$ and let $(U,x)$ and $(V,y)$ be two charts containing $p$. Then $X_{\gamma,p}$ can be
@@ -835,7 +837,7 @@ X{^a}_{(y)} &=& \frac{\partial y^a}{\partial x^b} X{^b}_{(x)}
 \ei
 
 This equation shows as how the components of a vector transform under a chart transition map, i.e.\ under the change of
-charts, i.e.\ from one co-ordinate induced basis to another. Of course the formula agrees completely with the
+charts, i.e.\ from one coordinate induced basis to another. Of course, the formula agrees completely with the
 transformations of vector components under the change of basis that we showed in previous chapter:
 \bse
 \widetilde v^b=A^b_{\phantom{b}a}v^a
@@ -843,10 +845,10 @@ transformations of vector components under the change of basis that we showed in
 
 \v
 
-The function $y^a = y^a(x^1,\ldots,x^{\dim M})$ expresses the new co-ordinates in terms of the old ones, and
+The function $y^a = y^a(x^1,\ldots,x^{\dim M})$ expresses the new coordinates in terms of the old ones, and
 $A^{b}_{\phantom{b}a}$ is the \emph{Jacobian} matrix of this map, evaluated at $x(p)$. Note that no matter how
-non-linear the transformations of the co-ordinates are, the vectors always transform in a linear fashion. In a way,
-``vectors do not care about the non-linearity of co-ordinate transformations''.
+non-linear the transformations of the coordinates are, the vectors always transform in a linear fashion. In a way,
+``vectors do not care about the non-linearity of coordinate transformations''.
 
 \section{Cotangent Space}
 
@@ -892,20 +894,20 @@ with $p\in U\se M$, defined by:
 \ed
 
 Note that since $\d_p$ is a map from $\mathcal{C}^\infty(M) \xrightarrow{\sim} T^*_p M$ that means that when it acts
-on a function of $\mathcal{C}^\infty(M)$ the final result $\d_p f$ is an element of $T^*_p M$ hence a covector. By its
+on a function of $\mathcal{C}^\infty(M)$ the final result $\d_p f$ is an element of $T^*_p M$ hence, a covector. By its
 turn, as an element of the dual space of $T_p M$ it maps elements of $T_p M$ to the real numbers (that's the definition
-of the dual space of a vector space). Hence the expression $\d_p f(X)$ must end up to a real number, which is indeed
+of the dual space of a vector space). Hence, the expression $\d_p f(X)$ must end up to a real number, which is indeed
 what $X_{\gamma,p}(f)$ is. \v
 
 By writing $\d_p f(X) \coloneqq X_{\gamma,p}(f)$, we have committed a slight (but nonetheless real) abuse of
 notation, since $\d_p f(X)\in T_{f(p)}\R$ takes in a function and return a real number, but $X_{\gamma,p}(f)$ is
-already a real number! However by doing so we can now talk about $\d_p f$ without providing the vector that it acts
+already a real number! However, by doing so we can now talk about $\d_p f$ without providing the vector that it acts
 on. In other words we can talk about covectors without the need of their actions on vectors. \v
 
 The gradient of a function is a covector and \textbf{not} a vector. \v
 
-Recall that if $(U,x)$ is a chart on $M$, then the co-ordinate maps $x^a\cl U \to x(U)\se \R^{\dim M}$ are smooth
-functions on $U$ hence they belong to $\mathcal{C}^\infty(M)$. We can thus apply the gradient operator $\d_p$ (with
+Recall that if $(U,x)$ is a chart on $M$, then the coordinate maps $x^a\cl U \to x(U)\se \R^{\dim M}$ are smooth
+functions on $U$ hence, they belong to $\mathcal{C}^\infty(M)$. We can thus apply the gradient operator $\d_p$ (with
 $p\in U$) to each of them to obtain $(\dim M)$-many elements of $T^*_p M$.
 
 \bt[]
@@ -928,7 +930,7 @@ Therefore, $\mathcal{B}$ is, in fact, the dual basis to $\{\tvb{x}{a}{p}\}$.
 \subsection{Change Of Covector Components Under A Change Of Chart}
 
 Once again, as we did in the vector case with the vector components, one needs to find the transformation of the
-components of a covector under different co-ordinate systems. We will follow exactly the same procedure. \v
+components of a covector under different coordinate systems. We will follow exactly the same procedure. \v
 
 Let $\omega_{p} \in T_p^* M$ and let $(U,x)$ and $(V,y)$ be two charts containing $p$. Then $\omega_{p}$ can be
 expressed in any of the two charts by using the dual basis as:
@@ -962,8 +964,8 @@ where $(\phi_*)_p(X_{\gamma,p})$ is defined as:
 \fig{pushforward}{0.3}
 
 In other words, since $(\phi_*)_p$ is a map from one tangent space to another this means that it acts on a tangent
-vector and produces another one, hence $(\phi_*)_p (X_{\gamma,p})$ is again a tangent vector (but on $N$). As a
-tangent vector it can act on a smooth function (again on N) and produce a real number, hence the action of a
+vector and produces another one, hence, $(\phi_*)_p (X_{\gamma,p})$ is again a tangent vector (but on $N$). As a
+tangent vector it can act on a smooth function (again on N) and produce a real number, hence, the action of a
 push-forward on a function is simply the one we wrote above.
 
 \begin{figure}[H]
@@ -1430,7 +1432,7 @@ A bundle $E\xrightarrow{\,\pi\,}M$ is said to be:
 \ed
 
 \be
-The cylinder $C$ is trivial as a bundle, and hence also locally trivial.
+The cylinder $C$ is trivial as a bundle, and hence, also locally trivial.
 \ee
 
 \be
@@ -1442,7 +1444,7 @@ From now on, we will mostly consider locally trivial bundles. \v
 In quantum mechanics, what is usually called a ``wave function'' is not a function at all, but rather a section of a
 $\C$-line bundle over physical space. However, if we assume that the $\C$-line bundle under consideration is locally
 trivial, then each section of the bundle can be represented (locally) by a map from the base space to the total space
-and hence it is appropriate to use the term ``wave \emph{function}''.
+and hence, it is appropriate to use the term ``wave \emph{function}''.
 
 \bd [Pull-Back Bundle]
 Let $E\xrightarrow{\,\pi\, }M$ be a bundle and let $f\cl M'\to M$ be a map from some manifold $M'$. The
@@ -1490,12 +1492,12 @@ each $m'\in M'$ to $\s(f(m')) \in E$. However, since $\s$ is a section, we have:
 \pi(\s(f(m'))= (\pi \circ \s \circ f)(m') = (\id_M\circ f)(m') = f(m')
 \ese
 
-and hence $(m',(\s \circ f)(m'))\in E'$ by definition of $E'$. Moreover:
+and hence, $(m',(\s \circ f)(m'))\in E'$ by definition of $E'$. Moreover:
 \bse
 \pi' (m',(\s \circ f)(m')) = m'
 \ese
 
-and hence the map:
+and hence, the map:
 \bi{rcCl}
 \s' \cl & M' & \to & E'\\ & m' & \mapsto & (m',(\s \circ f)(m'))
 \ei
@@ -1593,7 +1595,7 @@ Hence, we have:
 \widetilde X^{\dim M})
 \ei
 
-which is smooth in each component, and hence smooth.
+which is smooth in each component, and hence, smooth.
 \eq
 
 The tangent bundle of a smooth manifold $M$ is therefore itself a smooth manifold of dimension $2\dim M$, and the
@@ -1681,7 +1683,7 @@ and this is the reason why ``$X$'' and $X_{\gamma, p}$ are closely related. \v
 From now on, we will drop the curve $\gamma$ from the notation of the vectors $X_{\gamma, p}$ and we will simply
 write a vector as $X_p$. We do that for two reason: first in order to reduce the complexity of the equations
 (although one has to remember that there is a curve $\gamma$ associated to every $X_p$) and second in order to have a
-consistency with the way we denote covectors (i.e.\ $\omega_p$) where we do not denote the curve $\gamma$. Hence from
+consistency with the way we denote covectors (i.e.\ $\omega_p$) where we do not denote the curve $\gamma$. Hence, from
 now on the notation that we will be using is:
 \bse
 X(p) = X_p \implies X(p) f = X_p f
@@ -1691,7 +1693,7 @@ where $X$ is a vector field and when acted on a point $p$ produces the correspon
 time, when we will need to apply the definition of a vector, we will remind ourselves that $X_p$ actually means
 $X_{\gamma, p}$ so we are not confused from the $\gamma$ in the definition). \v
 
-As a final note, we also showed that a vector $X_p$ can be expressed in the co-ordinate induced basis as:
+As a final note, we also showed that a vector $X_p$ can be expressed in the coordinate induced basis as:
 \bse
 X_{p} = X^a \tvb{x}{a}{p}
 \ese
@@ -1762,7 +1764,7 @@ where:
 f \odot X \cl & M & \to & \Gamma(TM)\\ & p & \mapsto & (f\odot X)(p) \coloneqq f(p) X(p) = f(p) X_p
 \ei
 
-Note that since $f\in \mathcal{C}^\infty(M)$, we have $f(p)\in \R$ and hence the multiplication above is the scalar
+Note that since $f\in \mathcal{C}^\infty(M)$, we have $f(p)\in \R$ and hence, the multiplication above is the scalar
 multiplication on $T_p M$. \v
 
 Of course, we could have defined $\odot$ simply as pointwise \emph{global} scaling, using the reals $\R$ instead of
@@ -1773,7 +1775,7 @@ regarding this $\R$-vector space:
 \item In the case of a function instead of a number, a function $f$ acts on the whole manifold $M$ (it assigns a
 value $f(p)$ on every point $p$ of the manifold) and thus we are able to assign different values to different points.
 In the case of $\R$-vector space we can only assign the same value to every point (i.e.\ having a constant vector field).
-\item A basis for this corresponding $\R$-vector space is necessarily uncountably infinite, and hence it does not
+\item A basis for this corresponding $\R$-vector space is necessarily uncountably infinite, and hence, it does not
 provide a very useful decomposition for our vector fields. On the other hand the operation $\odot$ allows for
 \emph{local} scaling, i.e.\ we can scale a vector field by a different value at each point, and a much more useful
 decomposition of vector fields.
@@ -1791,7 +1793,7 @@ function is zero, we cannot define an inverse since we would divide by zero).
 \eit
 
 The first view is of no use since if the triple is seen as a vector space over the real numbers, there is nothing
-else we can do. However, if we consider the second view. i.e.\ the triple $(\mathcal{C}^\infty(M),+,\bullet)$, where
+else we can do. However, if we consider the second view, i.e.\ the triple $(\mathcal{C}^\infty(M),+,\bullet)$, where
 $\bullet$ is pointwise function multiplication as a ring, then the triple $(\Gamma(TM),\oplus,\odot)$ built on top of
 this ring satisfies:
 \bit
@@ -1809,7 +1811,7 @@ M$ to $1\in \R$.
 \een
 \eit
 
-which are precisely the axioms for a vector space! Hence given that the triple $(\mathcal{C}^\infty(M),+,\bullet)$ is
+which are precisely the axioms for a vector space! hence, given that the triple $(\mathcal{C}^\infty(M),+,\bullet)$ is
 a ring, that turns the triple $(\Gamma(TM),\oplus,\odot)$ to a $\mathcal{C}^\infty(M)$-module. \v
 
 And this of course is of crucial importance since as we showed in previous chapters, if a ring $R$ is not a division
@@ -1840,7 +1842,7 @@ context). \v
 In a similar manner one can construct a covector field through the use of the cotangent bundle, and from there to
 define the set of all covector fields $\Gamma(T^*M)$ and subsequently a triple $(\Gamma(T^*M), \oplus, \odot)$. \v
 
-Finally using $\Gamma(TM)$ and $\Gamma(T^*M)$ we can define a tensor field.
+Finally, using $\Gamma(TM)$ and $\Gamma(T^*M)$ we can define a tensor field.
 
 \bd [Tensor Field]
 Let $M$ be a smooth manifold. A smooth \textbf{$(r,s)$ tensor field} $\tau$ on $M$ is a
@@ -1894,7 +1896,7 @@ assigning to each $p\in M$ a tensor ($\R$-multilinear map) on the vector space $
 $-multilinear map as above. We will always try to pick the most useful or easier to understand, based on the context. \v
 
 To summarize, fields are the generalization of the definitions of vectors, covectors and tensors at a specific point
-$p$ of $M$, to every possible point $p$ of manifold $M$, hence to the whole manifold $M$. In a similar way we can
+$p$ of $M$, to every possible point $p$ of manifold $M$, hence, to the whole manifold $M$. In a similar way we can
 generalize the concept of the gradient of $f$ at $p\in M$ in the gradient of $f$ at $M$.
 
 \subsubsection*{Generalize (Gradient At A Point) To (Gradient Of The Manifold)}
@@ -1941,7 +1943,7 @@ Note that the operator $\d$ satisfies the Leibniz rule:
 
 \subsubsection*{Generalize (Push-Forward \& Pull-Back At A Point) To (Push-Forward \& Pull-Back Of A Manifold)}
 
-Finally, we want to generalize the concepts of push-forward and pull-back from a point to the whole manifold (a.k.a
+Finally, we want to generalize the concepts of push-forward and pull-back from a point to the whole manifold (a.k.a.\
 from a vector/covector to a vector/covector field). For a good reason we will first start with the pull-back. \v
 
 Recall that given a map $\phi\cl M \to N$ between smooth manifolds we defined the pull-back of $\phi$ at $p\in M$ as
@@ -1979,21 +1981,21 @@ between the manifold $M$ and $N$. Let's see why. \v
 
 Let's start again with the pull-back that we have already defined. Observe that the pull back of a covector field
 includes the notion of the pull-back of a covector at a point $p$. Now, the map $\phi$, as a map, maps every single
-point of its domain $M$ to a single point of its target $N$. Hence the whole target $M$ is hit by the map, but the
+point of its domain $M$ to a single point of its target $N$. Hence, the whole target $M$ is hit by the map, but the
 whole target $N$ is not (recall that the part of $N$ that is hit by the map is called the image of $\phi$). This
 means that in the case of a pull-back (after we have defined the tangent vectors in both $M$ and $N$) every single
-point of the image of $\phi$ on $N$ will have a corresponding point back on $M$ hence the definition of the pull-back
+point of the image of $\phi$ on $N$ will have a corresponding point back on $M$ hence, the definition of the pull-back
 of a covector field will be well-defined. \v
 
 On the other hand, in the case of a push forward we get two problems coming from the fact that, in general, the map
 $\phi$ may not be neither surjective nor injective. First of all if the map $\phi$ is not surjective that means that
-the image of $\phi$ is not equal to the entire domain $M$ ($\img_\phi(M) \neq N$), hence from a vector field defined
+the image of $\phi$ is not equal to the entire domain $M$ ($\img_\phi(M) \neq N$), hence, from a vector field defined
 on $M$ we will never be able to define a vector field on $N$ that lies outside the image of $\phi$. Moreover, if
 $\phi$ is not injective, that means that distinct elements of the domain $M$ are mapped to the same element in the
-target $N$ hence it might be the case that the push-forward will create many different vectors for one given point
+target $N$ hence, it might be the case that the push-forward will create many different vectors for one given point
 $p$ on $N$ which will make it ill-defined. \v
 
-Of course, if the map $\phi$ is both surjective and injective, hence bijective, hence has an inverse, then none of
+Of course, if the map $\phi$ is both surjective and injective, hence, bijective, hence, has an inverse, then none of
 this problems exist any more, since then the case is similar to the case of pull-backs (both directions of the map
 behave similarly). But recall that a bijection between topological spaces is called a ``homeomorphism'', and moreover
 if the map is smooth (which in the case of smooth manifolds by definition always is) then the smooth ``homeomorphism''
@@ -2028,7 +2030,7 @@ where $\phi_*(X)$ evaluated at a point $\phi(p)$ of $N$ is:
 \phi_* (X) (\phi(p)) \coloneqq (\phi_*)_p (X_p)
 \ese
 
-Hence the push-forward of a vector field evaluated at point $\phi(p)$ is equal to the push-forward of the vector
+Hence, the push-forward of a vector field evaluated at point $\phi(p)$ is equal to the push-forward of the vector
 $X|_p$ generated by the vector field $X$ at point $p$. \v
 
 Now let's move on another topic about ``differential forms''.
@@ -2048,7 +2050,7 @@ for any $\pi \in S_n$, with $X_i\in \Gamma(TM)$. We call $n$ the \emph{degree} o
 Alternatively, we can define a differential form as a smooth section of the appropriate bundle on $M$, i.e.\ as a map
 assigning to each $p\in M$ an $n$-form on the vector space $T_p M$. \v
 
-Of course, by definition, differential forms are nothing more but a very specific kind of tensors, hence it's a
+Of course, by definition, differential forms are nothing more but a very specific kind of tensors, hence, it's a
 subset of the tensor space.
 
 \be
@@ -2061,8 +2063,8 @@ We denote by $\Omega^n(M)$ the set of all differential $n$-forms on $M$, which t
 $-module by defining the addition and multiplication operations pointwise.
 \ed
 
-We have $\Omega^0(M)\equiv \mathcal{C}^\infty(M)$ since they are $(0,0)$ tensors a.k.a functions and $\Omega^1(M)
-\equiv \Gamma(T^0_1 M)\equiv\Gamma(T^*M)$ since they are $(0,1)$ tensors a.k.a covectors. \v
+We have $\Omega^0(M)\equiv \mathcal{C}^\infty(M)$ since they are $(0,0)$ tensors a.k.a.\ functions and $\Omega^1(M)
+\equiv \Gamma(T^0_1 M)\equiv\Gamma(T^*M)$ since they are $(0,1)$ tensors a.k.a.\ covectors. \v
 
 We can specialise the pull-back of tensors to differential forms.
 
@@ -2798,7 +2800,7 @@ x \cl & U & \to & x(U) \se \C^*\times\C\times \C\\[5pt]
 where $\C^*=\C\setminus\{0\}$. \v
 
 Notice that given the mapping $(a,b,c)$ one can reconstruct $d$ from the constraint on the degree of freedom
-$d=\frac{1+bc}{a}$, hence the mapping to $\C^3$. \v
+$d=\frac{1+bc}{a}$, hence, the mapping to $\C^3$. \v
 
 With a little more work on this direction, one can show that $U$ is an open subset of $(\SL(2,\C),\mathcal{O})$ and
 $x$ is a homeomorphism with inverse:
@@ -2811,7 +2813,7 @@ This is the reason why we excluded the case $a=0$ when we defined the set $U$ of
 hadn't, we wouldn't be able to divide with $a$ and the map $x$ wouldn't have an inverse. \v
 
 However, this makes the chart $(U,x)$ to not cover the whole $\SL(2,\C)$ since $U$ as a set takes care only the
-elements of $\SL(2,\C)$ with $a \neq 0$. Hence we need at least one more chart. We thus define the set:
+elements of $\SL(2,\C)$ with $a \neq 0$. Hence, we need at least one more chart. We thus define the set:
 \bse
 V \coloneqq \biggl\{ \biggl( \begin{matrix} a & b \\ c & d \end{matrix}\biggr) \in \SL(2,\C) \ \Big| \ b \neq 0 \biggr\}
 \ese
@@ -2834,7 +2836,7 @@ y^{-1} \cl & x(V) & \to & V\\[5pt]
 
 An element of $\SL(2,\C)$ cannot have both $a$ and $b$ equal to zero, for otherwise $ad-bc=0\neq 1$. Hence
 $\mathscr{A}_{\mathrm{top}} \coloneqq \{(U,x),(V,y)\}$ is an atlas, and we showed that $x$ and $y$ are homeomorphisms
-hence continuous and invertible. Since every atlas is automatically a $\mathcal{C}^0$-atlas, the triple $(\SL(2,\C),
+Hence, continuous and invertible. Since every atlas is automatically a $\mathcal{C}^0$-atlas, the triple $(\SL(2,\C),
 \mathcal{O},\mathscr{A}_{\mathrm{top}})$ is a 3-dimensional, complex, topological manifold.
 
 \subsubsection*{$\SL(2,\C)$ As A Complex Differentiable Manifold}
@@ -2861,7 +2863,7 @@ In our case, we have the atlas $\mathscr{A}_{\mathrm{top}} \coloneqq \{(U,x),(V,
 (a,b,\tfrac{1+bc}{a})
 \ese
 
-Hence we have the transition map:
+Hence, we have the transition map:
 \bi{rrCl}
 y\circ x^{-1} \cl & x(U\cap V) & \to & y(U\cap V)\\[5pt]
 & (a,b,c) & \mapsto & ( a,b,\tfrac{1+bc}{a})

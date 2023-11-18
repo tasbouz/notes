@@ -26,7 +26,7 @@ tail(x,y)                                              # Gives the y last elemen
 length()                                               # Shows the length
 nrow()                                                 # Number of rows
 ncol()                                                 # Number of columns
-names()                                                # View the names of the columns i.e the variables
+names()                                                # View the names of the columns i.e.\ the variables
 str()                                                  # Informations on structure
 summary()                                              # Shows a summary
 describe()                                             # Returns a list of all the variables with some statistical informations for them

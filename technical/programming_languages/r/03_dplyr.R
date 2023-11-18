@@ -14,7 +14,7 @@ identical()                                               # Checks if datasets h
 
 select(data, col1, col2, ...)                             # Selects from the data only the specific columns
 mutate(data, new_column = f(columns))                     # Creates a new column named new_column with value the function of existed columns we define (Every element is calculated by the rows)
-filter(data, condition)                                   # Returns all the observations (i.e rows) that fulfil the condition
+filter(data, condition)                                   # Returns all the observations (i.e.\ rows) that fulfil the condition
 arrange(data, col1, desc(col2), ...)                      # Arranges the data w.r.t the values of column 1 (ascending or alphabetical). Then w.r.t column 2 in descending order, etc.
 summarise(data, sum=sum(col1), avg=avg(col2), ... )       # Creates a summary of the data, with the functions that we pick and the names that we define 
 

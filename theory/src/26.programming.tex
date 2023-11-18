@@ -1,0 +1,713 @@
+%! suppress = EnDash
+\section{Binary Representation}
+
+\bd[Binary Number]
+A \textbf{binary number} is a number expressed in the base-2 numeral system or binary numeral system, a method of
+mathematical expression which uses only two symbols: typically $0$ and $1$.
+\ed
+
+Binary is useful because it's exactly what you need for representing the values ``true'' and ``false.'' In computers,
+an ``on'' state, when electricity is flowing, represents true and the ``off'' state, when no electricity is flowing,
+represents false. As in the definition of binary, we can also write 1's and 0's instead of true's and false's. \v
+
+Hence, a single binary value can be used to represent a number. Instead of true and false, we can call these two
+states one and zero, which is actually incredibly useful. And if we want to represent larger things, we just need to
+add more binary digits. This works exactly the same way as the decimal numbers. With decimal numbers, there are only
+ten possible values a single digit can be: 0 through 9. To get numbers larger than 9, we just add more digits to the
+front. We can do the same with binary.
+
+\be
+For example, let's take the number 263. What does this number actually represent? Well, it means we've got two 100s,
+six 10s, and three 1s. If you add those all together, we've got 263. Notice how each column has a different
+multiplier; in this case, it's 100, 10, and 1. Each multiplier is 10 times larger than the one to the right. That's
+because each column has 10 possible digits to work with, 0 through 9, after which you have to carry one to the next
+column. For this reason, it's called base 10 notation, also called decimal since deci means 10.
+\ee
+
+Binary works exactly the same way, it's just base 2. That's because there are only two possible digits in binary, 1
+and 0. This means that each multiplier has to be two times larger than the column to its right. Instead of 100s, 10s,
+and 1s, we now have 4s, 2s, and 1s.
+
+\be
+Take for example the binary number 101. This means we have one 4, zero 2s, and one 1. Add those all together, and
+we've got the number 5 in base 10.
+\ee
+
+But to represent larger numbers, binary needs a lot more digits.
+
+\be
+Take this number in binary: 10110111. We can convert it to decimal in the same way. We have:
+\bse
+1\times128 + 0\times64 + 1\times32 + 1\times16 + 0\times8 + 1\times4 +
+1\times2 + 1\times1 = 183
+\ese
+\ee
+
+Math with binary numbers isn't hard either.
+
+\be
+Take for example decimal addition of 183 + 19. First we add 3 + 9 = 12, so we put 2 as the sum and carry 1 to the 10s
+column. Now we add 8 + 1 + 1 (that we carried) = 10, so the sum is 0 carry 1. Finally, we add 1 + 1 (that we carried)
+= 2, so the total sum is 202. \v
+
+Here's the same sum but in binary. Just as before, we start with the 1s column. Adding 1 + 1 = 2 but there is no
+symbol 2, so we use 10 and put 0 as our sum and carry the 1, just like in our decimal example. 1 + 1 + 1 (that we
+carried) = 3, or 11 in binary, so we put the sum as 1 and carry 1 again and so on. We end up with this number
+11001010, which is the same as the number 202 in base 10.
+\ee
+
+Each of these binary digits 1 or 0 is called a bit.
+
+\bd[Bit]
+The \textbf{bit}, a contraction of \textbf{bi}nary digi\textbf{t}, is the basic unit of information in computing,
+representing a logical state with one of two possible values, most commonly represented as either $1$ or $0$.
+\ed
+
+So in these last few examples we were using 8-bit numbers with their lowest value of 0 (i.e.\ $00000000$) and highest
+value of 255 (i.e.\ $11111111$). That's 256 different values, or $2^8$. You might have heard of 8-bit computers or
+8-bit graphics or audio. These were computers that did most of their operations in chunks of 8 bits, but 256
+different values isn't a lot to work with, so it meant things like 8-bit games were limited to just 256 different
+colours for their graphics.
+
+\bd[8-bit]
+In computer architecture, \textbf{8-bit} integers or other data units are those that are 8 bits wide (1 byte).
+\ed
+
+8 bits is such a common size in computing it has a special word: a byte.
+
+\bd[Byte]
+The \textbf{byte} is a unit of digital information that consists of eight bits.
+\ed
+
+Historically, the byte was the number of bits used to encode a single character of text in a computer and for this
+reason it is the smallest addressable unit of memory in many computer architectures. In binary, a kilobyte has
+$2^{10}$ bytes, or 1024. \v
+
+There are also 32-bit and 64-bit computer architectures. What this mean is that they operate in chunks of 32 or 64
+bits. The largest number you can represent with 32 bits is just under 4.3 billion, which is 32 1s in binary.
+
+\bd[32-bit]
+In computer architecture, \textbf{32-bit} integers or other data units are those that are 32 bits wide (4 bytes).
+\ed
+
+\bd[64-bit]
+In computer architecture, \textbf{64-bit} integers or other data units are those that are 64 bits wide (8 bytes).
+\ed
+
+Of course, not everything is a positive number, so we need a way to represent positive and negative numbers. Most
+computers use the first bit for the sign, 1 for negative and 0 for positive numbers, and then use the remaining 31
+bits for the number itself. That gives us a range of roughly plus or minus two billion. While this is a pretty big
+range of numbers, it's not enough for many tasks. This is why 64-bit numbers are useful. The largest value a 64-bit
+number can represent is around 9.2 quintillion. Most importantly, computers must label locations in their memory
+known as ``addresses'' in order to store and retrieve values. As computer memory has grown to gigabytes and terabytes
+– that's trillions of bytes – it was necessary to have 64-bit memory addresses as well. More on that later. \v
+
+In addition to negative and positive numbers, computers must deal with numbers that are not whole numbers, like 12.7
+and 3.14. These are called floating-point numbers because the decimal point can float around in the middle of a
+number. Several methods have been developed to represent floating-point numbers, the most common of which is the IEEE
+754 standard. In essence, this standard stores decimal values sort of like scientific notation. For example, 625.9
+can be written as $0.6259 * 10^3$. There are two important numbers here. The 0.6259 is called the ``significand'' and
+3 is the ``exponent''. In a 32-bit floating-point number, the first bit is used for the sign of the number, positive
+or negative. The next eight bits are used to store the exponent, and the remaining 23 bits are used to store the
+significand. \v
+
+Computers use numbers to represent also letters. The most straightforward approach might be to simply number the
+letters of the alphabet, A being 1, B being 2, C being 3, and so on. Francis Bacon, the famous English writer, used
+5-bit sequences to encode all 26 letters of the English alphabet to send secret messages back in the 1600s. 5 bits
+can store 32 possible values, so that's enough for the 26 possible letters but not enough for punctuation, digits,
+and upper and lowercase letters. Enter ASCII, the American Standard Code for Information Interchange.
+
+\bd[ASCII]
+\textbf{ASCII} abbreviated from American Standard Code for Information Interchange, is a character encoding standard
+for electronic communication and is one of the IEEE milestones. ASCII codes represent text in computers,
+telecommunications equipment, and other devices.
+\ed
+
+Invented in 1963, ASCII was a 7-bit code, enough to store 128 different values. With this expanded range, it could
+encode capital letters, lowercase letters, digits 0 through 9, and symbols like the @ sign and punctuation marks.
+
+\be
+For example, a lowercase A is represented by the number 97, while a capital A is 65, a colon is 58, and a close
+parenthesis is 41.
+\ee
+
+ASCII even had a selection of special command codes, such as a newline character to tell a computer where to wrap a
+line to the next row. In older computers, the line of text would literally continue off the edge of the screen if you
+didn't include a newline character. \v
+
+Because ASCII was such an early standard, it became widely used, and critically allowed different computers built by
+different companies to exchange data. This ability to universally exchange information is called ``interoperability''.
+However, it did have a major limitation: it was really only designed for English. Fortunately, there are 8 bits in
+a byte note 7, and it soon became popular to use codes 128-255, previously unused, for national characters. In the
+US, those extra numbers were largely used to encode additional symbols like mathematical notation, graphical
+elements, and common accentuated characters. \v
+
+On the other hand, while the Latin characters were used universally, Russian computers used the extra codes to encode
+Cyrillic characters and Greek computers used Greek letters and so on. And national character codes worked pretty well
+for most countries. The problem was if you opened an email written in Latvian on a Turkish computer, the result was
+completely incomprehensible, and things totally broke with the rise of computing in Asia, as languages like Chinese
+and Japanese have thousands of characters. There was no way to encode all those characters in 8 bits. In response,
+each country invented multibyte encoding schemes, all of which were mutually incompatible. The Japanese were so
+familiar with this encoding problem that they even had a special name for it, mojibake, which means ``scrambled
+text''. \v
+
+And so it was born ``Unicode'', one format to rule them all.
+
+\bd[Unicode]
+\textbf{Unicode}, formally the Unicode Standard, is an information technology standard for the consistent encoding,
+representation, and handling of text expressed in most of the world's writing systems. The standard, which is
+maintained by the Unicode Consortium, defines 144697 characters covering 159 modern and historic scripts, as well as
+symbols, emoji, and non-visual control and formatting codes.
+\ed
+
+Devised in 1992 to finally do away with all the different international schemes, it replaced them with one
+universal encoding schemes. The most common version of Unicode uses 16 bits with space for over a million codes,
+enough for every single character from every language ever used – more than 120000 of them in over 100 types of
+script, plus space for mathematical symbols and even graphical characters like emoji. \v
+
+In the same way that ASCII defines a scheme for encoding letters as binary numbers, other file formats like MP3s or
+GIFs use binary numbers to encode sounds or colours of a pixel in our photos, movies, and music. Most importantly,
+under the hood it all comes down to long sequences of bits. Text messages, this YouTube video, every webpage on the
+internet, and even your computer's operating system are nothing but long sequences of 1s and 0s.
+
+\subsection{Logic Gates}
+
+Another reason computers use binary is that an entire branch of mathematics already existed that dealt exclusively
+with true and false values. And it had figured out all the necessary rules and operations for manipulating them.
+It's called ``Boolean algebra''\footnote{We have introduced a lot of the concepts for Boolean algebra in the first
+chapter of the ``Mathematics`` part of the notes however back then we focused on the abstract mathematical part. For
+the sake of completeness, we will repeat some of the most basic points again but focusing on the practical aspect.}.
+
+\bd[Boolean Algebra]
+\textbf{Boolean algebra}  is the branch of algebra in which the values of the variables are the truth values true and
+false, usually denoted 1 and 0, respectively.
+\ed
+
+George Boole, from which Boolean Algebra later got its name, was a self-taught English mathematician in the 1800s. He
+was interested in representing logical statements that went ``under, over, and beyond'' Aristotle's approach to logic,
+which was, unsurprisingly, grounded in philosophy. Boole's approach allowed truth to be systematically and formally
+proven, through logic equations which he introduced in his first book ``The Mathematical Analysis of Logic'' in 1847.
+In Boolean algebra, the values of variables are true and false, and the operations are logical.
+
+\bd[Logical Operation]
+A \textbf{logical operation} is a special symbol or word that connects two or more phrases of information. It is most
+often used to test whether a certain relationship between the phrases is true or false.
+\ed
+
+\bd[Logic Gate]
+A \textbf{logic gate}, or simply \textbf{gate}, is an idealized model of computation or physical electronic device
+implementing a logical operation performed on one or more binary inputs that produces a single binary output.
+\ed
+
+Logic gates are devices that perform one or all the Boolean logic operations AND, NAND, NOR, NOT, OR, XNOR, and XOR\@.
+All types of logic gate, except NOT, accept two binary digits as input, and produce one binary digit as output. NOT
+gates accept only one input digit. All digital systems can be constructed by only three basic logic gates. These gates
+are the AND gate, the OR gate, and the NOT gate.
+
+\bd[NOT Gate]
+A \textbf{NOT gate} (or \textbf{inverter}) is a logic gate which implements logical negation. In mathematical logic
+it is equivalent to the logical negation operator (¬).
+\ed
+
+A NOT takes a single boolean value, either true or false, and negates it. It flips true to false, and false to true.
+We can write out a little logic table that shows the original value under ``Input'', and the outcome after applying the
+operation under ``Output''.
+
+\fig{not_gate}{0.5}
+
+\bd[AND Gate]
+The \textbf{AND gate} is a basic digital logic gate that implements logical conjunction. In mathematical logic it is
+equivalent to the logical conjunction operator (∧).
+\ed
+
+AND gate behaves according to the truth table below. A true output (1) results only if all the inputs to the AND gate
+are true (1). If none or not all inputs to the AND gate are true, false output results. The function can be extended
+to any number of inputs.
+
+\fig{and2}{0.65}
+
+\vspace{-15pt}
+
+\bd[OR Gate]
+The \textbf{OR gate} is a basic digital logic gate that implements logical disjunction. In mathematical logic it is
+equivalent to the logical disjunction operator (∨).
+\ed
+
+OR gate behaves according to the truth table below. A true output (1) results if one or both the inputs to the gate
+are true (1). If neither input is true, a false output (0) results. In another sense, the function of OR effectively
+finds the maximum between two binary digits, just as the complementary AND function finds the minimum.
+
+\fig{or2}{0.6}
+
+\section[Basic Terminology] {Basic Terminology\footnote{What follows in this section is a brief introduction to some of the most basic terminology used in computer science.
+We will not go into much detail, as this is not the purpose of these notes, but we will try to give a brief
+introduction to the most important concepts. For a more practical approach, we suggest the reader to consult the
+``technical'' part of the notes.}}
+
+\bd[Programming]
+\textbf{Programming} is the process of creating a set of instructions that tell a computer how to perform a task.
+\ed
+
+Programming is done through the use of ``programming languages''.
+
+\bd[Programming Language]
+A \textbf{programming language} is a formal language comprising a set of instructions that produce various kinds of
+output, used to implement algorithms.
+\ed
+
+The binary representation, is the ``language'' computer processors natively speak, and it is usually called ``machine
+code''.
+
+\bd[Machine Code]
+\textbf{Machine code} is any low-level programming language, consisting of machine language instructions, which is
+used to control a computer's central processing unit.
+\ed
+
+In these notes, we will not focus on machine code at all, but we will instead focus on (human-readable) code.
+Programming languages are easy and efficient for programmers because they are closer to natural languages than the
+machine code. They consist of instructions for computers. These instructions are collected in files usually refered
+as ``source code''.
+
+\bd[Source Code]
+\textbf{Source code} is any collection of code, with or without comments, written using a human-readable programming
+language, usually as plain text.
+\ed
+
+The source code of a program is specially designed to facilitate the work of computer programmers, who specify the
+actions to be performed by a computer mostly by writing source code. The source code is often transformed by an
+assembler or compiler into binary machine code that can be executed by the computer. The machine code might then be
+stored for execution at a later time. Alternatively, source code may be interpreted and thus immediately executed. \v
+
+Just like spoken languages, programming languages have statements.
+
+\bd[Statement]
+A \textbf{statement} is a syntactic unit of an imperative programming language that expresses some action to be carried
+out.
+\ed
+
+\be
+``A equals 5'' is a programming language statement. In this case, the statement says a variable named $A$ has the number
+$5$ stored in it. This is called an assignment statement because we're assigning a value to a variable. \v
+
+To express more complex things, we need a series of statements. For example ``A is 5, B is ten, C equals A plus B''.
+This program tells the computer to set variable $A$ equal to $5$, variable $B$ to 10, and finally to add $A$ and $B$
+together, and put that result, which is 15, into variable $C$. In general a computer doesn't care about the name of
+the variables, as long as variables are uniquely named. But it's probably best practice to name them things that make
+sense in case someone else is trying to understand your code.
+\ee
+
+A program written in a programming language is formed by a sequence of one or more statements that follow a set of rules
+called ``syntax''.
+
+\bd[Syntax]
+\textbf{Syntax} is the set of rules that govern the structure and composition of statements in a language.
+\ed
+
+A statement may have internal components called ``expressions''.
+
+\bd[Expression]
+An \textbf{expression} is a syntactic entity in a programming language that may be evaluated to determine its value.
+\ed
+
+An expressions is a combination of one or more constants, operators, and variables, that the programming language
+interprets and computes to return another value. Let's see all of these concepts in more detail.
+
+\bd[Constant]
+A \textbf{constant} is a value that should not be altered by the program during normal execution, i.e.\ the value is
+constant.
+\ed
+
+When associated with an identifier, a constant is said to be ``named'', although the terms ``constant'' and ``named
+constant'' are often used interchangeably. Constants are useful for both programmers and compilers: For programmers
+they are a form of self-documenting code and allow reasoning about correctness, while for compilers they allow
+compile-time and run-time checks that verify that constancy assumptions are not violated, and allow or simplify some
+compiler optimizations.
+
+\bd[Operator]
+An \textbf{operator} is a symbol that tells the compiler to perform specific mathematical or logical manipulations.
+\ed
+
+Common simple examples include arithmetic like addition, comparison and greater than, and logical operations like AND\@.
+More involved examples include assignments field access in a record or object, and the scope resolution operator.
+Languages usually define a set of built-in operators, and in some cases allow users to add new meanings to existing
+operators or even define new operators. \v
+
+Constants, functions, and operators are contrasted with a variable, which is an identifier with a value that can be
+changed during normal execution, i.e.\ the value is variable.
+
+\bd[Variable]
+A \textbf{variable} is an abstract storage location paired with an associated symbolic name, which contains some
+known or unknown quantity of information referred to as a value.
+\ed
+
+In simple terms, a variable is a container for a particular set of bits or type of data. A variable can eventually be
+associated with or identified by a memory address. The variable name is the usual way to reference the stored value,
+in addition to referring to the variable itself, depending on the context. This separation of name and content allows
+the name to be used independently of the exact information it represents. The identifier in computer source code can
+be bound to a value during run time, and the value of the variable may thus change during the course of program
+execution.
+
+\bd[Routine / Subroutine / Subprogram/ Function / Method / Procedure]
+A \textbf{routine}, or \textbf{subroutine}, ror \textbf{subprogram}, or \textbf{function}, or \textbf{method}, or
+\textbf{procedure} is a portion of code within a larger program, which performs a specific task and is relatively
+independent of the remaining code.
+\ed
+
+Functions may be defined within programs, or separately in libraries that can be used by many programs. Software
+consists of thousands of smaller functions, each responsible for different features. In modern programming, it's
+uncommon to see functions longer than around 100 lines of code, because by then, there's probably something that
+should be pulled out and made into its own function. Modularizing programs into functions not only allows a
+single programmer to write an entire app, but also allows teams of people to work efficiently on even bigger programs.
+Different programmers can work on different functions, and if everyone makes sure their code works correctly,
+then when everything is put together, the whole program should work too! Modern programming languages come with huge
+bundles of pre-written functions, called ``libraries''.
+
+\bd[Library]
+A \textbf{library} is a collection of resources used by computer programs, often for software development.
+\ed
+
+Libraries may include configuration data, documentation, help data, message templates, pre-written code and
+subroutines, classes, values or type specifications. Libraries are written by expert coders, made efficient and
+rigorously tested,and then given to everyone. There are libraries for almost everything, including networking,
+graphics, and sound -- topics we'll discuss in later chapters. For now let's go back to the fundamentals. \v
+
+A program starts at the first statement and runs down one at a time until it hits the end. One can alter this
+behaviour by making use of the so called ``control flow statements''.
+
+\bd[Control Flow Statement]
+A \textbf{control flow statement} is a statement that results in a choice being made as to which of two or more paths
+to follow.
+\ed
+
+There are several control flow statement types.
+
+\bd[Conditional Expressions]
+\textbf{Conditional expressions} are features of a programming language which perform different computations or
+actions depending on whether a programmer-specified boolean condition evaluates to true or false.
+\ed
+
+The most used conditional expression is the ``If-Then-Else'' statements which are executed once, a conditional path
+is chosen, and the program moves on.
+
+\fig{if}{0.38}
+
+To repeat some statements many times, we need to create a conditional loop.
+
+\bd[Conditional Loops]
+\textbf{Conditional loops} are a way for computer programs to repeat one or more various steps depending on
+conditions set either by the programmer initially or real-time by the actual program.
+\ed
+
+One way is a ``while statement'', also called a ``while loop''. A ``while loop'' checks condition for truthfulness
+before executing any of the code in the loop. If condition is initially false, the code inside the loop will never be
+executed. \v
+
+There's also the common ``for loop''. Instead of being a condition-controlled loop that can repeat forever until the
+condition is false, a ``for loop'' is count-controlled; it repeats a specific number of times. \v
+
+As we mentioned in the previous sections, breaking big programs into smaller functions allows many people to work
+simultaneously. They don't have to worry about the whole thing, just the function they're working on. So,  if you're
+tasked with writing a sort algorithm, you only need to make sure it sorts properly and efficiently. However, even
+packing up code into functions isn't enough. A better solution is to package functions into hierarchies, pulling
+related code together into ``objects''.
+
+\bd[Object]
+An \textbf{object} is the unit of code that is eventually derived from the process. It can be a variable, a data
+structure, a function, or a method.
+\ed
+
+\be
+For example, car's software might have several functions related to cruise control, like setting speed, nudging speed
+up or down, and stopping cruise control altogether. Since they're all related, we can wrap them up into a unified
+cruise control object. \v
+
+But, we don't have to stop there. Cruise control is just one part of the engine's software. There might also be sets
+of functions that control spark plug ignition, fuel pumps, and the radiator. So we can create a ``parent'' Engine
+object that contains all of these ``children'' objects. \v
+
+In addition to children objects, the engine itself might have its own functions. You want to be able to stop and
+start it, for example. It'll also have its own variables, like how many miles the car has traveled. In general,
+objects can contain other objects, functions, and variables. And of course, the engine is just one part of a Car
+object. There's also the transmission, wheels, doors, windows, and so on.
+\ee
+
+Programming languages often use something equivalent to the syntax described in the example. The idea of packing up
+functional units into nested objects is called Object Oriented Programming.
+
+\bd[Object Oriented Programming (OOP)]
+\textbf{Object-oriented programming} (\textbf{OOP}) is a programming paradigm based on the concept of ``objects'',
+which can contain data and code.
+\ed
+
+OOP is very similar to what we've been doing all long: hide complexity by encapsulating low-level details in
+higher-order components. Before we packed up things like transistor circuits into higher-level boolean gates. Now,
+we're doing the same thing with software. Yet again, it's a way to move up a new level of abstraction. \v
+
+OOP encapsulates data in the form of fields, often known as ``attributes'' or ``properties'', and code in the form of
+procedures, often known as ``methods''.
+
+\bd[Attribute / Property]
+An \textbf{attribute} or \textbf{property} is a specification that defines a property of an object.
+\ed
+
+For clarity, attributes should more correctly be considered metadata. An attribute is frequently and generally a
+property of a property. However, in actual usage, the term attribute can and is often treated as equivalent to a
+property depending on the technology being discussed. An attribute of an object usually consists of a name and a value.
+
+\bd[Method]
+A \textbf{method} is a function associated with an object.
+\ed
+
+Breaking up a big program, like a car's software, into functional units is perfect for teams. One team might be
+responsible for the cruise control system, and a single programmer on that team tackles a handful of functions. This
+is similar to how big, physical things are built, like skyscrapers. You'll have electricians running wires, plumbers
+fitting pipes, welders welding, painters painting, and hundreds of other people teeming all over the hull. They work
+together on different parts simultaneously, leveraging their different skills, until one day, you've got a whole
+working building. \v
+
+A method cain be either public or private.
+
+\bd[Public Method]
+\textbf{Public methods} are methods that are accessible both inside and outside the scope of your class. Any instance
+of that class will have access to public methods and can invoke them.
+\ed
+
+\bd[Private Method]
+\textbf{Private methods} are those methods which can't be accessed in other class except the class in which they are
+declared. We can perform the functionality only within the class in which they are declared.
+\ed
+
+\be
+Returning to our cruise control example: its code is going to have to make use of functions in other parts of the
+engine's software to, you know, keep the car at constant speed. That code isn't part of the cruise control team's
+responsibility. It's another team's code. Because the cruise control team didn't write that, they're going to need
+good documentation about what each function in the code does, and a well-defined Application Programming Interface,
+or API for short.
+\ee
+
+\bd[Documentation]
+\textbf{Documentation} is any communicable material that is used to describe, explain or instruct regarding some
+attributes of an object, system or procedure, such as its parts, assembly, installation, maintenance and use.
+\ed
+
+Documentation can be provided on paper, online, or on digital or analog media, such as audio tape or CDs. Examples
+are user guides, white papers, online help, and quick-reference guides. Paper or hard-copy documentation has become
+less common. Documentation is often distributed via websites, software products, and other online applications. \v
+
+Documentation promotes code reuse. So, instead of having programmers constantly write the same things over and over,
+they can track down someone else's code that does what they need. Then, thanks to documentation, they can put it to
+work in their program, without ever having to read through the code.
+
+\bd[Application Programming Interface (API)]
+An \textbf{Application Programming Interface} (\textbf{API}) is a connection between computers or between computer
+programs. It is a type of software interface, offering a service to other pieces of software.
+\ed
+
+\bd[API Specification]
+An \textbf{API specification} is a document or standard that describes how to build or use an API. A computer system
+that meets this standard is said to implement or expose an API\@.
+\ed
+
+The term API may refer either to the specification or to the implementation. \v
+
+An API connects computers or pieces of software to each other. It is not intended to be used directly by a person
+(the end user) other than a computer programmer who is incorporating it into software. An API is often made up of
+different parts which act as tools or services that are available to the programmer. A program or a programmer that
+uses one of these parts is said to call that portion of the API. The calls that make up the API are also known as
+subroutines, methods, requests, or endpoints. An API specification defines these calls, meaning that it explains how
+to use or implement them. \v
+
+One purpose of APIs is to hide the internal details of how a system works, exposing only those parts a programmer
+will find useful and keeping them consistent even if the internal details later change. An API may be custom-built
+for a particular pair of systems, or it may be a shared standard allowing interoperability among many systems.
+
+\be
+For example, in the Ignition Control object, there might be functions to set the RPM of the engine, check the spark
+plug voltage, as well as fire the individual spark plugs. Being able to set the motor's RPM is really useful. The
+cruise control team is going to need to call that function, but they don't know much about how the ignition system
+works. It's not a good idea to let them call functions that fire the individual spark plugs, or the engine might
+explode! Maybe. The API allows the right people access to the right functions and data.
+\ee
+
+OOP languages allow the right people to have access to the right functions and data by letting you specify whether
+methods are public or private. This ability to hide complexity, and selectively reveal it,  is the essence of OOP,
+and it's a powerful and popular way to tackle building large and complex programs. Pretty much every piece of
+software on your computer, or game running on your console was built using an OOP language, like C++, C\#, or
+Objective-C. Other popular OOP languages you may have heard of are Python and Java. \v
+
+It's important to remember that code, before being compiled, is just text. As I mentioned earlier, you could write
+code in Notepad or any old word processor. Some people do. But generally, today's software developers use
+special-purpose applications for writing programs, ones that integrate many useful tools for writing, organizing,
+compiling and testing code. Because they've put everything you need in one place, they're called Integrated Development
+Environments, or IDEs for short.
+
+\bd[Integrated Development Environment (IDE)]
+An \textbf{Integrated Development Environment} (\textbf{IDE}) is a software application that provides comprehensive
+facilities to computer programmers for software development.
+\ed
+
+An IDE normally consists of at least a source code editor for writing code (often with useful features like automatic
+color-coding to improve readability, syntax error checking, and many more), build automation tools and a debugger.
+Some IDEs contain the necessary compiler, interpreter, or both; others, such as do not. The boundary between an IDE and
+other parts of the broader software development environment is not well-defined; sometimes a version control system or
+various tools to simplify the construction of a graphical user interface (GUI) are integrated. Many modern IDEs also
+have a class browser, an object browser, and a class hierarchy diagram for use in OOP software development. \v
+
+In addition to coding and debugging, another important part of a programmer's job is documenting their code. This can
+be done in standalone files called ``README'' which tell other programmers to read that help file before diving in.
+
+\bd[README]
+A \textbf{README} file contains information about the other files in a directory or archive of computer software. A
+form of documentation, it is usually a simple plain text file. The file's name is generally written in uppercase.
+\ed
+
+It can also happen right in the code itself with comments. These are specially-marked statements that the program
+knows to ignore when the code is compiled. They exist only to help programmers figure out what's what in the source
+code. Good documentation helps programmers when they revisit code they haven't seen for a while, but it's also crucial
+for programmers who are totally new to it.
+
+% TODO: Finish up this section
+\section{Algorithms \& Data Structures}
+
+\bd[Data]
+\textbf{Data} are the quantities, characters, or symbols on which operations are performed by a computer, which may
+be stored and transmitted in the form of electrical signals and recorded on magnetic, optical, or mechanical
+recording media.
+\ed
+
+If data are arranged in a systematic way then they get a structure and become meaningful. These meaningful (or
+processed) data are called ``information''.
+
+\bd[Information]
+\textbf{Information} is processed, organized and structured data.
+\ed
+
+Information provides context for data and enables decision-making process.
+
+\be
+For example, a single customer's sale at a restaurant is data, this becomes information when the business is able to
+identify the most popular or least popular dish.
+\ee
+
+A data structure is a systematic way to organize data so that they can be used efficiently.
+
+\bd[Data Structure]
+A \textbf{data structure} is a data organization, management,and storage format that enables efficient access and
+modification.
+\ed
+
+More precisely, a data structure is a collection of data values, the relationships among them, and the functions or
+operations that can be applied to the data, i.e.\ it is an algebraic structure about data. Data structures are
+essential ingredients in creating fast and powerful algorithms, and they make code cleaner and easier to understand. \v
+
+\bd[Abstract Data Type (ADT)]
+An \textbf{abstract data type} (\textbf{ADT}) is a mathematical model for data types which is defined by its behavior
+(semantics) from the point of view of a user of the data and more specifically in terms of possible values, possible
+operations on data of this type, and the behavior of these operations.
+\ed
+
+ADTs contrast with data structures, which are concrete representations of data, and are the point of view of an
+implementer, not a user. \v
+
+Formally, an ADT may be defined as a ``class of objects whose logical behavior is defined by a set of values and a
+set of operations'', which is analogous to an algebraic structure in mathematics. In practice, many common data types
+are not ADTs, as the abstraction is not perfect. \v
+
+\textbf{Data structures are used to implements ADTs.} There are multiple ways (i.e.\ data structures) to implement an
+ADT. In simple words, ADTs tell us what is to be done and data structures tell us how to do it. In reality, different
+implementations of ADTs (a.k.a.\ different data structures) are compared for time and space efficiency. The one best
+suited depends on the requirements of the project. \v
+
+Data structures are divided into categories based on their characteristics. One basic division is between ``linear''
+and ``non-linear'' data structures.
+
+\bd[Linear Data Structures]
+\textbf{Linear data structures} have data elements arranged in linear (sequential) order and each member element is
+connected to its previous and next element, except from the first and the last.
+\ed
+
+\be
+Examples of linear data structures are lists, queues, stacks and arrays.
+\ee
+
+\bd[Non-Linear Data Structures]
+\textbf{Non-linear data structures} are those data structures in which data items are not arranged in a sequence.
+\ed
+
+\be
+Examples of non-linear data structures are Trees and Graphs.
+\ee
+
+Another important division is between ``static'' and ``dynamic'' data structures.
+
+\bd[Static Data Structures]
+A \textbf{static data structure} is a data structure where the data in memory are fixed in size and allocated during
+compile time.
+\ed
+
+In a static data structure the maximum size is needed to be known in advance, as memory cannot be reallocated at a
+later point. Such data structures are easy to implement as computer memory is also sequential. Static data structures
+have the advantage of fast access, but they are slower in insertion and deletion.
+
+\be
+An example of static data structure is an array.
+\ee
+
+\bd[Dynamic Data Structures]
+A \textbf{dynamic data structure} is a data structure where the data in memory are allocated in real time.
+\ed
+
+A dynamic data structure refers to a collection of data in memory that has the flexibility to grow or shrink in size,
+enabling a programmer to control exactly how much memory is utilised. Dynamic data structures have the advantage of
+fast insertion and deletion, but they are much slower in access.
+
+\be
+An example of dynamic data structure is a linked-list.
+\ee
+
+Efficiency of data structures is always measured in terms of time and (memory) space. An ideal data structure would
+be the one that takes the least possible time for all its operations and consumes the least memory space. \v
+
+A data type is an attribute of data, as defined by the domain of values data can take, the programming language used,
+or the operations that can be performed on the data.
+
+\bd[Data Type]
+A \textbf{data type} (or simply \textbf{type}) is an attribute of data which tells the compiler or interpreter how
+the programmer intends to use the data. A data type constrains the values that a data might take and the operations
+that can be done on the data.
+\ed
+
+In other words a data type provides a set of values from which an expression may take its values. \v
+
+Most programming languages support basic data types called ``primitive data types''.
+
+\bd[Primitive Data Type]
+\textbf{Primitive data types} are types that are built-in or basic to a language implementation.
+\ed
+
+\be
+Classic basic primitive types that are generally supported more or less directly by computer hardware and any
+programming language are:
+\bit
+\item \textbf{Character}: is a unit of information that roughly corresponds to a symbol, such as in an alphabet, in the
+written form of a natural language.
+\item \textbf{Integer}: represents some range of mathematical integers that are commonly represented in a computer as
+a group of bits. The size of the grouping varies so the set of integer sizes available varies between different types
+of computers.
+\item \textbf{Floating-point}: is an arithmetic unit using formulaic representation of real numbers as an approximation
+to support a trade-off between range and precision.
+\item \textbf{Fixed-point}: refers to a method of representing fractional numbers by storing a fixed number of digits of
+their fractional part.
+\item \textbf{Boolean}: is a data type that has one of two possible values (usually denoted ``true'' and ``false'')
+which is intended to represent the two truth values of logic and Boolean algebra.
+\item \textbf{Reference}: is a value that enables a program to indirectly access a particular data, such as a variable's
+value or a record, in the computer's memory or in some other storage device.
+\eit
+\ee
+
+Opposite to primitive data types, we also have the so called ``composite data types``.
+
+\bd[Composite Data Type]
+A \textbf{composite data type} is any data type which can be constructed in a program using the programming
+language's primitive data types or other composite data types.
+\ed
