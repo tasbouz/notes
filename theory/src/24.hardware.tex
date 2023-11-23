@@ -1,7 +1,255 @@
 %! suppress = EnDash
-Computers are complex machines, with much of the processing and work being done at a microscopic level. Inside a
-computer there are components that are what make any machine run and affect its performance. In general, we refer to
-these physical components as the ``hardware''.
+\section{Binary Representation}
+
+In the previous chapter, we talked about how computers evolved from electromechanical devices, that often had decimal
+representations of numbers – like those represented by teeth on a gear – to electronic computers with transistors
+that can turn the flow of electricity on or off. And fortunately, even with just two states of electricity, we can
+represent important information. We call this representation ''binary`` and the numbers in this representation
+``binary numbers''.
+
+\bd[Binary Number]
+A \textbf{binary number} is a number expressed in the base-2 numeral system or binary numeral system, a method of
+mathematical expression which uses only two symbols: typically $0$ and $1$.
+\ed
+
+Binary is useful because it's exactly what you need for representing the values ``true'' and ``false.'' In computers,
+an ``on'' state, when electricity is flowing, represents true and the ``off'' state, when no electricity is flowing,
+represents false. As in the definition of binary, we can also write 1's and 0's instead of true's and false's. \v
+
+Hence, a single binary value can be used to represent a number. Instead of true and false, we can call these two
+states one and zero, which is actually incredibly useful. And if we want to represent larger things, we just need to
+add more binary digits. This works exactly the same way as the decimal numbers. With decimal numbers, there are only
+ten possible values a single digit can be: 0 through 9. To get numbers larger than 9, we just add more digits to the
+front. We can do the same with binary.
+
+\be
+For example, let's take the number 263. What does this number actually represent? Well, it means we've got two 100s,
+six 10s, and three 1s. If you add those all together, we've got 263. Notice how each column has a different
+multiplier; in this case, it's 100, 10, and 1. Each multiplier is 10 times larger than the one to the right. That's
+because each column has 10 possible digits to work with, 0 through 9, after which you have to carry one to the next
+column. For this reason, it's called base 10 notation, also called decimal since deci means 10.
+\ee
+
+Binary works exactly the same way, it's just base 2. That's because there are only two possible digits in binary, 1
+and 0. This means that each multiplier has to be two times larger than the column to its right. Instead of 100s, 10s,
+and 1s, we now have 4s, 2s, and 1s.
+
+\be
+Take for example the binary number 101. This means we have one 4, zero 2s, and one 1. Add those all together, and
+we've got the number 5 in base 10.
+\ee
+
+But to represent larger numbers, binary needs a lot more digits.
+
+\be
+Take this number in binary: 10110111. We can convert it to decimal in the same way. We have:
+\bse
+1\times128 + 0\times64 + 1\times32 + 1\times16 + 0\times8 + 1\times4 +
+1\times2 + 1\times1 = 183
+\ese
+\ee
+
+Math with binary numbers isn't hard either.
+
+\be
+Take for example decimal addition of 183 + 19. First we add 3 + 9 = 12, so we put 2 as the sum and carry 1 to the 10s
+column. Now we add 8 + 1 + 1 (that we carried) = 10, so the sum is 0 carry 1. Finally, we add 1 + 1 (that we carried)
+= 2, so the total sum is 202. \v
+
+Here's the same sum but in binary. Just as before, we start with the 1s column. Adding 1 + 1 = 2 but there is no
+symbol 2, so we use 10 and put 0 as our sum and carry the 1, just like in our decimal example. 1 + 1 + 1 (that we
+carried) = 3, or 11 in binary, so we put the sum as 1 and carry 1 again and so on. We end up with this number
+11001010, which is the same as the number 202 in base 10.
+\ee
+
+Each of these binary digits 1 or 0 is called a bit.
+
+\bd[Bit]
+The \textbf{bit}, a contraction of \textbf{bi}nary digi\textbf{t}, is the basic unit of information in computing,
+representing a logical state with one of two possible values, most commonly represented as either $1$ or $0$.
+\ed
+
+So in these last few examples we were using 8-bit numbers with their lowest value of 0 (i.e.\ $00000000$) and highest
+value of 255 (i.e.\ $11111111$). That's 256 different values, or $2^8$. You might have heard of 8-bit computers or
+8-bit graphics or audio. These were computers that did most of their operations in chunks of 8 bits, but 256
+different values isn't a lot to work with, so it meant things like 8-bit games were limited to just 256 different
+colours for their graphics.
+
+\bd[8-bit]
+In computer architecture, \textbf{8-bit} integers or other data units are those that are 8 bits wide (1 byte).
+\ed
+
+8 bits is such a common size in computing it has a special word: a byte.
+
+\bd[Byte]
+The \textbf{byte} is a unit of digital information that consists of eight bits.
+\ed
+
+Historically, the byte was the number of bits used to encode a single character of text in a computer and for this
+reason it is the smallest addressable unit of memory in many computer architectures. In binary, a kilobyte has
+$2^{10}$ bytes, or 1024. \v
+
+There are also 32-bit and 64-bit computer architectures. What this mean is that they operate in chunks of 32 or 64
+bits. The largest number you can represent with 32 bits is just under 4.3 billion, which is 32 1s in binary.
+
+\bd[32-bit]
+In computer architecture, \textbf{32-bit} integers or other data units are those that are 32 bits wide (4 bytes).
+\ed
+
+\bd[64-bit]
+In computer architecture, \textbf{64-bit} integers or other data units are those that are 64 bits wide (8 bytes).
+\ed
+
+Of course, not everything is a positive number, so we need a way to represent positive and negative numbers. Most
+computers use the first bit for the sign, 1 for negative and 0 for positive numbers, and then use the remaining 31
+bits for the number itself. That gives us a range of roughly plus or minus two billion. While this is a pretty big
+range of numbers, it's not enough for many tasks. This is why 64-bit numbers are useful. The largest value a 64-bit
+number can represent is around 9.2 quintillion. Most importantly, computers must label locations in their memory
+known as ``addresses'' in order to store and retrieve values. As computer memory has grown to gigabytes and terabytes
+– that's trillions of bytes – it was necessary to have 64-bit memory addresses as well. More on that later. \v
+
+In addition to negative and positive numbers, computers must deal with numbers that are not whole numbers, like 12.7
+and 3.14. These are called floating-point numbers because the decimal point can float around in the middle of a
+number. Several methods have been developed to represent floating-point numbers, the most common of which is the IEEE
+754 standard. In essence, this standard stores decimal values sort of like scientific notation. For example, 625.9
+can be written as $0.6259 * 10^3$. There are two important numbers here. The 0.6259 is called the ``significand'' and
+3 is the ``exponent''. In a 32-bit floating-point number, the first bit is used for the sign of the number, positive
+or negative. The next 8 bits are used to store the exponent, and the remaining 23 bits to store the significand. \v
+
+Computers use numbers to represent also letters. The most straightforward approach might be to simply number the
+letters of the alphabet, A being 1, B being 2, C being 3, and so on. Francis Bacon, the famous English writer, used
+5-bit sequences to encode all 26 letters of the English alphabet to send secret messages back in the 1600s. 5 bits
+can store 32 possible values, so that's enough for the 26 possible letters but not enough for punctuation, digits,
+and upper and lowercase letters. Enter ASCII, the American Standard Code for Information Interchange.
+
+\bd[ASCII]
+\textbf{ASCII} abbreviated from American Standard Code for Information Interchange, is a character encoding standard
+for electronic communication and is one of the IEEE milestones. ASCII codes represent text in computers,
+telecommunications equipment, and other devices.
+\ed
+
+Invented in 1963, ASCII was a 7-bit code, enough to store 128 different values. With this expanded range, it could
+encode capital letters, lowercase letters, digits 0 through 9, and symbols like the @ sign and punctuation marks.
+
+\be
+For example, a lowercase A is represented by the number 97, while a capital A is 65, a colon is 58, and a close
+parenthesis is 41.
+\ee
+
+ASCII even had a selection of special command codes, such as a newline character to tell a computer where to wrap a
+line to the next row. In older computers, the line of text would literally continue off the edge of the screen if you
+didn't include a newline character. \v
+
+Because ASCII was such an early standard, it became widely used, and critically allowed different computers built by
+different companies to exchange data. This ability to universally exchange information is called ``interoperability''.
+However, it did have a major limitation: it was really only designed for English. Fortunately, there are 8 bits in
+a byte note 7, and it soon became popular to use codes 128-255, previously unused, for national characters. In the
+US, those extra numbers were largely used to encode additional symbols like mathematical notation, graphical
+elements, and common accentuated characters. \v
+
+On the other hand, while the Latin characters were used universally, Russian computers used the extra codes to encode
+Cyrillic characters and Greek computers used Greek letters and so on. And national character codes worked pretty well
+for most countries. The problem was if you opened an email written in Latvian on a Turkish computer, the result was
+completely incomprehensible, and things totally broke with the rise of computing in Asia, as languages like Chinese
+and Japanese have thousands of characters. There was no way to encode all those characters in 8 bits. In response,
+each country invented multibyte encoding schemes, all of which were mutually incompatible. The Japanese were so
+familiar with this encoding problem that they even had a special name for it, mojibake, which means ``scrambled
+text''. \v
+
+And so it was born ``Unicode'', one format to rule them all.
+
+\bd[Unicode]
+\textbf{Unicode}, formally the Unicode Standard, is an information technology standard for the consistent encoding,
+representation, and handling of text expressed in most of the world's writing systems. The standard, which is
+maintained by the Unicode Consortium, defines 144697 characters covering 159 modern and historic scripts, as well as
+symbols, emoji, and non-visual control and formatting codes.
+\ed
+
+Devised in 1992 to finally do away with all the different international schemes, it replaced them with one
+universal encoding schemes. The most common version of Unicode uses 16 bits with space for over a million codes,
+enough for every single character from every language ever used – more than 120000 of them in over 100 types of
+script, plus space for mathematical symbols and even graphical characters like emoji. \v
+
+In the same way that ASCII defines a scheme for encoding letters as binary numbers, other file formats like MP3s or
+GIFs use binary numbers to encode sounds or colours of a pixel in our photos, movies, and music. Most importantly,
+under the hood it all comes down to long sequences of bits. Text messages, this YouTube video, every webpage on the
+internet, and even your computer's operating system are nothing but long sequences of 1s and 0s.
+
+\subsection{Logic Gates}
+
+Another reason computers use binary is that an entire branch of mathematics already existed that dealt exclusively
+with true and false values. And it had figured out all the necessary rules and operations for manipulating them.
+It's called ``Boolean algebra''\footnote{We have introduced a lot of the concepts for Boolean algebra in the first
+chapter of the ``Mathematics`` part of the notes however back then we focused on the abstract mathematical part. For
+the sake of completeness, we will repeat some of the most basic points again but focusing on the practical aspect.}.
+
+\bd[Boolean Algebra]
+\textbf{Boolean algebra}  is the branch of algebra in which the values of the variables are the truth values true and
+false, usually denoted 1 and 0, respectively.
+\ed
+
+George Boole, from which Boolean Algebra later got its name, was a self-taught English mathematician in the 1800s. He
+was interested in representing logical statements that went ``under, over, and beyond'' Aristotle's approach to logic,
+which was, unsurprisingly, grounded in philosophy. Boole's approach allowed truth to be systematically and formally
+proven, through logic equations which he introduced in his first book ``The Mathematical Analysis of Logic'' in 1847.
+In Boolean algebra, the values of variables are true and false, and the operations are logical.
+
+\bd[Logical Operation]
+A \textbf{logical operation} is a special symbol or word that connects two or more phrases of information. It is most
+often used to test whether a certain relationship between the phrases is true or false.
+\ed
+
+\bd[Logic Gate]
+A \textbf{logic gate}, or simply \textbf{gate}, is an idealized model of computation or physical electronic device
+implementing a logical operation performed on one or more binary inputs that produces a single binary output.
+\ed
+
+Logic gates are devices that perform one or all the Boolean logic operations AND, NAND, NOR, NOT, OR, XNOR, and XOR\@.
+All types of logic gate, except NOT, accept two binary digits as input, and produce one binary digit as output. NOT
+gates accept only one input digit. All digital systems can be constructed by only three basic logic gates. These gates
+are the AND gate, the OR gate, and the NOT gate.
+
+\bd[NOT Gate]
+A \textbf{NOT gate} (or \textbf{inverter}) is a logic gate which implements logical negation. In mathematical logic
+it is equivalent to the logical negation operator (¬).
+\ed
+
+A NOT takes a single boolean value, either true or false, and negates it. It flips true to false, and false to true.
+We can write out a little logic table that shows the original value under ``Input'', and the outcome after applying the
+operation under ``Output''.
+
+\fig{not_gate}{0.5}
+
+\bd[AND Gate]
+The \textbf{AND gate} is a basic digital logic gate that implements logical conjunction. In mathematical logic it is
+equivalent to the logical conjunction operator (∧).
+\ed
+
+AND gate behaves according to the truth table below. A true output (1) results only if all the inputs to the AND gate
+are true (1). If none or not all inputs to the AND gate are true, false output results. The function can be extended
+to any number of inputs.
+
+\fig{and2}{0.6}
+
+\vspace{-15pt}
+
+\bd[OR Gate]
+The \textbf{OR gate} is a basic digital logic gate that implements logical disjunction. In mathematical logic it is
+equivalent to the logical disjunction operator (∨).
+\ed
+
+OR gate behaves according to the truth table below. A true output (1) results if one or both the inputs to the gate
+are true (1). If neither input is true, a false output (0) results. In another sense, the function of OR effectively
+finds the maximum between two binary digits, just as the complementary AND function finds the minimum.
+
+\fig{or2}{0.6}
+
+\section{Hardware}
+
+In this chapter we will be focusing on the fundamental building blocks of a computer. Computers are complex machines
+, with much of the processing and work being done at a microscopic level. Inside a computer there are components that
+are what make any machine run and affect its performance. In general, we refer to these physical components as the
+``hardware''.
 
 \bd[Hardware]
 \textbf{Hardware} includes the physical parts of a computer.
@@ -23,7 +271,7 @@ the ``First Draft of a Report on the EDVAC'' including all the following compone
 \eit
 \ed
 
-\section{Arithmetic Logic Unit (ALU)}
+\subsection{Arithmetic Logic Unit (ALU)}
 
 Representing and storing numbers is an important function of a computer, but the real goal is computation or
 manipulating numbers in a structured and purposeful way, like adding two numbers together. These operations are
@@ -42,7 +290,7 @@ everything uses it. \v
 This is perhaps the most famous ALU ever: the Intel 74181. When it was released in 1970, it was the first complete
 ALU that fit entirely inside a single chip, which was a huge engineering feat.
 
-\fig{SN74S181N}{0.2}
+\fig{SN74S181N}{0.15}
 
 Unlike the 8 bit ALU we made today, the 74181 could only handle 4 bit inputs. It used about 70 logic gates, and it
 couldn't multiply or divide, but it was a huge step forward in miniaturization, opening the doors to more capable,
@@ -67,17 +315,62 @@ checking if a number is negative. Hence, a simple ALU, performs arithmetic and l
 there's not much point in calculating a result only to throw it away - it would be useful to store that value
 somehow, and maybe even run several operations in a row. That's where computer memory comes in!
 
-\section{Registers \& RAM}
+\subsection{Registers \& RAM}
+
+All of the logic circuits we've discussed so far go in one direction, always flowing forward. But we can also create
+circuits that loop back on themselves.
+
+\be
+Let's try taking an ordinary OR gate, and feed the output back into one of its inputs and see what happens. First,
+let's set both inputs to 0. So 0 OR 0 is 0, and so this circuit always outputs 0. If we were to flip input A to 1. 1
+OR 0 is 1, so now the output of the OR gate is 1. A fraction of a second later, that loops back around into input B,
+so the OR gate sees that both of its inputs are now 1. 1 OR 1 is still 1, so there is no change in output. If we flip
+input A back to 0, the OR gate still outputs 1. So now we've got a circuit that records a ``1'' for us. This change
+is permanent!
+
+\fig{or_1}{.15}
+\ee
+
+\be
+Now let's look at this same circuit, but with an AND gate instead. We'll start inputs A and B both at 1. 1 AND 1
+outputs 1 forever. But, if we then flip input A to 0, because it's an AND gate, the output will go to 0. So this
+circuit records a 0, the opposite of our other circuit. Like before, no matter what input we apply to input A
+afterwards, the circuit will always output 0.
+
+\fig{and_1}{.15}
+\ee
+
+Now we've got circuits that can record both 0s and 1s. The key to making this a useful piece of memory is to combine
+our two circuits into what is called the AND-OR latch.
 
 \bd[Latch / Flip-Flop]
 A \textbf{latch} (or \textbf{flip-flop}) is a circuit that has two stable states and can be used to store state
-information. The circuit can be made to change state by signals applied to one or more control inputs and will have one
-or two outputs.
+information – a bistable multivibrator. The circuit can be made to change state by signals applied to one or more
+control inputs and will have one or two outputs. It is the basic storage element in sequential logic.
 \ed
 
 Latches are fundamental building blocks of digital electronics systems used in computers, communications, and many
-other types of systems. They are the basic storage elements in sequential logic. Most important of all are the basic
-building blocks of computer memory.
+other types of systems.
+
+\be
+The AND-OR latch has two inputs, a ``set'' input, which sets the output to a 1, and a ``reset'' input, which resets the
+output to a 0. If set and reset are both 0, the circuit just outputs whatever was last put in it. In other words, it
+remembers a single bit of information! Memory! This is called a ``latch'' because it ``latches onto'' a particular
+value and stays that way.
+
+\fig{and_or_latch}{0.15}
+
+Let's test the AND-OR latch. Let's start everything at 0. If we toggle the Data wire from 0 to 1 or 1 to 0, nothing
+happens - the output stays at 0. That's because the write enable wire is off, which prevents any change to the
+memory. So we need to ``open'' the ``gate'' by turning the write enable wire to 1. Now we can put a 1 on the data
+line to save the value to our latch. Notice how the output is now 1. Success! We can turn off the enable line and the
+output stays as 1. Once again, we can toggle the value on the data line all we want, but the output will stay the
+same. The value is saved in memory. Now let's turn the enable line on again use our data line to set the latch to 0.
+Done. Enable line off, and the output is 0. And it works!
+\ee
+
+Latches are the basic storage elements in sequential logic. Most important of all are the basic building blocks of
+computer memory.
 
 \bd[Computer Memory]
 \textbf{Computer memory} is any physical device capable of storing information temporarily, like RAM (random access
@@ -108,7 +401,7 @@ write to our register, we first have to enable all the latches. We can do this w
 all of their enable inputs, which we set to 1. We then send our data in using the 8 data wires, and then set enable
 back to 0, and the 8 bit value is now saved in memory.
 
-\fig{reg1}{0.12}
+\fig{reg1}{0.17}
 
 Putting latches side-by-side works ok for a small-ish number of bits. A 64-bit register would need 64 wires running
 to the data pins, and 64 wires running to the outputs. Luckily we only need 1 wire to enable all the latches, but
@@ -116,7 +409,7 @@ that's still 129 wires. For 256 bits, we end up with 513 wires! The solution is 
 arrange our latches in a row, we put them in a grid. For 256 bits, we need a 16 by 16 grid of latches with 16 rows
 and columns of wires.
 
-\fig{reg2}{0.15}
+\fig{reg2}{0.22}
 
 It's clear that we need a way to uniquely specify each intersection in the matrix. We can think of this like a city,
 where you might want to meet someone at 12th avenue and 8th street -- that's an address that defines an intersection.
@@ -148,19 +441,19 @@ to mechanical limitations.
 \be
 Here's an actual stick of RAM - with 8 memory modules soldered onto the board.
 
-\fig{ram}{0.1}
+\fig{ram}{0.17}
 
 If we open up one of these modules and zoom in, we will see are 32 squares of memory.
 
-\fig{ram2}{0.07}
+\fig{ram2}{0.12}
 
 Zoom into one of those squares, and we can see each one is composed of 4 smaller blocks.
 
-\fig{ram3}{0.09}
+\fig{ram3}{0.14}
 
 If we zoom in again, we get down to the matrix of individual bits.
 
-\fig{ram4}{0.09}
+\fig{ram4}{0.14}
 
 This is a matrix of 128 by 64 bits. That's 8192 bits in total. Each of our 32 squares has 4 matrices, so that's 32
 thousand, 7 hundred and 68 bits. And there are 32 squares in total. So all in all, that's roughly 1 million bits of
@@ -180,7 +473,7 @@ scaled up and made some RAM, a larger bank of numbers that can store a lot of nu
 Now it's time to put that all together and build ourselves the heart of any compute, the Central Processing Unit,
 most commonly called the CPU\@.
 
-\section{Central Processing Unit (CPU)}
+\subsection{Central Processing Unit (CPU)}
 
 \bd[Central Processing Unit (CPU)]
 A \textbf{central processing unit} (\textbf{CPU}), is the electronic circuitry that executes instructions comprising
@@ -188,7 +481,7 @@ a computer program. The CPU performs basic arithmetic, logic, controlling, and i
 specified by the instructions in the program.
 \ed
 
-\fig{cpu}{0.08}
+\fig{cpu}{0.07}
 
 The form, design, and implementation of CPUs have changed over time, but their fundamental operation remains almost
 unchanged. Principal components of a CPU include the arithmetic–logic unit (ALU) that performs arithmetic and logic
@@ -218,7 +511,7 @@ To keep things simple, we'll assume it only has 16 memory locations, each contai
 processor four, 8-bit memory registers, labeled A, B, C and D which will be used to temporarily store and manipulate
 values.
 
-\fig{cpu1}{0.2}
+\fig{cpu1}{0.21}
 \ee
 
 We already know that data can be stored in memory as binary values and programs can be stored in memory too. We can
@@ -318,7 +611,7 @@ different address from which the next instruction will be fetched. \v
 Since CPU is one of the most important parts of a computer, before we move on let's see all of this again in an
 application.
 
-\subsection{Application: Building A CPU}
+\subsubsection{Application: Building A CPU}
 
 The first phase of a CPU's, the fetch phase, is where we retrieve our first instruction. First, we wire our
 Instruction Address Register to our RAM module. The register's value is 0, so the RAM returns whatever value is
@@ -376,7 +669,7 @@ register by 1, and we're done with another cycle. The final CPU looks like this.
 
 \fig{cpu10}{0.18}
 
-\subsection{Advanced CPU Designs}
+\subsubsection{Advanced CPU Designs}
 
 The very first, single-chip CPU was the Intel 4004, a 4-bit CPU released in 1971.
 
@@ -439,7 +732,7 @@ to become problematic. It also takes time for RAM itself to look up the address,
 itself for output. So a ``load'' instruction might take dozens of clock cycles to complete, and during this
 time the processor is just sitting idle waiting for data.
 
-\subsection{Cache}
+\subsubsection{Cache}
 
 \bd[Cache]
 A \textbf{cache} is a hardware or software component that stores data so that future requests for that data can be
@@ -487,7 +780,7 @@ often this synchronization happens when the cache is full, but a new block of me
 processor. Before the cache erases the old block to free up space, it checks its dirty bit, and if it's dirty, the
 old block of data is written back to RAM before loading in the new block.
 
-\subsection{Instruction Pipelining}
+\subsubsection{Instruction Pipelining}
 
 Another trick to boost cpu performance is called instruction pipelining.
 
@@ -527,7 +820,7 @@ complicated. \v
 
 Nonetheless, pipelining is tremendously effective and almost all processors implement it today.
 
-\subsection{Multi-Core \& Multiple Processors}
+\subsubsection{Multi-Core \& Multiple Processors}
 
 The techniques we've discussed so far primarily optimize the execution throughput of a single stream of instructions,
 but another way to increase performance is to run several streams of instructions at once with multicore processors.
@@ -559,7 +852,7 @@ those cores runs at 1.45 gigahertz. In total, this machine can process 93 Quadri
 Long story short, not only have computer processors gotten a lot faster over the years, but also a lot more
 sophisticated, employing all sorts of clever tricks to squeeze out more and more computation per clock cycle.
 
-\section{Memory \& Storage}
+\subsection{Memory \& Storage}
 
 Up to this point We've talked about computer memory several times. In general, computer memory is non-permanent. If
 your computer accidentally gets unplugged and turns off, any data saved in memory is lost. For this reason, it's
@@ -860,7 +1153,7 @@ Because they contain no moving parts, they don't really have to seek anywhere, s
 under 1/1000th of a second. That's fast! But it's still many times slower than your computer's RAM. For this reason,
 computers today still use memory hierarchies.
 
-\section{Motherboard}
+\subsection{Motherboard}
 All the components we have described so far are ``grouped`` together on the so called ``Motherboard''.
 
 \bd[Motherboard]
