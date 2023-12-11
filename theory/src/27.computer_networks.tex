@@ -482,13 +482,10 @@ RUDP\@.
 
 \subsection{Layer 5: Session Layer}
 
-\bd[Session]
-A \textbf{session} is a semi-permanent interactive information exchange among communicating devices.
-\ed
-
 \bd[Session Layer]
 The \textbf{session layer} is the fifth layer of the OSI model, and it is the one responsible for establishing,
-managing, synchronizing, and terminating sessions. Its PDU is data.
+managing, synchronizing, and terminating semi-permanent interactive information exchange among communicating devices
+called sessions. Its PDU is data.
 \ed
 
 The session layer is the fifth layer of the OSI model, and it responds to service requests from the presentation
@@ -573,8 +570,6 @@ email clients typically use SMTP only for sending messages to a mail server for 
 email to the mail server
 \eit
 
-\stop
-
 \section{Network Devices (Hardware)}
 
 \bd[Network Devices (Hardware)]
@@ -624,7 +619,7 @@ A \textbf{bridge} is a computer networking device that creates a single,aggregat
 networks or network segments.
 \ed
 
-\fig{bridge}{0.5}
+\fig{bridge}{0.6}
 
 Bridges are used to connect two or more hosts or network segments together.The basic role of bridges in network
 architecture is storing and forwarding frames between the different segments that the bridge connects. They use
