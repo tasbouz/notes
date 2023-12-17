@@ -1,0 +1,176 @@
+Machine learning (ML) is an area of artificial intelligence which focuses on the study of computer algorithms that can
+improve automatically through experience and by the use of data.
+
+\bd[Machine Learning (Arthur Samuel)]
+\textbf{Machine learning} is the field of study that gives computers the ability to learn without being explicitly
+programmed.
+\ed
+
+\bd[Machine Learning (Tom Mitchell)]
+A computer program is said to \textbf{learn} from experience $E$ with respect to a task $T$ and a performance measure
+$P$, if its performance on $T$, as measured by $P$, improves with experience $E$.
+\ed
+
+ML algorithms build a model based on sample data, known as training data, in order to make predictions or decisions
+without being explicitly programmed to do so.
+
+\section{Use Cases}
+
+ML is being widely used in various industries, both for business and personal applications. It has shown its
+effectiveness in solving a wide range of problems. However, it is important to recognize that ML is not a universal
+solution and may not always be the most suitable approach. It is essential to consider whether ML is necessary and
+cost-effective for a particular project before diving into it. \v
+
+The essence of ML is that a pattern exists, and it can not be pined down mathematically, however we have
+data on it, and we can treat it in a probabilistic way. Thus, ML is great for:
+\bit
+\item \textbf{Systems that have the capacity to learn}: For an ML system to learn, there must be something for it to
+learn from. In most cases, ML systems learn from data.
+\item \textbf{Data is available, or it's possible to collect data}: Because ML learns from data, there must be data for
+it to learn from.
+\item \textbf{There are patterns to learn, and they are complex}: Complex problems for which using a traditional
+approach yields no good solution, ML techniques can perhaps find one.
+\item \textbf{Existing solutions require a long lists of rules}: One ML algorithm can often simplify code and perform
+better than the traditional approach.
+\item \textbf{It's a predictive problem}: ML models make predictions, so they can only solve problems that require
+predictive answers.
+\item \textbf{Unseen data shares patterns with the training data}: The patterns your model learns from existing data are
+only useful if unseen data also share these patterns. In technical terms, it means your unseen data and training data
+should come from similar distributions.
+\item \textbf{It's repetitive}: When a task is repetitive, each pattern is repeated multiple times, which makes it
+easier for machines to learn it. Despite exciting progress in few-shot learning research, most ML algorithms still
+require many examples to learn a pattern.
+\item \textbf{The cost of wrong predictions is cheap}: Unless your ML model's performance is 100\% all the time, which is
+highly unlikely for any meaningful tasks, your model is going to make mistakes. ML is especially suitable when the cost
+of a wrong prediction is low.
+\item \textbf{It's at scale}: ML solutions often require nontrivial up-front investment on data, compute, infrastructure,
+and talent, so it'd make sense if we can use these solutions a lot. ``At scale'' means different things for different
+tasks, but, in general, it means making a lot of predictions. A problem might appear to be a singular prediction, but
+it's actually a series of predictions.
+\item \textbf{The patterns are constantly changing}: If your problem involves one or more constantly changing patterns,
+hardcoded solutions such as handwritten rules can become outdated quickly. Figuring how your problem has changed so that
+you can update your handwritten rules accordingly can be too expensive or impossible. Because ML models learn from data,
+you can update your ML model with new data without having to figure out how the data has changed.
+\eit
+
+ML applications in enterprises are diverse, serving both internal use cases (reducing costs, generating customer
+insights and intelligence, internal processing automation) and external use cases (improving customer experience,
+retaining customers, interacting with customers) as shown in the following figure. \v
+
+\fig{ml_use_cases}{0.42}
+
+\section{Requirements}
+
+We can't say that we've successfully built an ML system without knowing what requirements the system has
+to satisfy. The specified requirements for an ML system vary from use case to use case. However, most
+systems should have the following four characteristics:
+\bit
+\item \textbf{Reliability}: The system should continue to perform the correct function at the desired level of
+performance even in the face of adversity (hardware or software faults, and even human error).
+\item \textbf{Scalability}: Whichever way your system grows (complexity, traffic volume, ML models),
+there should be reasonable ways of dealing with that growth, both in resource scaling, but also in artifact management.
+\item \textbf{Maintainability}: It's important to structure your workloads and set up your infrastructure in such a
+way that different contributors can work using tools that they are comfortable with, instead of one group of
+contributors forcing their tools onto other groups.
+\item \textbf{Adaptability}: Because ML systems are part code, part data, and data can change quickly,
+ML systems need to be able to evolve quickly. To adapt to shifting data distributions and business
+requirements, the system should have some capacity for both discovering aspects for performance improvement and
+allowing updates without service interruption.
+\eit
+
+\section{Types}
+
+There are so many different types of ML systems that it is useful to classify them in broad categories,
+based on the following criteria:
+\ben
+\item Whether they are trained with human supervision. Based on this category we have the following
+subcategories:
+\bit
+\item \textbf{Supervised Learning}: In supervised learning the training set you feed to the algorithm includes the
+desired solutions, called labels. Some of the most important supervised learning algorithms are: Linear Regression,
+Logistic Regression, Support Vector Machines (SVMs), k-Nearest Neighbors, Decision Trees, Random Forests, Neural
+Networks.
+\item \textbf{Unsupervised Learning}: In unsupervised learning the training data is unlabeled so the system tries to
+learn without a teacher. Some of the most important unsupervised learning algorithms are:
+\bit
+\item Clustering algorithms like K-Means, DBSCAN and Hierarchical Cluster Analysis (HCA).
+\item Anomaly detection algorithms such as One-Class SVM and Isolation Forest.
+\item Dimensionality reduction algorithms such as Principal Component Analysis (PCA), Kernel PCA, Locally Linear
+Embedding (LLE), and t-Distributed Stochastic Neighbor Embedding (t-SNE).
+\eit
+\item \textbf{Semisupervised Learning}: In semisupervised learning one has plenty of unlabeled instances, and few
+labeled instances. Most semisupervised learning algorithms are combinations of unsupervised and supervised algorithms.
+\item \textbf{Reinforcement Learning}: In reinforcement learning the learning system, called an agent, can observe
+the environment, select and perform actions, and get rewards in return. It must then learn by itself what is the
+best strategy, called a policy, to get the most reward over time. A policy defines what action the agent should
+choose when it is in a given situation.
+\eit
+\item Whether they can learn incrementally on the fly. Based on this category we have the following
+subcategories:
+\bit
+\item \textbf{Offline or Batch or Asynchronous Learning}: In offline, or batch, or asynchronous leaning the system is
+incapable of learning incrementally, and it must be trained using all the available data. This will generally take a
+lot of time and computing resources, so it is typically done offline. First the system is trained, and then it is
+launched into production and runs without learning anymore, it just applies what it has learned.
+\item \textbf{Online or Synchronous Learning}: In online, or synchronous learning one trains the system incrementally by
+feeding it data instances sequentially, either individually or in small groups called ``mini-batches''. Each learning
+step is fast and cheap, so the system can learn about new data on the fly, as it arrives.
+\eit
+\item Whether they work by simply comparing new data points to known data
+points, or instead by detecting patterns in the training data and building a predictive model. Based on this
+category we have the following subcategories:
+\bit
+\item \textbf{Instance-Based Learning}: In instance-based learning the system learns the examples by heart, then
+generalizes to new cases by using a similarity measure to compare them to the learned examples (or a subset of them).
+\item \textbf{Model-Based Learning}: In model-based learning one in order to generalize from a set of examples they
+build a model of these examples and then use that model to make predictions.
+\eit
+\een
+
+These criteria are not exclusive. You can combine them in any way you like. This fact makes ML is a very broad topic
+with many different branches and applications. In these notes we will cover the vast majority of them.
+
+\subsection{Conventions}
+
+Before we end this section we have to mention that there are some common conventions in the ML
+community around the notation used to describe various notions. We will of course follow the same conventions. In
+order to briefly formalize the essence of ML we will introduce some of the very basic notation that we
+will be using throughout the notes now, although we will introduce more notation in the later chapters. Here are some
+very basic concepts with their usual notation:
+\bit
+\item Input: $x \in X$.
+\item Output: $y \in Y$.
+\item Data: $\{ x_{i}, y_{i} \}, \:\:\: i=1,2,3,\ldots, m$.
+\item Target Function: $f: X \to Y$.
+\item Hypothesis Function: $h: X \to Y$ with $ h \approx f$.
+\item Hypothesis Set: $H = \{h\}$.
+\eit
+
+Having defined these mathematical notation we can now say that, informally, the goal of ML is, based on
+the data $\{ x_{i}, y_{i} \}$, to discover a hypothesis function $h$, out of a set of possible hypothesis functions $H$,
+that behaves in a similar way with the target function $f$ which is, and always will be, unknown to us.
+
+\fig{img/mlmodel}{0.3}
+
+The question is how can we learn an unknown function $f$ just based on the data we already have, when the unknown
+function $f$ in general can take any value outside the known data. The short answer is that we can not however,
+without proving it, the following relation holds:
+\bse
+P \Big[ | E_{\text{in}} (h) - E_{\text{out}} (h) | > \epsilon \Big] \leq 2 \cdot M \cdot e^{2\epsilon^2m}
+\ese
+
+where $ E_{\text{in}} (h)$ is the error that we get for $h$ in the known data, $E_{\text{out}} (h)$ is the error that
+we will get when we use $h$ for new data, $M$ is the number of possible hypothesis function $h$ (i.e.\ the cardinality
+of the hypothesis set $H = \{h\}$, $\epsilon$ is the tolerance that we have for errors, and $m$ is the number of data
+points. This equation tells us that no matter what, learning is possible only in a probabilist sense. We will always
+have an error, since the whole process carries a stochastic nature. \v
+
+So we can informally summarize what we are trying to do with ML as:
+\bit
+\item From aforementioned relation: $E_{\text{in}} \approx E_{\text{out}}$.
+\item From learning algorithm: $E_{\text{in}} \approx 0$.
+\item From the combination of these 2: $E_{\text{out}} \approx 0$.
+\eit
+
+By having $E_{\text{out}} \approx 0$, that means that our hypothesis function $h$ generalizes well for out of sample
+data, so we can use it for predictions. That in a nutshell is how ML works.

@@ -1,0 +1,152 @@
+%! suppress = EscapeUnderscore
+\chapter{Constrained Optimization} \label{ch:constrained-optimization}
+
+Constrained optimization is the problem of finding a minimum (or maximum) of a function $f(x)$ called the
+``objective function'', subject to a number of constraints of the following types:
+\bit
+\item $h_{i}(x) =0, \:\:\: i=1,2,\ldots$ called ``equality constraints''
+\item $g_{i}(x) \leq 0, \:\:\: i=1,2,\ldots$ called ``inequality constraints''
+\eit
+
+Let's start first with the equality constraints, and then we will add inequality constraints.
+
+\section{Equality Constrained Optimization}
+
+The formulation of the optimization problem is to optimize $f(x)$ subject to $h_{i}(x) = 0, \:\:\: i=1,2,\ldots$.
+Let's assume for simplicity only one constraint $h_{1}(x) = h(x) = 0$. The idea here is that the point that $f(x)$
+touches $h(x)$ is the point that $f(x)$ is minimum (or maximum) while the constraint is also valid. At that point $f
+(x)$ is parallel to $h(x)$ and the tangents $\nabla_{\boldsymbol{w}} f(x)$ and $\nabla_{\boldsymbol{w}} h(x)$ which
+are perpendicular to $f(x)$ and $h(x)$ respectively, are also parallel to each other. Hence, since
+$\nabla_{\boldsymbol{w}} f(x)$ and $\nabla_{\boldsymbol{w}} h(x)$ are parallel this translates to:
+\bse
+\nabla_{\boldsymbol{w}} f(x) = \mu \nabla_{\boldsymbol{w}} h(x)
+\ese
+
+\vspace{3pt}
+
+which is the condition for the $f(x)$ to be minimum (or maximum) while $h(x) = 0$. \v
+
+Without loss of generality the condition for many constraints reads:
+\bse
+\nabla_{\boldsymbol{w}} f(x) = \sum_{i} \mu_{i} \nabla_{\boldsymbol{w}} h_{i}(x)
+\ese
+
+or by bringing everything in one side:
+\begin{align*}
+& \nabla_{\boldsymbol{w}} f(x) - \sum_{i} \mu_{i} \nabla_{\boldsymbol{w}} h_{i}(x) = 0 \\
+& \nabla_{\boldsymbol{w}} (f(x) - \sum_{i} \mu_{i} h_{i}(x)) = 0
+\end{align*}
+
+At this point we define the ``Lagrangian'' as follows:
+\bse
+\mathcal{L}(x, \mu_{i}) = f(x) + \sum_{i} \mu_{i} h_{i}(x)
+\ese
+
+where $\mu_{i}$ are called ``Lagrange multipliers''. Subsequently, the necessary conditions for optimization of $
+\mathcal{L}$ turns to:
+\bse
+\nabla_{\boldsymbol{w}} \mathcal{L} = 0 \:\:\: \text{and} \:\:\: \frac{\partial \mathcal{L}}{\partial \mu_{i}} = 0
+\ese
+
+The solution of this system of equations minimizes (or maximizes) $f(x)$ subject to $h_{i}(x) = 0, \:\:\: \forall i$.
+
+\section{Equality \& Inequality Constrained Optimization}
+
+Now on top of equality constraints we also have inequality constraints. The formulation of the optimization problem
+is to optimize $f(x)$ subject to $h_{i}(x) = 0, \:\:\: i=1,2,\ldots$ and $g_{i}(x) \leq 0, \:\:\: i=1,2,\ldots$.
+Following a similar way of thinking as before, although a bit more technical, we can show (but we won't) that if the
+following four conditions, called ``Karush - Kuhn - Talker conditions'' (KKT), hold:
+\bit
+\item $h_{i}(x) = 0, \:\:\: \forall i$
+\item $g_{i}(x) \leq 0, \:\:\: \forall i$
+\item $\lambda_{i} \leq 0, \:\:\: \forall i$
+\item $\lambda_{i} g_{i}(x) = 0, \:\:\: \forall i$
+\eit
+
+then there exist constants $\mu_{i}$ and $\lambda_{i}$ called ``KKT multipliers'' such that:
+\bse
+\nabla_{\boldsymbol{w}} f(x) =
+\sum_{i} \mu_{i} \nabla_{\boldsymbol{w}} h_{i} (x) + \sum_{i} \lambda_{i} \nabla_{\boldsymbol{w}} g_{i}(x)
+\ese
+
+By following the same philosophy as for the equality constrained optimization we define the ``Lagrangian'' as follows:
+\bse
+\mathcal{L}(x, \mu_{i}, \lambda_{i}) = f(x) + \sum_{i} \mu_{i} h_{i} (x) + \sum_{i} \lambda_{i} g_{i}(x)
+\ese
+
+and the necessary conditions for optimization of $ \mathcal{L}$ turn to:
+\bse
+\nabla_{\boldsymbol{w}} \mathcal{L}
+= 0 \:\:\: \text{and} \:\:\: \frac{\partial \mathcal{L}}{\partial \mu_{i}}
+= 0 \:\:\: \text{and} \:\:\: \frac{\partial \mathcal{L}}{\partial \lambda_{i}}
+= 0
+\ese
+
+This final form of the optimization problem is usually called the ``dual optimization problem''. \v
+
+This is the most general case of constrained optimization. If there are no equality constraints $h_{i}(x)$ then we
+simply have a theory for inequality constrained optimization. If there are no inequality constraints $g_{i}(x)$ then
+the whole theory turns to the equality constrained optimization problem we developed previously and the KKT
+multipliers turn to Lagrangian multipliers. Finally, if there are no equality constraints $h_{i}(x)$ neither
+inequality constraints $g_{i}(x)$ the theory is just a usual optimization problem where we just find the solution
+where the derivative of $f(x)$ is zero.
+
+\chapter{Kernels} \label{ch:kernels}
+
+\bd [Kernel]
+Let $\bar{x}$ and $\bar{x}^\prime$ be two vectors of space $X$ and $\Phi$ a non-linear transformation. We define
+$\bar{z}$ and $\bar{z}^\prime$ as the transformed vectors $\Phi(\bar{x})$ and $\Phi(\bar{x}^\prime)$:
+\begin{align*}
+& \bar{x} \in X \xrightarrow{\text{$\Phi$}} \bar{z} = \Phi(\bar{x}) \in Z \\
+& \bar{x}^\prime \in X \xrightarrow{\text{$\Phi$}} \bar{z}^\prime = \Phi (\bar{x}^\prime) \in Z
+\end{align*}
+
+We define the \textbf{kernel} of space $Z$ as the function that is equal to the inner product of the transformation
+vectors:
+\bse
+K(\bar{x}, \bar{x}^\prime) = \bar{z}^T \bar{z}^\prime
+\ese
+\ed
+
+Let us for example assume the following non-linear transformation:
+\begin{align*}
+& \bar{x} = (x_1, x_2) \xrightarrow{\text{$\Phi$}} \bar{z} = \Phi (\bar{x}) = (1, x_1^2, x_2^2, \sqrt{2} x_1,
+\sqrt{2} x_2, \sqrt{2} x_1 x_2) \\
+& \bar{x}^\prime = (x_1^\prime, x_2^\prime) \xrightarrow{\text{$\Phi$}} \bar{z}^\prime = \Phi(\bar{x}^\prime) =
+(1, x_1^{2^\prime}, x_2^{2^\prime}, \sqrt{2} x_1^\prime, \sqrt{2} x_2^\prime, \sqrt{2} x_1^\prime x_2^\prime)
+\end{align*}
+
+Then for the inner product:
+\bse
+\bar{z}^T \bar{z}^\prime = 1 + x_1^2 x_1^{2^\prime} + x_2^2 x_2^{2^\prime} + 2 x_1 x_1^\prime + 2 x_2 x_2^\prime + 2
+x_1 x_2 x_1^\prime x_2^\prime
+\ese
+
+However, we can get to the same result by simply defining a Kernel of the form:
+\begin{align*}
+K(\bar{x}, \bar{x}^\prime) &= (1 + \bar{x} \bar{x}^\prime)^2 \\
+&= (1 + x_1 x_1^\prime + x_2 x_2^\prime )^2 \\
+&= 1 + x_1^2 x_1^{2^\prime} + x_2^2 x_2^{2^\prime} + 2 x_1 x_1^\prime + 2 x_2 x_2^\prime
++ 2 x_1 x_2 x_1^\prime x_2^\prime
+\end{align*}
+
+Hence, by knowing the Kernel of a space $Z$ of some non-linear transformation $\Phi$ we can compute inner products
+without the need of transforming vectors from $X$ to $Z$. \v
+
+The kernel trick is to use this idea in the opposite direction. Namely, to assume that a function $K(\bar{x},
+\bar{x}^\prime)$ is the kernel of some space $Z$ for some non-linear transformation $\Phi$ and to compute inner
+products without even knowing the transformation. \v
+
+The question that arises is how do we know that some function $K(\bar{x}, \bar{x}^\prime)$ is actually the kernel of
+a space $Z$. There are three approaches to this problem:
+\ben
+\item By construction (as we did in the example above).
+\item By Mercer's condition that states that $K(\bar{x}, \bar{x}^\prime)$ is a valid kernel for some space $Z$ if
+\bse
+\int K(\bar{x}, \bar{x}^\prime) g(\bar{x}) g(\bar{x}^\prime) d\bar{x} d\bar{x}^\prime \geq 0 \:\:\: \forall \:\:\:
+\text{square integrable functions} \:\:\: g(\bar{x})
+\ese
+
+\item Sometimes we don't care if $K(\bar{x}, \bar{x}^\prime)$ is a valid kernel for some space $Z$ as long as it does
+the job.
+\een

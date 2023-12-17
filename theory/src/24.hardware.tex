@@ -1,0 +1,1179 @@
+%! suppress = EnDash
+\section{Binary Representation}
+
+In the previous chapter, we talked about how computers evolved from electromechanical devices, that often had decimal
+representations of numbers – like those represented by teeth on a gear – to electronic computers with transistors
+that can turn the flow of electricity on or off. And fortunately, even with just two states of electricity, we can
+represent important information. We call this representation ''binary`` and the numbers in this representation
+``binary numbers''.
+
+\bd[Binary Number]
+A \textbf{binary number} is a number expressed in the base-2 numeral system or binary numeral system, a method of
+mathematical expression which uses only two symbols: typically $0$ and $1$.
+\ed
+
+Binary is useful because it's exactly what you need for representing the values ``true'' and ``false.'' In computers,
+an ``on'' state, when electricity is flowing, represents true and the ``off'' state, when no electricity is flowing,
+represents false. As in the definition of binary, we can also write 1's and 0's instead of true's and false's. \v
+
+Hence, a single binary value can be used to represent a number. Instead of true and false, we can call these two
+states one and zero, which is actually incredibly useful. And if we want to represent larger things, we just need to
+add more binary digits. This works exactly the same way as the decimal numbers. With decimal numbers, there are only
+ten possible values a single digit can be: 0 through 9. To get numbers larger than 9, we just add more digits to the
+front. We can do the same with binary.
+
+\be
+For example, let's take the number 263. What does this number actually represent? Well, it means we've got two 100s,
+six 10s, and three 1s. If you add those all together, we've got 263. Notice how each column has a different
+multiplier; in this case, it's 100, 10, and 1. Each multiplier is 10 times larger than the one to the right. That's
+because each column has 10 possible digits to work with, 0 through 9, after which you have to carry one to the next
+column. For this reason, it's called base 10 notation, also called decimal since deci means 10.
+\ee
+
+Binary works exactly the same way, it's just base 2. That's because there are only two possible digits in binary, 1
+and 0. This means that each multiplier has to be two times larger than the column to its right. Instead of 100s, 10s,
+and 1s, we now have 4s, 2s, and 1s.
+
+\be
+Take for example the binary number 101. This means we have one 4, zero 2s, and one 1. Add those all together, and
+we've got the number 5 in base 10.
+\ee
+
+But to represent larger numbers, binary needs a lot more digits.
+
+\be
+Take this number in binary: 10110111. We can convert it to decimal in the same way. We have:
+\bse
+1\times128 + 0\times64 + 1\times32 + 1\times16 + 0\times8 + 1\times4 +
+1\times2 + 1\times1 = 183
+\ese
+\ee
+
+Math with binary numbers isn't hard either.
+
+\be
+Take for example decimal addition of 183 + 19. First we add 3 + 9 = 12, so we put 2 as the sum and carry 1 to the 10s
+column. Now we add 8 + 1 + 1 (that we carried) = 10, so the sum is 0 carry 1. Finally, we add 1 + 1 (that we carried)
+= 2, so the total sum is 202. \v
+
+Here's the same sum but in binary. Just as before, we start with the 1s column. Adding 1 + 1 = 2 but there is no
+symbol 2, so we use 10 and put 0 as our sum and carry the 1, just like in our decimal example. 1 + 1 + 1 (that we
+carried) = 3, or 11 in binary, so we put the sum as 1 and carry 1 again and so on. We end up with this number
+11001010, which is the same as the number 202 in base 10.
+\ee
+
+Each of these binary digits 1 or 0 is called a bit.
+
+\bd[Bit]
+The \textbf{bit}, a contraction of \textbf{bi}nary digi\textbf{t}, is the basic unit of information in computing,
+representing a logical state with one of two possible values, most commonly represented as either $1$ or $0$.
+\ed
+
+So in these last few examples we were using 8-bit numbers with their lowest value of 0 (i.e.\ $00000000$) and highest
+value of 255 (i.e.\ $11111111$). That's 256 different values, or $2^8$. You might have heard of 8-bit computers or
+8-bit graphics or audio. These were computers that did most of their operations in chunks of 8 bits, but 256
+different values isn't a lot to work with, so it meant things like 8-bit games were limited to just 256 different
+colours for their graphics.
+
+\bd[8-bit]
+In computer architecture, \textbf{8-bit} integers or other data units are those that are 8 bits wide (1 byte).
+\ed
+
+8 bits is such a common size in computing it has a special word: a byte.
+
+\bd[Byte]
+The \textbf{byte} is a unit of digital information that consists of eight bits.
+\ed
+
+Historically, the byte was the number of bits used to encode a single character of text in a computer and for this
+reason it is the smallest addressable unit of memory in many computer architectures. In binary, a kilobyte has
+$2^{10}$ bytes, or 1024. \v
+
+There are also 32-bit and 64-bit computer architectures. What this mean is that they operate in chunks of 32 or 64
+bits. The largest number you can represent with 32 bits is just under 4.3 billion, which is 32 1s in binary.
+
+\bd[32-bit]
+In computer architecture, \textbf{32-bit} integers or other data units are those that are 32 bits wide (4 bytes).
+\ed
+
+\bd[64-bit]
+In computer architecture, \textbf{64-bit} integers or other data units are those that are 64 bits wide (8 bytes).
+\ed
+
+Of course, not everything is a positive number, so we need a way to represent positive and negative numbers. Most
+computers use the first bit for the sign, 1 for negative and 0 for positive numbers, and then use the remaining 31
+bits for the number itself. That gives us a range of roughly plus or minus two billion. While this is a pretty big
+range of numbers, it's not enough for many tasks. This is why 64-bit numbers are useful. The largest value a 64-bit
+number can represent is around 9.2 quintillion. Most importantly, computers must label locations in their memory
+known as ``addresses'' in order to store and retrieve values. As computer memory has grown to gigabytes and terabytes
+– that's trillions of bytes – it was necessary to have 64-bit memory addresses as well. More on that later. \v
+
+In addition to negative and positive numbers, computers must deal with numbers that are not whole numbers, like 12.7
+and 3.14. These are called floating-point numbers because the decimal point can float around in the middle of a
+number. Several methods have been developed to represent floating-point numbers, the most common of which is the IEEE
+754 standard. In essence, this standard stores decimal values sort of like scientific notation. For example, 625.9
+can be written as $0.6259 * 10^3$. There are two important numbers here. The 0.6259 is called the ``significand'' and
+3 is the ``exponent''. In a 32-bit floating-point number, the first bit is used for the sign of the number, positive
+or negative. The next 8 bits are used to store the exponent, and the remaining 23 bits to store the significand. \v
+
+Computers use numbers to represent also letters. The most straightforward approach might be to simply number the
+letters of the alphabet, A being 1, B being 2, C being 3, and so on. Francis Bacon, the famous English writer, used
+5-bit sequences to encode all 26 letters of the English alphabet to send secret messages back in the 1600s. 5 bits
+can store 32 possible values, so that's enough for the 26 possible letters but not enough for punctuation, digits,
+and upper and lowercase letters. Enter ASCII, the American Standard Code for Information Interchange.
+
+\bd[ASCII]
+\textbf{ASCII} abbreviated from American Standard Code for Information Interchange, is a character encoding standard
+for electronic communication and is one of the IEEE milestones. ASCII codes represent text in computers,
+telecommunications equipment, and other devices.
+\ed
+
+Invented in 1963, ASCII was a 7-bit code, enough to store 128 different values. With this expanded range, it could
+encode capital letters, lowercase letters, digits 0 through 9, and symbols like the @ sign and punctuation marks.
+
+\be
+For example, a lowercase A is represented by the number 97, while a capital A is 65, a colon is 58, and a close
+parenthesis is 41.
+\ee
+
+ASCII even had a selection of special command codes, such as a newline character to tell a computer where to wrap a
+line to the next row. In older computers, the line of text would literally continue off the edge of the screen if you
+didn't include a newline character. \v
+
+Because ASCII was such an early standard, it became widely used, and critically allowed different computers built by
+different companies to exchange data. This ability to universally exchange information is called ``interoperability''.
+However, it did have a major limitation: it was really only designed for English. Fortunately, there are 8 bits in
+a byte note 7, and it soon became popular to use codes 128-255, previously unused, for national characters. In the
+US, those extra numbers were largely used to encode additional symbols like mathematical notation, graphical
+elements, and common accentuated characters. \v
+
+On the other hand, while the Latin characters were used universally, Russian computers used the extra codes to encode
+Cyrillic characters and Greek computers used Greek letters and so on. And national character codes worked pretty well
+for most countries. The problem was if you opened an email written in Latvian on a Turkish computer, the result was
+completely incomprehensible, and things totally broke with the rise of computing in Asia, as languages like Chinese
+and Japanese have thousands of characters. There was no way to encode all those characters in 8 bits. In response,
+each country invented multibyte encoding schemes, all of which were mutually incompatible. The Japanese were so
+familiar with this encoding problem that they even had a special name for it, mojibake, which means ``scrambled
+text''. \v
+
+And so it was born ``Unicode'', one format to rule them all.
+
+\bd[Unicode]
+\textbf{Unicode}, formally the Unicode Standard, is an information technology standard for the consistent encoding,
+representation, and handling of text expressed in most of the world's writing systems. The standard, which is
+maintained by the Unicode Consortium, defines 144697 characters covering 159 modern and historic scripts, as well as
+symbols, emoji, and non-visual control and formatting codes.
+\ed
+
+Devised in 1992 to finally do away with all the different international schemes, it replaced them with one
+universal encoding schemes. The most common version of Unicode uses 16 bits with space for over a million codes,
+enough for every single character from every language ever used – more than 120000 of them in over 100 types of
+script, plus space for mathematical symbols and even graphical characters like emoji. \v
+
+In the same way that ASCII defines a scheme for encoding letters as binary numbers, other file formats like MP3s or
+GIFs use binary numbers to encode sounds or colours of a pixel in our photos, movies, and music. Most importantly,
+under the hood it all comes down to long sequences of bits. Text messages, this YouTube video, every webpage on the
+internet, and even your computer's operating system are nothing but long sequences of 1s and 0s.
+
+\subsection{Logic Gates}
+
+Another reason computers use binary is that an entire branch of mathematics already existed that dealt exclusively
+with true and false values. And it had figured out all the necessary rules and operations for manipulating them.
+It's called ``Boolean algebra''\footnote{We have introduced a lot of the concepts for Boolean algebra in the first
+chapter of the ``Mathematics`` part of the notes however back then we focused on the abstract mathematical part. For
+the sake of completeness, we will repeat some of the most basic points again but focusing on the practical aspect.}.
+
+\bd[Boolean Algebra]
+\textbf{Boolean algebra}  is the branch of algebra in which the values of the variables are the truth values true and
+false, usually denoted 1 and 0, respectively.
+\ed
+
+George Boole, from which Boolean Algebra later got its name, was a self-taught English mathematician in the 1800s. He
+was interested in representing logical statements that went ``under, over, and beyond'' Aristotle's approach to logic,
+which was, unsurprisingly, grounded in philosophy. Boole's approach allowed truth to be systematically and formally
+proven, through logic equations which he introduced in his first book ``The Mathematical Analysis of Logic'' in 1847.
+In Boolean algebra, the values of variables are true and false, and the operations are logical.
+
+\bd[Logical Operation]
+A \textbf{logical operation} is a special symbol or word that connects two or more phrases of information. It is most
+often used to test whether a certain relationship between the phrases is true or false.
+\ed
+
+\bd[Logic Gate]
+A \textbf{logic gate}, or simply \textbf{gate}, is an idealized model of computation or physical electronic device
+implementing a logical operation performed on one or more binary inputs that produces a single binary output.
+\ed
+
+Logic gates are devices that perform one or all the Boolean logic operations AND, NAND, NOR, NOT, OR, XNOR, and XOR\@.
+All types of logic gate, except NOT, accept two binary digits as input, and produce one binary digit as output. NOT
+gates accept only one input digit. All digital systems can be constructed by only three basic logic gates. These gates
+are the AND gate, the OR gate, and the NOT gate.
+
+\bd[NOT Gate]
+A \textbf{NOT gate} (or \textbf{inverter}) is a logic gate which implements logical negation. In mathematical logic
+it is equivalent to the logical negation operator (¬).
+\ed
+
+A NOT takes a single boolean value, either true or false, and negates it. It flips true to false, and false to true.
+We can write out a little logic table that shows the original value under ``Input'', and the outcome after applying the
+operation under ``Output''.
+
+\fig{not_gate}{0.5}
+
+\bd[AND Gate]
+The \textbf{AND gate} is a basic digital logic gate that implements logical conjunction. In mathematical logic it is
+equivalent to the logical conjunction operator (∧).
+\ed
+
+AND gate behaves according to the truth table below. A true output (1) results only if all the inputs to the AND gate
+are true (1). If none or not all inputs to the AND gate are true, false output results. The function can be extended
+to any number of inputs.
+
+\fig{and2}{0.6}
+
+\vspace{-15pt}
+
+\bd[OR Gate]
+The \textbf{OR gate} is a basic digital logic gate that implements logical disjunction. In mathematical logic it is
+equivalent to the logical disjunction operator (∨).
+\ed
+
+OR gate behaves according to the truth table below. A true output (1) results if one or both the inputs to the gate
+are true (1). If neither input is true, a false output (0) results. In another sense, the function of OR effectively
+finds the maximum between two binary digits, just as the complementary AND function finds the minimum.
+
+\fig{or2}{0.6}
+
+\section{Hardware}
+
+In this chapter we will be focusing on the fundamental building blocks of a computer. Computers are complex machines
+, with much of the processing and work being done at a microscopic level. Inside a computer there are components that
+are what make any machine run and affect its performance. In general, we refer to these physical components as the
+``hardware''.
+
+\bd[Hardware]
+\textbf{Hardware} includes the physical parts of a computer.
+\ed
+
+Today, there is a plethora of hardware, however in this chapter we will be focusing on the most fundamental hardware
+components, or in a more formal way, on the main components of a modern computer as described in the so called ``von
+Neumann Architecture''.
+
+\bd[von Neumann Architecture]
+The \textbf{von Neumann architecture} is a computer architecture based on a 1945 description by John von Neumann in
+the ``First Draft of a Report on the EDVAC'' including all the following components:
+\bit
+\item A processing unit that contains an arithmetic logic unit (ALU) and processor registers.
+\item A control unit that contains an instruction register and program counter.
+\item Memory that stores data and instructions.
+\item External mass storage.
+\item Input and output mechanisms.
+\eit
+\ed
+
+\subsection{Arithmetic Logic Unit (ALU)}
+
+Representing and storing numbers is an important function of a computer, but the real goal is computation or
+manipulating numbers in a structured and purposeful way, like adding two numbers together. These operations are
+handled by a computer's arithmetic and logic unit (ALU).
+
+\bd[Arithmetic Logic Unit]
+An \textbf{arithmetic logic unit} (ALU) is a fundamental building block of many types of computing circuits, and
+it's a combinational digital circuit that performs arithmetic and bitwise operations on integer binary numbers.
+\ed
+
+The ALU is the mathematical brain of a computer. When you understand an ALU's design and function you'll understand a
+fundamental part of modern computers. It is the thing that does all the computation in a computer. So basically,
+everything uses it. \v
+
+\be
+This is perhaps the most famous ALU ever: the Intel 74181. When it was released in 1970, it was the first complete
+ALU that fit entirely inside a single chip, which was a huge engineering feat.
+
+\fig{SN74S181N}{0.15}
+
+Unlike the 8 bit ALU we made today, the 74181 could only handle 4 bit inputs. It used about 70 logic gates, and it
+couldn't multiply or divide, but it was a huge step forward in miniaturization, opening the doors to more capable,
+less expensive computers.
+\ee
+
+An ALU is really two units in one. There's an arithmetic unit and a logic unit. The arithmetic unit, is responsible
+for handling all numerical operations in a computer, like addition and subtraction. It also does a bunch of other
+simple things, like add 1 to a number, which is called an increment operation, and it also has circuits for other
+math operations which are built from individual logic gates. Interestingly, there are no multiply and divide
+operations. That's because simple ALUs don't have a circuit for this, and instead just perform a series of additions.
+
+\be
+Let's say you want to multiply 12 by 5. That's the same thing as adding 12 to itself 5 times. So it would take five
+passes through the ALU to do this one multiplication. And this is how many simple processors, like those in your
+thermostat, TV remote, and microwave to multiplication. It's slow, but it gets the job done.
+\ee
+
+The other half of the ALU is the logic unit. Instead of arithmetic operations, the logic unit performs, well, logical
+operations like AND, OR, and NOT, which we've talked about previously. It also performs simple numerical tests, like
+checking if a number is negative. Hence, a simple ALU, performs arithmetic and logic operations. But of course,
+there's not much point in calculating a result only to throw it away - it would be useful to store that value
+somehow, and maybe even run several operations in a row. That's where computer memory comes in!
+
+\subsection{Registers \& RAM}
+
+All of the logic circuits we've discussed so far go in one direction, always flowing forward. But we can also create
+circuits that loop back on themselves.
+
+\be
+Let's try taking an ordinary OR gate, and feed the output back into one of its inputs and see what happens. First,
+let's set both inputs to 0. So 0 OR 0 is 0, and so this circuit always outputs 0. If we were to flip input A to 1. 1
+OR 0 is 1, so now the output of the OR gate is 1. A fraction of a second later, that loops back around into input B,
+so the OR gate sees that both of its inputs are now 1. 1 OR 1 is still 1, so there is no change in output. If we flip
+input A back to 0, the OR gate still outputs 1. So now we've got a circuit that records a ``1'' for us. This change
+is permanent!
+
+\fig{or_1}{.15}
+\ee
+
+\be
+Now let's look at this same circuit, but with an AND gate instead. We'll start inputs A and B both at 1. 1 AND 1
+outputs 1 forever. But, if we then flip input A to 0, because it's an AND gate, the output will go to 0. So this
+circuit records a 0, the opposite of our other circuit. Like before, no matter what input we apply to input A
+afterwards, the circuit will always output 0.
+
+\fig{and_1}{.15}
+\ee
+
+Now we've got circuits that can record both 0s and 1s. The key to making this a useful piece of memory is to combine
+our two circuits into what is called the AND-OR latch.
+
+\bd[Latch / Flip-Flop]
+A \textbf{latch} (or \textbf{flip-flop}) is a circuit that has two stable states and can be used to store state
+information – a bistable multivibrator. The circuit can be made to change state by signals applied to one or more
+control inputs and will have one or two outputs. It is the basic storage element in sequential logic.
+\ed
+
+Latches are fundamental building blocks of digital electronics systems used in computers, communications, and many
+other types of systems.
+
+\be
+The AND-OR latch has two inputs, a ``set'' input, which sets the output to a 1, and a ``reset'' input, which resets the
+output to a 0. If set and reset are both 0, the circuit just outputs whatever was last put in it. In other words, it
+remembers a single bit of information! Memory! This is called a ``latch'' because it ``latches onto'' a particular
+value and stays that way.
+
+\fig{and_or_latch}{0.15}
+
+Let's test the AND-OR latch. Let's start everything at 0. If we toggle the Data wire from 0 to 1 or 1 to 0, nothing
+happens - the output stays at 0. That's because the write enable wire is off, which prevents any change to the
+memory. So we need to ``open'' the ``gate'' by turning the write enable wire to 1. Now we can put a 1 on the data
+line to save the value to our latch. Notice how the output is now 1. Success! We can turn off the enable line and the
+output stays as 1. Once again, we can toggle the value on the data line all we want, but the output will stay the
+same. The value is saved in memory. Now let's turn the enable line on again use our data line to set the latch to 0.
+Done. Enable line off, and the output is 0. And it works!
+\ee
+
+Latches are the basic storage elements in sequential logic. Most important of all are the basic building blocks of
+computer memory.
+
+\bd[Computer Memory]
+\textbf{Computer memory} is any physical device capable of storing information temporarily, like RAM (random access
+memory), or permanently, like ROM (read-only memory).
+\ed
+
+\bd[Writing]
+The action of putting data into memory is called \textbf{writing}.
+\ed
+
+\bd[Reading]
+The action of getting data out of memory is called \textbf{reading}.
+\ed
+
+Now, of course, computer memory that only stores one bit of information isn't very useful. But we're not limited to
+using only one latch. If we put 8 latches side-by-side, we can store 8 bits of information like an 8-bit number. A
+group of latches operating like this is called a register, which holds a single number, and the number of bits in a
+register is called its width.
+
+\bd[Register]
+A \textbf{register} is a group of flip-flops, each one of which is capable of storing one bit of information.
+\ed
+
+A register is a quickly accessible location available to a computer's processor. Registers usually consist of a small
+amount of fast storage, although some registers have specific hardware functions, and may be read-only or write-only.
+Early computers had 8-bit registers, then 16, 32, and today, many computers have registers that are 64-bits wide. To
+write to our register, we first have to enable all the latches. We can do this with a single wire that connects to
+all of their enable inputs, which we set to 1. We then send our data in using the 8 data wires, and then set enable
+back to 0, and the 8 bit value is now saved in memory.
+
+\fig{reg1}{0.17}
+
+Putting latches side-by-side works ok for a small-ish number of bits. A 64-bit register would need 64 wires running
+to the data pins, and 64 wires running to the outputs. Luckily we only need 1 wire to enable all the latches, but
+that's still 129 wires. For 256 bits, we end up with 513 wires! The solution is a matrix! In this matrix, we don't
+arrange our latches in a row, we put them in a grid. For 256 bits, we need a 16 by 16 grid of latches with 16 rows
+and columns of wires.
+
+\fig{reg2}{0.22}
+
+It's clear that we need a way to uniquely specify each intersection in the matrix. We can think of this like a city,
+where you might want to meet someone at 12th avenue and 8th street -- that's an address that defines an intersection.
+
+\be
+Similarly, a latch might have an address of row 12 and column 8. Since there is a maximum of 16 rows, we store the row
+address in a 4 bit number. 12 is 1100 in binary. We can do the same for the column address: 8 is 1000 in binary. So
+the address for the particular latch we just used can be written as 11001000.
+\ee
+
+The way that modern computers scale to megabytes and gigabytes of memory is by doing the same thing we've been doing
+here -- keep packaging up little bundles of memory into larger, and larger, and larger arrangements. As the number of
+memory locations grow, our addresses have to grow as well. 8 bits hold enough numbers to provide addresses for 256
+bytes of our memory, but that's all. To address a gigabyte – or a billion bytes of memory – we need 32-bit addresses.
+An important property of this memory is that we can access any memory location, at any time, and in a random order.
+For this reason, it's called Random-Access Memory or RAM which is the computer's memory. RAM is like a human's short
+term or working memory, where you keep track of things going on right now.
+
+\bd[Random-Access Memory (RAM)]
+\textbf{Random-access memory} (\textbf{RAM}) is a form of computer memory that can be read and changed in any order,
+typically used to store working data and machine code.
+\ed
+
+A RAM device allows data items to be read or written in almost the same amount of time irrespective of the physical
+location of data inside the memory, in contrast with other direct-access data storage media where the time required
+to read and write data items varies significantly depending on their physical locations on the recording medium, due
+to mechanical limitations.
+
+\be
+Here's an actual stick of RAM - with 8 memory modules soldered onto the board.
+
+\fig{ram}{0.17}
+
+If we open up one of these modules and zoom in, we will see are 32 squares of memory.
+
+\fig{ram2}{0.12}
+
+Zoom into one of those squares, and we can see each one is composed of 4 smaller blocks.
+
+\fig{ram3}{0.14}
+
+If we zoom in again, we get down to the matrix of individual bits.
+
+\fig{ram4}{0.14}
+
+This is a matrix of 128 by 64 bits. That's 8192 bits in total. Each of our 32 squares has 4 matrices, so that's 32
+thousand, 7 hundred and 68 bits. And there are 32 squares in total. So all in all, that's roughly 1 million bits of
+memory in each chip. Our RAM stick has 8 of these chips, so in total, this RAM can store 8 million bits, otherwise
+known as 1 megabyte. That's not a lot of memory these days -- this is a RAM module from the 1980's. Today you can buy
+RAM that has a gigabyte or more of memory - that's billions of bytes of memory.
+\ee
+
+Today, we built a piece of SRAM - Static Random-Access Memory – which uses latches. There are other types of RAM,
+such as DRAM, Flash memory, and NVRAM. These are very similar in function to SRAM, but use different circuits to
+store the individual bits. But fundamentally, all of these technologies store bits of information in massively nested
+matrices of memory cells. Like many things in computing, the fundamental operation is relatively simple. \v
+
+We've made an Arithmetic and Logic Unit, which takes in binary numbers and performs calculations, and we've made two
+types of computer memory: Registers, small linear chunks of memory, useful for storing a single value- and then we
+scaled up and made some RAM, a larger bank of numbers that can store a lot of numbers located at different addresses.
+Now it's time to put that all together and build ourselves the heart of any compute, the Central Processing Unit,
+most commonly called the CPU\@.
+
+\subsection{Central Processing Unit (CPU)}
+
+\bd[Central Processing Unit (CPU)]
+A \textbf{central processing unit} (\textbf{CPU}), is the electronic circuitry that executes instructions comprising
+a computer program. The CPU performs basic arithmetic, logic, controlling, and input/output (I/O) operations
+specified by the instructions in the program.
+\ed
+
+\fig{cpu}{0.07}
+
+The form, design, and implementation of CPUs have changed over time, but their fundamental operation remains almost
+unchanged. Principal components of a CPU include the arithmetic–logic unit (ALU) that performs arithmetic and logic
+operations, processor registers that supply operands to the ALU and store the results of ALU operations, and a
+control unit that orchestrates the fetching (from memory), decoding and execution of instructions by directing the
+coordinated operations of the ALU, registers and other components. \v
+
+Most modern CPUs are implemented on integrated circuit (IC) microprocessors, with one or more CPUs on a single
+metal-oxide-semiconductor (MOS) IC chip. Microprocessors chips with multiple CPUs are multicore processors. The
+individual physical CPUs, processor cores, can also be multithreaded to create additional virtual or logical CPUs.
+Array processors or vector processors have multiple processors that operate in parallel, with no unit considered
+central. Virtual CPUs are an abstraction of dynamical aggregated computational resources. More on that later. \v
+
+A CPU's job is to execute programs. Programs are made up of a series of individual operations called instructions,
+because they instruct the computer what to do. If these are mathematical instructions, like add or subtract, the CPU
+will configure its ALU to do the mathematical operation. Or it might be a memory instruction, in which case the CPU
+will talk with the memory to read and write values. \v
+
+There are a lot of parts in a CPU, so we're going to lay it out piece by piece, building it up as we go. We'll focus
+on functional blocks, rather than showing every single wire. When we do connect two components with a line, this is
+just another level of abstraction. This high level view is called the micro-architecture. \v
+
+First we're going to need some memory. Let's drop in the RAM module we created in the last section.
+
+\be
+To keep things simple, we'll assume it only has 16 memory locations, each containing 8 bits. Let's also give our
+processor four, 8-bit memory registers, labeled A, B, C and D which will be used to temporarily store and manipulate
+values.
+
+\fig{cpu1}{0.21}
+\ee
+
+We already know that data can be stored in memory as binary values and programs can be stored in memory too. We can
+assign an ID to each instruction supported by our CPU\@.
+
+\be
+In our hypothetical example, we use the first four bits to store the ``operation code'', or op-code for short. The
+final four bits specify where the data for that operation should come from - this could be registers or an address in
+memory.
+
+\fig{cpu2}{0.2}
+\ee
+
+We also need two more registers to complete our CPU. First, we need a register to keep track of where we are in a
+program. For this, we use an instruction address register, which as the name suggests, stores the memory address of
+the current instruction.
+
+\bd[Instruction Address Register (IAR)]
+The \textbf{Instruction Address Register} (\textbf{(IAR)}), or program counter, or instruction pointer, or
+instruction counter, or instruction sequencer, is a processor register that indicates where a computer is in its
+program sequence.
+\ed
+
+Then we need the other register to store the current instruction, which we'll call the instruction register. The
+instruction register is part of the ``control unit'' so let's first define this.
+
+\bd[Control Unit (CU)]
+The \textbf{control unit} (\textbf{CU}) is a component of a CPU that directs the operation of the processor. A CU
+typically uses a binary decoder to convert coded instructions into timing and control signals that direct the
+operation of the other units.
+\ed
+
+The responsibility of keeping the CPU ticking along falls to a component called the clock.
+
+\bd[Clock]
+A clock is an electronic oscillator that produces a clock signal for use in synchronizing a circuit's operation.
+\ed
+
+As its name suggests, the clock triggers an electrical signal at a precise and regular interval. Its signal is used
+by the Control Unit to advance the internal operation of the CPU, keeping everything in lock-step. Of course, you
+can't go too fast, because even electricity takes some time to travel down wires and for the signal to settle.
+
+\bd[Clock Speed]
+The speed at which a CPU can carry out each step of the fetch-decode-execute cycle is called its Clock Speed. This
+speed is measured in Hertz (1 Hertz means one cycle per second.)
+\ed
+
+\bd[Instruction Register (IR)]
+The \textbf{Instruction Register} (\textbf{IR}) is the part of a CPU's control unit that holds the instruction
+currently being executed or decoded. In simple processors, each instruction to be executed is loaded into the
+instruction register, which holds it while it is decoded, prepared and ultimately executed, which can take several
+steps.
+\ed
+
+\be
+In our hypothetical example, these are the two extra registers.
+
+\fig{cpu3}{0.22}
+\ee
+
+When we first boot up our computer, all of our registers start at 0.
+
+\be
+As an example, we've initialized our RAM with a simple computer program that we'll to through.
+
+\fig{cpu4}{0.22}
+\ee
+
+\bd[Instruction Cycle / Fetch–Decode–Execute Cycle]
+The \textbf{instruction cycle} (also known as the \textbf{fetch–decode–execute cycle}) is the cycle CPU follows from
+boot-up until the computer has shut down in order to process instructions. It is composed of three main stages: the
+fetch stage, the decode stage, and the execute stage.
+\ed
+
+\bd[Fetch Stage]
+The \textbf{fetch stage} is the stage where the next instruction is fetched from the memory address that is currently
+stored in the IAR and stored into the IR. At the end of the fetch operation, the PC points to the next instruction
+that will be read at the next cycle.
+\ed
+
+\bd[Decode Stage]
+The \textbf{decode stage} is the stage where the encoded instruction presented in the IR is interpreted by the
+decoder.
+\ed
+
+\bd[Execute Stage]
+The \textbf{execute stage} is the stage where the control unit of the CPU passes the decoded information as a
+sequence of control signals to the relevant functional units of the CPU to perform the actions required by the
+instruction, such as reading values from registers, passing them to the ALU to perform mathematical or logic
+functions on them, and writing the result back to a register.
+\ed
+
+If the ALU is involved, it sends a condition signal back to the CU. The result generated by the operation is stored
+in the main memory or sent to an output device. Based on the feedback from the ALU, the PC may be updated to a
+different address from which the next instruction will be fetched. \v
+
+Since CPU is one of the most important parts of a computer, before we move on let's see all of this again in an
+application.
+
+\subsubsection{Application: Building A CPU}
+
+The first phase of a CPU's, the fetch phase, is where we retrieve our first instruction. First, we wire our
+Instruction Address Register to our RAM module. The register's value is 0, so the RAM returns whatever value is
+stored in address 0. In this case, 0010 1110. Then this value is copied into our instruction register.
+
+\fig{fig2}{0.22}
+
+Now that we've fetched an instruction from memory, we need to figure out what that instruction is, so we can execute
+it. This is called the decode phase. In this case the op-code, which is the first four bits, is: 0010.
+
+\fig{fig3}{0.22}
+
+This corresponds to the ``LOAD A'' instruction, which loads a value from RAM into Register A\@.
+
+\fig{fig4}{0.21}
+
+The RAM address is the last four bits of our instruction which are 1110, or 14 in decimal.
+
+\fig{fig5}{0.21}
+
+Next, instructions are decoded and interpreted by a Control Unit. Like everything else we've built, it too is made
+out of logic gates. For example, to recognize a ``LOAD A'' instruction, we need a circuit that checks if the op-code
+matches 0010 which we can do with a handful of logic gates. Now that we know what instruction we're dealing with, we
+can go ahead and perform that instruction which is the beginning of the execute phase! Using the output of our ``LOAD
+A'' checking circuit, we can turn on the RAM's read enable line and send in address 14. The RAM retrieves the value
+at that address, which is 00000011, or 3 in decimal. \v
+
+Now, because this is a ``LOAD A'' instruction, we want that value to only be saved into Register A and not any of the
+other registers. So if we connect the RAM's data wires to our four data registers, we can use our ``LOAD A'' check
+circuit to enable the write enable only for Register A. And there you have it -- we've successfully loaded the value
+at RAM address 14 into Register A\@.
+
+\fig{fig6}{0.21}
+
+We've completed the instruction, so we can turn all of our wires off, and we're ready to fetch the next instruction
+in memory. To do this, we increment the Instruction Address Register by 1 which completes the execute phase.
+
+\fig{fig7}{0.21}
+
+``LOAD A'' is just one of several possible instructions that our CPU can execute. Different instructions are decoded
+by different logic circuits, which configure the CPU's components to perform that action. Looking at all those
+individual decode circuits is too much detail, so since we looked at one example, we're going to go head and package
+them all up as a single control unit to keep things simple. \v
+
+The control unit is comparable to the conductor of an orchestra, directing all the different parts of the CPU\@.
+Having completed one full fetch–decode–execute cycle, we're ready to start all over again, beginning with the fetch
+phase. \v
+
+The Instruction Address Register now has the value 1 in it, so the RAM gives us the value stored at address 1, which
+is 0001 1111. On to the decode phase! 0001 is the ``LOAD B'' instruction, which moves a value from RAM into Register
+B. The memory location this time is 1111, which is 15 in decimal. Now to the execute phase! The Control Unit
+configures the RAM to read address 15 and configures Register B to receive the data. Bingo, we just saved the value
+00001110, or the number 14 in decimal, into Register B. Last thing to do is increment our instruction address
+register by 1, and we're done with another cycle. The final CPU looks like this.
+
+\fig{cpu10}{0.18}
+
+\subsubsection{Advanced CPU Designs}
+
+The very first, single-chip CPU was the Intel 4004, a 4-bit CPU released in 1971.
+
+\fig{intel}{0.3}
+
+Its micro-architecture is actually pretty similar to our application CPU. Despite being the first processor of its
+kind, it had a mind-blowing clock speed of 740 Kilohertz. You might think that's fast, but it's nothing compared to
+the processors that we use today. One megahertz is one million clock cycles per second, and the computer or even
+phone that you are watching this video on right now is no doubt a few gigahertz -- that's billions of CPU cycles
+every single second. \v
+
+Also, you may have heard of people overclocking their computers. This is when you modify the clock to speed up the
+tempo of the CPU -- like when the drummer speeds up when the Roman Galley needs to ram another ship. Chipmakers
+often design CPUs with enough tolerance to handle a little bit of overclocking, but too much can either overheat the
+CPU, or produce gobbledygook as the signals fall behind the clock. And although you don't hear very much about
+under-clocking, it's actually super useful. Sometimes it's not necessary to run the processor at full speed, maybe
+the user has stepped away, or just not running a particularly demanding program. By slowing the CPU down, you can
+save a lot of power, which is important for computers that run on batteries, like laptops and smartphones. \v
+
+To meet these needs, many modern processors can increase or decrease their clock speed based on demand, which is
+called dynamic frequency scaling. So, with the addition of a clock, our CPU is complete. We can now put a box around
+it, and make it its own component. RAM, lies outside the CPU as its own component, and they communicate with each other
+using address, data and wires. \v
+
+Although the CPU we designed in the application is a simplified example, many of the basic mechanics we discussed are
+still found in modern processors. \v
+
+In the early days of electronic computing, processors were typically made faster by improving the switching time of
+the transistors inside the chip - the ones that make up all the logic gates, ALUs and other stuff we've talked about.
+But just making transistors faster and more efficient only went so far, so processor designers have developed
+various techniques to boost performance allowing not only simple instructions to run fast, but also performing much
+more sophisticated operations. \v
+
+For example, most computer processors today have divide as one of the instructions that the ALU can perform in
+hardware. Of course, this extra circuitry makes the ALU bigger and more complicated to design, but also more capable
+- a complexity-for-speed trade-off that has been made many times in computing history. For instance, modern computer
+processors now have special circuits for things like graphics operations, decoding compressed video, and encrypting
+files - all of which are operations that would take many many many clock cycles to perform with standard operations. \v
+
+These extensions to the instruction set have grown, and grown over time, and once people have written programs to
+take advantage of them, it's hard to remove them. So instruction sets tend to keep getting larger and larger keeping
+all the old opcodes around for backwards compatibility. The Intel 4004, the first truly integrated CPU, had 46
+instructions - which was enough to build a fully functional computer. But a modern computer processor has thousands
+of different instructions, which utilize all sorts of clever and complex internal circuitry. \v
+
+Now, high clock speeds and fancy instruction sets lead to another problem - getting data in and out of the CPU
+quickly enough. It's like having a powerful steam locomotive, but no way to shovel in coal fast enough. In this case,
+the bottleneck is RAM. RAM typically lies outside the CPU. This means that data has to be transmitted to and from RAM
+along sets of wires, called a bus.
+
+\bd[Bus]
+A \textbf{bus} (or data highway) is a communication system that transfers data between components inside a computer,
+or between computers. This expression covers all related hardware components (wire, optical fiber, etc.) and
+software, including communication protocols.
+\ed
+
+This bus might only be a few centimeters long, and remember those electrical signals are traveling near the speed of
+light, but when you are operating at gigahertz speeds – that's billionths of a second – even this small delay starts
+to become problematic. It also takes time for RAM itself to look up the address, retrieve the data, and configure
+itself for output. So a ``load'' instruction might take dozens of clock cycles to complete, and during this
+time the processor is just sitting idle waiting for data.
+
+\subsubsection{Cache}
+
+\bd[Cache]
+A \textbf{cache} is a hardware or software component that stores data so that future requests for that data can be
+served faster. The data stored in a cache might be the result of an earlier computation or a copy of data stored
+elsewhere.
+\ed
+
+There isn't a lot of space on a processor's chip, so most caches are just kilobytes or maybe megabytes in size, where
+RAM is usually gigabytes. Having a cache speeds things up in a clever way. When the CPU requests a memory location
+from RAM, the RAM can transmit not just one single value, but a whole block of data. This takes only a little bit
+more time than transmitting a single value, but it allows this data block to be saved into the cache. This tends to
+be really useful because computer data is often arranged and processed sequentially. \v
+
+\be
+For example, let say the processor is totalling up daily sales for a restaurant. It starts by fetching the first
+transaction from RAM at memory location 100. The RAM, instead of sending back just that one value, sends a block of
+data, from memory location 100 through 200, which are then all copied into the cache. When the processor requests the
+next transaction to add to its running total, the value at address 101, the cache will return this value without the
+need to go to RAM\@.
+\ee
+
+Because the cache is so close to the processor, it can typically provide the data in a single clock cycle -- no
+waiting required. This speeds things up tremendously over having to go back and forth to RAM every single time.
+
+\bd[Cache Hit / Miss]
+When data requested in RAM is already stored in the cache like this it's called a \textbf{cache hit}, and if the data
+requested isn't in the cache, so you have to go to RAM, it's a called a \textbf{cache miss}.
+\ed
+
+The cache can also be used like a scratch space, storing intermediate values when performing a longer,or more
+complicated calculation.
+
+\be
+Continuing our restaurant example, let's say the processor has finished totalling up all the sales for the day,
+and wants to store the result in memory address 150. Like before, instead of going back all the way to RAM to save
+that value, it can be stored in cached copy, which is faster to save to, and also faster to access later if more
+calculations are needed.
+\ee
+
+But this introduces an interesting problem -- the cache's copy of the data is now different to the real version
+stored in RAM. This mismatch has to be recorded, so that at some point everything can get synced up. \v
+
+For this purpose, the cache has a special flag for each block of memory it stores, called the ``dirty bit''. Most
+often this synchronization happens when the cache is full, but a new block of memory is being requested by the
+processor. Before the cache erases the old block to free up space, it checks its dirty bit, and if it's dirty, the
+old block of data is written back to RAM before loading in the new block.
+
+\subsubsection{Instruction Pipelining}
+
+Another trick to boost cpu performance is called instruction pipelining.
+
+\bd[Instruction Pipelining]
+\textbf{Instruction pipelining} is a technique for implementing instruction-level parallelism within a single processor.
+\ed
+
+\be
+Imagine you have to wash an entire hotel's worth of sheets, but you've only got one washing machine and one dryer.
+One option is to do it all sequentially: put a batch of sheets in the washer and wait 30 minutes for it to finish.
+Then take the wet sheets out and put them in the dryer and wait another 30 minutes for that to finish. This allows
+you to do one batch of sheets every hour. \v
+
+However, you can speed things up more if you parallelize your operation. As before, you start-off putting one batch of
+sheets in the washer. You wait 30 minutes for it to finish. Then you take the wet sheets out and put them in the
+dryer. But this time, instead of just waiting 30 minutes for the dryer to finish, you simultaneously start another
+load in the washing machine. Now you've got both machines going at once.
+\ee
+
+In a previous section, our example processor performed the fetch-decode-execute cycle sequentially and in a
+continuous loop: Fetch-decode-execute,fetch-decode-execute, fetch-decode-execute, and so on. This meant our design
+required three clock cycles to execute one instruction. But each of these stages uses a different part of the CPU,
+meaning there is an opportunity to parallelize!While one instruction is getting executed,  the next instruction could
+be getting decoded, and the instruction beyond that fetched from memory. All of these separate processes can overlap
+so that all parts of the CPU are active at any given time. In this pipelined design, an instruction is executed every
+single clock cycle which triples the throughput. \v
+
+But just like with caching this can lead to some tricky problems. A big hazard is a dependency in the instructions.
+For example, you might fetch something that the currently executing instruction is just about to modify, which means
+you'll end up with the old value in the pipeline. \v
+
+To compensate for this, pipelined processors have to look ahead for data dependencies, and if necessary, stall their
+pipelines to avoid problems. High-end processors, like those found in laptops and smartphones, go one step further
+and can dynamically reorder instructions with dependencies in order to minimize stalls and keep the pipeline moving,
+which is called out-of-order execution. As you might imagine, the circuits that figure this all out are incredibly
+complicated. \v
+
+Nonetheless, pipelining is tremendously effective and almost all processors implement it today.
+
+\subsubsection{Multi-Core \& Multiple Processors}
+
+The techniques we've discussed so far primarily optimize the execution throughput of a single stream of instructions,
+but another way to increase performance is to run several streams of instructions at once with multicore processors.
+You might have heard of dualcore or quadcore processors. This means there are multiple independent processing units
+inside a single CPU chip.
+
+\bd[Multicore Processor]
+A \textbf{multicore processor} is a computer processor on a single integrated circuit with two or more separate
+processing units, called ``cores'', each of which reads and executes program instructions.
+\ed
+
+In many ways, this is very much like having multiple separate CPUs, but because they're tightly integrated, they can
+share some resources, like cache, allowing the cores to work together on shared computations. \v
+
+But, when more cores just isn't enough, you can build computers with multiple independent CPUs! High-end computers,
+like the servers streaming this video from YouTube's data center, often need the extra horsepower to keep it silky
+smooth for the hundreds of people watching simultaneously. Two- and four-processor configuration are the most common
+right now, but every now and again even that much processing power isn't enough. So we humans get extra ambitious and
+build ourselves a supercomputer! If you're looking to do some really monster calculations – like simulating the
+formation of the universe - you'll need some pretty serious compute power.
+
+\be
+The world's fastest computer is located in The National Supercomputing Center in Wuxi, China. The Sunway TaihuLight
+contains a brain-melting 40,960 CPUs, each with 256 cores! That's over ten million cores in total, and each one of
+those cores runs at 1.45 gigahertz. In total, this machine can process 93 Quadrillion -- that's 93 million-billions
+-- floating point math operations per second.
+\ee
+
+Long story short, not only have computer processors gotten a lot faster over the years, but also a lot more
+sophisticated, employing all sorts of clever tricks to squeeze out more and more computation per clock cycle.
+
+\subsection{Memory \& Storage}
+
+Up to this point We've talked about computer memory several times. In general, computer memory is non-permanent. If
+your computer accidentally gets unplugged and turns off, any data saved in memory is lost. For this reason, it's
+called volatile memory. What we haven't talked so much about this series is storage, which is a tad different.
+
+\bd[Storage]
+\textbf{Storage} is a technology consisting of computer components and recording media that are used to retain
+digital data. It is a core function and fundamental component of computers.
+\ed
+
+Any data written to storage, like your hard drive, will stay there until it's over-written or deleted, even if the
+power goes out. It's non-volatile. It used to be that volatile memory was fast and non-volatile storage was slow, but
+as computing technologies have improved, this distinction is becoming less true, and the terms have started to blend
+together. In what follows we will see the various storage technologies and their evolution during the years. \v
+
+The earliest computer storage was paper punch cards, and its close cousin, punched tape, whiche both turned out to be
+cheap, reliable, and fairly human readable ways to store data.
+
+\bd[Punched Card]
+A \textbf{punched card} is a piece of stiff paper that holds digital data represented by the presence or absence of
+holes in predefined positions. Punched cards were onc e common in data processing applications or to directly control
+automated machinery.
+\ed
+
+\bd[Punched Tape]
+A \textbf{punched tape} is a form of data storage that consists of a long strip of paper in which holes are punched.
+It developed from and was subsequently used alongside punched cards, differing in that the tape is continuous.
+\ed
+
+\fig{punch}{0.25}
+
+By the 1940s, punch cards had largely standardized into a grid of 80 columns and 12 rows, allowing for a maximum of
+960 bits of data to be stored on a single card. Merely a century later, punched cards were used to help tabulate the
+1890 US Census, which we talked about in previous chapter. \v
+
+It's important to note here that early tabulating machines were not truly computers. They could only do one thing:
+tabulate. Their operation was fixed and not programmable. Punch cards stored data, but not a program. Over the next
+sixty years, these business machines grew in capability, adding features to subtract, multiply, divide, and even make
+simply decisions about when to perform certain operations. To trigger these functions appropriately so that different
+calculations could be performed, a programmer accessed a control panel. This panel was full of little sockets, into
+which a programmer would plug cables to pass values and signals between different parts of the machine. For this
+reason, they were also called ``plug boards''. Unfortunately, this meant having to rewire the machine each time a
+different program needed to be run, and so by the 1920s, these plug boards were made swappable. This not only made
+programming a lot more comfortable, but also allowed for different programs being plugged into a machine.
+
+\be
+For example, one board might be wired to calculate sales tax, while another helped with payroll, but plugboard were
+fiendishly complicated to program. This tangle of wires is a program for calculating a profit-loss summary, using an
+IBM 402 accounting machine, which were popular in the 1940s, and this style of plugboard programming wasn't unique
+through electromechanical computers.
+\ee
+
+The world's first general purpose electronic computer, the ENIAC completed in 1946, used a ton of them. Even after a
+program had been completely figured out on paper, physically wiring up the ENIAC and getting the program to run could
+take upwards of three weeks. Given the enormous cost of these early computers, weeks of downtime simply to switch
+programs was unacceptable and a new, faster, more flexible way to program machines was badly needed. \v
+
+Fortunately, by the late 1940s and into the 50s, electronic memory was becoming feasible. As cost fell, memory size
+grew. Instead of storing a program as a physical plugboard of wires, it became possible to store a program entirely
+in a computer's memory, where it could be easily changed by programmers and quickly accessed by the CPU. These
+machines were called stored program computers. With enough computer memory, you could store not only the program you
+wanted to run, but also any data your program would need, including new values it created along the way. Unifying the
+program and data into a single shared memory is called the ``Von Neumann Architecture'', named after John Von
+Neumann, a prominent mathematician-physicist who worked on the Manhattan project and several early electronic
+computers and once said: ``I am thinking about something much more important than bombs. I am thinking about
+computers''. \v
+
+The hallmarks of a Von Neumann computer are a processing unit containing an arithmetic logic unit, data registers, an
+instructional register, and instruction address register and a memory to store both data and instructions. The very
+first Von Neumann Architecture stored program computer was constructed in 1948, by the University of Manchester, with
+the nickname ``Baby'', and even the computers today use the same architecture. \v
+
+Now, electronic computer memory is great and all, but you still have to load the program and data into the computer
+before it can run, and for this reason, punch cards were used. Into the 1980s, almost all computers had a punch card
+reader, which could suck in a single punch card at a time and write the contents of the card into the computer's
+memory. If you loaded in a stack of punch cards,the reader would load them all into memory sequentially, as a big
+block. Once the program and data were in memory,  the computer would be told to execute it. Of course, even simple
+computer programs might have hundreds of instructions, which meant the programs were stored as stacks of punch cards.
+So if you ever had the misfortune of accidentally dropping your program on the floor, it could take you hours, days,
+or even weeks to put the code back in the right order. A common trick was to draw a diagonal line on the side of the
+card stack called ``striping'', so you'd have at least some clue how to get it back into the right order.
+
+\fig{punch2}{0.2}
+
+\be
+The largest program ever punched into punch cards was the US Air Force's SAGE air defense system completed in 1955.
+At its peak, the project is said to have employed 20\% of the world's programmers! Its main control program was
+stored on a whopping 62,500 punch cards, which is equivalent to roughly 5mb of data. Pretty underwhelming by today's
+standards, and punch cards weren't only used for getting data into computers, but also getting data out of them. At
+the end of a program, results could be written out of computer memory and on to a punch card by, well, punching cards.
+Then, this data could be analyzed by humans or loaded into a second program for additional computation.
+\ee
+
+A close cousin to punch cards was punched paper tape, which was basically the same idea, but continuous instead of
+being on individual cards, and of course, we haven't talked about hard drives, CD-ROMs, DVDs, USB thumb drives, and
+other similar goodies. We'll get to those more advanced types of data storage in a later chapter. \v
+
+Finally, in addition to plug boards and punch paper, there was another kind of way to program and control computers
+pre-1980: Panel programming. Rather than having to physically plug in cables to activate certain functions, this
+could also be done with huge panels full of switches and buttons, and there were indicator lights to display the
+status of various functions of values and memories. Computers of the 50s and 60s often featured huge control consoles
+that looked like this. Although it was rare to input a whole program using just switches, it was possible, and early
+home computers made for hobbyist market used switches extensively, because most home users couldn't afford expensive
+peripherals like punch card readers. \v
+
+The first commercially successful home computer was the ALTAIR 8800 were sold in two versions: preassembled and as a
+kit. The kit, which was popular with amateur computing enthusiasts, sold from the then-unprecedented low price of
+around \$400 in 1975, or about \$2000 in 2017. To program the 8800, you'd literally toggle the switches on the front
+panel to enter the binary opcodes and instructions you wanted. Then, you'd press the deposit button to write that
+value into memory. Then, in the next location in memory, you'd toggle the switches again for your next instruction,
+deposit it, and so on. When you'd finally entered your whole program into memory, you would toggle the switches to be
+back to memory address zero, press the run button, and watch the little lights blink. \v
+
+Whether it was plug boards, switches, or punch paper, programming these early computers was the realm of experts. By
+the professionals who did this for a living or technology enthusiasts, you needed intimate knowledge of the
+underlying hardware, so things like process opcodes and register to write programs. This meant programming was hard
+and tedious, and even professional engineers and scientists struggled to take full advantage of what computers could
+offer. What was needed was a simpler way to tell computers what to do, a simpler way to write programs, and that
+brings us to programming languages which we will explore in the next chapter. \v
+
+However, punch cards were slow and write-once, you can't easily un-punch a hole. So they were a less useful form of
+memory, where a value might only be needed for a fraction of a second during a program's execution, and then
+discarded. A faster, larger and more flexible form of computer memory was needed. \v
+
+An early and practical approach was developed by J. Presper Eckert, as he was finishing work on ENIAC in 1944. His
+invention was called Delay Line Memory.
+
+\bd[Delay Line Memory]
+\textbf{Delay line memory} is a form of computer memory, now obsolete, that was used on some of the earliest digital
+computers. Like many modern forms of electronic computer memory, delay-line memory was a refreshable memory, but as
+opposed to modern random-access memory, delay-line memory was sequential-access.
+\ed
+
+\fig{dlm}{0.05}
+
+After working on ENIAC, Eckert and his colleague John Mauchly, set out to build a bigger and better computer called
+EDVAC, incorporating Delay Line Memory. In total, the computer had 128 Delay Lines, each capable of storing 352 bits.
+That's a grand total of 45 thousands bits of memory, not too shabby for 1949! This allowed EDVAC to be one of the
+very earliest Stored-Program Computers. \v
+
+However, a big drawback with delay line memory is that you could only read one bit of data from a tube at any given
+instant. If you wanted to access a specific bit, like bit 112, you'd have to wait for it to come around in the loop,
+what's called sequential or cyclic-access memory, whereas we really want random access memory, where we can access
+any bit at any time. It also proved challenging to increase the density of the memory, packing waves closer together
+meant they were more easily mixed up. \v
+
+In response, new forms of delay line memory were invented, such as magnetostrictive delay lines. These delay lines
+use a metal wire that could be twisted, creating little torsional waves that represented data. By forming the wire
+into a coil, you could store around 1000 bits in a 1-foot by 1 foot square. \v
+
+However, delay line memory was largely obsolete by the mid 1950s, surpassed in performance, reliability and cost by a
+new kid on the block: magnetic core memory which was constructed out of little magnetic donuts, called cores.
+
+\bd[Magnetic Core Memory]
+\textbf{Magnetic core memory} was the predominant form of random-access computer memory for 20 years between about
+1955 and 1975. Such memory is often just called core memory, or, informally, core.
+\ed
+
+If you loop a wire around this core and run an electrical current through the wire, we can magnetize the core in a
+certain direction. If we turn the current off, the core will stay magnetized. If we pass current through the wire in
+the opposite direction, the magnetization direction, called polarity, flips the other way. In this way,we can store
+1's and 0's! 1 bit of memory isn't very useful, so these little donuts were arranged into grids. There were wires for
+selecting the right row and column, and a wire that ran through every core, which could be used to read or write a bit.
+
+\fig{mcm}{0.05}
+
+Importantly, unlike delay line memory, any bit could be accessed at any time. This was a killer feature, and magnetic
+core memory became the predominant Random Access Memory technology for two decades, beginning in the mid 1950s even
+though it was typically woven by hand! Although starting at roughly 1 dollar per bit, the cost fell to around 1 cent
+per bit by the 1970s. Unfortunately, even 1 cent per bit isn't cheap enough for storage. As previously mentioned, an
+average smartphone photo is around 5 megabytes in size, that's roughly 40 million bits. \v
+
+However, there was tremendous research into storage technologies happening at this time. By 1951, Eckert and Mauchly
+had started their own company, and designed a new computer called UNIVAC, one of the earliest commercially sold
+computers. It debuted with a new form of computer storage: magnetic tape.
+
+\bd[Magnetic Tape]
+\textbf{Magnetic tape} is a medium for magnetic recording, made of a thin, magnetizable coating on a long, narrow
+strip of plastic film. It was developed in Germany in 1928, based on magnetic wire recording.
+\ed
+
+Magnetic tape was a long, thin and flexible strip of magnetic material, stored in reels. The tape could be moved
+forwards or backwards inside a machine called a tape drive. Inside is a write head, which passes current through a
+wound wire to generate a magnetic field, causing a small section of the tape to become magnetized.
+
+\fig{mt}{0.65}
+
+The direction of the current sets the polarity, again, perfect for storing 1's and 0's. There was also a separate
+read head could detect the polarity non-destructively. The UNIVAC used half-inch-wide tape with 8 parallel data
+tracks, each able to store 128 bits of data per inch. With each reel containing 1200 feet of tape, it meant you could
+store roughly 15 million bits – that's almost 2 megabytes! Although tape drives were expensive, the magnetic tape
+itself was cheap and compact, and for this reason, they're still used today for archiving data. The main drawback is
+access speed. \v
+
+Tape is inherently sequential, you have to rewind or fast-forward to get to data you want. This might mean traversing
+hundreds of feet of tape to retrieve a single byte, which is slow. A related popular technology in the 1950s and 60s
+was the Magnetic Drum Memory.
+
+\bd[Magnetic Drum Memory]
+\textbf{Magnetic drum memory} was a magnetic data storage device invented by Gustav Tauschek in 1932 in Austria.
+Drums were widely used in the 1950s and into the 1960s as computer memory.
+\ed
+
+Magnetic drum memory was a metal cylinder – called a drum – coated in a magnetic material for recording data. The
+drum was rotated continuously, and positioned along its length were dozens of read and write heads. These would wait
+for the right spot to rotate underneath them to read or write a bit of data. To keep this delay as short as possible,
+drums were rotated a thousand of revolutions per minute!
+
+\fig{mdrm}{0.65}
+
+By 1953, when the technology started to take off, you could buy units able to record 80,000 bits of data – that's 10
+kilobytes, but the manufacture of drums ceased in the 1970s. However, Magnetic Drums did directly lead to the
+development of Hard Disk Drives, which are very similar, but use a different geometric configuration.
+
+\bd[Hard Disk Drives (HDD)]
+A \textbf{hard disk drive} (\textbf{}), hard disk or hard drive, is an electro-mechanical data storage device that
+stores and retrieves digital data using magnetic storage and one or more rigid rapidly rotating platters coated with
+magnetic material. The platters are paired with magnetic heads, usually arranged on a moving actuator arm, which read
+and write data to the platter surfaces. Data is accessed in a random-access manner, meaning that individual blocks of
+data can be stored and retrieved in any order.
+\ed
+
+HDDs are a type of non-volatile storage, retaining stored data even when powered off. Modern HDDs are typically in
+the form of a small rectangular box.
+
+\fig{hdd}{0.25}
+
+The great thing about HDDs is that they are thin, so you can stack many of them together, providing a lot of surface
+area for data storage.
+
+\be
+That's exactly what IBM did for the world's first computer with a disk drive: the RAMAC 305. It contained 50, 24-inch
+diameter disks, offering a total storage capacity of roughly 5MB. \v
+
+The year was 1956. To access any bit of data, a read/write head would travel up or down the stack to the right disk,
+and then slide in between them. Like drum memory, the disks are spinning, so the head has to wait for the right
+section to come around. The RAMAC 305 could access any block of data,  on average, in around 6/10ths of a second,
+what's called the seek time. While great for storage, this was not nearly fast enough for memory, so the RAMAC 305
+also had drum memory and magnetic core memory. This is an example of a memory hierarchy, where you have a little bit
+of fast memory, which is expensive, slightly more medium-speed memory, which is less expensive, and then a lot of
+slowish memory, which is cheap. \v
+
+This mixed approach strikes a balance between cost and speed. Hard disk drives rapidly improved and became
+commonplace by the 1970s. A hard disk like this can easily hold 1 terabyte of data today. And these types of drives
+can be bought online for as little as 40 US dollars. That's 0.0000000005 cents per bit. A huge improvement over core
+memory's 1 cent per bit!
+\ee
+
+Modern HDDs have an average seek time of under 1/100th of a second. \v
+
+We should also briefly mention a close cousin of hard disks, the floppy disk, which is basically the same thing, but
+uses a magnetic medium that's, floppy.
+
+\bd[Floppy Disk]
+A \textbf{floppy disk} is a type of disk storage composed of a thin and flexible disk of a magnetic storage medium in
+a square or nearly square plastic enclosure lined with a fabric that removes dust particles from the spinning disk.
+\ed
+
+Floppy disks store digital data which can be read and written when the disk is inserted into a floppy disk drive
+(FDD) connected to or inside a computer or other device.
+
+\fig{fp}{0.1}
+
+Floppy disk was most commonly used for portable storage, and became near ubiquitous from the mid 1970s up to the mid
+90s. Higher density floppy disks, like Zip Disks, became popular in the mid 1990s, but fell out of favor within a
+decade. \v
+
+Optical storage came onto the scene in 1972, in the form of a 12-inch ``laser disc''. However, you are probably more
+familiar with its later, smaller, are more popular cousin, the Compact Disk, or CD, as well as the DVD which took off
+in the 90s.
+
+\bd[Compact Disc (CD)]
+The \textbf{compact disc} (\textbf{CD}) is a digital optical disc data storage format that was co-developed by
+Philips and Sony to store and play digital audio recordings.
+\ed
+
+In August 1982, the first compact disc was manufactured. It was then released in October 1982 and branded as Digital
+Audio Compact Disc.
+
+\fig{cd}{0.2}
+
+Functionally, these technologies are pretty similar to hard disks and floppy disks, but instead of storing data
+magnetically, optical disks have little physical divots in their surface that cause light to be reflected differently,
+which is captured by an optical sensor, and decoded into 1's and 0's. However, today, things are moving to solid
+state technologies, with no moving parts. Inside are Integrated Circuits, which we talked about. The first RAM
+integrated circuits became available in 1972 at 1 cent per bit, quickly making magnetic core memory obsolete. Today,
+costs have fallen so far, that hard disk drives are being replaced with non-volatile, Solid State Drives, or SSDs.
+
+\bd[Solid State Drive (SSD)]
+A \textbf{solid state drive} (\textbf{SSD}) is a solid-state storage device that uses integrated circuit assemblies
+to store data persistently, typically using flash memory, and functioning as secondary storage in the hierarchy of
+computer storage.
+\ed
+
+\fig{ssd}{0.1}
+
+Because they contain no moving parts, they don't really have to seek anywhere, so SSD access times are typically
+under 1/1000th of a second. That's fast! But it's still many times slower than your computer's RAM. For this reason,
+computers today still use memory hierarchies.
+
+\subsection{Motherboard}
+All the components we have described so far are ``grouped`` together on the so called ``Motherboard''.
+
+\bd[Motherboard]
+A \textbf{motherboard} is the main printed circuit board in general-purpose computers and other expandable systems.
+\ed
+
+Motherboard holds and allows communication between many of the crucial electronic components of a system, such as the
+central processing unit (CPU) and memory, and provides connectors for other peripherals. Unlike a backplane, a
+motherboard usually contains significant sub-systems, such as the central processor, the chipset's input/output and
+memory controllers, interface connectors, and other components integrated for general use. As the name suggests, this
+board is often referred to as the ``mother'' of all components attached to it, which often include peripherals,
+interface cards, and daughter-boards: sound cards, video cards, network cards, host bus adapters, TV tuner cards,
+IEEE 1394 cards; and a variety of other custom components. \v
+
+Modern motherboards include: CPU sockets (or CPU slots) in which one or more microprocessors may be installed, memory
+slots into which the system's main memory is to be installed, the chipset which forms an interface between the CPU,
+main memory, and peripheral buses, non-volatile memory chips containing the system's firmware or BIOS, the clock
+generator which produces the system clock signal to synchronize the various components, slots for expansion cards,
+power connectors, which receive electrical power from the computer power supply and distribute it to the CPU,
+chipset, main memory, and expansion cards. As of 2007, some graphics cards require more power than the motherboard
+can provide, and thus dedicated connectors have been introduced to attach them directly to the power supply.
+
+\fig{Computer-motherboard}{0.15}

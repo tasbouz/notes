@@ -1,0 +1,122 @@
+%! suppress = EnDash
+% TODO: Finish up this chapter
+\section{Basics of Algorithms and Data Structures}
+
+\bd[Data]
+\textbf{Data} is a collection of discrete or continuous values.
+\ed
+
+If data are structured in a systematic way then through this structure they become meaningful, and turn from data to
+information. Information is useful cause it provides context for data and enables decision-making process. For this
+reason, a systematic way to organize data, so they can be used efficiently, was invented. This systematic way is
+called a ``data structure''.
+
+\bd[Data Structure (DS)]
+A \textbf{data structure} (\textbf{DS}) is a way of structuring data so that it can be used effectively.
+\ed
+
+More precisely, a DS is a collection of data values, the relationships among them, and the functions or operations that
+can be applied to the data, i.e.\ it is an algebraic structure about data. DSs are essential ingredients in creating 
+fast and powerful algorithms, they help to manage and organize data, and they make code cleaner and easier to understand.
+\v
+
+Before we start talking about DSs, we need to introduce the concepts of ``data types'' and most importantly that of
+``abstract data types''. Let's start with the first one.
+
+\bd[Data Type / Type]
+A \textbf{data type} (or simply \textbf{type}) is a collection or grouping of data values, usually specified by a set
+of possible values, a set of allowed operations on these values, and/or a representation of these values as machine
+types.
+\ed
+
+In simple words, a data type is an attribute of data, as defined by the domain of values data can take, or the
+operations that can be performed on the data. A data type specification constrains the possible values that an
+expression, such as a variable or a function call, might take. On literal data, it tells the compiler or interpreter
+how the programmer intends to use the data. \v
+
+Most programming languages support basic data types called ``primitive data types''.
+
+\bd[Primitive Data Type]
+\textbf{Primitive data types} are types that are built-in or basic to a language implementation.
+\ed
+
+Classic basic primitive data types that are generally supported more or less directly by computer hardware and any
+programming language are:
+\bit
+\item \textbf{Character}: A unit of information that roughly corresponds to a symbol, such as in an alphabet, in the
+written form of a natural language.
+\item \textbf{Integer}: A range of mathematical integers that are commonly represented in a computer as a group of bits.
+The size of the grouping varies so the set of integer sizes available varies between different types of computers.
+\item \textbf{Floating-point}: An arithmetic unit using formulaic representation of real numbers as an approximation
+to support a trade-off between range and precision.
+\item \textbf{Fixed-point}: A method of representing fractional numbers by storing a fixed number of digits of their
+fractional part.
+\item \textbf{Boolean}: A data type that has one of two possible values, usually denoted ``true'' and ``false'', which
+is intended to represent the two truth values of logic and Boolean algebra.
+\item \textbf{Reference}: A value that enables a program to indirectly access a particular data, such as a variable's
+value or a record, in the computer's memory or in some other storage device.
+\eit
+
+Opposite to primitive data types, we also have the so called ``composite data types``.
+
+\bd[Composite Data Type]
+A \textbf{composite data type} is any data type which can be constructed in a program using the programming language's
+primitive data types or other composite data types.
+\ed
+
+Moving on, we can now introduce the concept of ``abstract data types''.
+
+\bd[Abstract Data Type (ADT)]
+An \textbf{abstract data type} (\textbf{ADT}) is a mathematical model for data types which is defined by its behavior
+from the point of view of a user of the data and more specifically in terms of possible values, possible operations on
+data of this type, and the behavior of these operations.
+\ed
+
+In simple words, an ADT is an abstraction of a DS which provides only the interface to which a DS must adhere to. The
+interface does not give any specific details about how something should be implemented or in what programming
+language. ADTs contrast with DSs, which are concrete representations of data, and are the point of view of an
+implementer, not a user. \v
+
+DSs are used to implements ADTs. There are multiple ways (i.e.\ multiple DSs) to implement a specific ADT. In simple
+words, ADTs tell us what is to be done and DSs tell us how to do it. In reality, different implementations of ADTs
+(a.k.a.\ different DSs) are compared for time and space efficiency. The one best suited depends on the requirements of
+the project.
+
+\be
+For an analogy, consider a car. A car is a concrete object, with a specific implementation. It has a certain weight,
+a certain color, a certain number of doors, and so on. A car is an instance of the abstract concept of a vehicle. The
+abstract concept of a vehicle is an ADT, and the concrete car is an instance of that ADT, i.e.\ a DS\@.
+\ee
+
+DSs are divided into categories based on their characteristics. One basic division is between ``linear''
+and ``non-linear'' DSs.
+
+\bd[Linear Data Structure]
+A \textbf{linear data structures} has data elements arranged in linear (sequential) order and each member element is
+connected to its previous and next element, except from the first and the last.
+\ed
+
+\bd[Non-Linear Data Structure]
+A \textbf{non-linear data structures} is a DS in which data items are not arranged in a sequence.
+\ed
+
+Another important division is between ``static'' and ``dynamic'' DSs.
+
+\bd[Static Data Structures]
+A \textbf{static data structure} is a DS where the data in memory are fixed in size and allocated during compile time.
+\ed
+
+In a static DS the maximum size is needed to be known in advance, as memory cannot be reallocated at a later point. Such
+DSs are easy to implement as computer memory is also sequential. Static DSs have the advantage of fast access, but they
+are slower in insertion and deletion.
+
+\bd[Dynamic Data Structures]
+A \textbf{dynamic data structure} is a DS where the data in memory are allocated in real time.
+\ed
+
+A dynamic DS refers to a collection of data in memory that has the flexibility to grow or shrink in size, enabling a
+programmer to control exactly how much memory is utilised. Dynamic DSs have the advantage of fast insertion and
+deletion, but they are much slower in access. \v
+
+Efficiency of data structures is always measured in terms of time and (memory) space. An ideal data structure would
+be the one that takes the least possible time for all its operations and consumes the least memory space.
