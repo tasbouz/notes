@@ -462,3 +462,6 @@
 \contentsline {section}{\numberline {A.1}Equality Constrained Optimization}{757}{section.a.A.1}%
 \contentsline {section}{\numberline {A.2}Equality \& Inequality Constrained Optimization}{758}{section.a.A.2}%
 \contentsline {chapter}{\numberline {B}Kernels}{759}{appendix.a.B}%
+\contentsline {chapter}{\numberline {C}Clean Code}{760}{appendix.a.C}%
+\contentsline {chapter}{\numberline {D}Software Engineering At Google}{763}{appendix.a.D}%
+\contentsline {chapter}{\numberline {E}Hands-On Machine Learning With Scikit-Learn And TensorFlow}{769}{appendix.a.E}%
