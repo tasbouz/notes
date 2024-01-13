@@ -407,61 +407,63 @@
 \contentsline {subsection}{\numberline {29.8.4}Kubectl}{648}{subsection.29.8.4}%
 \contentsline {part}{V\hspace {1em}Economics \& Finance}{654}{part.5}%
 \contentsline {chapter}{\numberline {30}Principles Of Economics}{655}{chapter.30}%
-\contentsline {section}{\numberline {30.1}A Brief History Of Economics}{655}{section.30.1}%
-\contentsline {section}{\numberline {30.2}Basic Terminology}{658}{section.30.2}%
-\contentsline {section}{\numberline {30.3}The Ten Principles Of Economics}{662}{section.30.3}%
-\contentsline {chapter}{\numberline {31}Microeconomics}{672}{chapter.31}%
-\contentsline {section}{\numberline {31.1}The Market Forces Of Supply And Demand}{672}{section.31.1}%
-\contentsline {subsection}{\numberline {31.1.1}Demand}{674}{subsection.31.1.1}%
-\contentsline {subsection}{\numberline {31.1.2}Supply}{680}{subsection.31.1.2}%
-\contentsline {subsection}{\numberline {31.1.3}Supply And Demand}{684}{subsection.31.1.3}%
-\contentsline {subsection}{\numberline {31.1.4}Application: Changes In Market Equilibrium Due To Shifts}{686}{subsection.31.1.4}%
-\contentsline {section}{\numberline {31.2}Elasticity}{689}{section.31.2}%
-\contentsline {subsection}{\numberline {31.2.1}The Elasticity Of Demand}{689}{subsection.31.2.1}%
-\contentsline {subsection}{\numberline {31.2.2}The Elasticity Of Supply}{692}{subsection.31.2.2}%
-\contentsline {section}{\numberline {31.3}Applications Of Supply, Demand, And Elasticity}{695}{section.31.3}%
-\contentsline {subsection}{\numberline {31.3.1}Various}{695}{subsection.31.3.1}%
-\contentsline {subsection}{\numberline {31.3.2}Price Controls}{701}{subsection.31.3.2}%
-\contentsline {subsection}{\numberline {31.3.3}Taxes}{707}{subsection.31.3.3}%
-\contentsline {section}{\numberline {31.4}Consumers, Producers, And The Efficiency Of Markets}{711}{section.31.4}%
-\contentsline {subsection}{\numberline {31.4.1}Consumer Surplus}{711}{subsection.31.4.1}%
-\contentsline {subsection}{\numberline {31.4.2}Producer Surplus}{714}{subsection.31.4.2}%
-\contentsline {subsection}{\numberline {31.4.3}Market Efficiency}{717}{subsection.31.4.3}%
-\contentsline {subsection}{\numberline {31.4.4}Application: Efficiency Of Markets \& Externalities}{719}{subsection.31.4.4}%
-\contentsline {section}{\numberline {31.5}Consumer Theory}{721}{section.31.5}%
-\contentsline {subsection}{\numberline {31.5.1}The Budget Constraint}{721}{subsection.31.5.1}%
-\contentsline {subsection}{\numberline {31.5.2}Indifference Curves}{723}{subsection.31.5.2}%
-\contentsline {subsection}{\numberline {31.5.3}Optimization}{727}{subsection.31.5.3}%
-\contentsline {section}{\numberline {31.6}Frontiers Of Microeconomics}{731}{section.31.6}%
-\contentsline {subsection}{\numberline {31.6.1}Asymmetric Information}{731}{subsection.31.6.1}%
-\contentsline {subsection}{\numberline {31.6.2}Political Economy}{733}{subsection.31.6.2}%
-\contentsline {subsection}{\numberline {31.6.3}Behavioral Economics}{735}{subsection.31.6.3}%
-\contentsline {chapter}{\numberline {32}Financial Statements}{736}{chapter.32}%
-\contentsline {section}{\numberline {32.1}Basic Accountants Principles}{736}{section.32.1}%
-\contentsline {section}{\numberline {32.2}Balance Sheet}{739}{section.32.2}%
-\contentsline {subsection}{\numberline {32.2.1}Assets}{740}{subsection.32.2.1}%
-\contentsline {subsubsection}{\numberline {32.2.1.1}Current Assets}{741}{subsubsection.32.2.1.1}%
-\contentsline {subsubsection}{\numberline {32.2.1.2}Other Assets}{742}{subsubsection.32.2.1.2}%
-\contentsline {subsubsection}{\numberline {32.2.1.3}Fixed Assets}{742}{subsubsection.32.2.1.3}%
-\contentsline {subsubsection}{\numberline {32.2.1.4}Total Assets}{743}{subsubsection.32.2.1.4}%
-\contentsline {subsection}{\numberline {32.2.2}Liabilities \& Equity}{743}{subsection.32.2.2}%
-\contentsline {subsubsection}{\numberline {32.2.2.1}Current Liabilities}{744}{subsubsection.32.2.2.1}%
-\contentsline {subsubsection}{\numberline {32.2.2.2}Long-Term Liabilities}{744}{subsubsection.32.2.2.2}%
-\contentsline {subsubsection}{\numberline {32.2.2.3}Total Liabilities}{745}{subsubsection.32.2.2.3}%
-\contentsline {subsubsection}{\numberline {32.2.2.4}Equity}{745}{subsubsection.32.2.2.4}%
-\contentsline {subsection}{\numberline {32.2.3}Balance Sheet Summary}{747}{subsection.32.2.3}%
-\contentsline {section}{\numberline {32.3}Income Statement}{748}{section.32.3}%
-\contentsline {subsection}{\numberline {32.3.1}Sales}{748}{subsection.32.3.1}%
-\contentsline {subsection}{\numberline {32.3.2}Costs \& Expenses}{748}{subsection.32.3.2}%
-\contentsline {subsection}{\numberline {32.3.3}Income}{750}{subsection.32.3.3}%
-\contentsline {subsection}{\numberline {32.3.4}Income Statement Summary}{751}{subsection.32.3.4}%
-\contentsline {section}{\numberline {32.4}Cash Flow Statement}{751}{section.32.4}%
-\contentsline {subsection}{\numberline {32.4.1}Cash Flow Statement Summary}{754}{subsection.32.4.1}%
-\contentsline {chapter}{Appendices}{756}{section*.461}%
-\contentsline {chapter}{\numberline {A}Constrained Optimization}{757}{appendix.a.A}%
-\contentsline {section}{\numberline {A.1}Equality Constrained Optimization}{757}{section.a.A.1}%
-\contentsline {section}{\numberline {A.2}Equality \& Inequality Constrained Optimization}{758}{section.a.A.2}%
-\contentsline {chapter}{\numberline {B}Kernels}{759}{appendix.a.B}%
-\contentsline {chapter}{\numberline {C}Clean Code}{760}{appendix.a.C}%
-\contentsline {chapter}{\numberline {D}Software Engineering At Google}{763}{appendix.a.D}%
-\contentsline {chapter}{\numberline {E}Hands-On Machine Learning With Scikit-Learn And TensorFlow}{769}{appendix.a.E}%
+\contentsline {section}{\numberline {30.1}Introduction}{655}{section.30.1}%
+\contentsline {subsection}{\numberline {30.1.1}Goods \& Services}{655}{subsection.30.1.1}%
+\contentsline {subsection}{\numberline {30.1.2}Scarcity}{656}{subsection.30.1.2}%
+\contentsline {subsection}{\numberline {30.1.3}Economics}{657}{subsection.30.1.3}%
+\contentsline {section}{\numberline {30.2}The Ten Principles Of Economics}{659}{section.30.2}%
+\contentsline {chapter}{\numberline {31}Microeconomics}{667}{chapter.31}%
+\contentsline {section}{\numberline {31.1}The Market Forces Of Supply And Demand}{667}{section.31.1}%
+\contentsline {subsection}{\numberline {31.1.1}Demand}{669}{subsection.31.1.1}%
+\contentsline {subsection}{\numberline {31.1.2}Supply}{675}{subsection.31.1.2}%
+\contentsline {subsection}{\numberline {31.1.3}Supply And Demand}{679}{subsection.31.1.3}%
+\contentsline {subsection}{\numberline {31.1.4}Application: Changes In Market Equilibrium Due To Shifts}{681}{subsection.31.1.4}%
+\contentsline {section}{\numberline {31.2}Elasticity}{684}{section.31.2}%
+\contentsline {subsection}{\numberline {31.2.1}The Elasticity Of Demand}{684}{subsection.31.2.1}%
+\contentsline {subsection}{\numberline {31.2.2}The Elasticity Of Supply}{687}{subsection.31.2.2}%
+\contentsline {section}{\numberline {31.3}Applications Of Supply, Demand, And Elasticity}{690}{section.31.3}%
+\contentsline {subsection}{\numberline {31.3.1}Various}{690}{subsection.31.3.1}%
+\contentsline {subsection}{\numberline {31.3.2}Price Controls}{696}{subsection.31.3.2}%
+\contentsline {subsection}{\numberline {31.3.3}Taxes}{702}{subsection.31.3.3}%
+\contentsline {section}{\numberline {31.4}Consumers, Producers, And The Efficiency Of Markets}{706}{section.31.4}%
+\contentsline {subsection}{\numberline {31.4.1}Consumer Surplus}{706}{subsection.31.4.1}%
+\contentsline {subsection}{\numberline {31.4.2}Producer Surplus}{709}{subsection.31.4.2}%
+\contentsline {subsection}{\numberline {31.4.3}Market Efficiency}{712}{subsection.31.4.3}%
+\contentsline {subsection}{\numberline {31.4.4}Application: Efficiency Of Markets \& Externalities}{714}{subsection.31.4.4}%
+\contentsline {section}{\numberline {31.5}Consumer Theory}{716}{section.31.5}%
+\contentsline {subsection}{\numberline {31.5.1}The Budget Constraint}{716}{subsection.31.5.1}%
+\contentsline {subsection}{\numberline {31.5.2}Indifference Curves}{718}{subsection.31.5.2}%
+\contentsline {subsection}{\numberline {31.5.3}Optimization}{722}{subsection.31.5.3}%
+\contentsline {section}{\numberline {31.6}Frontiers Of Microeconomics}{726}{section.31.6}%
+\contentsline {subsection}{\numberline {31.6.1}Asymmetric Information}{726}{subsection.31.6.1}%
+\contentsline {subsection}{\numberline {31.6.2}Political Economy}{728}{subsection.31.6.2}%
+\contentsline {subsection}{\numberline {31.6.3}Behavioral Economics}{730}{subsection.31.6.3}%
+\contentsline {chapter}{\numberline {32}Financial Statements}{731}{chapter.32}%
+\contentsline {section}{\numberline {32.1}Basic Accountants Principles}{731}{section.32.1}%
+\contentsline {section}{\numberline {32.2}Balance Sheet}{734}{section.32.2}%
+\contentsline {subsection}{\numberline {32.2.1}Assets}{735}{subsection.32.2.1}%
+\contentsline {subsubsection}{\numberline {32.2.1.1}Current Assets}{736}{subsubsection.32.2.1.1}%
+\contentsline {subsubsection}{\numberline {32.2.1.2}Other Assets}{737}{subsubsection.32.2.1.2}%
+\contentsline {subsubsection}{\numberline {32.2.1.3}Fixed Assets}{737}{subsubsection.32.2.1.3}%
+\contentsline {subsubsection}{\numberline {32.2.1.4}Total Assets}{738}{subsubsection.32.2.1.4}%
+\contentsline {subsection}{\numberline {32.2.2}Liabilities \& Equity}{738}{subsection.32.2.2}%
+\contentsline {subsubsection}{\numberline {32.2.2.1}Current Liabilities}{739}{subsubsection.32.2.2.1}%
+\contentsline {subsubsection}{\numberline {32.2.2.2}Long-Term Liabilities}{739}{subsubsection.32.2.2.2}%
+\contentsline {subsubsection}{\numberline {32.2.2.3}Total Liabilities}{740}{subsubsection.32.2.2.3}%
+\contentsline {subsubsection}{\numberline {32.2.2.4}Equity}{740}{subsubsection.32.2.2.4}%
+\contentsline {subsection}{\numberline {32.2.3}Balance Sheet Summary}{742}{subsection.32.2.3}%
+\contentsline {section}{\numberline {32.3}Income Statement}{743}{section.32.3}%
+\contentsline {subsection}{\numberline {32.3.1}Sales}{743}{subsection.32.3.1}%
+\contentsline {subsection}{\numberline {32.3.2}Costs \& Expenses}{743}{subsection.32.3.2}%
+\contentsline {subsection}{\numberline {32.3.3}Income}{745}{subsection.32.3.3}%
+\contentsline {subsection}{\numberline {32.3.4}Income Statement Summary}{746}{subsection.32.3.4}%
+\contentsline {section}{\numberline {32.4}Cash Flow Statement}{746}{section.32.4}%
+\contentsline {subsection}{\numberline {32.4.1}Cash Flow Statement Summary}{749}{subsection.32.4.1}%
+\contentsline {chapter}{Appendices}{751}{section*.461}%
+\contentsline {chapter}{\numberline {A}Constrained Optimization}{752}{appendix.a.A}%
+\contentsline {section}{\numberline {A.1}Equality Constrained Optimization}{752}{section.a.A.1}%
+\contentsline {section}{\numberline {A.2}Equality \& Inequality Constrained Optimization}{753}{section.a.A.2}%
+\contentsline {chapter}{\numberline {B}Kernels}{754}{appendix.a.B}%
+\contentsline {chapter}{\numberline {C}Clean Code}{755}{appendix.a.C}%
+\contentsline {chapter}{\numberline {D}Software Engineering At Google}{758}{appendix.a.D}%
+\contentsline {chapter}{\numberline {E}Hands-On Machine Learning With Scikit-Learn And TensorFlow}{764}{appendix.a.E}%
