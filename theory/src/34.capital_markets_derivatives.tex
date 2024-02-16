@@ -1,0 +1,203 @@
+\bd[Derivative]
+A \textbf{derivative} is a contract for a future transacion between two parties, that derives its value from the
+performance of an underlying entity.
+\ed
+
+\bd[Underlying]
+The \textbf{underlying} is an asset, index, interest rate, or any variable from which a derivative is derived from.
+\ed
+
+Derivatives can be either ``exchange-traded'' or ``over-the-counter''.
+
+\bd[Exchange-Traded Derivative]
+An \textbf{exchange-traded derivative} is a standardized derivative that is traded on a regulated derivative exchange.
+\ed
+
+\bd[Derivative Exchange]
+A \textbf{derivative exchange} is a central financial exchange where people can trade standardized exchange-traded
+derivatives defined by the exchange.
+\ed
+
+Once two traders have agreed to a trade offered by an exchange, it is handled by the clearing house.
+
+\bd[Clearing House]
+A \textbf{clearing house} is an organization that facilitates tradings between two parties and manages the risks.
+\ed
+
+The advantage of a clearing house is that traders do not have to worry about the creditworthiness of the people they
+are trading with. The clearing house takes care of credit risk by requiring each of the two traders to deposit funds
+to ensure that they will live up to their obligations. \v
+
+Traditionally exchange-traded derivatives traders used to physically meet on the floor of the exchange, shouting, and
+using a complicated set of hand signals to indicate the trades they would like to carry out. Exchanges have largely
+replaced this system by electronic trading which involves the use of algorithms to initiate trades, often without human
+intervention, and has become an important feature of derivatives markets.
+
+\bd[Over-The-Counter Derivative]
+An \textbf{over-the-counter (OTC) derivative} is a derivative that is traded off-exchange.
+\ed
+
+Banks, other large financial institutions, fund managers, and corporations are the main participants in OTC derivatives
+markets. \v
+
+Once an OTC trade has been agreed, the two parties can either present it to a central counterparty (CCP), which is like
+an exchange clearing house, or clear the trade bilaterally where the two parties have usually signed an agreement
+covering all their transactions with each other.
+
+\bd[Central Counterparty]
+A \textbf{central counterparty (CCP)} stands between the two parties to the derivatives transaction so that one party
+does not have to bear the risk that the other party will default.
+\ed
+
+While OTC markets were largely unregulated, following the financial crisis of 2008 we have seen the development of
+many new regulations affecting the operation of OTC markets. The main objectives of the regulations are to improve
+the transparency of OTC markets and reduce systemic risk. The over-the-counter market in some respects is being forced
+to become more like the exchange-traded market. \v
+
+Both OTC and exchange-traded markets for derivatives are huge. The number of derivatives transactions per year in OTC
+markets is smaller than in exchange-traded markets, but the average size of the transactions is much greater, making the
+volume of business in OTC market much larger than in the exchange-traded one. \v
+
+Derivatives markets have been outstandingly successful. The main reason is that they have attracted many different
+types of traders and have a great deal of liquidity. When a trader wants to take one side of a contract,
+there is usually no problem in finding someone who is prepared to take the other side. \v
+
+Three broad categories of traders can be identified: ``hedgers'', ``speculators'', and ``arbitrageurs''.
+
+\bd[Hedger]
+A \textbf{hedger} is a trader who uses derivatives to reduce the risk that they face from potential future movements in
+a market variable.
+\ed
+
+\bd[Speculator]
+A \textbf{speculator} is a trader who uses derivatives to bet on the future direction of a market variable.
+\ed
+
+\bd[Arbitrageur]
+An \textbf{arbitrageur} is a trader who takes offsetting positions in two or more instruments to lock in a profit.
+\ed
+
+The fact that derivatives can be used for hedging, speculation, and arbitrage, makes them very versatile instruments.
+Sometimes traders who have a mandate to hedge risks or follow an arbitrage strategy become (consciously or
+unconsciously) speculators. The results can be disastrous, so it is very important for both financial and
+nonfinancial corporations to set up controls to ensure that derivatives are being used for their intended purpose.
+Risk limits should be set and the activities of traders should be monitored daily to ensure that these risk limits
+are adhered to.
+
+Unfortunately, even when traders follow the risk limits that have been specified, big mistakes can happen. Some of
+the activities of traders in the derivatives market during the period leading up to the start of the financial crisis
+in July 2007 proved to be much riskier than they were thought to be by the financial institutions they worked for.
+
+\section{Forwards \& Futures}
+
+\bd[Forward / Future]
+A \textbf{forward} or \textbf{future} is a contract between two parties to buy or sell an underlying asset at a
+specified price at a specified future date.
+\ed
+
+Forwards are traded in OTC markets, usually between two financial institutions or between a financial institution and
+one of its clients. Futures are traded on exchanges, and the exchange acts as the counterparty to all trades.
+
+\bd[Long Position]
+The party that agrees to buy the asset is said to be in a \textbf{long position}.
+\ed
+
+\bd[Short Position]
+The party that agrees to sell the asset is said to be in a \textbf{short position}.
+\ed
+
+\bd[Delivery Date / Maturity Date]
+The specified future date $T$ in a forward or future is called the \textbf{delivery date} or \textbf{maturity date}.
+\ed
+
+\bd[Delivery Price / Forward Price / Future Price]
+The specified price $K$ in a forward or future is called the \textbf{delivery price}, or \textbf{forward price}, or
+\textbf{future price}.
+\ed
+
+Indepentendly of the delivery price, the underlying asset has its own price at each time step, called the ``spot
+price''.
+
+\bd[Spot Price]
+The \textbf{spot price} $S_t$ is the price of an asset for immediate delivery at time t.
+\ed
+
+The payoff from a long position in a forward or future on one unit of an asset is:
+\bse
+S_T - K
+\ese
+
+where $K$ is the delivery price and $S_T$ is the spot price of the asset at maturity of the contract. This is because
+the holder of the contract is obligated to buy an asset worth $S_T$ for $K$.
+
+Similarly, the payoff from a short position in a forward of future contract on one unit of an asset is:
+\bse
+K - S_T
+\ese
+
+These payoffs can be positive or negative. Because it costs nothing to enter into a forward or future contract, the
+payoff from the contract is also the trader's total gain or loss from the contract.
+
+\vspace{5pt}
+\fig{dv1}{0.65}
+
+\section{Options}
+
+\bd[Option]
+An \textbf{option} is a contract that gives the holder the right, but not the obligation, to buy or sell an underlying
+asset at a specified price at a specified future date.
+\ed
+
+It should be emphasized that an option gives the holder the right to do something. The holder does not have to
+exercise this right. This is what distinguishes options from forwards and futures, where the holder is obligated to
+buy or sell the underlying asset.
+
+\bd[Strike Price / Exercise Price]
+The specified price $K$ in an option is called the \textbf{strike price} or \textbf{exercise price}.
+\ed
+
+\bd[Expiration Date / Maturity]
+The specified future date $T$ in an option is called the \textbf{expiration date} or \textbf{maturity}.
+\ed
+
+Options are traded both on exchanges and in the over-the-counter market. Based on if the option can be exercised only
+on the expiration date or at any time up to the expiration date, we distinguish between ``European'' and ``American''
+options.
+
+\bd[European Option]
+A \textbf{European option} is an option that can be exercised only on the expiration date.
+\ed
+
+\bd[American Option]
+An \textbf{American option} is an option that can be exercised at any time up to the expiration date.
+\ed
+
+Note that the terms American and European do not refer to the location of the option or the exchange. Some options
+trading on North American exchanges are European. Most of the options that are traded on exchanges are American.
+European options are generally easier to analyze than American options, and some of the properties of an American
+option are frequently deduced from those of its European counterpart. \v
+
+There are two types of options: ``calls'' and ``puts''.
+
+\bd[Call Option]
+A \textbf{call option} is an option that gives the holder the right to buy an underlying asset at a specified price
+at a specified future date.
+\ed
+
+\bd[Put Option]
+A \textbf{put option} is an option that gives the holder the right to sell an underlying asset at a specified price
+at a specified future date.
+\ed
+
+At this stage we note that there are four types of participants in options markets:
+\bit
+\item Buyers of calls.
+\item Sellers of calls.
+\item Buyers of puts.
+\item Sellers of puts.
+\eit
+
+As with forwards and futures, buyers are referred to as having long positions and sellers are referred to as having
+short positions. Selling an option is also known as ``writing'' the option. \v
+
+Whereas it costs nothing to enter into a forward or futures contract, there is a cost to acquiring an option.]
