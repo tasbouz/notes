@@ -28,7 +28,7 @@ not be discussing money markets at all, but we will be focusing on capital marke
 \subsection{Capital Markets}
 
 \bd[Capital Market]
-A \textbf{capital market} is a financial market in which long-term financial instruments are traded.
+A \textbf{capital market} is a financial market in which long-term (a year or more) financial instruments are traded.
 \ed
 
 The most important financial instruments that are traded in capital markets are:
@@ -108,9 +108,9 @@ A \textbf{financial intermediary} is an institution that acts as the middleman b
 The main function of financial intermediaries is to facilitate the transfer of funds from those who have excess funds
 to those who need funds, by providing a mechanism for buying and selling of securities.
 
-\vspace{6pt}
-\fig{cm}{0.57}
-\vspace{6pt}
+\vspace{5pt}
+\fig{cm}{0.5}
+\vspace{5pt}
 
 The most important financial intermediaries are comercial and investment banks.
 
@@ -126,8 +126,8 @@ corporate advisory services.
 Althoug there is a clear distinction between commercial and investment banks, in practice the distinction is not always
 clear. In the past, commercial banks were not allowed to engage in investment banking activities, and investment banks
 were not allowed to engage in commercial banking activities. However, in recent years, the distinction between the two
-types of banks has become less clear, finding the two types of banks competing for similar services, and many banks
-providing both types of services.
+types of banks has become less clear, finding the two types of banks competing for similar services, and many providing
+both types of services.
 
 \subsection{Primary Market}
 
@@ -297,10 +297,12 @@ agency or a corporate.
 
 Bonds are the most important type of fixed-income securities. In fact, they are so important that the terms ``debt
 security'', ``fixed-income security'', and ``bond'' are often used interchangeably, despite the fact that technically
-they are not the same thing. Bonds are issued by governments, govermental agencies and corporations to raise capital.
-Government and govermental agencies bonds (also called ``sovereign debts'') are usually the largest and most liquid
-part of the fixed-income market, and are considered to be the safest type of fixed-income securities. As a result of
-this, they have modest expected returns. \v
+they are not the same thing. \v
+
+Bonds are issued by governments, govermental agencies and corporations to raise capital. Government and govermental
+agencies bonds (also called ``sovereign debts'') are usually the largest and most liquid part of the fixed-income
+market, and are considered to be the safest type of fixed-income securities. As a result of this, they have modest
+expected returns. \v
 
 Corporate bonds are much more complex and difficult to categorize and analyze, however, they are usually riskier than
 government and govermental agencies bonds, and as a result of this, they have higher expected returns. \v
@@ -331,41 +333,162 @@ The interest payments on the principal that the issuer agrees to pay to the bond
 The \textbf{coupon} $C$ is the interest on the principal that the issuer agrees to pay to the bondholder.
 \ed
 
-\bd[Coupon Rate]
-The \textbf{coupon rate} $r_C$ is the amount of interest due per period expressed as a percentage of the principal.
+\bd[Coupon Rate / Nominal Yield]
+The \textbf{coupon rate}, or \textbf{nominal yield}, is an interest rate $r_C$ which is the amount of interest due per
+period expressed as a percentage of the principal.
 \ed
 
-In simple words, the coupon is a regular payment the bond-holder receives, calculated by multiplying the coupon rate
-by the principal of the bond and dividing by the number of coupon payments per year (compound) $n$:
+Hence, the coupon $C$ is a regular interest payment the bond-holder receives, calculated by multiplying the coupon
+rate $r_C$ by the principal $P$ of the bond and dividing by the number of coupon payments per year (compounds) $n$:
 \bse
 C = \frac{r_C \cdot P}{n}
 \ese
 
-It is important to mention that coupon rates are usually fixed, but they can also be floating, i.e.\ they can change
-over time.
+Coupon rates are usually fixed, but they can also be floating, i.e.\ they can change over time.
 
 \bd[Floating Coupon Rate]
 A \textbf{floating coupon} is a coupon rate that can change over time.
 \ed
 
 Coupons are paid either all together at the end of the maturity date together with the principal (called ``zero-coupon
-bonds''), or at regular time intervals, e.g.\ annually, semi-annually, quarterly, or monthly, depending on the
+bonds'' or ``strips''), or at regular time intervals, e.g.\ annually, semi-annually, etc., depending on the
 fixed-income market (called ``periodic coupon bonds'').
 
-\bd[Zero-Coupon Bond]
-A \textbf{zero-coupon bond} is a bond in which coupons are paied at their entirety at the end of the maturity date.
+\bd[Zero-Coupon Bond / Strip]
+A \textbf{zero-coupon bond}, or \textbf{strip} is a bond in which coupons are paied at their entirety at the end of the
+maturity date.
 \ed
 
 \bd[Periodic Coupon Bond]
 A \textbf{periodic coupon bond} is a bond in which coupons are paied at regular time intervals.
 \ed
 
+\subsubsection{Bond Price}
+
+Two of the most important concepts around a bond are its ``yield to maturity'' and its ``price''. The main issue with
+these two concept is that in order to define, and subsequently compute, the one, we need to know the other, and vice
+versa. However, one needs to start from somewhere.
+
+\bd[Yield To Maturity]
+The \textbf{yield to maturity} (\textbf{YTM}) $r_{\text{YTM}}$ is a single discount rate equating the present value of
+the bond's cash flows to its price.
+\ed
+
+\bd[Bond Price]
+The \textbf{price} of a bond is the present value of the bond given the current yield to maturity that the bond is
+traded.
+\ed
+
+Hence, the price of a bond is the present value of the bond given the current yield to maturity that the bond is traded,
+and the yield to maturity is the discount rate that equates the present value of the bond's cash flows to its price.
+\footnote{It is important to mention that each market carries its own day count convention, and as a result of this, the
+calculation of the price of a bond is not always straightforward. Some of the most common day count conventions are:
+\bit
+\item \textbf{Actual/Actual}: The actual number of days in the month and the actual number of days in the year.
+\item \textbf{30/360}: 30 days in a month and 360 days in a year.
+\item \textbf{Actual/360}: The actual number of days in the month and 360 days in a year.
+\item \textbf{Actual/365}: The actual number of days in the month and 365 days in a year.
+\eit
+
+Similarly, each market carries its own compounding convention, i.e.\ annual, semi-annual etc.} \v
+
+To price a bond, we interpret its coupons $C$ and principal $P$ received at maturity as a series of cash flows which
+we discount back to the present value using the yield to maturity $r_{\text{YTM}}$ as the discount rate.
+
+\vspace{-10pt}
+\fig{cm3}{0.5}
+\vspace{-10pt}
+
+Hence, by assuming $n$ compounding periods, the price of a bond is given by the formula for the present value of a
+series of cash flows (\ref{eq:pv_series}):
+\bse
+PV = \sum_{i=1}^T \Bigg(\frac{C}{(1 + \frac{r_{\text{YTM}}}{n})^{n \cdot i}}\Bigg) + \frac{P}{(1 + \frac{r_{\text{YTM}}}{n})^{n \cdot T}}
+\ese
+
+where:
+\bse
+C = \frac{r_C \cdot P}{n}
+\ese
+
+As we can see this equation combines the price of a bond with its yield to maturity. Thus, in order to calculate the
+price of a bond, one needs to know its yield to maturity and by substituting it back to the equation, one can
+calculate its price. Conversely, in order to calculate the yield to maturity of a bond, one needs to know its price,
+and by an iterative process, since no analytical solution exists, one can find a yield to maturity that satisfies the
+equation. If both are unknown at the same time, then one needs to start making assumptions. \v
+
+\be
+Let's assume a 10-year periodic coupon bond with a principal of \$1000, a coupon rate of 7\% compounded semi-annually,
+and a yield at maturity of 10\% compounded semi-annually. \v
+
+The coupon payments are:
+\bse
+C = \frac{0.07 \cdot 1000}{2} = 35
+\ese
+
+The price of the bond is:
+\bse
+PV = \sum_{i=1}^{20} \Bigg(\frac{35}{(1 + \frac{0.1}{2})^{2 \cdot i}}\Bigg) + \frac{1000}{(1 + \frac{0.1}{2})^{2 \cdot 10}} = \ldots
+\ese
+\ee
+
+Notice that so far we have made the assumption that the bond under consideration is a periodic coupon bond. To price a
+zero-coupon bond, we interpret it as a single cash flow and discount it back to the present value.
+
+\vspace{-10pt}
+\fig{cm5}{0.5}
+\vspace{-10pt}
+
+Thus, in the case of a zero-coupon bond, the price of the bond is simply the principal $P$ received at maturity
+discounted back to the present value using the yield to maturity $r_{\text{YTM}}$ as the discount rate. By
+assuming $n$ compounding periods, the price of a zero-coupon bond is given by the formula for the present value of a
+single cash flow (\ref{eq:pv_single}):
+\bse
+PV = \frac{P}{(1 + \frac{r}{n})^{n \cdot T}}
+\ese
+
+\be
+The price of a 10-year zero-coupon bond with a principal of \$100,000 and a yield at maturity of 3.2\% compounded
+semi-annually is:
+\bse
+PV = \frac{100,000}{(1 + \frac{0.032}{2})^{2 \cdot 10}} = \$72,799.07
+\ese
+\ee
+
+\subsubsection{Bond Valuation}
+
+Up to this point we used the yield to maturity as the discount rate for all the cash flows of the bond, since, by
+definition, that's the convention for pricing. While this is convenient for pricing a bond, since all parties to a
+conversation can understand what that discount rate implies about a particular bond, it is not particularly accurate
+for estimating the fair (intrinsic) value of a bond.
+
+\bd[Bond Valuation]
+The \textbf{valuation} of a bond is the process of determining what the intrinsic value of a bond is through analytic
+techniques.
+\ed
+
+For bond valuation we don't want to discount by a single interest rate, but with a different discount rate for each of
+the cash flows that reflects the risk and timing of that cash flow:
+\bse
+PV = \sum_{i=1}^T \Bigg(\frac{C}{(1 + \frac{r_i}{n})^{n \cdot i}}\Bigg) + \frac{P}{(1 + \frac{r_T}{n})^{n \cdot T}}
+\ese
+
+where each $r_i$ is the yield to maturity of a bond with the same risk and timing as the $i$-th cash flow of the bond
+usually called ``spot rate''.
+
+\bd[Spot Rate]
+The \textbf{spot rate} $r_i$ is the yield to maturity of a bond with the same risk and timing as the $i$-th cash flow
+of the bond.
+\ed
 
 
+Recall that we defined the yield to maturity as a single discount rate equating the present value of the bond's cash
+flows to its price. In some textbooks, yield to maturity is defined as the rate of return anticipated on a bond if it
+is held until the maturity date, as given by the annual rate of return equation (\ref{def:annual_rate_of_return}).
+However, this is not accurate. \v
 
-
-
-As it makes sense, bonds carry a certain amount of risks that makes the future return of the bondholder uncertain:
+The reason is that the yield to maturity is too
+simplistic to capture the true return of a bond to its investor. Bonds carry a certain amount of risks that makes the
+future return of the bondholder uncertain:
 \bit
 \item \textbf{Default / Credit Risk}: The risk that the issuer will not be able to make the interest payments or repay
 the principal at the maturity date.
@@ -381,41 +504,45 @@ the same interest rate.
 \item \textbf{Liquidity Risk}: The risk that the bondholder will not be able to sell the bond at a fair price.
 \eit
 
-Of course, since bonds carry risks they also carry sources of returns:
+Subsequently, since bonds carry risks they also carry sources of returns:
 \bit
 \item \textbf{Coupons}: The interest payments that the bondholder receives from the issuer.
 \item \textbf{Principal Capital Gains}: The increase in the face value of the bond due to a decrease in interest rates.
 \item \textbf{Compound Interest}: The interest that the bondholder receives from reinvesting the interest payments.
 \eit
 
+Even in zero-coupon bonds with non-annual compounding, the yield to maturity is not the true return of the bond to its
+investor.
+
+\be
+An an extreme example, in 2008 during the financial crisis, the yield to maturity of a 10-year US Treasury bond was
+around 11\%. However, the true return of the bond to its investor was -32\%.
+\ee
+
+Yield to maturity is a useful measure for comparing bonds with different coupon rates, maturities, and prices. The way
+to do so is to compare the yield to maturity of the bond with the yield to maturity of a bond with the same risk and
+timing.
+
+But it is not a useful measure for estimating the fair
+(intrinsic) value of a bond. For bond valuation, we need to use the spot rates, which are the yields to maturity of
+bonds with the same risk and timing as the cash flows of the bond under consideration.
 
 
 
-\bd[Bond Price]
-The \textbf{price} of a bond is the present value of the bond given the current yield that the bond is traded.
+
+
+
+
+
+\bd[Current Yield]
+The \textbf{current yield} $r_{\text{cy}}$ is the annual coupon payment of a bond divided by the current market price
+of the bond.
 \ed
 
-\bd[Bond Valuation]
-The \textbf{valuation} of a bond is the process of determining what a bond is worth through analytic techniques.
-\ed
 
-To price a periodic coupon bond, we interpret it as a series of cash flows and discount them back to the present value.
 
-\fig{cm3}{0.5}
 
-The cash flows of a periodic coupon bond are the periodic coupons $C$ and the principal $P$ received at maturity. The
-discount rate is the yield at maturity $r$ of the bond. By assuming $n$ compounding periods, the price of a bond is
-given by the formula for the present value of a series of cash flows (\ref{eq:pv}):
-\bse
-PV = \sum_{i=1}^T \Big(\frac{C}{(1 + \frac{r}{n})^{n \cdot i}}\Big) + \frac{P}{(1 + \frac{r}{n})^{n \cdot T}}
-\ese
 
-where:
-\bse
-C = \frac{r_C \cdot P}{n}
-\ese
-
-Notice that in this case we have assumed a non-flotating coupon rate.
 
 
 

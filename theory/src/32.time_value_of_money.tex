@@ -189,8 +189,8 @@ the time axis.
 
 In this case, the present value is simply the discounted present value of the single future amount of money. Assumming
 a compounding discount rate $r$, and $n$ compounds by period, by using the present value equation we get:
-\bse
-PV = \frac{CF}{(1 + \frac{r}{n})^{nT}}
+\bse \label{eq:pv_single}
+PV = \frac{CF}{(1 + \frac{r}{n})^{n \cdot T}}
 \ese
 
 Similarly, the future value is simply the future amount of money the cash flow will be worth at time $t=T$. Assumming a
@@ -209,9 +209,8 @@ received at time steps $t=1, 2, \ldots, T$.
 In this case, the present value is simply the sum of the present values of the individual cash flows, with the present
 value of each individual cash flow being the discounted value of the future amount of money. \v
 
-Assumming a compounding
-discount rate $r$, and $n$ compounds by period, by using the present value equation we get:
-\bse \label{eq:pv}
+Assumming a compounding discount rate $r$, and $n$ compounds by period, by using the present value equation we get:
+\bse \label{eq:pv_series}
 PV = \frac{CF_1}{(1 + \frac{r}{n})^{n \cdot 1}} + \frac{CF_2}{(1 + \frac{r}{n})^{n \cdot 2}} + \ldots + \frac{CF_T}{(1 + \frac{r}{n})^{n \cdot T}} = \sum_{i=1}^T \frac{CF_i}{(1 + \frac{r}{n})^{n \cdot i}}
 \ese
 
@@ -349,7 +348,7 @@ R = \frac{FV - PV}{PV} = \frac{FV}{PV} - 1
 
 In a similar way we define the ``annual rate of return'' as the rate of return per year.
 
-\bd[Annual Rate Of Return]
+\bd[Annual Rate Of Return] \label{def:annual_rate_of_return}
 The \textbf{annual rate of return} $R_{\text{annual}}$ is the rate of return per year:
 \bse
 R_{\text{annual}} = \Big(\frac{FV}{PV}\Big)^{\frac{1}{t}} - 1
