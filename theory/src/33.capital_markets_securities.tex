@@ -291,21 +291,96 @@ ones are the so-called ``bonds''.
 \subsection{Bonds}
 
 \bd[Bond]
-A \textbf{bond} is a fixed-income security that represents a loan made by an investor to a goverment, a govermental
-agency or a corporate.
+A \textbf{bond} is a fixed-income security that represents a loan made by an investor (lender) to an issuer (borrower),
+usually a goverment, a govermental agency or a corporate.
 \ed
 
 Bonds are the most important type of fixed-income securities. In fact, they are so important that the terms ``debt
 security'', ``fixed-income security'', and ``bond'' are often used interchangeably, despite the fact that technically
-they are not the same thing. \v
+they are not the same thing.
 
-Bonds are issued by governments, govermental agencies and corporations to raise capital. Government and govermental
-agencies bonds (also called ``sovereign debts'') are usually the largest and most liquid part of the fixed-income
-market, and are considered to be the safest type of fixed-income securities. As a result of this, they have modest
-expected returns. \v
+\subsubsection{Goverment Bonds}
+
+Bond can be issued by a variety of entities, with the two most important ones being governments and corporations.
+Starting with the first ones, government and govermental agencies bonds are usually called ``sovereign debts''.
+
+\bd[Sovereign Debt \ Government Bond]
+A \textbf{sovereign debt}, or \textbf{goverment bond}, is a bond issued by a national government in a foreign currency,
+in order to finance the country's growth and development.
+\ed
+
+Government bonds are usually the largest segment in any national market, and the most liquid part of the fixed-income
+market. When it comes to credit worthiness, they are considered to be the safest type of fixed-income securities. In
+fact, government bonds are considered to be ``risk-free'' securities, since they are backed by the full faith and
+credit of the government (or a nation), however one has to keep in mind that on one hand this risk is mainly related to
+the default credit risk of a bond (more on this later), and on the other hand, the risk is not really zero, since there
+are countries that have defaulted on their debt in the past. Nevertheless, the risk is considered to be so low that it
+is usually ignored. As a result of this, government bonds have modest expected returns.
+
+\bd[Goverment Bond Market]
+A \textbf{government bond market} is a market where people trade government bonds.
+\ed
+
+As it makes sense, each government, or each nation, has its own government bond market, and within this marker,
+different kinds of government bonds are issued. As a result, there is a wide variety of government bonds each one
+with its own characteristics and risk profile. \v
+
+Although getting into the details of each type of government bond issued by each government is beyond the scope of
+these notes, it is worth mentioning the biggest government bond market in the world (that of the US), and the
+government bonds they issue, the so called ``US treasuries''.
+
+\bd[US Treasury]
+A \textbf{US treasury} is a government bond issued by the United States government.
+\ed
+
+US government issues 3 different kinds of US treasuries: treasury bills, treasury notes, and treasury bonds.
+
+\bd[Treasury Bill / T-Bill]
+A \textbf{treasury bill}, or \textbf{t-bill}, is a short-term US treasury with maturity of less than one year.
+\ed
+
+Treasury bills are usually issued with maturities of 1, 3, 6, and 12 months, and are sold at a discount from their face
+value.
+
+\bd[Treasury Note / T-Note]
+A \textbf{treasury note} or \textbf{t-note}, is a US treasury with maturity of one to ten years.
+\ed
+
+Treasury notes are usually issued with maturities of 2, 3, 5, 7, and 10 years, and pay interest semi-annually.
+
+\bd[Treasury Bond / T-Bond]
+A \textbf{treasury bond} or \textbf{t-bond}, is a US treasury with maturity of more than ten years.
+\ed
+
+Treasury bonds are usually issued with maturities of 20 and 30 years, and pay interest semi-annually.
+
+\subsubsection{Corporate Bonds}
+
+The second most important type of fixed-income securities are the so-called ``corporate bonds''.
+
+\bd[Corporate Bond]
+A \textbf{corporate bond} is a bond issued by a corporation in order to raise capital.
+\ed
 
 Corporate bonds are much more complex and difficult to categorize and analyze, however, they are usually riskier than
-government and govermental agencies bonds, and as a result of this, they have higher expected returns. \v
+government bonds due to uncertainty of repayment (credit risk of both issuer and sector), uncertainty of liquidity,
+and uncertainty of life (embedded options). As a result of this, they have higher expected returns. \v
+
+There are many different types of corporate bonds when it comes to various characteristics they carry, and mentioning
+them all is beyond the scope of these notes. However, one of the most important type of corporate bonds are the so
+called ``convertible bonds'' and ``exchangeable bonds''.
+
+\bd[Convertible Bond]
+A \textbf{convertible bond} is a bond that can be converted into a predetermined number of shares of the issuer's
+common stocks.
+\ed
+
+\bd[Exchangeable Bond]
+An \textbf{exchangeable bond} is a bond that can be converted into a predetermined number of shares of the stock
+of a company other than the issuer.
+\ed
+
+\subsubsection{Bond Characteristics}
 
 When an investor buys a bond, they are lending money to the issuer in exchange for interest payments and the return of
 the bond's principal when it matures.
@@ -320,34 +395,47 @@ The \textbf{maturity date} is the date on which the issuer of a bond agrees to r
 of the bond.
 \ed
 
-The principal of the bond is usually paied out at its entirety at the end of the maturity date, however, there are
-bonds that pay out the principal in installments, called ``amortizing bonds''.
+The principal of the bond is usually paied out at its entirety at the end of the maturity date. In this case we refer
+to the bond as a ``term'' or a ``bullet'' bond.
+
+\bd[Term Bond / Bullet Bond]
+A \textbf{term bond}, or \textbf{bullet bond}, is a bond that pays out the principal at its entirety at the end of the
+maturity date.
+\ed
+
+However, there are bonds that pay out the principal in installments, called ``amortizing bonds''.
 
 \bd[Amortizing Bond]
 An \textbf{amortizing bond} is a bond that pays out the principal in installments.
 \ed
 
-The interest payments on the principal that the issuer agrees to pay to the bondholder are called ``coupons''.
+The interest payments on the principal the issuer agrees to pay to the bondholder are called ``coupons''.
 
 \bd[Coupon]
 The \textbf{coupon} $C$ is the interest on the principal that the issuer agrees to pay to the bondholder.
 \ed
 
 \bd[Coupon Rate / Nominal Yield]
-The \textbf{coupon rate}, or \textbf{nominal yield}, is an interest rate $r_C$ which is the amount of interest due per
-period expressed as a percentage of the principal.
+The \textbf{coupon rate}, or \textbf{nominal yield}, is an interest rate $r_C$ which is the amount of a coupon $C$,
+expressed as a percentage of the principal $P$, including $n$ compounding periods per year:
+\bse
+r_C = \frac{n \cdot C}{P}
+\ese
 \ed
 
 Hence, the coupon $C$ is a regular interest payment the bond-holder receives, calculated by multiplying the coupon
-rate $r_C$ by the principal $P$ of the bond and dividing by the number of coupon payments per year (compounds) $n$:
+rate $r_C$ by the principal $P$ and dividing by the number of coupon payments per year $n$:
 \bse
 C = \frac{r_C \cdot P}{n}
 \ese
 
-Coupon rates are usually fixed, but they can also be floating, i.e.\ they can change over time.
+\bd[Fixed Coupon Rate]
+A \textbf{fixed coupon} is a coupon rate that remains constant over time.
+\ed
 
 \bd[Floating Coupon Rate]
-A \textbf{floating coupon} is a coupon rate that can change over time.
+A \textbf{floating coupon} is an adjustable coupon rate that can change over time, usually determined by a benchmark
+index rate.
 \ed
 
 Coupons are paid either all together at the end of the maturity date together with the principal (called ``zero-coupon
@@ -356,7 +444,7 @@ fixed-income market (called ``periodic coupon bonds'').
 
 \bd[Zero-Coupon Bond / Strip]
 A \textbf{zero-coupon bond}, or \textbf{strip} is a bond in which coupons are paied at their entirety at the end of the
-maturity date.
+maturity date together with the principal.
 \ed
 
 \bd[Periodic Coupon Bond]
@@ -379,10 +467,9 @@ The \textbf{price} of a bond is the present value of the bond given the current 
 traded.
 \ed
 
-Hence, the price of a bond is the present value of the bond given the current yield to maturity that the bond is traded,
-and the yield to maturity is the discount rate that equates the present value of the bond's cash flows to its price.
-\footnote{It is important to mention that each market carries its own day count convention, and as a result of this, the
-calculation of the price of a bond is not always straightforward. Some of the most common day count conventions are:
+To price\footnote{It is important to mention that each market (and sometimes each security in the market) carries its
+own day count convention, and as a result of this, the calculation of the price of a bond is not always straightforward.
+Some of the most common day count conventions are:
 \bit
 \item \textbf{Actual/Actual}: The actual number of days in the month and the actual number of days in the year.
 \item \textbf{30/360}: 30 days in a month and 360 days in a year.
@@ -390,19 +477,17 @@ calculation of the price of a bond is not always straightforward. Some of the mo
 \item \textbf{Actual/365}: The actual number of days in the month and 365 days in a year.
 \eit
 
-Similarly, each market carries its own compounding convention, i.e.\ annual, semi-annual etc.} \v
+Similarly, each market carries its own compounding convention, i.e.\ annual, semi-annual, etc.} a bond, we interpret
+its coupons $C$ and principal $P$ received at maturity as a series of cash flows which we discount back to the present
+value using the yield to maturity $r_{\text{YTM}}$ as the discount rate.
 
-To price a bond, we interpret its coupons $C$ and principal $P$ received at maturity as a series of cash flows which
-we discount back to the present value using the yield to maturity $r_{\text{YTM}}$ as the discount rate.
-
-\vspace{-10pt}
 \fig{cm3}{0.5}
-\vspace{-10pt}
 
 Hence, by assuming $n$ compounding periods, the price of a bond is given by the formula for the present value of a
 series of cash flows (\ref{eq:pv_series}):
 \bse
-PV = \sum_{i=1}^T \Bigg(\frac{C}{(1 + \frac{r_{\text{YTM}}}{n})^{n \cdot i}}\Bigg) + \frac{P}{(1 + \frac{r_{\text{YTM}}}{n})^{n \cdot T}}
+\text{Price} = \sum_{i=1}^T \Bigg(\frac{C}{(1 + \frac{r_{\text{YTM}}}{n})^{n \cdot i}}\Bigg) +
+\frac{P}{(1 + \frac{r_{\text{YTM}}}{n})^{n \cdot T}}
 \ese
 
 where:
@@ -417,81 +502,102 @@ and by an iterative process, since no analytical solution exists, one can find a
 equation. If both are unknown at the same time, then one needs to start making assumptions. \v
 
 \be
-Let's assume a 10-year periodic coupon bond with a principal of \$1000, a coupon rate of 7\% compounded semi-annually,
-and a yield at maturity of 10\% compounded semi-annually. \v
+Let's assume a 10-year periodic coupon bond compounded semi-annually, with a principal of \$1000, a coupon rate of 7\%,
+and a yield to maturity of 10\%. \v
 
 The coupon payments are:
 \bse
-C = \frac{0.07 \cdot 1000}{2} = 35
+C = \frac{r_C \cdot P}{n} = \frac{0.07 \cdot 1000}{2} = 35
 \ese
 
 The price of the bond is:
 \bse
-PV = \sum_{i=1}^{20} \Bigg(\frac{35}{(1 + \frac{0.1}{2})^{2 \cdot i}}\Bigg) + \frac{1000}{(1 + \frac{0.1}{2})^{2 \cdot 10}} = \ldots
+\text{Price} = \sum_{i=1}^T \Bigg(\frac{C}{(1 + \frac{r_{\text{YTM}}}{n})^{n \cdot i}}\Bigg) + \frac{P}{(1 +
+\frac{r_{\text{YTM}}}{n})^{n \cdot T}} = \sum_{i=1}^{20} \Bigg(\frac{35}{(1 + \frac{0.1}{2})^{2 \cdot i}}\Bigg) +
+\frac{1000}{(1 + \frac{0.1}{2})^{2 \cdot 10}} = \ldots
 \ese
 \ee
 
 Notice that so far we have made the assumption that the bond under consideration is a periodic coupon bond. To price a
 zero-coupon bond, we interpret it as a single cash flow and discount it back to the present value.
 
-\vspace{-10pt}
 \fig{cm5}{0.5}
-\vspace{-10pt}
 
 Thus, in the case of a zero-coupon bond, the price of the bond is simply the principal $P$ received at maturity
 discounted back to the present value using the yield to maturity $r_{\text{YTM}}$ as the discount rate. By
 assuming $n$ compounding periods, the price of a zero-coupon bond is given by the formula for the present value of a
 single cash flow (\ref{eq:pv_single}):
 \bse
-PV = \frac{P}{(1 + \frac{r}{n})^{n \cdot T}}
+\text{Price} = \frac{P}{(1 + \frac{r}{n})^{n \cdot T}}
 \ese
 
 \be
-The price of a 10-year zero-coupon bond with a principal of \$100,000 and a yield at maturity of 3.2\% compounded
-semi-annually is:
+The price of a 10-year zero-coupon bond compounded semi-annually, with a principal of \$100,000 and a yield to maturity
+of 3.2\%  is:
 \bse
-PV = \frac{100,000}{(1 + \frac{0.032}{2})^{2 \cdot 10}} = \$72,799.07
+\text{Price} = \frac{P}{(1 + \frac{r}{n})^{n \cdot T}} = \frac{100,000}{(1 + \frac{0.032}{2})^{2 \cdot 10}} = \ldots
 \ese
 \ee
 
+Having defined a bond's price, we can now provide of ``current yield'' which differs from the nominal yield in the
+sense that it is the interest on the price, and not on the principal.
+
+\bd[Current Yield]
+The \textbf{current yield}, is an interest rate $r_{\text{cy}}$ which is the amount of a coupon $C$, expressed as a
+percentage of the price, including $n$ compounding periods per year:
+\bse
+r_{\text{cy}} = \frac{n \cdot C}{\text{Price}}
+\ese
+\ed
+
 \subsubsection{Bond Valuation}
 
-Up to this point we used the yield to maturity as the discount rate for all the cash flows of the bond, since, by
-definition, that's the convention for pricing. While this is convenient for pricing a bond, since all parties to a
-conversation can understand what that discount rate implies about a particular bond, it is not particularly accurate
-for estimating the fair (intrinsic) value of a bond.
-
-\bd[Bond Valuation]
-The \textbf{valuation} of a bond is the process of determining what the intrinsic value of a bond is through analytic
-techniques.
-\ed
-
-For bond valuation we don't want to discount by a single interest rate, but with a different discount rate for each of
-the cash flows that reflects the risk and timing of that cash flow:
-\bse
-PV = \sum_{i=1}^T \Bigg(\frac{C}{(1 + \frac{r_i}{n})^{n \cdot i}}\Bigg) + \frac{P}{(1 + \frac{r_T}{n})^{n \cdot T}}
-\ese
-
-where each $r_i$ is the yield to maturity of a bond with the same risk and timing as the $i$-th cash flow of the bond
-usually called ``spot rate''.
-
-\bd[Spot Rate]
-The \textbf{spot rate} $r_i$ is the yield to maturity of a bond with the same risk and timing as the $i$-th cash flow
-of the bond.
-\ed
-
-
-Recall that we defined the yield to maturity as a single discount rate equating the present value of the bond's cash
-flows to its price. In some textbooks, yield to maturity is defined as the rate of return anticipated on a bond if it
-is held until the maturity date, as given by the annual rate of return equation (\ref{def:annual_rate_of_return}).
-However, this is not accurate. \v
-
-The reason is that the yield to maturity is too
-simplistic to capture the true return of a bond to its investor. Bonds carry a certain amount of risks that makes the
-future return of the bondholder uncertain:
+Bonds carry a certain amount of risks that makes the future return of the bondholder uncertain. Let's begin this
+discussion by exploring the risks of a bond.
 \bit
 \item \textbf{Default / Credit Risk}: The risk that the issuer will not be able to make the interest payments or repay
 the principal at the maturity date.
+\eit
+
+The credit risk is the primary risk of a bond, and it is usually measured by its credit rating.
+
+\bd[Credit Rating]
+A \textbf{credit rating} is an evaluation of the credit worthiness of a bond issuer.
+\ed
+
+In general, there are 4 main determinants of the credit risk, oftenly called the ``4 Cs of credit risk'':
+\bit
+\item \textbf{Capacity}: The issuer's ability to pay the interest and the principal.
+\item \textbf{Covenants}: The terms of the bond that protect the bondholder.
+\item \textbf{Collateral}: The assets that the issuer has pledged to secure the bond.
+\item \textbf{Character}: The issuer's willingness to pay the interest and the principal.
+\eit
+
+Credit ratings are usually provided by credit rating agencies.
+
+\bd[Credit Rating Agency]
+A \textbf{credit rating agency} is a company that assigns credit ratings to fixed-income security issuers, as well ass
+the fixed-income securities themselves.
+\ed
+
+The most common credit rating agencies are ``Standard \& Poor's'', ``Moody's'', and ``Fitch''. \v
+
+The credits rating are denoted by letters and symbols, with ``AAA'' being of the highest quality rating with the
+smallest degree of investment risk, and ``D'' (or ``/'' depending on the credit agency) being of the lowest quality
+rating, with the largest degree of investment risk. There are more than 20 different ratings in between. \v
+
+Depending on the credit rating, there is some jargon characterizing the riskiness of bonds.
+
+\bd[Investment Grade Bond]
+An \textbf{investment grade bond} is a bond with a credit rating of ``BBB'' or higher.
+\ed
+
+\bd[High Yield Bond / Junk Bond]
+A \textbf{high yield bond}, or \textbf{junk bond}, is a bond with a credit rating of ``BB'' or lower.
+\ed
+
+Moving on the other risks associated to bonds:
+\bit
 \item \textbf{Interest Rate Risk}: The risk that the value of the bond will decrease due to changes in interest rates.
 This risk can be spllited into two subcategories: ``price risk'' and ``reinvestment risk''.
 \bit
@@ -501,50 +607,114 @@ rates.
 the same interest rate.
 \eit
 \item \textbf{Inflation Risk}: The risk that the value of the bond will decrease due to an increase in inflation.
-\item \textbf{Liquidity Risk}: The risk that the bondholder will not be able to sell the bond at a fair price.
+\item \textbf{Liquidity Risk}: The risk that the bondholder will not be able to sell the bond when the want at a fair
+price.
 \eit
 
 Subsequently, since bonds carry risks they also carry sources of returns:
 \bit
 \item \textbf{Coupons}: The interest payments that the bondholder receives from the issuer.
-\item \textbf{Principal Capital Gains}: The increase in the face value of the bond due to a decrease in interest rates.
-\item \textbf{Compound Interest}: The interest that the bondholder receives from reinvesting the interest payments.
+\item \textbf{Principal}: The principal of the bond the bondholder receives from the issuer at the maturity date.
+\item \textbf{Price Changes}: The increase in the face value of the bond due to a decrease in interest rates.
+\item \textbf{Compound Interest}: The interest the bondholder receives by reinvesting the coupons.
 \eit
 
-Even in zero-coupon bonds with non-annual compounding, the yield to maturity is not the true return of the bond to its
-investor.
+In the previous section we defined the price of the bond using the yield to maturity as the discount rate for all the
+cash flows of the bond. This is convenient, since all parties to a conversation can understand what that discount rate
+implies about a particular bond. \v
 
-\be
-An an extreme example, in 2008 during the financial crisis, the yield to maturity of a 10-year US Treasury bond was
-around 11\%. However, the true return of the bond to its investor was -32\%.
-\ee
+However, using just one, single discount rate to value a bond, is an oversimplification unable to capture all the
+risks and sources of returns of a bond. As a result, the price of a bond is not the true, intrisic value of the bond.
 
-Yield to maturity is a useful measure for comparing bonds with different coupon rates, maturities, and prices. The way
-to do so is to compare the yield to maturity of the bond with the yield to maturity of a bond with the same risk and
-timing.
+\bd[Bond Value]
+The \textbf{value} of a bond is the true, intrinsic value of a bond.
+\ed
 
-But it is not a useful measure for estimating the fair
-(intrinsic) value of a bond. For bond valuation, we need to use the spot rates, which are the yields to maturity of
-bonds with the same risk and timing as the cash flows of the bond under consideration.
+The bond value can be discovered through the process of ``bond valuation''.
 
+\bd[Bond Valuation]
+The \textbf{valuation} of a bond is the process of determining what the value of a bond is through analytic techniques.
+\ed
 
+For bond valuation we don't want to discount by a single interest rate, but with a different discount rate for each of
+the cash flows that reflects the risk and timing of that cash flow:
+\bse
+\text{Value} = \sum_{i=1}^T \Bigg(\frac{C}{(1 + \frac{r_i}{n})^{n \cdot i}}\Bigg) +
+\frac{P}{(1 + \frac{r_T}{n})^{n \cdot T}}
+\ese
 
+where:
+\bse
+C = \frac{r_i \cdot P}{n}
+\ese
 
+and each $r_i$ is the yield to maturity of a bond with the same risk and timing as the $i$-th cash flow of the bond
+usually called ``spot rate''.
 
-
-
-
-\bd[Current Yield]
-The \textbf{current yield} $r_{\text{cy}}$ is the annual coupon payment of a bond divided by the current market price
+\bd[Spot Rate]
+The \textbf{spot rate} $r_i$ is the yield to maturity of a bond with the same risk and timing as the $i$-th cash flow
 of the bond.
 \ed
 
+Hence, while yield to maturity is a useful measure for comparing bonds with different coupon rates, maturities, and
+prices, it is not a useful measure for estimating the fair, intrinsic value of a bond. For this, we need to use the
+spot rates, which are the yields to maturity of bonds with the same risk and timing as the cash flows of the bond
+under consideration. \v
 
+To take this a step further, in some textbooks, yield to maturity is defined as the rate of return anticipated on a bond
+if it is held until the maturity date, as given by the annual rate of return equation (\ref{def:annual_rate_of_return}).
+However, due to the simplistic nature of the yield to maturity, this is far from the truth.
 
+\be
+An an extreme example, in 2008 during the financial crisis, the yield to maturity of a 10-year US Treasury bond was
+around 11\%. However, the true annual rate of return of the bond to its investor was -32\%.
+\ee
 
+\subsubsection{Yield Curves}
 
+\bd[Yield Curve \ Term Structure Of Interest Rates]
+A \textbf{yield curve}, or \textbf{term structure of interest rates}, is a graph that plots yields to maturity (interest
+rates) of bonds with exactly the same characteristics but different maturity dates.
+\ed
 
+\fig{cm7}{0.3}
 
+A yield curve can be either ``on-the-run'' or ``off-the-run''.
+
+\bd[On-The-Run Yield Curve]
+An \textbf{on-the-run yield curve} is a yield curve that plots yields to maturity of bonds that are currently being
+issued.
+\ed
+
+\bd[Off-The-Run Yield Curve]
+An \textbf{off-the-run yield curve} is a yield curve that plots yields to maturity of bonds that are not currently
+being issued.
+\ed
+
+It is important to note that in order to draw a yield curve we need a group of homogeneous bonds, i.e.\ bonds that
+have the same credit risk, the same liquidity, the same coupon rate, the same embedded optionality, as well as a few
+other things, but different maturities. It's safe to say that in real life we will never find a group of bonds that
+provide that degree of homogeneity, and we need to rely on analytical techniques. \v
+
+There is a different yield curve for each different issuer sector. In other words, government yield curves would be
+different from corporate yield curves, which would be different from other backed yield curves. In reality, even within
+an issuer sector there are different yield curves for different types of bonds.
+
+\be
+For example, in the corporate sector, each different credit rating category, in effect, would need to have its own
+yield curve for us to be able to get some serious insight by assessing the the the information conveyed by the yield
+curves.
+\ee
+
+Since corporate bonds are usually riskier than government bonds, the yield curve of corporate bonds is usually higher
+than the yield curve of government bonds. This difference is called the ``credit spread''.
+
+\bd[Credit Spread]
+The \textbf{credit spread} is the difference between the yield to maturity of a corporate bond and the yield to maturity
+of a government bond with the same maturity.
+\ed
+
+\fig{cm8}{0.5}
 
 %\section{Equity Securities}
 %
@@ -558,3 +728,18 @@ of the bond.
 %rights and privileges as a shareholder. These rights and privileges include the right to vote in the company's annual
 %general meeting, the right to receive dividends, the right to receive a portion of the company's assets in case the
 %company is liquidated, and others.
+%
+%\bd[Preferred Stock / Preference Shares]
+%A \textbf{preferred stock}, or \textbf{preference share}, is a type of stock that has a higher claim on the company's
+%assets and earnings than common stock.
+%\ed
+%
+%Although preferred stock is a type of stock, and it is widely assumed to belong to equity securities, in reality it
+%is more similar to a bond than to a common stock. Preferred stock pays a fixed dividend, and it is usually rated by
+%credit rating agencies. In addition, preferred stock is usually issued with a ``par value'' and it is usually callable
+%by the issuer at a predetermined price.
+%
+%\bd[Anticipated Dividend]
+%The \textbf{anticipated dividend} is the amount of a dividend $D$ that the issuer anticipates to pay to the preferred
+%stockholder.
+%\ed
