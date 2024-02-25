@@ -1,3 +1,4 @@
+%! suppress = EscapeUnderscore
 \section{Financial Markets}
 
 \bd[Financial Asset]
@@ -674,10 +675,14 @@ around 11\%. However, the true annual rate of return of the bond to its investor
 
 \bd[Yield Curve \ Term Structure Of Interest Rates]
 A \textbf{yield curve}, or \textbf{term structure of interest rates}, is a graph that plots yields to maturity (interest
-rates) of bonds with exactly the same characteristics but different maturity dates.
+rates) of bonds with exactly the same characteristics but different times to maturity.
 \ed
 
 \fig{cm7}{0.3}
+
+Yield curves measure the level of interest rates across a maturity spectrum. Accurate yield curves are essential for
+the pricing, trading, revaluation, and hedging interest-rate sensitive products. They are also used to forecast
+economic activity and to set monetary policy. \v
 
 A yield curve can be either ``on-the-run'' or ``off-the-run''.
 
@@ -698,23 +703,62 @@ provide that degree of homogeneity, and we need to rely on analytical techniques
 
 There is a different yield curve for each different issuer sector. In other words, government yield curves would be
 different from corporate yield curves, which would be different from other backed yield curves. In reality, even within
-an issuer sector there are different yield curves for different types of bonds.
-
-\be
-For example, in the corporate sector, each different credit rating category, in effect, would need to have its own
-yield curve for us to be able to get some serious insight by assessing the the the information conveyed by the yield
-curves.
-\ee
+an issuer sector there are different yield curves for different types of bonds. For example, each different credit
+rating category would need to have its own yield curve for us to be able to get some serious insight by assessing the
+information conveyed by the yield curves. \v
 
 Since corporate bonds are usually riskier than government bonds, the yield curve of corporate bonds is usually higher
 than the yield curve of government bonds. This difference is called the ``credit spread''.
 
-\bd[Credit Spread]
-The \textbf{credit spread} is the difference between the yield to maturity of a corporate bond and the yield to maturity
-of a government bond with the same maturity.
+\bd[Credit Spread / Risk Premia]
+The \textbf{credit spread}, or \textbf{risk premia}, is the difference between the yield to maturity of a corporate
+bond and the yield to maturity of a government bond with the same maturity.
 \ed
 
-\fig{cm8}{0.5}
+In essense the risk premia is a collection of all the risks that are not present in the government bond, and are
+present in the corporate bond, such as the default risk, the liquidity risk, etc. On top of that corporate bonds also
+carry the default risk (or ``risk-free') and inflation risk that government bonds carry. The following figure shows the
+yield curve of a corporate bond and the yield curve of a government bond and the involved risks.
+
+\fig{cm8}{0.4}
+
+As it makes sense the more sensitive a bond is to interest rate changes, the more volatile its price will be. This
+sensitivity is called ``duration'' and it's nothing more than the slope of the yield curve, i.e.\ the first derivative
+of the yield curve.
+
+\bd[Duration]
+The \textbf{duration} of a bond is a measure of the sensitivity of the bond's price to interest rate changes:
+\bse
+\text{Duration} = \frac{d \text{Price}}{d r_C}
+\ese
+\ed
+
+Duration depends on the bond's time to maturity, its coupon rate, and the yield to maturity. The shorter the time to
+maturity, the lower the coupon rate, and the higher the yield to maturity, the lower the duration. On the other hand,
+the longer the time to maturity, the higher the coupon rate, and the lower the yield to maturity, the higher the
+duration. \v
+
+Based on the duration (slope), there are four different types of yield curves:
+\bit
+\item \textbf{Normal Yield Curve}: A yield curve that is upward sloping.
+\item \textbf{Inverted Yield Curve}: A yield curve that is downward sloping.
+\item \textbf{Flat Yield Curve}: A yield curve that is flat.
+\item \textbf{Humped Yield Curve}: A yield curve that is humped.
+\eit
+
+\fig{cm9}{0.6}
+
+There are many theories explaining the shape of yield curves, with the most important ones being:
+\bit
+\item \textbf{Liquidity Preference Theory}: The theory that investors demand a premium for securities with longer
+maturities. It can explain nothing more than the normal yield curve.
+\item \textbf{Market Segmentation Theory}: The theory that the supply and demand for securities of different maturities
+are not substitutes and that the shape of the yield curve is determined by the supply and demand for securities of
+different maturities.
+\item \textbf{Expectations Theory}: The theory that the shape of the yield curve is determined by the market's
+expectations of future interest rates. It can explain all types of yield curves, and it is the most widely accepted
+theory.
+\eit
 
 %\section{Equity Securities}
 %
