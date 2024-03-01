@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.9.28)  25 FEB 2024 06:11
+This is XeTeX, Version 3.141592653-2.6-0.999995 (TeX Live 2023) (preloaded format=xelatex 2023.9.28)  26 FEB 2024 10:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -2388,77 +2388,105 @@ Package mdframed Info: mdframed detected package amsthm
 
 
 LaTeX Warning: Reference `def:annual_rate_of_return' on page 12 undefined on in
-put line 666.
+put line 667.
 
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 669.
+(mdframed)              on input line 670.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 672.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 676.
-Package mdframed Info: mdframed detected package amsthm 
- changed the theorem header of amsthm
-(mdframed)              on input line 679.
+(mdframed)              on input line 673.
 [12]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 681.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 684.
 File: ./img//cm7.png Graphic file (type bmp)
 <./img//cm7.png>
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 689.
+(mdframed)              on input line 703.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 692.
+(mdframed)              on input line 705.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 694.
+(mdframed)              on input line 707.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 697.
+(mdframed)              on input line 709.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 713.
+(mdframed)              on input line 725.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 716.
+(mdframed)              on input line 728.
+ [13]
 File: ./img//cm8.png Graphic file (type bmp)
 <./img//cm8.png>
- [13]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 729.
+(mdframed)              on input line 741.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 734.
+(mdframed)              on input line 746.
 File: ./img//cm9.png Graphic file (type bmp)
 <./img//cm9.png>
- [14])
+ [14]
+File: ./img//cm10.png Graphic file (type bmp)
+<./img//cm10.png>
+ [15]
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 791.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 793.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 802.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 805.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 812.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 815.
+)
 
 Package movie15 Warning: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 (movie15)                @@ Package `movie15' is obsolete and @@
 (movie15)                @@ superseded by `media9'.           @@
 (movie15)                @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@.
 
-[15] (/Users/tasos/Repos/Personal/notes/theory/out/theory.aux)
+[16] (/Users/tasos/Repos/Personal/notes/theory/out/theory.aux)
 
 LaTeX Warning: There were undefined references.
 
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package rerunfilecheck Info: File `theory.out' has not changed.
-(rerunfilecheck)             Checksum: 1A7BC78F85813FE67C7E32EA18D760D4;2185.
+
+Package rerunfilecheck Warning: File `theory.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `theory.out':
+(rerunfilecheck)             Before: 1A7BC78F85813FE67C7E32EA18D760D4;2185
+(rerunfilecheck)             After:  6CE8C31DBD05A5D9D3029C227D2891DB;2328.
  ) 
 Here is how much of TeX's memory you used:
- 49496 strings out of 476683
- 1168995 string characters out of 5804047
+ 49523 strings out of 476683
+ 1169509 string characters out of 5804047
  1874018 words of memory out of 5000000
- 68837 multiletter control sequences out of 15000+600000
+ 68864 multiletter control sequences out of 15000+600000
  541583 words of font info for 116 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  125i,8n,129p,1003b,1096s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on /Users/tasos/Repos/Personal/notes/theory/out/theory.pdf (15 p
+Output written on /Users/tasos/Repos/Personal/notes/theory/out/theory.pdf (16 p
 ages).

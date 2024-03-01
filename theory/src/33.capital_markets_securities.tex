@@ -660,7 +660,8 @@ of the bond.
 Hence, while yield to maturity is a useful measure for comparing bonds with different coupon rates, maturities, and
 prices, it is not a useful measure for estimating the fair, intrinsic value of a bond. For this, we need to use the
 spot rates, which are the yields to maturity of bonds with the same risk and timing as the cash flows of the bond
-under consideration. \v
+under consideration. This is easier said than done, since spot rates are not directly observable, and need to be
+estimated using statistical techniques such as bootstrapping. \v
 
 To take this a step further, in some textbooks, yield to maturity is defined as the rate of return anticipated on a bond
 if it is held until the maturity date, as given by the annual rate of return equation (\ref{def:annual_rate_of_return}).
@@ -671,11 +672,15 @@ An an extreme example, in 2008 during the financial crisis, the yield to maturit
 around 11\%. However, the true annual rate of return of the bond to its investor was -32\%.
 \ee
 
+Coming to some more terminology, when a bond is priced at its intrinsic value, it is said to be ``at par''. When a
+bond is priced above its intrinsic value, it is said to be ``at a premium'' or ``traiding rich''. When a bond is
+priced below its intrinsic value, it is said to be ``at a discount'' or ``traiding cheap''.
+
 \subsubsection{Yield Curves}
 
 \bd[Yield Curve \ Term Structure Of Interest Rates]
-A \textbf{yield curve}, or \textbf{term structure of interest rates}, is a graph that plots yields to maturity (interest
-rates) of bonds with exactly the same characteristics but different times to maturity.
+A \textbf{yield curve}, or \textbf{term structure of interest rates}, is a graph that plots yields (interest rates) of
+bonds with exactly the same characteristics but different times to maturity.
 \ed
 
 \fig{cm7}{0.3}
@@ -684,16 +689,23 @@ Yield curves measure the level of interest rates across a maturity spectrum. Acc
 the pricing, trading, revaluation, and hedging interest-rate sensitive products. They are also used to forecast
 economic activity and to set monetary policy. \v
 
+There are many different yield curves depending on the yield under investigation:
+\bit
+\item \textbf{Yield To Maturity Curve}: A yield curve that plots yields to maturity of bonds with exactly the same
+characteristics but different times to maturity. Most of the time when people refer to the yield curve, they are
+referring to the yield to maturity curve.
+\item \textbf{Spot Rate Curve}: A yield curve that plots spot rates of bonds versus times to maturity.
+\item \textbf{Forward Rate Curve}: A yield curve that plots forward rates of bonds versus times to maturity.
+\eit
+
 A yield curve can be either ``on-the-run'' or ``off-the-run''.
 
 \bd[On-The-Run Yield Curve]
-An \textbf{on-the-run yield curve} is a yield curve that plots yields to maturity of bonds that are currently being
-issued.
+An \textbf{on-the-run yield curve} is a yield curve of bonds that are currently being issued.
 \ed
 
 \bd[Off-The-Run Yield Curve]
-An \textbf{off-the-run yield curve} is a yield curve that plots yields to maturity of bonds that are not currently
-being issued.
+An \textbf{off-the-run yield curve} is a yield curve of bonds that are not currently being issued.
 \ed
 
 It is important to note that in order to draw a yield curve we need a group of homogeneous bonds, i.e.\ bonds that
@@ -720,7 +732,7 @@ present in the corporate bond, such as the default risk, the liquidity risk, etc
 carry the default risk (or ``risk-free') and inflation risk that government bonds carry. The following figure shows the
 yield curve of a corporate bond and the yield curve of a government bond and the involved risks.
 
-\fig{cm8}{0.4}
+\fig{cm8}{0.32}
 
 As it makes sense the more sensitive a bond is to interest rate changes, the more volatile its price will be. This
 sensitivity is called ``duration'' and it's nothing more than the slope of the yield curve, i.e.\ the first derivative
@@ -740,13 +752,18 @@ duration. \v
 
 Based on the duration (slope), there are four different types of yield curves:
 \bit
-\item \textbf{Normal Yield Curve}: A yield curve that is upward sloping.
-\item \textbf{Inverted Yield Curve}: A yield curve that is downward sloping.
-\item \textbf{Flat Yield Curve}: A yield curve that is flat.
-\item \textbf{Humped Yield Curve}: A yield curve that is humped.
+\item \textbf{Normal Yield Curve}: A yield curve that is upward sloping. It's called normal because it's the most
+common type of yield curve.
+\item \textbf{Inverted Yield Curve}: A yield curve that is downward sloping. The inversion of the yield curve is created
+due to rising short term rates, falling long term rates, or a combination of the two.
+\item \textbf{Flat Yield Curve}: A yield curve that is flat. The flat yield curve comes about primarily due to a
+combination of rising short term rates and falling long term rates. Flat yield curves are usually seen during
+transitional periods.
+\item \textbf{Humped Yield Curve}: A yield curve that is humped. The humped yield curve is a result of a combination
+of rising short term rates and falling long term rates.
 \eit
 
-\fig{cm9}{0.6}
+\fig{cm9}{0.52}
 
 There are many theories explaining the shape of yield curves, with the most important ones being:
 \bit
@@ -760,30 +777,203 @@ expectations of future interest rates. It can explain all types of yield curves,
 theory.
 \eit
 
-%\section{Equity Securities}
-%
-%\bd[Equity Security]
-%An \textbf{equity security} is a security that represents ownership in a corporation.
-%\ed
-%
-%Equity securities are also called ``stocks'' or ``shares''. When you buy a stock you are buying a piece of the
-%company. The company is divided into a number of shares and each share represents a piece of the company. When you
-%buy a share you become a shareholder of the company. The company is legally required to provide you with certain
-%rights and privileges as a shareholder. These rights and privileges include the right to vote in the company's annual
-%general meeting, the right to receive dividends, the right to receive a portion of the company's assets in case the
-%company is liquidated, and others.
-%
-%\bd[Preferred Stock / Preference Shares]
-%A \textbf{preferred stock}, or \textbf{preference share}, is a type of stock that has a higher claim on the company's
-%assets and earnings than common stock.
-%\ed
-%
-%Although preferred stock is a type of stock, and it is widely assumed to belong to equity securities, in reality it
-%is more similar to a bond than to a common stock. Preferred stock pays a fixed dividend, and it is usually rated by
-%credit rating agencies. In addition, preferred stock is usually issued with a ``par value'' and it is usually callable
-%by the issuer at a predetermined price.
-%
-%\bd[Anticipated Dividend]
-%The \textbf{anticipated dividend} is the amount of a dividend $D$ that the issuer anticipates to pay to the preferred
-%stockholder.
-%\ed
+Under expectations theory, the intermediate and long term bond interest rates are established by the bond market
+itself, primarily, through inflation expectations. It's only the short end of the yield curve that monetary authorities
+are directly trying to influence or directly set the interest rates for, given that the independent monetary authority
+can either raise taxes or print money to to offset their debt obligations.
+
+\fig{cm10}{0.25}
+
+\newpage
+
+\section{Equity Securities}
+
+\bd[Equity Security]
+An \textbf{equity security} is a security that represents ownership in a company.
+\ed
+
+Equity securities are the second most important type of securities after debt securities. They are the most common 
+type of securitis and the most well-known ones. They are also the most important type of securities for the economy,
+since they are the main source of financing for companies.
+
+\bd[Equity Market]
+An \textbf{equity market} is a market where people trade equity securities.
+\ed
+
+Equity markets are divided into various subsectors such as:
+\bit
+\item \textbf{Geographic Sector}:
+\bit
+\item \textbf{Domestic Market}: The market of the country where the company is based.
+\item \textbf{International Market}: The market of a (developed) country other than the country where the company is 
+based.
+\item \textbf{Emerging Market}: The market of an (emerging) country that is in the process of rapid growth and 
+industrialization.
+\eit
+\item \textbf{Market Capitalization Sector}
+\bit
+\item \textbf{Large Cap}: The market of companies with a market capitalization of more than \$10 billion.
+\item \textbf{Mid Cap}: The market of companies with a market capitalization of between \$2 billion and \$10 billion.
+\item \textbf{Small Cap}: The market of companies with a market capitalization of less than \$2 billion.
+\eit
+\item \textbf{Industry Sector}: Information, Technology, Healthcare, Financial, Consumer, Communication, Industrial,
+Energy, Utilities, Real Estate, Materials.
+\eit
+
+\subsection{Shares / Stocks}
+
+Just like bonds are the most important type of debt securities, shares (or stocks) are the most important and the most
+common type of equity securities.
+
+\bd[Share / Stock]
+A \textbf{share}, or \textbf{stock}, is an indivisible unit of equity in a company.
+\ed
+
+Hence, a company is divided into a number of shares and each share represents a piece of the company (equity). Moving
+on with some more terminology, shares are authorized by the company.
+
+\bd[Authorized Shares]
+The \textbf{authorized shares} are the maximum number of shares that a company is legally allowed to issue.
+\ed
+
+Authorized shares by themselves do not have any value, and they don't represent any ownership in the company. It's
+after the company issues the shares to the public, hence turning them into ``issued shares'', that they represent
+ownership in the company.
+
+\bd[Issued Shares]
+The \textbf{issued shares} are the number of authorized shares that a company has issued to the public.
+\ed
+
+After authorized shares are issued to the public, they are traded in the equity market. The shares that are currently
+being held by the public are called ``outstanding shares'', while the shares that are currently being held by the
+company are called ``treasury shares''.
+
+\bd[Outstanding Shares]
+The \textbf{outstanding shares} are the number of issued shares that are currently being held by the public.
+\ed
+
+\bd[Treasury Shares]
+The \textbf{treasury shares} are the number of issued shares that are currently being held by the company.
+\ed
+
+It is of course:
+\bse
+\text{Issued Shares} = \text{Outstanding Shares} + \text{Treasury Shares}
+\ese
+
+It is important to mention that treasury shares do not have any voting rights. They are usually used by the company for
+various purposes, such as to reissue them to the public, to use them for employee stock options, or to use them for
+acquisitions.
+
+\bd[Shareholder / Stockholder]
+A \textbf{shareholder}, or \textbf{stockholder}, is any owner of one or more shares of a company.
+\ed
+
+When a shareholder buys an (outstanding) share, they are buying a piece of the company. The company is legally
+required to provide their shareholders with certain rights and privileges including the right to vote in the company's
+annual general meeting, the right to receive dividends (more on that later), the right to receive a portion of the
+company's assets in case the company is liquidated, and others.
+
+\subsubsection{Types Of Shares}
+
+There are many different types of shares depending on their characteristics. In this subsection we will mention the
+most important ones, starting with the distinction between ``common'' and ``preference'' shares.
+
+\bd[Common Shares / Common Stock]
+A \textbf{common share}, or \textbf{common stock}, is a type of share that represents ownership in a company and a
+claim on part of the company's profits.
+\ed
+
+Common shares are the most common type of shares, hence the naming, and they are the most widely held ones. They are,
+usually, the most volatile type of shares, and subsequently the most risky ones. They are also the most important type
+of shares for the company, since they are the main source of financing.
+
+\bd[Preference Shares / Preferred Stock]
+A \textbf{preference share}, or \textbf{preferred stock}, is a type of stock that has a higher claim on the company's
+assets and earnings than common stock.
+\ed
+
+Although a preference share is a type of share widely assumed to belong to equity securities, in reality it is more
+similar to a bond than to a common share. Preference shares pay a fixed dividend, and they are usually rated by credit
+rating agencies. In addition, they are usually issued with a ``par value'' and they are callable by the issuer at a
+predetermined price. \v
+
+Another important distiction is the one between ``growth'' and ``value'' shares.
+
+\bd[Growth Share]
+A \textbf{growth share} is a share of a company that is expected to grow at an above-average rate compared to other
+companies.
+\ed
+
+\bd[Value Share]
+A \textbf{value share} is a share of a company that is considered to be undervalued by the market.
+\ed
+
+\subsection{Return Of Equity Securities}
+
+Unlike bonds, the return of equity securities is not fixed, and it is not guaranteed. It comes mainly from the
+dividends that the company pays, and from the capital gains that the investor makes when they sell the shares at a
+higher price than the price they bought them. The return of equity securities is usually higher than the return of
+debt securities, but it is also more volatile and more uncertain.
+
+\bd[Dividend]
+A \textbf{dividend} is a payment made by a corporation to its shareholders, usually in the form of cash or additional
+shares.
+\ed
+
+Dividends are usually paid out of the company's profits. The company's board of directors decides whether to pay a
+dividend, and how much to pay. The company's board of directors can also decide to not pay a dividend at all, and
+instead reinvest the profits back into the company. The decision to pay a dividend, and how much to pay, is usually
+made based on the company's financial performance, the company's growth prospects, and the company's capital needs.
+
+\bd[Capital Gain]
+A \textbf{capital gain} is the increase in the value of an asset that makes it worth more than the purchase price.
+\ed
+
+\bd[Capital Loss]
+A \textbf{capital loss} is the decrease in the value of an asset that makes it worth less than the purchase price.
+\ed
+
+\section{Valuation Of Equity Securities}
+
+\bd[Price-Earnings Ratio / Earnigs Multiple]
+The \textbf{price-earnings ratio} (\textbf{P/E ratio}), or \textbf{earnings multiple} is a measure of the price paid
+for a share relative to the annual net income or profit earned by the firm per share:
+\bse
+\text{P/E ratio} = \frac{\text{Price per share}}{\text{Earnings per share}}
+\ese
+\ed
+
+P/E ratio is usually used in order to compute the target price of a share which is the price at which an analyst
+believes a stock is fairly valued:
+\bse
+\text{Target Price} = \text{Earnings per share} \times \text{P/E ratio}
+\ese
+
+
+
+Based on the P/E ratio, there are two different types of shares:
+\bit
+\item \textbf{Growth Shares}: Shares with a high P/E ratio.
+\item \textbf{Value Shares}: Shares with a low P/E ratio.
+\eit
+
+The P/E ratio is a measure of how much investors are willing to pay for a share relative to the annual net income or
+profit earned by the firm per share. It is a measure of the market's expectations of the company's future growth
+prospects. A high P/E ratio means that investors are expecting high growth in the future, while a low P/E ratio means
+that investors are expecting low growth in the future. \v
+
+The P/E ratio is also a measure of the company's valuation. A high P/E ratio means that the company is overvalued, while
+a low P/E ratio means that the company is undervalued. However, the P/E ratio is not a perfect measure of the company's
+valuation, and it should be used in conjunction with other measures.
+
+Shares are exchanged either in the exchange market or in the over-the-counter market.
+
+\bd[Exchange Market]
+An \textbf{exchange market} is a market where shares are traded in a centralized location.
+\ed
+
+\bd[Over-The-Counter Market]
+An \textbf{over-the-counter market} is a market where shares are traded directly between two parties.
+\ed
+
