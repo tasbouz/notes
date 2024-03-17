@@ -198,6 +198,9 @@ The \textbf{spread} is the difference between the ask price and the bid price:
 \ese
 \ed
 
+The spread of a security is a measure of the liquidity of the market for that security. The smaller the spread, the
+more liquid the market for that security. \v
+
 The middle point between bid and ask prices is called the ``market price''.
 
 \bd[Market Price]
@@ -247,6 +250,41 @@ A broker does not have capital at risk, and does not make money from the spread.
 charging a commission for their services including compensation for time, effort and expenses of executing trade. The
 commission is a fee that is charged for executing a trade. The commission can be a fixed amount, a percentage of the
 trade, or a combination of both. \v
+
+When an individual is buying a security via a broker, they will be given the choice of using two different kinds of
+orders: a ``market order'' or a ``limit order''.
+
+\bd[Market Order]
+A \textbf{market order} is an order to buy or sell a security at the best available price.
+\ed
+
+A market order tells the broker to get into the security as quickly as possible, regardless of price.
+
+\bd[Limit Order]
+A \textbf{limit order} is an order to buy or sell a security at a specific price or better.
+\ed
+
+A limit order tells the broker to get into the security only at a specific price or better. If there is never a seller
+at that price, the order will never be filled. \v
+
+When one places an order to buy or sell a security, they will have one more choice to make between a ``day order'' or
+a ``GTC order''.
+
+\bd[Day Order]
+A \textbf{day order} is an order that will only be executed during regular market hours today.
+\ed
+
+A day order will only be executed during regular market hours today. If the order has not been filled by the time the
+market closes for the day, it will be automatically cancelled by the broker.
+
+\bd[GTC Order]
+A \textbf{GTC order} (Good 'Til Cancelled) is an order that will be good for today's market hours, as well as the
+following days and weeks.
+\ed
+
+A GTC order will be good for today's market hours, as well as the following days and weeks. If the order is not
+cancelled, it will still be working. Some brokers will automatically cancel a GTC order after a month or more, if it
+has not yet been filled. \v
 
 Secondary markets and their financial intermediaries provide several really important functions with the most important
 one being liquidity. The fact that market makers make sure that securities can be bought and sold in the secondary
@@ -810,12 +848,6 @@ based.
 \item \textbf{Emerging Market}: The market of an (emerging) country that is in the process of rapid growth and 
 industrialization.
 \eit
-\item \textbf{Market Capitalization Sector}
-\bit
-\item \textbf{Large Cap}: The market of companies with a market capitalization of more than \$10 billion.
-\item \textbf{Mid Cap}: The market of companies with a market capitalization of between \$2 billion and \$10 billion.
-\item \textbf{Small Cap}: The market of companies with a market capitalization of less than \$2 billion.
-\eit
 \item \textbf{Industry Sector}: Information, Technology, Healthcare, Financial, Consumer, Communication, Industrial,
 Energy, Utilities, Real Estate, Materials.
 \eit
@@ -829,8 +861,20 @@ common type of equity securities.
 A \textbf{share}, or \textbf{stock}, is an indivisible unit of equity in a company.
 \ed
 
-Hence, a company is divided into a number of shares and each share represents a piece of the company (equity). Moving
-on with some more terminology, shares are authorized by the company.
+Hence, a company is divided into a number of shares and each share represents a piece of the company (equity). Every
+share carries a specific ticker, or stock symbol, which is a unique identifier for the share.
+
+\bd[Ticker / Stock Symbol]
+A \textbf{ticker}, or \textbf{stock symbol} is a unique identifier for a share.
+\ed
+
+\be
+Some of the most well-known stock symbols are the symbols of the so-called ``FAANG'' companies (which is an acronym
+that refers to the stocks of five prominent American technology companies) being: Meta (META) (formerly known as
+Facebook), Amazon (AMZN), Apple (AAPL), Netflix (NFLX), and Alphabet (GOOG) (formerly known as Google).
+\ee
+
+Moving on with some more terminology, shares are authorized by the company.
 
 \bd[Authorized Shares]
 The \textbf{authorized shares} are the maximum number of shares that a company is legally allowed to issue.
@@ -863,16 +907,85 @@ It is of course:
 
 It is important to mention that treasury shares do not have any voting rights. They are usually used by the company for
 various purposes, such as to reissue them to the public, to use them for employee stock options, or to use them for
-acquisitions.
+acquisitions. \v
 
-\bd[Shareholder / Stockholder]
-A \textbf{shareholder}, or \textbf{stockholder}, is any owner of one or more shares of a company.
+Each share has a specific price, called the ``share price''.
+
+\bd[Share Price]
+The \textbf{share price} is the price of a single share of a company.
 \ed
 
-When a shareholder buys an (outstanding) share, they are buying a piece of the company. The company is legally
-required to provide their shareholders with certain rights and privileges including the right to vote in the company's
-annual general meeting, the right to receive dividends (more on that later), the right to receive a portion of the
-company's assets in case the company is liquidated, and others.
+Share prices adjust to new information based on the laws of supply and demand. If a lot of people want to buy a share,
+the share price will move up. If a lot of people want to sell a share, the share price will move down. \v
+
+By multiplying the share price by the number of outstanding shares, we get the ``market capitalization'' of the
+company.
+
+\bd[Market Capitalization / Market Cap]
+The \textbf{market capitalization}, or \textbf{market cap}, is the total value of a company's outstanding shares:
+\bse
+\text{Market Capitalization} = \text{Share Price} \times \text{Outstanding Shares}
+\ese
+\ed
+
+Market capitalization is a measure of the size of a company. It is used to compare companies to each other, and to
+classify companies into different categories:
+\bit
+\item \textbf{Large Cap}: Companies with a market capitalization of more than \$10 billion.
+\item \textbf{Mid Cap}: Companies with a market capitalization of between \$2 billion and \$10 billion.
+\item \textbf{Small Cap}: Companies with a market capitalization of less than \$2 billion.
+\eit
+
+Shares are usually bought and sold on what are called ``stock exchanges''.
+
+\bd[Stock Exchange]
+A \textbf{stock exchange} is a market where people buy and sell shares of companies.
+\ed
+
+There are many other stock exchanges around the world, and each country has its own stock exchange, but the most
+important stock exchanges in the world are:
+\bit
+\item \textbf{New York Stock Exchange} (NYSE): The largest stock exchange in the world, known for its blue chip stocks
+like Coca-Cola and McDonald's. NYSE shares are usually identified by a two-letter unique ticker like KO (Coca-Cola) or
+MCD (McDonald's).
+\item \textbf{NASDAQ Stock Market} (NASDAQ): The second-largest stock exchange in the world, known for its tech stocks
+like Netflix and Apple. Depot). Nasdaq shares are usually identified by a four-letter unique ticker like NFLX (Netflix)
+or AAPL (Apple).
+\item \textbf{Tokyo Stock Exchange} (TSE): The largest stock exchange in Asia. TSE shares are usually identified by a
+four-number unique ticker like 7203 (Toyota) or 6758 (Sony).
+\eit
+
+Stock exchanges used to involve a lot of men standing on a floor with little pads of paper and yelling buy and sell
+orders. Now it's all done by computers. The computers match up buyers and sellers who want to exchange their stock for
+cash (or vice versa) at a certain price. \v
+
+As an individual, one cannot trade directly on a stock exchange. For that one will need a broker which we have already
+discussed previously.
+
+\subsection{Shareholders / Stockholders}
+
+When someone buys a share of a company, he or she becomes a partial owner of the company. He or she becomes a
+``shareholder'' or a ``stockholder''.
+
+\bd[Shareholder / Stockholder]
+A \textbf{shareholder}, or \textbf{stockholder}, is any owner of one or more (outstanding) shares of a company.
+\ed
+
+The company is legally required to provide their shareholders with certain rights and privileges including the right
+to vote in the company's annual general meeting, the right to receive dividends (more on that later), the right to
+receive a portion of the company's assets in case the company is liquidated, and others. \v
+
+People who buy shares are usually divided into two categories based on the strategy they follow: ``investors'' and
+``traders''.
+
+\bd[Investor]
+An \textbf{investor} is a person who buys shares with the intention of holding them for a long period of time.
+\ed
+
+\bd[Trader]
+A \textbf{trader} is a person who buys shares with the intention of selling them for a profit in a short period of
+time.
+\ed
 
 \subsubsection{Types Of Shares}
 
@@ -898,7 +1011,12 @@ similar to a bond than to a common share. Preference shares pay a fixed dividend
 rating agencies. In addition, they are usually issued with a ``par value'' and they are callable by the issuer at a
 predetermined price. \v
 
-Another important distiction is the one between ``growth'' and ``value'' shares.
+Another important distiction is the one among ``blue chip'', ``growth'', and ``value'' shares.
+
+\bd[Blue Chip Share]
+A \textbf{blue chip share} is a share of a company that has a long history of stable earnings, and a strong balance
+sheet.
+\ed
 
 \bd[Growth Share]
 A \textbf{growth share} is a share of a company that is expected to grow at an above-average rate compared to other
@@ -934,7 +1052,7 @@ A \textbf{capital gain} is the increase in the value of an asset that makes it w
 A \textbf{capital loss} is the decrease in the value of an asset that makes it worth less than the purchase price.
 \ed
 
-\section{Valuation Of Equity Securities}
+\subsection{Valuation Of Equity Securities}
 
 \bd[Price-Earnings Ratio / Earnigs Multiple]
 The \textbf{price-earnings ratio} (\textbf{P/E ratio}), or \textbf{earnings multiple} is a measure of the price paid
@@ -976,4 +1094,84 @@ An \textbf{exchange market} is a market where shares are traded in a centralized
 \bd[Over-The-Counter Market]
 An \textbf{over-the-counter market} is a market where shares are traded directly between two parties.
 \ed
+
+\subsection{Funds}
+
+\bd[Index]
+An \textrbf{index} is a collection of shares that represents a particular market or a particular sector of the market.
+\ed
+
+Indices are used to measure the performance of the market or the performance of a particular sector of the market. It
+is important to mention that indices are usually market-cap weighted, which means that the companies in them that
+have larger market caps are given higher weightings and thus have a greater influence on the index. \v
+
+Some of the most well-known indices are:
+\bit
+\item \textf{Standard and Poor's 500} (\textbf{S\&P 500}): An index tracking the performance of 500 of the largest
+companies listed on stock exchanges in the United States. To see the companies that are included in the S\&P 500 check
+the following link: \href{https://www.slickcharts.com/sp500}{S\&P 500}.
+\item \textbf{Dow Jones Industrial Average} (\textbf{DJIA}): An index tracking the performance of 30 prominent companies listed
+on stock exchanges in the United States. To see the companies that are included in the DJIA check the following link:
+\href{https://www.slickcharts.com/dowjones}{DJIA}.
+\item \textbf{NASDAQ Composite} (\textbf{NASDAQ}): An index tracking the performance of all companies listed on the
+NASDAQ Stock Market. To see the companies that are included in the NASDAQ Composite check the following link:
+\href{https://www.slickcharts.com/nasdaq100}{NASDAQ}.
+\eit
+
+In order for someone to invest in an index, they would need to buy all the stocks of the index (in the appropriate
+wieghts) at the same time. That would be difficult and costly to execute. Fortunately, there are funds that track the
+performance of indices.
+
+\bd[Fund]
+A \textbf{fund} is a collection of shares that represents a particular market or a particular sector of the market.
+\ed
+
+\bd[Index Fund]
+An \textbf{index fund} is a fund that tracks the performance of an index.
+\ed
+
+\bd[Exchange-Traded Fund]
+An \textbf{exchange-traded fund} (ETF) is a fund that tracks the performance of an index and is traded on a stock
+exchange.
+\ed
+
+Index funds and ETFs are usually used by investors who want to invest in the market or in a particular sector of the
+market, but don't want to spend the time and effort to pick individual stocks. They are also used by investors who
+want to diversify their portfolio, and by investors who want to reduce the risk of their portfolio. \v
+
+Some of the most well-known ETFs are:
+\bit
+\item \textbf{SPDR S\&P 500 ETF} (SPY): An ETF that tracks the performance of the S\&P 500 index.
+\item \textbf{DJIA ETF} (DIA): An ETF that tracks the performance of the DJIA index.
+\item \textbf{Invesco QQQ Trust} (QQQ): An ETF that tracks the performance of the NASDAQ index.
+\eit
+
+\bd[Active Investing]
+\textbf{Active investing} is an investment strategy that involves actively buying and selling shares in an attempt to
+outperform the market.
+\ed
+
+Active investing is usually done by professional investors, and it is usually done by picking individual stocks.
+
+\bd[Passive Investing]
+\textbf{Passive investing} is an investment strategy that involves buying and holding shares in an attempt to match
+the performance of the market.
+\ed
+
+Passive investing is usually done by individual investors, and it is usually done by investing in index funds and ETFs.
+The most well-known passive investing strategy is ``indexing''.
+
+\bd[Indexing]
+\textbf{Indexing} is a passive investment strategy that involves investing in index funds and ETFs.
+\ed
+
+
+
+
+
+
+
+
+
+
 
