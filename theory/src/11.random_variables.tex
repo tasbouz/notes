@@ -1,0 +1,1826 @@
+%! suppress = EscapeUnderscore
+%! suppress = EncloseWithLeftRight
+In probability theory, a random variable is understood as a measurable function defined on a probability space that
+maps from the sample space to the real numbers. \v
+
+A random variable's possible values might represent the possible outcomes of a yet-to-be-performed experiment, or the
+possible outcomes of a past experiment whose already existing value is uncertain (for example, because of imprecise
+measurements or quantum uncertainty). They may also conceptually represent either the results of an ``objectively''
+random process (such as rolling a die) or the ``subjective'' randomness that results from incomplete knowledge of a
+quantity. The meaning of the probabilities assigned to the potential values of a random variable is not part of
+probability theory itself, but is instead related to philosophical arguments over the interpretation of probability.
+The mathematics works the same regardless of the particular interpretation in use. \v
+
+As a function, a random variable is required to be measurable, which allows for probabilities to be assigned to sets
+of its potential values. It is common that the outcomes depend on some physical variables that are not predictable.
+For example, when tossing a fair coin, the final outcome of heads or tails depends on the uncertain physical
+conditions, so the outcome being observed is uncertain. The coin could get caught in a crack in the floor, but such a
+possibility is excluded from consideration. \v
+
+The domain of a random variable is called a sample space, defined as the set of possible outcomes of a
+non-deterministic event. For example, in the event of a coin toss, only two possible outcomes are possible: heads or
+tails. \v
+
+A random variable has a probability distribution, which specifies the probability of Borel subsets of its range.
+Random variables can be discrete, that is, taking any of a specified finite or countable list of values (having a
+countable range), endowed with a probability mass function that is characteristic of the random variable's
+probability distribution; or continuous, taking any numerical value in an interval or collection of intervals (having
+an uncountable range), via a probability density function that is characteristic of the random variable's probability
+distribution; or a mixture of both. \v
+
+Two random variables with the same probability distribution can still differ in terms of their associations with, or
+independence from, other random variables. The realizations of a random variable, that is, the results of randomly
+choosing values according to the variable's probability distribution function, are called random variates.
+
+\section{Random Variables}
+
+\bd[Random Variable]
+Given a probability space $(S, \mathcal{F}, P)$, we define as a \textbf{random variable} (r.v) $X$, a measurable
+function $X$ that maps elements of sample space $S$ to the real numbers $R$:
+\bse
+X \colon S \to R
+\ese
+\ed
+
+Intuitively a r.v is a numerical representation of the outcomes of a random experiment. For example if the random
+experiment is tossing a coin, we can map the outcomes to a r.v $X$ that takes two possible values: 0 for ``head''
+and 1 for ``tail''. That way we mapped the outcomes of the random experiment to something that we can work with! \v
+
+Since r.v's are used to model a random experiment, following from the definition of the latest the actual value of a
+r.v is not known before the execution of the experiment however the spectrum of possible outcomes is known. \v
+
+Based on the nature of the data that define the sample space, r.v's can be either discrete or continuous. In general
+the two cases behave similarly up to a point, but there are also some crucial differences. For this reason we are
+going to see each case separately.
+
+\section{Discrete Random Variables}
+
+Discrete r.v's are r.v's that can only take discrete, countable values (as for example tossing a coin or throwing a
+dice). As we mentioned, the actual values of a r.v is not known to us before the execution of the experiments however
+the spectrum of all possible outcomes is known. On top of that, we can define a quantity that is connected to the
+probability of obtaining each of the possible outcomes after each experiment. In the case of discrete r.v's, this
+quantity is called ``probability mass function''.
+
+\bd[Probability Mass Function]
+Given a discrete r.v $X$ defined on a sample space $S$ as $X \colon S \to R$, we define the \textbf{probability mass
+function} (PMF) $P_{X}(x)$ as a function that maps outcomes $R$ to the interval $[0,1]$ ($P_{X}:R\mapsto [0,1]$):
+\bse
+P_{X}(X=x)=P_{X}(\{s\in S:X(s)=x\})
+\ese
+
+with:
+\bse
+\sum_{x} P_{X}(x)=1
+\ese
+\ed
+
+The physical meaning of a PMF is the probability that a r.v $X$ will take the value $x$ after the execution of a
+random experiment ($P_{X}(X=x)$). The term ``mass'' helps to get the intuition since the physical mass is conserved
+as is the total probability for all hypothetical outcomes $x$. \v
+
+From now on we keep in mind that every r.v $X$ carries a corresponding PMF $P_{X}(x)$. The common terminology is that
+a r.v $X$ follows a probability distribution $P_{X}$ denoted by $X \sim P_{X}$ meaning that it's described by the
+corresponding PMF. Once we have the r.v and its PMF, we can define some really important concepts of r.v's.
+
+\bd[Expected Value/Mean]
+Let $X$ be a discrete r.v with a finite number of finite outcomes and $P_{X} (x)$ its corresponding PMF. The
+\textbf{expected value} (or \textbf{mean}) of $X$ denoted by $E[X]$ or $\mu$ is defined as:
+\bse
+E[X]=\sum _{x} x \cdot P_{X}(X=x)
+\ese
+\ed
+
+Given that the sum of probabilities of all possible outcomes is 1, the expected value is actually the weighted
+average, with probability of each outcome being the weight. Notice that the expected value of a r.v is a single
+number. The physical meaning of this number is the hypothetical final outcome that one would have after repeating the
+experiment infinite times. \v
+
+The expected value has some very interesting properties.
+\ben
+\item If $X=c, \: c \in R$ then $E[X]=c$.
+\item Since $E[X]$ is a single number it follows that $E[E[X]]=E[X]$.
+\item If $X = Y$ then $E[X] = E[Y]$.
+\item Linearity of expected value:
+\bit
+\item $E[X+Y] = E[X] + E[Y]$.
+\item $E[c X] = c E[X]$.
+\eit
+\een
+
+Similarly to the expected value we can define the conditional expected value.
+
+\bd[Conditional Expected Value]
+Let $X$ be a discrete r.v with a finite number of finite outcomes and $P_{X} (x)$ its corresponding PMF. The
+\textbf{conditional expected value} of $X$ given an event $s$ denoted by $E[X \mid s]$ is defined as:
+\bse
+E[X \mid s]=\sum _{x} x P_{X}(X \mid s)
+\ese
+\ed
+
+Notice that given the conditional expected value we can, in a way, derive the formula for the expected value as follows:
+\begin{align*}
+E[X] &= \sum_{s} E[X \mid s] P_{X}(s) \\
+&= \sum_{s} \Big( \sum_{x} x P_{X}(X \mid s) \Big) P_{X}(s) \\
+&= \sum_{x} x \Big( \sum_{s} P_{X}(X \mid s) P_{X}(s) \Big) \\
+&= \sum_{x} x P_{X}(x)
+\end{align*}
+
+\bd[Variance]
+Let $X$ be a discrete r.v with a finite number of finite outcomes and $P_{X} (x)$ its corresponding PMF. The
+\textbf{variance} of $X$ denoted by $Var(X)$ or $\sigma^2$ is defined as the expected value of the squared deviation
+from the expected value of the r.v:
+\bse
+Var[X]= E[(X - E[X])^2]
+\ese
+\ed
+
+The variance shows how far the possible outcomes of a random variable are spread out from their expected value. The
+highest the variance the widest the spread and vice versa. \v
+
+Notice that the variance is \textbf{not} linear, hence, $Var(X+Y) \neq Var(X) + Var(Y)$. However, in the case where $X$
+and $Y$ are independent the equality holds. \v
+
+While the definition of the expected value is also useful for computation purposes, the definition of the variance is
+not that handy because of the square term. Likely, we can manipulate the definition off variance and get something
+more useful for computations:
+\begin{align*}
+Var(X) &= E[(X - E[X])^{2}] \\ &= E[X^{2}-2XE[X]+E[X]^{2}] \\ &= E[X^{2}]-2E[X]E[X]+E[X]^{2} \\ &= E[X^{2}] - E[X]^{2}
+\end{align*}
+
+In other words, the variance of $X$ is equal to the expected value of the square of $X$ minus the square of the
+expected value of $X$. We will be using this equation a lot for derivations. \v
+
+As we did before, similarly to the variance we can define the conditional variance.
+
+\bd[Conditional Variance]
+Let $X$ be a discrete r.v with a finite number of finite outcomes and $P_{X} (x)$ its corresponding PMF. The
+\textbf{conditional variance} of $X$ given an even $s$ denoted by $Var(X \mid s)$ is defined as:
+\bse
+Var[X \mid s]= E[(X - E[X \mid s])^2 \mid s]
+\ese
+\ed
+
+One of the main problems of variance (and conditional variance) is that it doesn't have the same units as the r.v or
+the expected value, but is has the square of this unit. Sometimes it makes it difficult to appreciate the meaning of
+variance in absolute terms. For that reason we define a more handy measure of dispersion called ``standard
+deviation''.
+
+\bd[Standard Deviation]
+Let $X$ be a discrete r.v with a finite number of finite outcomes and $P_{X} (x)$ its corresponding PMF. The
+\textbf{standard deviation} of $X$ denoted by $SD(X)$ or $\sigma$ is equal to the square root of the variance of $X$:
+\bse
+SD(X) = \sqrt{Var(X)} = \sqrt{E[(X - E[X])^2]}
+\ese
+\ed
+
+A low standard deviation indicates that the values tend to be close to the expected value of the r.v, while a high
+standard deviation indicates that the values are spread out over a wider range.
+
+\section{Discrete Probability Distributions}
+
+In general the only requirement for a function $P_{X}(x)$ to be the PMF of some discrete r.v $X$ is to satisfy the
+requirements of the definition of a PMF. Once a function satisfies this requirements then it describes the
+probability distribution of some discrete r.v $X$. In this section we are going to introduce some of the most
+fundamental discrete probability distributions among with their characteristics and their intuition. This section is
+really important since by making use of these distributions we can create models for real world applications.
+
+\subsection{Discrete Uniform Distribution - Unif(n)}
+
+The discrete uniform distribution parametrized by $n$ and denoted by Unif(n) is a discrete probability distribution
+whereby a finite number of values $n$ (possible outcomes of r.v $X$) are equally likely to be observed (every one of
+$n$ values has equal probability $\frac{1}{n}$). \v
+
+Another way to parametrize discrete uniform distributions is by listing all $n$ possible values as $\{a, a+1, \ldots,
+b-1, b\}$. Then we use the parameters $a$ and $b$ and we formally write Unif(a,b). \v
+
+The corresponding PMF is as simple as that:
+\bd[Discrete Uniform Distribution PMF]
+\bse
+P_{X}(X=x) = \frac{1}{n}
+\ese
+\ed
+
+Another way of describing the discrete uniform distribution would be ``a known, finite number of outcomes equally
+likely to happen''.
+
+\be
+A simple example of the discrete uniform distribution is throwing a fair die. The possible values are $\{1, 2, 3, 4,
+5, 6\}$ and each time the dice is thrown the probability of a given score is 1/6. If two dice are thrown and their
+values added, the resulting distribution is no longer uniform since not all sums have equal probability.
+\ee
+
+For the expected value of a discrete uniform distribution, straight from the definition we get:
+\bse
+E[X] = \sum_{k=1}^n k (\frac{1}{n}) = \frac{1}{n} \sum_{k=1}^n k = \frac{1}{n} \frac{n (n+1)}{2} = \frac{n+1}{2}
+\ese
+
+\v
+
+For the variance of a discrete uniform distribution we will use the relation we proved so first we calculate $E[X^2]$:
+\bse
+E[X^2] = \sum_{k=1}^n k^2 (\frac{1}{n}) = \frac{1}{n} \sum_{k=1}^n k^2 = \frac{1}{n} \frac{n(n+1)(2n+1)}{6}
+= \frac{(n+1)(2n+1)}{6}
+\ese
+
+\v
+
+Substituting $E[X^2]$ and $E[X]^2$ to the variance relation we get:
+\bse
+Var(X) = E[X^{2}] - E[X]^{2} = \frac{(n+1)(2n+1)}{6} - \frac{(n+1)^2}{4} = \ldots = \frac{n^2 - 1}{12}
+\ese
+
+\v
+
+Finally, for the standard deviation of a discrete uniform distribution:
+\bse
+SD(X) = \sqrt{Var(X)} = \sqrt{\frac{n^2 - 1}{12}}
+\ese
+
+\subsection{Bernoulli Distribution - Bern(p)}
+
+The Bernoulli distribution parametrized by p and denoted by Bern(p) is a discrete probability distribution having two
+possible outcomes labelled by $x=1$ (called ``success'') that occurs with probability p ($ 0<p<1$) and $x=0$
+(called ``failure'') that occurs with probability $q=1-p$. \v
+
+It therefore has PMF:
+
+\bd[Bernoulli Distribution PMF]
+\bse
+P_{X}(X=x) = \begin{cases*} 1-p & if $x = 0$ \\ p & if $x = 1$ \end{cases*}
+\ese
+\ed
+
+Observe that in case where $x=0$ it is $p^0 = 1$ and $(1-p)^{(1-0)} = (1-p)$ and in case where $x=1$ it is $p^1 = p$
+and $(1-p)^{(1-1}) = 0$. By using this observation we can formally rewrite Bernoulli's distribution PMF in just one
+line:
+
+\bd[Bernoulli Distribution PMF (Better Formulation)]
+\bse
+P_{X}(X=x) = p^{x} (1-p)^{1-x}
+\ese
+\ed
+
+which gives the same results as the previous definition. \v
+
+Bernoulli distribution can be used to model any single experiment that asks a yes–no question. The question results
+in a Boolean - valued outcome, with probability of success $p$ and probability of failure $q$.
+
+\be
+For example, it can be used to represent a coin toss where 1 and 0 would represent ``heads'' and ``tail'' (or
+vice versa), respectively, and $p$ would be the probability of the coin landing on heads or tails, respectively. (In
+a fair coin case we would have $p=q=1/2$).
+\ee
+
+Bernoulli distribution is the simplest discrete distribution, and it the building block for other more complicated
+discrete distributions. \v
+
+For the expected value of a Bernoulli distribution, straight from the definition we get:
+\bse
+E[X] = \sum _{x} x P_{X}(X=x) = 0 \cdot P_{X}(X=0) + 1 \cdot P_{X}(X=1) = 0 \cdot (1-p) + 1 \cdot p = p
+\ese
+
+For the variance of a Bernoulli distribution we will use the relation we proved so first we calculate $E[X^2]$:
+\bse
+E[X^2] = \sum _{x} x^2 P_{X}(X=x) = 0^2 \cdot P_{X}(X=0) + 1^2 \cdot P_{X} (X=1) = 0^2 \cdot (1-p) + 1^2 \cdot p = p
+\ese
+
+Substituting $E[X^2]$ and $E[X]^2$ to the variance relation we get:
+\bse
+Var(X) = E[X^{2}] - E[X]^{2} = p - p^2 = p(1-p)
+\ese
+
+Finally, for the standard deviation of a Bernoulli distribution:
+\bse
+SD(X) = \sqrt{Var(X)} = \sqrt{p(1-p)}
+\ese
+
+\subsection{Binomial Distribution - B(n,p)}
+
+The binomial distribution parametrized by $n$ and $p$ and denoted by B(n,p) is a discrete probability distribution of
+the number of successes in a sequence of $n$ independent experiments, each asking a yes – no question, and each with
+its own Boolean - valued outcome: success with probability $p$ or failure with probability $q=1-p$. \v
+
+In other words it is a sequence of $n$ experiments following a Bernoulli distribution, thus the parametrization by
+$n$ and $p$. Since the only possible outcomes of a Bernoulli distribution is either 0 or 1, we can formally think of
+a binomial distribution r.v $Y$ as the sum of $n$ Bernoulli distribution $X_{i}$: $Y=X_{1} + X_{2} + \ldots + X_{n}$. \v
+
+The corresponding PMF reads:
+
+\bd[Binomial Distribution PMF]
+\bse
+P_{X}(X=k) = \binom{n}{k}p^{k}(1-p)^{n-k}
+\ese
+\ed
+
+Since binomial distribution is simply $n$ executions of a Bernoulli distribution, notice that for $n=1$ (for one
+execution of the experiment) the binomial distribution turns to a Bernoulli distribution:
+\bse
+P_{X}(X=k) = \binom{1}{k}p^{k}(1-p)^{1-k} = p^{k}(1-p)^{1-k}
+\ese
+
+\v
+
+where we used the fact that $\binom{1}{0} = \binom{1}{1} = 1$. The final expression is actually the PMF of a
+Bernoulli distribution. \v
+
+The binomial distribution is frequently used to model the number of successes in a sample of size $n$ drawn with
+replacement from a population of size $N$. \v
+
+Given that a r.v $Y$ following a binomial distribution will be the summation of a collection of successive r.v's $X$
+following a Bernoulli's distribution, $Y = X_{1} + X_{2} + \ldots + X_{n}$, the expected value of a binomial
+distribution reads:
+\bse
+E[Y] = E[X_{1} + X_{2} + \ldots + X_{n}] = E[X_{1}] + E[X_{2}] + \ldots + E[X_{n}]
+= \underbrace{p + p + \ldots + p}_{n} = n p
+\ese
+
+where in the third step we made use of the linearity of expected value and in the fourth step we used the fact that
+the expected value of a Bernoulli distribution parametrized by $p$ is simply the parameter $p$. \v
+
+Similarly, since ${X_{1}, X_{2}, \ldots, X_{n}}$ are independent r.v's the variance of their sum is the sum of their
+variances. Subsequently:
+{\setlength{\jot}{10pt}
+\begin{align*}
+Var(Y) &= Var(X_{1} + X_{2} + \ldots + X_{n}) \\
+&= Var(X_{1}) + Var(X_{2}) + \ldots + Var(X_{n}) \\
+&= \underbrace{p(1-p) + p(1-p) + \ldots + p(1-p)}_{n} \\
+&= n p(1-p)
+\end{align*}}
+
+where beside the linearity of variance of independent events we also we used the variance of a Bernoulli distribution
+parametrized by $p$ which is $p(1-p)$ on the third step. \v
+
+Finally, for the standard deviation of a binomial distribution:
+\bse
+SD(X) = \sqrt{Var(X)} = \sqrt{n p(1-p)}
+\ese
+
+\subsection{Poisson Distribution - Pois($\lambda$)}
+
+The Poisson distribution parametrized by $\lambda$ and denoted by Pois ($\lambda$) is a discrete probability
+distribution that expresses the probability of a given number of events occurring in a fixed interval of time or
+space if these events occur with a known constant rate and independently of the time since the last event. The
+Poisson distribution can also be used for the number of events in other specified intervals such as distance, area or
+volume. \v
+
+The corresponding PMF reads:
+
+\bd[Poisson Distribution PMF]
+\bse
+P_{X}(X=k) = \frac{\lambda^k e^{-\lambda}}{k!}
+\ese
+\ed
+
+where $\lambda$ is actually both the expected value and the variance of the distribution (as we will show in a while). \v
+
+Poisson distribution is very important and practical for statistical modelling since the philosophy behind it is an
+experiment where the first success is more likely than the second which is more likely than the third and so on,
+which is very common in real life problems. \v
+
+In other words, Poisson distribution is a large number of successive Bernoulli trials with very small probability $p$
+i.e.\ a binomial distribution with $n \to \infty$ and $p \to 0$ while $\lambda = n p$ is held constant. \v
+
+This can be manifested mathematically since, by starting from binomial distribution's PMF, taking the limit $n \to
+\infty$ and substituting $p = \frac{\lambda}{n}$ we obtain:
+\begingroup
+\allowdisplaybreaks
+{\setlength{\jot}{10pt}
+\begin{align*}
+\lim_{n\to\infty} P_{X}(X=k) &= \lim_{n\to\infty} \binom{n}{k}p^{k} (1-p)^{n-k} \\
+&= \lim_{n\to\infty} \binom{n}{k}{\Big( \frac{\lambda}{n} \Big)}^{k} \Big(1-\frac{\lambda}{n} \Big)^{n-k} \\
+&= \lim_{n\to\infty} \frac{n!}{k!(n-k)!}{ \Big( \frac{\lambda}{n} \Big)}^{k} \Big( 1-\frac{\lambda}{n} \Big)^{n-k} \\
+&= \frac{\lambda^k}{k!} \lim_{n\to\infty} \frac{n!}{(n-k)!}{ \Big(\frac{1}{n} \Big)}^{k}
+\Big(1-\frac{\lambda}{n} \Big)^{n-k} \\
+&= \frac{\lambda^k}{k!} \lim_{n\to\infty} \frac{n!}{(n-k)!}{\Big(\frac{1}{n^{k}} \Big)}
+\Big(1-\frac{\lambda}{n} \Big)^{n} \Big( 1-\frac{\lambda}{n} \Big)^{-k} \\
+&= \frac{\lambda^k}{k!} \lim_{n\to\infty} \frac{n (n-1) \ldots (n-k)(n-k-1) \ldots 1}{(n-k) (n-k-1) \ldots 1}
+{\Big( \frac{1}{n^{k}} \Big)} \Big( 1-\frac{\lambda}{n} \Big)^{n} \Big( 1-\frac{\lambda}{n} \Big)^{-k} \\
+&= \frac{\lambda^k}{k!} \lim_{n\to\infty} \frac{n (n-1) \ldots (n-k)}{n^{k}} \Big( 1-\frac{\lambda}{n} \Big)^{n}
+\Big(1-\frac{\lambda}{n} \Big)^{-k}
+\end{align*}}
+\endgroup
+
+In the first fraction all the numbers can be ignored since $n \to \infty$, and since there are $k$ of them we end up
+with $n^k/n^k = 1$. Similarly for the last fraction for $n \to \infty \Rightarrow \frac{\lambda}{n} \to 0 \Rightarrow
+(1-\frac{\lambda}{n})^{-k} \to 1$. Hence:
+{\setlength{\jot}{10pt}
+\begin{align*}
+\lim_{n\to\infty} P_{X}(X=k) &= \frac{\lambda^k}{k!} \lim_{n\to\infty} \Big( 1-\frac{\lambda}{n} \Big)^{n}\\
+&= \frac{\lambda^k}{k!} \lim_{x\to\infty} \Big( 1+\frac{1}{x} \Big)^{x(-\lambda)} \\
+&= \frac{\lambda^k}{k!} \Big(\lim_{x\to\infty} \Big(1+\frac{1}{x}\Big)^{x}\Big)^{-\lambda} \\
+&= \frac{\lambda^k}{k!} e^{-\lambda}
+\end{align*}}
+
+Thus, indeed, by taking the limit of a binomial distribution for $n \to \infty$ we end up with a Poisson distribution. \v
+
+\be
+An example of a Poisson distribution is the case where an individual keeps track of the amount of mail they receive
+each day and notice that they receive an average number of 4 letters per day. If receiving any particular piece of
+mail does not affect the arrival times of future pieces of mail, i.e.\ if pieces of mail from a wide range of sources
+arrive independently of one another, then a reasonable assumption is that the number of pieces of mail received in a
+day obeys a Poisson distribution.
+\ee
+
+\be
+Other examples that may follow a Poisson distribution include the number of phone calls received by a call center per
+hour and the number of decay events per second from a radioactive source. Also by using Poisson distribution we can
+model the number of meteorites greater than 1 meter diameter that strike earth in a year, the number of patients
+arriving in an emergency room between 10 and 11 pm, and the number of photons hitting a detector in a particular time
+interval.
+\ee
+
+Poisson distribution(and its continuous version of exponential distribution that we will see later) are quite
+important and heavily used in real world problems. \v
+
+For the expected value of a Poisson distribution, straight from the definition we get:
+\bse
+E[X] = \sum _{k=0}^{\infty} k e^{-\lambda} \frac{\lambda^k}{k!}
+= e^{-\lambda} \sum _{k=0}^{\infty}\frac{\lambda^k}{ (k-1)!} = \lambda e^{-\lambda}
+\sum _{k=0}^{\infty}\frac{\lambda^{k-1}}{(k-1)!} = \lambda e^{-\lambda} e^{\lambda} = \lambda
+\ese
+
+\v
+
+For the variance of a Poisson distribution, after some calculations (that we will skip for now) we can show that
+$E[X^2] = \lambda^2 + \lambda$. Hence, by substituting $E[X^2]$ and $E[X]^2$ to the variance relation we get:
+\bse
+Var(X) = E[X^{2}] - E[X]^{2} = \lambda^2 + \lambda - \lambda^2= \lambda
+\ese
+
+Hence, we showed that the parameter $\lambda$ of Pois($\lambda$) is both the expected value and the variance of the
+distribution. \v
+
+Finally, for the standard deviation of a Poisson distribution:
+\bse
+SD(X) = \sqrt{Var(X)} = \sqrt{\lambda}
+\ese
+
+\subsection{Geometric Distribution - Geo(p)}
+
+The geometric distribution parametrized by $p$ and denoted by Geo(p) is a discrete probability distribution that
+represents the number of failures before you get a success in a series of Bernoulli trials. \v
+
+The corresponding PMF reads:
+
+\bd[Geometric Distribution PMF]
+\bse
+P_{X}(X=k) = p (1-p)^k
+\ese
+\ed
+
+\be
+An example that a geometric distribution can be used is in the case where an ordinary die is thrown repeatedly until
+the first time a ``1'' appears. The probability distribution of the number of times it is thrown is supported on
+the infinite set ${1,2,3, \ldots}$ and is a geometric distribution with $p$ = 1/6.
+\ee
+
+For the expected value of a geometric distribution we can show:
+\bse
+E[X] = \frac{1-p}{p}
+\ese
+
+For the variance of a geometric distribution we can show:
+\bse
+Var(X) = \frac{1-p}{p^2}
+\ese
+
+For the standard deviation of a geometric distribution we can show:
+\bse
+SD(X) = \frac{\sqrt{1-p}}{p}
+\ese
+
+\subsection{Hypergeometric Distribution - Hypergeometric(N, K, n)}
+
+The hypergeometric distribution parametrized by $N$, $K$ and $n$ and denoted by Hypergeometric(N, K, n) is a discrete
+probability distribution that describes the probability of $k$ successes (random draws for which the object drawn has
+a specified feature) in $n$ draws, without replacement, from a finite population of size $N$ that contains exactly
+$K$ objects with that feature, wherein each draw is either a success or a failure. (In contrast, the binomial
+distribution describes the probability of $k$ successes in $n$ draws with replacement) \v
+
+The corresponding PMF reads:
+\bd[Hypergeometric Distribution PMF]
+\bse
+P_{X}(X=k) = \frac{\binom {K}{k} \binom{N-K}{n-k}}{\binom{N}{n}}
+\ese
+\ed
+
+where:
+\bit
+\item $N$ is the population size.
+\item $K$ is the number of success states in the population.
+\item $n$ is the number of draws.
+\item $k$ is the number of observed successes.
+\eit
+
+For the expected value of a hypergeometric distribution we can show:
+\bse
+E[X] = \frac{n K}{N}
+\ese
+
+For the variance of a hypergeometric distribution we can show:
+\bse
+Var(X) = \frac{n K}{N} \frac{N-K}{N} \frac{N-n}{N-1}
+\ese
+
+For the standard deviation of a hypergeometric distribution we can show:
+\bse
+SD(X) = \sqrt{\frac{n K}{N} \frac{N-K}{N} \frac{N-n}{N-1}}
+\ese
+
+\subsection{Negative Binomial Distribution - NB(r,p)}
+
+The negative binomial distribution parametrized by $r$ and $p$ and denoted by NB(r,p) is a discrete probability
+distribution of the number of successes in a sequence of independent and identically distributed Bernoulli trials
+with probability of success $p$ before a specified (non-random) number of failures $r$ occurs.
+
+\be
+For example, if we define a 1 as failure, all non-1s as successes, and we throw a dice repeatedly until 1 appears the
+third time (r = three failures), then the probability distribution of the number of non-1s that appeared will be a
+negative binomial distribution.
+\ee
+
+The corresponding PMF reads:
+
+\bd[Negative Binomial Distribution PMF]
+\bse
+P_{X}(X=k) = \binom{k+r-1}{k} (1-p)^r p^{k}
+\ese
+\ed
+
+\v
+
+where $k$ is the number of successes, $r$ is the number of failures, and $p$ is the probability of success. \v
+
+For the expected value of a negative binomial distribution we can show:
+\bse
+E[X] = \frac{pr}{1-p}
+\ese
+
+For the variance of a negative binomial distribution we can show:
+\bse
+Var(X) = \frac{pr}{(1-p)^2}
+\ese
+
+For the standard deviation of a negative binomial distribution we can show:
+\bse
+SD(X) = \frac{\sqrt{pr}}{1-p}
+\ese
+
+\section{Continuous Random Variables}
+
+In accordance with discrete r.v's, continuous r.v's are r.v's that can take continuous, uncountable values (as for
+example the price of a stock). Similarly to the discrete case, we can define a quantity that is connected to the
+probability of obtaining an outcome that lies between a range of possible values $[a,b]$. In the case of continuous
+r.v's, this quantity is called ``probability density function''.
+
+\bd[Probability Density Function]
+Given a continuous r.v $X$ defined on a sample space $S$ as $X \colon S \to R$, we define the \textbf{probability
+density function} (PDF) $f_{X}$ as a function that maps outcomes $R$ to the interval $[0,1]$ ($f_{X}:R\mapsto [0,1]$):
+\bse
+P(a \leq X \leq b) = \int_{a}^{b} f_{X}(x) dx
+\ese
+
+with:
+\bse
+\int_{-\infty}^{+\infty} f_{X}(x) dx=1
+\ese
+\ed
+
+\v
+
+Once again, as before, the conservation of density in the continuous case gives a kind of ``physical'' meaning to
+$f_{X}$. \v
+
+Notice that for the probability of a continuous r.v to take a specific value
+$a$ :
+\bse
+P(a \leq X \leq a) = \int_{a}^{a} f_{X}(x) dx = 0
+\ese
+
+Hence, in continuous r.v's it only makes sense to find the probability of a r.v to be inside a specific range $[a,b]$.
+As it follows from the definition of an integral, the probability of a continuous r.v to be equal to a specific
+number $a$ is always 0. \v
+
+Given the PDF we can define the expected value for a continuous r.v in the same way as we did for the discrete case.
+
+\bd[Expected Value/Mean]
+Let $X$ be a continuous r.v with a finite number of finite outcomes and $f_{X}(x)$ its corresponding PDF. The
+\textbf{expected value} (or mean) of $X$ denoted by $E[X]$ or $\mu$ is defined as:
+\bse
+E[X]=\int_{-\infty}^{+\infty} x f_{X}(x) dx
+\ese
+\ed
+
+The variance and standard deviation of a continuous r.v follow the same formulas as in discrete case, with the
+difference that now we use the expected value from the definition for the continuous case. In a similar way we can
+define the corresponding conditional quantities.
+
+\section{Continuous Probability Distributions}
+
+As in discrete r.v's PMF's, the only requirement for a function $f(x)$ to be the PDF of some continuous r.v $X$ is to
+satisfy the conservation of density. Once a function satisfies this requirement then it describes the probability
+distribution of some continuous r.v $X$. \v
+
+In this section, as we did before for discrete r.v's, we are going to introduce some of the most fundamental
+continuous probability distributions among with their characteristics and their intuition. Continuous probability
+distributions are very important because based on some of them we can perform statistical inference as we will see in
+the next chapter.
+
+\subsection{Continuous Uniform Distribution - Unif(a,b)}
+
+The continuous uniform distribution parametrized by $a$ and $b$ and denoted by Unif(a,b) is a continuous probability
+distribution that describes an experiment where there is an arbitrary outcome that lies between bounds that are
+defined by the parameters $a$ and $b$ which are the minimum and maximum values. The interval can be either closed
+($[a, b]$) or open ($(a, b)$). \v
+
+The corresponding PDF reads:
+
+\bd[Continuous Uniform Distribution PDF]
+\bse
+f_{X}(x) = \begin{cases*} c, & for $x \in [a,b]$ \\ 0, & otherwise \end{cases*}
+\ese
+\ed
+
+Given that a PDF must satisfy the density conservation, we can actually compute the constant $c$ since:
+{\setlength{\jot}{10pt}
+\begin{align*}
+& \int_{-\infty}^{+\infty} f_{X}(x) dx = 1 \Rightarrow \\
+& \int_{-\infty}^{a} 0 \cdot dx + \int_{a}^{b} c dx + \int_{b}^{+\infty} 0 \cdot dx = 1 \Rightarrow \\
+& c \int_{a}^{b} dx = 1 \Rightarrow \\
+& c \cdot (b-a) = 1 \Rightarrow \\
+& c = \frac{1}{b-a}
+\end{align*}}
+
+Hence, we showed that the constant $c$ is actually the length of the range that the PDF is not 0. \v
+
+By substituting the value of $c$ back to the PDF, we get the final form of a continuous uniform distribution:
+
+\bd[Continuous Uniform Distribution PDF (Better Version)]
+\bse
+f_{X}(x) = \begin{cases*} \frac{1}{b-a}, & for $x \in [a,b]$ \\ 0, & otherwise \end{cases*}
+\ese
+\ed
+
+Graphically, the PDF looks like this:
+
+\fig{uniform}{0.15}
+
+\v
+
+For the expected value of a continuous uniform distribution, straight from the definition we get:
+\bse
+E[X] = \int_{-\infty}^{+\infty} x f_{X}(x) dx = \int_{a}^{b} x \frac{1}{b-a} dx = \frac{1}{b-a} \int_{a}^{b} x dx
+= \frac{1}{b-a} (\frac{1}{2}b^2 - \frac{1}{2}a^2) = \ldots = \frac{1}{2} (a+b)
+\ese
+
+\v
+
+For the variance of a continuous uniform distribution we will use the usual formula, so first we calculate $E[X^2]$:
+\bse
+E[X^2] = \int_{-\infty}^{+\infty} x^2 f_{X}(x) dx = \int_{a}^{b} \frac{1}{b-a} x^2 dx
+= \frac{1}{b-a} \int_{a}^{b} x^2 dx = \frac{1}{b-a} (\frac{1}{3}b^3 - \frac{1}{3}a^3)
+= \ldots = \frac{1}{3} (a^2 + ab + b^2)
+\ese
+
+\v
+
+Substituting $E[X^2]$ and $E[X]^2$ to the variance formula we get:
+\bse
+Var(X) = E[X^2] - E[X]^2 = \frac{1}{3} (a^2 + ab + b^2) - \frac{1}{4} (a+b)^2 = \ldots = \frac{(b - a)^2}{12}
+\ese
+
+\v
+
+Finally, for the standard deviation:
+\bse
+SD(X) = \sqrt{Var(X)} = \frac{b - a}{\sqrt{12}}
+\ese
+
+\subsection{Normal Distribution - N($\mu$, $\sigma^2$)}
+
+The normal distribution parametrized by $\mu$, and $\sigma^2$ and denoted by N($\mu$, $\sigma^2$) (often called
+``bell curve'') is probably the most important distribution in statistics and it is often used in the natural and
+social sciences to represent real-valued random variables whose distributions are not known.
+
+\v
+The corresponding PDF reads:
+
+\bd[Normal Distribution PDF]
+\bse
+f_{X}(x) = \frac{1}{\sqrt{2\pi\sigma^2}} e ^ {-\frac{(x - \mu)^2}{2\sigma^2}}
+\ese
+\ed
+
+\fig{normal}{0.25}
+
+Normal distribution is useful because of the central limit theorem, that we will see later. In its most general form
+it states that averages of samples of observations of r.v's independently drawn from the same distribution converge
+in distribution to the normal, that is, they become normally distributed when the number of observations is
+sufficiently large. Physical quantities that are expected to be the sum of many independent processes often have
+distributions that are nearly normal. Moreover, many results and methods can be derived analytically in explicit form
+when the relevant variables are normally distributed. \v
+
+For the expected value of a normal distribution, straight from the
+definition we get:
+{\setlength{\jot}{11pt}
+\begin{align*}
+E[X] &= \int_{-\infty}^{+\infty} x f_{X}(x) dx \\
+&= \int_{-\infty}^\infty x \cdot \frac{1}{\sqrt{2\pi\sigma^2}}
+\cdot exp \Big( {-\frac{(x - \mu)^2}{2\sigma^2}}\Big) dx \\
+&= \frac{1}{\sqrt{2\pi\sigma^2}} \int_{-\infty}^\infty x \cdot exp \Big({-\frac{(x - \mu)^2}{2\sigma^2}} \Big) dx\\
+&= \frac{1}{\sqrt{2\pi\sigma^2}} \int_{-\infty}^\infty (\sqrt{2} \sigma t + \mu) e^{-t^2} d (\sqrt{2} \sigma t) \\
+&= \frac{\sqrt{2} \sigma}{\sqrt{2\pi\sigma^2}} \Big(\int_{-\infty}^\infty \sqrt{2} \sigma t e ^ {-t^2} dt
++ \int_{-\infty}^\infty \mu e ^ {-t^2} dt \Big) \\
+&= \frac{1}{\sqrt{\pi}} \Big( \sqrt{2} \sigma \int_{-\infty}^\infty t e^ {-t^2} dt
++ \mu \int_{-\infty}^\infty e ^ {-t^2} dt \Big) \\
+&= \frac{1}{\sqrt{\pi}} \Big( \sqrt{2} \sigma \cdot 0 + \mu \cdot \sqrt{\pi} \Big)\\
+&= \frac{1}{\sqrt{\pi}} \cdot (\mu \cdot \sqrt{\pi})\\
+&= \mu
+\end{align*}}
+
+For the variance of a normal distribution we will use the usual relation so first we calculate $E[X^2]$:
+\begingroup
+\allowdisplaybreaks
+{\setlength{\jot}{11pt}
+\begin{align*}
+E[X^2] &= \int_{-\infty}^{+\infty} x^2 f_{X}(x) dx \\
+&= \int_{-\infty}^\infty x^2 \cdot \frac{1}{\sqrt{2\pi\sigma^2}}
+\cdot exp \Big( {-\frac{(x - \mu)^2}{2\sigma^2}} \Big) dx \\
+&= \frac{1}{\sqrt{2\pi\sigma^2}} \int_{-\infty}^\infty x^2 \cdot exp \Big( {-\frac{(x - \mu)^2}{2\sigma^2}} \Big) dx\\
+&= \frac{1}{\sqrt{2\pi\sigma^2}} \int_{-\infty}^\infty (\sqrt{2} \sigma t + \mu)^2 e^{-t^2} d (\sqrt{2} \sigma t) \\
+&= \frac{\sqrt{2} \sigma}{\sqrt{2\pi\sigma^2}} \int_{-\infty}^\infty (2 \sigma^2 t^2
++ 2 \sqrt{2} \sigma t \mu + \mu^2) e ^ {-t^2} dt\\
+&= \frac{1}{\sqrt{\pi}} \Big( \int_{-\infty}^\infty 2 \sigma^2 t^2 e^ {-t^2} dt
++ \int_{-\infty}^\infty 2 \sqrt{2} \sigma t \mu e ^ {-t^2} dt + \int_{-\infty}^\infty \mu^2 e^ {-t^2} dt \Big) \\
+&= \frac{1}{\sqrt{\pi}} \Big( 2 \sigma^2 \int_{-\infty}^\infty t^2 e^ {-t^2} dt
++ 2 \sqrt{2} \sigma \mu \int_{-\infty}^\infty t e ^ {-t^2} dt + \mu^2 \int_{-\infty}^\infty e ^ {-t^2} dt \Big) \\
+&= \frac{1}{\sqrt{\pi}} \Big( 2 \sigma^2 \cdot \frac{\sqrt{\pi}}{2} + 2 \sqrt{2} \sigma \mu \cdot 0
++ \mu^2 \cdot \sqrt{\pi} \Big) \\
+&= \frac{1}{\sqrt{\pi}} \cdot \sqrt{\pi} \cdot (\sigma^2 + \mu^2 )\\
+&= \sigma^2 + \mu^2
+\end{align*}}
+\endgroup
+
+Substituting $E[X^2]$ and $E[X]^2$ back to the variance relation we get:
+\bse
+Var(X) = E[X^2] - E[X]^2 = \sigma^2 + \mu^2 - \mu^2 = \sigma^2
+\ese
+
+So we proved that the parameters of the N($\mu$, $\sigma^2$), $\mu$ and $\sigma^2$ are actually the expected value
+and variance of the distribution (Hence, the naming). \v
+
+Finally, for the standard deviation of a normal distribution :
+\bse
+SD(X) = \sqrt{Var(X)} = \sqrt{\sigma^2} = \sigma
+\ese
+
+Now, we will introduce a specific case of a normal distribution called ``standard normal distribution''.
+
+\subsection{Standard Normal Distribution - N(0,1)}
+
+In the special case where $\mu=0$ and $\sigma^2=1$ the corresponding normal distribution $N(0,1)$ takes the special
+name of standard normal distribution (or z-distribution). Remember from the graph of a normal distribution, that the
+bell curve has a maximum at the expected value (in $N(0,1)$ case at 0), and since the variance is equal to 1 (hence
+also the standard deviation), each extra unit away from the mean is an extra unit of standard deviation (we use
+standard deviation since it has same units as the mean).
+
+\v
+For $\mu=0$ and $\sigma^2=1$ the corresponding PDF reads:
+
+\bd[Standard Normal Distribution PDF]
+\bse
+f_{X}(x) = \frac{1}{\sqrt{2\pi}} e ^ {-\frac{x^2}{2}}
+\ese
+\ed
+
+Remember that from the definition of a PDF, specifically for a standard normal distribution we have:
+\bse
+P(a \leq X \leq b) = \frac{1}{\sqrt{2\pi}} \int_{a}^{b} e ^ {-\frac{x^2}{2}} dx
+\ese
+
+\v
+
+which is the probability of obtaining a value within the range $[a,b]$. By setting $a \to -\infty$, and relabelling
+$b \to z$ we end up with the probability of the value to be in the range $ (-\infty, z]$:
+\bse
+P(-\infty \leq X \leq z) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{z} e^{-\frac{x^2}{2}} dx
+\ese
+
+\v
+
+This is a standard Gaussian integral that is quite easy to calculate for any possible value of $z$. Since it is so
+useful, we can actually find the value for the integral for any $z$, in the so called ``$Z$-table''.
+
+\bd[$Z$-Table]
+A \textbf{$Z$-table}, is a mathematical table for the values of the cumulative distribution function of the standard
+normal distribution. It is used to find the probability that a statistic is observed below, above, or between values
+on the standard normal distribution. $Z$-tables are typically composed as follows:
+\bit
+\item The label for rows contains the integer part and the first decimal place of $z$.
+\item The label for columns contains the second decimal place of $z$.
+\item The values within the table are the result of the integral, i.e.\ the probabilities.
+\eit
+\ed
+
+For example, for $z=0.69$, one would look down the rows to find 0.6 and then across the columns to 0.09 which would
+yield a probability of 0.25, so:
+\bse
+P(-\infty \leq X \leq 0.69) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{0.69} e^ {-\frac{x^2}{2}} dx = 0.25
+\ese
+
+\v
+
+$Z$-tables are very useful since we can find values of the integral without actually solving it! On top of that since
+we are dealing with a standard normal distribution where mean is 0 and variance is 1, the value of $z$ can actually
+be seen as ``standard deviations away from the mean''. For example $z=0.69$ means 0.69 standard deviations away
+from the mean and the corresponding value from $Z$-table is the probability of obtaining a value for the r.v, up to
+and including 0.69 standard deviations (which is 1) away from the mean. \v
+
+Now let's see some particular values, for some integer values of standard deviation away from the mean:
+\bit
+\item $P(-\infty \leq X \leq -3) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{-3} e^{-\frac{x^2}{2}} dx = 0.001$
+\item $P(-\infty \leq X \leq -2) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{-2} e^{-\frac{x^2}{2}} dx = 0.028$
+\item $P(-\infty \leq X \leq -1) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{-1} e^{-\frac{x^2}{2}} dx = 0.158$
+\item $P(-\infty \leq X \leq 0) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{0} e^{-\frac{x^2}{2}} dx = 0.5$
+\item $P(-\infty \leq X \leq 1) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{1} e^{-\frac{x^2}{2}} dx = 0.841$
+\item $P(-\infty \leq X \leq 2) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{2} e^{-\frac{x^2}{2}} dx = 0.977$
+\item $P(-\infty \leq X \leq 3) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{3} e^{-\frac{x^2}{2}} dx = 0.998$
+\eit
+
+\v
+
+Given these values we can calculate the probability of obtaining a value between standard deviations. E.g:
+\bit
+\item $P(-3 \leq X \leq -2) = P(-\infty \leq X \leq -2) - P(-\infty \leq X \leq -3) = 0.028 - 0.001 = 0.027 = 2\%$
+\item $P(-2 \leq X \leq -1) = P(-\infty \leq X \leq -1) - P(-\infty \leq X \leq -2) = 0.158 - 0.028 = 0.13 = 13\%$
+\item $P(-1 \leq X \leq 0) = P(-\infty \leq X \leq 0) - P(-\infty \leq X \leq -1) = 0.5 - 0.158 = 0.342 = 34\%$
+\item $P(0 \leq X \leq 1) = P(-\infty \leq X \leq 1) - P(-\infty \leq X \leq 0) = 0.841 - 0.5 = 0.342 = 34\%$
+\item $P(1 \leq X \leq 2) = P(-\infty \leq X \leq 2) - P(-\infty \leq X \leq 1) = 0.977 - 0.841 = 0.13 = 13\%$
+\item $P(2 \leq X \leq 3) = P(-\infty \leq X \leq 3) - P(-\infty \leq X \leq 2) = 0.998 - 0.977 = 0.021 = 2\%$
+\eit
+
+\v
+
+Or within ranges of standard deviations:
+
+\v
+
+\bit
+\item $P(-1 \leq X \leq 1) = P(-\infty \leq X \leq 1) - P(-\infty \leq X \leq -1) = 0.841 - 0.158 = 0.683 = 68\%$
+\item $P(-2 \leq X \leq 2) = P(-\infty \leq X \leq 2) - P(-\infty \leq X \leq -2) = 0.977 - 0.028 = 0.949 = 95\%$
+\item $P(-3 \leq X \leq 3) = P(-\infty \leq X \leq 3) - P(-\infty \leq X \leq -3) = 0.998 - 0.001 = 0.997 = 99\%$
+\eit
+
+\v
+
+We can summarize all of these to the following graph:
+
+\fig{standardnormal}{0.35}
+
+Probably the most important message to get out of the graph is the so called ``68–95–99.7 rule''.
+
+\bt[68–95–99.7 Rule]
+The 68–95–99.7 rule (or empirical rule), is a shorthand used to remember the percentage of values that lie within a
+band around the mean in a normal distribution with a width of two, four and six standard deviations, respectively;
+more accurately, 68.27\%, 95.45\% and 99.73\% of the values lie within one, two and three standard deviations of the
+mean, respectively.
+\et
+
+The ``68–95–99.7 rule'' is used in order to get some informal intuitions out of a standard normal distribution.
+Also, we can use the ``68–95–99.7 rule'' even for a normal distribution since, as we will show next, any normal
+distribution can be turned to a standard normal distribution by a process called ``standardization''. \v
+
+In order to formulate the process of standardization, first we need to define the concept of z-score of a r.v $X$.
+
+\bd[Z-Score]
+Given a normal distribution $N(\mu, \sigma^2)$ we can define the \textbf{z-score} (or standard score) of a raw score
+x as:
+\bse
+z= \frac{x-\mu}{\sigma}
+\ese
+\ed
+
+\v
+
+The absolute value of z represents the distance between the raw score and the population mean in units of the
+standard deviation. In simple words it's just a re-scaling of the random variable $X$. \v
+
+Notice that for the expected value of z-score, for any $N(\mu, \sigma^2)$ holds:
+\bse
+E[z] = E \Big[ \frac{x-\mu}{\sigma} \Big] = \frac{1}{\sigma} E [x-\mu] = \frac{1}{\sigma} (E[x] - E[\mu])
+= \frac{1}{\sigma} (\mu - \mu) = 0
+\ese
+
+Similarly for the variance of z-score:
+\bse
+Var(z) = Var \Big( \frac{x-\mu}{\sigma} \Big) = \frac{1}{\sigma^2} Var(x-\mu)
+= \frac{1}{\sigma^2} (Var(x) - Var(\mu)) = \frac{1}{\sigma^2} (\sigma^2 - 0) = 1
+\ese
+
+And subsequently for the standard deviation:
+\bse
+SD(z) = \sqrt{Var(z)} = \sqrt{1} = 1
+\ese
+
+Hence, by switching from $X$ to $Z$ through the use of z-scores we also switch from any normal distribution to a
+standard normal distribution. This process is called formally ``standardization''.
+
+\bd[Standardization]
+\textbf{Standardization} is the process where starting from a r.v $X$ that follows a $N(\mu, \sigma^2)$, by making
+use of z-score we switch to a N(0,1) for the r.v Z(X).
+\ed
+
+Formally, standardization is just a re-scaling on the way we measure the data. Namely by subtracting the mean out
+from all the observations we simply define a new zero for the scale, and by dividing by the variance we simply define
+a new unit for the scale. Nothing actually changes to the actual information of the data since we subtract and divide
+all observations by the same numbers. The only difference is that now the numbers that represent the data changed to
+new values in a consistent way. This is why standard normal distribution is so important. Since any normal
+distribution can be translated to a standard normal distribution everything we said for a standard normal
+distribution holds for any normal distribution. For example we can compute the probabilities of $X$ to be within a
+range by switching to $Z$ and compute the Gaussian integral. Also the ``68–95–99.7 rule'' holds for any normal
+distribution and simply states:
+\begin{align*}
+& P(\mu -1\sigma \leq X\leq \mu +1\sigma ) = 68\% \\
+& P(\mu -2\sigma \leq X\leq \mu +2\sigma ) = 95\% \\
+& P(\mu -3\sigma \leq X\leq \mu +3\sigma ) = 99.7\%
+\end{align*}
+
+We will get back to normal distributions in the next chapter, where we will show that based on them, we can develop a
+theory for making statistical inference i.e.\ to draw a conclusion for a random variable out of a small sample of the
+entire population. More on that, in the next chapter.
+
+\subsection{Exponential Distribution - Expo($\lambda$)}
+
+The exponential distribution parametrized by rate parameter $\lambda$ and denoted by Expo($\lambda$) is the
+probability distribution of the time between events in a Poisson point process, i.e.\ a process in which events occur
+continuously and independently at a constant average rate. It is a particular case of the gamma distribution which we
+will see in later section. It is the continuous analogue of the geometric distribution which we saw in discrete
+probability distributions. In addition to being used for the analysis of Poisson point processes it is found in
+various other contexts. \v
+
+The exponential distribution is not the same as the class of exponential families of distributions, which is a large
+class of probability distributions that includes the exponential distribution as one of its members, but also
+includes the normal distribution, binomial distribution, gamma distribution, Poisson, and many others. \v
+
+The PDF of an exponential distribution reads:
+\bd[Exponential Distribution PDF]
+\bse
+f_{X}(x) = \begin{cases*} \lambda e^{-\lambda x} & for $x \geq 0$ \\ 0 & for $x < 0$ \end{cases*}
+\ese
+\ed
+
+and graphically looks like this.
+
+\vspace{-5pt}
+
+\fig{exponential}{1}
+
+For the expected value of an exponential distribution we can show:
+\bse
+E[X] = \frac{1}{\lambda}
+\ese
+
+For the variance of an exponential distribution we can show:
+\bse
+Var(X) = \frac{1}{\lambda^2}
+\ese
+
+Finally, for the standard deviation of an exponential distribution:
+\bse
+SD(X) = \sqrt{Var(X)} = \sqrt{\frac{1}{\lambda^2}} = \frac{1}{\lambda}
+\ese
+
+\subsection{Chi-Squared Distribution - $\chi^2(k)$}
+
+Chi-squared distribution parametrized by $k$ degrees of freedom and denoted by $\chi^2(k)$ is the distribution of a
+sum of the squares of $k$ independent standard normal r.v's. The chi-square distribution is a special case of the
+gamma distribution that we will see later and is one of the most widely used probability distributions in inferential
+statistics, notably in hypothesis testing and in construction of confidence intervals. \v
+
+The chi-square distribution is used in the common chi-square tests for goodness of fit of an observed distribution to
+a theoretical one, the independence of two criteria of classification of qualitative data, and in confidence interval
+estimation for a population standard deviation of a normal distribution from a sample standard deviation. Many other
+statistical tests also use this distribution, such as Friedman's analysis of variance by ranks. \v
+
+The PDF of a $\chi^2(k)$ reads:
+
+\bd[Chi-Squared Distribution PDF]
+\bse
+f_{X}(x) = \begin{cases*}
+\frac{x^{\frac{k}{2} - 1} e^{- \frac{x}{2}}}{2^{\frac{k}{2}} \Gamma (\frac{k}{2})} & for $x \geq 0$ \\ 0 & for $x < 0$
+\end{cases*}
+\ese
+\ed
+
+and graphically looks like this.
+\fig{chi}{0.2}
+
+\vspace{10pt}
+
+For the expected value of a chi-squared distribution we can show:
+\bse
+E[X] = k
+\ese
+
+For the variance of a chi-squared distribution we can show:
+\bse
+Var(X) = 2k
+\ese
+
+For the standard deviation of a chi-squared distribution we can show:
+\bse
+SD(X) = \sqrt{2k}
+\ese
+
+\subsection{Student's t-Distribution - $t(\nu)$}
+
+Student's t-distribution (or simply the t-distribution) parametrized by $\nu$ degrees of freedom and denoted by $t
+(\nu)$ is any member of a family of continuous probability distributions that arises when estimating the mean of a
+normally distributed population in situations where the sample size is small and the population standard deviation is
+unknown. More on that in the next chapter. \v
+
+The PDF of a t-distribution reads:
+
+\bd[Student's t-Distribution PDF]
+\bse
+f_{X}(x) = \frac{\Gamma \Big( \frac{\nu + 1}{2} \Big) }{\sqrt{\nu \pi}
+\Gamma \Big( \frac{\nu}{2} \Big) } \Big ( 1 + \frac{t^2}{\nu} \Big)^{- \frac{\nu + 1}{2}}
+\ese
+\ed
+
+and graphically looks like this.
+\fig{t}{0.12}
+
+\vspace{10pt}
+
+For the expected value of a t-distribution we can show:
+\bse
+E[X] = 0
+\ese
+
+For the variance of a t-distribution we can show:
+\bse
+Var(X) = \frac{\nu}{\nu - 2}
+\ese
+
+Finally, for the standard deviation:
+\bse
+SD(X) = \sqrt{ \frac{\nu}{\nu - 2}}
+\ese
+
+The t-distribution plays a role in a number of widely used statistical analyses, including Student's t-test for
+assessing the statistical significance of the difference between two sample means, the construction of confidence
+intervals for the difference between two population means, and in linear regression analysis. The Student's
+t-distribution also arises in the Bayesian analysis of data from a normal family.
+
+\subsection{Beta Distribution - Beta($\alpha, \beta$)}
+
+Beta distribution Beta($\alpha$, $\beta$) is a family of continuous probability distributions defined on the interval
+[0, 1] parametrized by two positive shape parameters, denoted by $\alpha$ and $\beta$, that appear as exponents of
+the random variable and control the shape of the distribution. \v
+
+The beta distribution has been applied to model the behaviour of random variables limited to intervals of finite
+length in a wide variety of disciplines. \v
+
+The PDF of a Beta distribution is given by:
+
+\bd[Beta Distribution PDF]
+\bse
+f_{X}(X) = \frac{1}{B(\alpha, \beta)} \cdot x^{\alpha - 1} \cdot (1-x)^{\beta -1}
+\ese
+\ed
+
+and graphically looks like this.
+\fig{beta}{0.35}
+
+\vspace{10pt}
+
+Observe that $B(\alpha, \beta)$ is not just one probability distribution, but a family of probability distributions
+since for different values of $\alpha$ and $\beta$ we end up with different distributions. \v
+
+For the expected value of a Beta distribution we can show:
+\bse
+E[X] = \frac{\alpha}{\alpha+\beta}
+\ese
+
+For the variance of a Beta distribution we can show:
+\bse
+Var(X)= \frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta + 1)}
+\ese
+
+Finally, for the standard deviation:
+\bse
+SD(X) = \sqrt{\frac{\alpha\beta}{(\alpha+\beta)^2(\alpha+\beta + 1)}}
+\ese
+
+\subsection{Gamma Distribution - Gamma($\alpha$, $\beta$)}
+
+Gamma distribution parametrized by two positive shape parameters $alpha$ and $\beta$ and denoted by Gamma($\alpha$,
+$\beta$) is a family of continuous probability distributions defined on the interval [0, $\infty$). \v
+
+The PDF of a Gamma distribution is given by:
+
+\bd[Gamma Distribution PDF]
+\bse
+f_{X}(x) = \frac{\beta^\alpha \cdot x^{\alpha -1} \cdot e^{-\beta x}}{\Gamma(\alpha)}
+\ese
+\ed
+
+and graphically looks like this.
+
+\fig{gamma}{0.15}
+
+\v
+
+Observe that Gamma distribution is not just one probability distribution, but a family of probability distributions
+since for different values of $\alpha$ and $\beta)$ we end up with different distributions. For example, the
+exponential distribution and the chi-squared distribution that we already showed, are special cases of the gamma
+distribution. \v
+
+For the expected value of a Gamma distribution we can show:
+\bse
+E[X] = \frac{\alpha}{\beta}
+\ese
+
+For the variance of a Gamma distribution we can show:
+\bse
+E[X] = \frac{\alpha}{\beta^2}
+\ese
+
+Finally, for the standard deviation:
+\bse
+SD(X) = \frac{\sqrt{\alpha}}{\beta}
+\ese
+
+Now let's move on to another section.
+
+\section{Joint Probability Distribution}
+
+Up to this point we have defined everything for one single r.v $X$ (either discrete or continuous). However, the
+definitions can be generalized to a collection of any number of r.v's $\{ X_{1}, X_{2}, \ldots, X_{n} \}$, (treating
+the whole collection of r.v's as an entity) leading to the concept of a ``joint probability distribution''.
+
+\bd[Joint Probability Distribution]
+Given a number of r.v's $\{ X_{1}, X_{2}, \ldots, X_{n} \}$, that are defined on a probability space, the
+\textbf{joint probability distribution} for $\{ X_{1}, X_{2}, \ldots, X_{n} \}$ is a probability distribution that
+gives the probability that each of $\{ X_{1}, X_{2}, \ldots, X_{n} \}$ falls in any particular range or discrete set
+of values specified for that variable. In the case of only two r.v's, this is called a bivariate distribution, but
+the concept generalizes to any number of r.v's, giving a multivariate distribution.
+\ed
+
+Subsequently, we can define the concept of a ``joint probability mass function'' and a ``joint probability
+density function'' for a collection of discrete and continuous r.v's respectively.
+
+\bd[Joint Probability Mass Function]
+For a number of discrete r.v's $\{ X_{1}, \ldots, X_{n} \}$, that are defined on a probability space $S$, we define
+the \textbf{joint probability mass function} $P_{X_{1}, \ldots, X_{n}} (x_{1}, \ldots, x_{n})$ as a function that
+maps outcomes $R^n$ to the interval $[0,1]$ ($P_{X_{1}, \ldots, X_{n}}:R^n \mapsto [0,1]$):
+\bse
+P_{X_{1}, \ldots, X_{n}}(X_{1} = x_{1}, \ldots, X_{n} = x_{n}) = P_{X_{1},
+\ldots, X_{n}}(\{s\in S: X_{1}(s) = x_{1}, \ldots, X_{n}(s) = x_{n}\})
+\ese
+
+with:
+\bse
+\sum_{x_{1}} \dots \sum_{x_{n}} P_{X_{1}, \ldots, X_{n}}(X_{1}=x_{1}, \dots, X_{n}=x_{n}) = 1
+\ese
+\ed
+
+\v
+
+In the case where $X$'s are independent to each other then their joint probability mass function is just the product
+of their individual PMF's:
+\bse
+P_{X_{1}, \ldots, X_{n}}(X_{1} = x_{1}, \ldots, X_{n} = x_{n}) = \prod_{i=1}^{n} P_{X_{i}}(X_{i} = x_{i})
+\ese
+
+Notice that the individual r.v's $\{ X_{1}, \ldots, X_{n} \}$ can follow different distributions. However, more often
+than not we will be dealing with the case where all $\{ X_{1}, \ldots, X_{n} \}$ individually follow the same
+distribution $P_{X_{1}} = P_{X_{2}} = \ldots = P_{X_{n}} = P_{X}$. In this case we formally say that we are dealing
+with ``independent identical distributed random variables'' or i.i.d r.v's. This abbreviation is used a lot in
+statistics since many real world problems are problems that can be modelled with the use of i.i.d r.v's. \v
+
+In a similar way as in the discrete case, we can define a joint probability density function for the continuous case.
+
+\bd[Joint Probability Density Function]
+For a number of continuous r.v's $\{ X_{1}, \ldots, X_{n} \}$, that are defined on a probability space $S$, we define
+the \textbf{joint probability density function} $f_{X_{1}, \ldots, X_{n}} (x_{1}, \ldots, x_{n})$ as a function that
+maps outcomes $R^n$ to the interval $[0,1]$ ($f_{X_{1}, \ldots, X_{n}}:R^n \mapsto [0,1]$):
+\bse
+P(a_{1} \leq X_{1} \leq b_{1}, \ldots, a_{n} \leq X_{n} \leq b_{n} ) = \int_{a_{1}}^{b_{1}} \ldots
+\int_{a_{n}}^{b_{n}} f_{X_{1}, \ldots, X_{n}}(x_{1}, \ldots, x_{n}) dx_{1} \ldots dx_{n}
+\ese
+
+with:
+\bse
+\int_{-\infty}^{\infty} \ldots \int_{-\infty}^{\infty} f_{X_{1},
+\ldots, X_{n}}(x_{1}, \ldots, x_{n}) dx_{1} \ldots dx_{n} = 1
+\ese
+\ed
+
+\v
+
+And again, in the case where $X$'s are independent to each other then their joint probability density function is
+just the product of their individual PDF's:
+\bse
+f_{X_{1}, \ldots, X_{n}}(x_{1}, \ldots, x_{n}) = \prod_{i=1}^{n} f_{X_{i}}(x_{i})
+\ese
+
+\subsection{Bivariate Joint Distribution}
+
+Probably the most important case of joint probability distribution is the case when we are dealing with two random
+variables $X$ and $Y$. In a way, in joint probability distributions, and subsequently in bivariate probability
+distributions, the analysis switches from trying to exploring just $X$ and $Y$ as r.v's to also exploring what is the
+relation between the two r.v's. \v
+
+For now we will be dealing with the case where both $X$ and $Y$ are discrete r.v's and then we will see the
+continuous case. \v
+
+In the case of 2 discrete r.v's, straight from the definition, their joint probability mass function reads:
+\bse
+P_{X,Y}(X=x, Y=y) = P_{X,Y}(\{s\in S: X(s) = x, Y(s) = y\})
+\ese
+
+with:
+\bse
+\sum_{x} \sum_{y} P_{X,Y}(X=x, Y=y) = 1
+\ese
+
+As before, in case where $X$ and $Y$ are independent the joint mass probability distribution is just the product of
+the two PMF's:
+\bse
+P_{X,Y}(X=x, Y=y) = P_{X}(X=x) \cdot P_{Y}(Y=y)
+\ese
+
+Now we can generalize the concept of expected value to the one of ``joint expected value''. (Since we are dealing
+with bivariate joint distributions we will define the joint expected value for two r.v's, however we can generalize
+the definition for any function of any numbers of r.v's)
+
+\bd[Joint Expected Value]
+Let $X$ and $Y$ be two discrete r.v's with a finite number of finite outcomes and $P_{X,Y}(x,y)$ its corresponding
+PMF. The \textbf{joint expected value} of $X$ and $Y$ denoted by $E[X \cdot Y]$ is defined as:
+\bse
+E[X \cdot Y]= \sum _{x} \sum _{y} x \cdot y \cdot P_{X,Y}(X=x, Y=y)
+\ese
+\ed
+
+By making use of independent r.v's and the joint probability, we can show the following relation for the joint
+expected value of independent r.v's.
+
+\bt[]
+If $X$ and $Y$ are independent events then their joint expected value is equal to the product of the expected values
+of each r.v.
+\et
+
+\bq
+\begin{align*}
+E[X \cdot Y] &= \sum _{x} \sum _{y} x \cdot y \cdot P_{X,Y}(X=x, Y=y) \\
+&= \sum _{x} \sum _{y} x \cdot y \cdot P_{X}(X=x) \cdot P_{Y}(Y=y) \\
+&= \sum _{x} x P_{X}(X=x) \cdot \sum _{y} y P_{Y}(Y=y) \\
+&= \Big( \sum _{x} x P_{X}(X=x) \Big) \cdot \Big(\sum _{y} y P_{Y}(Y=y) \Big) \\
+&= E[X] \cdot E[Y]
+\end{align*}
+\eq
+
+The joint expected value can be generalized to $E[g(X,Y)]$ for any function $g$ of the random variables $X$ and $Y$.
+In case where $g(X,Y) = g_{X}(X) \cdot g_{Y}(Y)$ then for independent events also holds $E[g(X,Y)] = E[g_{X}(X)]
+E[g_{Y}(Y)]$. A generalization to a function $g$ for any number of r.v's is also possible. \v
+
+Similarly to the joint expected value, it follows that we can also expand the definition of variance to the case of 2
+r.v's. The corresponding quantity is called ``covariance''.
+
+\bd[Covariance]
+Let $X$ and $Y$ be two discrete r.v's with a finite number of finite outcomes and $P(x,y)$ its corresponding PMF. The
+\textbf{covariance} of $X$ and $Y$ denoted by $Cov(X,Y)$ is defined as the expected value of the deviation of each r.v
+from their corresponding expected value:
+\bse
+Cov(X,Y)= E[(X - E[X])(Y - E[Y])]
+\ese
+\ed
+
+Covariance satisfies the following properties:
+\bit
+\item $Cov(X,Y) = Cov(Y,X)$.
+\item $Cov(X, c) = 0, \:\:\: \forall c$.
+\item $Cov(c X, Y) = c \cdot Cov(X, Y)$.
+\item $Cov(X,Y+Z) = Cov(X,Y) + Cov(X,Z)$.
+\eit
+
+\v
+
+Notice that for $Y=X$:
+\bse
+Cov(X,X) = E[(X - E[X])(X - E[X])] = E[(X - E[X])^2] = Var(X)
+\ese
+
+\v
+
+Hence, the covariance of one r.v with itself is simply the variance of the r.v.\ So indeed, variance can be
+interpreted as a special case of covariance hence, covariance is a generalization of variance. \v
+
+A similar formula as for variance can also be derived for covariance:
+\begin{align*}
+Cov(X, Y) &= E[(X - E[X])(Y-E[Y])] \\
+&= E[X \cdot Y - X \cdot E[Y] - E[X] \cdot Y + E[X] \cdot E[Y]] \\
+&= E[X \cdot Y] - E[X \cdot E[Y]] - E[E[X] \cdot Y] + E[E[X] \cdot E[Y]] \\
+&= E[X \cdot Y] - E[Y] \cdot E[X] - E[X] \cdot E[Y] + E[X] \cdot E[Y] \\
+&= E[X \cdot Y] - E[X] \cdot E[Y]
+\end{align*}
+
+As in the case of variance, this formula is more handy for calculations than the actual definition of covariance. \v
+
+In case of independent events, by making use of the last lemma we get for the covariance of independent events:
+\bse
+Cov(X, Y) = E[X \cdot Y] - E[X] \cdot E[Y] = E[X] \cdot E[Y] - E[X] \cdot E[Y] = 0
+\ese
+
+Hence, we proved that the covariance of two independent events is always zero. However, the opposite does not
+necessarily hold. To make it more clear let's give the definition of uncorrelated r.v's.
+
+\bd[Uncorrelated Random Variables]
+Two r.v's $X$ and $Y$ are called \textbf{uncorrelated} if $Cov(X, Y) = 0$.
+\ed
+
+Hence, the important concept here is that independent r.v's are always uncorrelated, but uncorrelated r.v's are not
+necessarily independent. \v
+
+By making use of covariance we can prove the following relation for variance:
+\begin{align*}
+Var(X + Y) &= Cov(X+Y, X+Y) \\
+&= Cov(X+Y, X) + Cov(X+Y, Y) \\
+&= Cov(X, X) + Cov(Y, X) + Cov(X, Y) + Cov(Y, Y) \\
+&= Var(X) + 2Cov(X,Y) + Var(Y) \\
+&= Var(X) + Var(Y) + 2Cov(X,Y)
+\end{align*}
+
+From this formula we can easily see why variance is not actually linear, since the covariance of the two terms
+appears in the formula. This is why when we are dealing with independent r.v's, hence, uncorrelated r.v's with $Cov(X,
+Y)=0$, we can actually treat variance as linear, meaning:
+\bse
+Var(X + Y) = Var(X) + Var(Y)
+\ese
+
+Covariance carries the same problems as variance, with the main one being that it carries square units. However,
+there is a way to overcome this problem by normalizing the covariance with the standard deviation of the two r.v's.
+The result is a very useful measure in statistics called ``correlation''.
+
+\bd[Correlation]
+Let $X$ and $Y$ be two discrete r.v's with a finite number of finite outcomes and $P(x,y)$ its corresponding PMF. The
+\textbf{correlation} of $X$ and $Y$ denoted by $\rho(X,Y)$ is defined as the covariance of the the two r.v's divided
+by the their corresponding standard deviations:
+\bse
+\rho(X,Y) = \frac{Cov(X,Y)}{SD(X) SD(Y)} = \frac{ E[(X - E[X])(Y - E[Y])]}{SD(X) SD(Y)}
+\ese
+\ed
+
+Notice that since standard deviation is just a number it can get inside an expected value, and the correlation can be
+manipulated to:
+\begingroup
+\allowdisplaybreaks
+{\setlength{\jot}{10pt}
+\begin{align*}
+\rho(X,Y) &= \frac{ E[(X - E[X])(Y - E[Y])]}{SD(X) SD(Y)} \\
+&= E \Big[ \frac{(X - E[X])(Y - E[Y])]}{SD(X) SD(Y)} \Big] \\
+&= E \Big[ \Big( \frac{X - E[X]}{SD(X)} \Big) \Big( \frac{Y - E[Y]}{SD(Y)} \Big) \Big] \\
+&= Cov \Big( \frac{X - E[X]}{SD(X)}, \frac{Y - E[Y]}{SD(Y)} \Big)
+\end{align*}}
+\endgroup
+
+Hence, we showed that the correlation is actually the covariance of the standardized (z-scores) r.v's $X$ and $Y$. \v
+
+By using all variance, covariance and the definition of standard deviation being the square root of variance follows:
+\bse
+\rho(X,Y) = \frac{E[X Y] - E[X]E[Y]}{\sqrt{E[X^2] - E[X]^2} \cdot \sqrt{E[Y^2] - E[Y]^2} }
+\ese
+
+\v
+
+Two of the most important properties of correlation is that it carries no units (by definition), and it is always
+between -1 and 1. Let's show that!
+
+\bt[]
+\bse
+-1 \leq \rho \leq +1
+\ese
+\et
+
+Let's prove this!
+
+\bq
+Without loss of generality we can assume that $X$ and $Y$ are standardized r.v's (i.e.\ $E[X] = E[Y] = 0$ and $Var
+(X) = Var(Y) = 1$). In this case $Cov(X,Y) = \rho(X,Y)$. Then:
+\begin{align*}
+Var(X \pm Y) &= Var(X) + Var(Y) \pm 2 \cdot Cov(X,Y) \\
+&= 1 + 1 \pm 2 \cdot Cov(X,Y) \\
+&= 2 \pm 2 \cdot Cov(X,Y) \\
+&= 2 \pm 2 \cdot \rho(X,Y) \\
+&= 2 (1 \pm \rho(X,Y))
+\end{align*}
+
+But since variance is the expected value of a square term, it follows that it's always positive, subsequently $(1 \pm
+\rho(X,Y))$ must always be positive hence, we end up with $ -1 \leq \rho \leq +1.$
+\eq
+
+The fact that correlation does not carry any units, and it is always between -1 and 1 makes it a very useful measure
+for the relation between two r.v's. Namely, a 0 correlation means there is no relationship between the variables at
+all, while -1 or 1 means that there is a perfect negative or positive correlation (negative or positive correlation
+here refers to the type of graph the relationship will produce). All in-between values indicate different levels of
+correlation. Intuitively, in the case of negative correlation the two r.v's follow an opposite trend meaning that
+while the first one gets larger the other one gets smaller. The opposite happens for positive correlation. \v
+
+\fig{correlation}{0.6}
+
+\v
+
+As a final note, we can in a similar way define everything for the case of continuous r.v's. Namely, their joint
+probability density function will read:
+\bse
+P(a_{x} \leq X \leq b_{x}, a_{y} \leq Y \leq b_{y} ) = \int_{a_{x}}^{b_{x}} \int_{a_{y}}^{b_{y}} f_{X, Y}(x, y) dx dy
+\ese
+
+with:
+\bse
+\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f_{X, Y}(x, y) dx dy = 1
+\ese
+
+\v
+
+And of course, in case where $X$ and $Y$ are independent the joint density probability distribution is just the
+product of the two PDF's:
+\bse
+f_{X,Y}(X=x, Y=y) = f_{X}(X=x) \cdot f_{Y}(Y=y)
+\ese
+
+By making use of the joint probability distribution we can define the joint expected value as:
+
+\bd[Joint Expected Value]
+Let $X$ and $Y$ be two continuous r.v's $f_{X,Y}(x,y)$ its corresponding PMF. The \textbf{joint expected value} of
+$X$ and $Y$ denoted by $E[X \cdot Y]$ is defined as:
+\bse
+E[X \cdot Y]= \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} x \cdot y \cdot f_{X,Y}(X=x, Y=y)
+\ese
+\ed
+
+which can be generalized to any function $g$ of the two r.v's:
+\bse
+E[g(X \cdot Y)]= \int_{-\infty}^{+\infty} \int_{-\infty}^{+\infty} g(x \cdot y) \cdot f_{X,Y}(X=x, Y=y)
+\ese
+
+Using this definition for the joint expected value we can define covariance, correlation and prove the independent
+joint expected value. All of them have the exact same form as in the discrete case with the only difference that now
+instead of the discrete joint probability distribution we use the continuous joint probability distribution.
+
+\subsubsection*{Application: Bivariate Bernoulli Distribution}
+
+Let's assume two i.i.d r.v's $X$ and $Y$ that both follow some Bern(p). Their joint probability distribution is given
+by the following probabilities:
+\bit
+\item $P_{X,Y}(X=0, Y=0) = \frac{1}{3}$
+\item $P_{X,Y}(X=0, Y=1) = \frac{1}{6}$
+\item $P_{X,Y}(X=1, Y=0) = \frac{1}{3}$
+\item $P_{X,Y}(X=1, Y=1) = \frac{1}{6}$
+\eit
+
+\v
+
+First let's check if $X$ and $Y$ are independent by checking their individual probability distributions.
+
+For $X$ it is:
+\bse
+P_{X}(X=0) = \sum_{y} P_{X,Y}(X=0, Y=y) = P_{X,Y}(X=0, Y=0) + P_{X,Y}(X=0, Y=1) = \frac{1}{3} + \frac{1}{6} = \frac{1}{2}
+\ese
+
+and:
+\bse
+P_{X}(X=1) = \sum_{y} P_{X,Y}(X=1, Y=y) = P_{X,Y}(X=1, Y=0) + P_{X,Y}(X=1,Y=1) = \frac{1}{3} + \frac{1}{6} = \frac{1}{2}
+\ese
+
+Hence, $X$ follows a Bern\Big($\frac{1}{2}$\Big). \v
+
+For $Y$ it is:
+\bse
+P_{Y}(Y=0) = \sum_{x} P_{X,Y}(X=x, Y=0) = P_{X,Y}(X=0, Y=0) + P_{X,Y}(X=1, Y=0) = \frac{1}{3} + \frac{1}{3} = \frac{2}{3}
+\ese
+
+and:
+\bse
+P_{Y}(Y=1) = \sum_{x} P_{X,Y}(X=x, Y=1) = P_{X,Y}(X=0, Y=1) + P_{X,Y}(X=1, Y=1) = \frac{1}{6} + \frac{1}{6} = \frac{1}{3}
+\ese
+
+Hence, $Y$ follows a Bern\Big($\frac{1}{3}$\Big). \v
+
+By using these values we can show:
+\bit
+\item $P_{X}(X=0) \cdot P_{Y}(Y=0) = \frac{1}{2} \cdot \frac{2}{3} = \frac{1}{3} = P_{X,Y}(X=0, Y=0)$
+\item $P_{X}(X=0) \cdot P_{Y}(Y=1) = \frac{1}{2} \cdot \frac{1}{3} = \frac{1}{6} = P_{X,Y}(X=0, Y=1)$
+\item $P_{X}(X=1) \cdot P_{Y}(Y=0) = \frac{1}{2} \cdot \frac{2}{3} = \frac{1}{3} = P_{X,Y}(X=1, Y=0)$
+\item $P_{X}(X=1) \cdot P_{Y}(Y=1) = \frac{1}{2} \cdot \frac{1}{3} = \frac{1}{6} = P_{X,Y}(X=1, Y=1)$
+\eit
+
+\v
+
+Hence, we proved:
+\bse
+P_{X,Y}(X=x, Y=y) = P_{X}(X=x) \cdot P_{Y}(Y=y)
+\ese
+
+\v
+
+which means that indeed $X$ and $Y$ are independent. \v
+
+Since they are independent we can calculate their joint expected value simply as:
+\bse
+E[X \cdot Y] = E[X] \cdot E[Y] = \frac{1}{2} \cdot \frac{1}{3} = \frac{1}{6}
+\ese
+
+where we used the fact that the expected value of a Bernoulli distribution is $p$. \v
+
+Finally, since $X$ and $Y$ are independent, that means that they are uncorrelated hence:
+\bse
+Cov(X, Y) = 0
+\ese
+
+Subsequently for their correlation:
+\bse
+\rho(X, Y) = 0
+\ese
+
+\section{Moments}
+
+In a previous section we defined the three most important measures for a r.v: the expected value, the variance and
+the standard deviation. However, that are not the only ones that exist. In this chapter we will introduce some of the
+rest measures which are of secondary importance but they will help us to generalize all of them in one single concept
+that is called ``moments''.
+
+\bd[Skewness]
+\textbf{Skewness} is a measure of the asymmetry of the probability distribution of a r.v about its mean:
+\bse
+Skew(X) = E \Big[ \Big( \frac{X-\mu }{\sigma} \Big)^{3} \Big]
+\ese
+\ed
+
+\vspace{10pt}
+
+\fig{skewness}{0.12}
+
+\vspace{10pt}
+
+\bd[Kurtosis]
+\textbf{Kurtosis} is a measure of the ``tailedness'' of the probability distribution of a r.v about its mean:
+\bse
+Kurt(X) = E \Big[ \Big( \frac{X-\mu }{\sigma} \Big)^{4} \Big]
+\ese
+\ed
+
+\vspace{10pt}
+
+\fig{kurtosis}{0.5}
+
+\vspace{5pt}
+
+\bd[Hyperskewness]
+\textbf{Hyperskewness} is a measure of the ``hyperskewness'' of the probability distribution of a r.v about its mean:
+\bse
+Hyperskewness(X) = E \Big[ \Big( \frac{X-\mu }{\sigma} \Big)^{5} \Big]
+\ese
+\ed
+
+\bd[Hypertailedness]
+\textbf{Hypertailedness} is a measure of the ``hypertailedness'' of the probability distribution of a r.v about its
+mean:
+\bse
+Hypertailedness(X) = E \Big[ \Big( \frac{X-\mu }{\sigma} \Big)^{6} \Big]
+\ese
+\ed
+
+All these measures, including expected value, variance and standard deviation, can be grouped together under one
+entity which is called ``moments''. We distinguish between three different kinds of moments: raw, central and
+standardized.
+
+\bd[Raw Moments]
+Given a discrete or continuous r.v $X$ with PMF $P_{X}(x)$ or PDF $f_{X}(x)$ respectively, we define the n-th
+\textbf{raw moment} $\mu_n$ as:
+\bse
+\mu_n = E[X^n]
+\ese
+\ed
+
+For $n=1$ the first raw moment reads:
+\bse
+\mu_1 = E[X^1] = E[X] = \mu
+\ese
+
+Hence, the first raw moment is actually the mean of a r.v.
+
+\bd[Central Moments]
+Given a discrete or continuous r.v $X$ with PMF $P_{X}(x)$ or PDF $f_{X}(x)$ respectively, we define the n-th
+\textbf{central moment} $\mu_n$ as:
+\bse
+\mu_n = E[(X-\mu)^n]
+\ese
+\ed
+
+For $n=1$ the first central moment reads:
+\bse
+\mu_1 = E[(X-\mu)^1] = E[X]- E[\mu] = \mu - \mu = 0
+\ese
+
+For $n=2$ the second central moment reads:
+\bse
+\mu_2 = E[(X-\mu)^2] = \sigma^2
+\ese
+
+Hence, the first central moment is actually 0 while the second central moment is the definition of variance.
+
+\bd[Standardized Moments]
+Given a discrete or continuous r.v $X$ with PMF $P_{X}(x)$ or PDF $f_{X}(x)$ respectively, we define the n-th
+\textbf{standardized moment} $\mu_n$ as:
+\bse
+\mu_n = E \Big[ \Big( \frac{X-\mu}{\sigma} \Big)^n \Big]
+\ese
+\ed
+
+For $n=1$ the first standardized moment reads:
+\bse
+\mu_1 = E \Big[ \Big( \frac{X-\mu}{\sigma} \Big)^1 \Big] = \frac{1}{\sigma} E[ X - \mu]
+= \frac{1}{\sigma} (E[X]-E[\mu]) = \frac{1}{\sigma} (\mu - \mu ) = 0
+\ese
+
+For $n=2$ the second standardized moment reads:
+\bse
+\mu_2 = E \Big[ \Big( \frac{X-\mu}{\sigma} \Big)^2 \Big]
+= \frac{1}{\sigma^2} E[ (X - \mu)^2] = \frac{1}{\sigma^2} \sigma^2 = 1
+\ese
+
+For $n=3$ the third standardized moment reads:
+\bse
+\mu_3 = E \Big[ \Big( \frac{X-\mu}{\sigma} \Big)^3 \Big] = Skew(X)
+\ese
+
+For $n=4$ the fourth standardized moment reads:
+\bse
+\mu_4 = E \Big[ \Big( \frac{X-\mu}{\sigma} \Big)^4 \Big] = Kurt(X)
+\ese
+
+For $n=5$ the fifth standardized moment reads:
+\bse
+\mu_5 = E \Big[ \Big( \frac{X-\mu}{\sigma} \Big)^5 \Big] = Hyperskewness(X)
+\ese
+
+For $n=6$ the sixth standardized moment reads:
+\bse
+\mu_6 = E \Big[ \Big( \frac{X-\mu}{\sigma} \Big)^6 \Big] = Hypertailedness(X)
+\ese
+
+Let's summarize all moments in the following matrix:
+
+\v
+
+\fig{moments}{0.65}
+
+\v
+
+\bd[Moment Generating Function]
+Given a discrete or continuous r.v $X$ with PMF $P_{X}(x)$ or PDF $f_{X}(x)$ respectively, we define the
+\textbf{moment generating function} $M_{X}$ as:
+\bse
+M_{X} (t) = E[e^{tX}], \:\:\: t \in R
+\ese
+\ed
+
+The moment generating function is so named because it can be used to find the moments of the distribution. Namely:
+{\setlength{\jot}{10pt}
+\begin{align*}
+M_{X} (t) &= E[e^{tX}] \\
+&= E \Big[ 1 + tX + \frac{t^{2}X^{2}}{2!} + \frac{t^{3}X^{3}}{3!} + \ldots + \frac{t^{n}X^{n}}{n!} +\ldots \Big] \\
+&= E[1] + E[tX] + E \Big[ \frac{t^{2}X^{2}}{2!} \Big] + E \Big[\frac{t^{3}X^{3}}{3!} \Big]
++ \ldots + E \Big[\frac{t^{n}X^{n}}{n!} \Big]+ \ldots \\
+&= 1 + tE[X] + \frac{t^{2}}{2!} E[X^{2}] + \frac{t^{3}}{3!} E[X^{3}] + \ldots + \frac{t^{n}}{n!} E[X^{n}] + \ldots \\
+&= 1 + t \mu_{1} + \frac{t^{2}\mu_{2}}{2!} + \frac{t^{3}\mu_{3}}{3!} + \ldots + \frac{t^{n}\mu_{n}}{n!} + \ldots
+\end{align*}}
+
+Moment generating function is really important since by differentiating it $i$ times with respect to $t$ and setting
+$t=0$, we obtain the i-th raw moment. Also we can determine probability distributions since if two r.v's have the
+same moment generating function that means that they follow the same probability distribution. \v
+
+Now just for practise, let's calculate the moment generating function for some of the probability distributions we
+introduced earlier.
+\bit
+\item For a Bernoulli distribution:
+\bse
+M_{X} (t) = E[e^{tX}] = \sum_{x} e^{tX} P_X(x) = e^{t \cdot 0} P_{X}(0)
++  e^{t \cdot 1} P_{X}(1) = e^{0} (1-p) + e^{t} p = 1 - p + e^{t} p
+\ese
+
+Observe that the derivative of $M_{X} (t)$ evaluated at 0 is actually the expected value of the Bernoulli distribution:
+\bse
+\frac{dM_{X} (t)}{dt} \bigg|_{t=0}= \frac{d}{dt} (1 - p + e^{t} p) \bigg|_{t=0} = e^{t} p \bigg|_{t=0} = p
+\ese
+
+\v
+
+\item For a binomial distribution: Since a binomial distribution is $n$ trials of a Bernoulli distribution, for the
+moment generating function of a binomial distribution we simply get:
+
+\bse
+M_{X} (t) = (1 - p + e^{t} p)^n
+\ese
+
+Observe that the derivative of $M_{X} (t)$ evaluated at 0 is actually the expected value of the binomial distribution:
+\bse
+\frac{dM_{X} (t)}{dt} \bigg|_{t=0}= \frac{d}{dt} (1 - p + e^{t} p)^n \bigg|_{t=0}
+= n \cdot (1 - p + e^{t} p)^{n-1}(e^{t} p) \bigg|_{t=0} = np
+\ese
+
+\v
+
+\item For a Poisson distribution:
+\bse
+M_{X} (t) = E[e^{tX}] = \sum_{k=0}^{\infty} e^{tk} P_X(k) = \sum_{k=0}^{\infty} e^{tk} \frac{\lambda^k e^{-\lambda}}{k!}
+= e^{-\lambda} \sum_{k=0}^{\infty} \frac{(\lambda e^{t})^k}{k!}
+= e^{-\lambda} e^{\lambda e^{t}} = e^{\lambda (e^{t} - 1)}
+\ese
+
+Observe that the derivative of $M_{X} (t)$ evaluated at 0 is actually the expected value of the Poisson distribution:
+\bse
+\frac{dM_{X} (t)}{dt} \bigg|_{t=0}= \frac{d}{dt} e^{\lambda (e^{t} - 1)} \bigg|_{t=0}
+= e^{\lambda (e^{t} - 1)} (\lambda e^t) \bigg|_{t=0} = \lambda
+\ese
+
+\v
+
+\item
+For a continuous uniform distribution:
+\bse
+M_{X} (t) = E[e^{tX}] = \int_{a}^{b} e^{tx} \cdot \frac{1}{b-a} dx
+= \frac{1}{b-a} \int_{a}^{b} e^{tx} dx = \frac{e^{tb} - e^{ta}}{t(b-a)}
+\ese
+
+Observe that the derivative of $M_{X} (t)$ evaluated at 0 is actually the expected value of the continuous uniform
+distribution:
+\bse
+\frac{dM_{X} (t)}{dt} \bigg|_{t=0}= \frac{d}{dt} \frac{e^{tb} - e^{ta}}{t (b-a)} \bigg|_{t=0} = \ldots = \frac{a+b}{2}
+\ese
+
+\item
+For an exponential distribution:
+\bse
+M_{X} (t) = E[e^{tX}] = \int_{0}^{\infty} e^{tx} \cdot e^{-\lambda x}dx = \int_{0}^{\infty} e^{tx - \lambda x} dx
+= \int_{0}^{\infty} e^{x(t - \lambda)} dx = \frac{1}{\lambda - t}
+\ese
+
+Observe that the derivative of $M_{X} (t)$ evaluated at 0 is actually the expected value of the exponential
+distribution:
+\bse
+\frac{dM_{X} (t)}{dt} \bigg|_{t=0}= \frac{d}{dt} \frac{1}{\lambda - t} \bigg|_{t=0}
+= - \frac{1}{(\lambda - t)^2} (-1) \bigg|_{t=0} = \frac{1}{\lambda}
+\ese
+
+\v
+
+\item For a Normal distribution:
+{\setlength{\jot}{9pt}
+\begin{align*}
+M_{X} (t) &= E[e^{tX}] \\
+&= \frac{1}{\sqrt{2\pi\sigma^2}} \int_{- \infty}^{\infty} exp(tx) \cdot exp(-\frac{(x - \mu)^2}{2\sigma^2})dx \\
+&= \frac{1}{\sqrt{2\pi\sigma^2}} \int_{- \infty}^{\infty} exp \Big( tx -\frac{(x - \mu)^2}{2\sigma^2} \Big)dx \\
+&= \frac{1}{\sqrt{2\pi\sigma^2}} \int_{- \infty}^{\infty} exp \Big(\frac{1}{2\sigma^2}
+\Big( 2\sigma^2 tx - (x - \mu)^2 \Big) \Big)dx \\
+&= \frac{1}{\sqrt{2\pi\sigma^2}} \int_{- \infty}^{\infty} exp \Big(\frac{1}{2\sigma^2}
+\Big( 2\sigma^2 tx - x^2 +2 x \mu - \mu^2 \Big) \Big) dx \\
+&= \frac{1}{\sqrt{2\pi\sigma^2}} \int_{- \infty}^{\infty} exp \Big(\frac{1}{2\sigma^2}
+\Big( 2\sigma^2 tx - x^2 +2 x \mu \Big) \Big) \cdot exp \Big( - \frac{\mu^2}{2\sigma^2} \Big) dx \\
+&= \frac{1}{\sqrt{2\pi\sigma^2}} \cdot exp \Big( - \frac{\mu^2}{2\sigma^2} \Big)
+\int_{- \infty}^{\infty} exp \Big(\frac{1}{2\sigma^2} \Big( - x^2 + 2x (\sigma^2 t +\mu)^2 \Big) \Big) dx \\
+&= \frac{1}{\sqrt{2\pi\sigma^2}} \cdot exp \Big( - \frac{\mu^2}{2\sigma^2} \Big) \int_{- \infty}^{\infty} exp \Big(
+\frac{1}{2\sigma^2} \Big( - x^2 + 2x (\sigma^2 t +\mu) + (\sigma^2 t +\mu)^2 - (\sigma^2 t +\mu)^2 \Big) \Big) dx \\
+&= \frac{1}{\sqrt{2\pi\sigma^2}} \cdot exp \Big( - \frac{\mu^2}{2\sigma^2} \Big) \int_{- \infty}^{\infty} exp \Big(
+\frac{1}{2\sigma^2} \Big( - x^2 + 2x (\sigma^2 t +\mu) - (\sigma^2 t +\mu)^2 \Big) \Big) \cdot
+exp \Big( \frac{(\sigma^2 t +\mu)^2}{2 \sigma^2} \Big) dx \\
+&= \frac{1}{\sqrt{2\pi\sigma^2}} \cdot exp \Big( - \frac{\mu^2}{2\sigma^2} \Big) \cdot exp \Big(
+\frac{(\sigma^2 t +\mu)^2}{2 \sigma^2} \Big) \int_{- \infty}^{\infty} exp \Big(- \frac{1}{2\sigma^2}
+\Big( x^2 - 2x (\sigma^2 t  +\mu) + (\sigma^2 t +\mu)^2 \Big) \Big) dx \\
+&= \frac{1}{\sqrt{2\pi\sigma^2}} \cdot exp \Big( \frac{ -\mu^2 + (\sigma^2 t +\mu)^2}{2 \sigma^2} \Big)
+\int_{-\infty}^{\infty} exp \Big(- \frac{1}{2\sigma^2} \Big( (x - (\sigma^2 t + \mu))^2 \Big) dx \\
+&= \frac{1}{\sqrt{2\pi\sigma^2}} \cdot exp \Big( \frac{ -\mu^2
++ \sigma^4 t^2 + 2 \sigma^2 t \mu + \mu^2}{2 \sigma^2} \Big) \cdot (\sqrt{2\pi} \sigma) \\
+&= exp \Big( \frac{\sigma^4 t^2 + 2 \sigma^2 t \mu}{2 \sigma^2} \Big) \\
+&= exp \Big(\frac{1}{2} \sigma^2 t^2 + t \mu \Big)
+\end{align*}}
+
+Observe that the derivative of $M_{X} (t)$ evaluated at 0 is actually the expected value of the normal distribution:
+\bse
+\frac{dM_{X} (t)}{dt} \bigg|_{t=0}= \frac{d}{dt} e^{(\frac{1}{2} \sigma^2 t^2 + t \mu)} \bigg|_{t=0}
+= e^{(\frac{1}{2} \sigma^2 t^2 + t \mu)} \cdot (\sigma^2 t + \mu) \bigg|_{t=0} = \mu
+\ese
+
+\v
+
+\item For a standard normal distribution:
+
+Since a standard normal distribution is a normal distribution for $\mu = 0$, and $\sigma =1$ the moment generating is
+simply:
+\bse
+M_{X} (t) = e^{\frac{1}{2} t^2}
+\ese
+\eit

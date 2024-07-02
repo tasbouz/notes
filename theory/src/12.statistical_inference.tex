@@ -1,0 +1,274 @@
+%! suppress = EscapeUnderscore
+In the previous chapter we showed how given the probability distribution of a random variable, we know everything
+about it, and we can compute probabilities, expected values, and many more. In a way this is the job of descriptive
+statistics. In this chapter we will show how we can draw conclusions for the population, when the population is not
+accessible. This is the job of inferential statistics. \v
+
+Formally, statistical inference is the process of using data analysis to infer properties of an underlying
+distribution of probability. Inferential statistical analysis infers properties of a population, for example by
+testing hypotheses and deriving estimates. It is assumed that the observed data set is sampled from a larger
+population. \v
+
+Inferential statistics can be contrasted with descriptive statistics. Descriptive statistics is solely concerned with
+properties of the observed data, and it does not rest on the assumption that the data come from a larger population.
+
+\section{Population VS Sample}
+
+Let's begin with some basic definitions.
+\bd[Population]
+A \textbf{population} is a set of similar items or events which is of interest for some question or experiment. A
+statistical population can be a group of existing objects or a hypothetical and potentially infinite group of objects
+conceived as a generalization from experience.
+\ed
+
+Up to this point, technically we have been talking for populations. A population is the general category under
+examination. An r.v represents the population and the corresponding probability distribution tells us about the
+behaviour of the r.v and subsequently the behaviour of the population.
+
+\bd[Parameter]
+A \textbf{parameter} is a characteristic of a population.
+\ed
+
+Some examples of parameters are the expected value (or mean), the variance and the standard deviation of the
+population. \v
+
+More often than not, the population is not available to us either because gathering data for all the population is
+very expensive or in most of the cases because it is impossible.
+
+\be
+For example, if we assume that our population is men's weights, and we want to know about the mean parameter (i.e.\ the
+mean weight of all men), weighting all men around the globe at the same time is impossible. Usually, we end up with a
+very small portion of the population called a ``sample''. (To not be confused with ``sample space'')
+\ee
+
+\bd[Sample]
+A \textbf{sample} is a subset of a population. The elements of a sample are known as sample points, sampling units or
+observations.
+\ed
+
+\vspace{-15pt}
+
+\fig{population_and_sample}{0.25}
+
+\vspace{-15pt}
+
+Similarly to the definition of a parameter:
+
+\bd[Statistic]
+A \textbf{statistic} is a characteristic of a sample.
+\ed
+
+It follows from the definition of the sample that the latter is collected out of a population.
+
+\be
+In our previous example, one potential sample could be the weights of 1000 men.
+\ee
+
+\subsection{Sampling Techniques}
+
+Since samples are used to draw conclusion for the population one has to be extremely careful while collecting samples
+in order for the sample to be a good representative of the population. More specifically we must make sure that
+members of samples are randomly selected (each member of a population has an equal chance to be selected) and samples
+themselves are randomly selected (each sample of a population has an equal chance of being selected). Here are some
+definitions based on the way of collecting a sample. \v
+
+First of all there are two big categories: ``non-probability'' and ``probability-based'' sampling.
+
+\bd[Non-Probability Sampling]
+\textbf{Non-Probability sampling} is when the selection of data isn't based on any probability criteria.
+\ed
+
+\bd[Probability-Based Sampling]
+\textbf{Probability-based sampling} is when the selection of data is based on specific probability criteria.
+\ed
+
+Starting with non-probability sampling here are a few non-probability sampling methods.
+
+\bd[Convenience Sampling]
+\textbf{Convenience sampling} is a type of non-probability sampling that involves the sample being drawn from that
+part of the population that is close to hand.
+\ed
+
+\bd[Snowball Sampling]
+\textbf{Snowball sampling} is a type of non-probability sampling where future samples are selected based on existing
+samples.
+\ed
+
+\bd[Judgment Sampling]
+\textbf{Judgment sampling} is a type of non-probability sampling where experts decide what samples to include.
+\ed
+
+\bd[Quota Sampling]
+\textbf{Quota sampling} is a type of non-probability sampling where you select samples based on quotas for certain
+slices of data without any randomization.
+\ed
+
+In general, the samples selected by non-probability criteria are not representative of the real-world data and therefore
+are riddled with selection biases. For this reason people use almost exclusively probability-based sampling techniques
+which we will cover now.
+
+\bd[Random Sampling]
+\textbf{Random sampling} is a procedure for sampling from a population in which the selection of a sample unit is
+based on chance and every element of the population has a known, non-zero probability of being selected
+\ed
+
+\bd[Stratified Sampling]
+\textbf{Stratified sampling} is a probability sampling technique that divides the entire population into different
+subgroups or strata, and then randomly selects the final subjects proportionally from the different strata.
+\ed
+
+\bd[Weighted Sampling]
+\textbf{Weighted sampling} is a probability sampling technique where each sample is given a weight, which determines the
+probability of it being selected.
+\ed
+
+\bd[Reservoir Sampling]
+\textbf{Reservoir sampling} is a family of randomized algorithms for choosing a simple random sample, without
+replacement, of $k$ items from a population of unknown size $n$ in a single pass over the items.
+\ed
+
+\bd[Importance Sampling]
+\textbf{Importance sampling} is a Monte Carlo method for evaluating properties of a particular distribution, while only
+having samples generated from a different distribution than the distribution of interest.
+\ed
+
+In mathematical terms, given a probability distribution $P$, a random sample of length $n$ is a set of realizations
+of $n$ independent, identically distributed random variables (i.i.d r.v's) with distribution $P$. A sample concretely
+represents the results of $n$ experiments in which the same quantity is measured.
+
+\be
+In our example, if we want to estimate the mean weight of members of a particular population, we measure the heights of
+$n$ individuals.
+\ee
+
+Each measurement is drawn from the probability distribution $P$ characterizing the population, so each measured
+weight $x_{i}$ is the realization of an r.v $X$ with distribution $P$. Hence, mathematically a sample can be
+represented as $\{ x_{1}, x_{2}, \ldots, x_{n} \}$. Given this representation we can define some characteristics
+(statistics) of a sample.
+
+\bd[Sample Size]
+Given a sample of realizations of of $n$ i.i.d r.v's $\{ x_{1}, x_{2}, \ldots, x_{n} \}$, we call \textbf{sample
+size} the direct count of the number of samples measured or observations being made $n$.
+\ed
+
+\bd[Sample Mean]
+Given a sample of realizations of $n$ i.i.d r.v's $\{ x_{1}, x_{2}, \ldots, x_{n} \}$, we define the \textbf{sample
+mean} or average $\bar{x}$ of the sample as the quantity:
+\bse
+\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_{i}
+\ese
+\ed
+
+\bd[Sample Variance]
+Given a sample of realizations of $n$ i.i.d r.v's $\{ x_{1}, x_{2}, \ldots, x_{n} \}$, we define the \textbf{sample
+variance} $s^2$ of the sample as the quantity:
+\bse
+s^2 = \frac{1}{n} \sum_{i=1}^{n} (x_{i} - \bar{x})^2
+\ese
+\ed
+
+\bd[Sample Standard Deviation]
+Given a sample of realizations of $n$ i.i.d r.v's $\{ x_{1}, x_{2}, \ldots, x_{n} \}$, we define the \textbf{sample
+standard deviation} $s$ of the sample as the quantity:
+\bse
+s = \sqrt{s^2} = \sqrt{\frac{1}{n} \sum_{i=1}^{n} (x_{i} - \bar{x})^2}
+\ese
+\ed
+
+\bt[Law Of Large Numbers]
+Given a random variable $X$ that follows a probability distribution $P$ with mean $\mu$ and a collection of $n$
+realizations of $X$ $\{ x_{1}, x_{2}, \ldots, x_{n} \}$ with an average $\bar{x}_{n}$ then:
+\bse
+\bar{x}_{n} \to \mu \:\:\: for \:\:\: n \to \infty
+\ese
+\et
+
+The law of large numbers is a theorem that describes the result of performing the same experiment a large number of
+times. According to the law, the average of the results obtained from a large number of trials should be close to the
+actual expected value of the population, and will tend to become closer to the expected value as more trials are
+performed.The law of large numbers is important because it guarantees stable long-term results for the averages of
+some random events.
+
+\fig{lawoflargenumbers}{0.24}
+
+The law of large numbers can find an application in statistics since, the ``random variable $X$ that follows a
+probability distribution $P$ with mean $\mu$'' can be translated to a population, and the ``collection of $n$
+realizations of $X$ $\{ x_{1}, x_{2}, \ldots, x_{n} \}$ with an average $\bar{x}_{n}$'' can be translated to a sample of
+size $n$ drawn out of the population. Then the law of large numbers simply states that as the size of the sample
+increases the sample mean tends to the actual population mean.
+
+\be
+Going back to our example, this means that as the number of men in our sample increases their average weight tends to
+the actual mean weight of the whole population.
+\ee
+
+Hence, when we want to study a parameter of a population, (given that the population is huge and inaccessible in its
+totality) we choose a random sample out of the population, following the techniques we have already introduced, and
+we study the statistics on it. Then we generalize the statistic from the sample to the parameter of the population.
+inevitably a question arises: ``how sure can we be that the statistics is close to the parameter''? \v
+
+Practically one could say that the solution in order to obtain the correct parameter of a population out of a sample
+is to increase the sample size as much as possible., so the law of large numbers will apply, and we get the correct
+parameter. However, this is not true since the sample size follows the so-called ``law of diminishing returns, i.e.\
+there is a point when increasing the sample size even more does not offer any statistical significance. \v
+
+The solution to this problem is the so called ``central limit theorem'' and something called ``sampling distribution''.
+
+\section{Central Limit Theorem \& Sampling Distribution}
+
+\bt[Central Limit Theorem (CLT)]
+Let $\{X_{1},\ldots,X_{n}\}$ be a sequence of i.i.d r.v's with $E[X_{i}]=\mu$ and $Var[X_{i}] = \sigma^{2} < \infty$.
+Then as $n$ approaches infinity, the random variables $ \sqrt{n} ({\bar {X}}_{n} - \mu)$ converge in distribution
+to a normal distribution $N(0,\sigma ^{2})$.
+\et
+
+CLT establishes that when independent random variables are added, their properly normalized sum tends toward a normal
+distribution (informally a bell curve) even if the original variables themselves are not normally distributed. The
+theorem is a key concept in probability theory because it implies that probabilistic and statistical methods that
+work for normal distributions can be applicable to many problems involving other types of distributions. \v
+
+For example, suppose that a sample is obtained containing many observations, each observation being randomly
+generated in a way that does not depend on the values of the other observations, and that the arithmetic mean of the
+observed values is computed. If this procedure is performed many times, the central limit theorem says that the
+probability distribution of the average will closely approximate a normal distribution.
+
+\be
+A simple example of this is that if one flips a coin many times, the probability of getting a given number of heads
+will approach a normal distribution, with the mean equal to half the total number of flips. At the limit of an
+infinite number of flips, it will equal a normal distribution.
+\ee
+
+Now we will make use of CLT in order to develop statistical inference. Let's begin with some needed definitions.
+
+\bd [Sampling Distribution]
+A \textbf{sampling distribution} is the probability distribution of a given random sample based statistic.
+\ed
+
+If an arbitrarily large number of samples, each involving multiple observations, were separately used in order to
+compute one value of a statistic (such as, for example, the sample mean or sample variance) for each sample, then
+the sampling distribution is the probability distribution of the values that the statistic takes on. In many
+contexts, only one sample is observed, but the sampling distribution can be found theoretically. \v
+
+Although everything can be applied for any statistics, for now we will focus on the population mean (and
+subsequently to the sample mean). Hence, given the sampling distribution of sample means (aka a probability
+distribution of sample means) we know from CLT that it will follow a normal distribution independently of the
+probability distribution of the population. Moreover, from the law of large numbers:
+\bse
+E[\bar{X}_{n}] = \mu, \quad \text{as } n \to \infty
+\ese
+
+\bd [Standard Error Of The Mean]
+The \textbf{standard error of the mean}, or simply standard error, is defined as:
+\bse
+\sigma_{\bar {x}} = \frac {\sigma }{\sqrt {n}}
+\ese
+
+where $\sigma$ is the standard deviation of the population and $n$ is the size of the sample.
+\ed
+
+Observe that for $n \to \infty \Rightarrow \sigma_{\bar {x}} \to 0$. \v
+
+Summing up according to CLT the sampling distribution of the mean of a population follows a normal distribution with
+mean $E[\bar{X}_{n}]$ and and variance $\sigma_{\bar {x}}$.
+
+% TODO: WIP - My Notes Pages: 1-31

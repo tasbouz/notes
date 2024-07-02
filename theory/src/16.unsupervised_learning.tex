@@ -1,0 +1,287 @@
+%! suppress = SentenceEndWithCapital
+%! suppress = EscapeUnderscore
+Although most of the applications of machine learning today are based on supervised learning, the vast majority of 
+the available data is unlabeled: we have the input features $X$, but we do not have the labels $y$. In contrast to 
+supervised learning that usually makes use of human-labeled data, unsupervised learning allows for modeling of 
+probability densities over inputs. It forms one of the three main categories of machine learning, along with 
+supervised and reinforcement learning. \v
+
+As we did in the supervised learning chapter, let's start with a formal definition of unsupervised learning, and 
+then we will take a look into the various methods.
+
+\section{Basic Definitions}
+
+\bd[Unsupervised Learning]
+\textbf{Unsupervised learning} is a type of machine learning that looks for previously undetected patterns in a data 
+set with no pre-existing labels and with a minimum of human supervision. 
+\ed
+
+\fig{unsupervised}{0.45}
+
+The most common tasks that unsupervised learning is being used for are: ``clustering'', ``dimensionality reduction'',
+``anomaly detection'' and ``density estimation''. Out of those 4, clustering and dimensionality reduction are the most
+used ones and in what follows we will explain both of them, and we will introduce some of the most famous algorithms 
+of these categories.
+
+\section{Clustering}
+
+\bd[Clustering]
+\textbf{Clustering} is the task of grouping a set of objects in such a way that objects in the same group (called a 
+``cluster'') are more similar (in some sense) to each other than to those in other groups (clusters).
+\ed
+
+Clustering is a main task of exploratory data mining, and a common technique for statistical data analysis, used in 
+many fields, including pattern recognition, image analysis, information retrieval, bioinformatics, data 
+compression, computer graphics and many more. \v
+
+The notion of a ``cluster'' cannot be precisely defined, which is one of the reasons why there are so many clustering
+algorithms. In other words the definition of a cluster depends on the context, and different algorithms will capture
+different kinds of clusters. Some algorithms, for example, look for instances centered around a particular point, 
+called a ``centroid'', while others look for continuous regions of densely packed instances. Some other algorithms are
+hierarchical, looking for clusters of clusters. And the list goes on. \v
+
+In this section, we will look at two popular clustering algorithms called ``k-means'' and ``DBSCAN''.
+
+\subsection{k-Means}
+
+\bd[k-Means]
+\textbf{k-means} clustering is a method of vector quantization, originally from signal processing, that aims to 
+partition $n$ observations into $k$ clusters in which each observation belongs to the cluster with the nearest mean 
+(``cluster centers'' or ``cluster centroid''), serving as a prototype of the cluster.
+\ed
+
+k-means results in a partitioning of the data space into Voronoi cells. K-means clustering minimizes within-cluster
+variances (squared Euclidean distances), but not regular Euclidean distances, which would be the more difficult 
+Weber problem: the mean optimizes squared errors, whereas only the geometric median minimizes Euclidean distances. 
+For instance, better Euclidean solutions can be found using k-medians and k-medoids.
+
+\fig{kmeans}{0.2}
+
+So, how does the algorithm work? Well, suppose you were given the centroids. You could easily label all the 
+instances in the dataset by assigning each of them to the cluster whose centroid is closest. Conversely, if you were
+given all the instance labels, you could easily locate all the centroids by computing the mean of the instances for 
+each cluster. But you are given neither the labels nor the centroids, so how can you proceed? Well, just start by 
+placing the centroids randomly (e.g., by picking $k$ instances at random and using their locations as centroids). 
+Then label the instances, update the centroids, label the instances, update the centroids, and so on until the 
+centroids stop moving. The algorithm is guaranteed to converge in a finite number of steps (usually quite small), it 
+will not oscillate forever. \v
+
+\fig{kmeans2}{1.3}
+
+In a more proper mathematically description, given a set of observations $\{ x_1, x_2, \ldots, x_n \}$, where each 
+observation is a $d$-dimensional real vector, $k$-means clustering aims to partition the $n$ observations into $k \:
+(\leq n)$ sets $S = \{ S_1, S_2, \ldots, S_n \}$ as to minimize the within-cluster sum of squares (i.e.\ the
+variance). \v
+
+By randomly initializing a set of $k$ centroids $\mu_i$, k-means assigns each observation to the cluster whose 
+centroid has the least squared Euclidean distance from the observation:
+\bse
+C_i = \argmin_{j} \left( || \boldsymbol{x^{(i)}} - \boldsymbol{\mu_j} ||^2 \right)
+\ese
+
+Then it calculates the new centroids of these observations in the new clusters, and it repeats the process until the 
+centroids do not move anymore. \v
+
+Since the first development of k-means algorithm, many improvements have been proposed. One improvement was a 
+smarter initialization step that tends to select centroids that are distant from one another, and this improvement 
+makes the k-means algorithm much less likely to converge to a suboptimal solution. Another important improvement 
+exploits the triangle inequality (i.e.\ that a straight line is always the shortest distance between two points) and 
+keeps track of lower and upper bounds for distances between instances and centroids. Yet another important 
+improvement, instead of using the full dataset at each iteration, the algorithm is capable of using mini-batches, 
+moving the centroids just slightly at each iteration. This speeds up the algorithm typically by a factor of three or 
+four and makes it possible to cluster huge datasets that do not fit in memory. \v
+
+Despite its many merits, most notably being fast and scalable, k-means is not perfect. In general, it is necessary
+to run the algorithm several times to avoid suboptimal solutions, plus one needs to specify the number of clusters 
+$k$, which can be quite a hassle. Moreover, k-means does not behave very well when the clusters have varying sizes,
+different densities, or non-spherical shapes.
+
+\subsection{DBSCAN}
+
+\bd[DBSCAN]
+\textbf{Density-based spatial clustering of applications with noise} (or much simpler ``\textbf{DBSCAN}'') is a
+density-based clustering non-parametric algorithm which given a set of points in some space, it groups together 
+points that are closely packed together (points with many nearby neighbors), marking as outliers points that lie 
+alone in low-density regions (whose nearest neighbors are too far away).
+\ed
+
+DBSCAN is one of the most common clustering algorithms and also most cited in scientific literature. \v
+
+Here is how DBSCAN works. For each instance, the algorithm counts how many instances are located within a small 
+distance $\epsilon$ from it. This region is called the ``instance $\epsilon$-neighborhood''. If an instance has at
+least a predefined minimum number of instances in its $\epsilon$-neighborhood (including itself), then it is 
+considered a core instance. In other words, core instances are those that are located in dense regions. All 
+instances in the neighborhood of a core instance belong to the same cluster. This neighborhood may include other core
+instances, therefore, a long sequence of neighboring core instances forms a single cluster. Any instance that is not
+a core instance and does not have one in its neighborhood is considered an anomaly. In general, this algorithm works 
+well if all the clusters are dense enough and if they are well separated by low-density regions.
+
+\fig{DBSCAN}{0.4}
+
+In short, DBSCAN is a very simple yet powerful algorithm capable of identifying any number of clusters of any shape. 
+It is robust to outliers, and it has just two hyperparameters. If the density varies significantly across the 
+clusters, however, it can be impossible for it to capture all the clusters properly. Its computational complexity 
+is pretty close to linear with regard to the number of instances.
+
+\section{Dimensionality Reduction}
+
+Many machine learning problems involve thousands or even millions of features for each training instance. Not only do
+all these features make training extremely slow, but they can also make it much harder to find a good solution. On 
+top of that, we are so used to living in three dimensions that our intuition fails us when we try to imagine a 
+high-dimensional space. \v
+
+Unfortunately, it turns out that many things behave very differently in high-dimensional space. This problem is often
+referred to as the ``curse of dimensionality''. In general the curse of dimensionality refers to various phenomena
+that arise when analyzing and organizing data in high-dimensional spaces that do not occur in low-dimensional 
+settings such as the three-dimensional physical space of everyday experience. The expression was coined by Richard E.
+Bellman when considering problems in dynamic programming. \v
+
+Fortunately, in real-world problems, it is often possible to reduce the number of features considerably, turning 
+an intractable problem into a tractable one.
+
+\bd[Dimensionality Reduction]
+The procedure of reducing the dimensions of a problem is called \textbf{dimensionality reduction}.
+\ed
+
+In general dimensionality reduction is the transformation of data from a high-dimensional space into a 
+low-dimensional space so that the low-dimensional representation retains some meaningful properties of the original 
+data, ideally close to its intrinsic dimension. Dimensionality reduction is common in fields that deal with large 
+numbers of observations and/or large numbers of variables, such as signal processing, speech recognition, 
+neuroinformatics, and bioinformatics. \v
+
+Apart from speeding up training, this reduction is also extremely useful for data visualization. Reducing the number
+of dimensions down to two (or three) makes it possible to plot a condensed view of a high-dimensional training set on
+a graph and often gain some important insights by visually detecting patterns, such as clusters. \v
+
+Before we dive into specific dimensionality reduction algorithms, let's take a look at the two main approaches to
+reducing dimensionality: ``projection'' and ``manifold learning'':
+\bit
+\item \textbf{Projection}: In most real-world problems, training instances are not spread out uniformly across all 
+dimensions. Many features are almost constant, while others are highly correlated. As a result, all training 
+instances lie within (or close to) a much lower-dimensional subspace of the high-dimensional space. By projecting 
+every training instance in a subspace we can reduce the dimensionality.
+\item \textbf{Manifold Learning}: Many dimensionality reduction algorithms work by modeling the manifold on which the
+training instances lie. This approach relies on the manifold assumption, also called the manifold hypothesis, which 
+holds that most real-world high-dimensional datasets lie close to a much lower-dimensional manifold. This assumption 
+is very often empirically observed. The manifold assumption is often accompanied by another implicit assumption: that
+the task at hand (e.g., classification or regression) will be simpler if expressed in the lower-dimensional space of 
+the manifold. However, this implicit assumption does not always hold. 
+\eit
+
+In what follows we will explain the most popular dimensionality reduction technique called ``principal component 
+analysis''.
+
+\subsection{Principal Component Analysis}
+
+Principal component analysis (PCA) is by far the most popular unsupervised dimensionality reduction statistical model
+that uses an orthogonal linear transformation that transforms the data to a new coordinate system such that the 
+greatest variance by some scalar projection of the data comes to lie on the first coordinate (called the ``first 
+principal component''), the second greatest variance on the second coordinate (called the ``second principal
+component''), and so on. \v
+
+\fig{pca}{0.55}
+
+Now let's see how PCA actually works. The goal of PCA is given a dataset of observations $\{\boldsymbol{x}^{(i)}\}$ 
+to identify a direction $\boldsymbol{u}$ (aka the first principal component) to project the observations upon. Hence,
+the ``new'' projected observations $\{\boldsymbol{z}^{(i)}\}$ will be:
+\bse
+\boldsymbol{z}^{(i)} = {\boldsymbol{x}^{(i)}}^{\intercal} \boldsymbol{u}
+\ese
+
+where it is also usual to normalize the vector $\boldsymbol{u}$:
+\bse
+||\boldsymbol{u}|| = 1 \Rightarrow \boldsymbol{u}^{\intercal} \boldsymbol{u} = 1
+\ese
+
+All we need now is a rule in order to find the best (according to the rule) direction $\boldsymbol{u}$ from all 
+possible directions. The rule (goal) of PCA is to find this direction $\boldsymbol{u}$ that minimizes the loss of 
+information upon projection. The way to minimize the loss of information upon projection is by maximizing the 
+variance (aka the spread) of the projected observation on the direction $\boldsymbol{u}$.
+
+\fig{pca2}{0.2}
+
+In mathematical terms, by defining the covariance matrix as:
+\bse
+S = \frac{1}{m} \sum_{i} {\boldsymbol{z}^{(i)}}^{\intercal} \boldsymbol{z}^{(i)}
+\ese
+
+the goal of PCA is to choose a direction $\boldsymbol{u}$ that maximizes $S$. \v
+
+We can manipulate the covariance matrix as follows:
+{\setlength{\jot}{5pt}
+\begin{align*}
+S & = \frac{1}{m} \sum_{i} {\boldsymbol{z}^{(i)}}^{\intercal} \boldsymbol{z}^{(i)} \\
+&= \frac{1}{m} \sum_{i} \left( {\boldsymbol{x}^{(i)}}^{\intercal} \boldsymbol{u} \right)^{\intercal} 
+\left({\boldsymbol{x}^{(i)}}^{\intercal} \boldsymbol{u} \right) \\
+&= \frac{1}{m} \sum_{i} \boldsymbol{u}^{\intercal} \boldsymbol{x}^{(i)} 
+{\boldsymbol{x}^{(i)}}^{\intercal} \boldsymbol{u} \\
+&= \boldsymbol{u}^{\intercal} \left( \frac{1}{m} \sum_{i} \boldsymbol{x}^{(i)} 
+{\boldsymbol{x}^{(i)}}^{\intercal} \right) \boldsymbol{u} \\
+&= \boldsymbol{u}^{\intercal} \Sigma \boldsymbol{u}
+\end{align*}}
+
+\vspace{-10pt}
+
+where $\Sigma$ is a matrix that depends only on the observations $\{\boldsymbol{x}^{(i)}\}$ defined as:
+\bse
+\Sigma = \frac{1}{m} \sum_{i} \boldsymbol{x}^{(i)} {\boldsymbol{x}^{(i)}}^{\intercal}
+\ese
+
+Hence, PCAs optimization goal is:
+\bse
+\max_{\boldsymbol{u}} \left(\boldsymbol{u}^{\intercal} \Sigma \boldsymbol{u}\right)
+\ese
+
+subject to:
+\bse
+\boldsymbol{u}^{\intercal} \boldsymbol{u} = 1
+\ese
+
+Once again we are dealing with an equality constrained optimization problem, hence, we move on by applying what we
+developed in Appendix~\ref{ch:constrained-optimization}. Given the objective function and the equality constraint, 
+the Lagrangian of the equality constrained optimization problem reads:
+\bse
+\mathcal{L}(\boldsymbol{u}, \lambda) = \boldsymbol{u}^{\intercal} \Sigma \boldsymbol{u} - 
+\lambda (\boldsymbol{u}^{\intercal} \boldsymbol{u} - 1)
+\ese
+
+By setting the derivative of the Lagrangian to zero we get:
+{\setlength{\jot}{10pt}
+\begin{align*}
+& \nabla_{\boldsymbol{u}} \mathcal{L}(\boldsymbol{u}, \lambda) = 0 \Rightarrow \\
+& \nabla_{\boldsymbol{u}} \left( \boldsymbol{u}^{\intercal} \Sigma \boldsymbol{u} 
+- \lambda (\boldsymbol{u}^{\intercal} \boldsymbol{u} - 1) \right) = 0 \Rightarrow \\
+& \frac{1}{2} \Sigma \boldsymbol{u} - \frac{1}{2} \lambda \boldsymbol{u} = 0 \Rightarrow \\
+& \Sigma \boldsymbol{u} = \lambda \boldsymbol{u}
+\end{align*}}
+
+\vspace{-15pt}
+
+Hence, we end up with an eigenvalue equation. In other words the direction $\boldsymbol{u}$ we are looking for is
+simply the eigenvectors of $\Sigma$ and the Lagrange multipliers $\lambda$ are the eigenvalues. Moreover, observe that:
+\bse
+S = \boldsymbol{u}^{\intercal} \left( \Sigma \boldsymbol{u} \right) =
+\boldsymbol{u}^{\intercal} \left( \lambda \boldsymbol{u} \right) = 
+\boldsymbol{u}^{\intercal} \lambda \boldsymbol{u} = 
+\lambda \left(\boldsymbol{u}^{\intercal} \boldsymbol{u} \right) = \lambda
+\ese
+
+In other words the Lagrange multipliers $\lambda$, which are the eigenvalues are simply equal to the variance of 
+each eigenvector. \v
+
+Summing up, by solving the eigenvector equation we will obtain the full set of eigenvectors $(\boldsymbol{u}_1, 
+\boldsymbol{u}_2, \ldots)$ with their corresponding eigenvalues $(\lambda_1, \lambda_2, \ldots)$. Since $\lambda$'s 
+are simply the variances of the projections, the eigenvector with the largest $\lambda$ (aka the largest variance) is
+the one with the minimum loss of information hence, the first principal component. The eigenvector with the second to
+the largest variance is the one with the second to minimum loss of information hence, the second principal component,
+and so on up to the last eigenvector (aka the last principal component). Once all the principal components have been 
+identified, one can reduce the dimensionality of the dataset down to $d$ dimensions by projecting it onto the 
+hyperplane defined by the first $d$ principal components. As a final note, for each principal component, $\lambda$
+(i.e.\ the variance), tells us about the information that the principal component provides, or in simpler words it
+indicates the dataset's variance that lies along each principal component. \v
+
+As a final note, it is worth mentioning that the kernel trick we explained in Appendix~\ref{ch:kernels} and applied 
+in SVMs in the previous chapter, can also be applied to PCA, making it possible to perform complex nonlinear 
+projections for dimensionality reduction. This model is called ``Kernel PCA'' (kPCA).
+
+% TODO: WIP - My Notes Pages: 59-85

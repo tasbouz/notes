@@ -1,0 +1,1722 @@
+%! suppress = PrimitiveStyle
+%! suppress = DiscouragedUseOfDef
+%! suppress = EscapeUnderscore
+We already defined in the previous chapter that an algebra is a vector space $A$ with an additional bilinear map
+(called binary operation or product) $\bullet \cl A\times A \to A$. A very important class of algebras, that we will
+also see later, are the so-called Lie algebras, in which the product $v \bullet w$ is called ``Lie bracket'' and
+denoted as $[v,w]$. In general Lie algebras are just a very specific class of algebras, hence, we might have them
+introduced in the previous chapter under ``algebras''. However, since they are so important, and lengthy, we will
+introduce them separately in their own chapter. \v
+
+Lie algebras are closely related to Lie groups, which are groups that are also smooth manifolds: any Lie group gives
+rise to a Lie algebra, which is its tangent space at the identity. Conversely, to any finite-dimensional Lie algebra
+over real or complex numbers, there is a corresponding connected Lie group unique up to finite coverings. This
+correspondence allows one to study the structure and classification of Lie groups in terms of Lie algebras (we will
+see all of that as we proceed in the notes). \v
+
+In physics, Lie groups appear as symmetry groups of physical systems, and their Lie algebras (tangent vectors near
+the identity) may be thought of as infinitesimal symmetry motions. Thus, Lie algebras and their representations are
+used extensively in physics, notably in quantum mechanics and particle physics.
+
+\section{Basic Definitions}
+
+\bd [Lie Algebra]
+A \textbf{Lie algebra} $A$ over a field $K$ is an algebra whose product $[-,-]$, called \emph{Lie bracket}, satisfies:
+\ben[label=\roman*)]
+\item Bilinearity: $A \times A \to A$: $[av+w,z]= a [v,w] + [v,z]$.
+\item Antisymmetry: $\ \forall\, v\in A : [v,v]=0.$
+\item The Jacobi identity: $\ \forall\, v,w,z\in A : [v,[w,z]] + [w,[z,v]] + [z,[v,w]] = 0.$
+\een
+
+Note that the zeros above represent the additive identity element in $A$, not the zero scalar.
+\ed
+
+Some remarks are in order.
+
+The antisymmetry condition immediately implies $[v,w]=-[w,v]$ for all $v,w\in A$ since:
+\bse
+[v+w, v+w] = [v,v] + [v,w] + [w,v] + [w,w] = [v,w] + [w,v] = 0 \implies [v,w]=-[w,v]
+\ese
+
+\v
+
+Notice that the Lie bracket is not defined as the usual commutator $[v,w]= vw - wv$, but is defined very abstractly
+by the 3 conditions. In other words, anything that satisfies these 3 conditions can be defined as a Lie bracket. Of
+course one example is the commutator (you can check it yourself). \v
+
+Notice that we specifically defined the Lie algebra on top of a field $K$. One can construct an algebra over a ring,
+by imposing all the axioms on a module instead of a vector space. However, in these notes we will stick with Lie
+algebras on top of a vector space, and more specifically on top of a complex vector space (i.e.\ where the $K$ field is
+the complex and to the real numbers), since they are more related to our purposes. In general, same definitions apply
+for an algebra over a ring with the appropriate changes when needed. \v
+
+Now let's give some examples of Lie algebras.
+
+\be
+The usual cross product between vectors $u \times w$ in $\R^3$ can be shown that satisfies all the requirements for a
+Lie bracket, hence, the vector space $\R^3$ equipped with the cross product $[u,w] = u \times w$ is actually a Lie
+algebra.
+\ee
+
+\be
+Let $V$ be a vector space. Recall that we defined the set $\mathrm{End}(V)$ as the set of all endomorphisms of $V$,
+i.e.\ the set of all linear maps that send $V$ back to itself. Now we define the following Lie bracket:
+\bi{rrCl}
+[-,-] \cl &\End(V)\times \End(V) &\to& \End(V)\\ &(\phi,\psi) &\mapsto& [\phi,\psi]
+\coloneqq \phi\circ\psi-\psi\circ\phi
+\ei
+
+It is instructive to check that this is actually a Lie bracket. Hence, $ (\End(V),+,\cdot,[-,-])$ is a Lie algebra.
+In this case, the Lie bracket is typically called the \emph{commutator}. (Remember that after having chosen a basis
+then we can ``represent'' the elements of $\End(V)$ as $n \times n$ matrices over a field $K$, with their commutator
+$[v,w]= vw - wv$ where here the composition is the usual matrix multiplication).
+\ee
+
+As usual, we can define the concept of homomorphism and isomorphism in the level of Lie algebras.
+
+\bd [Lie Algebra Homomorphism]
+A map $\phi$ between two Lie algebras that preserves both the vector space structure and the bracket structure is
+called a \textbf{Lie algebra homomorphism}.
+\ed
+
+\bd [Homomorphic Lie Algebras]
+Two Lie algebras over the same field $K$ are said to be \textbf{homomorphic} if there exists a lie algebra
+homomorphism between them.
+\ed
+
+\bd [Lie Algebra Isomorphism]
+A bijective Lie algebra homomorphism is called a \textbf{Lie algebra isomorphism}.
+\ed
+
+\bd [Isomorphic Lie Algebras]
+Two Lie algebras over the same field $K$ are said to be \textbf{isomorphic} if there exists a lie algebra isomorphism.
+\ed
+
+In what follows we will make heavy use of the following notation that we will give in a form of definition.
+
+\bd [Bracket]
+Given two subsets $A,B$ of a Lie algebra $L$ we define the \textbf{bracket} of these two subsets $[A,B]$ as the
+subset defined by the span of all commutators $[x,y]$ where $x\in A$ and $y\in B$, i.e.\ :
+\bse
+[A,B] \coloneqq \lspan_K\bigl(\{[x,y]\in L \mid x\in A \text{ and } y\in B\}\bigr)
+\ese
+\ed
+
+In other words is just the set of all commutators $[x,y]$ where $x \in A$ and $y \in B$. \v
+
+Now let's give some very basic definitions of Lie algebras.
+
+\bd [Abelian Lie Algebra]
+A Lie algebra $L$ is said to be \textbf{abelian} if $\forall \, x,y \in L : \ [x,y] = 0$ or equivalently in bracket
+notation $[L,L]=0$, where $0$ denotes the trivial Lie algebra $\{0\}$.
+\ed
+
+Abelian Lie algebras are highly non-interesting as Lie algebras: since the bracket is identically zero, it may as
+well not be there. On top of that, the vanishing of the bracket implies that, given any two abelian Lie algebras,
+every linear isomorphism between their underlying vector spaces is automatically a Lie algebra isomorphism.
+Therefore, for each $n\in \N$, there is (up to isomorphism) only one abelian $n$-dimensional Lie algebra.
+
+\bd [Subalgebra]
+We say $L'$ is a \textbf{subalgebra} of $L$ if $L'$ is a vector subspace of $L$ and $\forall x,y \in L': [x,y] \in
+L'$ or equivalently in bracket notation $[L',L'] \in L'$.
+\ed
+
+One can prove that if $A,B$ are Lie subalgebras of a Lie algebra $L$ over $K$, then the bracket $[A,B]$ is again a
+Lie subalgebra of $L$.
+
+\bd [Ideal]
+An \textbf{ideal} $I$ of a Lie algebra $L$ is a Lie subalgebra such that $\forall \, x\in I : \forall \, y\in L : \
+[x,y]\in I$ or equivalently in bracket notation $[I,L]\se I$.
+\ed
+
+Note that no matter the Lie algebra, we can show that: $[0, L] = 0 \se 0$ and $[L, L] \se L$ hence, both $0$ and $L$
+are always ideals of any Lie algebra. \v
+
+Recall from the definition of an algebra (any algebra) that the operation (or product) of the algebra $\bullet \cl
+A\times A \to A$ is a bilinear map with no need to be surjective. This means that applying the operation to every
+possible element of the algebra does not guarantee that will give us back the whole algebra (but it does guarantee to
+give us back a subalgebra). In other words, $[L, L] \se L$ and not $[L, L] = L$. \v
+
+\bd [Trivial Ideals]
+The ideals $0$ and $L$ are called the \textbf{trivial ideals} of $L$.
+\ed
+
+\bd [Simple Lie Algebra]
+A Lie algebra $L$ is said to be \textbf{simple} if it is non-abelian, and it contains no non-trivial ideals.
+\ed
+
+\bd [Semisimple Lie Algebra]
+A Lie algebra $L$ is said to be \textbf{semisimple} if it contains no non-trivial abelian ideals.
+\ed
+
+Note that any simple Lie algebra is also semisimple. The requirement that a simple Lie algebra be non-abelian is due
+to the $1$-dimensional abelian Lie algebra, which would otherwise be the only simple Lie algebra which is not
+semisimple.
+
+\bd [Derived Subalgebra]
+Let $L$ be a Lie algebra. The Lie subalgebra $L' \coloneqq [L,L]$ is called the \textbf{derived subalgebra} of $L$.
+\ed
+
+Hence, once we have a Lie algebra we can compute the derived subalgebra $L' \coloneqq [L,L]$. However, since $L'$ is
+by itself an algebra we can compute its own derived subalgebra $L'' \coloneqq [L',L']$ (which is the derived
+subalgebra of the derived subalgebra of $L$). And of course we can go on forever.
+
+\bd [Derived Series]
+The sequence $L \supseteq L' \supseteq L'' \supseteq \cdots \supseteq L^{(n) } \supseteq \cdots$ of Lie subalgebras
+is called the \textbf{derived series} of $L$ usually denoted by $L^{(n)}$.
+\ed
+
+\bd [Solvable Lie Algebra]
+A Lie algebra $L$ is \textbf{solvable} if there exists $k\in \N$ such that $L^{(k)}=0$.
+\ed
+
+Recall that the direct sum of vector spaces $V\oplus W$ has $V\times W$ as its underlying set and operations defined
+componentwise.
+
+\bd [Direct Sum Of Lie Algebras]
+Let $L_1$ and $L_2$ be Lie algebras. The \textbf{direct sum} $L_1\oplus_\mathrm{Lie}L_2$ has $L_1\oplus L_2$ as its
+underlying vector space and Lie bracket defined as:
+\bse
+[x_1+x_2,y_1+y_2]_{L_1\oplus_\mathrm{Lie}L_2} \coloneqq [x_1,y_1]_{L_1} + [x_2,y_2]_{L_2}
+\ese
+for all $x_1,y_1\in L_1$ and $x_2,y_2\in L_2$. Alternatively, by identifying $L_1$ and $L_2$ with the subspaces
+$L_1\oplus 0$ and $0\oplus L_2$ of $L_1\oplus L_2$ respectively, we require:
+\bse
+[L_1,L_2]_{L_1\oplus_\mathrm{Lie}L_2} = 0
+\ese
+
+In the following, we will drop the ``Lie'' subscript and understand $\oplus$ to mean $\oplus_\mathrm{Lie}$ whenever
+the summands are Lie algebras.
+\ed
+
+There is a weaker notion than the direct sum, defined only for Lie algebras.
+
+\bd[Semi-Direct Sum Of Lie Algebras]
+Let $R$ and $L$ be Lie algebras. The \textbf{semi-direct sum} $R\oplus_s L$ has $R\oplus L$ as its underlying vector
+space and Lie bracket satisfying:
+\bse
+[R,L]_{R \oplus_s L} \se R
+\ese
+
+i.e.\ $R$ is an ideal of $R\oplus_s L$.
+\ed
+
+We are now ready to state Levi's decomposition theorem.
+
+\bt[Levi]
+Any finite-dimensional complex Lie algebra $L$ can be decomposed as:
+\bse
+L = R \oplus_s (L_1 \oplus\cdots \oplus L_n)
+\ese
+
+where $R$ is a solvable Lie algebra and $L_1, \ldots,L_n$ are simple Lie algebras.
+\et
+
+As of today, no general classification of solvable Lie algebras is known, except for some special cases (e.g.\ in low
+dimensions). In contrast, the finite dimensional, simple, complex Lie algebras have been classified completely.
+
+\bt[]
+A Lie algebra is semisimple if, and only if, it can be expressed as a direct sum of simple Lie algebras.
+\et
+
+Hence, the simple Lie algebras are the basic building blocks from which one can build any semisimple Lie algebra.
+Then, by Levi's theorem, the classification of simple Lie algebras easily extends to a classification of all
+semisimple Lie algebras. \v
+
+In order to do computations, it is useful to introduce a basis $\{e_i\}$ on $L$. Recall that an algebra is nothing
+else but a vector space with an extra operation. Hence, we can simply pick a basis $\{e_i\}$ on the vector space, and
+then examine how the Lie bracket behaves when we plug in, not any random element of algebra (i.e.\ of the vector
+space) but specifically the elements of the basis.
+
+\bd [Structure Constants]
+Let $L$ be a Lie algebra over $K$ and let $\{e_i\}$ be a basis of the underlying vector space. Then, we have:
+\bse
+[e_i,e_j] = C^{k}_{\phantom{k}ij}e_k
+\ese
+
+for some $C^{k}_{\phantom{k}ij}\in K$. The numbers $C^{k}_{\phantom{k}ij}$ are called the \textbf{structure
+constants} of $L$ with respect to the basis $\{ e_i \}$.
+\ed
+
+Since the operation of the algebra:
+\bse
+\bullet \cl A\times A \to A
+\ese
+
+sends two elements of the algebra to an element of the algebra, this can be translated as sending two elements of the
+vector space to an element of the vector space, i.e.\ $[e_i,e_j] = v \in V$ for some fixed $i$ and $j$. \v
+
+However, since the final result $v$ is again an element of the vector space it can also be expressed as a linear
+combination of the basis $v = v^k e_k$. This $v^k$ is actually the structure constants (again for some fixed $i$ and
+$j$, if we do not fix them we have to include them on the $v^k$ hence, we obtain $v^k \rightarrow
+C^{k}_{\phantom{k}ij}$). This is why it is guaranteed that the structure constants $C^{k}_{\phantom{k}ij}\in K$ exist. \v
+
+In terms of the structure constants, the anti-symmetry of the Lie bracket reads:
+\bse
+[e_i,e_j] = - [e_j,e_i] \implies C^{k}_{\phantom{k}ij}e_k = - C^{k}_{\phantom{k}ji}e_k \implies C^{k}_{\phantom{k}ij}
+= - C^{k}_{\phantom{k}ji}
+\ese
+
+while after some trivial calculations one can show that the Jacobi identity becomes:
+\bse
+C^{n}_{\phantom{n}im}C^{m}_{\phantom{m}jk} + C^{n}_{\phantom{n}jm}C^{m}_{\phantom{m}ki}
++ C^{n}_{\phantom{n}km}C^{m}_{\phantom{m}ij} = 0
+\ese
+
+\section{The Adjoint Map \& The Killing Form}
+
+\bd [Adjoint Map]
+Let $L$ be a Lie algebra over $K$ and let $x\in L$. The \textbf{adjoint map} with respect to $x$ is the $K$-linear map:
+\bi{rrCl}
+\ad_x\cl & L & \xrightarrow{\sim} & L \\ & y & \mapsto & \ad_x(y) \coloneqq [x,y]
+\ei
+\ed
+
+The linearity of $\ad_x$ follows from the linearity of the bracket in the second argument, while the linearity in the
+first argument of the bracket implies that the map:
+\bi{rrCl}
+\ad\cl & L & \xrightarrow{\sim} & \End(L) \\ & x & \mapsto & \ad(x) \coloneqq \ad_x
+\ei
+
+itself is also linear. In fact, more is true. Recall that $\End(L)$ is a Lie algebra with bracket:
+\bse
+[\phi,\psi] \coloneqq \phi\circ\psi-\psi\circ\phi
+\ese
+
+Then, we have the following.
+
+\bt[]
+The map $\ad\cl L \xrightarrow{\sim} \End(L)$ is a Lie algebra homomorphism.
+\et
+
+Let's prove it!
+
+\bq
+It remains to check that $\ad$ preserves the brackets. Let $x,y,z\in L$. Then:
+\bi{rCl"s}
+\ad_{[x,y]}(z) & \coloneqq & [[x,y],z] & (definition of $\ad$)\\
+& = & -[[y,z],x]-[[z,x],y] & (Jacobi's identity)\\
+& = & [x,[y,z]]-[y,[x,z]] & (anti-symmetry)\\
+& = & \ad_x(\ad_y(z))-\ad_y(\ad_x(z)) \\
+& = & (\ad_x\circ \ad_y-\ad_y\circ \ad_x)(z)\\
+& = & [\ad_x, \ad_y](z)
+\ei
+
+Hence, we have $\ad([x,y])=[\ad(x),\ad(y)]$.
+\eq
+
+By choosing a basis for the vector space, we can express the adjoint map in terms of components with respect to the
+basis as follows. Start by noting that:
+\bi{rrCl}
+\ad\cl & L & \xrightarrow{\sim} & \End(L) \\ & x & \mapsto & \ad(x) \coloneqq \ad_x
+\ei
+
+which means that $\ad_x$ is an element of $\End(L)$ hence, an endomorphism of $L$. Recall that for any vector space
+$V$: $\mathrm{End}(V)\cong_\mathrm{vec}T^1_1 V$ which means that if $\phi \in \mathrm{End}(V)$, we can think of $\phi
+\in T^1_1 V$, using the same symbol, as $\phi(\omega,v) \coloneqq \omega (\phi(v))$ hence, the components of
+$\phi\in\mathrm{End}(V)$ are $\phi^a_{\phantom{a}b} \coloneqq \epsilon^a (\phi(e_b))$. \v
+
+So, in our case, let $\{e_i\}$ and $\{\varepsilon^i\}$ be a basis and its dual basis of the underlying vector space
+of a Lie algebra $L$. Then:
+\bi{rCl}
+(\ad_{e_i})^k_{\phantom{k}j} & \coloneqq & \varepsilon^k(\ad_{e_i}(e_j)) \\
+& = & \varepsilon^k ([e_i,e_j])\\
+& = & \varepsilon^k (C^{m}_{\phantom{\,m}ij}e_m)\\
+& = & C^{m}_{\phantom{m}ij}\varepsilon^k (e_m)\\
+&=& C^{k}_{\phantom{k}ij}
+\ei
+
+In other words, the adjoint map represents the structure constants without the need of choosing a basis.
+
+\bd [Killing Form]
+Let $L$ be a Lie algebra over $K$. The \textbf{Killing form} on $L$ is the $K$-bilinear map:
+\bi{rrCl}
+\kappa \cl & L\times L & \to & K \\ & (x,y) & \mapsto & \kappa(x,y) \coloneqq \tr(\ad_x\circ\ad_y)
+\ei
+
+where $\tr$ is the usual trace on the vector space $\End(L)$.
+\ed
+
+Note that the Killing form is not a ``form'' in the sense that we defined previously. In fact, since $L$ is
+finite-dimensional, the trace is cyclic and thus $\kappa$ is symmetric, i.e.\ :
+\bse
+\forall \, x,y\in L : \ \kappa(x,y) = \kappa(y,x)
+\ese
+
+An important property of $\kappa$ is its associativity with respect to the bracket.
+
+\bt[]
+Let $L$ be a Lie algebra. For any $x,y,z\in L$, we have:
+\bse
+\kappa([x,y],z)=\kappa(x,[y,z])
+\ese
+\et
+
+\bq
+This follows easily from the fact that $\ad$ is a homomorphism.
+\bi{rCl}
+\kappa([x,y],z) & \coloneqq & \tr(\ad_{[x,y]}\circ\ad_z)\\
+& = & \tr([\ad_x,\ad_y]\circ\ad_z)\\
+& = & \tr((\ad_x \circ \ad_y-\ad_y\circ\ad_x)\circ\ad_z)\\
+& = & \tr(\ad_x \circ \ad_y\circ\ad_z)-\tr(\ad_y\circ\ad_x\circ\ad_z)\\
+& = & \tr(\ad_x \circ \ad_y\circ\ad_z)-\tr(\ad_x\circ\ad_z\circ\ad_y)\\
+& = & \tr(\ad_x \circ\, (\ad_y\circ\ad_z-\ad_z\circ\ad_y))\\
+& = & \tr(\ad_x \circ\, [\ad_y,\ad_z])\\
+& = & \tr(\ad_x \circ \ad_{[y,z]})\\
+& \eqqcolon & \kappa(x,[y,z])
+\ei
+
+where we used the cyclicity of the trace.
+\eq
+
+As we did for the adjoint map we can also express the Killing form in terms of components with respect to a basis. \v
+
+Recall from linear algebra that if $V$ is finite-dimensional, for any $\phi\in\End(V)$ we have $\tr(\phi)
+=\Phi^k_{\phantom{k}k}$, where $\Phi$ is the matrix representing the linear map in any basis. Also, recall that the
+matrix representing $\phi\circ\psi$ is the product $\Phi\Psi$. Using these, by letting $\{e_i\}$ and
+$\{\varepsilon^i\}$ be a basis and its dual basis of the underlying vector space of a Lie algebra $L$ we have:
+\bi{rCl}
+\kappa_{ij} & \coloneqq & \kappa(e_i,e_j)\\
+& = & \tr(\ad_{e_i}\circ\ad_{e_j})\\
+& = & ( \ad_{e_i}\circ\ad_{e_j} )^k_{\phantom{k}k}\\
+& = & ( \ad_{e_i})^m_{\phantom{m}k}(\ad_{e_j} )^k_{\phantom{k}m}\\
+& = & C^m_{\phantom{m}ik}C^k_{\phantom{k}jm}
+\ei
+
+where we used the same notation for the linear maps and their matrices. \v
+
+We can use $\kappa$ to give a further equivalent characterisation of semi-simplicity.
+
+\bt[Cartan's criterion]
+A Lie algebra $L$ is semisimple if, and only if, the Killing form $\kappa$ is non-degenerate, i.e.\ :
+\bse
+(\forall \, y \in L : \kappa(x,y)=0) \Rightarrow x = 0
+\ese
+\et
+
+Hence, if $L$ is semisimple, then $\kappa$ is a pseudo inner product on $L$. Recall the following definition from
+linear algebra.
+
+\bd [Symmetric Linear Map]
+A linear map $\phi\cl V\xrightarrow{\sim}V$ is said to be \textbf{symmetric} with respect to the pseudo inner product
+$B(-,-)$ on $V$ if:
+\bse
+\forall \, v,w\in V : \ B(\phi(v),w)=B(v,\phi(w))
+\ese
+
+If, instead, we have:
+\bse
+\forall \, v,w\in V : \ B(\phi(v),w)=-B(v,\phi(w))
+\ese
+
+\v
+
+then $\phi$ is said to be \emph{antisymmetric} with respect to $B$.
+\ed
+
+The associativity property of $\kappa$ with respect to the bracket can be restated by saying that, for any $z\in L$,
+the linear map $\ad_z$ is antisymmetric with respect to $\kappa$, i.e.\ :
+\bse
+\forall \, x,y\in L : \ \kappa(\ad_z(x),y) = - \kappa(x,\ad_z(y))
+\ese
+
+\section{The Fundamental Roots \& The Weyl Group}
+
+We will now focus on finite-dimensional semisimple complex Lie algebras, whose classification hinges on the
+existence of a special type of subalgebra.
+
+\bd [Cartan Subalgebra]
+Let $L$ be a $d$-dimensional Lie algebra. A \textbf{Cartan subalgebra} $H$ of $L$ is a maximal Lie subalgebra of $L$
+with the following property: there exists a basis $\{h_1,\ldots,h_r\}$ of $H$ which can be extended to a basis
+$\{h_1,\ldots,h_r,e_1,\ldots,e_{d-r}\}$ of $L$ such that $e_1,\ldots,e_{d-r}$ are eigenvectors of $\ad(h)$ for any
+$h\in H$, i.e.\ :
+\bse
+\forall \, h\in H : \exists \, \lambda_\alpha(h)\in \C : \ \ad(h)e_\alpha = \lambda_\alpha(h) e_\alpha
+\ese
+
+for each $1\leq\alpha\leq d-r$.
+\ed
+
+The basis $\{h_1,\ldots,h_r,e_1,\ldots,e_{d-r}\}$ is known as a \emph{Cartan-Weyl basis} of $L$. Of course, we would
+like to know when we can find such a subalgebra.
+
+\bt[]
+Let $L$ be a finite-dimensional semisimple complex Lie algebra. Then:
+\ben[label=\roman*)]
+\item $L$ possesses a Cartan subalgebra.
+\item All Cartan subalgebras of $L$ have the same dimension, called the \emph{rank} of $L$.
+\item Any of Cartan subalgebra $H$ of $L$ is abelian, i.e.\ $[H,H] = 0$.
+\een
+\et
+
+Note that we can think of the $\lambda_\alpha$ appearing above as a map $\lambda_\alpha\cl H \to \C$. Moreover, for
+any $z\in \C$ and $h,h'\in H$, we have:
+\bi{rCl}
+\lambda_\alpha(zh+h') e_\alpha & = & \ad(zh+h') e_\alpha\\
+& = & [zh+h',e_\alpha] \\
+& = & z[h,e_\alpha] + [h',e_\alpha] \\
+& = & z\lambda_\alpha(h)e_\alpha +\lambda_\alpha(h')e_\alpha\\
+& = & (z\lambda_\alpha(h)+\lambda_\alpha(h')) e_\alpha
+\ei
+
+Hence, $\lambda_\alpha$ is a $\C$-linear map $\lambda_\alpha\cl H \xrightarrow{\sim}\C$, and thus $\lambda_\alpha\in
+H^*$.
+
+\bd [Roots]
+The maps $\lambda_1,\ldots,\lambda_{d-r}\in H^*$ are called the \textbf{roots} of $L$.
+\ed
+
+\bd [Root Set]
+The collection of the roots of an algebra:
+\bse
+\Phi \coloneqq \{\lambda_\alpha \mid 1\leq \alpha \leq d-r\} \se H^*
+\ese
+
+is called the \textbf{root set} of $L$.
+\ed
+
+One can show that if $\lambda_\alpha$ were the zero map, then we would have $e_\alpha\in H$. Thus, we must have
+$0\notin \Phi$. Note that a consequence of the anti-symmetry of each $\ad(h) $ with respect to the Killing form
+$\kappa$ is that:
+\bse
+\lambda \in \Phi\ \Rightarrow\ -\lambda\in \Phi
+\ese
+
+Hence, $\Phi$ is not a linearly independent subset of $H^*$.
+
+\bd [Fundamental Roots]
+A set of \textbf{fundamental roots} $\Pi \coloneqq \{\pi_1,\ldots,\pi_f\}$ is a subset $\Pi\se\Phi$ such that :
+\ben[label=\alph*)]
+\item $\Pi$ is a linearly independent subset of $H^*$.
+\item For each $\lambda \in \Phi$, there exist $n_1,\ldots,n_f\in \N$ and $\varepsilon \in \{+1,-1\}$ such that:
+\bse
+\lambda = \varepsilon \, \sum_{i=1}^f n_i \pi_i
+\ese
+\een
+\ed
+
+Since $n_i \in \N$ this means that they are all positive numbers (as they should be by the definition of a basis).By
+also picking an $\varepsilon \in \{+1,-1\}$ to be either +1 or -1, we are able, no matter the choice of fundamental
+roots, to obtain the opposite signed ones. That way, observe that, for any $\lambda\in \Phi$, the coefficients of
+$\pi_1,\ldots,\pi_f$ in the expansion above always have the same sign. We can write the last equation more concisely
+as $\lambda \in \lspan_{\varepsilon,\N}(\Pi)$ where in general $\lspan_{\varepsilon,\N}(\Pi)\neq \lspan_{\Z}(\Pi)$.
+
+\bt[]
+Let $L$ be a finite-dimensional semisimple complex Lie algebra. Then:
+\ben[label=\roman*)]
+\item A set $\Pi\se\Phi$ of fundamental roots always exists.
+\item We have $\lspan_\C(\Pi) = H^*$, that is, $\Pi$ is a basis of $H^*$.
+\een
+\et
+
+\bt[]
+We have $|\Pi| = r$, where $r$ is the rank of $L$.
+\et
+
+\bq
+Since $\Pi$ is a basis, $|\Pi| = \dim H^* = \dim H = r$.
+\eq
+
+We would now like to use $\kappa$ to define a pseudo inner product on $H^*$. \v
+
+We know from linear algebra that a pseudo inner product $B(-,-)$ on a finite-dimensional vector space $V$ over $K$
+induces a linear isomorphism:
+\bi{rrCl}
+i \cl & V & \xrightarrow{\sim} & V^* \\ & v & \mapsto & i(v) \coloneqq B(v,-)
+\ei
+
+which can be used to define a pseudo inner product $B^*(-,-)$ on $V^*$ as:
+\bi{rrCl}
+B^* \cl & V^*\times V^* & \to & K\\ & (\phi,\psi) & \mapsto & B^*(\phi,\psi) \coloneqq B(i^{-1}(\phi),i^{-1} (\psi))
+\ei
+
+We would like to apply this to the restriction of $\kappa$ to the Cartan subalgebra. However, a pseudo inner product
+on a vector space is not necessarily a pseudo inner product on a subspace, since the non-degeneracy condition may
+fail when considered on a subspace. \v
+
+Let's formalize this in a theorem.
+
+\bt[]
+The restriction of $\kappa$ to $H$ is a pseudo inner product on $H$.
+\et
+
+Let's prove that!
+
+\bq
+Bilinearity and symmetry are automatically satisfied. It remains to show that $\kappa$ is non-degenerate on $H$.
+\ben[label=\roman*)]
+\item Let $\{h_1,\ldots,h_r,e_{r+1},\ldots,e_{d}\}$ be a Cartan-Weyl basis of $L$ and let $\lambda_\alpha\in \Phi$. Then:
+\bi{rCl}
+\lambda_\alpha(h_j) \kappa(h_i,e_\alpha)& = & \kappa(h_i,\lambda_\alpha(h_j) e_\alpha)\\
+& = & \kappa(h_i,[h_j,e_\alpha])\\
+& = & \kappa([h_i,h_j],e_\alpha)\\
+& = & \kappa(0,e_\alpha)\\
+& = & 0
+\ei
+
+Since $\lambda_\alpha \neq 0$, there is some $h_j$ such that $\lambda_\alpha(h_j)\neq 0$ and hence:
+\bse
+\kappa(h_i,e_\alpha) = 0
+\ese
+
+By linearity, we have $\kappa(h,e_\alpha)=0$ for any $h\in H$ and any $e_\alpha$.
+\item Let $h\in H\se L$. Since $\kappa$ is non-degenerate on $L$, we have:
+\bse
+\bigl(\forall \, x\in L : \kappa(h,x) = 0 \bigr) \Rightarrow h =0
+\ese
+
+Expand $x\in L$ in the Cartan-Weyl basis as:
+\bse
+x = h' + e
+\ese
+
+where $h' \coloneqq x^i h_i$ and $e \coloneqq x^\alpha e_\alpha$. Then, we have:
+\bse
+\kappa(h,x) = \kappa(h,h') + x^\alpha\kappa(h,e_\alpha) = \kappa(h,h')
+\ese
+
+Thus, the non-degeneracy condition reads:
+\bse
+\bigl(\forall \, h'\in H : \kappa(h,h') = 0 \bigr) \Rightarrow h =0
+\ese
+
+which is what we wanted. \qedhere
+\een
+\eq
+
+We can now define:
+\bi{rrCl}
+\kappa^*\cl & H^* \times H^* & \to & \C\\ & (\mu,\nu)&\mapsto & \kappa^*(\mu,\nu)
+\coloneqq \kappa(i^{-1}(\mu),i^{-1} (\nu))
+\ei
+
+where $i\cl H \xrightarrow{\sim} H^*$ is the linear isomorphism induced by $\kappa$. \v
+
+If $\{h_i\}$ is a basis of $H$, the components of $\kappa^*$ with respect to the dual basis satisfy:
+\bse
+(\kappa^*)^{ij}\kappa_{jk}=\delta^i_k
+\ese
+
+Hence, we can write:
+\bse
+\kappa^*(\mu,\nu)=(\kappa^*)^{ij}\mu_i\nu_j
+\ese
+
+where $\mu_i \coloneqq \mu(h_i)$. \v
+
+We now turn our attention to the real subalgebra $H^*_\R \coloneqq \lspan_\R(\Pi)$. \v
+
+Note that we have the following chain of inclusions:
+\bse
+\Pi\se\Phi\se\lspan_{\varepsilon,\N}(\Pi) \se \underbrace{\lspan_\R(\Pi)}_{H_\R^*} \se \underbrace{\lspan_\C(\Pi)}_{H^*}
+\ese
+
+\v
+
+The restriction of $\kappa^*$ to $H_\R^*$ leads to a surprising result.
+\bt[]
+\ben[label=\roman*)]
+\item For any $\alpha,\beta\in H_\R^*$, we have $\kappa^*(\alpha,\beta)\in \R$.
+\item $\kappa^*\cl H_\R^*\times H_\R^*\to \R$ is an inner product on $H_\R^*$.
+\een
+\et
+
+This is indeed a surprise! Upon restriction to $H_\R^*$, instead of being weakened, the non-degeneracy of $\kappa^*$
+gets strengthened to positive definiteness. \v
+
+Now that we have a proper real inner product, we can define some familiar notions from basic linear algebra, such as
+lengths and angles.
+
+\bd [Length \& Angle]
+Let $\alpha,\beta\in H_\R^*$. Then, we define:
+\ben[label=\roman*)]
+\item The \textbf{length} of $\alpha$ as $|\alpha| \coloneqq \sqrt{\kappa^*(\alpha,\alpha)}\,$.
+\item The \textbf{angle} between $\alpha$ and $\beta$ as $\ds \varphi \coloneqq \cos^{-1}
+\left(\frac{\kappa^* (\alpha,\beta)}{|\alpha||\beta|}\right).$
+\een
+\ed
+
+\v
+
+We need two final ingredients for our classification result. First the so called ``Weyl transformation''.
+
+\bd [Weyl Transformation]
+For any $\lambda\in \Phi\se H_\R^*$, define the linear map $s_\lambda$ called a \textbf{Weyl transformation}:
+\bi{rrCl}
+s_\lambda \cl & H_\R^* & \xrightarrow{\sim} & H_\R^* \\ & \mu & \mapsto & s_\lambda(\mu)
+\ei
+
+where:
+\bse
+s_\lambda(\mu) \coloneqq \mu-2\frac{\kappa^*(\lambda,\mu)}{\kappa^*(\lambda,\lambda)}\,\lambda
+\ese
+\ed
+
+And finally the ``Weyl group''.
+
+\bd [Weyl Group]
+The set:
+\bse
+W \coloneqq \{s_\lambda \mid \lambda \in \Phi\}
+\ese
+
+is a group under composition of maps, and it is called the \textbf{Weyl group}.
+\ed
+
+\bt[]
+\ben[label=\roman*)]
+\item The Weyl group $W$ is generated by the fundamental roots in $\Pi$, in the sense that for some $1\leq n \leq r$,
+with $r=|\Pi|$:
+\bse
+\forall \, w \in W : \exists \, \pi_1,\ldots,\pi_n\in \Pi : \ w = s_{\pi_1} \circ s_{\pi_2} \circ\cdots \circ s_{\pi_n}
+\ese
+
+\item Every root can be produced from a fundamental root by the action of $W$, i.e.\ :
+\bse
+\forall \, \lambda\in \Phi :\exists\, \pi\in \Pi : \exists\, w\in W :\ \lambda = w(\pi)
+\ese
+
+\item The Weyl group permutes the roots, that is:
+\bse
+\forall \, \lambda \in \Phi : \forall \, w \in W : \ w(\lambda)\in \Phi
+\ese
+\een
+\et
+
+\section{Dynkin Diagrams \& The Cartan Classification}
+
+Consider, for any $\pi_i,\pi_j\in \Pi$, the action of the Weyl transformation:
+\bse
+s_{\pi_i}(\pi_j) \coloneqq \pi_j-2\frac{\kappa^*(\pi_i,\pi_j)}{\kappa^*(\pi_i,\pi_i)}\,\pi_i
+\ese
+
+However, since $s_{\pi_i}(\pi_j)\in\Phi$ and $\Phi\se\lspan_{\varepsilon,\N} (\Pi)$ this means that it must be
+written in terms of the basis as:
+\bse
+s_{\pi_i}(\pi_j)\in\Phi = \left( \varepsilon \, \sum_{i=1}^f n_i \pi_i \right ) = C_1 \pi_j + C_2 \pi_i
+\ese
+
+\v
+
+But it is already written in such from since:
+\bse
+s_{\pi_i}(\pi_j) = \pi_j-2\frac{\kappa^*(\pi_i,\pi_j)}{\kappa^*(\pi_i,\pi_i)}\,\pi_i = 1\, \pi_j
++ \left(-2\frac{\kappa^*(\pi_i,\pi_j)}{\kappa^*(\pi_i,\pi_i)}\right)\,\pi_i
+\ese
+
+and from the first coefficient (a.k.a.\ the number 1) which is positive, we conclude that for all $1\leq i\neq j\leq r$
+we must have:
+\bse
+-2\frac{\kappa^*(\pi_i,\pi_j)}{\kappa^*(\pi_i,\pi_i)}\in \N
+\ese
+
+\v
+
+\bd [Cartan Matrix]
+The \textbf{Cartan matrix} of a Lie algebra is the $r\times r$ matrix $C$ with entries:
+\bse
+C_{ij} \coloneqq 2\frac{\kappa^*(\pi_i,\pi_j)}{\kappa^*(\pi_i,\pi_i)}
+\ese
+\ed
+
+\vspace{2pt}
+
+The $C_{ij}$ should not be confused with the structure constants $C^k_{\phantom{k}ij}$.
+
+\bt[]
+To every simple finite-dimensional complex Lie algebra there corresponds a unique Cartan matrix and vice versa (up to
+relabelling of the basis elements).
+\et
+
+Of course, not every matrix can be a Cartan matrix. For instance, since $C_{ii}=2$ (no summation implied), the
+diagonal entries of $C$ are all equal to $2$, while the off-diagonal entries are either zero or negative. In general,
+$C_{ij} \neq C_{ji}$, so the Cartan matrix is not symmetric, but if $C_{ij}=0$, then necessarily $C_{ji}=0$. \v
+
+We have thus reduced the problem of classifying the simple finite-dimensional complex Lie algebras to that of finding
+all the Cartan matrices. This can, in turn, be reduced to the problem of determining all the inequivalent Dynkin
+diagrams.
+
+\bd [Bond Number]
+Given a Cartan matrix $C$, the $ij$-th \textbf{bond number} is:
+\bse
+n_{ij} \coloneqq C_{ij} C_{ji}
+\ese
+\ed
+
+Note that we have:
+\bi{rCl}
+n_{ij} & = & 4\,\frac{\kappa^*(\pi_i,\pi_j)}{\kappa^*(\pi_i,\pi_i)}\,
+\frac{\kappa^*(\pi_j,\pi_i)}{\kappa^*(\pi_j,\pi_j)}\\[5pt]
+& = & 4\, \biggl(\frac{\kappa^*(\pi_i,\pi_j)}{|\pi_i||\pi_j|}\biggr)^2\\[5pt]
+& = & 4 \cos^2\varphi
+\ei
+
+where $\varphi$ is the angle between $\pi_i$ and $\pi_j$. \v
+
+For $i\neq j$, the angle $\varphi$ is neither zero nor $180^\circ$, hence, $0\leq \cos^2\varphi< 1$, and therefore:
+\bse
+n_{ij}\in \{0,1,2,3\}
+\ese
+
+\v
+
+Since $C_{ij}\leq 0$ for $i\neq j$, the only possibilities are:
+
+\v
+
+\begin{center}
+\begin{tabular}{ cc | c}
+$C_{ij}$ & $C_{ji}$ & $n_{ij}$\\[2pt]
+\hline
+$\phantom{-}0$ & $\phantom{-}0\rule{0pt}{13pt}\ $ & 0 \\
+$-1$ & $-1\ $ & 1 \\
+$-1$ & $-2\ $ & 2 \\
+$-1$ & $-3\ $ & 3
+\end{tabular}
+\end{center}
+
+\v
+
+Note that while the Cartan matrices are not symmetric, swapping any pair of $C_{ij}$ and $C_{ji}$ gives a Cartan
+matrix which represents the same Lie algebra as the original matrix, with two elements from the Cartan-Weyl basis
+swapped. This is why we have not included $(-2,-1)$ and $(-3,-1)$ in the table above. If $n_{ij}= 2$ or $3$, then the
+corresponding fundamental roots have different lengths, i.e.\ either $|\pi_i|<|\pi_j|$ or $|\pi_i|>|\pi_j|$. \v
+
+We also have the following theorem.
+
+\bt[]
+The roots of a simple Lie algebra have, at most, two distinct lengths.
+\et
+
+We will not prove this! \v
+
+The redundancy of the Cartan matrices highlighted above is nicely taken care of by considering Dynkin diagrams.
+
+\bd [Dynkin Diagram]
+A \textbf{Dynkin diagram} associated to a Cartan matrix is constructed as follows:
+\ben
+\item Draw a circle for every fundamental root in $\pi_i\in\Pi$:
+\begin{center}
+\begin{tikzpicture}
+\draw[fill=white] (0,0) circle[radius=0.15];
+\draw (0,-0.45) node {$\pi_i$};
+\end{tikzpicture}
+\end{center}
+\item Draw $n_{ij}$ lines between the circles representing the roots $\pi_i$ and $\pi_j$:
+\begin{center}
+\begin{tikzpicture}
+\draw (3.2,0) -- (3.2+1.25,0);
+\draw (2*3.2,0.07) -- (2*3.2+1.25,0.07);
+\draw (2*3.2,-0.07) -- (2*3.2+1.25,-0.07);
+\draw (3*3.2,0.11) -- (3*3.2+1.25,0.11);
+\draw (3*3.2,0) -- (3*3.2+1.25,0);
+\draw (3*3.2,-0.11) -- (3*3.2+1.25,-0.11);
+\foreach \x in {0,1,2,3} {
+\draw (3.2*\x+0.62,0.65) node {$n_{ij}=\x$};
+\draw (3.2*\x+0.05,-0.45) node {$\pi_i$};
+\draw (3.2*\x+1.3,-0.45) node {$\pi_j$};
+\draw[fill=white] (3.2*\x,0) circle[radius=0.15];
+\draw[fill=white] (3.2*\x+1.25,0) circle[radius=0.15];}
+\end{tikzpicture}
+\end{center}
+\item If $n_{ij}=2$ or $3$, draw an arrow on the lines from the longer root to the shorter root:
+\begin{center}
+\begin{tikzpicture}
+\foreach \x in {0,1} {
+\draw (2*3.2*\x+0.62,0.7) node {$|\pi_i|>|\pi_j|$};
+\draw (2*3.2*\x+0.65-0.15,0.21) -- (2*3.2*\x+0.65+0.15,0) -- (2*3.2*\x+0.65-0.15,-0.21);
+\draw (2*3.2*\x+3.2+0.62,0.7) node {$|\pi_i|<|\pi_j|$};
+\draw (2*3.2*\x+3.2+0.65+0.15,0.21) -- (2*3.2*\x+3.2+0.65-0.15, 0) -- (2*3.2*\x+3.2+0.65+0.15,-0.21);
+\draw (\x*3.2,0.07) -- (\x*3.2+1.25,0.07);
+\draw (\x*3.2,-0.07) -- (\x*3.2+1.25,-0.07);}
+\foreach \x in {2,3} {
+\draw (\x*3.2,0.11) -- (\x*3.2+1.25,0.11);
+\draw (\x*3.2,0) -- (\x*3.2+1.25,0);
+\draw (\x*3.2,-0.11) -- (\x*3.2+1.25,-0.11);}
+\foreach \x in {0,1,2,3} {
+\draw (3.2*\x+0.05,-0.45) node {$\pi_i$};
+\draw (3.2*\x+1.3,-0.45) node {$\pi_j$};
+\draw[fill=white] (3.2*\x,0) circle[radius=0.15];
+\draw[fill=white] (3.2*\x+1.25,0) circle[radius=0.15];}
+\end{tikzpicture}
+\end{center}
+\een
+\ed
+
+Dynkin diagrams completely characterise any set of fundamental roots, from which we can reconstruct the entire root
+set by using the Weyl transformations. The root set can then be used to produce a Cartan-Weyl basis. \v
+
+We are now finally ready to state the much awaited classification theorem which goes by the name ``Killing-Cartan
+classification''.
+
+\bt[Killing-Cartan Classification]
+Any simple finite-dimensional complex Lie algebra can be reconstructed from its set of fundamental roots $\Pi$, which
+only come in the following forms:
+\ben[label=\roman*)]
+\item There are $4$ infinite families:
+\begin{center}
+\def\arraystretch{2.5}
+\setlength\tabcolsep{15pt}
+\begin{tabular}{ccc}
+$A_n$ & $n \geq 1$ &
+\begin{tikzpicture}
+[baseline={($ (current bounding box.center) - (0,3pt) $)}]
+\draw (0,0) edge (2*1.25,0);
+\draw (2*1.25,0) edge[dashed] (3*1.25,0);
+\draw (3*1.25,0) edge (4*1.25,0);
+\foreach \x in {0,1,2,3,4} {
+\draw[fill=white] (1.25*\x,0) circle[radius=0.15];}
+\end{tikzpicture} \\
+$B_n$ & $n \geq 2$ &
+\begin{tikzpicture}
+[baseline={($ (current bounding box.center) - (0,3pt) $)}]
+\draw (0,0) edge (2*1.25,0);
+\draw (2*1.25,0) edge[dashed] (3*1.25,0);
+\draw (3*1.25+0.65-0.15,0.21) -- (3*1.25+0.65+0.15,0) -- (3*1.25+0.65-0.15,-0.21);
+\draw (3*1.25,0.07) -- (4*1.25,0.07);
+\draw (3*1.25,-0.07) -- (4*1.25,-0.07);
+\foreach \x in {0,1,2,3,4} {
+\draw[fill=white] (1.25*\x,0) circle[radius=0.15];}
+\end{tikzpicture} \\
+$C_n$ & $n \geq 3$ &
+\begin{tikzpicture}
+[baseline={($ (current bounding box.center) - (0,4pt) $)}]
+\draw (0,0) edge (2*1.25,0);
+\draw (2*1.25,0) edge[dashed] (3*1.25,0);
+\draw (3*1.25+0.65+0.15,0.21) -- (3*1.25+0.65-0.15,0) -- (3*1.25+0.65+0.15,-0.21);
+\draw (3*1.25,0.07) -- (4*1.25,0.07);
+\draw (3*1.25,-0.07) -- (4*1.25,-0.07);
+\foreach \x in {0,1,2,3,4} {
+\draw[fill=white] (1.25*\x,0) circle[radius=0.15];}
+\end{tikzpicture}\\[10pt]
+$D_n$ & $n \geq 4$ &
+\begin{tikzpicture}
+[baseline={($ (current bounding box.center) - (0,3pt) $)}]
+\draw (0,0) edge (2*1.25,0);
+\draw (2*1.25,0) edge[dashed] (3*1.25,0);
+\draw (3*1.25,0) -- (4*1.25,0.7);
+\draw (3*1.25,0) -- (4*1.25,-0.7);
+\foreach \x in {0,1,2,3} {
+\draw[fill=white] (1.25*\x,0) circle[radius=0.15];}
+\draw[fill=white] (1.25*4,0.7) circle[radius=0.15];
+\draw[fill=white] (1.25*4,-0.7) circle[radius=0.15];
+\end{tikzpicture}
+\end{tabular}
+\end{center}
+
+\v
+
+where the restrictions on $n$ ensure that we don't get repeated diagrams (the diagram $D_2$ is excluded since it is
+disconnected and does not correspond to a simple Lie algebra).
+\item Five exceptional cases:
+\begin{center}
+\def\arraystretch{2.5}
+\setlength\tabcolsep{15pt}
+\begin{tabular}{cl}
+$E_6$ &
+\begin{tikzpicture}
+[baseline={($ (current bounding box.south) + (0,1pt) $)}]
+\draw (0,0) edge (4*1.25,0);
+\draw (2*1.25,0) edge (2*1.25,1.25);
+\foreach \x in {0,1,2,3,4} {
+\draw[fill=white] (1.25*\x,0) circle[radius=0.15];}
+\draw[fill=white] (2*1.25,1.25) circle[radius=0.15];
+\end{tikzpicture}\\[5pt]
+$E_7$ &
+\begin{tikzpicture}
+[baseline={($ (current bounding box.south) + (0,1pt) $)}]
+\draw (0,0) edge (5*1.25,0);
+\draw (2*1.25,0) edge (2*1.25,1.25);
+\foreach \x in {0,1,2,3,4,5} {
+\draw[fill=white] (1.25*\x,0) circle[radius=0.15];}
+\draw[fill=white] (2*1.25,1.25) circle[radius=0.15];
+\end{tikzpicture}\\[5pt]
+$E_8$ &
+\begin{tikzpicture}
+[baseline={($ (current bounding box.south) + (0,1pt) $)}]
+\draw (0,0) edge (6*1.25,0);
+\draw (2*1.25,0) edge (2*1.25,1.25);
+\foreach \x in {0,1,2,3,4,5,6} {
+\draw[fill=white] (1.25*\x,0) circle[radius=0.15];}
+\draw[fill=white] (2*1.25,1.25) circle[radius=0.15];
+\end{tikzpicture} \\
+$F_4$ &
+\begin{tikzpicture}
+[baseline={($ (current bounding box.center) - (0,3pt) $)}]
+\draw (0,0) edge (1.25,0);
+\draw (2*1.25,0) edge (3*1.25,0);
+\draw (1*1.25+0.65-0.15,0.21) -- (1*1.25+0.65+0.15,0) -- (1*1.25+0.65-0.15,-0.21);
+\draw (1*1.25,0.07) -- (2*1.25,0.07);
+\draw (1*1.25,-0.07) -- (2*1.25,-0.07);
+\foreach \x in {0,1,2,3} {
+\draw[fill=white] (1.25*\x,0) circle[radius=0.15];}
+\end{tikzpicture} \\
+$G_2$ &
+\begin{tikzpicture}
+[baseline={($ (current bounding box.center) - (0,3pt) $)}]
+\draw (0,0) edge (1.25,0);
+\draw (0.65-0.15,0.21) -- (0.65+0.15,0) -- (0.65-0.15,-0.21);
+\draw (0,0.11) -- (1.25,0.11);
+\draw (0,-0.11) -- (1.25,-0.11);
+\foreach \x in {0,1} {
+\draw[fill=white] (1.25*\x,0) circle[radius=0.15];}
+\end{tikzpicture}
+\end{tabular}
+\end{center}
+\een
+
+and no other. \v
+
+These are all the possible (connected) Dynkin diagrams.
+\et
+
+At last, we have achieved a classification of all simple finite-dimensional complex Lie algebras. The
+finite-dimensional semisimple complex Lie algebras are direct sums of simple Lie algebras, and correspond to
+disconnected Dynkin diagrams whose connected components are the ones listed above. \v
+
+Before we move on, let's spend some time to go through a detailed application of everything we have said so far. \v
+
+The application is going to be the reconstruction of \texorpdfstring{$A_2$}{A2} from its Dynkin diagram.
+
+\section{Application: Reconstruction Of \texorpdfstring{$A_2$}{A2} From Its Dynkin Diagram}
+
+We have seen how to construct the Dyknin diagram of a Lie algebra. Let us now consider the opposite direction, where
+we want to retrieve the Lie algebra given a Dyknin diagram. There is no general theory for that, we simply have to
+follow the opposite procedure of the theory we developed in the previous section, hence, we will provide a specific
+example. \v
+
+We will start from the $A_2$ Dynkin diagram:
+\begin{center}
+\begin{tikzpicture}
+\draw (0,0) -- (1.25,0);
+\draw[fill=white] (0,0) circle[radius=0.15];
+\draw[fill=white] (1.25,0) circle[radius=0.15];
+\end{tikzpicture}
+\end{center}
+
+We immediately see that we have two fundamental roots, i.e.\ $\Pi = \{\pi_1, \pi_2\}$, since there are two circles in
+the diagram. The bond number is $n_{12} = 1$, so the two fundamental roots have the same length. Moreover, by
+definition:
+\bse
+1=n_{12} = C_{12}C_{21}
+\ese
+
+\v
+
+and since the off-diagonal entries of the Cartan matrix are non-positive integers, the only possibility is
+$C_{12}=C_{21}=-1$, so that we have:
+\bse
+C = \biggl( \begin{matrix} 2 & -1\\ -1 & 2 \end{matrix}\biggr)
+\ese
+
+\v
+
+To determine the angle $\varphi$ between $\pi_1$ and $\pi_2$, recall that:
+\bse
+1 = n_{12} = 4 \cos^2\varphi
+\ese
+
+and hence, $|\cos\varphi|=\frac{1}{2}$. There are two solutions, namely $\varphi=60^\circ$ and $\varphi=120^\circ$.
+\begin{center}
+\begin{tikzpicture}[xscale=0.8,yscale=1.6]
+\draw[->] (-1,0) -- (7.2,0) node[below] {$x$};
+\draw[->] (0,-1.5) -- (0,1.5) node[left] {$y$};
+\foreach \i/\j in {-2/-1,-1/-\frac{1}{2},1/\frac{1}{2},2/1} {
+\draw (-0.1,0.5*\i) -- (0.1,0.5*\i) node[left=3pt] {$\j$};}
+\draw (0,0) node[below left] {$0$};
+\draw[gray,dashed] (0,0.5) -| (pi/3,0);
+\draw (pi/3,0) node[below] {$60^\circ$};
+\draw[gray,dashed] (0,-0.5) -| (2*pi/3,0);
+\draw (2*pi/3,0) node[above] {$120^\circ$};
+\draw (pi,0.05) -- (pi,-0.05) node[below] {$180^\circ$};
+\draw (2*pi,-0.05) -- (2*pi,0.05) node[above] {$360^\circ$};
+\draw[thick,smooth,samples=100,variable=\x,domain=0:2*pi] plot(\x, {cos(deg(\x))}) node[right] {$\cos x$};
+\end{tikzpicture}
+\end{center}
+
+\v
+
+By definition, we have:
+\bse
+\cos \varphi = \frac{\kappa^*(\pi_1,\pi_2)}{|\pi_1|\,|\pi_2|}
+\ese
+
+and therefore:
+\bse
+0 > C_{12} = 2\frac{\kappa^*(\pi_1,\pi_2)}{\kappa^*(\pi_1,\pi_1)}
+= 2\frac{|\pi_1|\,|\pi_2|\cos\varphi}{\kappa^*(\pi_1,\pi_1)} = 2\frac{|\pi_2|}{|\pi_1|}\cos\varphi
+\ese
+
+\v
+
+It follows that $\cos\varphi<0$, and hence, $\varphi = 120^\circ$. We can thus plot the two fundamental roots in a
+plane as follows:
+\begin{center}
+\begin{tikzpicture}[scale=2]
+\draw[thin,lightgray] (-1.5,0) -- (1.5,0);
+\draw[thin,lightgray] (0,-1.25) -- (0,1.25);
+\draw[thick,->] (0,0) -- (1,0) node[above right] {$\pi_1$};
+\draw[thick,->] (0,0) -- (cos 120,sin 120) node[above left] {$\pi_2$};
+\end{tikzpicture}
+\end{center}
+
+We can determine all the other roots in $\Phi$ by repeated action of the Weyl group. For instance, we easily find
+that $s_{\pi_1}(\pi_1) = -\pi_1$ and $s_{\pi_2}(\pi_2) = -\pi_2$. We also have:
+\bse
+s_{\pi_1}(\pi_2) = \pi_2-2\frac{\kappa^*(\pi_1,\pi_2)}{\kappa^*(\pi_1,\pi_1)}\pi_1
+= \pi_2 -2 (-\tfrac{1}{2}) \pi_1 = \pi_1+\pi_2
+\ese
+
+Finally, we have $s_{\pi_1+\pi_2}(\pi_1+\pi_2)=-(\pi_1+\pi_2)$. Any further action by Weyl transformations simply
+permutes these roots. Hence, we have:
+\bse
+\Phi=\{\pi_1,-\pi_1,\pi_2,-\pi_2,\pi_1+\pi_2,-(\pi_1+\pi_2)\}
+\ese
+
+and these are all the roots.
+\begin{center}
+\begin{tikzpicture}[scale=2]
+\draw[thin,lightgray] (-1.5,0) -- (1.5,0);
+\draw[thin,lightgray] (0,-1.25) -- (0,1.25);
+\draw[thick,->] (0,0) -- (1,0) node[above right] {$\pi_1$};
+\draw[thick,->] (0,0) -- (cos 120,sin 120) node[above left] {$\pi_2$};
+\draw[thick,->] (0,0) -- (-1,0) node[above left] {$-\pi_1$};
+\draw[thick,->] (0,0) -- (-cos 120,-sin 120) node[below right]{$-\pi_2$};
+\draw[thick,->] (0,0) -- (cos 60,sin 60) node[above right]{$\pi_1+\pi_2$};
+\draw[thick,->] (0,0) -- (-cos 60,-sin 60) node[below left] {$-(\pi_1+\pi_2)$};
+\end{tikzpicture}
+\end{center}
+
+\v
+
+Since $H^*=\lspan_\C(\Pi)$, we have $\dim H^*=2$, thus the dimension of the Cartan subalgebra is also $2$. Since
+$|\Phi|=6$, we know that any Cartan-Weyl basis of the Lie algebra $A_2$ must have $2+6=8$ elements. Hence, the
+dimension of $A_2$ is 8. \v
+
+To complete our reconstruction of $A_2$, we would now like to understand how its bracket behaves. This amounts to
+finding its structure constants. Note that since $\dim A_2 = 8$, the structure constants $C^k_{\phantom{h}ij}$
+consist of $8^3=512$ complex numbers (not all unrelated, of course). \v
+
+Denote by $\{h_1,h_2,e_3,\ldots,e_8\}$ a Cartan-Weyl basis of $A_2$, so that $H=\lspan_\C(\{h_1,h_2\})$ and the
+$e_\alpha$ are eigenvectors of every $h\in H$. Since $A_2$ is simple, $H$ is abelian and hence:
+\bse
+[h_1,h_2] = 0 \quad \Rightarrow \quad C^k_{\phantom{k}12}=C^k_{\phantom{k}21} = 0, \quad \forall \, 1\leq k \leq 8
+\ese
+
+To each $e_\alpha$, for $3\leq \alpha \leq 8$, there is an associated $\lambda_\alpha\in\Phi$ such that:
+\bse
+\forall \, h \in H : \ \ad(h)e_\alpha = \lambda_\alpha(h) e_\alpha
+\ese
+
+In particular, for the basis elements $h_1,h_2$:
+\bi{rCl}
+[h_1,e_\alpha] & = & \ad(h_1)e_\alpha = \lambda_\alpha(h_1) e_\alpha\\
+{[h_2,e_\alpha]} & = & \ad(h_2)e_\alpha = \lambda_\alpha(h_2) e_\alpha
+\ei
+
+so that we have:
+\bi{rCl}
+C^1_{\phantom{1}1\alpha}=C^2_{\phantom{2}1\alpha}=0, &\quad & C^\alpha_{\phantom{\alpha}1\alpha}
+= \lambda_\alpha (h_1), \quad \forall \, 3\leq \alpha \leq 8\\
+C^1_{\phantom{1}2\alpha}=C^2_{\phantom{2}2\alpha}=0, &\quad & C^\alpha_{\phantom{\alpha}2\alpha}
+= \lambda_\alpha (h_2), \quad \forall \, 3\leq \alpha \leq 8
+\ei
+
+Finally, we need to determine $[e_\alpha,e_\beta]$. By using the Jacobi identity, we have:
+\bi{rCl}
+[h_i,[e_\alpha,e_\beta]] & = & - [e_\alpha,[e_\beta,h_i]] -[e_\beta,[h_i,e_\alpha]] \\
+& = & - [e_\alpha,-\lambda_\beta(h_i)e_\beta] -[e_\beta,\lambda_\alpha(h_i) e_\alpha] \\
+& = & \lambda_\beta(h_i) [e_\alpha,e_\beta] +\lambda_\alpha(h_i)[e_\alpha, e_\beta]\\
+& = & (\lambda_\alpha(h_i)+\lambda_\beta(h_i) )[e_\alpha,e_\beta]
+\ei
+
+that is:
+\bse
+\ad(h_i)[e_\alpha,e_\beta] = (\lambda_\alpha(h_i)+\lambda_\beta(h_i) )[e_\alpha,e_\beta]
+\ese
+
+\v
+
+If $\lambda_\alpha+\lambda_\beta\in\Phi$, we have $[e_\alpha,e_\beta]=\xi e_\gamma$ for some $3\leq \gamma \leq 8$
+and $\xi \in \C$. Let us label the roots in our previous plot as:
+\begin{center}
+\def\arraystretch{1.25}
+\setlength\tabcolsep{10pt}
+\begin{tabular}{c|c|c|c|c|c}
+$\lambda_3$ & $\lambda_4$ & $\lambda_5$ & $\lambda_6$ & $\lambda_7$ & $\lambda_8$ \\
+\hline
+$\pi_1$ & $\pi_2$ & $\pi_1+\pi_2$ & $-\pi_1$ & $-\pi_2$ & $-(\pi_1+\pi_2)$
+\end{tabular}
+\end{center}
+
+\v
+
+Then, for example:
+\bse
+\ad(h)[e_3,e_4] = (\pi_1+\pi_2)(h) [e_3,e_4]
+\ese
+
+\v
+
+and hence, $[e_3,e_4]$ is an eigenvector of $\ad(h)$ with eigenvalues $ (\pi_1+\pi_2)(h)$. But so is $e_5$! hence, we
+must have $[e_3,e_4]=\xi e_5$ for some $\xi \in \C$. Similarly, $[e_5, e_7]=\xi e_3$, and so on. \v
+
+If $\lambda_\alpha+\lambda_\beta\notin\Phi$, then in order for the equation above to hold, we must have either
+$[e_\alpha,e_\beta]=0$ (so both sides are zero), or $\lambda_\alpha(h) +\lambda_\beta(h)=0$ for all $h$, i.e.\
+$\lambda_\alpha+\lambda_\beta=0$ as a functional. In the latter case, we must have $[e_\alpha,e_\beta]\in H$. This
+follows from a stronger version of the maximality property of the Cartan subalgebra $H$ of a simple Lie algebra $L$,
+namely that:
+\bse
+\big(\forall \, h \in H : [h,x] = 0 \big) \Rightarrow x\in H
+\ese
+
+Summarising, we have:
+\bse
+[e_\alpha,e_\beta] = \begin{cases}
+\xi e_\gamma & \text{if } \lambda_\alpha+\lambda_\beta\in\Phi \\
+\in H & \text{if } \lambda_\alpha+\lambda_\beta=0 \\
+0 & \text{otherwise }
+\end{cases}
+\ese
+
+\v
+
+and these relations con be used to determine the remaining structure constants of $A_2$.
+
+\section{Representations Of Lie Algebras}
+
+In general, representation theory is a branch of mathematics that studies abstract algebraic structures by
+representing their elements as linear transformations of vector spaces, and studies modules over these abstract
+algebraic structures. \v
+
+In essence, a representation makes an abstract algebraic object more concrete by describing its elements by matrices
+and their algebraic operations (for example, matrix addition, matrix multiplication). The theory of matrices and
+linear operators is well-understood, so representations of more abstract objects in terms of familiar linear algebra
+objects helps glean properties and sometimes simplify calculations on more abstract theories. \v
+
+More specifically, a Lie algebra representation or representation of a Lie algebra is a way of writing a Lie algebra
+as a set of matrices (or endomorphisms of a vector space) in such a way that the Lie bracket is given by the
+commutator. In the language of physics, one looks for a vector space $V$ together with a collection of operators on
+$V$ satisfying some fixed set of commutation relations, such as the relations satisfied by the angular momentum
+operators. \v
+
+The notion is closely related to that of a representation of a Lie group. Roughly speaking, the representations of
+Lie algebras are the differentiated form of representations of Lie groups, while the representations of the universal
+cover of a Lie group are the integrated form of the representations of its Lie algebra. \v
+
+In the study of representations of a Lie algebra, a particular ring, called the universal enveloping algebra,
+associated with the Lie algebra plays an important role. The universality of this ring says that the category of
+representations of a Lie algebra is the same as the category of modules over its enveloping algebra. \v
+
+Let's begin by defining the concept of a representation of a Lie algebra.
+
+\bd [Representations Of Lie Algebra]
+Let $L$ be a Lie algebra. A \textbf{representation} of $L$ is a Lie algebra homomorphism:
+\bse
+\rho\cl L \xrightarrow{\sim} \End(V)
+\ese
+
+\v
+
+where $V$ is some finite-dimensional vector space over the same field as $L$.
+\ed
+
+Recall that a linear map $\rho\cl L \xrightarrow{\sim} \End(V)$ is a Lie algebra homomorphism if:
+\bse
+\forall \, x,y\in L : \ \rho([x,y]) = [\rho(x),\rho(y)] \coloneqq \rho(x) \circ\rho(y)-\rho(y)\circ\rho(x)
+\ese
+
+where the right hand side is the natural Lie bracket on $\End(V)$.
+
+\bd [Representation Space]
+Let $\rho\cl L \xrightarrow{\sim}\End(V)$ be a representation of $L$. The vector space $V$ is called the
+\textbf{representation space} of $\rho$.
+\ed
+
+\bd [Dimension Of Representation]
+Let $\rho\cl L \xrightarrow{\sim}\End(V)$ be a representation of $L$. The \textbf{dimension of the representation}
+$\rho$ is $\dim V$.
+\ed
+
+Let's provide 2 examples.
+
+\be
+Consider the Lie algebra $\sl(2,\C)$. We constructed a basis $\{X_1,X_2,X_3\}$ satisfying the relations:
+\bi{rCl}
+[X_1,X_2] & = & 2X_2\\ {[X_1,X_3]} & = & -2X_3\\ {[X_2,X_3]} & = & X_1
+\ei
+
+Let $\rho\cl\sl(2,\C)\xrightarrow{\sim}\End(\C^2)$ be the linear map defined by:
+\bse
+\rho(X_1) \coloneqq \biggl(\begin{matrix} 1& 0\\ 0 & -1 \end{matrix}\biggr), \qquad
+\rho(X_2) \coloneqq \biggl(\begin{matrix} 0& 1\\ 0 & 0 \end{matrix}\biggr), \qquad
+\rho(X_3) \coloneqq \biggl(\begin{matrix} 0& 0\\ 1 & 0 \end{matrix}\biggr)
+\ese
+
+Recall that a linear map is completely determined by its action on a basis, by linear continuation. To check that
+$\rho$ is a representation of $\sl(2,\C)$, we calculate:
+\bi{rCl}
+[\rho(X_1),\rho(X_2)] & = &
+\biggl(\begin{matrix} 1& 0\\ 0 & -1 \end{matrix}\biggr)
+\biggl(\begin{matrix} 0& 1\\ 0 & 0 \end{matrix}\biggr) -
+\biggl(\begin{matrix} 0& 1\\ 0 & 0 \end{matrix}\biggr)
+\biggl(\begin{matrix} 1& 0\\ 0 & -1\end{matrix}\biggr) \\[5pt]
+& = & \biggl(\begin{matrix} 0& 2\\ 0 & 0 \end{matrix}\biggr)\\ [5pt]
+& = &\rho(2X_2)\\ & = &\rho([X_1,X_2])
+\ei
+
+Similarly, we find:
+\bi{rCl}
+[\rho(X_1),\rho(X_3)] & = & \rho([X_1,X_3])\\ {[\rho(X_2),\rho(X_3)]} & = & \rho([X_2,X_3])
+\ei
+
+By linear continuation, $\rho([x,y]) = [\rho(x),\rho(y)]$ for any $x,y\in \sl(2,\C)$ and hence, $\rho$ is a
+$2$-dimensional representation of $\sl(2,\C)$ with representation space $\C^2$. Note that we have:
+\bi{rCl}
+\im_\rho(\sl(2,\C)) & = & \biggl\{ \biggl(\begin{matrix} a& b\\ c & d \end{matrix}\biggr)
+\in \End(\C^2) \ \Big| \ a+d = 0 \biggr\}\\[5pt] & = & \{\phi\in\End(\C^2)\mid \tr \phi = 0\}
+\ei
+
+This is how $\sl(2,\C)$ is often defined in physics courses, i.e.\ as the algebra of $2\times 2$ complex traceless
+matrices. \ee
+
+\be
+Consider $\so(3,\R)$, the Lie algebra of the rotation group $\SO(3,\R)$. It is a $3$-dimensional Lie algebra over
+$\R$. It has a basis $\{J_1,J_2,J_3\}$ satisfying:
+\bse
+[J_i,J_j] = C^{k}_{\phantom{k}ij} J_k
+\ese
+
+where the structure constants $C^{k}_{\phantom{k}ij}$ are defined by first ``pulling the index $k$ down'' using the
+Killing form $\kappa_{ab}=C^{m}_{\phantom{m}an} C^{n}_{\phantom{n}bm}$ to obtain $C_{kij} \coloneqq \kappa_{km} C^{m}_{\phantom{m}ij}$,
+and then setting:
+\bse
+C_{kij} \coloneqq \varepsilon_{ijk} \coloneqq
+\begin{cases}
+\ 1 & \text{ if $(i\,j\, k)$ is an even permutation of $ (1\, 2\, 3)$} \\
+-1 & \text{ if $(i\, j\, k)$ is an odd permutation of $(1\, 2\, 3)$} \\
+\ 0 & \text{ otherwise}
+\end{cases}
+\ese
+
+By evaluating these, we find:
+\bi{rCl}
+[J_1,J_2] & = & J_3\\ {[J_2,J_3]} & = & J_1\\ {[J_3,J_1]} & = & J_2
+\ei
+
+Define a linear map $\rho_{\mathrm{vec}}\cl\so(3,\R)\xrightarrow{\sim}\End(\R^3)$ by:
+\bse
+\rho_{\mathrm{vec}}(J_1) \coloneqq
+\begin{pmatrix} 0 & 0 & 0\\ 0 & 0 & -1\\ 0 & 1 & 0 \end{pmatrix}, \qquad \rho_{\mathrm{vec}}(J_2) \coloneqq
+\begin{pmatrix} 0 & 0 & 1\\ 0 & 0 & 0\\ -1 & 0 & 0 \end{pmatrix}, \qquad \rho_{\mathrm{vec}}(J_3) \coloneqq
+\begin{pmatrix} 0 & -1 & 0\\ 1 & 0 & 0\\ 0 & 0 & 0 \end{pmatrix}
+\ese
+
+\v
+
+You can easily check that this is a representation of $\so(3,\R)$. However, as you may be aware from quantum
+mechanics, there is another representation of $\so(3,\R)$, namely:
+\bse
+\rho_{\mathrm{spin}}\cl\so(3,\R)\xrightarrow{\sim}\End(\C^2)
+\ese
+
+with $\C^2$ understood as a $4$-dimensional $\R$-vector space, defined by:
+\bse
+\rho_{\mathrm{spin}}(J_1) \coloneqq -\frac{\mathrm{i}}{2}\, \sigma_1, \qquad \rho_{\mathrm{spin}}(J_2) \coloneqq
+-\frac{\mathrm{i}}{2}\, \sigma_2, \qquad \rho_{\mathrm{spin}}(J_3) \coloneqq -\frac{\mathrm{i}}{2}\, \sigma_3
+\ese
+
+where $\sigma_1,\sigma_2,\sigma_3$ are the Pauli matrices:
+\bse
+\sigma_1 = \biggl(\begin{matrix} 0& 1\\ 1 & 0 \end{matrix}\biggr), \qquad
+\sigma_2 = \biggl(\begin{matrix} 0& -\mathrm{i}\\ \mathrm{i} & 0 \end{matrix}\biggr), \qquad
+\sigma_3 = \biggl(\begin{matrix} 1& 0\\ 0 & -1 \end{matrix}\biggr)
+\ese
+
+You can again check that this is a representation of $\so(3,\R)$. \v
+
+Notice that the two representations have different dimensions:
+\bse
+\dim \R^3 = 3 \neq 4 = \dim \C^2
+\ese
+\ee
+
+Any (non-abelian) Lie algebra always has at least two special representations.
+
+\bd [Trivial Representation]
+Let $L$ be a Lie algebra. A \textbf{trivial representation} of $L$ is defined by:
+\bi{rrCl}
+\rho_{\mathrm{trv}} \cl & L & \xrightarrow{\sim} & \End(V) \\ & x & \mapsto & \rho_{\mathrm{trv}}(x) \coloneqq 0
+\ei
+
+where $0$ denotes the trivial endomorphism on $V$.
+\ed
+
+This is indeed a representation for any $L$ since:
+\bse
+\forall\, x,y \in L : \ \rho_\mathrm{trv}([x,y]) = 0 = [\rho_\mathrm{trv}(x),\rho_\mathrm{trv}(y)]
+\ese
+
+\bd [Ajdoint Representation]
+The \textbf{adjoint representation} of $L$ is:
+\bi{rrCl}
+\rho_{\mathrm{adj}} \cl & L & \xrightarrow{\sim} & \End(L)\\ & x & \mapsto & \rho_{\mathrm{adj}}(x) \coloneqq \ad(x)
+\ei
+\ed
+
+Hence, the adjoint map we have been using is actually a representation (we have already shown that $\ad$ is a Lie
+algebra homomorphism):
+
+\bd [Faithful Representation]
+A representation $\rho\cl L \xrightarrow{\sim} \End(V)$ is called \textbf{faithful} if $\rho$ is injective, i.e.\ :
+\bse
+\dim(\im_\rho(L)) = \dim L
+\ese
+\ed
+
+Let's give an example on faithful representations.
+
+\be
+All representations considered so far are faithful, except for the trivial representations whenever the Lie algebra
+$L$ is not itself trivial. Consider, for instance, the adjoint representation. We have:
+\bi{rCl}
+\ad(x) = \ad(y) & \Leftrightarrow & \forall \, z \in L : \ad(x)z = \ad(y)z\\
+& \Leftrightarrow & \forall \, z \in L : [x,z] = [y,z]\\
+& \Leftrightarrow & \forall \, z \in L : [x-y,z] = 0
+\ei
+
+If $L$ is trivial, then any representation is faithful. Otherwise, there is some non-zero $z\in L$, hence, we must
+have $x-y=0$, so $x=y$, and thus $\ad$ is injective.
+\ee
+
+\bd [Direct Sum / Tensor Product Representations]
+Given two representations $\rho_1\cl L \xrightarrow{\sim} \End(V_1)$, $\rho_2\cl L \xrightarrow{\sim} \End(V_2)$, we
+can construct new representations called:
+\ben[label=\roman*)]
+\item The \textbf{direct sum representation}:
+\bi{rrCl}
+\rho_1\oplus \rho_2 \cl & L &\xrightarrow{\sim} &\End(V_1\oplus V_2)\\
+& x & \mapsto & (\rho_1\oplus \rho_2) (x) \coloneqq \rho_1(x)\oplus \rho_2(x)
+\ei
+
+\item The \textbf{tensor product representation}:
+\bi{rrCl}
+\rho_1\otimes \rho_2 \cl & L &\xrightarrow{\sim} &\End(V_1\times V_2)\\
+& x & \mapsto & (\rho_1\otimes \rho_2) (x) \coloneqq \rho_1(x)\otimes \id_{V_2}+\id_{V_1}\otimes \rho_2(x)
+\ei
+\een
+\ed
+
+Let's give an example on direct sum representation.
+
+\be
+The direct sum representation $\rho_{\mathrm{vec}}\oplus \rho_{\mathrm{spin}}\cl \so(3,\R)\xrightarrow{\sim}\End
+(\R^3\oplus\C^2)$ given in block-matrix form by:
+\bse
+(\rho_{\mathrm{vec}}\oplus \rho_{\mathrm{spin}})(x)
+= \left(\begin{array}{c|c} \rho_{\mathrm{vec}}(x) & 0 \\ \hline 0 & \rho_{\mathrm{spin}}(x) \end{array}\right)
+\ese
+
+\v
+
+is a $7$-dimensional representation of $\so(3,\R)$.
+\ee
+
+\bd [Reducible Representation]
+A representation $\rho\cl L \xrightarrow{\sim} \End(V)$ is called \textbf{reducible} if there exists a non-trivial
+vector subspace $U\se V$ which is invariant under the action of $\rho$, i.e.\ :
+\bse
+\forall \, x\in L: \forall \, u\in U : \ \rho(x)u\in U
+\ese
+
+In other words, $\rho$ restricts to a representation $\rho|_U\cl L\xrightarrow{\sim} \End(U)$.
+\ed
+
+\bd [Irreducible Representation]
+A representation is \textbf{irreducible} if it is not reducible.
+\ed
+
+\be
+\ben[label=\roman*)]
+\item The representation $\rho_{\mathrm{vec}}\oplus \rho_{\mathrm{spin}}\cl \so(3,\R)\xrightarrow{\sim}\End
+(\R^3\oplus\C^2)$ is reducible since, for example, we have a subspace $\R^3\oplus 0$ such that:
+\bse
+\forall \, x \in \so(3,\R): \forall \, u\in \R^3\oplus 0 : \
+(\rho_{\mathrm{vec}}\oplus \rho_{\mathrm{spin}}) (x) u\in\R^3\oplus 0
+\ese
+
+\item The representations $\rho_{\mathrm{vec}}$ and $\rho_{\mathrm{spin}}$ are both irreducible.
+\een
+\ee
+
+Just like the simple Lie algebras are the building blocks of all semisimple Lie algebras, the irreducible
+representations of a semisimple Lie algebra are the building blocks of all finite-dimensional representations of the
+Lie algebra. Any such representation con be decomposed as the direct sum of irreducible representations, which can
+then be classified according to their so-called \emph{highest weights}.
+
+\subsection{The Casimir Operator}
+
+To every representation $\rho$ of a compact Lie algebra (i.e.\ the Lie algebra of a compact Lie group) there is
+associated an operator $\Omega_\rho$, called the Casimir operator. We will need some preparation in order to define it.
+
+\bd [$\rho$-Killing Form]
+Let $\rho\cl L \xrightarrow{\sim} \End(V)$ be a representation of a complex Lie algebra $L$. We define the
+\textbf{$\rho$-Killing form} on $L$ as:
+\bi{rrCl}
+\kappa_\rho \cl & L \times L & \xrightarrow{\sim} & \C\\ & (x,y) & \mapsto
+& \kappa_\rho(x,y) \coloneqq \tr(\rho(x)\circ\rho(y))
+\ei
+\ed
+
+Of course, the Killing form we have considered so far is just $\kappa_{\ad}$. Similarly to $\kappa_{\ad}$, every
+$\kappa_\rho$ is symmetric and associative with respect to the Lie bracket of $L$.
+
+\bt[]
+Let $\rho\cl L \xrightarrow{\sim} \End(V)$ be a faithful representation of a complex semisimple Lie algebra $L$.
+Then, $\kappa_\rho$ is non-degenerate.
+\et
+
+Hence, $\kappa_\rho$ induces an isomorphism $L\xrightarrow{\sim}L^*$ via:
+\bse
+L \ni x \mapsto \kappa_\rho(x,-) \in L^*
+\ese
+
+Recall that if $\{X_1,\ldots,X_{\dim L}\}$ is a basis of $L$, then the dual basis $\{\widetilde X^1,\ldots,\widetilde
+X^{\dim L}\}$ of $L^*$ is defined by:
+\bse
+\widetilde X^i(X_j) = \delta_j^i
+\ese
+
+By using the isomorphism induced by $\kappa_\rho$, we can find some $\xi_1, \ldots,\xi_{\dim L}\in L$ such that we
+have $\kappa(\xi_i,-)=\widetilde X^i$ or, equivalently:
+\bse
+\forall \, x\in L : \ \kappa_{\rho}(x,\xi_i) = \widetilde X^i(x)
+\ese
+
+We thus have:
+\bse
+\kappa_\rho(X_i,\xi_j)
+= \delta_{ij} \coloneqq \begin{cases} 1 & \text{if }i\neq j\\ 0 & \text{otherwise} \end{cases}
+\ese
+
+\bt[]
+Let $\{X_i\}$ and $\{\xi_j\}$ be defined as above. Then:
+\bse
+[X_j,\xi_k] = \sum_{m = 1}^{\dim L} C^{k}_{\phantom{k}mj}\xi_m
+\ese
+
+where $C^{k}_{\phantom{k}mj}$ are the structure constants with respect to $\{X_i\}$.
+\et
+
+Let's prove this!
+
+\bq
+By using the associativity of $\kappa_\rho$, we have:
+\bse
+\kappa_\rho(X_i,[X_j,\xi_k]) = \kappa_\rho([X_i,X_j],\xi_k) =
+C^{m}_{\phantom{m}ij} \kappa_\rho(X_m,\xi_k) =
+C^{m}_{\phantom{m}ij} \delta_{mk} = C^{k}_{\phantom{k}ij}
+\ese
+
+But we also have:
+\bse
+\kappa_\rho\Bigl(X_i,\sum_{m=1}^{\dim L}C^{k}_{\phantom{k}mj} \xi_m \Bigr) = \sum_{m=1}^{\dim L}C^{k}_{\phantom{k}mj}
+\kappa_\rho(X_i,\xi_m) = \sum_{m=1}^{\dim L}C^{k}_{\phantom{k}mj} \delta_{im} = C^{k}_{\phantom{k}ij}
+\ese
+
+Therefore:
+\bse
+\forall \, 1\leq i \leq \dim L : \ \kappa_\rho\Bigl(X_i,[X_j,
+\xi_k]-\sum_{m=1}^{\dim L}C^{k}_{\phantom{k}mj} \xi_m \Bigr) = 0
+\ese
+
+and hence, the result follows from the non-degeneracy of $\kappa_{\rho}$.
+\eq
+
+We are now ready to define the Casimir operator.
+
+\bd [Casimir Operator]
+Let $\rho\cl L \xrightarrow{\sim} \End(V)$ be a faithful representation of a complex (compact) Lie algebra $L$ and
+let $\{X_1,\ldots,X_{\dim L}\}$ be a basis of $L$. The \textbf{Casimir operator} associated to the representation
+$\rho$ is the endomorphism $\Omega_\rho\cl V \xrightarrow{\sim} V$:
+\bse
+\Omega_\rho \coloneqq \sum_{i=1}^{\dim L} \rho(X_i) \circ \rho(\xi_i)
+\ese
+\ed
+
+Using the Casimir operator we have the following theorem.
+
+\bt[]
+Let $\Omega_\rho$ the Casimir operator of a representation $\rho\cl L\xrightarrow{\sim} \End(V)$. Then:
+\bse
+\forall \, x \in L : \ [\Omega_\rho,\rho(x)] = 0
+\ese
+
+that is, $\Omega_\rho$ commutes with every endomorphism in $\im_\rho(L)$.
+\et
+
+Let's prove this theorem.
+
+\bq
+Note that the bracket above is that on $\End(V)$. Let $x=x^k X_k\in L$. Then:
+\bi{rCl}
+[\Omega_\rho,\rho(x)] & = & \biggl[\, \sum_{i=1}^{\dim L} \rho(X_i) \circ \rho(\xi_i), \rho(x^kX_k)\biggr]\\
+& = & \sum_{i,k=1}^{\dim L} x^k [\rho(X_i) \circ \rho(\xi_i), \rho(X_k)]
+\ei
+
+Observe that if the Lie bracket as the commutator with respect to an associative product, as is the case for $\End(V)
+$, we have:
+\bi{rCl}
+[AB,C] & = & ABC - CBA \\ & = & ABC - CBA -ACB +ACB \\ & = & A[B,C] + [A,C]B
+\ei
+
+Hence, by applying this, we obtain:
+\bi{rCl}
+\sum_{i,k=1}^{\dim L} x^k [\rho(X_i) \circ \rho(\xi_i), \rho(X_k)]
+& = & \sum_{i,k=1}^{\dim L} x^k \bigl(\rho(X_i) \circ [\rho(\xi_i), \rho(X_k)]+[\rho(X_i),
+\rho(X_k)]\circ \rho(\xi_i)\bigr)\\
+& = & \sum_{i,k=1}^{\dim L} x^k \bigl(\rho(X_i) \circ \rho([\xi_i, X_k])+\rho([X_i,X_k])\circ \rho(\xi_i)\bigr)\\ [5pt]
+& = & \sum_{i,k,m=1}^{\dim L} x^k \bigl(\rho(X_i) \circ \rho (-C^{i}_{\phantom{i}mk}\xi_m)+\rho
+(C^{m}_{\phantom{m}ik}X_m)\circ \rho(\xi_i)\bigr)\\ [5pt]
+& = & \sum_{i,k,m=1}^{\dim L} x^k \bigl(-C^{i}_{\phantom{i}mk}\rho(X_i) \circ \rho(\xi_m)+C^{m}_{\phantom{m}ik}\rho
+(X_m)\circ \rho(\xi_i)\bigr)\\ [5pt]
+& = & \sum_{i,k,m=1}^{\dim L} x^k \bigl(-C^{i}_{\phantom{i}mk}\rho(X_i) \circ \rho(\xi_m)+C^{i}_{\phantom{i}mk}\rho
+(X_i)\circ \rho(\xi_m)\bigr)\\ [5pt]
+& = & 0
+\ei
+
+where we have swapped the dummy summation indices $i$ and $m$ in the second term.
+\eq
+
+\bt[Schur]
+If $\rho\cl L \xrightarrow{\sim} \End(V)$ is irreducible, then any operator $S$ which commutes with every
+endomorphism in $\im_\rho(L)$ has the form:
+\bse
+S = c_\rho \id_V
+\ese
+
+\v
+
+for some constant $c_\rho\in \C$ (or $\R$, if $L$ is a real Lie algebra).
+\et
+
+From this theorem follows immediately that $\Omega_\rho = c_\rho \id_V$ for some $c_\rho$ but, in fact, we can say more.
+\bt[]
+The Casimir operator of $\rho\cl L \xrightarrow{\sim} \End(V)$ is $\Omega_\rho = c_\rho \id_V$, where:
+\bse
+c_\rho = \frac{\dim L}{\dim V}
+\ese
+\et
+
+Let's prove this!
+
+\bq
+We have:
+\bse
+\tr(\Omega_\rho) = \tr(c_\rho\id_V) = c_\rho \dim V
+\ese
+
+and:
+\bi{rCl}
+\tr(\Omega_\rho) & = & \tr \biggl(\, \sum_{i=1}^{\dim L} \rho(X_i) \circ \rho(\xi_i) \biggr)\\[5pt]
+& = & \sum_{i=1}^{\dim L} \tr(\rho(X_i) \circ \rho(\xi_i) )\\[5pt]
+& = & \sum_{i=1}^{\dim L} \kappa_\rho(X_i,\xi_i)\\[5pt]
+& = & \sum_{i=1}^{\dim L} \delta_{ii}\\[5pt]
+& = & \dim L
+\ei
+
+which is what we wanted.
+\eq
+
+Before we finish this chapter, let's give a detailed example of representations through an application.
+
+\section{Application: Representations Of $\so(3,\R)$}
+
+Consider the Lie algebra $\so(3,\R)$ with basis $\{J_1,J_2,J_3\}$ satisfying:
+\bse
+[J_i,J_j] = \varepsilon_{ijk}J_k
+\ese
+
+where we assume the summation convention on the lower index $k$. Recall that the representation
+$\rho_{\mathrm{vec}}\cl\so(3,\R)\xrightarrow{\sim}\End(\R^3)$ is defined by:
+
+\bse
+\rho_{\mathrm{vec}}(J_1) \coloneqq \begin{pmatrix} 0 & 0 & 0\\ 0 & 0 & -1\\ 0 & 1 & 0 \end{pmatrix}, \qquad
+\rho_{\mathrm{vec}}(J_2) \coloneqq \begin{pmatrix} 0 & 0 & 1\\ 0 & 0 & 0\\ -1 & 0 & 0 \end{pmatrix}, \qquad
+\rho_{\mathrm{vec}}(J_3) \coloneqq \begin{pmatrix} 0 & -1 & 0\\ 1 & 0 & 0\\ 0 & 0 & 0 \end{pmatrix}.
+\ese
+
+Let us first evaluate the components of $\kappa_{\rho_{\mathrm{vec}}}$. We have:
+\bi{rCl}
+(\kappa_{\rho_{\mathrm{vec}}})_{11} \coloneqq \kappa_{\rho_{\mathrm{vec}}} (J_1,J_1) & = & \tr(\rho_{\mathrm{vec}}
+(J_1)\circ \rho_{\mathrm{vec}}(J_1)) \\[5pt]
+& = & \tr((\rho_{\mathrm{vec}}(J_1))^2)\\[5pt]
+& = & \tr\begin{pmatrix} 0 & 0 & 0\\ 0 & 0 & -1\\ 0 & 1 & 0 \end{pmatrix}^{\negmedspace 2}\\[5pt]
+& = & \tr\begin{pmatrix} 0 & 0 & 0\\ 0 & -1 & 0\\ 0 & 0 & -1 \end{pmatrix}\\[5pt]
+& = & -2
+\ei
+
+After calculating the other components similarly, we find:
+\bse
+[(\kappa_{\rho_{\mathrm{vec}}})_{ij}] = \begin{pmatrix} -2 & 0 & 0\\ 0 & -2 & 0\\ 0 & 0 & -2 \end{pmatrix}
+\ese
+
+Thus, $\kappa_{\rho_{\mathrm{vec}}}(J_i,\xi_j)=\delta_{ij}$ requires that we define $\xi_i \coloneqq -\tfrac{1}{2}
+J_i$. Then, we have:
+\bi{rCl}
+\Omega_{\rho_{\mathrm{vec}}} & \coloneqq & \sum_{i=1}^{3} \rho_{\mathrm{vec}}(J_i) \circ \rho_{\mathrm{vec}}(\xi_i)\\[5pt]
+& = & \sum_{i=1}^{3} \rho_{\mathrm{vec}}(J_i) \circ \rho_{\mathrm{vec}}(-\tfrac{1}{2} J_i)\\[5pt]
+& = & -\frac{1}{2} \sum_{i=1}^{3} (\rho_{\mathrm{vec}}(J_i))^2\\[5pt]
+& = & -\frac{1}{2} \left( \begin{pmatrix} 0 & 0 & 0\\ 0 & 0 & -1\\ 0 & 1 & 0 \end{pmatrix}^{\negmedspace 2} +
+\begin{pmatrix} 0 & 0 & 1\\ 0 & 0 & 0\\ -1 & 0 & 0\end{pmatrix}^{\negmedspace 2} +
+\begin{pmatrix} 0 & -1 & 0\\ 1 & 0 & 0\\ 0 & 0 & 0\end{pmatrix}^{\negmedspace 2}\ \right)\\[5pt]
+& = & -\frac{1}{2} \left( \begin{pmatrix} 0 & 0 & 0\\ 0 & -1 & 0\\ 0 & 0 & -1 \end{pmatrix} +
+\begin{pmatrix} -1 & 0 & 0\\ 0 & 0 & 0\\ 0 & 0 & -1 \end{pmatrix} +
+\begin{pmatrix} -1 & 0 & 0\\ 0 & -1 & 0\\ 0 & 0 & 0 \end{pmatrix} \right)\\[5pt]
+& = & \begin{pmatrix} 1 & 0 & 0\\ 0 & 1 & 0\\ 0 & 0 & 1 \end{pmatrix}
+\ei
+
+Hence, $\Omega_{\rho_{\mathrm{vec}}}=c_{\rho_{\mathrm{vec}}}\id_{\R^3}$ with $c_{\rho_{\mathrm{vec}}} = 1$, which
+agrees with our previous theorem since:
+\bse
+\frac{\dim \so(3,\R)}{\dim \R^3} = \frac{3}{3} = 1
+\ese
+
+Let us consider the Lie algebra $\so(3,\R)$ again, but this time with representation $\rho_{\mathrm{spin}}$. Recall
+that this is given by:
+\bse
+\rho_{\mathrm{spin}}(J_1) \coloneqq -\frac{\mathrm{i}}{2}\, \sigma_1, \qquad
+\rho_{\mathrm{spin}}(J_2) \coloneqq -\frac{\mathrm{i}}{2}\, \sigma_2, \qquad
+\rho_{\mathrm{spin}}(J_3) \coloneqq -\frac{\mathrm{i}}{2}\, \sigma_3
+\ese
+
+\v
+
+where $\sigma_1,\sigma_2,\sigma_3$ are the Pauli matrices. Recalling that
+$\sigma_1^2=\sigma_2^2=\sigma_3^2=\id_{\C^2}$, we calculate:
+\bi{rCl}
+(\kappa_{\rho_{\mathrm{spin}}})_{11} \coloneqq \kappa_{\rho_{\mathrm{spin}}}(J_1,J_1) & = & \tr
+(\rho_{\mathrm{spin}}(J_1)\circ \rho_{\mathrm{spin}}(J_1)) \\[5pt]
+& = & \tr((\rho_{\mathrm{spin}}(J_1))^2)\\[5pt]
+& = &(-\tfrac{\mathrm{i}}{2})^2 \tr(\sigma_1^{2})\\[5pt]
+& = & -\tfrac{1}{4} \tr(\id_{\C^2})\\[5pt]
+& = & -1
+\ei
+
+Note that $\tr(\id_{\C^2})=4$, since $\tr(\id_V)=\dim V$ and here $\C^2$ is considered as a $4$-dimensional vector
+space over $\R$. Proceeding similarly, we find that the components of $\kappa_{\rho_{\mathrm{spin}}}$ are:
+\bse
+[(\kappa_{\rho_{\mathrm{spin}}})_{ij}] = \begin{pmatrix} -1 & 0 & 0\\ 0 & -1 & 0\\ 0 & 0 & -1 \end{pmatrix}
+\ese
+
+Hence, we define $\xi_i \coloneqq - J_i$. Then, we have:
+\bse
+\Omega_{\rho_{\mathrm{spin}}} \coloneqq \sum_{i=1}^{3} \rho_{\mathrm{spin}} (J_i) \circ \rho_{\mathrm{spin}} (\xi_i)
+= - \sum_{i=1}^{3} (\rho_{\mathrm{spin}}(J_i))^2 = - \Bigl(-\frac{\mathrm{i}}{2}\Bigr)^2\, \sum_{i=1}^{3} \sigma_i^2
+= \frac{1}{4} \sum_{i=1}^{3} \id_{\C^2} = \frac{3}{4}\id_{\C^2}
+\ese
+
+in accordance with the fact that:
+\bse
+\frac{\dim \so(3,\R)}{\dim \C^2} = \frac{3}{4}
+\ese

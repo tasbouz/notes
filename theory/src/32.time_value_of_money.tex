@@ -1,0 +1,374 @@
+%! suppress = EscapeUnderscore
+\section{Interest Rates}
+
+\bd[Interest]
+\textbf{Interest} is the cost of borrowing money, or equivalently, the income from lending money.
+\ed
+
+Interest is the opportunity cost of capital, or in other words the compensation for differing consumption over time.
+In simple words, it is the price paid for the use of someone else's money over time.
+\v
+
+This very concept of time is what makes the interest a factor that connects the present to the future, thus creating
+the concept of the ``time value of money''.
+
+\bd[Time Value Of Money]
+The \textbf{time value of money} is the idea that money available at the present time is worth more than the same
+amount in the future due to its potential earning capacity through interest.
+\ed
+
+An interest is usually expressed through an ``interest rate'' on the initial amount of money, called the ``principal''.
+
+\bd[Principal]
+The \textbf{principal} is the initial amount of money that is invested or borrowed.
+\ed
+
+\bd[Interest Rate]
+The \textbf{interest rate} $r$ is the amount of interest due per period, as a proportion of the principal.
+\ed
+
+Based on the period of time the interest rate is calculated, we can have different types of interest rates:
+\bit
+\item \textbf{Annual Interest Rate}: The interest rate is calculated on a yearly basis.
+\item \textbf{Semi-Annual Interest Rate}: The interest rate is calculated on a half-yearly basis.
+\item \textbf{Quarterly Interest Rate}: The interest rate is calculated on a quarterly basis.
+\item \textbf{Monthly Interest Rate}: The interest rate is calculated on a monthly basis.
+\item \textbf{Daily Interest Rate}: The interest rate is calculated on a daily basis.
+\eit
+
+When no period is specified, the interest rate is assumed to be an annual interest rate, which is the most frequent
+one.
+
+\section{Future \& Present Value}
+
+Due to interest rates, money available at the present time is worth more than the same amount in the future. This is
+because money deposited in a savings account will earn interest and therefore will be worth more in the future. As a
+result of this, money at present carry a ``future value''.
+
+\bd[Future Value]
+The \textbf{future value} $FV$ is the value of a current amount of money at a future date given a specified interest
+rate.
+\ed
+
+Similarly, money to be received in the future is worth less than the same amount today. This is because money received
+in the future can be invested from today until the future date and therefore will be worth more in the future. As a
+result of this, money in the future carry a ``present value''.
+
+\bd[Present Value]
+The \textbf{present value} $PV$ is the current value of a future amount of money given a specified interest rate.
+\ed
+
+In the case of present values, the interest rate is used to discount the future amount of money to its present value,
+and for this reason sometimes it is called the ``discount rate''. However, it is the same concept as the interest
+rate. \v
+
+Using the interest rate one can compute the future value of an amount of money invested today, and the present value
+of an amount of money to be received in the future. Before doing so, we need to distinguish between ``simple'' and
+``compound'' interest rates.
+
+\subsection{Simple Interest Rate}
+
+\bd[Simple Interest Rate]
+\textbf{Simple interest rate} is the interest rate calculated only on the principal.
+\ed
+
+The future value $FV$ of a princiapl amount $P$ invested today at a simple interest rate $r$ per period for $t$ periods
+is:
+\bse
+FV = P \cdot (1 + rt)
+\ese
+
+Notice that the period in which the interest rate $r$ is calculated must be the same as the period $t$ in which the
+future value is calculated.
+
+\be
+The future value of a principal of \$1,500,000 with an annual interest rate of 3.8\% after 45 days is:
+\bse
+FV = 1,500,000 \cdot (1 + \frac{0.038}{360} \cdot 45) = 1,507,125
+\ese
+
+The annual interest rate is divided by 360 to convert it to daily interest rate, and then multiplied by the number of
+days to calculate the interest for the 45 days. One could equally keep the annual interest rate and divide the number
+of days by 360 to convert it to years. The result would be the same.
+\ee
+
+Similarly, the present value $PV$ of a principal amount $P$ to be received in $t$ periods from now given a simple
+discount rate $t$ is:
+\bse
+PV = \frac{P}{1 + rt}
+\ese
+
+The simple interest rate is the most basic type of interest used in finance. However, it is not the most common one,
+and in fact it is rarely used in practice. The reason is that it does not take into account the compounding effect
+of interest. For this reason, the concept of the ``compound interest rate'' is introduced.
+
+\subsection{Compound Interest Rate}
+
+\bd[Compound Interest Rate]
+\textbf{Compound interest rate} is the interest rate calculated on the principal, and also on the accumulated interest
+of previous periods given that the latter is reinvested.
+\ed
+
+In essense, the compounding effect is the effect of earning interest on interest, by reinvesting the interest
+received. Compound interest is the most common type of interest used in finance. \v
+
+The future value $FV$ of a principal amount $P$ invested today at a compound interest rate $r$ per period, for $t$
+periods, with $n$ number of times of the interest being compounded per period is:
+\bse
+FV = \biggl( \Bigl(P \cdot (1 + \frac{r}{n})^n\Bigr) \cdot (1 + \frac{r}{n})^n\biggr) \cdot \underbrace{\ldots}_{t\text{-times}} = P \cdot (1 + \frac{r}{n})^{nt}
+\ese
+
+Compounding can occur on any time interval, including:
+\bit
+\item \textbf{Annual Compounding}: Compounding once per year: $FV_{\text{annual}} = P \cdot \left(1 + r\right)^{t}$
+\item \textbf{Semi-Annual Compounding}: Compounding twice per year: $FV_{\text{semi-annual}} = P \cdot \left(1 + \frac{r}{2}\right)^{2t}$
+\item \textbf{Quarterly Compounding}: Compounding four times per year: $FV_{\text{quarterly}} = P \cdot \left(1 + \frac{r}{4}\right)^{4t}$
+\item \textbf{Monthly Compounding}: Compounding twelve times per year: $FV_{\text{monthly}} = P \cdot \left(1 + \frac{r}{12}\right)^{12t}$
+\item \textbf{Daily Compounding}: Compounding 365 times per year: $FV_{\text{daily}} = P \cdot \left(1 + \frac{r}{365}\right)^{365t}$
+\item \textbf{Continuous Compounding}: Compounding infinitely many times per year: $FV_{\text{continuous}} = P \cdot e^{rt}$
+\eit
+
+Notice that for the continuous compounding case:
+\bse
+FV_{\text{continuous}} = \lim_{n \to \infty} \left(P \cdot (1 + \frac{r}{n})^{nt}\right)
+\overset{m=\frac{n}{r}}{=} P \cdot \lim_{m \to \infty} \left((1 + \frac{1}{m})^{mrt}\right)
+= P \cdot \underbrace{\biggl(\lim_{m \to \infty} (1 + \frac{1}{m})^{m}}_{\text{definition of e}} \biggl)^{rt} = P \cdot e^{rt}
+\ese
+
+As the equations indicate, with compound interest the interest for each period is added to the principal at the start
+of that period, and the interest for the next period is calculated on the new principal. What this means is that
+interest is being earned on both the initial investment, and the interest earned from the previous periods. Another
+way to think about the future value given a compound interest is:
+\bse
+FV = \text{Principal} + \text{Contract Interest} + \text{Compound Interest}
+\ese
+
+\be
+Given \$10,000 of principal invested for 5 years at a 4\% annual interest rate, let's compare the impact of annual, to
+semi-annual, to monthly, to continuous compounding:
+\bit
+\item $FV_{\text{annual}} = 10.000 \cdot \left(1 + \frac{0.04}{1}\right)^{1 \cdot 5} = 12,166.53 = \underbrace{\$10,000}_{\text{Principal}} + \underbrace{\$2,000}_{\text{Contract Interest}} + \underbrace{\$166.53}_{\text{Compound Interest}}$
+\item $FV_{\text{semi-annual}} = 10.000 \cdot \left(1 + \frac{0.04}{2}\right)^{2 \cdot 5} = 12,189.94 = \underbrace{\$10,000}_{\text{Principal}} + \underbrace{\$2,000}_{\text{Contract Interest}} + \underbrace{\$189.94}_{\text{Compound Interest}}$
+\item $FV_{\text{monthly}} = 10.000 \cdot \left(1 + \frac{0.04}{12}\right)^{12 \cdot 5} = 12,209.39 = \underbrace{\$10,000}_{\text{Principal}} + \underbrace{\$2,000}_{\text{Contract Interest}} + \underbrace{\$209.39}_{\text{Compound Interest}}$
+\item $FV_{\text{continuous}} = 10.000 \cdot e^{0.04 \cdot 5} = 12,214.03 = \underbrace{\$10,000}_{\text{Principal}} + \underbrace{\$2,000}_{\text{Contract Interest}} + \underbrace{\$214.03}_{\text{Compound Interest}}$
+\eit
+
+As we can see, the more frequent the compounding, the higher the future value. It is important to note that in real
+life, the compounding effect is usually not as simple as this example. In most cases, the interest rate is different
+depending on the compounding period.
+\ee
+
+ \v
+
+Similarly, the present value $PV$ of a principal amount $P$ to be received in $t$, assuming a compounding discount rate
+$r$ and $n$ compounding periods per period is:
+\bse
+PV = \frac{FV}{(1 + \frac{r}{n})^{nt}}
+\ese
+
+\section{Cash Flows}
+
+In finance, the concept of the time value of money is used to evaluate ``cash flows''.
+
+\bd[Cash Flow]
+A \textbf{cash flow} $CF_t$ at time step $t$ is a payment to be received or to be made at time $t$.
+\ed
+
+Since cash flows are payment to happen in some point in time, they carry a present and a future value. In simple words,
+the present values of a cash flow, is the amount of money one needs to invest today in order to obtain the cash flow
+amount to be obtained in the future, and the future value of a cash flow is the amount of money the cash flow will be
+worth in the future.
+
+\subsection{Single Cash Flow}
+
+Let's start with the simplest case of a single cash flow $CF$ to be received at time $t=T$. In finance, it is common to
+visualize cash flows using a timeline where time is represented on the horizontal axis and the cash flows on the
+vertical axis. For a positive cash flow the line is above the time axis, and for a negative cash flow the line is below
+the time axis.
+
+\fig{cf1}{0.5}
+
+In this case, the present value is simply the discounted present value of the single future amount of money. Assumming
+a compounding discount rate $r$, and $n$ compounds by period, by using the present value equation we get:
+\bse \label{eq:pv_single}
+PV = \frac{CF}{(1 + \frac{r}{n})^{n \cdot T}}
+\ese
+
+Similarly, the future value is simply the future amount of money the cash flow will be worth at time $t=T$. Assumming a
+compounding interest rate $r$, and $n$ compounds by period, by using the future value equation we get:
+\bse
+FV = CF \cdot (1 + \frac{r}{n})^{nT}
+\ese
+
+\subsection{Series Of Cash Flows}
+
+Now let's consider the slighlty more complicated case of a series of cash flows $CF_1$, $CF_2$, $\ldots$, $CF_n$ to be
+received at time steps $t=1, 2, \ldots, T$.
+
+\fig{cf2}{0.5}
+
+In this case, the present value is simply the sum of the present values of the individual cash flows, with the present
+value of each individual cash flow being the discounted value of the future amount of money. \v
+
+Assumming a compounding discount rate $r$, and $n$ compounds by period, by using the present value equation we get:
+\bse \label{eq:pv_series}
+PV = \frac{CF_1}{(1 + \frac{r}{n})^{n \cdot 1}} + \frac{CF_2}{(1 + \frac{r}{n})^{n \cdot 2}} + \ldots + \frac{CF_T}{(1 + \frac{r}{n})^{n \cdot T}} = \sum_{i=1}^T \frac{CF_i}{(1 + \frac{r}{n})^{n \cdot i}}
+\ese
+
+Similarly, the future value is simply the sum of the future values of the individual cash flows, with the future value
+of each individual cash flow being the future amount of money the cash flow will be. Assumming a compounding
+discount rate $r$, and $n$ compounds by period, by using the future value equation we get:
+\bse
+FV = CF_1 \cdot (1 + \frac{r}{n})^{n \cdot 1} + CF_2 \cdot (1 + \frac{r}{n})^{n \cdot 2} + \ldots + CF_T \cdot (1 + \frac{r}{n})^{n \cdot T} = \sum_{i=1}^T CF_i \cdot (1 + \frac{r}{n})^{n \cdot i}
+\ese
+
+\subsection{Annuity}
+
+A special case of a series of cash flows is the case of an annuity.
+
+\bd[Annunity]
+An \textbf{annuity} is a stream of equal cash flows made at regular intervals.
+\ed
+
+Notice that a prerequisite for a series of cash flows to be considered an annuity is that the payments or receipts are
+equal and are made at regular intervals. One can distinguish between two types of annuities: ``ordinary annuities'' and
+``annuities due''.
+
+\bd[Ordinary Annuity]
+An \textbf{ordinary annuity} is an annuity in which the payments are made at the end of each period.
+\ed
+
+\fig{cf3}{0.5}
+
+For an ordinary annuity things are simple. Since all cash flows are equal i.e.\ $CF_i = CF \: \forall \: i$ the formula for
+the present value of a series of cash flows simplifies to:
+\bse
+PV = \sum_{i=1}^T \frac{CF}{(1 + \frac{r}{n})^{n \cdot i}} = CF \cdot \sum_{i=1}^T \frac{1}{\Big((1 + \frac{r}{n})^n \Big)^i}
+\ese
+
+A careful observer will notice that the sum in the above equation is the sum of a geometric series, and by using the
+formula for the sum of a geometric series we get:
+\bse
+PV = CF \cdot \frac{1 - (1 + \frac{r}{n})^{-nT}}{1 - (1 + \frac{r}{n})^{-n}}
+\ese
+
+Similarly, the formula for the future value of a series of cash flows simplifies to:
+\bse
+FV = \sum_{i=1}^T CF \cdot (1 + \frac{r}{n})^{n \cdot i} = CF \cdot \sum_{i=1}^T \Big((1 + \frac{r}{n})^n\Big)^i
+\ese
+
+Again, the sum in the above equation is the sum of a geometric series, and by using the formula for the sum of a
+geometric series we get:
+\bse
+FV = CF \cdot \frac{(1 + \frac{r}{n})^{nT} - 1}{\frac{r}{n}}
+\ese
+
+\bd[Annuity Due]
+An \textbf{annuity due} is an annuity in which the payments are made at the beginning of each period.
+\ed
+
+\fig{cf4}{0.45}
+
+The main difference of an annuity due from an ordinary annuity is that the first cash flow is received at the beginning
+of the first period, and not at the end. This means that the first cash flow is not discounted at all, the second cash
+flow is discounted once, the third cash flow is discounted twice, and so on. \v
+
+Hence, the present value of an annuity due can be calculated by compounding for one period the present value of an
+ordinary annuity:
+\bse
+PV = CF \cdot \frac{1 - (1 + \frac{r}{n})^{-nT}}{1 - (1 + \frac{r}{n})^{-n}} \cdot (1 + \frac{r}{n})^{n}
+\ese
+
+Similarly, the future value of an annuity due can be calculated by compounding for one period the future value of an
+ordinary annuity:
+\bse
+FV = CF \cdot \frac{(1 + \frac{r}{n})^{nT} - 1}{\frac{r}{n}} \cdot (1 + \frac{r}{n})^{n}
+\ese
+
+\subsection{Perpetuity}
+
+\bd[Perpetuity]
+A \textbf{perpetuity} is an annuity that has no end, or a stream of cash payments that continues forever.
+\ed
+
+The present value of a perpetuity is simply the present value of an annuity with an infinite number of cash flows.
+By using the formula for the present value of an annuity and by sending the number of cash flows to infinity we get:
+\bse
+PV = \lim_{T \to \infty} \Big(CF \cdot \frac{1 - (1 + \frac{r}{n})^{-nT}}{1 - (1 + \frac{r}{n})^{-n}}\Big) = CF \cdot \frac{1}{1 - (1 + \frac{r}{n})^{-n}}
+\ese
+
+\section{Various Rates}
+
+In finance, the interest rate is the most important rate, but there are other rates that are used to evaluate the
+time value of money. In this section we will introduce some of the most important ones.
+
+\subsection{Effective Annual Rate}
+
+Given that the formula for calculating the future value takes into account not only the interest rates but also the
+compounding periods, a one-to-one comparison between different interest rates with different compounding periods is
+not straightforward. For this reason, the concept of the ``effective annual rate'' is introduced.
+
+\bd[Effective Annual Rate (EAR)]
+The \textbf{effective annual rate} $r_{\text{eff}}$ is the actual interest rate that is paid on an investment taking
+into account the compounding periods $n$:
+\bse
+r_{\text{eff}} = (1 + \frac{r}{n})^n - 1
+\ese
+\ed
+
+\be
+Given three different interest rates: $r_{\text{annual}} = 4.03\%$, $r_{\text{semi-annual}} = 4.00\%$,
+$r_{\text{monthly}} = 3.96\%$, and $r_{\text{continuous}} = 3.9\%$ we can compute the effective annual rates as:
+\bit
+\item $r_{\text{eff, annual}} = \left(1 + \frac{0.0403}{1}\right)^1 - 1 = 4.03\%$
+\item $r_{\text{eff, semi-annual}} = \left(1 + \frac{0.0400}{2}\right)^2 - 1 = 4.04\%$
+\item $r_{\text{eff, monthly}} = \left(1 + \frac{0.0396}{12}\right)^{12} - 1 = 4.03\%$
+\item $r_{\text{eff, continuous}} = e^{0.039} - 1 = 3.96\%$
+\eit
+
+As we can see, while the annual interest rate seems like the best option since it's the highest, the effective annual
+rate of semi-annual compounding is higher due to compounding effect. The main point here is that comparing interest
+rates with different compounding periods is not an apples-to-apples comparison and one needs to switch to the
+effective annual rate to make a fair comparison.
+\ee
+
+\subsection{Rate Of Return}
+
+Another important concept in finance is the ``rate of return''. The rate of return is a measure of the profitability
+of an investment defined as the net gain or loss of an investment over a specified time period, expressed as a
+percentage of the investment's initial cost. When calculating the rate of return, we are determining the percentage
+change from the beginning of the period until the end.
+
+\bd[Rate Of Return]
+The \textbf{rate of return} $R$ is the gain or loss on an investment over a specified period, expressed as a percentage
+of the investment's cost:
+\bse
+R = \frac{FV - PV}{PV} = \frac{FV}{PV} - 1
+\ese
+\ed
+
+In a similar way we define the ``annual rate of return'' as the rate of return per year.
+
+\bd[Annual Rate Of Return] \label{def:annual_rate_of_return}
+The \textbf{annual rate of return} $R_{\text{annual}}$ is the rate of return per year:
+\bse
+R_{\text{annual}} = \Big(\frac{FV}{PV}\Big)^{\frac{1}{t}} - 1
+\ese
+\ed
+
+\be
+Given a principal of \$10,000 invested for 5 years at a 4\% annual interest rate, the future value is:
+\bse
+FV = 10,000 \cdot \left(1 + 0.04\right)^5 = 12,166.53
+\ese
+
+The rate of return is:
+\bse
+R = \frac{12,166.53 - 10,000}{10,000} = 0.216653 = 21.6653\%
+\ese
+
+The annual rate of return is:
+\bse
+R_{\text{annual}} = \Big(\frac{12,166.53}{10,000}\Big)^{\frac{1}{5}} - 1 = 0.04 = 4\%
+\ese
+\ee

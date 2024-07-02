@@ -1,0 +1,859 @@
+%! suppress = EscapeUnderscore
+In this chapter we will introduce a very important concept called ``connection'' (or ``covariant derivative'') on a
+differentiable topological manifold. However, we need to make something very clear. ``Connection'' and ``covariant
+derivative'' are not actually the same thing. In elementary courses on differential geometry the notions of
+connection and covariant derivative are often confused with one another and, sometimes, the terms are even used as
+synonyms. This happens because one is not in a position to properly define these concepts before introducing the
+so-called ``principal fiber bundles'' that we will do in a later chapter. \v
+
+So for now, in this section, we will make a kind of ``naive'' introduction to the concept, which however, most of the
+time, this is how it is introduced in many courses and on top of that it will give us a very first understanding of
+the topic. Later in the notes, once we introduce ``principal fiber bundles'' we will revisit these terms in a more
+systematic way, and we will gain a better understanding of what they are exactly and how they generalize. \v
+
+Having said that, for now we will introduce ``connection'' and ``covariant derivative'' as identical concepts which,
+again, even though they are different, for the purposes of this section we shall not distinguish the two, and we will
+also introduce ``parallel transport'' within this framework (later we will also revisit parallel transport).
+
+\section{Connection / Covariant Derivative}
+
+So far, we saw that a vector field $X$ can be used to provide a directional derivative of a function $f \in
+C^{\infty}(M)$ in the direction $X$ as $Xf(p) = X_p f$. Recall that once we introduced the $(p,q)$ tensor field, we
+saw that a function $f \in C^{\infty}(M)$ is nothing else but a $(0,0)$ tensor field. Hence, the equation $Xf$ can be
+seen as the directional derivative acting on a $(0,0)$ tensor field, which leads to the natural question: can we
+apply the directional derivative to any $(p,q)$ tensor field? \v
+
+The short answer is no, and the reason is that we do not know how the field $X$ can act on anything else other than a
+function (this is how we defined it). However, one could try to generalize the action of $X$ to any $(p,q)$ tensor
+field by defining a new object $\nabla_X$, called ``connection'' or ``covariant derivative'', able to act on any $(p,
+q) $ tensor field (for this section we will stick with the term ``connection''). \v
+
+\begin{center}
+\begin{tikzpicture}
+\matrix (m) [matrix of nodes, row sep=3em, column sep=3em, minimum width=1em]
+{ $X : C^{\infty}(M)$ & $C^{\infty}(M)$ \\ $\nabla_X : (p,q)$-tensor field & $(p,q)$-tensor field \\ };
+\path[->] (m-1-1) edge (m-1-2);
+\path[->] (m-2-1) edge (m-2-2);
+\path[->] (m-1-1) edge[snake it] node[left] {$\vdots$} (m-2-1);
+\path[->] (m-1-2) edge[snake it] node[left] {$\vdots$} (m-2-2);
+\end{tikzpicture}
+\end{center}
+
+\v
+
+The question is how to define such an object? Since it is closely related to $X$ it must be consistent with it, so we
+will define $\nabla_X$ through some ``consistency'' conditions that it must satisfy.
+
+\bd [Connection / Covariant Derivative]
+A \textbf{connection} (or \textbf{covariant derivative}) $\nabla_X$ on a smooth manifold $M$ is a map that takes a
+pair consisting of a vector field $X$ and a $(p,q)$-tensor field $T$ and sends them to a $(p,q)$-tensor field
+$\nabla_X T$ satisfying:
+\bit
+\item[1.] $\nabla_X f = Xf, \, \forall f \in C^{\infty}M.$ (in order to be consistent with the already defined action
+of $Xf$).
+\item[2.] $\nabla_X (T + S) = \nabla_X T + \nabla_X S.$ (due to linearity of $X$).
+\item[3.] Since it's a notion of derivative, for any $(p,q)$ tensor field $T$ the Leibnitz rule must be satisfied:
+\bi{rCl}
+\nabla_X T(\omega_1,\dotsc,\omega_p,Y_1,\dotsc,Y_q) &=& (\nabla_X T) (\omega_1,\dotsc,\omega_p,Y_1,\dotsc,Y_q) \\
+& + & T(\nabla_X \omega_1,\dotsc,\omega_p,Y_1,\dotsc,Y_q) + \dotsb + T(\omega_1,\dotsc,\nabla_X \omega_p,Y_1,\dotsc, Y_q) \\
+& + & T(\omega_1,\dotsc,\omega_p,\nabla_X Y_1,\dotsc,Y_q) + \dotsb + T(\omega_1,\dotsc,\omega_p,Y_1,\dotsc,\nabla_X Y_q)
+\ei
+\item[4.] $\nabla_{fX+Z} T = f\nabla_X T + \nabla_Z T, \, \forall f \in C^{\infty}(M).$ (This is
+$C^{\infty}$-linearity, which means that no matter how the function $f$ scales the vectors at different points of the
+manifold, the effect of the scaling at any point is independent of scaling in the neighbourhood and depends only on
+how the scaling happens at that point)
+\eit
+\ed
+
+After formulating this ``wish list'' of properties which $\nabla_X$ acting on a tensor field should have, in general
+there may be many structures that satisfy these conditions. Any remaining freedom in choosing such a $\nabla_X$, will
+need to be provided as additional structure beyond the structure we already have, as we did for example with the
+topology and the atlases.
+
+\bd [Topological Manifold With A Connection]
+A \textbf{topological manifold with a connection} $\nabla_X$ is a quadruple $(M, \mathcal{O}, \mathscr{A}, \nabla_X)
+$, where $M$ is a set, $\mathcal{O}$ is a chosen topology on the set, $\mathscr{A}$ is a chosen smooth atlas and
+$\nabla_X$ is a chosen connection.
+\ed
+
+The question now is, how much freedom do we have in choosing a connection? In order to answer that we will let it act
+in ``all'' possible $(p,q)$ tensor fields and see what we get. \v
+
+Starting with the simplest case of a $(0,0)$ tensor field, i.e.\ a function $f$, by the first condition we simply have:
+\bse
+\nabla_X f = Xf
+\ese
+
+\v
+
+So far so good. Let as consider now the next simplest case of an $(1,0)$ tensor field, i.e.\ a vector field $Y$:
+\bi{rCl"s}
+\nabla_X Y & = & \nabla_{\left(X^i \cibasis{x^i}\right)} \left(Y^m \cibasis{x^m}\right) & (expressed in chart (U,x)) \\[5pt]
+& =& X^i \cdot \nabla_{\left(\cibasis{x^i}\right)} \left(Y^m \cibasis{x^m}\right) & (fourth condition)\\[5pt]
+& =& X^i \left(\nabla_{\left(\cibasis{x^i}\right)} Y^m\right) \cibasis{x^m}
++ X^i \cdot Y^m \cdot \left(\nabla_{\left (\cibasis{x^i}\right)} \cibasis{x^m}\right) & (third condition) \\[5pt]
+& = & X^i \cibasis{x^i} Y^m \cibasis{x^m}
++ X^i \cdot Y^m \cdot \left (\nabla_{\left(\cibasis{x^i}\right)} \cibasis{x^m}\right)& (first condition)
+\ei
+
+\v
+
+Regarding the last term $\nabla_{\left(\cibasis{x^i}\right)} \cibasis{x^m}$, note that it simply is of the form
+$\nabla_X X$ where $X$ is the coordinate induced basis vector. There isn't something more we can do on that, however
+since $\cibasis{x^m}$ is a basis vector, i.e.\ a $(1,0)$ tensor field, the result of the action of $\nabla_{\left
+(\cibasis{x^i}\right)}$ on it must by definition, yield again a $(1,0)$ tensor field i.e.\ a vector that we can express
+in the coordinate induced basis also as:
+\bse
+\nabla_{\left(\cibasis{x^i}\right)} \cibasis{x^m} = \Gamma^{q}_{im} \cibasis{x^q}
+\ese
+
+Hence:
+\bse
+\nabla_X Y = X^i \left(\cibasis{x^i} Y^m\right) \cibasis{x^m} + X^i \cdot Y^m \cdot \Gamma^{q}_{im} \cibasis{x^q}
+\ese
+
+\v
+
+Thus, by rearranging the indices and the terms and by discarding the basis vectors:
+\bse
+\left(\nabla_X Y\right)^i = X^m \left(\cibasis{x^m} Y^i\right) + \Gamma^{i}_{mn} \cdot X^m \cdot Y^n = X (Y^i) +
+\Gamma^{i}_{mn} \cdot X^m \cdot Y^n
+\ese
+
+This last equation tells us the freedom we have left with on choosing a structure, after imposing the conditions on
+$\nabla_X$ acting on an $(1,0)$ tensor field, i.e.\ a vector field. Namely, we need to define all the components of
+$\Gamma^{i}_{nm}$ i.e.\ $(\dim\,M)^3$-many functions in order to define a directional derivative of a vector field. \v
+
+Now we move on to consider the action of $\nabla_X$ in the case of a $(0,1)$ tensor field, i.e.\ a covector field $\omega$:
+\bi{rCl"s}
+\nabla_X \omega & = & \nabla_{\left(X^i \cibasis{x^i}\right)} \left(\omega_m dx^m\right) & (expressed in chart (U,x))\\[5pt]
+& =& X^i \cdot \nabla_{\left(\cibasis{x^i}\right)} \left(\omega_m dx^m\right) & (fourth condition)\\[5pt]
+& =& X^i \left(\nabla_{\left(\cibasis{x^i}\right)} \omega_m\right) dx^m + X^i \cdot \omega_m \cdot \left
+(\nabla_{\left(\cibasis{x^i}\right)} dx^m\right) & (third condition) \\[5pt]
+& = & X^i \cibasis{x^i} \omega_m dx^m + X^i \cdot \omega_m \cdot \left (\nabla_{\left(\cibasis{x^i}\right)}
+dx^m\right) & (first condition)
+\ei
+
+\v
+
+Once again we have left with the term $\nabla_{\cibasis{x^i}}\left (dx^m\right)$ which with similar reasoning as
+before, it must be again a covector field that can be expressed in terms of the dual coordinate induced basis i.e.\ :
+\bse
+\nabla_{\cibasis{x^i}}\left(dx^m\right) = \Sigma^{m}_{ij} dx^j
+\ese
+
+
+The question now is, are these $\Sigma$'s independent of $\Gamma$'s? We just showed that, on a chart domain $U$, the
+choice of the $(\dim\,M)^3$-many functions $\Gamma$'s suffices to fix the action of $\nabla_X$ on a vector field. Do
+we need another $(\dim\,M)^3$-many functions $\Sigma$'s to fix the action on a covector field? And if it so, will we
+have to provide more and more coefficients for all individual cases of $(p, q)$ tensor field? \v
+
+Fortunately the answer is no! The same $(\dim\,M)^3$-many functions $\Gamma$'s fix the action of $\nabla$ on any
+tensor field. Let's first show that the $\Sigma$'s are actually related to $\Gamma$'s. \v
+
+Consider the following:
+\bse
+\nabla_{\cibasis{x^i}} \left(dx^m \left(\cibasis{x^j}\right)\right) dx^j =
+\left( \nabla_{\cibasis{x^i}} \delta^m_j \right) dx^j =\left( \cibasis{x^i}(\delta^m_j) \right) dx^j = 0
+\ese
+
+However, it also is:
+\begingroup
+\allowdisplaybreaks
+\bi{rCl}
+\nabla_{\cibasis{x^i}} \left(dx^m \left(\cibasis{x^j}\right)\right) dx^j &
+= & \left(\nabla_{\cibasis{x^i}} dx^m \right)\left(\cibasis{x^j}\right) dx^j + dx^m \left(\nabla_{\cibasis{x^i}}
+\cibasis{x^j}\right) dx^j \\ [5pt]
+& = & \left(\nabla_{\cibasis{x^i}} dx^m \right)\left(\cibasis{x^j}\right) dx^j + dx^m \left( \Gamma^{q}_{ij}
+\cibasis{x^q} \right) dx^j \\ [5pt]
+& = & \left(\nabla_{\cibasis{x^i}} dx^m \right) \left(\cibasis{x^j} dx^j \right) + \Gamma^{q}_{ij} \left( dx^m
+\cibasis{x^q} \right) dx^j \\ [5pt]
+& = & \left(\nabla_{\cibasis{x^i}} dx^m \right) \delta^j_j + \Gamma^{q}_{ij} \cdot \delta^m_q \cdot dx^j \\ [5pt]
+& = & \left(\nabla_{\cibasis{x^i}} dx^m \right) + \Gamma^{m}_{ij} \cdot dx^j \\ [5pt]
+& = & \Sigma^{m}_{ij} dx^j + \Gamma^{m}_{ij} \cdot dx^j \\ [5pt]
+& = & \left( \Sigma^{m}_{ij} + \Gamma^{m}_{ij} \right) dx^j
+\ei
+\endgroup
+
+\v
+
+But since, as we showed, this is equal to zero we end up with:
+\bse
+\left( \Sigma^{m}_{ij} + \Gamma^{m}_{ij} \right) = 0 \implies \Sigma^{m}_{ij} + \Gamma^{m}_{ij}= 0 \implies
+\Sigma^{m}_{ij} = - \Gamma^{m}_{ij}
+\ese
+
+Hence:
+\bse
+\nabla_x \omega = X^i \left(\cibasis{x^i} \omega_m \right) dx^m - X^i \cdot \omega_m \cdot \Gamma^{m}_{iq} \cdot dx^q
+\ese
+
+\v
+
+Thus, by rearranging the indices and the terms and by discarding the basis vectors:
+\bse
+(\nabla_x \omega)_i = X^m\left(\cibasis{x^m} \omega_i \right) - \Gamma^{n}_{mi} \cdot X^m \cdot \omega_n = X
+(\omega_i) -\Gamma^{n}_{mi} \cdot X^m \cdot \omega_n
+\ese
+
+To sum up:
+\bi{rCl}
+\left(\nabla_X Y\right)^i = X (Y^i) + \Gamma^{i}_{mn} \cdot X^m \cdot Y^n \\[5pt]
+(\nabla_x \omega)_i = X (\omega_i) -\Gamma^{n}_{mi} \cdot X^m \cdot \omega_n
+\ei
+
+On top of that, by making use of the Leibnitz rule we can find the action of $\nabla_X$ on any $(p,q)$-tensor field.
+For example for a $(1,2)$-tensor field $T$:
+\bi{rCl}
+\left(\nabla_X T\right)^{i}_{jk} = X\left(T^{i}_{jk} \right) +
+\Gamma^{i}_{ms} T^{s}_{jk} X^m - \Gamma^{s}_{mj} T^{i}_{sk} X^m - \Gamma^{s}_{mk} T^{i}_{js} X^m
+\ei
+
+Hence, we showed that these $(\dim\,M)^3$-many functions $\Gamma$'s suffices to fix the action of $\nabla_X$ on any $
+(p,q)$-vector field and thus this is all we need to chose in order to completely define the structure of the connection.
+
+\bd [Connection Coefficient Functions]
+Given a manifold with a connection $(M, \mathcal{O}, \mathscr{A}, \nabla_X)$ and a chart $(U,x) \in \mathscr{A}$,
+then the \textbf{connection coefficient functions} $\Gamma$'s on $M$ of $\nabla_X$ w.r.t $(U,x)$ are $(\dim\,M)
+^3$-many functions given by:
+\bi{rCl}
+\Gamma_{i}^{jk} : \quad U & \to & \R \\ p & \mapsto &\Gamma^{i}_{jk}(p) \coloneqq
+\left(dx^i \left(\nabla_{\left (\cibasis{x^j}\right)} \cibasis{x^k}\right)\right)(p)
+\ei
+\ed
+
+One important aspect of the connection coefficient functions is their transformation law under a change of
+coordinates. Namely, let $(U,x)$, $(V,y) \in \mathscr{A}$ and $U \cap V \neq \emptyset$. Then for the connection
+coefficient functions in $(V,y)$ holds:
+\bi{rCl}
+{\Gamma^{i}_{jk}}_{(y)} & \coloneqq & dy^i \left(\nabla_{\cibasis{y^j}} \cibasis{y^k} \right) \\[5pt]
+& = & \cibasis[y^i]{x^q} dx^q \left(\nabla_{\cibasis[x^p]{y^j} \cibasis{x^p}} \cibasis[x^s]{y^k} \cibasis{x^s} \right)\\[5pt]
+& = & \cibasis[y^i]{x^q} dx^q \left(\cibasis[x^p]{y^j} \left[ \left (\nabla_{\cibasis{x^p}} \cibasis[x^s]{y^k} \right)
+\cibasis{x^s} + \cibasis[x^s]{y^k} \left(\nabla_{\cibasis{x^p}} \cibasis{x^s} \right) \right] \right) \\[5pt]
+& = & \cibasis[y^i]{x^q} \cibasis[x^p]{y^j} \cibasis{x^p} \cibasis[x^s]{y^k} \delta^q_s + \cibasis[y^i]{x^q}
+\cibasis[x^p]{y^j} \cibasis[x^s]{y^k} {\Gamma^{q}_{sp}}_{(x)} \\[5pt]
+&=& \cibasis[y^i]{x^q} \cibasis[x^p]{y^j} \cibasis[x^s]{y^k} {\Gamma^{q}_{sp}}_{(x)} + \cibasis[y^i]{x^q}
+\cibasis{y^j} \cibasis[x^q]{y^k}\\[5pt]
+&=& \cibasis[y^i]{x^q} \cibasis[x^p]{y^j} \cibasis[x^s]{y^k} {\Gamma^{q}_{sp}}_{(x)} +
+\cibasis[y^i]{x^q}{\frac{\partial^2 x^q}{\partial y^j \partial y^k}}
+\ei
+
+\v
+
+Notice that the change of connection coefficient function under the change of chart:
+\bse
+(U\cap V,x) \to (U\cap V,y)
+\ese
+
+do not follow the usual transformation law of a tensor due to the second term of the equation. If that part was
+missing then $\Gamma$'s would be the components of a tensor. Notice also that this extra term carries a second
+derivative hence, for linear transformation between coordinates in two charts, the term:
+\bse
+\frac{\partial^2 x^q}{\partial y^j \partial y^k}
+\ese
+
+always vanishes and then the transformation law resembles the one of a tensor (without meaning that $Gamma$'s became
+the components of a tensor suddenly). \v
+
+$\Gamma$'s transformation law has another great impact. Since the second term, the one destroying the tensor
+components transformation law, does not carry and $\Gamma$'s, that means that even if $\Gamma$'s are zero in one
+chart, they might be non-zero in the other charts (unless the chart transition maps are all linear, however, there is
+no reason not to select a coordinate which is not a linear transformation of another one). In other words just the
+change of coordinate system can suddenly give non-vanishing $\Gamma$'s even if we didn't have them in the fist
+coordinate system. \v
+
+That leads us to the following definition/theorem that we will not prove.
+
+\bd [Normal Coordinates]
+Let $(M, \mathcal{O}, \mathscr{A}, \nabla_X)$ be a manifold with a connection. Having chosen a point $p$, one can
+construct a chart $(U,x)$ with $p \in U$ such that the symmetric part of $\Gamma$'s vanish at the point $p$ (not
+necessarily in any neighbourhood). That is:
+\bse
+\forall \, p \in M, \, \exists \, (U,x) \in \mathscr{A} \, : \, p \in U : {\Gamma^{i}_{(jk)}}_{(x)}(p) = 0
+\ese
+
+Such $(U,x)$ is called a \textbf{normal coordinate chart} of $\nabla_X$ at $p \in M$.
+\ed
+
+\subsection{Parallel Transport}
+
+Parallel transport is a way of transporting geometrical data along smooth curves in a manifold. If the manifold is
+equipped with a connection (a covariant derivative or connection on the tangent bundle), then this connection allows
+one to transport vectors of the manifold along curves so that they stay parallel with respect to the connection. \v
+
+The parallel transport for a connection thus supplies a way of, in some sense, moving the local geometry of a
+manifold along a curve: that is, of connecting the geometries of nearby points. There may be many notions of parallel
+transport available, but a specification of one, one way of connecting up the geometries of points on a curve, is
+tantamount to providing a connection. In fact, the usual notion of connection is the infinitesimal analogue of
+parallel transport. Or, vice versa, parallel transport is the local realization of a connection. \v
+
+As parallel transport supplies a local realization of the connection, it also supplies a local realization of the
+curvature that we will see in a while.
+
+\bd [Parallel Transport]
+Let $(M, \mathcal{O}, \mathscr{A}, \nabla_X)$ be a smooth manifold with connection. A vector field $Y$ on $M$ is said
+to be \textbf{parallely transported} along a smooth curve $\gamma: \mathbb{R} \to M$ if :
+\bse
+\nabla_X Y = 0
+\ese
+
+where $X$ is a vector field along this curve $\gamma$, i.e.\ $X(p) = X_{\gamma,p}, \, \forall p \in M$.
+\ed
+
+Even though parallely transported sounds like an action, it is really a property. \v
+
+A slightly weaker condition is the notion of ``parallel''.
+
+\bd [Parallel]
+Let $(M, \mathcal{O}, \mathscr{A}, \nabla_X)$ be a smooth manifold with connection. A vector field $Y$ on $M$ is said
+to be \textbf{parallel} along a smooth curve $\gamma: \mathbb{R} \to M$ if:
+\bse
+\nabla_X Y = \mu Y
+\ese
+
+where $\mu$ is a function $\mu : \mathbb{R} \to \mathbb{R}$.
+\ed
+
+Finally, we also introduce the crucial concept of autoparallel transport.
+
+\bd [Autoparallel Transport]
+Let $(M, \mathcal{O}, \mathscr{A}, \nabla_X)$ be a smooth manifold with connection. A vector field $X$ on $M$ is said
+to be \textbf{autoparallely transported} along a smooth curve $\gamma: \mathbb{R} \to M$ if:
+\bse
+\nabla_X X = 0
+\ese
+\ed
+
+We can manipulate the autoparallel transport equation by invoking a coordinate induced basis and get one of the most
+heavily used equation in physics as follows:
+\bi{rCl}
+\left(\nabla_X X\right)^i &=& X (X^i) + \Gamma^{i}_{mn} \cdot X^m \cdot X^n \\[5pt]
+&=& X^m \left(\cibasis{x^m} X^i\right) + \Gamma^{i}_{mn} \cdot X^m \cdot X^n \\[5pt]
+&=& \ddot{\gamma}^i + \Gamma^{i}_{mn} \cdot \dot{\gamma}^m \cdot \dot{\gamma}^n
+\ei
+
+where in the last line we used a different notation for the directional derivative, namely:
+\bi{rrCl}
+X^m \cl & \mathcal{C}^\infty(M) & \xrightarrow{\sim} & \mathcal{C}^\infty(M) \\
+& f & \mapsto & ((f\circ\gamma)'(0))^m \coloneqq \dot{\gamma}^m
+\ei
+
+and we also used a fact that we can show (but we won't):
+\bse
+X^m \left(\cibasis{x^m} X^i\right) = \ddot{\gamma}^i
+\ese
+
+Hence, the autoparallel transport equations reads:
+\bse
+\ddot{\gamma}^i + \Gamma^{i}_{mn} \cdot \dot{\gamma}^m \cdot \dot{\gamma}^n = 0
+\ese
+
+which is the chart expression of the condition that $\gamma$ be autoparallely transported. \v
+
+This equation is very important in physics since makes the connection between Newton's theory and Einstein's
+relativity theory. \v
+
+Let's see an example.
+
+\be
+In Euclidean plane having a chart:
+\bse
+(U = \mathbb{R}^2, x = id_{\mathbb{R}^2}), \Gamma^{i}_{jk}{(x)} = 0
+\ese
+
+leads to the following autoparallely transported equation:
+\bse
+\ddot{\gamma}_{(x)}^m = 0 \implies \gamma_{(x)}^m (\lambda) = a^m \lambda + b^m
+\ese
+
+where $a,b \in \mathbb{R}^d$, which is the uniform motion.
+\ee
+
+Let's see a slightly more complicated example.
+
+\be
+Consider the round sphere $(S^2, \mathcal{O}, \mathscr{A}, \nabla_{round}$). Consider the chart $x(p) = (\theta,
+\phi)$ where $\theta \in (0,\pi)$ and $\phi \in (0, 2\pi)$. In this chart $\nabla_{round}$ is given by:
+\bi{rCl}
+\Gamma^{1}_{22}{(x)}\left(x^{-1}(\theta,\phi)\right) & \coloneqq & - \sin\theta \cos\theta \\[5pt]
+\Gamma^{2}_{12}{(x)}\left(x^{-1}(\theta,\phi)\right) = \Gamma^{2}_{21}{(x)}\left(x^{-1}(\theta,\phi)\right)
+& \coloneqq & \cot\theta
+\ei
+
+and all other $\Gamma$'s vanish. \v
+
+Then, by using the sloppy notation (familiar to us from classical mechanics) i.e.\ $x^1(p) = \theta(p)$ and $x^2(p) =
+\phi(p)$, the autoparallel transport equation reads:
+\bi{rCl}
+\ddot{\theta} + \Gamma^{1}_{22} \dot{\phi}\dot{\phi} &= 0 \\[5pt]
+\ddot{\phi} + 2 \Gamma^{2}_{12} \dot{\theta}\dot{\phi} &= 0
+\ei
+
+or:
+\bi{rCl}
+\ddot{\theta} - \sin\theta \cos\theta \dot{\phi}\dot{\phi} &= 0 \\[5pt]
+\ddot{\phi} + 2 \cot\theta \dot{\theta}\dot{\phi} &= 0
+\ei
+
+which is exactly what one would obtain by the Lagrange equations. It can be seen that the above equations are
+satisfied at the equator where $\theta(\lambda) = \pi/2$, and $\phi(\lambda) = \omega\lambda + \phi_0$ (running
+around the equator at constant speed $\omega$). Thus, this curve is autoparallel. However, $\phi(\lambda) =
+\omega\lambda^2 + \phi_0$ wouldn't be autoparallel.
+\ee
+
+\subsection{Torsion}
+
+We say that the connection coefficients are not a tensor. The question now is, is any tensorial information in the
+connection? In other words can we use $\nabla_{X}$ to define tensors on $(M, \mathcal{O}, \mathscr{A},\nabla_{X})$?
+
+\bd [Torsion]
+The \textbf{torsion} of a connection $\nabla_X$ is the $(1,2)$-tensor field:
+\bse
+T(\omega,X,Y) \coloneqq \omega(\nabla_X Y - \nabla_Y X - [X,Y])
+\ese
+where $[X,Y]$, called the commutator of $X$ and $Y$ is a vector field defined by $[X,Y]f \coloneqq X(Yf) - Y(Xf)$.
+\ed
+
+The definition of torsion is actually more like a theorem since we need to show that what we defined is actually a
+tensor. What we need to do is to check that $T$ is $C^{\infty}$-linear in each entry:
+\bit
+\item $T(f\omega, X, Y) = f\omega(\nabla_{X} Y - \nabla_Y (X) - [X,Y]) = fT(\omega, X, Y)$.
+\item $T(\omega + \psi, X, Y) = (\omega + \psi)(\nabla_{X} Y - \nabla_Y (X) - [X,Y]) = T(\omega, X, Y) + T(\psi, X, Y)$.
+\item It is:
+\begin{align*}
+T(\omega, X+Z, Y) & = \omega(\nabla_{X+Z} Y - \nabla_Y (X+Z) - [(X+Z), Y]) \\
+& = \omega(\nabla_{X} Y + \nabla_{Z} Y - \nabla_{Y} X - \nabla_{Y} Z - (X+Z) Y + Y (X+Z)) \\
+& = \omega(\nabla_{X} Y + \nabla_{Z} Y - \nabla_{Y} X + \nabla_{Y} Z - X (Y) - Z(Y) + Y(X) + Y(Z)) \\
+& = \omega(\nabla_{X} Y - \nabla_{Y} X - X(Y) + Y(X)) + \omega (\nabla_{Z} Y - \nabla_{Y} Z - Z(Y) + Y(Z)) \\
+& = \omega(\nabla_{X} Y - \nabla_{Y} X - [X,Y]) + \omega(\nabla_{Z} Y - \nabla_{Y} Z - [Z,Y]) \\
+& = T(\omega, X, Y) + T(\omega, Z, Y)
+\end{align*}
+
+Since $T(\omega,X,Y) = - T(\omega,Y,X)$, scaling in the last factor need not be checked separately.
+
+\item Finally, it is:
+\begin{align*}
+T(\omega, fX, Y) & = \omega(\nabla_{fX} Y - \nabla_Y (fX) - [fX,Y]) \\
+& = \omega(f\nabla_{X} Y - (\nabla_Y (f))X - f(\nabla_Y X) - [fX,Y]) \\
+& = \omega(f\nabla_{X} Y - (Yf)X - f(\nabla_Y X) - [fX,Y]) \\
+& = \omega(f\nabla_{X} Y - (Yf)X - f(\nabla_Y X) - fX(Y) + Y(fX)) \\
+& = \omega(f\nabla_{X} Y - (Yf)X - f(\nabla_Y X) - fX(Y) + Y(f)X + fY (X))\\
+& = \omega(f\nabla_{X} Y - (Yf)X - f(\nabla_Y X) - (fX(Y) - fY(X))+ Y (f)X )\\
+& = \omega(f\nabla_{X} Y - (Yf)X - f(\nabla_Y X) - f[X,Y] + (Yf)X) \\
+& = \omega(f\nabla_{X} Y - f(\nabla_Y X) - f[X,Y]) \\
+& = f\omega(\nabla_{X} Y - (\nabla_Y X) - [X,Y]) \\
+&= fT(\omega,X,Y)
+\end{align*}
+
+Since $T(\omega,X,Y) = - T(\omega,Y,X)$, additivity in the last factor need not be checked separately.
+\eit
+
+Now the question is what is exactly the information that torsion provides about the connection. The answer for that
+can be seen by invoking a chart, since the tensor components of torsion (or coefficient function if you like) are:
+\begin{align*}
+T^{i}_{ab} & \coloneqq T\left(dx^i, \cibasis{x^a}, \cibasis{x^b}\right) \\[5pt]
+&= dx^i \left(\nabla_{\cibasis{x^a}} \left(\cibasis{x^b}\right) - \nabla_{\cibasis{x^b}} \left( \cibasis{x^a}\right)
+- \left[ \cibasis{x^a},\cibasis{x^b} \right] \right) \\[5pt]
+&= dx^i \left( \Gamma^{c}_{ab} \cibasis{x^c} -\Gamma^{c}_{ba} \cibasis{x^c} \right)\\[5pt]
+&= \Gamma^{c}_{ab} dx^i \left( \cibasis{x^c} \right) -\Gamma^{c}_{ba} dx^i \left(\cibasis{x^c})\right)\\[5pt]
+&= \Gamma^{c}_{ab} \delta^{i}_{c} -\Gamma^{c}_{ba} \delta^{i}_{c} = \Gamma^{i}_{ab} - \Gamma^{i}_{ba} = 2 \Gamma^{i}_{[ab]}
+\end{align*}
+
+\v
+
+Hence, the torsion is simply the antisymmetric part of connection coefficients which is also the part that one cannot
+get rid of with coordinate transformation, which of course make sense since if it is not zero in one chart it will
+not be zero everywhere.
+
+\bd [Torsion-Free]
+A manifold with connection $(M,\mathcal{O}, \mathscr{A},\nabla_X)$ is called \textbf{torsion-free} if the torsion of
+its connection is zero. That is, $T = 0$.
+\ed
+
+\subsection{Curvature}
+
+In this section we will show how the connection is related to the curvature of the underlying manifold. Let's start
+with an intuitive picture. In general, if we parallel transport a vector from a point $p$ to a point $q$ along two
+different paths (path 1) and (path 2), the resulting vectors at point $q$ are different. \v
+
+We said, in general, because, for example, if we parallel transport a vector in a Euclidean space, where the parallel
+transport is defined in our usual sense, the resulting vector does not depend on the path along which it has been
+parallel transported. This non-integrability of parallel transport characterizes the intrinsic notion of curvature,
+which does not depend on the special coordinates chosen. \v
+
+Since the notion of parallel transport contains the connection, one expects that the connection has some information
+regarding the curvature of the manifold. And indeed this is the case. (Recall that the connection is just a
+generalization of the directional derivative). In order to formalize this mathematically, we ask what is the
+difference in applying two connections (here maybe the term covariant derivatives is more intuitive) in different
+order, i.e.\ what is $\nabla_X \nabla_Y Z - \nabla_Y \nabla_X Z$ (where this can be seen as the difference between path
+1 and path 2). In other words we ask by how much the covariant derivatives fail to commute. The so called ``Riemann
+curvature'' measures exactly this failure.
+
+\vspace{-15pt}
+
+\fig{riem}{0.35}
+
+\vspace{-15pt}
+
+\bd [Riemann Curvature]
+The \textbf{Riemann curvature} of a connection $\nabla_X$ is the $(1,3)$-tensor field:
+\bse
+Riem(\omega,Z,X,Y) \coloneqq \omega(\nabla_X \nabla_Y Z - \nabla_Y \nabla_X Z - \nabla_{[X,Y]} Z)
+\ese
+
+\v
+
+where it can be shown that it is $C^{\infty}$-linear in each slot.
+\ed
+
+So indeed, as we can see:
+\bse
+\nabla_X \nabla_Y Z - \nabla_Y \nabla_X Z = Riem(\cdot,Z,X,Y) + \nabla_{[X,Y]} Z
+\ese
+
+In other word the difference we are interested in is the Riemann tensor plus a correction term. For this correction
+term note that by invoking a chart $(U,x)$, and by using the coordinate induced basis:
+\bse
+\left(\nabla_{\cibasis{x^a}} \nabla_{\cibasis{x^b}} Z \right)^m - \left (\nabla_{\cibasis{x^b}} \nabla_{\cibasis{x^a}}
+Z \right)^m = R^{m}_{nab} \, Z^n + \nabla_{\left[ \cibasis{x^a}, \cibasis{x^b} \right]} Z
+\ese
+
+However, basis vectors always commute so the last term vanishes, and now we can see how the $Riem$ tensor components
+$R^{m}_{nab}$ contain all the information about how the $\nabla_{\cibasis{x^a}}$ and $\nabla_{\cibasis{x^b}}$ fail to
+commute if they act on a vector field. Similarly, if they act on a tensor field, there are several terms on the right
+hand side of the equation like the one term above and if they act on a function, of course they commute. Observe
+that, being a tensor, $Riem$ vanishes in all coordinate systems if it vanishes in one coordinate system. \v
+
+Now let's try to calculate the components of Riemann tensor:
+\begin{align*}
+R^{\rho}_{\sigma \mu \nu} & = Riem(dx^{\rho},\cibasis{x^\mu}, \cibasis{x^\nu},\cibasis{x^\sigma}) \\[5pt]
+&= dx^{\rho} \left(\nabla_{\cibasis{x^\mu}} \nabla_{\cibasis{x^ \nu}} \left(\cibasis{x^ \sigma}\right) -
+\nabla_{\cibasis{x^ \nu}} \nabla_{\cibasis{x^ \mu}} \left (\cibasis{x^\sigma}\right) - \nabla_{\left[
+\cibasis{x^\mu},\cibasis{x^\nu} \right]} \left(\cibasis{x^\sigma}\right) \right) \\[5pt]
+&= dx^{\rho} \left(\nabla_{\cibasis{x^\mu}} \left( \Gamma^{\tau}_{\nu \sigma} \cibasis{x^\tau} \right) -
+\nabla_{\cibasis{x^\nu}} \left( \Gamma^{\tau}_{\mu \sigma} \cibasis{x^\tau} \right) \right) \\[5pt]
+&= dx^{\rho} \left( \nabla_{\cibasis{x^\mu}} \left( \Gamma^{\tau}_{\nu\sigma} \right) \cdot \cibasis{x^\tau} +
+\Gamma^{\tau}_{\nu \sigma} \nabla_{\cibasis{x^\mu}} \left(\cibasis{x^\tau} \right) - \nabla_{\cibasis{x^\nu}}
+\left( \Gamma^{\tau}_{\mu \sigma} \right) \cdot \cibasis{x^\tau} - \Gamma^{\tau}_{\mu \sigma}
+\nabla_{\cibasis{x^\nu}} \left( \cibasis{x^\tau} \right) \right) \\[5pt]
+&= dx^{\rho} \left( \cibasis{x^\mu} \left( \Gamma^{\tau}_{\nu \sigma}\right) \cdot \cibasis{x^\tau} +
+\Gamma^{\tau}_{\nu \sigma} \Gamma^{\lambda}_{\mu \tau} \cibasis{x^\lambda} - \cibasis{x^\nu}
+\left(\Gamma^{\tau}_{\mu \sigma} \right) \cdot \cibasis{x^\tau} - \Gamma^{\tau}_{\mu \sigma} \Gamma^{\lambda}_{\nu \tau}
+\cibasis{x^\lambda} \right)\\[5pt]
+&= \cibasis{x^\mu} \left( \Gamma^{\tau}_{\nu \sigma} \right) dx^{\rho} \left( \cibasis{x^\tau} \right)
++ \Gamma^{\tau}_{\nu \sigma} \Gamma^{\lambda}_{\mu \tau} dx^{\rho} \left (\cibasis{x^\lambda} \right) -
+\cibasis{x^\nu} \left( \Gamma^{\tau}_{\mu \sigma} \right) dx^{\rho} \left( \cibasis{x^\tau} \right) -
+\Gamma^{\tau}_{\mu \sigma} \Gamma^{\lambda}_{\nu \tau} dx^{\rho} \left(\cibasis{x^\lambda} \right)\\[5pt]
+&= \cibasis{x^\mu} \left( \Gamma^{\tau}_{\nu \sigma} \right) \delta^{\rho}_{\tau} +\Gamma^{\tau}_{\nu \sigma}
+\Gamma^{\lambda}_{\mu \tau} \delta^{\rho}_{\lambda}- \cibasis{x^\nu} \left( \Gamma^{\tau}_{\mu \sigma} \right)
+\delta^{\rho}_{\tau} - \Gamma^{\tau}_{\mu \sigma} \Gamma^{\lambda}_{\nu \tau} \delta^{\rho}_{\lambda}\\[5pt]
+&= \cibasis{x^\mu} \left( \Gamma^{\rho}_{\nu \sigma} \right) + \Gamma^{\tau}_{\nu \sigma} \Gamma^{\rho}_{\mu \tau}
+- \cibasis{x^\nu} \left( \Gamma^{\rho}_{\mu \sigma} \right) - \Gamma^{\tau}_{\mu \sigma} \Gamma^{\rho}_{\nu \tau}
+\end{align*}
+
+Hence:
+\bse
+\cibasis{x^\mu} \left( \Gamma^{\rho}_{\nu \sigma} \right) - \cibasis{x^\nu} \left( \Gamma^{\rho}_{\mu \sigma} \right)
++ \Gamma^{\rho}_{\mu \tau} \Gamma^{\tau}_{\nu \sigma} - \Gamma^{\rho}_{\nu \tau} \Gamma^{\tau}_{\mu \sigma}
+\ese
+
+\v
+
+Coming back to the Euclidean space given that the connection is 0, it is straightforward to see that $Riem = 0$ hence
+there is no curvature and this is why parallel transport does not depend on the path along which is performed.
+
+\section{Metric Manifolds}
+In this chapter we will establish yet another structure on a smooth manifold that allows one to assign vectors in
+each tangent space a length (and an angle between vectors in the same tangent space). From this structure, one can
+then define a notion of length of a curve. Then we can look at shortest curves (which will be called geodesics). \v
+
+Requiring then that the shortest curves coincide with the straight curves (w.r.t. $\nabla_X$) will result in
+$\nabla_X$ being determined by the metric structure $g$. $\nabla_X$, in turn determines the curvature given by $Riem$.
+
+\bd [Metric Tensor]
+A \textbf{metric} $g$ on a smooth manifold $M$ is a $(0,2)$-tensor field:
+\begin{align*}
+g : \Gamma(TM) \times \Gamma(TM) &\xrightarrow{ ~ } C^{\infty}(M) \\ (X, Y) & \mapsto g(X,Y)
+\end{align*}
+
+satisfying the following properties:
+\bit
+\item Symmetry: $g(X,Y) = g(Y,X) \quad \forall \, X, Y \in \Gamma(TM)$.
+\item Non-degeneracy: The so called ``musical map'' $\flat$ defined as:
+\begin{align*}
+\flat : \Gamma(TM) & \to \Gamma(T^*M) \\ X & \mapsto \flat(X)
+\end{align*}
+
+where:
+\bse
+\flat(X)(Y) \coloneqq g(X,Y)
+\ese
+
+\v
+
+is a $C^{\infty}$-isomorphism in other words, it is invertible.
+\eit
+\ed
+
+\bd [Inverse Metric Tensor]
+The \textbf{inverse metric} $(2,0)$-tensor field $g^{-1}$ with respect to a metric $g$ is the symmetric map:
+\begin{align*}
+g^{-1} : \Gamma(T^*M) \times \Gamma(T^*M) &\xrightarrow{ ~ } C^{\infty} (M) \\
+(\omega, \sigma) & \mapsto g^{-1}(\omega, \sigma) \coloneqq \omega (\flat^{-1}(\sigma))
+\end{align*}
+
+with:
+\begin{align*}
+\flat^{-1} : \Gamma(T^*M) & \to \Gamma(TM) \\ \omega & \mapsto \flat^{-1} (\omega)
+\end{align*}
+
+where:
+\bse
+\flat^{-1} (\omega) (\sigma) \coloneqq g^{-1}(\omega,\sigma)
+\ese
+\ed
+
+\v
+
+In components: $g_{\mu \nu} = g_{\nu \mu}$ and $(g^{-1})^{\mu \nu} g_{\nu \rho} = \delta^\mu_\rho$. \v
+
+The musical map turns a vector $X$ to a covector $(\flat(X))$. Given that $ (\flat(X))$ is a covector it carries, by
+the predefined convention, a ``lower index'' $(\flat(X))_\mu$. Hence, in tensor components:
+\bse
+(\flat(X))_\mu \coloneqq g_{\mu \nu} X^\nu
+\ese
+
+Similarly, the the inverse musical map turns a covector $\omega$ to a vector $(\flat^{-1}(\omega))$. Given that $
+(\flat^{-1}(\omega))$ is a vector it carries, by the predefined convention, an ``upper index'' $(\flat^{-1}(\omega))
+^\mu$. Hence, in tensor components:
+\bse
+(\flat^{-1}(\omega))^\mu \coloneqq g^{\mu \nu} \omega_\nu
+\ese
+
+\v
+
+Most of the time people drop the $\flat$ and $\flat^{-1}$ symbol and simply write $(\flat(X))_\mu \rightarrow X_\mu$
+and $(\flat^{-1}(\omega))^\mu \rightarrow \omega^\mu$, hence, the equations read:
+\bse
+X_\mu \coloneqq g_{\mu \nu} X^m \qquad \text{and} \qquad \omega^\mu \coloneqq g^{\mu \nu} \omega_\nu
+\ese
+
+\v
+
+which is the familiar ``lower the index'' and ``raise the index'' formula. However, the problem with these formulae is
+that when we see $X_\mu$ (or $\omega^\mu$) we don't really know if it is actually a vector (or a covector) or if it's
+the musical map (or inverse musical map) applied to a covector (or a vector). For this reason we will stick to the
+musical map (and the inverse musical map) notation.
+
+\be
+Consider the sphere $(S^2, \mathcal{O}, \mathscr{A})$ and the chart $(U,x)$:
+\begin{align*}
+x^1 = \varphi \in (0,2\pi), & \quad \quad x^2 = \theta \in (0,\pi)
+\end{align*}
+
+Define the metric of the round sphere of radius $R$:
+\bse
+g_{ij}(x^{-1}(\theta,\varphi)) = \left[ \begin{matrix} R^2 & 0 \\ 0 & R^2\sin^2{\theta} \end{matrix} \right]
+\ese
+
+where the matrix is just a way of collecting this information.
+\ee
+
+As we mentioned in the ``vector space'' chapter, bilinear forms carry a signature. Subsequently, the metric tensor as
+a bilinear form carries a signature. The signature $(v, p, r)$ of a metric tensor $g$ is the number (counted with
+multiplicity) of positive, negative and zero eigenvalues of the real symmetric matrix $g_{\mu \nu}$ of the metric
+tensor with respect to a basis. Alternatively, it can be defined as the dimensions of a maximal positive and null
+subspace. \v
+
+The signature completely classifies the metric up to a choice of basis. The signature is often denoted by a pair of
+integers $(v, p)$ (implying $r=0$), or as an explicit list of signs of eigenvalues such as $(+, -, -, -)$ or $(-, +,
++, +)$ for the signatures $(1, 3, 0)$ and $(3, 1, 0)$, respectively.
+
+\bd [Riemannian Metric]
+A metric is called \textbf{Riemannian} if it is a metric with a positive definite signature $(v, 0)$, i.e.\ :
+$(+,+, \dots,+)$.
+\ed
+
+\bd [Lorentzian Metric]
+A metric is called \textbf{Lorentzian} if it is a metric with signature$(v,1)$ or $(1, p)$, i.e.\ : $(+, -, \dots, -)$.
+\ed
+
+\subsection{Geodesics}
+
+\bd [Speed Of A Curve]
+On a Riemannian metric manifold $(M, \mathcal{O}, \mathscr{A}, g)$, the \textbf{speed} of a curve at the point $p=
+\gamma(\lambda)$ is the number:
+\bse
+s(\lambda) = \sqrt{g(X_{\gamma, \gamma(\lambda)}, X_{\gamma,\gamma(\lambda)})}
+\ese
+\ed
+
+\bd [Length Of A Curve]
+Let $\gamma:(0,1) \to M$ be a smooth curve. Then the \textbf{length} of $\gamma$ denoted by $L[\gamma] \in \R$ is the
+number:
+\bse
+L[\gamma] \coloneqq \int_0^1 d\lambda \, s(\lambda) = \int_0^1 d\lambda \sqrt{g(X_{\gamma, \gamma(\lambda)},
+X_{\gamma,\gamma(\lambda)})}
+\ese
+\ed
+
+Note that in contrast with the usual way of teaching, velocity is more fundamental than speed and speed is more
+fundamental than length! \v
+
+\be
+Reconsider the round sphere of radius $R$ with metric:
+\bse
+g_{ij} = \left[ \begin{matrix} R^2 & 0 \\ 0 & R^2 \sin^2{\theta} \end{matrix} \right]
+\ese
+
+Consider its equator:
+\begin{align*}
+\theta(\lambda) & \coloneqq (x^1 \circ \gamma)(\lambda) = \frac{\pi}{2} \implies \theta'(\lambda) = 0 \\
+\varphi(\lambda) & \coloneqq (x^2 \circ \gamma)(\lambda) = 2\pi \lambda^3 \implies \varphi'(\lambda = 6\pi\lambda^2
+\end{align*}
+
+In this chart the length is:
+\begin{align*}
+L[\gamma] & = \int_0^1 d\lambda \sqrt{g_{ij}(x^{-1}(\theta(\lambda), \varphi(\lambda)))(x^i \circ \gamma)'
+(\lambda)(x^j \circ \gamma)'(\lambda)} \\[5pt]
+& = \int_0^1 d\lambda \sqrt{R^2 \cdot 0 + R^2\sin^2{(\theta(\lambda))} 36 \pi^2 \lambda^4} \\[5pt]
+& = 6\pi R \int_0^1 d\lambda \lambda^2 = 6\pi R [\frac{1}{3} \lambda^3]^1_0 = 2\pi R
+\end{align*}
+\ee
+
+Observe that for any reparametrization of $\gamma$, the factors from the reparametrization will cancel with the
+corresponding factors coming from the metric and the result will be independent of the reparametrization (as it should
+be since the length of the curve should not depend on the parametrization). This actually is a theorem that can be
+easily proved (we skip the proof).
+
+\bt[]
+For any curve $\gamma : (0,1) \to M$ and any smooth, bijective and increasing reparametrization $\sigma :(0,1) \to
+(0,1)$ of $\gamma$:
+\bse
+L[\gamma] = L[\gamma \circ \sigma]
+\ese
+\et
+
+\bd [Geodesic]
+A curve $\gamma : (0,1) \to M$ on a Riemannian manifold $(M, \mathcal{O}, \mathscr{A}, g)$ is called a
+\textbf{geodesic} if it is a stationary curve with respect to a length functional $L$.
+\ed
+
+As before let's right the directional derivative using the ``curve notation'':
+\bi{rrCl}
+X^m \cl & \mathcal{C}^\infty(M) & \xrightarrow{\sim} & \mathcal{C}^\infty(M) \\
+& f & \mapsto & ((f\circ\gamma)'(0))^m \coloneqq \dot{\gamma}^m
+\ei
+
+Thus, the length reads:
+\bse
+L[\gamma] \coloneqq \int_0^1 d\lambda \, s(\lambda) = \int_0^1 d\lambda \sqrt{g(\dot{\gamma}, \dot{\gamma})} =
+\int_0^1 d\lambda \sqrt{g_{\mu \nu}\dot{\gamma^{\mu}} \dot{\gamma^{\nu}}}
+\ese
+
+\bse
+0
+= \delta L[\gamma] = \int_0^1 d\lambda \cdot \delta \left( \sqrt{g_{\mu \nu}\dot{\gamma^{\mu}} \dot{\gamma^{\nu}}} \right)
+= \int_0^1 d\lambda \cdot \frac{\delta \left(g_{\mu \nu } \dot{\gamma^{\mu}} \dot{\gamma^{\nu}} \right)}
+{2{\sqrt {g_{\mu \nu } \dot{\gamma^{\mu}} \dot{\gamma^{\nu}}}}}
+\ese
+
+Using the product rule we get:
+\bse
+0
+= \int_0^1 d\lambda \cdot \left(\dot{\gamma^{\mu}}\dot{\gamma^{\nu}}\delta g_{\mu \nu }+g_{\mu \nu}
+\dot{\delta\gamma^{\mu}}\dot{\gamma^{\nu}}+g_{\mu \nu} \dot{\gamma^{\mu}}\dot{\delta\gamma^{\nu}}\right) \\
+= \int_0^1 d\lambda \cdot \left(\dot{\gamma^{\mu}}\dot{\gamma^{\nu}}\partial_{\alpha }g_{\mu \nu }\delta
+x^{\alpha}+2g_{\mu \nu }\dot{\delta\gamma^{\mu}}\dot{\gamma^{\nu}}\right)
+\ese
+
+\v
+
+Integrating by-parts the last term and dropping the total derivative (which equals to zero at the boundaries) we get
+that:
+\begin{align*}
+0 = & \int_0^1 d\lambda \cdot \left (\dot{\gamma^{\mu}}\dot{\gamma^{\nu}}\partial _{\alpha }g_{\mu \nu }\delta
+x^{\alpha }-2\delta x^{\mu }{\frac {d}{d\tau }}\left(g_{\mu \nu}\dot{\gamma^{\nu}}\right)\right)\\[5pt]
+=& \int_0^1 d\lambda \cdot \left (\dot{\gamma^{\mu}}\dot{\gamma^{\nu}}\partial _{\alpha }g_{\mu \nu }\delta
+x^{\alpha }- 2\delta x^{\mu } \partial _{\alpha }g_{\mu \nu } \dot{\gamma^{\alpha}} \dot{\gamma^{\nu}}-2\delta
+x^{\mu }g_{\mu \nu } \ddot{\gamma^{\nu}}\right)\\[5pt]
+=& \int_0^1 d\lambda \cdot \delta x^{\mu } \cdot \left(-2 g_{\mu \nu } \ddot{\gamma^{\nu}} +
+\dot{\gamma^{\alpha}} \dot{\gamma^{\nu}} \partial _{\mu }g_{\alpha \nu } - 2 \partial _{\alpha } g_{\mu \nu }
+\dot{\gamma^{\alpha}} \dot{\gamma^{\nu}} \right)\\[5pt]
+=& \int_0^1 d\lambda \cdot \delta x^{\mu } \cdot \left(-2 g_{\mu \nu } \ddot{\gamma^{\nu}} + \dot{\gamma^{\alpha}}
+\dot{\gamma^{\nu}} \partial _{\mu }g_{\alpha \nu } - \partial _{\alpha } g_{\mu \nu } \dot{\gamma^{\alpha}}
+\dot{\gamma^{\nu}} - \partial _{\nu } g_{\mu \alpha } \dot{\gamma^{\nu}} \dot{\gamma^{\alpha}} \right)\\[5pt]
+=& \int_0^1 d\lambda \cdot \delta x^{\mu } \cdot \left(g_{\mu \nu } \ddot{\gamma^{\nu}} + \frac{1}{2}
+\dot{\gamma^{\alpha}} \dot{\gamma^{\nu}} \left( \partial _{\mu } g_{\alpha \nu } + \partial _{\nu } g_{\mu \alpha}
+- \partial _{\alpha } g_{\mu \nu } \right) \right)
+\end{align*}
+
+\v
+
+Hence, by Hamilton's principle we find that the Euler-Lagrange equation is:
+\bse
+g_{\mu \nu } \ddot{\gamma^{\nu}} + \frac{1}{2} \dot{\gamma^{\alpha}} \dot{\gamma^{\nu}} \left( \partial _{\mu }
+g_{\alpha \nu } + \partial _{\nu } g_{\mu \alpha } - \partial _{\alpha } g_{\mu \nu } \right) = 0
+\ese
+
+Multiplying by the inverse metric tensor $g^{\mu \beta}$ we get that:
+\bse
+\ddot{\gamma^{\beta}} + \frac{1}{2} g^{\mu \beta} \left( \partial _{\mu } g_{\alpha \nu }
++ \partial _{\nu } g_{\mu \alpha } - \partial _{\alpha } g_{\mu \nu } \right) \dot{\gamma^{\alpha}}
+\dot{\gamma^{\nu}} = 0
+\ese
+
+Thus, we get the geodesic equation:
+\bse
+\ddot{\gamma^{\beta}} + \Gamma^{\beta}_{\alpha \nu} \dot{\gamma^{\alpha}} \dot{\gamma^{\nu}} = 0
+\ese
+
+\v
+where $\Gamma^{\beta}_{\alpha \nu}$ are called ``Christoffel symbols'' defined in terms of the metric tensor as:
+
+\bse
+\Gamma^{\beta}_{\alpha \nu} = \frac{1}{2} g^{\mu \beta} \left( \partial_{\mu } g_{\alpha \nu }
++ \partial _{\nu } g_{\mu \alpha } - \partial _{\alpha } g_{\mu \nu } \right)
+\ese
+
+\subsection{Ricci Curvature \& Ricci Scalar}
+
+Having introduced a metric on a manifold we can introduce the following two important objects.
+
+\bd [Ricci Curvature Tensor]
+The \textbf{Ricci curvature tensor}, is a geometric object which is determined by a choice of Riemannian or
+pseudo-Riemannian metric on a manifold, and it is given by:
+\bse
+R_{\mu \nu} = R^{\alpha}_{\mu \alpha \nu}
+\ese
+\ed
+
+The Ricci curvature tensor can be considered, broadly, as a measure of the degree to which the geometry of a given
+metric tensor differs locally from that of ordinary Euclidean space or pseudo-Euclidean space, and it can be
+characterized by measurement of how a shape is deformed as one moves along geodesics in the space. Like the metric
+tensor, the Ricci tensor assigns to each tangent space of the manifold a symmetric bilinear form. Broadly, one could
+analogize the role of the Ricci curvature in Riemannian geometry to that of the Laplacian in the analysis of
+functions. In this analogy, the Riemann curvature tensor, of which the Ricci curvature is a natural by-product, would
+correspond to the full matrix of second derivatives of a function. However, there are other ways to draw the same
+analogy. In three-dimensional topology, the Ricci tensor contains all the information which in higher dimensions
+is encoded by the more complicated Riemann curvature tensor. \v
+
+In differential geometry, lower bounds on the Ricci tensor on a Riemannian manifold allow one to extract global
+geometric and topological information by comparison with the geometry of a constant curvature space form. This is
+since lower bounds on the Ricci tensor can be successfully used in studying the length functional in Riemannian
+geometry, as first shown in 1941 via Myers's theorem.
+
+\bd [Ricci Scalar]
+The \textbf{Ricci scalar}, is a geometric object which is determined by a choice of Riemannian or pseudo-Riemannian
+metric on a manifold, and it is given by:
+\bse
+R = g^{\mu \nu} R_{\mu \nu}
+\ese
+\ed
+
+The Ricci scalar is the simplest curvature invariant of a Riemannian manifold. To each point on a Riemannian
+manifold, it assigns a single real number determined by the intrinsic geometry of the manifold near that point.
+Specifically, the scalar curvature represents the amount by which the volume of a small geodesic ball in a Riemannian
+manifold deviates from that of the standard ball in Euclidean space. In two dimensions, the scalar curvature is twice
+the Gaussian curvature, and completely characterizes the curvature of a surface. In more than two dimensions,
+however, the curvature of Riemannian manifolds involves more than one functionally independent quantity.

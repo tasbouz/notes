@@ -1,0 +1,1942 @@
+%! suppress = Ellipsis
+%! suppress = EscapeUnderscore
+%! suppress = EscapeHashOutsideCommand
+Early computers ran one program at a time. A programmer would write one at their desk, for example, on punch cards.
+Then, they'd carry it to a room containing a room-sized computer, and hand it to a dedicated computer operator. That
+person would then feed the program into the computer when it was next available. The computer would run it, spit out
+some output, and halt. \v
+
+This very manual process worked OK back when computers were slow, and running a program often took hours, days or
+even weeks. But, as computers became faster and faster, having humans run around and inserting programs into readers
+was taking longer than running the actual programs themselves. We needed a way for computers to operate themselves,
+and so, operating systems were born.
+
+\bd[Operating System (OS)]
+An \textbf{operating system} (\textbf{OS}) is system software that manages computer hardware, software resources, and
+provides common services for computer programs.
+\ed
+
+Operating systems typically are the first one to start when a computer is turned on, and all subsequent programs are
+launched by the operating systems. They got their start in the 1950s, as computers became more widespread and more
+powerful.
+
+\section{History Of Operating Systems}
+
+The very first operating systems augmented the mundane, manual task of loading programs by hand. Instead of being
+given one program at a time, computers could be given batches. When the computer was done with one, it would
+automatically and near-instantly start the next. There was no downtime while someone scurried around an office to
+find the next program to run. This was called ``batch processing''.
+
+\bd[Batch Processing]
+\textbf{Batch processing} is the execution of a series of programs on a computer without manual intervention.
+\ed
+
+While computers got faster, they also got cheaper. So, they were popping up all over the world, especially in
+universities and government offices. Soon, people started sharing software. But there was a problem. In the era of
+one-off computers programmers only had to write code for that one single machine. The processor, punch card readers,
+and printers were known and unchanging. But as computers became more widespread, their configurations were not always
+identical, like computers might have the same CPU, but not the same printer. This was a huge pain for programmers.
+Not only did they have to worry about writing their program, but also how to interface with each and every model of
+printer, and all devices connected to a computer, what are called peripherals. Interfacing with early peripherals was
+very low level, requiring programmers to know intimate hardware details about each device. On top of that,
+programmers rarely had access to every model of a peripheral to test their code on. So, they had to write code as
+best they could, often just by reading manuals, and hope it worked when shared. Things weren't exactly plug-and-play
+back then. \v
+
+To make it easier for programmers, operating systems stepped in as intermediaries between software programs and
+hardware peripherals. More specifically, they provided a software abstraction, through APIs, called ``device drivers'',
+allowing programmers to talk to common input and output hardware, or I/O for short, using standardized mechanisms. \v
+
+By the end of the 1950s, computers had gotten so fast, they were often idle waiting for slow mechanical things, like
+printers and punch card readers. While programs were blocked on I/O, the expensive processor was just waiting. In the
+late 50's,the University of Manchester, in the UK, started work on a supercomputer called Atlas, one of the first in
+the world. They knew it was going to be wicked fast, so they needed a way to make maximal use of the expensive
+machine. Their solution was a program called the Atlas Supervisor, finished in 1962. This operating system not only
+loaded programs automatically, like earlier batch systems, but could also run several at the same time on its single
+CPU. It did this through clever scheduling. This allowed of running several programs at once by sharing the CPU,
+enabled by the operating system is called ``multitasking''.
+
+\bd[Multitasking]
+\textbf{Multitasking} is the concurrent execution of multiple tasks over a certain period of time.
+\ed
+
+In multitasking new tasks can interrupt already started ones before they finish, instead of waiting for them to end.
+As a result, a computer executes segments of multiple tasks in an interleaved manner, while the tasks share common
+processing resources such as CPUs and main memory. \v
+
+There's one big catch to having many programs running simultaneously on a single computer, though. Each one is going
+to need some memory, and we can't lose that program's data when we switch to another program. The solution is to
+allocate each program its own block of memory.
+
+\be
+So, for example, let's say a computer has 10.000 memory locations in total. Program A might get allocated memory
+addresses 0 through 999, and Program B might get 1000 through 1999, and so on. If a program asks for more memory, the
+operating system decides if it can grant that request, and if so, what memory block to allocate next. This
+flexibility is great, but introduces a quirk. It means that Program A could end up being allocated non-sequential
+blocks of memory, in say addresses 0 through 999, and 2000 through 2999.
+\ee
+
+And that was just a simple example - a real program might be allocated dozens of blocks scattered all over memory. As
+you might imagine, this would get really confusing for programmers to keep track of. Maybe there's a long list of
+sales data in memory that a program has to total up at the end of the day, but this list is stored across a bunch of
+different blocks of memory. To hide this complexity, operating systems virtualize memory locations. With virtual
+memory, programs can assume their memory always starts at address 0, keeping things simple and consistent. However,
+the actual, physical location in computer memory is hidden and abstracted by the operating system.
+
+\be
+Let's take our example where Program B has been allocated a block of memory from address 1000 to 1999. As far as
+Program B can tell, this appears to be a block from 0 to 999. The operating system and CPU handle the
+virtual-to-physical memory remapping automatically. So, if Program B requests memory location 42, it really ends up
+reading address 1042. This virtualization of memory addresses is even more useful for Program A, which in our example,
+has been allocated two blocks of memory that are separated from one another. This too is invisible to Program A. As far
+as it can tell, it's been allocated a continuous block of 2000 addresses. When Program A reads memory address 999,
+that does coincidentally map to physical memory address 999. But if Program A reads the very next value in memory, at
+address 1000, that gets mapped behind the scenes to physical memory address 2000. This mechanism allows programs to
+have flexible memory sizes, called dynamic memory allocation, that appear to be continuous to them. It simplifies
+everything and offers tremendous flexibility to the Operating System in running multiple programs simultaneously.
+\ee
+
+Another upside of allocating each program its own memory, is that they're better isolated from one another. So, if a
+buggy program goes awry, and starts writing gobbledygook, it can only trash its own memory, not that of other
+programs. This feature is called ``memory protection''.
+
+\bd[Memory Protection]
+\textbf{Memory protection} is a way to control memory access rights on a computer, and is a part of most modern
+instruction set architectures and operating systems.
+\ed
+
+The main purpose of memory protection is to prevent a process from accessing memory that has not been allocated to it.
+This is also really useful in protecting against malicious software, like viruses. \v
+
+By the 1970s, computers were sufficiently fast and cheap. Institutions like a university could buy a computer and let
+students use it. It was not only fast enough to run several programs at once, but also give several users
+simultaneous, interactive access. This was done through a terminal, which is a keyboard and screen that connects to a
+big computer, but doesn't contain any processing power itself.
+
+\bd[Terminal]
+A \textbf{terminal} is an electronic or electromechanical hardware device that can be used for entering data into,
+and transcribing data from, a computer or a computing system.
+\ed
+
+By the early 1980s, the cost of a basic computer had fallen to the point where individual people could afford one,
+called a personal or home computer.
+
+\bd[Personal Computer (PC)]
+A \textbf{personal computer} (\textbf{PC}) is a multi-purpose computer whose size, capabilities, and price make it
+feasible for individual use.
+\ed
+
+Personal computers are intended to be operated directly by an end user, rather than by a computer expert or
+technician. Unlike large, costly minicomputers and mainframes, time-sharing by many people at the same time is not
+used with personal computers. \v
+
+Personal computers were much simpler than the big mainframes found at universities, corporations, and governments. So,
+their operating systems had to be equally simple. For example, Microsoft's Disk Operating System, or MS-DOS, was
+just 160 kilobytes, allowing it to fit, as the name suggests, onto a single disk. First released in 1981, it became
+the most popular operating system for early home computers, even though it lacked multitasking and protected memory.
+This meant that programs could, and would, regularly crash the system. While annoying, it was an acceptable trade-off,
+as users could just turn their own computers off and on again! Even early versions of Windows, first released
+by Microsoft in 1985 and which dominated the operating systems scene throughout the 1990s, lacked strong memory
+protection. When programs misbehaved, you could get the blue screen of death, a sign that a program had crashed so
+badly that it took down the whole operating system. Luckily, newer versions of Windows have better protections and
+usually don't crash that often. \v
+
+Today, computers run modern operating systems, like Mac OS X, Windows 10, Linux, iOS and Android. Even though the
+computers we own are most often used by just a single person, their operating systems all have multitasking and virtual
+and protected memory.
+
+\section{Files \& File Systems}
+
+In this section we will talk about files, and how computers keep them organized with file systems.
+
+\subsection{Files}
+
+\bd[File]
+A \textbf{file} is a computer resource for recording data in a computer storage device.
+\ed
+
+Just as words can be written to paper, so can data be written to a file. Different types of files are designed for
+different purposes. A file may be designed to store an image, a written message, a video, a computer program, or any
+wide variety of other kinds of data. Certain files can store multiple data types at once. \v
+
+By using computer programs, a person can open, read, change, save, and close a file. Files may be reopened, modified,
+and copied an arbitrary number of times. \v
+
+It's perfectly fine for a file to contain arbitrary, unformatted data, but it's most useful and practical if the data
+inside the file is organized somehow. This is called a file format.
+
+\bd[File Format]
+A \textbf{file format} is a standard way that information is encoded for storage in a computer file. It specifies how
+bits are used to encode information in a digital storage medium.
+\ed
+
+File formats may be either proprietary or free and may be either unpublished or open. You can invent your own, and
+programmers do that from time to time, but it's usually best and easiest to use an existing standard. \v
+
+Let's take a look at some of the most widely used file formats. The most straightforward are text files, also known as
+TXT files, which contain text.
+
+\bd[Text File (TXT)]
+A \textbf{text file} (\textbf{TXT}) is a kind of computer file that is structured as a sequence of lines of
+electronic text.
+\ed
+
+Like all computer files, this is just a huge list of numbers, stored as binary.
+
+\be
+If we look at the raw values of a text file in storage, it would look something like this:
+
+\fig{txt}{0.5}
+
+We can view this as decimal numbers instead of binary, but that still doesn't help us read the text. The key to
+interpreting this data is knowing that text files use ASCII, so the first value, 72, maps to the capital letter H. And
+in this way, we decode the whole file.
+\ee
+
+Let's look at a more complicated example: a WAVE File – also called a WAV – which stores audio.
+
+\bd[Waveform Audio File Format (WAVE)]
+\textbf{Waveform Audio File Format} (\textbf{WAVE}, or \textbf{WAV}) is an audio file format standard, developed by
+IBM and Microsoft, for storing an audio bitstream
+\ed
+
+Before we can correctly read the data, we need to know some metadata, like the bit rate and whether it's a single
+track or stereo. This metadata is stored at the front of the file, ahead of any actual data,in what's known as a
+header. The audio data comes right behind the metadata, and it's stored as a long list of numbers. These values
+represent the amplitude of sound captured many times per second. \v
+
+Now let's talk about bitmaps or BMPs, which store pictures.
+
+\bd[Bitmap (BMP)]
+The \textbf{bitmap} (\textbf{BMP}) file format, also known as image file, is a raster graphics image file format used
+to store bitmap digital images, independently of the display device.
+\ed
+
+I want to emphasize again that it doesn't matter if it's a TXT file, WAV, BMP, or fancier formats we don't have time
+to discuss. Under the hood, they're all the same: long lists of numbers, stored as binary, on a storage device. File
+formats are the key to reading and understanding the data inside.
+
+\subsection{File Systems}
+
+Now that you understand files a little better, let's move on to how computers go about storing them. Even though the
+underlying storage medium might be a strip of tape, a drum, a disk, or integrated circuits, hardware and software
+abstractions let us think of storage as a long line of little buckets that store values. \v
+
+In the early days, when computers only performed one computation, like calculating artillery range tables, the entire
+storage operated like one big file. Data started at the beginning of storage, and then filled it up in order as
+output was produced, up to the storage capacity. However, as computational power and storage capacity improved, it
+became possible, and useful, to store more than one file at a time.
+
+\bd[File System / Filesystem]
+\textbf{File system}, or \textbf{filesystem} is a method and data structure that the operating system uses to control
+how data is stored and retrieved.
+\ed
+
+Without a file system, data placed in a storage medium would be one large body of data with no way to tell where one
+piece of data stopped and the next began, or where any piece of data was located when it was time to retrieve it. By
+separating the data into pieces and giving each piece a name, the data is easily isolated and identified. Taking its
+name from the way a paper-based data management system is named, each group of data is called a ``file''. The
+structure and logic rules used to manage the groups of data and their names is called a ``file system''. \v
+
+The simplest option for a file system is to store files back-to-back. This can work,but how does the computer know
+where files begin and end? Storage devices have no notion of files – they're just a mechanism for storing lots of
+bits. For this to work, we need to have a special file that records where other ones are located. This goes by many
+names, but a good general term is ``directory''. Most often, it's kept right at the front of storage, so we always
+know where to access it.
+
+\bd[Directory / Folder]
+A \textbf{directory}, or \textbf{folder}, is a file system cataloging structure which contains references to other
+computer files, and possibly other directories.
+\ed
+
+Files are organized by storing related files in the same directory. In a hierarchical file system (that is, one in
+which files and directories are organized in a manner that resembles a tree), a directory contained inside another
+directory is called a subdirectory.
+
+\bd[Subdirectory / Subfolder]
+A \textbf{subdirectory}, or \textbf{subfolder} is a directory that is contained another directory.
+\ed
+
+\bd[Parent Directory]
+A directory that contains subdirectories is called a \textbf{parent} directory. A parent directory may have multiple
+subdirectories.
+\ed
+
+\bd[Root Directory]
+The top-most directory in a filesystem, which does not have a parent of its own, is called the \textbf{root directory}.
+\ed
+
+Inside a directory are the names of all the other files in storage.
+
+\bd[File Name / Filename]
+A \textbf{file name} or \textbf{filename} is a name used to uniquely identify a computer file in a directory
+structure.
+\ed
+
+The directory also stores metadata about these files, like when they were created and last modified, who the owner is,
+and if it can be read, written or both. But most importantly, the directory file contains where these files begin
+in storage, and how long they are. If we want to add a file, remove a file, change a filename, or similar, we have to
+update the information in the directory. It's like the table of contents in a book, if you make a chapter shorter, or
+move it somewhere else, you have to update the table of contents, or the page numbers won't match! \v
+
+Hence, modern file systems do two things. First, they store files in blocks. This leaves a little extra space for
+changes, called ``slack space''. It also means that all file data is aligned to a common size, which simplifies
+management. In a scheme like this, our directory needs to keep track of what block each one is stored in. The second
+thing file systems do, is allow files to be broken up into chunks and stored across many blocks. \v
+
+So far, we've only been talking about flat file systems, where they're all stored in one directory. This worked ok
+when computers only had a little bit of storage, and you might only have a dozen or so files. But as storage capacity
+exploded, so did the number of files on computers. Very quickly, it became impractical to store all files together at
+one level. Just like documents in the real world, it's handy to store related files together in folders. Then we can
+put connected folders into folders, and so on. This is a ``hierarchical file system'', and its what your computer uses.
+
+\section{Command Line}
+
+\subsection{Commands}
+
+\bd[Command]
+A \textbf{command} is a directive, in the form of text, to a computer program to perform a specific task.
+\ed
+
+\be
+Here are some examples of commands:
+\begin{bash}
+# display the current time and date
+date
+\end{bash}
+
+\begin{bash}
+# display a calendar of the current month
+cal
+\end{bash}
+
+\begin{bash}
+# display the current amount of free space
+df
+\end{bash}
+
+\begin{bash}
+# display the current amount of free memory
+free
+\end{bash}
+
+\begin{bash}
+# end a terminal session
+exit
+\end{bash}
+
+\begin{bash}
+# shutdown the computer
+shutdown
+\end{bash}
+\ee
+
+Commands can be followed by one or more ``options'' that modify their behavior and, further, by one or more
+``arguments'', the items upon which the command acts.
+
+\bd[Option / Flag]
+An \textbf{option} or \textbf{flag} modifies the operation of a command; the effect is determined by the command's
+program.
+\ed
+
+Options follow the command name separated by spaces and started by either a single dash \code{-} and the single
+character version of the option or a double dash \code{--} and the long version of the option. Both single character
+and long format are identical options and do the exact same thing. Also, many commands allow multiple short options to
+be strung together.
+
+\bd[Argument]
+An \textbf{argument} is an item of information provided to a command when it is started.
+\ed
+
+Arguments follow the options (if any) or the command (if no options). A command can have many arguments that identify
+sources or destinations of information, or that alter the operation of the command. Here follows an example of a command
+with an argument.
+
+\be
+\begin{bash}
+# display a line of text
+echo <string>
+\end{bash}
+\ee
+
+So, most commands look kind of like this:\footnote{When three periods follow an argument in the description of a
+command, it means that the argument can be repeated.}
+\begin{bash}
+# common format of commands
+<command> $-$<options> <arguments>...
+\end{bash}
+
+Multiple commands can be provided in succession as long as they follow the correct syntactical rules. These are:
+\bit
+\item \textbf{[space]}: Spaces separate commands, options, and arguments from each other.
+\item \textbf{;}: Semi-colons and newlines separate commands synchronously. That means that the first commands needs to
+finish before the next one starts running.
+\item \textbf{\&}: A single ampersand separate commands asynchronously. That means that the next command will start
+immediately after the first, without waiting for the former to end.
+\item \textbf{\&\&}: A double ampersand symbolizes an AND conditional which causes the second command to be executed only
+if the first command ends and exits successfully.
+\item \textbf{|}: A vertical line symbolizes a pipe which connects the output of one command to the input of the next
+(more on that later).
+\item \textbf{||}: A double vertical line symbolizes an OR conditional which causes the second command to be executed
+only if the first command ends and exits with a failure.
+\item \textbf{'[string]'}: Single quotes disable syntactical meaning of all characters inside the string. Whenever you
+want literal strings in your code, it's good practice to wrap them in single quotes so you don't run the risk of
+accidentally using a character that also has a syntactical meaning.
+\item \textbf{"[string]"}: Double quotes disable syntactical meaning of all characters inside the string except
+expansions inside the string. Use this form instead of single quotes if you need to expand a parameter or command
+substitution into your string.
+\eit
+
+To get information about a command you can use one of the following depending on your needs:
+\bit
+\item \textbf{help}: A built-in command available for all commands. To use it, type help followed by the name
+of the command:
+\begin{bash}
+# display help for a command
+help <command>
+\end{bash}
+
+When \code{help} is used a description of the command appears. This description follows 2 notation conventions: when
+square brackets appear in the description of a command's syntax, they indicate optional items and a vertical bar
+character indicates mutually exclusive items.
+
+\item \textbf{-h, --help}: Many command support a \code{-h}, \code{--help} option that displays a description of the
+command's supported syntax and options:
+\begin{bash}
+# display help for a command
+<command> $-$h, $--$help
+\end{bash}
+
+Some programs don't support the option, but try it anyway.
+
+\item \textbf{man}: Most commands provide a formal piece of documentation called a ``manual'' or ``man page''. A special
+paging program called ``man'' is used to view them:
+\begin{bash}
+# display manual for a command
+man <command>
+\end{bash}
+
+Man pages do not usually include examples and are intended as a reference, not a tutorial. Although they vary somewhat
+in format, generally they contain the following:
+\bit
+\item A title (the page's name).
+\item A synopsis of the command's syntax.
+\item A description of the command's purpose.
+\item A listing and description of each of the command's options.
+\eit
+
+\item \textbf{which}: Sometimes there is more than one version of a command installed on a system. To determine the
+exact location of a given command (more on what we mean by ``location'' later), the \code{which} command is used:
+\begin{bash}
+# display the location of a command
+which <command>
+\end{bash}
+\eit
+
+In Unix-like systems we can create our own custom commands built from other commands.
+
+\bd[Alias]
+An \textbf{alias} is a command that we can define ourselves, built from other commands.
+\ed
+
+Aliases can be created by making use of the command \code{alias}. After the command, we give our alias a name followed immediately (no whitespace allowed) by an equal sign, followed immediately (
+no whitespace allowed) by a quoted string containing the meaning to be assigned to the name:
+\begin{bash}
+# create alias
+alias <name>='<meaning>'
+\end{bash}
+
+After we define our alias, we can use it anywhere by simply calling its name like a regular command. To see all the
+aliases defined in the environment, use the \code{alias} command without arguments:
+\begin{bash}
+# display all created aliases
+alias
+\end{bash}
+
+\subsection{Redirection}
+
+\bd[Input]
+\textbf{Input} is the signal or data received by a system.
+\ed
+
+\bd[Output]
+\textbf{Output} is the signal or data sent by a system.
+\ed
+
+\bd[Input/Output (I/O)]
+\textbf{Input/Output (I/O)} is the communication between an information processing system, such as a computer, and
+the outside world, possibly a human or another information processing system.
+\ed
+
+I/O devices are the pieces of hardware used by a human (or other system) to communicate with a computer. Any
+interaction with the system by an interactor is an input and the reaction the system responds is called the output.
+The designation of a device as either input or output depends on perspective.
+
+\be
+For instance, a keyboard or computer mouse is an input device for a computer since they both take physical
+movements that the human user outputs and convert them into input signals that a computer can understand. The output
+from these devices is the computer's input. \v
+
+On the other hand, monitors and printers are output devices since they take signals that computers output as input,
+and they convert these signals into a representation that human users can understand. From the human user's perspective,
+the process of reading or seeing these representations is receiving output. \v
+
+Devices for communication between computers, such as modems and network cards, typically perform both input and
+output operations.
+\ee
+
+\bd[Standard Streams]
+\textbf{Standard streams} are interconnected I/O channels between a computer program and its environment when it begins
+execution.
+\ed
+
+Each standard stream carries a file descriptor.
+
+\bd[File Descriptor]
+A \textbf{file descriptor} is a process-unique identifier for an I/O standard stream.
+\ed
+
+There are exactly 3 standard streams.
+
+\bd[Standard Input (stdin)]
+\textbf{Standard input} or (\textbf{stdin}) is a stream from which a program reads its input data. The file descriptor
+for standard input is 0 (zero).
+\ed
+
+In our context, the standard input is a special file from which a command take its inputs. Unless redirected,
+standard input is inherited from the parent process which by default is attached to the keyboard and not saved into a
+file.
+
+\bd[Standard Output (stdout)]
+\textbf{Standard output} or (\textbf{stdout}) is a stream to which a program writes its output data. The file descriptor
+for standard output is 1 (one).
+\ed
+
+In our context, the standard output is a special file to which a command send its outputs. Unless redirected,
+standard output is inherited from the parent process which by default is linked to the screen and not saved into a
+file.
+
+\bd[Standard Error (stderr)]
+\textbf{Standard error} or (\textbf{stderr}) is a stream to which a program writes its error messages or diagnostics.
+The file descriptor for standard output is 2 (two).
+\ed
+
+In our context, the standard error is a special file to which a command send its error messages or diagnostics.
+Unless redirected, standard error by default is linked to the screen and not saved into a file. While it is acceptable
+and normal to direct standard output and standard error to the same destination (usually the screen), they still are two
+independent streams and they can be redirected separately. \v
+
+I/O allows us to change where output goes and where input comes from. As we said, by default, output goes to the screen
+and input comes from the keyboard, but with I/O, we can change that.
+
+\bd[Redirection Operator]
+A \textbf{redirection operator} redirects the output of a command to a specified location.
+\ed
+
+There are 3 redirection operators:
+\bit
+\item \textbf{<}: Changes the source of standard input from the keyboard to the file.
+\item \textbf{>}: Creates a new file and redirects text to it or, if the file exists, it overwrites the existing content.
+\item \textbf{>>}: Creates a new file and redirects text to it or, if the file exists, it appends to the existing content.
+\eit
+
+The first operator is connected to the standard input and used in order to redirect it:
+\begin{bash}
+# create or overwrite file with the standard output of the command
+<command> < <file>
+\end{bash}
+
+The result is the same as passing a single argument to a command. This redirection operator is not particularly useful
+and it is rarely used. \v
+
+The last two operators are connected to the standard output and standard error and they are very useful. \v
+
+To redirect the standard output of a command to a file we can simply any of the last two redirection operators,
+depending on our needs, as follows:
+\begin{bash}
+# create or overwrite file with the standard output of the command
+<command> > <file>
+\end{bash}
+
+\begin{bash}
+# create or append to file the standard output of the command
+<command> >> <file>
+\end{bash}
+
+To redirect the standard error of a command to a file we must specifically refer to its file descriptor (i.e.\ 2),
+and only then use any of the last two redirection operators, depending on our needs, as follows:
+\begin{bash}
+# create or overwrite file with the standard error of the command
+<command> 2> <file>
+\end{bash}
+
+\begin{bash}
+# create or append to file the standard error of the command
+<command> 2>> <file>
+\end{bash}
+
+Notice that the file descriptor 2 is placed immediately before the redirection operator to perform the redirection of
+standard error to the file. \v
+
+Sometimes we don't want output from a command; we just want to throw it away. This applies particularly to error and
+status messages. The system provides a way to do this by redirecting output to a special file called \code{/dev/null}.
+This file is a system device often referred to as a bit bucket\footnote{The bit bucket is an ancient Unix concept,
+and because of its universality, it has appeared in many parts of Unix culture. When someone says they are sending
+your comments to \code{/dev/null}, now you know what it means.}, which accepts input and does nothing with it. To
+suppress error messages from a command, we do this:
+\begin{bash}
+# suppress standard error messages from a command
+<command> 2> /dev/null
+\end{bash}
+
+There are cases in which we may want to capture all of the output of a command (i.e.\ both standard output and
+standard error) to a single file. To do this, we must redirect both standard output and standard error at the same
+time. There are two ways to do this. \v
+
+The first method is the traditional way. Using this method, we perform two redirections. First we redirect standard
+output to a file, and then we redirect file descriptor 2 (standard error) to file descriptor 1 (standard output)
+using the notation \code{2>$\&$1}:
+\begin{bash}
+# create or overwrite to file both the standard output and standard error of the command
+<command> > <file> 2>&1
+\end{bash}
+
+\begin{bash}
+# create or append to file both the standard output and standard error of the command
+<command> >> <file> 2>&1
+\end{bash}
+
+Notice that the redirection of standard error must always occur after redirecting standard output or it doesn't work.\v
+
+The second method is a recent and more streamlined way. Using this method we perform both redirections at once as:
+\begin{bash}
+# create or overwrite to file both the standard output and standard error of the command
+<command> &> <file>
+\end{bash}
+
+\begin{bash}
+# create or append to file both the standard output and standard error of the command
+<command> &>> <file>
+\end{bash}
+
+\bd[Pipeline]
+A \textbf{pipeline}, invented by Douglas McIlroy at Bell Labs, is a set of commands chained together by their standard
+streams, so that the standard output text of each process (stdout) is passed directly as standard input (stdin) to the
+next one. The second process is started as the first process is still executing, and they are executed concurrently.
+\ed
+
+Pipelines are often used to perform complex operations on data.
+
+\bd[Pipe Operator]
+The \textbf{pipe operator} \code{|} is used to connect multiple commands into a single pipeline.
+\ed
+
+Using the pipe operator, the standard output of one command can be piped into the standard input of another:
+\begin{bash}
+# pipeline
+<command_1> | <command_2> | <command_3>...
+\end{bash}
+
+At first glance, it may be hard to understand the redirection performed by the pipeline operator \code{|} versus the
+redirection operator \code{>}. Simply put, the redirection operator connects a command with a file, while the pipeline
+operator connects the output of one command with the input of a second command.
+
+\subsection{Shell}
+
+A user can provide commands to a ``command-line interface''
+
+\bd[Command-Line Interface (CLI)]
+A \textbf{command-line interface (CLI)]} is a text-based user interface (UI) used to accept commands.
+\ed
+
+CLI runs programs, manages computer files and interacts with the computer through the ``command-line interpreter''.
+
+\bd[Command-Line Interpreter]
+A \textbf{command-line interpreter} is a computer program that exposes an operating system's services to a human user
+or other programs, by receiving keyboard commands through a CLI and passing them to the operating system to carry out.
+\ed
+
+When we speak of the command line interpreter, we are really referring to the shell.
+
+\bd[Shell]
+The \textbf{shell} is a command-line interpreter acting as the outermost layer around the operating system.
+\ed
+
+The name ``shell'' for a command-line interpreter and the concept of making the shell a user program outside of the
+operating system kernel were introduced in a Unix's precursor called Multics. \v
+
+Shells are divided into 2 broad categories: ``login'' and ``non-login'' shells.
+
+\bd[Login Shell]
+A \textbf{login shell} is a shell given to a user upon login into their user account.
+\ed
+
+\bd[Non-Login Shell]
+A \textbf{non-login shell} is a shell open in a terminal.
+\ed
+
+Furthermore, based on if a user can interact with a login or non-login shell we can have 4 possible options:
+\bit
+\item \textbf{Interactive Login Shell}: This is one in which we are prompted for our username and password. Logging into
+a remote computer is an example of this.
+\item \textbf{Non-Interactive Login Shell}: Extremely rare, and you're unlikely to encounter one.
+\item \textbf{Interactive Non-Login Login Shell}: This typically occurs when we launch a terminal session.
+\item \textbf{Non-Interactive Non-Login Shell}: Running a script.
+\eit
+
+Since shells are just computer programs, it makes sense that there are a lot of them. The very fist shell of Unix was
+the so called ``Thompson shell''.
+
+\bd[Thompson Shell]
+The \textbf{Thompson shell} was the first Unix shell, introduced in the first version of Unix in 1971, and was written
+by Ken Thompson.
+\ed
+
+Thompson shell was a simple command line interpreter, not designed for scripting, but nonetheless introduced several
+innovative features to the command-line interface and led to the development of the later Unix shells. The successor of
+Thompson shell was the so called ``Bourne shell''.
+
+\bd[Bourne Shell]
+The \textbf{Bourne shell} is a Unix shell, released in 1979 in the Version 7 of Unix, developed by Stephen Bourne at
+Bell Labs and acting as a replacement for the Thompson shell.
+\ed
+
+Bourne shell was used as an interactive command interpreter and it was also intended as a scripting language and
+contains most of the features that are commonly considered to produce structured programs. Unix-like systems continue
+to have a Bourne shell, or a symbolic link or hard link to a compatible shell—even when other shells are used by
+most users. \v
+
+Coming to today, almost all Unix systems supply a shell program called ``bash'' which has been used as the default login
+shell for most of them.
+
+\bd[Bash]
+\textbf{Bash} is a Unix shell and command language, released in 1989, and written by Brian Fox for the GNU
+Project\footnote{The GNU Project is a free software, mass collaboration project announced by Richard Stallman on
+September 27, 1983. Its goal is to give computer users freedom and control in their use of their computers and computing
+devices by collaboratively developing and publishing software that gives everyone the rights to freely run the software,
+copy and distribute it,study it, and modify it.} as a free software replacement for the Bourne shell.
+\ed
+
+The name bash is an acronym for ``bourne-again shell'', a reference to the fact that bash is an enhanced replacement
+for the original Unix shell program; Bourne. Bash was also the default shell in versions of Apple macOS until it
+changed to ``Z shell'' or ``ZSH'' (although Bash remains available as an alternative shell).
+
+\bd[Z Shell (ZSH)]
+The \textbf{Z shell (ZSH)} is a Unix shell, developed in 1990, by Paul Falstad.
+\ed
+
+The name ZSH derives from the name of Yale professor Zhong Shao. Paul Falstad regarded Shao's login-id, ``ZSH'', as a
+good name for a shell. ZSH is an extended Bourne shell with many improvements, including some features of Bash. \v
+
+Moving on, in order to get access to and interact with a shell we need another program called ``terminal''.
+
+\bd[Terminal Emulator / Terminal Application / Terminal]
+A \textbf{terminal emulator}, or \textbf{terminal application}, or simply \textbf{terminal} is a graphical user
+interface (GUI) computer program that gives us access to the shell.
+\ed
+
+A huge number of terminals are available, but they all basically do the same thing: give us access to the shell. The
+most famous ones include ``Linux console'' for Linux, ``MacTerminal'' for Mac and ``iTerm2'' which is an open-source
+terminal specifically for macOS. \v
+
+Once a terminal is launched the first thing one sees is the so called ``shell prompt''.
+
+\bd[Shell Prompt]
+A \textbf{shell prompt} appears in the terminal whenever the shell is ready to accept input.
+\ed
+
+The default appearance of a shell prompt (although it might vary depending on the distribution), will typically include
+your \code{username@machinename}, followed by the current working directory (more about that in a little bit) and a
+dollar sign (\$):
+\begin{bash}
+[username@machinename current_directory]$\$$
+\end{bash}
+
+If the last character of the prompt is a hash mark (\#) rather than a dollar sign, the terminal session has superuser
+privileges (more about that later). \v
+
+Nowadays, the shell prompt's appearance can be configured to anyone's likings, so more often than not one can see many
+different variations of a shell prompt. \v
+
+Once we give a command to the terminal, this command is saved to the ``command line history''.
+
+\bd[Command Line History]
+\textbf{Command line history} is a feature in many operating shells that allows the user to recall, edit and rerun
+previous commands.
+\ed
+
+Command line history was added to Unix by Bill Joy in 1978. It quickly became popular because it made the shell fast
+and easy to use. Command line history has since become a standard feature in almost every shell. \v
+
+History addresses two important scenarios:
+\bit
+\item Executing the same command or a short sequence of commands over and over.
+\item Correcting mistakes or rerunning a command with only a small modification.
+\eit
+
+To access command line history we press the up and down arrows. If we try the left and right arrows, we'll see that we
+can position the cursor anywhere on the command line. This makes editing commands easy. \v
+
+Last but not least another way that the shell can help you is through a mechanism called ``tab completion''.
+
+\bd[Tab Completion]
+\textbf{Tab completion} is a common feature of shells, in which the shell automatically fills in partially typed
+commands.
+\ed
+
+The name tab completion comes from the fact that tab completion is often invoked by pressing the \code{Tab} key. \v
+
+Tab completion allows the user to type the first few characters of a command or filename, and press \code{Tab} to
+fill in the rest of the item. The user then presses \code{Return} to run the command or open the file. Completable
+elements may include commands, arguments, file names and other entities, depending on the specific interpreter and
+its configuration. Tab completion generally only works in interactive mode. That is, it cannot be invoked to complete
+partially typed commands in scripts or batch files, even if the tab completion is unambiguous. \v
+
+Tab completion is useful in several ways.
+\bit
+\item Commonly accessed commands, especially ones with long names, require fewer keystrokes to reach.
+\item Commands with long or difficult to spell filenames can be entered by typing the first few characters and pressing
+\code{Tab}, which completes the command or filename.
+\item In the case of multiple possible tab completions, shells will list all possible tab completions beginning with
+those few characters. The user can type more characters and press \code{Tab} again to see a new, narrowed-down list if
+the typed characters are still ambiguous, or else complete the command or filename with a trailing space.
+\item An alternate form of tab completion rotates through all matching results when the input is ambiguous.
+\eit
+
+\subsection{Environment}
+
+\bd[Environment]
+An \textbf{environment} is a body of information that the shell maintains during a session.
+\ed
+
+Programs use the data stored in the environment to determine facts about the system's configuration. While most
+programs use configuration files to store program settings, some programs also look for values stored in the
+environment to adjust their behavior. Knowing this, we can use the environment to customize our shell experience. \v
+
+The shell stores data in the environment in the form of ``aliases''\footnote{Recall that from the definition of
+aliases we gave previously, an alias is a command that we can define ourselves, built from other commands.}, ``shell
+functions'' (which we will cover in the next section), and ``environment variables''.
+
+\bd[Environment Variables]
+An \textbf{environment variable}, introduced in its modern form in 1979 with Version 7 Unix, is part of the environment
+in which a process runs, and it is a dynamic-named value that can affect the way running processes will behave on a
+computer.
+\ed
+
+A running process can query the value of an environment variable to discover information. \v
+
+To see what is stored in the environment, we can use \code{printenv} command which displays all the environment
+variables:
+\begin{bash}
+# display all environment variables
+printenv
+\end{bash}
+
+What we see is a list of environment variables and their values.\footnote{Notice that \code{printenv} does not
+display aliases. To see them, enter the \code{alias} command.} Environment variables follow the same format as
+aliases, i.e.\ the name of the environment variable (by convention in capital letters), followed immediately (no
+whitespace allowed) by an equal sign, followed immediately (no whitespace allowed) by the value assigned to them. \v
+
+The \code{printenv} command can also list the value of a specific variable:
+\begin{bash}
+# display the value of a specific environment variable
+printenv <environment_variable>
+\end{bash}
+
+It is also possible to view the contents of a variable using the echo command:
+\begin{bash}
+# display the value of a specific environment variable
+echo $\$$<environment_variable>
+\end{bash}
+
+When we log on to the system, the shell starts and reads a series of configuration scripts called ``startup files''.
+
+\bd[Startup Files]
+\textbf{Startup files} are configuration scripts that are run automatically by the shell when it starts.
+\ed
+
+Startup files have certain characteristics:
+\bit
+\item They are (usually) located in the home directory.
+\item Their names begin with a period, which makes them hidden files.
+\item Their names end in \code{rc} which means ``resource configuration''.
+\eit
+
+Which startup files are gonna run, depend on the type of shell session being started (i.e.\ a login or a non-login
+shell). There is no sane reason why shells sources different startup files based on what kind of shell it thinks it
+is in, it's just historical. Now, let's list all the startup files of a Unix system and distinguish them based on the
+type of shell: \footnote{\textbf{Important}: The names and the logic behind startup files depend on the unix shell
+one uses. Different things happen for bash and different for ZSH. Since ZSH is the one I prefer, I will use this for
+the notes, and I will ignore bash.}
+\bit
+\item \textbf{/etc/zprofile}: A global configuration script for login shells that applies to all users.
+\item \textbf{$\sim$/.zprofile}: A user's personal configuration script for login shells that applies only to the user. It
+can be used to extend or override settings in the global configuration script in \code{/etc/zprofile}.
+\item \textbf{/etc/zshrc}: A global configuration script for interactive non-login shells that applies to all users.
+\item \textbf{$\sim$/.zshrc}: A user's personal configuration script for interactive non-login shells that applies only to
+the user. It can be used to extend or override settings in the global configuration script in \code{/etc/zshrc}.
+\eit
+
+The \code{$\sim$/.zshrc} startup file is probably the most important startup file from the ordinary user's point of view,
+because it is almost always read. Non-login shells read it by default, and most startup files for login shells are
+written in such a way as to read the \code{$\sim$/.zshrc} file as well. Inside \code{$\sim$/.zshrc} we can include anything we
+want to run after every login in the shell.
+
+\subsection{Navigation}
+
+In this section we will be focusing in on of the most important parts of any unix-like system, which is the different
+ways of navigating it.
+
+\subsubsection{Files}
+
+Just as words can be written to paper, so can data be written to a file.
+
+\bd[File]
+A \textbf{file} is a computer resource for recording data in a computer storage device.
+\ed
+
+Files carry some certain characteristics knows as ``attributes''.
+
+\bd[Attribute]
+Each file carries some basic properties called \textbf{attributes}.
+\ed
+
+Here are the all the attributes of a file:
+\bit
+\item The file type of the file.
+\item The access permissions of the file.
+\item The link count of the file.
+\item The file's owner and group.
+\item The size of the file.
+\item The date on which the file was last modified.
+\item The name of the file.
+\eit
+
+Some of the attributes like ``the size of the file'' and ``the date on which the file was last modified'' are self-
+explanatory. The rest of them will make sense as we progress in the notes where we will provide some proper definitions.
+\v
+
+Starting from the bottom of the list we will focus on the name of the file. Each file is distinguished from any other
+file by its ``filename''.
+
+\bd[Filename]
+\textbf{Filename} is the name of a file.
+\ed
+
+Some important facts about filenames:
+\bit
+\item Filenames that begin with a period character are hidden.
+\item Filenames and commands are case sensitive.
+\item Though Unix supports long filenames that may contain embedded spaces and punctuation characters, limit the
+punctuation characters in the names of files you create to period, dash, and underscore.
+\item Do not mbed spaces in filenames. If you want to represent spaces between words in a filename, use underscore
+characters.
+\item Unix has no concept of a ``file extension'' like some other operating systems.
+\eit
+
+Moving on to the top of the list, we will now define the ``file type'', and in a later chapter we will focus on
+permissions.
+
+\bd[File Type]
+\textbf{File type} specifies the type of a file.
+\ed
+
+Unix supports seven different types of files. These file types are:
+\bit
+\item \textbf{-}: A regular file.
+\item \textbf{d}: A directory.
+\item \textbf{l}: A symbolic link.
+\item \textbf{c}: A character special file.
+\item \textbf{b}: A block special file.
+\eit
+
+To find out the type of a file use the \code{file} command on the file (filename):
+\begin{bash}
+# display the type of a file
+file <file>
+\end{bash}
+
+Files are structured in ``file systems''.
+
+\bd[File System / Filesystem]
+A \textbf{file system} or \textbf{filesystem} is the structure and logic rules that an operating system uses to control
+how files are stored and retrieved.
+\ed
+
+Without a file system, files placed in a storage medium would be one large body of data with no way to tell where one
+piece of data stopped and the next began, or where any piece of data was located when it was time to retrieve it. By
+separating the data into pieces and giving each piece a name, the data are easily isolated and identified. There are
+many kinds of file systems, each with unique structure and logic, properties of speed, flexibility, security, size
+and more. \v
+
+The most common file system in Unix-like systems is the ``Unix file system''. The Unix file system has several
+important features like the fact that it is hierarchical, it is organized into directories, it is organized into files,
+it is organized into links and it is organized into special files. In order to get a better understanding of the Unix
+file system, we will start by defining the term ``directories''.
+
+\subsubsection{Directories}
+
+A central concept of any file system is the so called ``directory''.
+
+\bd[Directory / Folder]
+A \textbf{directory} (on many computers also known as \textbf{folder}) is a file system cataloging structure which
+contains references to other files, and possibly other directories.
+\ed
+
+Directories follow a specific structure called ``directory structure''.
+
+\bd[Directory Structure]
+A \textbf{directory structure} is the way an operating system arranges files that are accessible to the user.
+\ed
+
+A Unix-like operating system organizes its files in what is called a ``hierarchical directory structure''.
+
+\bd[Hierarchical Directory Structure]
+A \textbf{hierarchical directory structure} is a directory structure that follows a tree structure.\footnote{A tree
+structure is a way of representing the hierarchical nature of a structure in a graphical form. It is named a
+``tree structure'' because the classic representation resembles a tree, although the chart is generally upside down
+compared to a biological tree, with the ``stem'' at the top and the ``leaves'' at the bottom.}
+\ed
+
+The first directory in a file system that follows the hierarchical directory structure is called the ``root directory''.
+
+\bd[Root Directory]
+The \textbf{root directory} is the top-most directory in a hierarchical directory structure. It is denoted by the slash
+sign \code{/}, but the directory entry itself has no name.
+\ed
+
+The root directory can be likened to the trunk of a tree, as the starting point where all branches originate from. The
+root directory contains files and subdirectories.
+
+\bd[Subdirectory]
+A directory contained inside another directory is called a \textbf{subdirectory}.
+\ed
+
+\bd[Parent Directory]
+The term \textbf{parent directory} is often used to describe the relationship between a subdirectory and the
+directory in which it is cataloged, the latter being the parent. It is denoted by the double dot sign \code{..}.
+\ed
+
+In this context, the root directory is the only directory that does not have a parent of its own. Every other directory
+has multiple parents until it reaches the root directory. \v
+
+An important thing to notice is that when we start a terminal session, the shell does not start from the root. Instead
+it starts from a special directory called ``home'' directory.
+
+\bd[Home Directory]
+The \textbf{home directory} is the directory, where the shell sets as currently working directory when it stars a
+session. It is denoted by the tilde sign \code{$\sim$}.
+\ed
+
+Beside root and home, here follows an extensive list of all directories that one could find inside a Unix-like system:
+\bit
+\item \textbf{/}: The root directory, where everything begins.
+\item \textbf{/bin}: Contains binaries (programs) that must be present for the system to boot and run.
+\item \textbf{/boot}: Contains the Unix kernel, initial RAM disk image (for drivers needed at boot time), and the
+boot loader.
+\item \textbf{/dev}: This is a special directory that contains device nodes. Here is where the kernel maintains a list
+of all the devices it understands.
+\item \textbf{/etc}: This directory contains all the system-wide configuration files. It also contains a
+collection of shell scripts that start each of the system services at boot time. Everything in this directory should
+be readable text.
+\item \textbf{/home}: In normal configurations, each user is given a directory in \code{/home}. Ordinary users can write
+files only in their home directories. This limitation protects the system from errant user activity.
+\item \textbf{/lib}: Contains shared library files used by the core system programs.
+\item \textbf{/lost+found}: Each formatted partition or device using a Unix file system, such as ext3, will have
+this directory. It is used in the case of a partial recovery from a file system corruption event. Unless something
+really bad has happened to your system, this directory will remain empty.
+\item \textbf{/media}: On modern Unix systems, this directory will contain the mount points for removable
+media such as USB drives, CD-ROMs, and so on, that are mounted automatically at insertion.
+\item \textbf{/mnt}: On older Unix systems, this directory contains mount points for removable devices that have
+been mounted manually.
+\item \textbf{/opt}: This directory is used to install ``optional'' software. This is mainly used to hold
+commercial software products that might be installed on the system.
+\item \textbf{/proc}: This directory is special. It's not a real file system in the sense of files stored on
+your hard drive. Rather, it is a virtual file system maintained by the Unix kernel. The ``files'' it contains are
+peepholes into the kernel itself. The files are readable and will give you a picture of how the kernel sees your
+computer.
+\item \textbf{/root}: This is the home directory for the root account.
+\item \textbf{/sbin}: This directory contains ``system'' binaries. These are programs that perform vital system tasks
+that are generally reserved for the superuser.
+\item \textbf{/tmp}: This directory is intended for the storage of temporary, transient files created by various
+programs. Some configurations cause this directory to be emptied each time the system is rebooted.
+\item \textbf{/usr}: This directory is likely the largest one on a Unix system. It contains all the programs and support
+files used by regular users.
+\item \textbf{/usr/bin}: This directory contains the executable programs installed by your Unix distribution. It is not
+uncommon for this directory to hold thousands of programs.
+\item \textbf{/usr/lib}: The shared libraries for the programs in here.
+\item \textbf{/usr/local}: This directory is where programs that are not included with your distribution but are
+intended for system-wide use are installed. Programs compiled from source code are normally installed in
+\code{/usr/local/bin}. On a newly installed Unix system, this director exists, but it will be empty until the system
+administrator puts something in it.
+\item \textbf{/usr/sbin}: Contains more system administration programs.
+\item \textbf{/usr/share}: This directory contains all the shared data used by programs in \code{/usr/bin}. This
+includes things such as default configuration files, icons, screen backgrounds, sound files, and so on.
+\item \textbf{/usr/share/doc}: Most packages installed on the system will include some kind of documentation. In this
+directory, we will find documentation files organized by package.
+\item \textbf{/var}: With the exception of \code{/tmp} and \code{/home}, the directories we have looked at so far
+remain relatively static; that is, their contents don't change. The \code{/var} directory is where data that is likely
+to change is stored. Various databases, spool files, user mail, and so forth, are located here.
+\item \textbf{/var/log}: This directory contains log files, records of various system activity. These are important and
+should be monitored from time to time. The most useful ones are \code{/var/log/messages} and \code{/var/log/syslog}.
+Note that for security reasons on some systems, you must be the superuser to view log files.
+\eit
+
+\fig{unix1}{0.4}
+
+At any given time, we are inside a single directory, called the ``current working directory''.
+
+\bd[Current Working Directory]
+The \textbf{current working directory} is the directory, where the shell is currently working. It is denoted by the dot
+sign \code{.}.
+\ed
+
+To display the current working directory, we use the \code{pwd} (display working directory) command:
+\begin{bash}
+# display current working directory
+pwd
+\end{bash}
+
+What we will see as a result of this command is the so called ``path'' of the directory.
+
+\bd[Path / Pathname]
+The \textbf{path} or \textbf{pathname} of a directory or a file is its position in relation to other directories traced
+back in a line to the root.
+\ed
+
+The path is a string of characters used to uniquely identify a location in a hierarchical directory structure. It is
+composed by following the directory tree hierarchy in which components, separated by a slash \code{/}, represent each
+directory.
+
+\bd[Absolute Path]
+An \textbf{absolute path} points to the same location in a file system, regardless of the current working directory.
+To do that, it must include the root directory.
+\ed
+
+An absolute path begins with the root directory and follows the hierarchical directory structure branch by branch
+until the path to the desired directory or file is completed.
+
+\be
+For example, there is a directory on your system in which most of the system's programs are installed. The directory's
+path is \code{/usr/bin}. This means from the root directory (represented by the leading slash in the path) there is
+a directory called \code{code} that contains a directory called \code{bin}. \v
+
+Important to notice that when we use relative paths we omit the current working directory \code{.} part because it is
+implied. In general, if we do not specify a path to something, the working directory will be assumed.
+\ee
+
+\bd[Relative Path]
+A \textbf{relative path} starts from some given working directory, avoiding the need to provide the full absolute path.
+\ed
+
+Where an absolute path starts from the root directory and leads to its destination, a relative path starts from the
+working directory.
+
+\be
+For example, if you are already in \code{/usr/bin} directory, the root directory \textbf{relatively} to the current
+working directory \code{/usr/bin} is \code{../..}, where the first double dots denote the parent directory of
+\code{/usr/bin}, i.e.\ \code{/usr} and and the second double dots represent the parent's parent directory i.e.\
+\code{/}.
+\ee
+
+To change our current working directory, we use the \code{cd} (change directory) command with either an absolute or
+relative path:
+\begin{bash}
+# change directory
+cd <absolute_or_relative_path>
+\end{bash}
+
+In any given current working directory we can see the files contained in the directory and the pathway
+to the parent directory and any child subdirectories below us by making use of the \code{ls} (list) command as such:
+\begin{bash}
+# display files and directories of current working directory
+ls
+\end{bash}
+
+Actually, we can use the ls command to list the contents of any directory, not just the current working directory.
+\begin{bash}
+# display files and directories of a directory
+ls <absolute_or_relative_path>
+\end{bash}
+
+The \code{ls} command has a large number of possible options, the most common and useful of which are listed below:
+
+\begin{tabular}{ |p{1cm}|p{3cm}||p{10.6cm}| }
+\hline
+\multicolumn{3}{|c|}{ls} \\
+\hline
+Option& Long Format& Description\\
+\hline
+-a & --all & List all files, even those with names that begin with a period, which are normally not listed (that is, hidden).\\
+-A & --almost-all & Like the -a option except it does not list . (current directory) and .. (parent directory).\\
+-d & --directory & Ordinarily, if a directory is specified, ls will list the contents of the directory, not the directory itself. Use this option in conjunction with the -l option to see details about the directory rather than its contents.\\
+-F & --classify & This option will append an indicator character to the end of each listed name. For example, it will append a forward slash (/) if the name is a directory.\\
+-h & --human-readable & In long format listings, display file sizes in human-readable format rather than in bytes.\\
+-l  & & Display results in long format.\\
+-r & & Display the results in reverse order. Normally, ls displays its results in ascending alphabetical order.\\
+-S  & & Sort results by file size.\\
+-t  & & Sort by modification time.\\
+\hline
+\end{tabular}
+
+\v
+
+Before we move on the next chapter, we will note a very important ``feature'' of \code{ls}. Recall from a few pages back
+where we defined the attributes of a file and we gave the following list:
+\bit
+\item The file type and access permissions.
+\item The link count of the file.
+\item The file's owner and group.
+\item The size of the file.
+\item The date on which the file was last modified.
+\item The name of the file.
+\eit
+
+The order of this list is not random. We can actually list all the attributes of a file by using the \code{ls} command
+with the option \code{-l} to display results in long format:
+\begin{bash}
+# display attributes of file
+ls $-$l <file>
+\end{bash}
+
+The result of this command is the 7 attributes of the list in this exact order.
+
+\fig{unix2}{0.6}
+
+To display the attributes of all files within a directory we can run the same command on the directory
+\begin{bash}
+# display attributes of all files in directory
+ls $-$l <directory>
+\end{bash}
+
+\subsection{Manipulation}
+
+Before we begin with some useful manipulation commands, the shell uses filenames so much, it provides special
+characters to help you rapidly specify groups of filenames. These special characters are called ``wildcards''.
+
+\bd[Wildcard]
+A \textbf{wildcard} is a kind of placeholder represented by a single character which can be interpreted as a number of
+literal characters or an empty string.
+\ed
+
+It is often used in file searches so the full name need not be typed, since using wildcards allows you to select
+filenames based on patterns of characters. Here is a full list of wildcards:
+\bit
+\item \textbf{*}: Matches any characters.
+\item \textbf{?}: Matches any single character.
+\item \textbf{[characters]}: Matches any character that is a member of the set characters.
+\item \textbf{[!characters]}: Matches any character that is not a member of the set characters.
+\item \textbf{[[:class:]]}: Matches any character that is a member of the specified class. Some commonly used character
+classes are \code{[:alnum:]} for any alphanumeric character, \code{[:alpha:]} for any alphabetic character,
+\code{[:digit:]} for any numeral, \code{[:lower:]} for any lowercase letter, and \code{[:upper:]} for any uppercase
+letter.
+\eit
+
+Now moving on to commands. \v
+
+The \code{mkdir} command is used to create directories:
+\begin{bash}
+# create directory
+mkdir <directory>...
+\end{bash}
+
+The \code{cp} command copies files or directories:
+\begin{bash}
+# copy file to a directory
+cp <file>... <directory>
+\end{bash}
+
+\begin{bash}
+# copy directory's contents including all subdirectories and their contents to a directory
+cp $-$r <directory_1> <directory_2>
+\end{bash}
+
+The \code{cp} command has a large number of possible options, the most common of which are listed below:
+
+\v
+
+\begin{tabular}{ |p{1cm}|p{3cm}||p{10.6cm}| }
+\hline
+\multicolumn{3}{|c|}{cp} \\
+\hline
+Option& Long Format& Description\\
+\hline
+-a & --archive & Copy the files and directories and all of their attributes, including ownerships and permissions. Normally, copies take on the default attributes of the user performing the copy. We'll take a look at file permissions later.\\
+-i & --interactive & Before overwriting an existing file, prompt the user for confirmation. If this option is not specified, cp will silently (meaning there will be no warning) overwrite files.\\
+-r & --recursive & Recursively copy directories and their contents. This option (or the -a option) is required when copying directories.\\
+-u & --update & When copying files from one directory to another, only copy files that either don't exist or are newer than the existing corresponding files in the destination directory. This is useful when copying large numbers of files as it skips files that don't need to be copied.\\
+-v & --verbose & Display informative messages as the copy is performed.\\
+\hline
+\end{tabular}
+
+\v
+
+The \code{mv} command performs both file moving and file renaming, depending on how it is used. In either case,
+the original filename no longer exists after the operation:
+\begin{bash}
+# move file or directory
+mv <file_or_directory>... <directory>
+\end{bash}
+
+\begin{bash}
+# rename file or directory
+mv <file_or_directory_1> <file_or_directory_2>
+\end{bash}
+
+The \code{mv} command has a large number of possible options, the most common of which are listed below:
+
+\v
+
+\begin{tabular}{ |p{1cm}|p{3cm}||p{10.6cm}| }
+\hline
+\multicolumn{3}{|c|}{mv} \\
+\hline
+Option& Long Format& Description\\
+\hline
+-i & --interactive & Before overwriting an existing file, prompt the user for confirmation. If this option is not specified, mv will silently overwrite files.\\
+-u & --update & When moving files from one directory to another, only move files that either don't exist or are newer than the existing corresponding files in the destination directory.\\
+-v & --verbose & Display informative messages as the move is performed.\\
+\hline
+\end{tabular}
+
+\v
+
+The \textbf{rm} command is used to remove (delete) files and directories:
+\begin{bash}
+# remove file
+mv <file>...
+\end{bash}
+
+\begin{bash}
+# remove directory's contents including all subdirectories and their contents
+rm $-$r <directory>...
+\end{bash}
+
+Unix-like operating systems do not have an undelete command. Once you delete something with \code{rm}, it's gone. \v
+
+The \code{rm} command has a large number of possible options, the most common of which are listed below:
+
+\v
+
+\begin{tabular}{ |p{1cm}|p{3cm}||p{10.6cm}| }
+\hline
+\multicolumn{3}{|c|}{rm} \\
+\hline
+Option& Long Format& Description\\
+\hline
+-i & --interactive & Before deleting an existing file, prompt the user for confirmation. If this option is not specified, mv will silently delete files.\\
+-r & --recursive & Recursively delete directories. This means that if a directory being deleted has subdirectories, delete them too. To delete a directory, this option must be specified.\\
+-f & --force & Ignore nonexistent files and do not prompt. This overrides the --interactive option.\\
+-v & --verbose & Display informative messages as the move is performed.\\
+\hline
+\end{tabular}
+
+\subsection{Multiuser}
+
+We have briefly mentioned the term ``multiuser'' in the previous chapters. In this chapter we will define it properly,
+and we will see how can we use it in practice through the command line.
+
+\bd[User]
+A \textbf{user} is a person who utilizes a computer or network service.
+\ed
+
+\bd[Multiuser]
+\textbf{Multiuser} is a computer capability that allows access by multiple users of a computer.
+\ed
+
+Operating systems in the Unix tradition are multiuser systems. This means that more than one person can be using the
+computer at the same time.
+
+\be
+While a typical computer will likely have only one keyboard and monitor, it can still be used by more than one user.
+For example, if a computer is attached to a network or the Internet, remote users can log in via ssh (secure shell)
+and operate the computer. In fact, remote users can execute graphical applications and have the graphical output
+appear on a remote display.
+\ee
+
+To make multi-using practical, a method had to be devised to protect the users from each other. After all, the
+actions of one user could not be allowed to crash the computer, nor could one user interfere with the files belonging
+to another user. This is how ``Unix security'' was invented.
+
+\bd[Unix Security]
+\textbf{Unix security} refers to the means of securing a Unix or Unix-like operating system.
+\ed
+
+In the Unix security model each user has a user account to be identified from the computer.
+
+\bd[User Account]
+A \textbf{user account} consists of properties that allow a user to access files and directories stored on the computer.
+\ed
+
+When user accounts are created, they are assigned a number called a ``user ID'' (uid).
+
+\bd[User ID (UID)]
+Unix-like systems identify a user account by a value called a user identifier, often abbreviated to \textbf{user ID} or
+\textbf{UID}.
+\ed
+
+User IDs, for the sake of the humans, are mapped to usernames.
+
+\bd[Username]
+\textbf{Username} is a human readable analogous of a user id.
+\ed
+
+User account are authenticated with the use of ``user passwords''.
+
+\bd[User Password]
+A \textbf{user password}, is secret data, typically a string of characters, used to confirm a user's id.
+\ed
+
+To set or change a password, use the \code{passwd} command.
+\begin{bash}
+# set or change password for a user
+passwd <user>
+\end{bash}
+
+Once you enter the passwd you will be prompted for your old password and your new password. The \code{passwd} command
+will try to enforce use of ``strong'' passwords. This means it will refuse to accept passwords that are too short,
+are too similar to previous passwords, are dictionary words, or are too easily guessed. If you have superuser
+privileges, you can specify a username as an argument to the passwd command to set the password for another user.
+Other options are available to the superuser to allow account locking, password expiration, and so on. \v
+
+Users can, in turn, belong to a group consisting of one or more users, which allows additional abilities to be delegated
+in an organized fashion.
+
+\bd[User Groups]
+\textbf{User groups} are group of users with specific access permissions.
+\ed
+
+The user is assigned a group ID (gid) and may belong to additional groups.
+
+\bd[Group ID (GID)]
+A group identifier, often abbreviated to \textbf{group ID} or \textbf{GID}, is a numeric value used to represent a
+specific group.
+\ed
+
+The UID, GID and other access control criteria, are used to determine which system resources a user can access. To
+display all UID, GID, and groups for a current user we use the \code{id} command:
+\begin{bash}
+# display uid, gid, and groups of current user
+id
+\end{bash}
+
+User accounts are defined in the \code{/etc/passwd} file, and groups are defined in the \code{/etc/group file}. When
+user accounts and groups are created, these files are modified along with \code{etc/shadow}, which holds information
+about the user's password. For each user account, \code{/etc/passwd} file defines the username, uid, gid, account's
+real name, home directory, and login shell.
+
+\subsubsection{Changing Identities}
+
+At various times, we may find it necessary to take on the identity of another user. Often, we want to gain superuser
+privileges to carry out some administrative task, but it is also possible to ``become'' another regular user for e.g.\
+testing an account. There are three ways to take on an alternate identity:
+\begin{enumerate}
+\item Log out and log back in as the alternate user.
+\item Use the \code{su} command.
+\item Use the \code{sudo} command.
+\end{enumerate}
+
+The first technique is quite straight-forward, all we need to do is to log out from a user account and log in to another
+user account. This way is rarely (if never) used since it lacks the convenience of the other two. \v
+
+Moving on to the second technique, from within our own shell session, the \code{su} command allows you to assume the
+identity of another user and either start a new shell session with that user's ID or execute a single command as that
+user. \v
+
+The \code{su} command is used to start a shell as another user. The command syntax looks like this:
+\begin{bash}
+# login as another user
+su $-$l <user>
+\end{bash}
+
+If the \code{-l} option is included, the resulting shell session is a login shell for the specified user. This means
+the user's environment is loaded and the working directory is changed to the user's home directory. This is usually
+what we want. Important to mention that (strangely) the \code{-l} option may be abbreviated as \code{-}, which is how
+it is most often used.
+
+\begin{bash}
+# login as another user
+su $-$ <user>
+\end{bash}
+
+If the user is not specified, the ``superuser''\footnote{In the Unix world, there has always been a large division
+between regular users and administrators, owing to the multiuser heritage of Unix. One of the recurrent problems for
+regular users is how to perform certain tasks that require superuser privileges. These tasks include installing and
+updating software, editing system configuration files, and accessing devices. The approach taken in Unix follows the so
+called ``principle of least privilege'' and recommends that most users and applications run under an ordinary account
+to perform their work, and they are granted with superuser privileges only when needed.} is assumed.
+
+\bd[Superuser / Root / Administrator / Admin / Supervisor]
+\textbf{Superuser}, or \textbf{root}, or \textbf{administrator}, or \textbf{admin}, or \textbf{supervisor} (with naming
+being depended on the operating system), is a special user account capable of making unrestricted, potentially adverse,
+system-wide changes.
+\ed
+
+To start a shell for the superuser, we would do this:
+\begin{bash}
+# login as superuser
+su $-$
+\end{bash}
+
+After entering the command, we are prompted for the superuser's password. If it is successfully entered, a new shell
+prompt appears indicating that this shell has superuser privileges. This new prompt has a trailing \code{$\#$} rather than
+a \code{$\$$}, and the current working directory is now the home directory for the superuser \code{/root}. \v
+
+Once in the new shell, we can carry out commands as the superuser. When finished, enter exit to return to the previous
+shell.
+\begin{bash}
+# logout to normal user (if currently superuser)
+exit
+\end{bash}
+
+To execute a single command rather than starting a new interactive command we use the \code{su} command with the
+\code{-c} (command) option:
+\begin{bash}
+# execute single command as superuser
+su $-$c <command>
+\end{bash}
+
+Moving on the the third and last technique, the \code{sudo} command is like \code{su} in many ways but has some
+important additional capabilities. The \code{sudo} command allows an administrator to set up a configuration file
+called \code{/etc/sudoers} and define specific commands that particular users are permitted to execute under an
+assumed identity (usually the superuser) in a controlled way. In particular, a user may be restricted to one or more
+specific commands and no others. To display what privileges are granted by \code{sudo}, use the \code{-l} option to
+list them:
+\begin{bash}
+# display granted privileges of sudo
+sudo $-$l
+\end{bash}
+
+Once we know which commands are permitted we can execute them as simply as:
+\begin{bash}
+# execute permitted command as superuser
+sudo <command>
+\end{bash}
+
+After entering the command, we are prompted for a password. Another important difference is that the use of \code{
+sudo} does not require access to the superuser's password. Authenticating using \code{sudo} requires the user's own
+password. Once the authentication is complete, the specified command is carried out. \v
+
+One important difference between \code{su} and \code{sudo} is that \code{sudo} does not start a new shell, nor does
+it load another user's environment. Note, however, that \code{sudo} can be used to start an interactive superuser
+session (much like\code{su -}) by specifying the \code{-i} option:
+\begin{bash}
+# enter interactive superuser session
+sudo $-$i
+\end{bash}
+
+Before we end this section, a few words as to which of the two commands (\code{su} and \code{sudo}) you should choose.
+Up until a few of years ago, most Linux distributions relied on \code{su} for granting superuser access since it
+didn't require the configuration that \code{sudo} required, and having a root account is traditional in Unix. This
+introduced a problem. Users were tempted to operate as root unnecessarily. In fact, some users operated their systems
+as the root user exclusively since it does away with all those annoying ``permission denied'' messages. This is
+generally not a good idea. \v
+
+This changed in more recent Unix system where its creators took a different tack. By default, modern Unix systems
+disables logins to the root account (by failing to set a password for the account) and instead uses \code{sudo} to
+grant superuser privileges. The initial user account is granted full access to superuser privileges via \code{sudo}
+and may grant similar powers to subsequent user accounts. \v
+
+Bottom line, the choice of which command to use is largely determined by which Unix distribution you use. Your
+distribution probably includes both commands, but its configuration will favor either one or the other. In modern Unix
+systems though, the \code{sudo} command is the way to go and this is the one we will be using.
+
+\subsubsection{Permissions}
+
+In the Unix security system a user may own files and directories. When a user owns a file or directory, the user has
+control over its access. Users can, in turn, belong to a group consisting of one or more users who are given access
+to files and directories by their owners. Recall that owner and group of a file is the third attribute of a file:
+\bit
+\item The file type and access permissions.
+\item The link count of the file.
+\item The file's owner and group.
+\item The size of the file.
+\item The date on which the file was last modified.
+\item The name of the file.
+\eit
+
+In addition to granting access to a group, an owner may also grant some set of access rights to everybody, which in
+Unix terms is referred to as ``the world''. \v
+
+The \code{chown} command is used to change the owner and group owner of a file or directory. Superuser privileges are
+required to use this command:
+\begin{bash}
+# change owner of file or directory
+chown <owner>:<group> <file_or_directory>...
+\end{bash}
+
+The access someone has over files and directories are defined in the so called ``permissions'' of the files and
+directories.
+
+\bd[Permissions]
+\textbf{Permissions} control the access level that the system processes and users have to files and directories.
+\ed
+
+Every file and directory in Unix has the following permission attributes: ``owner permissions'', ``group permissions''
+and ``world permissions''.
+
+\bd[Owner Permissions]
+The \textbf{owner's permissions} determine what actions the owner of the file or directory can perform on the file or
+directory.
+\ed
+
+\bd[Group Permissions]
+The \textbf{group's permissions} determine what actions a user, who is a member of the group that a file or directory
+belongs to, can perform on the file or directory.
+\ed
+
+\bd[World Permissions]
+The \textbf{world's permissions} determine what actions all other users can perform on a file or directory.
+\ed
+
+Permissions ensure that only authorized users can access specific files and directories. When a permission is not set,
+the corresponding rights are denied. \v
+
+Unix-like systems implement 3 specific permissions that apply to each file and directory: ``read permission'', ``write
+permission'', and ``execute permission''.
+
+\bd[Read Permission]
+The \textbf{read} permission grants the ability to read a file.
+\ed
+
+\bit
+\item When set for a file, this permission grants the ability to open and read the file.
+\item When set for a directory, this permission grants the ability to read the names of files in the directory, but not
+to find out any further information about them such as contents, file type, size, ownership, permissions.
+\eit
+
+\bd[Write Permission]
+The \textbf{write} permission grants the ability to modify a file.
+\ed
+
+\bit
+\item When set for a file, this permission grants the ability to write or truncated the file. However, this attribute
+does not allow files to be renamed or deleted. The ability to delete or rename files is determined by directory
+attributes.
+\item When set for a directory, this permission grants the ability to modify entries in the directory, which includes
+creating files, deleting files, and renaming files. Note that this requires that execute is also set; without it, the
+write permission is meaningless for directories.
+\eit
+
+\bd[Execute Permission]
+The \textbf{execute} permission grants the ability to execute a file.
+\ed
+
+\bit
+\item When set for a file, this permission grants the ability for the file to be treated as a program and executed.
+Program files written in scripting languages must also be set as readable to be executed.
+\item When set for a directory, the execute permission is interpreted as the search permission: it grants the ability to
+access file contents and meta-information if its name is known, but not list files inside the directory, unless read is
+set also.
+\eit
+
+The effect of setting the permissions on a directory, rather than a file, is one of the most frequently misunderstood
+file permission issues. So, it is important to understand that permissions on Unix-like systems are not inherited.
+Files created within a directory do not necessarily have the same permissions as that directory. Moreover, a user with
+write access to a directory can delete files in the directory even if he does not have write permissions on the file.
+This is because deleting a file requires modifying the directory, which requires write permissions on the directory,
+not the file. \v
+
+To see the permissions of a file or directory we use the \code{ls} command with the option \code{-l} to display
+the attributes of a file or a directory in long format:
+\begin{bash}
+# display attributes of file or directory
+ls $-$l <file_or_directory>
+\end{bash}
+
+As we have already said, the result of this command is the 7 attributes of a file or directory in the order: type and
+permissions, links, ownership, group ownership, file size, last modification time, and filename. The \code{ls} command
+is one of the most useful commands to find out the permissions of a file or directory. \v
+
+\newpage
+
+Focusing on type and permissions, they are represented by a string of 10 characters. The first of these characters is
+the type that follows the notation we already introduced before:
+\bit
+\item \textbf{-}: A regular file.
+\item \textbf{d}: A directory.
+\item \textbf{l}: A symbolic link.
+\item \textbf{c}: A character special file.
+\item \textbf{b}: A block special file.
+\eit
+
+The remaining nine characters of the file attributes are the file permissions and they represent the read, write, and
+execute permissions for the owner, group, and world. The permissions are broken into groups of threes, and each
+position in the group denotes a specific permission, in this order: read (r), write (w), execute (x).
+
+\v
+
+\fig{unix3}{0.65}
+
+\v
+
+So the first three characters (2-4) represent the permissions for the owner, the second group of three characters (5-
+7) consists of the permissions for the group and the last group of three characters (8-10) represents the permissions
+for everyone else (i.e.\ world).
+
+\v
+
+\fig{unix4}{0.65}
+
+Some examples are in order.
+
+\be
+\begin{bash}
+# a file that is readable, writable, and executable only by the owner
+$-$rwx$------$
+\end{bash}
+
+\begin{bash}
+# a file that is readable, writable, and executable by the owner and readable and
+# executable by the world
+$-$rwxr$-$xr$-$x
+\end{bash}
+
+\begin{bash}
+# a directory that the owner and the members of the owner group may enter the directory
+# and create, rename, and remove files
+drwxrwx$---$
+\end{bash}
+\ee
+
+To change the permissions of a file or directory, use the \code{chmod} command. Be aware that only the file's owner
+can change the mode of a file or directory. \code{chmod} supports two distinct ways of specifying mode changes:
+``octal number representation'' and ``symbolic representation''. Some people prefer to use octal notation, and some
+folks really like the symbolic. Octal can become too complicated really easily, for this reason in these notes we
+will stick with the symbolic notation, which is easier and more intuitive, and we will completely ignore the octal one.
+\v
+
+Symbolic notation is divided into three parts:
+\bit
+\item Who the change will affect:
+\bit
+\item \textbf{u}: Short for ``user'' but means the file or directory owner.
+\item \textbf{g}: Group owner.
+\item \textbf{o}: Short for ``others'' but means world.
+\item \textbf{a}: Short for ``all''. This is a combination of u, g, and o. If no character is specified, ``all'' will be
+assumed.
+\eit
+\item Which operation will be performed:
+\bit
+\item \textbf{+}: A permission is to be added.
+\item \textbf{+}: A permission is to be taken away.
+\item \textbf{=}: Only the specified permission is to be applied and all other permissions are to be removed.
+\eit
+\item What permission will be set:
+\bit
+\item \textbf{r}: Read permission.
+\item \textbf{w}: Write permission.
+\item \textbf{x}: Execute permission.
+\eit
+\eit
+
+Some examples are in order.
+
+\be
+\begin{bash}
+# add execute permission for the owner
+chmod u+x <file_or_directory>
+\end{bash}
+
+\begin{bash}
+# add execute permission for the owner
+chmod u+x <file_or_directory>
+\end{bash}
+
+\begin{bash}
+# remove execute permission from the owner
+chmod u$-$x <file_or_directory>
+\end{bash}
+
+\begin{bash}
+# add execute permission for the owner, group, and world (equivalent to a+x)
+chmod +x <file_or_directory>
+\end{bash}
+
+\begin{bash}
+# remove the read and write permissions from anyone besides the owner and group owner.
+chmod o$-$rw <file_or_directory>
+\end{bash}
+
+\begin{bash}
+# set the group owner and anyone besides the owner to have read and write permissions and
+# remove everything else.
+chmod go=rw <file_or_directory>
+\end{bash}
+\ee
+
+\subsection{Multitasking}
+
+\bd[Thread]
+A \textbf{thread} is the smallest sequence of programmed instructions that can be managed independently by an operating
+system.
+\ed
+
+\bd[Process / Task]
+A \textbf{process} or \textbf{task} is the instance of a computer program that is being executed by one or many threads.
+\ed
+
+Processes are how Unix systems organize the different programs waiting for their turn to be executed. Usually we can
+collect many processes together in a ``process group''.
+
+\bd[Process Group]
+A \textbf{process group} denotes a collection of one or more processes.
+\ed
+
+Processes are divided in two big categories: ``foreground'' and ``background''.
+
+\bd[Foreground Process]
+Processes that require a user to start them or to interact with them are called \textbf{foreground processes}.
+\ed
+
+\be
+Programs and commands run as foreground processes by default.
+\ee
+
+To interrupt a foreground process we can press \code{CTRL-C}. This means we are politely asking the foreground process
+to terminate. \v
+
+\bd[Background Process]
+Processes that are run independently of a user are referred to as \textbf{background processes}.
+\ed
+
+A process in the background is immune from terminal keyboard input.
+
+\be
+Typical tasks for these background processes include logging, system monitoring, scheduling, and user notification.
+\ee
+
+An important concept that is quite confusing. Although background processes run independently of a user, a user can
+still run a process (i.e.\ a foreground process) in the background (i.e.\ turn a foreground into a background process).
+In order to make clear that a process (foreground or background) was run by a user, Unix systems use the concept of
+``jobs''.
+
+\bd[Job]
+Any process started by a user (foreground or background) is called a \textbf{job}
+\ed
+
+To start a job (process) in the background (so its output is being suppressed) we follow the command of the job with an
+ampersand character:
+\begin{bash}
+# run job in the background
+<command> &
+\end{bash}
+
+Once we hit enter and the command is executed, the shell is telling us that we have started a job, and it assigns to
+the job a number of the form \code{\%n} called the ``jobspec''.
+
+\bd[Jobspec]
+A \textbf{jobspec} \code{\%n} is a numeric way of referring to a job.
+\ed
+
+To interrupt a background job we use the \code{kill} command. This means we are politely asking the background job to
+terminate:
+\begin{bash}
+# kill background job
+kill <jobspec>
+\end{bash}
+
+The shell gives us a way to list the jobs that have been launched from our terminal. Using the \code{jobs} command,
+we can see this list:
+\begin{bash}
+# display a list of all running jobs
+jobs
+\end{bash}
+
+To return a job to the foreground, use the \code{fg} command in this way:
+\begin{bash}
+# bring job to foreground
+fg <jobspec>
+\end{bash}
+
+If we have only one background job, the jobspec is optional. \v
+
+Last but not least, a useful tip. To place an already running foreground job in the background, we first have to pause
+it by pressing \code{CTRL-Z} and then return running in the background by using the \code{bg} command:
+\begin{bash}
+# run paused job in the background
+bg <jobspec>
+\end{bash}
+
+Moving a job from the foreground to the background is handy if we launch a program from the command line but forget
+to place it in the background by appending the trailing \code{\text{\&}}. \v
+
+Moving on from jobs back to general processes, some processes can themselves launch other processes. The fact that a
+program can launch other programs is expressed in the process scheme as a ``parent'' process producing a ``child''
+process.
+
+\bd[Parent Process]
+A \textbf{parent process} is a process that has created one or more other processes (the child processes).
+\ed
+
+\bd[Child Process / Subprocess / Subtask]
+A \textbf{child process} or \textbf{subtask} or \textbf{subtask} is a process created by another process (the parent
+process).
+\ed
+
+Modern operating systems are usually multitasking, meaning they create the illusion of doing more than one thing at
+once by rapidly switching from one executing program to another.
+
+\bd[Multitasking]
+\textbf{Multitasking} is the concurrent execution of multiple processes (tasks) over a certain period of time.
+\ed
+
+The main ``orchestrator'' of multitasking is the ``kernel'' which manages processes.
+
+\bd[Kernel]
+The \textbf{kernel} is a computer program at the core of a computer's operating system and generally has complete
+control over everything in the system.
+\ed
+
+The kernel keeps track of the memory assigned to each process, as well as the processes' readiness to resume
+execution. In order to keep thing organized, it maintains information about each process by assigning to each process
+number called a ``process ID'' (PID).
+
+\bd[Process Identifier (PID)]
+The \textbf{process identifier (PID)} is a number used by the kernel to uniquely identify an active process.
+\ed
+
+PIDs are assigned in ascending order. Using PID we can terminate any process by using \code{kill} command with the PID:
+\begin{bash}
+# terminate process
+kill <PID>
+\end{bash}
+
+It's also possible to send signals to multiple processes matching a specified program or username by using the
+\code{killall} command. Here is the syntax:
+\begin{bash}
+# terminate multiple processes
+killall <name>
+\end{bash}
+
+Both \code{kill} and \code{killall} command need superuser privileges to work. \v
+
+When a system starts up, the kernel initiates a few of its own activities as processes and launches a program called
+\code{init}.
+
+\bd[init]
+\textbf{init} (short for initialization) is the first process started by the kernel, with PID 1.
+\ed
+
+\code{init} is a background process that continues running until the system is shut down. It is the direct or indirect
+parent of all other child processes and automatically adopts all orphaned processes. More specifically a background
+child process of \code{init} is called a \textbf{daemon}.
+
+\bd[Daemon]
+All background child processes of \code{init} are called \textbf{daemons}.
+\ed
+
+\code{init} runs a series of shell scripts located in \code{/etc} (usually called init scripts), which start all the
+daemons of the system. So, even if we are not logged in, the system is at least a little busy performing routine stuff.
+\v
+
+To monitor processes, we can use a dynamic (i.e.\ continuously updating) view of all running processes in order of
+process activity by making use of the \code{top} command:
+\begin{bash}
+# display details of system processes listed in order of process activity
+top
+\end{bash}
+
+The \code{top} output consists of two parts: a system summary at the top of the display, followed by a table of
+processes with some extra details sorted by CPU activity. For an explanation of what kind of details \code{top}
+displays check the manual using the \code{man} command.

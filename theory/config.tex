@@ -1,0 +1,336 @@
+%! suppress = EscapeHashOutsideCommand
+
+% load packages
+\usepackage[english]{babel}
+\usepackage[toc, page]{appendix}
+\usepackage[framemethod=TikZ]{mdframed}
+\usepackage{graphicx, geometry, mathtools, amsthm, amsmath, enumitem, float, dirtytalk, textcomp, amssymb, cancel,
+hyperref, IEEEtrantools, mathrsfs, xfrac, pgfplots, bbding, titlepic,cleveref, bm, stmaryrd,  graphicx, movie15,
+subfig, tikz, tikz-cd, fontspec, adjustbox, lmodern, color, xcolor, listings, courier, multirow, caption, booktabs,
+microtype}
+
+% tikz config
+\usetikzlibrary{matrix, calc, positioning, decorations.markings, decorations.pathmorphing, decorations.pathreplacing,
+arrows, cd, shapes}
+\tikzset{snake it/.style={-stealth,decoration={snake, amplitude = .4mm, segment length = 2mm, post length=0.9mm},
+decorate}}
+
+% image paths
+\graphicspath{{./img/}}
+
+% numbering and depth in table of contents 
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+% layout config
+\geometry{margin=1in}
+\setlength{\abovedisplayskip}{10pt}
+\setlength{\belowdisplayskip}{10pt}
+\setlength{\abovedisplayshortskip}{5pt}
+\setlength{\belowdisplayshortskip}{5pt}
+\setlength\parindent{0pt}
+\setlength{\jot}{5pt}
+
+% font config
+\setmainfont{Avenir}
+
+% captions config
+\captionsetup{font=footnotesize}
+
+% extras (theorems, lemmas, etc...)
+\theoremstyle{plain}
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\theoremstyle{remark}
+\newtheorem{example}{Example}[chapter]
+\newtheorem*{notation}{Notation}
+\newtheorem{remark}{Remark}[chapter]
+\newtheorem*{solution}{Solution}
+
+% shortcuts
+\def\ba{\begin{array}}
+\def\ea{\end{array}}
+\def\ben{\begin{enumerate}}
+\def\een{\end{enumerate}}
+\def\bse{\begin{equation*}}
+\def\ese{\end{equation*}}
+\def\bi{\begin{IEEEeqnarray*}}
+\def\ei{\end{IEEEeqnarray*}}
+\def\bit{\begin{itemize}}
+\def\eit{\end{itemize}}
+\def\btab{\begin{table}}
+\def\etab{\end{table}}
+\def\btb{\begin{tabular}}
+\def\etb{\end{tabular}}
+\def\v{\vspace{5pt}}
+\def\a{\alpha}
+\def\C{\mathbb{C}}
+\def\cA{\mathcal{A}}
+\def\cF{\mathcal{F}}
+\def\cH{\mathcal{H}}
+\def\cO{\mathcal{O}}
+\def\cP{\mathcal{P}}
+\def\cl{\colon}
+\def\D{\mathrm{D}}
+\def\d{\mathrm{d}}
+\def\ds{\displaystyle}
+\def\e{\mathrm{e}}
+\def\eqv{\Leftrightarrow}
+\def\F{\mathbb{F}}
+\def\g{\gamma}
+\def\ic{\mathrm{i}}
+\def\img{\mathrm{im}}
+\def\imp{\Rightarrow}
+\def\iset{\cong_\mathrm{set}}
+\def\l{\lambda}
+\def\la{\langle}
+\def\Mat{\mathrm{Mat}}
+\def\m{\mathrm{m}}
+\def\N{\mathbb{N}}
+\def\ol{\overline}
+\def\p{\partial}
+\def\Q{\mathbb{Q}}
+\def\R{\mathbb{R}}
+\def\ra{\rangle}
+\def\re{\Re\e}
+\def\S{\Sigma}
+\def\s{\sigma}
+\def\se{\subseteq}
+\def\sm{\setminus}
+\def\ss{\subset}
+\def\t{\text}
+\def\ua{\nearrow}
+\def\ve{\varepsilon}
+\def\vn{\varnothing}
+\def\wto{\rightharpoonup}
+\def\Z{\mathbb{Z}}
+\def\lacts{\vartriangleright}
+\def\racts{\vartriangleleft}
+\def\smallblackbox{\mathbin{\raisebox{0.6pt}{\scalebox{0.55}{$\blacksquare$}}}}
+\def\Riem{\mathrm{Riem}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\ev}{ev}
+\DeclareMathOperator{\Gr}{Gr}
+\DeclareMathOperator{\Hol}{Hol}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\hor}{hor}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\preim}{preim}
+\DeclareMathOperator{\proj}{proj}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\lspan}{span}
+\DeclareMathOperator{\tr}{tr}
+\newcommand{\tvb}[3]{\left(\frac{\partial}{\partial {#1}^{#2}}\right)_{\negmedspace #3}}
+\DeclareMathOperator{\ver}{ver}
+\DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator*{\esup}{ess\,sup}
+\def\gl{\mathfrak{gl}}
+\DeclareMathOperator{\Ort}{O}
+\def\ort{\mathfrak{o}}
+\DeclareMathOperator{\SL}{SL}
+\def\sl{\mathfrak{sl}}
+\DeclareMathOperator{\SO}{SO}
+\def\so{\mathfrak{so}}
+\DeclareMathOperator{\SU}{SU}
+\def\su{\mathfrak{su}}
+\newcommand{\cibasis}[2][]{\frac{\partial #1}{\partial #2}}
+\newcommand{\projmapto}{\stackrel{\pi}{\longrightarrow}}
+
+\newcommand{\halfWedge}{\mathbin{
+\begin{tikzpicture}
+\draw[line cap=round,rounded corners=0.15,line width=0.4pt] (0,0) -- (0.65ex,1.4ex) -- (1.3ex,0ex);
+\draw[line cap=round,rounded corners=0.1,line width=0.4pt] (0.3ex,0) -- (0.78ex,1.05ex);
+\end{tikzpicture}}
+}
+
+\newcommand{\fig}[2]{
+\begin{figure}[H]
+    \includegraphics[scale=#2]{#1}
+    \centering
+\end{figure}
+}
+
+\newcommand{\Wedge}{\mathbin{
+\begin{tikzpicture}
+\draw[line cap=round,rounded corners=0.1,line width=0.4pt] (0,0) -- (0.65ex,1.4ex) -- (1.3ex,0ex);
+\draw[line cap=round,rounded corners=0.25,line width=0.4pt] (0.3ex,0) -- (0.65ex,0.78ex) -- (1ex,0);
+\end{tikzpicture}}
+}
+
+\DeclareFontFamily{U}{MnSymbolC}{}
+\DeclareSymbolFont{MnSyC}{U}{MnSymbolC}{m}{n}
+\DeclareMathSymbol{\diamondplus}{\mathbin}{MnSyC}{"7C}
+\DeclareMathSymbol{\diamonddot}{\mathbin}{MnSyC}{"7E}
+\DeclareFontShape{U}{MnSymbolC}{m}{n}{
+<-6>  MnSymbolC5
+<6-7>  MnSymbolC6
+<7-8>  MnSymbolC7
+<8-9>  MnSymbolC8
+<9-10> MnSymbolC9
+<10-12> MnSymbolC10
+<12->   MnSymbolC12}{}
+
+% Definition Box
+\newcounter{defi}[section]\setcounter{defi}{0}
+\renewcommand{\thedefi}{\arabic{chapter}.\arabic{section}.\arabic{defi}}
+\newenvironment{defi}[2][]{
+\refstepcounter{defi}
+\ifstrempty{#1}
+{\mdfsetup{
+frametitle={
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=blue!20]
+{\strut Definition~\thedefi};}}
+}
+{\mdfsetup{
+frametitle={
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=blue!20]
+{\strut Definition~\thedefi:~#1};}}
+}
+\mdfsetup{innertopmargin=10pt,linecolor=blue!20,
+linewidth=2pt,topline=true,
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[nobreak=true]\relax
+\label{#2}}{\end{mdframed}}
+
+\def\bd[#1]{\vspace{2pt} \begin{defi}[#1]{placeholder} \vspace{-9pt}}
+\def\ed{\end{defi}}
+
+% Theorem Box
+\newcounter{theo}[section]\setcounter{theo}{0}
+\renewcommand{\thetheo}{\arabic{chapter}.\arabic{section}.\arabic{theo}}
+\newenvironment{theo}[2][]{
+\refstepcounter{theo}
+\ifstrempty{#1}
+{\mdfsetup{
+frametitle={
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=green!20]
+{\strut Theorem~\thetheo};}}
+}
+{\mdfsetup{
+frametitle={
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=green!20]
+{\strut Thoerem~\thetheo:~#1};}}
+}
+\mdfsetup{innertopmargin=10pt,linecolor=green!20,
+linewidth=2pt,topline=true,
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[nobreak=true]\relax
+\label{#2}}{\end{mdframed}}
+
+\def\bt[#1]{\vspace{2pt} \begin{theo}[#1]{placeholder} \vspace{-9pt}}
+\def\et{\end{theo}}
+
+% Example Box
+\newcounter{exa}[section]\setcounter{exa}{0}
+\renewcommand{\theexa}{\arabic{chapter}.\arabic{section}.\arabic{exa}}
+\newenvironment{exa}[2][]{
+\refstepcounter{exa}
+\ifstrempty{#1}
+{\mdfsetup{
+frametitle={
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=black!20]
+{\strut Example~\theexa};}}
+}
+{\mdfsetup{
+frametitle={
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=black!20]
+{\strut Example~\theexa:~#1};}}
+}
+\mdfsetup{innertopmargin=10pt,linecolor=black!20,
+linewidth=2pt,topline=true,
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[nobreak=true]\relax
+\label{#2}}{\end{mdframed}}
+
+\def\be{\vspace{2pt} \begin{exa}{placeholder} \vspace{-9pt}}
+\def\ee{\end{exa}}
+
+% proof Box
+\newcounter{proo}[section]\setcounter{proo}{0}
+\renewcommand{\theproo}{\arabic{chapter}.\arabic{section}.\arabic{proo}}
+\newenvironment{proo}[2][]{
+\refstepcounter{proo}
+\ifstrempty{#1}
+{\mdfsetup{
+frametitle={
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=red!20]
+{\strut Proof~#1};}}
+}
+{\mdfsetup{
+frametitle={
+\tikz[baseline=(current bounding box.east),outer sep=0pt]
+\node[anchor=east,rectangle,fill=red!20]
+{\strut Proof~:~#1};}}
+}
+\mdfsetup{innertopmargin=10pt,linecolor=red!20,
+linewidth=2pt,topline=true,
+frametitleaboveskip=\dimexpr-\ht\strutbox\relax
+}
+\begin{mdframed}[nobreak=true]\relax
+\label{#2}}{\end{mdframed}}
+
+\def\bq{\vspace{2pt} \begin{proo}{placeholder} \vspace{-9pt}}
+\def\eq{\end{proo}}
+
+% code in text
+\definecolor{codegray}{gray}{0.9}
+\newcommand{\code}[1]{\colorbox{codegray}{\texttt{#1}}}
+
+% listings
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{9}
+
+% bash
+\newcommand\bashstyle{\lstset{
+  language=bash,
+  keywordstyle=\sffamily\ttm,
+  basicstyle=\sffamily\ttm,
+  numbersep=5pt,
+  frame=tb,
+  columns=fullflexible,
+  backgroundcolor=\color{yellow!20},
+  linewidth=1\linewidth,
+  breaklines=true,
+  commentstyle=\sffamily\ttm,
+  mathescape=true,
+  aboveskip=8pt,
+  belowskip=8pt}}
+\lstnewenvironment{bash}{\bashstyle \lstset{}}{}
+
+% generic block
+\newcommand\blockstyle{\lstset{
+     basicstyle=\color{black}\footnotesize,
+     rulecolor=\color{black},
+     string=[s]{'}{'},
+     stringstyle=\color{black},
+     comment=[l]{:},
+     commentstyle=\color{black},
+     morecomment=[l]{-},
+     frame=tb,
+     backgroundcolor=\color{gray!20},
+     linewidth=1\linewidth,
+     breaklines=true,
+     mathescape=true,
+     aboveskip=8pt,
+     belowskip=8pt}}
+\lstnewenvironment{block}{\blockstyle\lstset{}}{}
