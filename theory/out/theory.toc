@@ -1,267 +1,269 @@
 \babel@toc {english}{}\relax 
-\contentsline {part}{I\hspace {1em}Mathematics}{13}{part.1}%
-\contentsline {chapter}{\numberline {1}Axiomatic Set Theory}{14}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Propositional Logic}{14}{section.1.1}%
-\contentsline {section}{\numberline {1.2}Predicate Logic}{16}{section.1.2}%
-\contentsline {section}{\numberline {1.3}Axiomatic Systems \& Theory Of Proofs}{18}{section.1.3}%
-\contentsline {section}{\numberline {1.4}The $\in $-relation}{19}{section.1.4}%
-\contentsline {section}{\numberline {1.5}Zermelo-Fraenkel Axioms Of Set Theory}{20}{section.1.5}%
-\contentsline {section}{\numberline {1.6}Maps Between Sets}{25}{section.1.6}%
-\contentsline {section}{\numberline {1.7}Equivalence Relations}{29}{section.1.7}%
-\contentsline {section}{\numberline {1.8}Construction Of $\mathbb {N}$, $\mathbb {Z}$, $\mathbb {Q}$ \& $\mathbb {R}$}{31}{section.1.8}%
-\contentsline {chapter}{\numberline {2}Algebraic Structures}{34}{chapter.2}%
-\contentsline {section}{\numberline {2.1}Groups}{34}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Fields}{35}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Vector Spaces}{36}{section.2.3}%
-\contentsline {subsection}{\numberline {2.3.1}Linear Maps}{36}{subsection.2.3.1}%
-\contentsline {subsection}{\numberline {2.3.2}Basis Of Vector Spaces}{40}{subsection.2.3.2}%
-\contentsline {subsection}{\numberline {2.3.3}Change Of Basis}{44}{subsection.2.3.3}%
-\contentsline {subsection}{\numberline {2.3.4}Determinants}{46}{subsection.2.3.4}%
-\contentsline {section}{\numberline {2.4}Rings}{48}{section.2.4}%
-\contentsline {section}{\numberline {2.5}Modules}{49}{section.2.5}%
-\contentsline {subsection}{\numberline {2.5.1}Basis Of Modules}{50}{subsection.2.5.1}%
-\contentsline {section}{\numberline {2.6}Algebras}{51}{section.2.6}%
-\contentsline {chapter}{\numberline {3}Lie Algebras}{52}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Basic Definitions}{52}{section.3.1}%
-\contentsline {section}{\numberline {3.2}The Adjoint Map \& The Killing Form}{56}{section.3.2}%
-\contentsline {section}{\numberline {3.3}The Fundamental Roots \& The Weyl Group}{59}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Dynkin Diagrams \& The Cartan Classification}{63}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Application: Reconstruction Of $A_2$ From Its Dynkin Diagram}{66}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Representations Of Lie Algebras}{68}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}The Casimir Operator}{72}{subsection.3.6.1}%
-\contentsline {section}{\numberline {3.7}Application: Representations Of $\mathfrak {so}(3,\mathbb {R})$}{75}{section.3.7}%
-\contentsline {chapter}{\numberline {4}Topology}{77}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Topological Spaces}{77}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Construction Of New Topologies From Given Ones}{80}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Convergence \& Continuity}{82}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Invariant Topological Properties}{84}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Separation Properties}{85}{subsection.4.4.1}%
-\contentsline {subsection}{\numberline {4.4.2}Connectedness \& Path-Connectedness}{88}{subsection.4.4.2}%
-\contentsline {subsection}{\numberline {4.4.3}Homotopic Curves \& The Fundamental Group}{89}{subsection.4.4.3}%
-\contentsline {chapter}{\numberline {5}Topological Manifolds}{91}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Topological Manifolds}{91}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Charts \& Atlases}{92}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Differentiable Manifolds}{96}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Classification Of Differentiable Structures}{98}{subsection.5.3.1}%
-\contentsline {section}{\numberline {5.4}Tangent Space}{99}{section.5.4}%
-\contentsline {subsection}{\numberline {5.4.1}Coordinate Induced Basis For The Tangent Space}{101}{subsection.5.4.1}%
-\contentsline {subsection}{\numberline {5.4.2}Change Of Vector Components Under A Change Of Chart}{103}{subsection.5.4.2}%
-\contentsline {section}{\numberline {5.5}Cotangent Space}{105}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Dual Basis For The Cotangent Space}{105}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Change Of Covector Components Under A Change Of Chart}{106}{subsection.5.5.2}%
-\contentsline {section}{\numberline {5.6}Push-Forward \& Pull-Back}{106}{section.5.6}%
-\contentsline {subsection}{\numberline {5.6.1}Immersions \& Embeddings}{109}{subsection.5.6.1}%
-\contentsline {section}{\numberline {5.7}The Tangent Bundle}{110}{section.5.7}%
-\contentsline {subsection}{\numberline {5.7.1}Topological Bundles}{110}{subsection.5.7.1}%
-\contentsline {subsection}{\numberline {5.7.2}Tangent Bundle}{115}{subsection.5.7.2}%
-\contentsline {subsection}{\numberline {5.7.3}Vector, Covector \& Tensor Fields}{117}{subsection.5.7.3}%
-\contentsline {section}{\numberline {5.8}Differential Forms}{123}{section.5.8}%
-\contentsline {subsection}{\numberline {5.8.1}The Grassmann Algebra}{125}{subsection.5.8.1}%
-\contentsline {subsection}{\numberline {5.8.2}The Exterior Derivative}{126}{subsection.5.8.2}%
-\contentsline {subsection}{\numberline {5.8.3}De Rham Cohomology}{129}{subsection.5.8.3}%
-\contentsline {section}{\numberline {5.9}Application: $\SL (2,\mathbb {C})$ - Part 1}{132}{section.5.9}%
-\contentsline {chapter}{\numberline {6}Extra Structures On Topological Manifolds}{136}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Connection / Covariant Derivative}{136}{section.6.1}%
-\contentsline {subsection}{\numberline {6.1.1}Parallel Transport}{140}{subsection.6.1.1}%
-\contentsline {subsection}{\numberline {6.1.2}Torsion}{142}{subsection.6.1.2}%
-\contentsline {subsection}{\numberline {6.1.3}Curvature}{143}{subsection.6.1.3}%
-\contentsline {section}{\numberline {6.2}Metric Manifolds}{145}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Geodesics}{146}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Ricci Curvature \& Ricci Scalar}{148}{subsection.6.2.2}%
-\contentsline {chapter}{\numberline {7}Lie Groups}{150}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Lie Groups}{150}{section.7.1}%
-\contentsline {section}{\numberline {7.2}The Left Translation Map}{151}{section.7.2}%
-\contentsline {section}{\numberline {7.3}The Lie Algebra Of A Lie Group}{152}{section.7.3}%
-\contentsline {section}{\numberline {7.4}Application: $\SL (2,\mathbb {C})$ - Part 2}{156}{section.7.4}%
-\contentsline {section}{\numberline {7.5}Representations Of Lie Groups}{165}{section.7.5}%
-\contentsline {section}{\numberline {7.6}Reconstruction Of A Lie group From Its Lie Algebra}{167}{section.7.6}%
-\contentsline {subsection}{\numberline {7.6.1}The Exponential Map}{168}{subsection.7.6.1}%
-\contentsline {section}{\numberline {7.7}Lie Group Actions On A Manifold}{171}{section.7.7}%
-\contentsline {chapter}{\numberline {8}Principal Fiber Bundles}{177}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Principal Bundles}{177}{section.8.1}%
-\contentsline {subsection}{\numberline {8.1.1}Principal Bundle Maps}{178}{subsection.8.1.1}%
-\contentsline {section}{\numberline {8.2}Associated Bundles}{181}{section.8.2}%
-\contentsline {subsection}{\numberline {8.2.1}Associated Bundle Maps}{182}{subsection.8.2.1}%
-\contentsline {section}{\numberline {8.3}Application: Principal Frame Bundle}{184}{section.8.3}%
-\contentsline {section}{\numberline {8.4}Connections On A Principal Bundle}{187}{section.8.4}%
-\contentsline {subsection}{\numberline {8.4.1}Connection One-Forms}{189}{subsection.8.4.1}%
-\contentsline {section}{\numberline {8.5}Yang-Mills Fields \& Local Representations}{191}{section.8.5}%
-\contentsline {subsection}{\numberline {8.5.1}The Maurer-Cartan Form}{193}{subsection.8.5.1}%
-\contentsline {subsection}{\numberline {8.5.2}The Gauge Map}{196}{subsection.8.5.2}%
-\contentsline {section}{\numberline {8.6}Parallel Transport}{197}{section.8.6}%
-\contentsline {subsection}{\numberline {8.6.1}Horizontal Lifts To The Principal Bundle}{197}{subsection.8.6.1}%
-\contentsline {subsection}{\numberline {8.6.2}Solution Of The horizontal Lift ODE By A Path-Ordered Exponential}{199}{subsection.8.6.2}%
-\contentsline {subsection}{\numberline {8.6.3}Horizontal Lifts To The Associated Bundle}{201}{subsection.8.6.3}%
-\contentsline {section}{\numberline {8.7}Covariant Exterior Derivative And Curvature}{202}{section.8.7}%
-\contentsline {subsection}{\numberline {8.7.1}Torsion}{205}{subsection.8.7.1}%
-\contentsline {section}{\numberline {8.8}Covariant Derivatives}{206}{section.8.8}%
-\contentsline {subsection}{\numberline {8.8.1}Equivalence Of Local Sections And Equivariant Functions}{206}{subsection.8.8.1}%
-\contentsline {subsection}{\numberline {8.8.2}Linear Actions On Associated Vector Fiber Bundles}{207}{subsection.8.8.2}%
-\contentsline {subsection}{\numberline {8.8.3}Construction Of The Covariant Derivative}{208}{subsection.8.8.3}%
-\contentsline {part}{II\hspace {1em}Probability Theory \& Statistics}{210}{part.2}%
-\contentsline {chapter}{\numberline {9}Introduction}{211}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Basic Definitions \& Terminology}{211}{section.9.1}%
-\contentsline {chapter}{\numberline {10}Axiomatic Probability Theory}{214}{chapter.10}%
-\contentsline {section}{\numberline {10.1}Sample Space}{214}{section.10.1}%
-\contentsline {section}{\numberline {10.2}Measure Theory}{216}{section.10.2}%
-\contentsline {subsection}{\numberline {10.2.1}Basic Definitions}{217}{subsection.10.2.1}%
-\contentsline {subsection}{\numberline {10.2.2}Borel $\sigma $-algebras}{222}{subsection.10.2.2}%
-\contentsline {subsection}{\numberline {10.2.3}Lebesgue Measure (On $\mathbb {R}^d$)}{224}{subsection.10.2.3}%
-\contentsline {subsection}{\numberline {10.2.4}Measurable Maps}{224}{subsection.10.2.4}%
-\contentsline {subsection}{\numberline {10.2.5}Lebesgue Integral}{226}{subsection.10.2.5}%
-\contentsline {section}{\numberline {10.3}Axiomatic Probability Theory}{232}{section.10.3}%
-\contentsline {section}{\numberline {10.4}Conditional Probability}{233}{section.10.4}%
-\contentsline {chapter}{\numberline {11}Random Variables}{236}{chapter.11}%
-\contentsline {section}{\numberline {11.1}Random Variables}{236}{section.11.1}%
-\contentsline {section}{\numberline {11.2}Discrete Random Variables}{237}{section.11.2}%
-\contentsline {section}{\numberline {11.3}Discrete Probability Distributions}{239}{section.11.3}%
-\contentsline {subsection}{\numberline {11.3.1}Discrete Uniform Distribution - Unif(n)}{239}{subsection.11.3.1}%
-\contentsline {subsection}{\numberline {11.3.2}Bernoulli Distribution - Bern(p)}{240}{subsection.11.3.2}%
-\contentsline {subsection}{\numberline {11.3.3}Binomial Distribution - B(n,p)}{241}{subsection.11.3.3}%
-\contentsline {subsection}{\numberline {11.3.4}Poisson Distribution - Pois($\lambda $)}{242}{subsection.11.3.4}%
-\contentsline {subsection}{\numberline {11.3.5}Geometric Distribution - Geo(p)}{243}{subsection.11.3.5}%
-\contentsline {subsection}{\numberline {11.3.6}Hypergeometric Distribution - Hypergeometric(N, K, n)}{244}{subsection.11.3.6}%
-\contentsline {subsection}{\numberline {11.3.7}Negative Binomial Distribution - NB(r,p)}{244}{subsection.11.3.7}%
-\contentsline {section}{\numberline {11.4}Continuous Random Variables}{245}{section.11.4}%
-\contentsline {section}{\numberline {11.5}Continuous Probability Distributions}{246}{section.11.5}%
-\contentsline {subsection}{\numberline {11.5.1}Continuous Uniform Distribution - Unif(a,b)}{246}{subsection.11.5.1}%
-\contentsline {subsection}{\numberline {11.5.2}Normal Distribution - N($\mu $, $\sigma ^2$)}{247}{subsection.11.5.2}%
-\contentsline {subsection}{\numberline {11.5.3}Standard Normal Distribution - N(0,1)}{249}{subsection.11.5.3}%
-\contentsline {subsection}{\numberline {11.5.4}Exponential Distribution - Expo($\lambda $)}{252}{subsection.11.5.4}%
-\contentsline {subsection}{\numberline {11.5.5}Chi-Squared Distribution - $\chi ^2(k)$}{253}{subsection.11.5.5}%
-\contentsline {subsection}{\numberline {11.5.6}Student's t-Distribution - $t(\nu )$}{254}{subsection.11.5.6}%
-\contentsline {subsection}{\numberline {11.5.7}Beta Distribution - Beta($\alpha , \beta $)}{255}{subsection.11.5.7}%
-\contentsline {subsection}{\numberline {11.5.8}Gamma Distribution - Gamma($\alpha $, $\beta $)}{256}{subsection.11.5.8}%
-\contentsline {section}{\numberline {11.6}Joint Probability Distribution}{257}{section.11.6}%
-\contentsline {subsection}{\numberline {11.6.1}Bivariate Joint Distribution}{258}{subsection.11.6.1}%
-\contentsline {section}{\numberline {11.7}Moments}{263}{section.11.7}%
-\contentsline {chapter}{\numberline {12}Statistical Inference}{268}{chapter.12}%
-\contentsline {section}{\numberline {12.1}Population VS Sample}{268}{section.12.1}%
-\contentsline {subsection}{\numberline {12.1.1}Sampling Techniques}{269}{subsection.12.1.1}%
-\contentsline {section}{\numberline {12.2}Central Limit Theorem \& Sampling Distribution}{272}{section.12.2}%
-\contentsline {chapter}{\numberline {13}Parametric Inference}{274}{chapter.13}%
-\contentsline {section}{\numberline {13.1}Basic Definitions}{274}{section.13.1}%
-\contentsline {section}{\numberline {13.2}Maximum Likelihood}{276}{section.13.2}%
-\contentsline {subsection}{\numberline {13.2.1}Application: Maximum Likelihood In Bernoulli Distribution}{279}{subsection.13.2.1}%
-\contentsline {part}{III\hspace {1em}Machine Learning}{281}{part.3}%
-\contentsline {chapter}{\numberline {14}Introduction}{282}{chapter.14}%
-\contentsline {section}{\numberline {14.1}Use Cases}{282}{section.14.1}%
-\contentsline {section}{\numberline {14.2}Requirements}{283}{section.14.2}%
-\contentsline {section}{\numberline {14.3}Types}{284}{section.14.3}%
-\contentsline {subsection}{\numberline {14.3.1}Conventions}{285}{subsection.14.3.1}%
-\contentsline {chapter}{\numberline {15}Supervised Learning}{286}{chapter.15}%
-\contentsline {section}{\numberline {15.1}Basic Definitions}{286}{section.15.1}%
-\contentsline {section}{\numberline {15.2}Linear Regression}{287}{section.15.2}%
-\contentsline {section}{\numberline {15.3}Optimization Techniques}{291}{section.15.3}%
-\contentsline {subsection}{\numberline {15.3.1}Normal Equation}{291}{subsection.15.3.1}%
-\contentsline {subsection}{\numberline {15.3.2}Gradient Descent}{292}{subsection.15.3.2}%
-\contentsline {section}{\numberline {15.4}Feature Engineering}{294}{section.15.4}%
-\contentsline {subsection}{\numberline {15.4.1}Feature Selection}{294}{subsection.15.4.1}%
-\contentsline {subsubsection}{\numberline {15.4.1.1}Missing Values}{296}{subsubsection.15.4.1.1}%
-\contentsline {subsection}{\numberline {15.4.2}Feature Scaling}{297}{subsection.15.4.2}%
-\contentsline {subsection}{\numberline {15.4.3}Feature Crossing}{298}{subsection.15.4.3}%
-\contentsline {subsection}{\numberline {15.4.4}Feature Importance \& Generalization}{299}{subsection.15.4.4}%
-\contentsline {section}{\numberline {15.5}Logistic Regression}{299}{section.15.5}%
-\contentsline {subsection}{\numberline {15.5.1}Normal Equation}{302}{subsection.15.5.1}%
-\contentsline {subsection}{\numberline {15.5.2}Gradient Descent}{302}{subsection.15.5.2}%
-\contentsline {subsection}{\numberline {15.5.3}Multinomial Classification}{303}{subsection.15.5.3}%
-\contentsline {section}{\numberline {15.6}Generalized Linear Model}{303}{section.15.6}%
-\contentsline {section}{\numberline {15.7}Errors}{304}{section.15.7}%
-\contentsline {subsection}{\numberline {15.7.1}Point-Wise, Overall, In-Sample \& Out-Of-Sample Error}{304}{subsection.15.7.1}%
-\contentsline {subsection}{\numberline {15.7.2}Bias \& Variance}{305}{subsection.15.7.2}%
-\contentsline {section}{\numberline {15.8}Evaluation}{307}{section.15.8}%
-\contentsline {section}{\numberline {15.9}Regularization}{310}{section.15.9}%
-\contentsline {subsection}{\numberline {15.9.1}Ridge Regression / Tikhonov Regularization (L2 Regularization)}{310}{subsection.15.9.1}%
-\contentsline {subsection}{\numberline {15.9.2}Lasso Regression (L1 Regularization)}{312}{subsection.15.9.2}%
-\contentsline {subsection}{\numberline {15.9.3}Elastic Net}{312}{subsection.15.9.3}%
-\contentsline {subsection}{\numberline {15.9.4}Early Stopping}{313}{subsection.15.9.4}%
-\contentsline {section}{\numberline {15.10}Classification Error Metrics}{313}{section.15.10}%
-\contentsline {subsection}{\numberline {15.10.1}Accuracy \& Precision/Recall Trade-Off}{316}{subsection.15.10.1}%
-\contentsline {subsection}{\numberline {15.10.2}Receiver Operating Characteristic (ROC) Curve}{316}{subsection.15.10.2}%
-\contentsline {subsection}{\numberline {15.10.3}Baselines}{317}{subsection.15.10.3}%
-\contentsline {section}{\numberline {15.11}Support Vector Machine}{318}{section.15.11}%
-\contentsline {section}{\numberline {15.12}$k$-Nearest Neighbors}{326}{section.15.12}%
-\contentsline {section}{\numberline {15.13}Decision Trees \& Random Forests}{327}{section.15.13}%
-\contentsline {subsection}{\numberline {15.13.1}Decision Trees}{327}{subsection.15.13.1}%
-\contentsline {subsection}{\numberline {15.13.2}Ensemble Learning}{332}{subsection.15.13.2}%
-\contentsline {subsection}{\numberline {15.13.3}Random Forests}{335}{subsection.15.13.3}%
-\contentsline {chapter}{\numberline {16}Unsupervised Learning}{336}{chapter.16}%
-\contentsline {section}{\numberline {16.1}Basic Definitions}{336}{section.16.1}%
-\contentsline {section}{\numberline {16.2}Clustering}{336}{section.16.2}%
-\contentsline {subsection}{\numberline {16.2.1}k-Means}{337}{subsection.16.2.1}%
-\contentsline {subsection}{\numberline {16.2.2}DBSCAN}{338}{subsection.16.2.2}%
-\contentsline {section}{\numberline {16.3}Dimensionality Reduction}{339}{section.16.3}%
-\contentsline {subsection}{\numberline {16.3.1}Principal Component Analysis}{339}{subsection.16.3.1}%
-\contentsline {chapter}{\numberline {17}Reinforcement Learning}{342}{chapter.17}%
-\contentsline {section}{\numberline {17.1}Basic Definitions}{343}{section.17.1}%
-\contentsline {section}{\numberline {17.2}Markov Decision Process}{347}{section.17.2}%
-\contentsline {subsection}{\numberline {17.2.1}Markov Process}{347}{subsection.17.2.1}%
-\contentsline {subsection}{\numberline {17.2.2}Markov Reward Process}{349}{subsection.17.2.2}%
-\contentsline {subsection}{\numberline {17.2.3}Markov Decision Process}{354}{subsection.17.2.3}%
-\contentsline {section}{\numberline {17.3}Optimal Policies}{358}{section.17.3}%
-\contentsline {section}{\numberline {17.4}Solving Markov Decision Processes}{360}{section.17.4}%
-\contentsline {subsection}{\numberline {17.4.1}Model-Based Prediction}{360}{subsection.17.4.1}%
-\contentsline {subsubsection}{\numberline {17.4.1.1}Policy Evaluation}{360}{subsubsection.17.4.1.1}%
-\contentsline {subsection}{\numberline {17.4.2}Model-Based Control}{361}{subsection.17.4.2}%
-\contentsline {subsubsection}{\numberline {17.4.2.1}Policy Iteration}{361}{subsubsection.17.4.2.1}%
-\contentsline {subsubsection}{\numberline {17.4.2.2}Value Iteration}{362}{subsubsection.17.4.2.2}%
-\contentsline {subsection}{\numberline {17.4.3}Model-Free Prediction}{366}{subsection.17.4.3}%
-\contentsline {subsubsection}{\numberline {17.4.3.1}Monte Carlo}{367}{subsubsection.17.4.3.1}%
-\contentsline {subsubsection}{\numberline {17.4.3.2}Temporal Difference}{369}{subsubsection.17.4.3.2}%
-\contentsline {subsubsection}{\numberline {17.4.3.3}TD($\lambda $)}{373}{subsubsection.17.4.3.3}%
-\contentsline {chapter}{\numberline {18}Deep Learning}{376}{chapter.18}%
-\contentsline {section}{\numberline {18.1}Basic Definitions}{376}{section.18.1}%
-\contentsline {section}{\numberline {18.2}McCulloch Pitts Neuron}{377}{section.18.2}%
-\contentsline {section}{\numberline {18.3}Perceptron}{380}{section.18.3}%
-\contentsline {section}{\numberline {18.4}Sigmoid Neuron}{384}{section.18.4}%
-\contentsline {section}{\numberline {18.5}Feedforward Neural Networks}{385}{section.18.5}%
-\contentsline {subsection}{\numberline {18.5.1}Motivation: XOR Function With A Network Of Perceptons}{385}{subsection.18.5.1}%
-\contentsline {subsection}{\numberline {18.5.2}Feedforward Neural Network (Forward Propagation)}{388}{subsection.18.5.2}%
-\contentsline {subsection}{\numberline {18.5.3}Backward Propagation}{390}{subsection.18.5.3}%
-\contentsline {subsection}{\numberline {18.5.4}Generalize To Full Dataset}{393}{subsection.18.5.4}%
-\contentsline {section}{\numberline {18.6}Modified Gradient Descent Algorithms}{394}{section.18.6}%
-\contentsline {subsection}{\numberline {18.6.1}Mini-Batch \& Stochastic Gradient Descent}{395}{subsection.18.6.1}%
-\contentsline {subsection}{\numberline {18.6.2}Gradient Descent With Momentum}{395}{subsection.18.6.2}%
-\contentsline {subsection}{\numberline {18.6.3}Nesterov Accelerated Gradient Descent}{397}{subsection.18.6.3}%
-\contentsline {subsection}{\numberline {18.6.4}Adaptive Gradient Descent (AdaGrad)}{397}{subsection.18.6.4}%
-\contentsline {subsection}{\numberline {18.6.5}Root Mean Square Propagation (RMSProp)}{398}{subsection.18.6.5}%
-\contentsline {subsection}{\numberline {18.6.6}Adaptive Moment Estimation (Adam)}{399}{subsection.18.6.6}%
-\contentsline {subsection}{\numberline {18.6.7}Learning Rate Decay}{401}{subsection.18.6.7}%
-\contentsline {section}{\numberline {18.7}Errors, Evaluation \& Regularization}{402}{section.18.7}%
-\contentsline {subsection}{\numberline {18.7.1}L2 Regularization}{402}{subsection.18.7.1}%
-\contentsline {subsection}{\numberline {18.7.2}Dataset Augmentation}{403}{subsection.18.7.2}%
-\contentsline {subsection}{\numberline {18.7.3}Adding Noise To The Inputs/Outputs}{403}{subsection.18.7.3}%
-\contentsline {subsection}{\numberline {18.7.4}Early Stopping}{403}{subsection.18.7.4}%
-\contentsline {subsection}{\numberline {18.7.5}Ensemble Methods}{403}{subsection.18.7.5}%
-\contentsline {subsection}{\numberline {18.7.6}Dropout}{403}{subsection.18.7.6}%
-\contentsline {section}{\numberline {18.8}Improvements On A Feedforward Neural Network}{404}{section.18.8}%
-\contentsline {subsection}{\numberline {18.8.1}Activation Functions}{404}{subsection.18.8.1}%
-\contentsline {subsection}{\numberline {18.8.2}Initialization Strategies}{406}{subsection.18.8.2}%
-\contentsline {subsection}{\numberline {18.8.3}Batch Normalization}{408}{subsection.18.8.3}%
-\contentsline {chapter}{\numberline {19}Convolutional Neural Networks}{410}{chapter.19}%
-\contentsline {section}{\numberline {19.1}Input Layer}{410}{section.19.1}%
-\contentsline {section}{\numberline {19.2}Convolutional Layer}{411}{section.19.2}%
-\contentsline {section}{\numberline {19.3}Pooling Layer}{413}{section.19.3}%
-\contentsline {section}{\numberline {19.4}Flatten Layer}{414}{section.19.4}%
-\contentsline {section}{\numberline {19.5}Feedforward Neural Network}{415}{section.19.5}%
-\contentsline {section}{\numberline {19.6}Convolutional Neural Network Architectures}{415}{section.19.6}%
-\contentsline {chapter}{\numberline {20}Recurrent Neural Networks}{417}{chapter.20}%
-\contentsline {section}{\numberline {20.1}Building A Recurrent Neural Network}{418}{section.20.1}%
-\contentsline {section}{\numberline {20.2}Backpropagation Through Time}{420}{section.20.2}%
-\contentsline {subsection}{\numberline {20.2.1}Problems Of Backpropagation Through Time}{422}{subsection.20.2.1}%
-\contentsline {section}{\numberline {20.3}Long Short Term Memory}{423}{section.20.3}%
-\contentsline {section}{\numberline {20.4}Gated Recurrent Unit}{428}{section.20.4}%
-\contentsline {section}{\numberline {20.5}Encoder-Decoder Model}{428}{section.20.5}%
-\contentsline {subsection}{\numberline {20.5.1}Attention}{429}{subsection.20.5.1}%
-\contentsline {chapter}{\numberline {21}Transformers}{432}{chapter.21}%
-\contentsline {section}{\numberline {21.1}Input Embedding}{433}{section.21.1}%
-\contentsline {subsection}{\numberline {21.1.1}One-Hot Representation}{434}{subsection.21.1.1}%
-\contentsline {subsection}{\numberline {21.1.2}Distributed Representation}{434}{subsection.21.1.2}%
-\contentsline {subsection}{\numberline {21.1.3}Word2vec}{435}{subsection.21.1.3}%
-\contentsline {subsubsection}{\numberline {21.1.3.1}Continuous Bag-Of-Words}{435}{subsubsection.21.1.3.1}%
-\contentsline {subsubsection}{\numberline {21.1.3.2}Continuous Skip-Gram}{437}{subsubsection.21.1.3.2}%
-\contentsline {section}{\numberline {21.2}Positional Encoding}{438}{section.21.2}%
-\contentsline {section}{\numberline {21.3}Attention}{439}{section.21.3}%
+\contentsline {part}{I\hspace {1em}Mathematics}{12}{part.1}%
+\contentsline {chapter}{\numberline {1}Axiomatic Set Theory}{13}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Propositional Logic}{13}{section.1.1}%
+\contentsline {section}{\numberline {1.2}Predicate Logic}{15}{section.1.2}%
+\contentsline {section}{\numberline {1.3}Axiomatic Systems \& Theory Of Proofs}{17}{section.1.3}%
+\contentsline {section}{\numberline {1.4}The $\in $-relation}{18}{section.1.4}%
+\contentsline {section}{\numberline {1.5}Zermelo-Fraenkel Axioms Of Set Theory}{19}{section.1.5}%
+\contentsline {section}{\numberline {1.6}Maps Between Sets}{24}{section.1.6}%
+\contentsline {section}{\numberline {1.7}Equivalence Relations}{28}{section.1.7}%
+\contentsline {section}{\numberline {1.8}Construction Of $\mathbb {N}$, $\mathbb {Z}$, $\mathbb {Q}$ \& $\mathbb {R}$}{30}{section.1.8}%
+\contentsline {chapter}{\numberline {2}Algebraic Structures}{33}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Groups}{33}{section.2.1}%
+\contentsline {section}{\numberline {2.2}Fields}{34}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Vector Spaces}{35}{section.2.3}%
+\contentsline {subsection}{\numberline {2.3.1}Linear Maps}{35}{subsection.2.3.1}%
+\contentsline {subsection}{\numberline {2.3.2}Basis Of Vector Spaces}{39}{subsection.2.3.2}%
+\contentsline {subsection}{\numberline {2.3.3}Change Of Basis}{43}{subsection.2.3.3}%
+\contentsline {subsection}{\numberline {2.3.4}Determinants}{45}{subsection.2.3.4}%
+\contentsline {section}{\numberline {2.4}Rings}{47}{section.2.4}%
+\contentsline {section}{\numberline {2.5}Modules}{48}{section.2.5}%
+\contentsline {subsection}{\numberline {2.5.1}Basis Of Modules}{49}{subsection.2.5.1}%
+\contentsline {section}{\numberline {2.6}Algebras}{50}{section.2.6}%
+\contentsline {chapter}{\numberline {3}Lie Algebras}{51}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Basic Definitions}{51}{section.3.1}%
+\contentsline {section}{\numberline {3.2}The Adjoint Map \& The Killing Form}{55}{section.3.2}%
+\contentsline {section}{\numberline {3.3}The Fundamental Roots \& The Weyl Group}{58}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Dynkin Diagrams \& The Cartan Classification}{62}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Application: Reconstruction Of $A_2$ From Its Dynkin Diagram}{65}{section.3.5}%
+\contentsline {section}{\numberline {3.6}Representations Of Lie Algebras}{67}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}The Casimir Operator}{71}{subsection.3.6.1}%
+\contentsline {section}{\numberline {3.7}Application: Representations Of $\mathfrak {so}(3,\mathbb {R})$}{74}{section.3.7}%
+\contentsline {chapter}{\numberline {4}Topology}{76}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Topological Spaces}{76}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Construction Of New Topologies From Given Ones}{79}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Convergence \& Continuity}{81}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Invariant Topological Properties}{83}{section.4.4}%
+\contentsline {subsection}{\numberline {4.4.1}Separation Properties}{84}{subsection.4.4.1}%
+\contentsline {subsection}{\numberline {4.4.2}Connectedness \& Path-Connectedness}{87}{subsection.4.4.2}%
+\contentsline {subsection}{\numberline {4.4.3}Homotopic Curves \& The Fundamental Group}{88}{subsection.4.4.3}%
+\contentsline {chapter}{\numberline {5}Topological Manifolds}{90}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Topological Manifolds}{90}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Charts \& Atlases}{91}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Differentiable Manifolds}{95}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Classification Of Differentiable Structures}{97}{subsection.5.3.1}%
+\contentsline {section}{\numberline {5.4}Tangent Space}{98}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Coordinate Induced Basis For The Tangent Space}{100}{subsection.5.4.1}%
+\contentsline {subsection}{\numberline {5.4.2}Change Of Vector Components Under A Change Of Chart}{102}{subsection.5.4.2}%
+\contentsline {section}{\numberline {5.5}Cotangent Space}{104}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Dual Basis For The Cotangent Space}{104}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Change Of Covector Components Under A Change Of Chart}{105}{subsection.5.5.2}%
+\contentsline {section}{\numberline {5.6}Push-Forward \& Pull-Back}{105}{section.5.6}%
+\contentsline {subsection}{\numberline {5.6.1}Immersions \& Embeddings}{108}{subsection.5.6.1}%
+\contentsline {section}{\numberline {5.7}The Tangent Bundle}{109}{section.5.7}%
+\contentsline {subsection}{\numberline {5.7.1}Topological Bundles}{109}{subsection.5.7.1}%
+\contentsline {subsection}{\numberline {5.7.2}Tangent Bundle}{114}{subsection.5.7.2}%
+\contentsline {subsection}{\numberline {5.7.3}Vector, Covector \& Tensor Fields}{116}{subsection.5.7.3}%
+\contentsline {section}{\numberline {5.8}Differential Forms}{122}{section.5.8}%
+\contentsline {subsection}{\numberline {5.8.1}The Grassmann Algebra}{124}{subsection.5.8.1}%
+\contentsline {subsection}{\numberline {5.8.2}The Exterior Derivative}{125}{subsection.5.8.2}%
+\contentsline {subsection}{\numberline {5.8.3}De Rham Cohomology}{128}{subsection.5.8.3}%
+\contentsline {section}{\numberline {5.9}Application: $\SL (2,\mathbb {C})$ - Part 1}{131}{section.5.9}%
+\contentsline {chapter}{\numberline {6}Extra Structures On Topological Manifolds}{135}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Connection / Covariant Derivative}{135}{section.6.1}%
+\contentsline {subsection}{\numberline {6.1.1}Parallel Transport}{139}{subsection.6.1.1}%
+\contentsline {subsection}{\numberline {6.1.2}Torsion}{141}{subsection.6.1.2}%
+\contentsline {subsection}{\numberline {6.1.3}Curvature}{142}{subsection.6.1.3}%
+\contentsline {section}{\numberline {6.2}Metric Manifolds}{144}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Geodesics}{145}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Ricci Curvature \& Ricci Scalar}{147}{subsection.6.2.2}%
+\contentsline {chapter}{\numberline {7}Lie Groups}{149}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Lie Groups}{149}{section.7.1}%
+\contentsline {section}{\numberline {7.2}The Left Translation Map}{150}{section.7.2}%
+\contentsline {section}{\numberline {7.3}The Lie Algebra Of A Lie Group}{151}{section.7.3}%
+\contentsline {section}{\numberline {7.4}Application: $\SL (2,\mathbb {C})$ - Part 2}{155}{section.7.4}%
+\contentsline {section}{\numberline {7.5}Representations Of Lie Groups}{164}{section.7.5}%
+\contentsline {section}{\numberline {7.6}Reconstruction Of A Lie group From Its Lie Algebra}{166}{section.7.6}%
+\contentsline {subsection}{\numberline {7.6.1}The Exponential Map}{167}{subsection.7.6.1}%
+\contentsline {section}{\numberline {7.7}Lie Group Actions On A Manifold}{170}{section.7.7}%
+\contentsline {chapter}{\numberline {8}Principal Fiber Bundles}{176}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Principal Bundles}{176}{section.8.1}%
+\contentsline {subsection}{\numberline {8.1.1}Principal Bundle Maps}{177}{subsection.8.1.1}%
+\contentsline {section}{\numberline {8.2}Associated Bundles}{180}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Associated Bundle Maps}{181}{subsection.8.2.1}%
+\contentsline {section}{\numberline {8.3}Application: Principal Frame Bundle}{183}{section.8.3}%
+\contentsline {section}{\numberline {8.4}Connections On A Principal Bundle}{186}{section.8.4}%
+\contentsline {subsection}{\numberline {8.4.1}Connection One-Forms}{188}{subsection.8.4.1}%
+\contentsline {section}{\numberline {8.5}Yang-Mills Fields \& Local Representations}{190}{section.8.5}%
+\contentsline {subsection}{\numberline {8.5.1}The Maurer-Cartan Form}{192}{subsection.8.5.1}%
+\contentsline {subsection}{\numberline {8.5.2}The Gauge Map}{195}{subsection.8.5.2}%
+\contentsline {section}{\numberline {8.6}Parallel Transport}{196}{section.8.6}%
+\contentsline {subsection}{\numberline {8.6.1}Horizontal Lifts To The Principal Bundle}{196}{subsection.8.6.1}%
+\contentsline {subsection}{\numberline {8.6.2}Solution Of The horizontal Lift ODE By A Path-Ordered Exponential}{198}{subsection.8.6.2}%
+\contentsline {subsection}{\numberline {8.6.3}Horizontal Lifts To The Associated Bundle}{200}{subsection.8.6.3}%
+\contentsline {section}{\numberline {8.7}Covariant Exterior Derivative And Curvature}{201}{section.8.7}%
+\contentsline {subsection}{\numberline {8.7.1}Torsion}{204}{subsection.8.7.1}%
+\contentsline {section}{\numberline {8.8}Covariant Derivatives}{205}{section.8.8}%
+\contentsline {subsection}{\numberline {8.8.1}Equivalence Of Local Sections And Equivariant Functions}{205}{subsection.8.8.1}%
+\contentsline {subsection}{\numberline {8.8.2}Linear Actions On Associated Vector Fiber Bundles}{206}{subsection.8.8.2}%
+\contentsline {subsection}{\numberline {8.8.3}Construction Of The Covariant Derivative}{207}{subsection.8.8.3}%
+\contentsline {part}{II\hspace {1em}Probability Theory \& Statistics}{209}{part.2}%
+\contentsline {chapter}{\numberline {9}Introduction}{210}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Basic Definitions \& Terminology}{210}{section.9.1}%
+\contentsline {chapter}{\numberline {10}Axiomatic Probability Theory}{213}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Sample Space}{213}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Measure Theory}{215}{section.10.2}%
+\contentsline {subsection}{\numberline {10.2.1}Basic Definitions}{216}{subsection.10.2.1}%
+\contentsline {subsection}{\numberline {10.2.2}Borel $\sigma $-algebras}{221}{subsection.10.2.2}%
+\contentsline {subsection}{\numberline {10.2.3}Lebesgue Measure (On $\mathbb {R}^d$)}{223}{subsection.10.2.3}%
+\contentsline {subsection}{\numberline {10.2.4}Measurable Maps}{223}{subsection.10.2.4}%
+\contentsline {subsection}{\numberline {10.2.5}Lebesgue Integral}{225}{subsection.10.2.5}%
+\contentsline {section}{\numberline {10.3}Axiomatic Probability Theory}{231}{section.10.3}%
+\contentsline {section}{\numberline {10.4}Conditional Probability}{232}{section.10.4}%
+\contentsline {chapter}{\numberline {11}Random Variables}{235}{chapter.11}%
+\contentsline {section}{\numberline {11.1}Random Variables}{235}{section.11.1}%
+\contentsline {section}{\numberline {11.2}Discrete Random Variables}{236}{section.11.2}%
+\contentsline {section}{\numberline {11.3}Discrete Probability Distributions}{238}{section.11.3}%
+\contentsline {subsection}{\numberline {11.3.1}Discrete Uniform Distribution - Unif(n)}{238}{subsection.11.3.1}%
+\contentsline {subsection}{\numberline {11.3.2}Bernoulli Distribution - Bern(p)}{239}{subsection.11.3.2}%
+\contentsline {subsection}{\numberline {11.3.3}Binomial Distribution - B(n,p)}{240}{subsection.11.3.3}%
+\contentsline {subsection}{\numberline {11.3.4}Poisson Distribution - Pois($\lambda $)}{241}{subsection.11.3.4}%
+\contentsline {subsection}{\numberline {11.3.5}Geometric Distribution - Geo(p)}{242}{subsection.11.3.5}%
+\contentsline {subsection}{\numberline {11.3.6}Hypergeometric Distribution - Hypergeometric(N, K, n)}{243}{subsection.11.3.6}%
+\contentsline {subsection}{\numberline {11.3.7}Negative Binomial Distribution - NB(r,p)}{243}{subsection.11.3.7}%
+\contentsline {section}{\numberline {11.4}Continuous Random Variables}{244}{section.11.4}%
+\contentsline {section}{\numberline {11.5}Continuous Probability Distributions}{245}{section.11.5}%
+\contentsline {subsection}{\numberline {11.5.1}Continuous Uniform Distribution - Unif(a,b)}{245}{subsection.11.5.1}%
+\contentsline {subsection}{\numberline {11.5.2}Normal Distribution - N($\mu $, $\sigma ^2$)}{246}{subsection.11.5.2}%
+\contentsline {subsection}{\numberline {11.5.3}Standard Normal Distribution - N(0,1)}{248}{subsection.11.5.3}%
+\contentsline {subsection}{\numberline {11.5.4}Exponential Distribution - Expo($\lambda $)}{251}{subsection.11.5.4}%
+\contentsline {subsection}{\numberline {11.5.5}Chi-Squared Distribution - $\chi ^2(k)$}{252}{subsection.11.5.5}%
+\contentsline {subsection}{\numberline {11.5.6}Student's t-Distribution - $t(\nu )$}{253}{subsection.11.5.6}%
+\contentsline {subsection}{\numberline {11.5.7}Beta Distribution - Beta($\alpha , \beta $)}{254}{subsection.11.5.7}%
+\contentsline {subsection}{\numberline {11.5.8}Gamma Distribution - Gamma($\alpha $, $\beta $)}{255}{subsection.11.5.8}%
+\contentsline {section}{\numberline {11.6}Joint Probability Distribution}{256}{section.11.6}%
+\contentsline {subsection}{\numberline {11.6.1}Bivariate Joint Distribution}{257}{subsection.11.6.1}%
+\contentsline {section}{\numberline {11.7}Moments}{262}{section.11.7}%
+\contentsline {chapter}{\numberline {12}Statistical Inference}{267}{chapter.12}%
+\contentsline {section}{\numberline {12.1}Population VS Sample}{267}{section.12.1}%
+\contentsline {subsection}{\numberline {12.1.1}Sampling Techniques}{268}{subsection.12.1.1}%
+\contentsline {section}{\numberline {12.2}Central Limit Theorem \& Sampling Distribution}{271}{section.12.2}%
+\contentsline {chapter}{\numberline {13}Parametric Inference}{273}{chapter.13}%
+\contentsline {section}{\numberline {13.1}Basic Definitions}{273}{section.13.1}%
+\contentsline {section}{\numberline {13.2}Maximum Likelihood}{275}{section.13.2}%
+\contentsline {subsection}{\numberline {13.2.1}Application: Maximum Likelihood In Bernoulli Distribution}{278}{subsection.13.2.1}%
+\contentsline {part}{III\hspace {1em}Machine Learning}{280}{part.3}%
+\contentsline {chapter}{\numberline {14}Introduction}{281}{chapter.14}%
+\contentsline {section}{\numberline {14.1}Use Cases}{281}{section.14.1}%
+\contentsline {section}{\numberline {14.2}Requirements}{282}{section.14.2}%
+\contentsline {section}{\numberline {14.3}Types}{283}{section.14.3}%
+\contentsline {subsection}{\numberline {14.3.1}Conventions}{284}{subsection.14.3.1}%
+\contentsline {chapter}{\numberline {15}Supervised Learning}{285}{chapter.15}%
+\contentsline {section}{\numberline {15.1}Basic Definitions}{285}{section.15.1}%
+\contentsline {section}{\numberline {15.2}Linear Regression}{286}{section.15.2}%
+\contentsline {section}{\numberline {15.3}Optimization Techniques}{290}{section.15.3}%
+\contentsline {subsection}{\numberline {15.3.1}Normal Equation}{290}{subsection.15.3.1}%
+\contentsline {subsection}{\numberline {15.3.2}Gradient Descent}{291}{subsection.15.3.2}%
+\contentsline {section}{\numberline {15.4}Feature Engineering}{293}{section.15.4}%
+\contentsline {subsection}{\numberline {15.4.1}Feature Selection}{293}{subsection.15.4.1}%
+\contentsline {subsubsection}{\numberline {15.4.1.1}Missing Values}{295}{subsubsection.15.4.1.1}%
+\contentsline {subsection}{\numberline {15.4.2}Feature Scaling}{296}{subsection.15.4.2}%
+\contentsline {subsection}{\numberline {15.4.3}Feature Crossing}{297}{subsection.15.4.3}%
+\contentsline {subsection}{\numberline {15.4.4}Feature Importance \& Generalization}{298}{subsection.15.4.4}%
+\contentsline {section}{\numberline {15.5}Logistic Regression}{298}{section.15.5}%
+\contentsline {subsection}{\numberline {15.5.1}Normal Equation}{301}{subsection.15.5.1}%
+\contentsline {subsection}{\numberline {15.5.2}Gradient Descent}{301}{subsection.15.5.2}%
+\contentsline {subsection}{\numberline {15.5.3}Multinomial Classification}{302}{subsection.15.5.3}%
+\contentsline {section}{\numberline {15.6}Generalized Linear Model}{302}{section.15.6}%
+\contentsline {section}{\numberline {15.7}Errors}{303}{section.15.7}%
+\contentsline {subsection}{\numberline {15.7.1}Point-Wise, Overall, In-Sample \& Out-Of-Sample Error}{303}{subsection.15.7.1}%
+\contentsline {subsection}{\numberline {15.7.2}Bias \& Variance}{304}{subsection.15.7.2}%
+\contentsline {section}{\numberline {15.8}Evaluation}{306}{section.15.8}%
+\contentsline {section}{\numberline {15.9}Regularization}{309}{section.15.9}%
+\contentsline {subsection}{\numberline {15.9.1}Ridge Regression / Tikhonov Regularization (L2 Regularization)}{309}{subsection.15.9.1}%
+\contentsline {subsection}{\numberline {15.9.2}Lasso Regression (L1 Regularization)}{311}{subsection.15.9.2}%
+\contentsline {subsection}{\numberline {15.9.3}Elastic Net}{311}{subsection.15.9.3}%
+\contentsline {subsection}{\numberline {15.9.4}Early Stopping}{312}{subsection.15.9.4}%
+\contentsline {section}{\numberline {15.10}Classification Error Metrics}{312}{section.15.10}%
+\contentsline {subsection}{\numberline {15.10.1}Accuracy \& Precision/Recall Trade-Off}{315}{subsection.15.10.1}%
+\contentsline {subsection}{\numberline {15.10.2}Receiver Operating Characteristic (ROC) Curve}{315}{subsection.15.10.2}%
+\contentsline {subsection}{\numberline {15.10.3}Baselines}{316}{subsection.15.10.3}%
+\contentsline {section}{\numberline {15.11}Support Vector Machine}{317}{section.15.11}%
+\contentsline {section}{\numberline {15.12}$k$-Nearest Neighbors}{325}{section.15.12}%
+\contentsline {section}{\numberline {15.13}Decision Trees \& Random Forests}{326}{section.15.13}%
+\contentsline {subsection}{\numberline {15.13.1}Decision Trees}{326}{subsection.15.13.1}%
+\contentsline {subsection}{\numberline {15.13.2}Ensemble Learning}{331}{subsection.15.13.2}%
+\contentsline {subsection}{\numberline {15.13.3}Random Forests}{334}{subsection.15.13.3}%
+\contentsline {chapter}{\numberline {16}Unsupervised Learning}{335}{chapter.16}%
+\contentsline {section}{\numberline {16.1}Basic Definitions}{335}{section.16.1}%
+\contentsline {section}{\numberline {16.2}Clustering}{335}{section.16.2}%
+\contentsline {subsection}{\numberline {16.2.1}k-Means}{336}{subsection.16.2.1}%
+\contentsline {subsection}{\numberline {16.2.2}DBSCAN}{337}{subsection.16.2.2}%
+\contentsline {section}{\numberline {16.3}Dimensionality Reduction}{338}{section.16.3}%
+\contentsline {subsection}{\numberline {16.3.1}Principal Component Analysis}{338}{subsection.16.3.1}%
+\contentsline {chapter}{\numberline {17}Reinforcement Learning}{341}{chapter.17}%
+\contentsline {section}{\numberline {17.1}Basic Definitions}{342}{section.17.1}%
+\contentsline {section}{\numberline {17.2}Markov Decision Process}{346}{section.17.2}%
+\contentsline {subsection}{\numberline {17.2.1}Markov Process}{346}{subsection.17.2.1}%
+\contentsline {subsection}{\numberline {17.2.2}Markov Reward Process}{348}{subsection.17.2.2}%
+\contentsline {subsection}{\numberline {17.2.3}Markov Decision Process}{353}{subsection.17.2.3}%
+\contentsline {section}{\numberline {17.3}Optimal Policies}{357}{section.17.3}%
+\contentsline {section}{\numberline {17.4}Solving Markov Decision Processes}{359}{section.17.4}%
+\contentsline {subsection}{\numberline {17.4.1}Model-Based Prediction}{359}{subsection.17.4.1}%
+\contentsline {subsubsection}{\numberline {17.4.1.1}Policy Evaluation}{359}{subsubsection.17.4.1.1}%
+\contentsline {subsection}{\numberline {17.4.2}Model-Based Control}{360}{subsection.17.4.2}%
+\contentsline {subsubsection}{\numberline {17.4.2.1}Policy Iteration}{360}{subsubsection.17.4.2.1}%
+\contentsline {subsubsection}{\numberline {17.4.2.2}Value Iteration}{361}{subsubsection.17.4.2.2}%
+\contentsline {subsection}{\numberline {17.4.3}Model-Free Prediction}{365}{subsection.17.4.3}%
+\contentsline {subsubsection}{\numberline {17.4.3.1}Monte Carlo}{366}{subsubsection.17.4.3.1}%
+\contentsline {subsubsection}{\numberline {17.4.3.2}Temporal Difference}{368}{subsubsection.17.4.3.2}%
+\contentsline {subsubsection}{\numberline {17.4.3.3}TD($\lambda $)}{372}{subsubsection.17.4.3.3}%
+\contentsline {chapter}{\numberline {18}Deep Learning}{375}{chapter.18}%
+\contentsline {section}{\numberline {18.1}Basic Definitions}{375}{section.18.1}%
+\contentsline {section}{\numberline {18.2}McCulloch Pitts Neuron}{376}{section.18.2}%
+\contentsline {section}{\numberline {18.3}Perceptron}{379}{section.18.3}%
+\contentsline {section}{\numberline {18.4}Sigmoid Neuron}{383}{section.18.4}%
+\contentsline {section}{\numberline {18.5}Feedforward Neural Networks}{384}{section.18.5}%
+\contentsline {subsection}{\numberline {18.5.1}Motivation: XOR Function With A Network Of Perceptons}{384}{subsection.18.5.1}%
+\contentsline {subsection}{\numberline {18.5.2}Feedforward Neural Network (Forward Propagation)}{387}{subsection.18.5.2}%
+\contentsline {subsection}{\numberline {18.5.3}Backward Propagation}{389}{subsection.18.5.3}%
+\contentsline {subsection}{\numberline {18.5.4}Generalize To Full Dataset}{392}{subsection.18.5.4}%
+\contentsline {section}{\numberline {18.6}Modified Gradient Descent Algorithms}{393}{section.18.6}%
+\contentsline {subsection}{\numberline {18.6.1}Mini-Batch \& Stochastic Gradient Descent}{394}{subsection.18.6.1}%
+\contentsline {subsection}{\numberline {18.6.2}Gradient Descent With Momentum}{394}{subsection.18.6.2}%
+\contentsline {subsection}{\numberline {18.6.3}Nesterov Accelerated Gradient Descent}{396}{subsection.18.6.3}%
+\contentsline {subsection}{\numberline {18.6.4}Adaptive Gradient Descent (AdaGrad)}{396}{subsection.18.6.4}%
+\contentsline {subsection}{\numberline {18.6.5}Root Mean Square Propagation (RMSProp)}{397}{subsection.18.6.5}%
+\contentsline {subsection}{\numberline {18.6.6}Adaptive Moment Estimation (Adam)}{398}{subsection.18.6.6}%
+\contentsline {subsection}{\numberline {18.6.7}Learning Rate Decay}{400}{subsection.18.6.7}%
+\contentsline {section}{\numberline {18.7}Errors, Evaluation \& Regularization}{401}{section.18.7}%
+\contentsline {subsection}{\numberline {18.7.1}L2 Regularization}{401}{subsection.18.7.1}%
+\contentsline {subsection}{\numberline {18.7.2}Dataset Augmentation}{402}{subsection.18.7.2}%
+\contentsline {subsection}{\numberline {18.7.3}Adding Noise To The Inputs/Outputs}{402}{subsection.18.7.3}%
+\contentsline {subsection}{\numberline {18.7.4}Early Stopping}{402}{subsection.18.7.4}%
+\contentsline {subsection}{\numberline {18.7.5}Ensemble Methods}{402}{subsection.18.7.5}%
+\contentsline {subsection}{\numberline {18.7.6}Dropout}{402}{subsection.18.7.6}%
+\contentsline {section}{\numberline {18.8}Improvements On A Feedforward Neural Network}{403}{section.18.8}%
+\contentsline {subsection}{\numberline {18.8.1}Activation Functions}{403}{subsection.18.8.1}%
+\contentsline {subsection}{\numberline {18.8.2}Initialization Strategies}{405}{subsection.18.8.2}%
+\contentsline {subsection}{\numberline {18.8.3}Batch Normalization}{407}{subsection.18.8.3}%
+\contentsline {chapter}{\numberline {19}Convolutional Neural Networks}{409}{chapter.19}%
+\contentsline {section}{\numberline {19.1}Input Layer}{409}{section.19.1}%
+\contentsline {section}{\numberline {19.2}Convolutional Layer}{410}{section.19.2}%
+\contentsline {section}{\numberline {19.3}Pooling Layer}{412}{section.19.3}%
+\contentsline {section}{\numberline {19.4}Flatten Layer}{413}{section.19.4}%
+\contentsline {section}{\numberline {19.5}Feedforward Neural Network}{414}{section.19.5}%
+\contentsline {section}{\numberline {19.6}Convolutional Neural Network Architectures}{414}{section.19.6}%
+\contentsline {chapter}{\numberline {20}Recurrent Neural Networks}{416}{chapter.20}%
+\contentsline {section}{\numberline {20.1}Building A Recurrent Neural Network}{417}{section.20.1}%
+\contentsline {section}{\numberline {20.2}Backpropagation Through Time}{419}{section.20.2}%
+\contentsline {subsection}{\numberline {20.2.1}Problems Of Backpropagation Through Time}{421}{subsection.20.2.1}%
+\contentsline {section}{\numberline {20.3}Long Short Term Memory}{422}{section.20.3}%
+\contentsline {section}{\numberline {20.4}Gated Recurrent Unit}{427}{section.20.4}%
+\contentsline {section}{\numberline {20.5}Encoder-Decoder Model}{427}{section.20.5}%
+\contentsline {subsection}{\numberline {20.5.1}Attention}{428}{subsection.20.5.1}%
+\contentsline {chapter}{\numberline {21}Transformers}{431}{chapter.21}%
+\contentsline {section}{\numberline {21.1}Tokenization}{432}{section.21.1}%
+\contentsline {section}{\numberline {21.2}Input Embedding}{433}{section.21.2}%
+\contentsline {subsection}{\numberline {21.2.1}Label Encoding}{434}{subsection.21.2.1}%
+\contentsline {subsection}{\numberline {21.2.2}One-Hot Encoding}{434}{subsection.21.2.2}%
+\contentsline {subsection}{\numberline {21.2.3}Distributed Encoding}{434}{subsection.21.2.3}%
+\contentsline {subsection}{\numberline {21.2.4}Word2vec}{435}{subsection.21.2.4}%
+\contentsline {subsubsection}{\numberline {21.2.4.1}Continuous Bag-Of-Words}{436}{subsubsection.21.2.4.1}%
+\contentsline {subsubsection}{\numberline {21.2.4.2}Continuous Skip-Gram}{437}{subsubsection.21.2.4.2}%
+\contentsline {section}{\numberline {21.3}Positional Encoding}{438}{section.21.3}%
+\contentsline {section}{\numberline {21.4}Attention}{439}{section.21.4}%
 \contentsline {chapter}{\numberline {22}Machine Learning Operations}{441}{chapter.22}%
 \contentsline {section}{\numberline {22.1}Research VS Production}{441}{section.22.1}%
 \contentsline {section}{\numberline {22.2}Machine Learning Operations (MLOps)}{441}{section.22.2}%
@@ -455,55 +457,54 @@
 \contentsline {subsection}{\numberline {32.4.2}Rate Of Return}{740}{subsection.32.4.2}%
 \contentsline {chapter}{\numberline {33}Capital Markets: Securities}{741}{chapter.33}%
 \contentsline {section}{\numberline {33.1}Financial Markets}{741}{section.33.1}%
-\contentsline {subsection}{\numberline {33.1.1}Capital Markets}{741}{subsection.33.1.1}%
-\contentsline {section}{\numberline {33.2}Securities}{742}{section.33.2}%
-\contentsline {subsection}{\numberline {33.2.1}Market Participants}{742}{subsection.33.2.1}%
-\contentsline {subsection}{\numberline {33.2.2}Primary Market}{743}{subsection.33.2.2}%
-\contentsline {subsection}{\numberline {33.2.3}Secondary Market}{744}{subsection.33.2.3}%
-\contentsline {section}{\numberline {33.3}Debt / Fixed-Income Securities}{746}{section.33.3}%
-\contentsline {subsection}{\numberline {33.3.1}Bonds}{747}{subsection.33.3.1}%
-\contentsline {subsubsection}{\numberline {33.3.1.1}Goverment Bonds}{747}{subsubsection.33.3.1.1}%
-\contentsline {subsubsection}{\numberline {33.3.1.2}Corporate Bonds}{748}{subsubsection.33.3.1.2}%
-\contentsline {subsubsection}{\numberline {33.3.1.3}Bond Characteristics}{748}{subsubsection.33.3.1.3}%
-\contentsline {subsubsection}{\numberline {33.3.1.4}Bond Price}{750}{subsubsection.33.3.1.4}%
-\contentsline {subsubsection}{\numberline {33.3.1.5}Bond Valuation}{751}{subsubsection.33.3.1.5}%
-\contentsline {subsubsection}{\numberline {33.3.1.6}Yield Curves}{753}{subsubsection.33.3.1.6}%
-\contentsline {section}{\numberline {33.4}Equity Securities}{757}{section.33.4}%
-\contentsline {subsection}{\numberline {33.4.1}Shares / Stocks}{757}{subsection.33.4.1}%
-\contentsline {subsection}{\numberline {33.4.2}Shareholders / Stockholders}{759}{subsection.33.4.2}%
-\contentsline {subsubsection}{\numberline {33.4.2.1}Types Of Shares}{759}{subsubsection.33.4.2.1}%
-\contentsline {subsection}{\numberline {33.4.3}Return Of Equity Securities}{760}{subsection.33.4.3}%
-\contentsline {subsection}{\numberline {33.4.4}Valuation Of Equity Securities}{761}{subsection.33.4.4}%
-\contentsline {subsection}{\numberline {33.4.5}Funds}{761}{subsection.33.4.5}%
-\contentsline {chapter}{\numberline {34}Capital Markets: Derivatives}{763}{chapter.34}%
-\contentsline {section}{\numberline {34.1}Forwards \& Futures}{764}{section.34.1}%
-\contentsline {section}{\numberline {34.2}Options}{766}{section.34.2}%
-\contentsline {chapter}{\numberline {35}Financial Statements}{768}{chapter.35}%
-\contentsline {section}{\numberline {35.1}Basic Accountants Principles}{768}{section.35.1}%
-\contentsline {section}{\numberline {35.2}Balance Sheet}{771}{section.35.2}%
-\contentsline {subsection}{\numberline {35.2.1}Assets}{772}{subsection.35.2.1}%
-\contentsline {subsubsection}{\numberline {35.2.1.1}Current Assets}{772}{subsubsection.35.2.1.1}%
-\contentsline {subsubsection}{\numberline {35.2.1.2}Other Assets}{773}{subsubsection.35.2.1.2}%
-\contentsline {subsubsection}{\numberline {35.2.1.3}Fixed Assets}{773}{subsubsection.35.2.1.3}%
-\contentsline {subsubsection}{\numberline {35.2.1.4}Total Assets}{774}{subsubsection.35.2.1.4}%
-\contentsline {subsection}{\numberline {35.2.2}Liabilities \& Equity}{774}{subsection.35.2.2}%
-\contentsline {subsubsection}{\numberline {35.2.2.1}Current Liabilities}{775}{subsubsection.35.2.2.1}%
-\contentsline {subsubsection}{\numberline {35.2.2.2}Long-Term Liabilities}{775}{subsubsection.35.2.2.2}%
-\contentsline {subsubsection}{\numberline {35.2.2.3}Total Liabilities}{776}{subsubsection.35.2.2.3}%
-\contentsline {subsubsection}{\numberline {35.2.2.4}Equity}{776}{subsubsection.35.2.2.4}%
-\contentsline {subsection}{\numberline {35.2.3}Balance Sheet Summary}{778}{subsection.35.2.3}%
-\contentsline {section}{\numberline {35.3}Income Statement}{779}{section.35.3}%
-\contentsline {subsection}{\numberline {35.3.1}Sales}{779}{subsection.35.3.1}%
-\contentsline {subsection}{\numberline {35.3.2}Costs \& Expenses}{779}{subsection.35.3.2}%
-\contentsline {subsection}{\numberline {35.3.3}Income}{781}{subsection.35.3.3}%
-\contentsline {subsection}{\numberline {35.3.4}Income Statement Summary}{782}{subsection.35.3.4}%
-\contentsline {section}{\numberline {35.4}Cash Flow Statement}{782}{section.35.4}%
-\contentsline {subsection}{\numberline {35.4.1}Cash Flow Statement Summary}{785}{subsection.35.4.1}%
-\contentsline {chapter}{Appendices}{787}{section*.473}%
-\contentsline {chapter}{\numberline {A}Constrained Optimization}{788}{appendix.a.A}%
-\contentsline {section}{\numberline {A.1}Equality Constrained Optimization}{788}{section.a.A.1}%
-\contentsline {section}{\numberline {A.2}Equality \& Inequality Constrained Optimization}{789}{section.a.A.2}%
-\contentsline {chapter}{\numberline {B}Kernels}{790}{appendix.a.B}%
-\contentsline {chapter}{\numberline {C}Clean Code}{791}{appendix.a.C}%
-\contentsline {chapter}{\numberline {D}Software Engineering At Google}{794}{appendix.a.D}%
-\contentsline {chapter}{\numberline {E}Hands-On Machine Learning With Scikit-Learn And TensorFlow}{800}{appendix.a.E}%
+\contentsline {subsection}{\numberline {33.1.1}Capital Markets}{742}{subsection.33.1.1}%
+\contentsline {section}{\numberline {33.2}Securities}{743}{section.33.2}%
+\contentsline {subsection}{\numberline {33.2.1}Participants Of Capital Markets}{743}{subsection.33.2.1}%
+\contentsline {subsection}{\numberline {33.2.2}Primary Market}{744}{subsection.33.2.2}%
+\contentsline {subsection}{\numberline {33.2.3}Secondary Market}{745}{subsection.33.2.3}%
+\contentsline {section}{\numberline {33.3}Debt / Fixed-Income Securities}{747}{section.33.3}%
+\contentsline {subsection}{\numberline {33.3.1}Bonds}{748}{subsection.33.3.1}%
+\contentsline {subsubsection}{\numberline {33.3.1.1}Goverment Bonds}{748}{subsubsection.33.3.1.1}%
+\contentsline {subsubsection}{\numberline {33.3.1.2}Corporate Bonds}{749}{subsubsection.33.3.1.2}%
+\contentsline {subsubsection}{\numberline {33.3.1.3}Bond Characteristics}{749}{subsubsection.33.3.1.3}%
+\contentsline {subsubsection}{\numberline {33.3.1.4}Bond Price}{751}{subsubsection.33.3.1.4}%
+\contentsline {subsubsection}{\numberline {33.3.1.5}Bond Valuation}{752}{subsubsection.33.3.1.5}%
+\contentsline {subsubsection}{\numberline {33.3.1.6}Yield Curves}{754}{subsubsection.33.3.1.6}%
+\contentsline {section}{\numberline {33.4}Equity Securities}{758}{section.33.4}%
+\contentsline {subsection}{\numberline {33.4.1}Shares / Stocks}{758}{subsection.33.4.1}%
+\contentsline {subsection}{\numberline {33.4.2}Shareholders / Stockholders}{760}{subsection.33.4.2}%
+\contentsline {subsubsection}{\numberline {33.4.2.1}Types Of Shares}{760}{subsubsection.33.4.2.1}%
+\contentsline {subsection}{\numberline {33.4.3}Return Of Equity Securities}{761}{subsection.33.4.3}%
+\contentsline {subsection}{\numberline {33.4.4}Valuation Of Equity Securities}{762}{subsection.33.4.4}%
+\contentsline {subsection}{\numberline {33.4.5}Funds}{762}{subsection.33.4.5}%
+\contentsline {chapter}{\numberline {34}Capital Markets: Derivatives}{764}{chapter.34}%
+\contentsline {section}{\numberline {34.1}Derivatives}{764}{section.34.1}%
+\contentsline {section}{\numberline {34.2}Forwards \& Futures}{765}{section.34.2}%
+\contentsline {subsection}{\numberline {34.2.1}Hedging Using Futures}{769}{subsection.34.2.1}%
+\contentsline {section}{\numberline {34.3}Options}{772}{section.34.3}%
+\contentsline {chapter}{\numberline {35}Financial Statements}{774}{chapter.35}%
+\contentsline {section}{\numberline {35.1}Basic Accountants Principles}{774}{section.35.1}%
+\contentsline {section}{\numberline {35.2}Balance Sheet}{777}{section.35.2}%
+\contentsline {subsection}{\numberline {35.2.1}Assets}{778}{subsection.35.2.1}%
+\contentsline {subsubsection}{\numberline {35.2.1.1}Current Assets}{778}{subsubsection.35.2.1.1}%
+\contentsline {subsubsection}{\numberline {35.2.1.2}Other Assets}{779}{subsubsection.35.2.1.2}%
+\contentsline {subsubsection}{\numberline {35.2.1.3}Fixed Assets}{779}{subsubsection.35.2.1.3}%
+\contentsline {subsubsection}{\numberline {35.2.1.4}Total Assets}{780}{subsubsection.35.2.1.4}%
+\contentsline {subsection}{\numberline {35.2.2}Liabilities \& Equity}{780}{subsection.35.2.2}%
+\contentsline {subsubsection}{\numberline {35.2.2.1}Current Liabilities}{781}{subsubsection.35.2.2.1}%
+\contentsline {subsubsection}{\numberline {35.2.2.2}Long-Term Liabilities}{781}{subsubsection.35.2.2.2}%
+\contentsline {subsubsection}{\numberline {35.2.2.3}Total Liabilities}{782}{subsubsection.35.2.2.3}%
+\contentsline {subsubsection}{\numberline {35.2.2.4}Equity}{782}{subsubsection.35.2.2.4}%
+\contentsline {subsection}{\numberline {35.2.3}Balance Sheet Summary}{784}{subsection.35.2.3}%
+\contentsline {section}{\numberline {35.3}Income Statement}{785}{section.35.3}%
+\contentsline {subsection}{\numberline {35.3.1}Sales}{785}{subsection.35.3.1}%
+\contentsline {subsection}{\numberline {35.3.2}Costs \& Expenses}{785}{subsection.35.3.2}%
+\contentsline {subsection}{\numberline {35.3.3}Income}{787}{subsection.35.3.3}%
+\contentsline {subsection}{\numberline {35.3.4}Income Statement Summary}{788}{subsection.35.3.4}%
+\contentsline {section}{\numberline {35.4}Cash Flow Statement}{788}{section.35.4}%
+\contentsline {subsection}{\numberline {35.4.1}Cash Flow Statement Summary}{791}{subsection.35.4.1}%
+\contentsline {chapter}{Appendices}{793}{section*.479}%
+\contentsline {chapter}{\numberline {A}Constrained Optimization}{794}{appendix.a.A}%
+\contentsline {section}{\numberline {A.1}Equality Constrained Optimization}{794}{section.a.A.1}%
+\contentsline {section}{\numberline {A.2}Equality \& Inequality Constrained Optimization}{795}{section.a.A.2}%
+\contentsline {chapter}{\numberline {B}Kernels}{796}{appendix.a.B}%
