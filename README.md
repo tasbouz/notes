@@ -1,5 +1,5 @@
 # notes
-Theoretical [notes](https://github.com/tasbouz/notes/blob/master/theory/out/theory.pdf) I keep on scientific topics I am interested in.
+Theoretical [notes](https://github.com/tasbouz/notes/blob/master/out/notes.pdf) I keep on scientific topics I am interested in.
 
 ## Part 1: Mathematics
 
