@@ -1,0 +1,268 @@
+%! suppress = EscapeUnderscore
+\bd[Convolutional Neural Network (CNN)]
+A \textbf{convolutional neural network} (\textbf{CNN}) is a regularized type of feed-forward neural network that
+learns feature engineering by itself via filters (or kernel) optimization.
+\ed
+
+CNNa are most commonly applied to analyse visual imagery. The name ``convolutional'' indicates that the network
+employs a mathematical operation called convolution. As any deep learning model we've seen so far, a CNN consists of
+an input layer, hidden layers and an output layer. The hidden layers include layers that, among others, perform
+convolutions. \v
+
+\fig{conv0}{0.19}
+
+\v
+
+In what follows we will describe each step in the architecture of a CNN (figure above). Since CNNs are used mainly to
+analyse images, we will develop them by keeping in mind that we want to analyse an image.
+
+\section{Input Layer}
+
+The first step is to find out a way for an image to be represented mathematically to an input that can be provided to
+the input layer of a neural network.
+
+\bd[RGB Color Model]
+The \textbf{RGB color model} is an additive color model in which red (R), green (G) and blue (B) light are added 
+together in various ways to reproduce a broad array of colors. The name of the model comes from the initials of the 
+three additive primary colors, red, green, and blue. 
+\ed
+
+An image is a two-dimensional collection of pixels where each pixel carries a specific shade of colour that can be
+decomposed to a specific combination of values for the RGB color model. More precisely, each pixel of a 2-dimensional
+image carries a position represented by ``row'' and ``column''. (For example the very first pixel on the top left of
+an image is the pixel $(0,0)$). We refer to the total number of rows of an image as the ``height'' of the image, and
+to the total number of columns as the ``width'' of the image. Each position (pixel) then, carries 3 values, one for
+each color of RGB color model, represented by a ``channel'', where the combination of these values can represent the
+original image. We refer to the total number of channels of an image as the ``depth'' of an image. (For the RGB color
+model the depth of any image is simply 3).
+
+\fig{rgb}{0.31}
+
+Hence, a two-dimensional image can be represented as a $(\text{height} \times \text{width} \times
+\text{depth})$ dimensional matrix. Subsequently, a collection of $N$ such images can be stacked together to a $(N
+\times \text{height} \times \text{width} \times \text{depth})$ dimensional matrix. This matrix is the
+mathematical representation of collection of images and serves as the input to a CNN. \v
+
+The input layer of a CNN represents the input image. Because we use RGB images as input, the input layer has three 
+channels, corresponding to the red, green, and blue channels, respectively, which are shown in this layer.
+
+\section{Convolutional Layer}
+
+Now that we know how to represent an image to a matrix, so we can feed it to a neural network, we can move on to the 
+first building block of a CNN which is the so called ``convolutional'' layer. The convolutional layers are the 
+foundation of CNNs, as they contain the learned kernels (weights), which extract features that distinguish different 
+images from one another (this is what we want for classification)! Let's start by defining convolution in a strict,
+mathematical way.
+
+\bd[Convolution]
+\textbf{Convolution} is a mathematical operation on two functions $f$ and $g$ that produces a third function 
+expressing how the shape of one is modified by the other. The term convolution refers to both the result function and
+to the process of computing it. It is defined as the integral of the product of the two functions after one is 
+reversed and shifted. 
+
+\bse 
+(f*g)(t) = \int_{-\infty }^{\infty } f(\tau) g(t-\tau ) d\tau 
+\ese 
+\ed
+
+In simple words convolution expresses how the shape of one function is modified by another one. While convolution as
+a term is very widely used in mathematics, for now we will switch gears and examine convolution specifically for CNNs.
+In order to do so we will give some very basic definitions in the world of CNNs.
+
+\bd[Kernel/Filter/Mask]
+A \textbf{kernel}, or \textbf{filter}, or \textbf{mask} is a small, convolutional $f \times f$ (called size) matrix 
+that is used to perform a convolution on a given image. 
+\ed
+
+\be
+Here is an example of a kernel of size 3.
+
+\vspace{-10pt}
+
+\fig{conv}{0.32}
+
+\vspace{-10pt}
+\ee
+
+Kernel size has a massive impact on the image classification task. For example, small kernel sizes are able to 
+extract a much larger amount of information containing highly local features from the input. Conversely, a large 
+kernel size extracts less information, which leads to a faster reduction in layer dimensions, often leading to worse
+performance. Large kernels are better suited to extract features that are larger. At the end of the day, choosing an
+appropriate kernel size will be dependent on the task and dataset, but generally, smaller kernel sizes lead to 
+better performance for the image classification task because an architecture designer is able to stack more and more 
+layers together to learn more and more complex features.
+
+\bd[Stride]
+\textbf{Stride} is the number of pixels shifts over the input matrix (image)when the convolution is performed with a
+kernel.
+\ed
+
+Stride indicates how many pixels the kernel should be shifted over at a time. The impact stride has on a CNN is 
+similar to kernel size. As stride is decreased, more features are learned because more data is extracted, which also
+leads to larger output layers. On the contrary, as stride is increased, this leads to more limited feature 
+extraction and smaller output layer dimensions. One responsibility of the architecture designer is to ensure that the
+kernel slides across the input symmetrically when implementing a CNN. Use the hyperparameter visualization above to 
+alter stride on various input/kernel dimensions to understand this constraint. \v
+
+Now we have all the ingredients needed to perform convolution on an image. More specifically, given an input (image),
+a kernel and a stride we can perform the convolution by performing an element-wise dot product between the kernel
+and the image and summing up the results. We then move by one stride to the left, and we continue up to the end.
+
+\be
+The following figure shows step by step how the convolutions is done in a ``real-world example'' and what the final
+result is.
+
+\fig{conv2}{0.45}
+\ee
+
+As it makes sense, different kernels produce different results.
+
+\bd[Padding]
+The \textbf{padding} $p$ is the process of adding extra layers of empty pixels (all rgb values equal to 0) around an
+image. We measure padding by the numbers of extra layers around the image (i.e.\ $p=0$ means no extra layer, $p=1$
+means one extra layer and so on).
+\ed
+
+Padding is often necessary when the kernel extends beyond the activation map. In other words we use padding in order
+to avoid cases where the kernel does not fit the dimensions of an image and to avoid losing information from the
+corners of an image where the kernel (by definition) does not fit.
+
+\be
+Here is an example of an image with padding $p=2$ (two layers).
+
+\fig{conv3}{0.45}
+\ee
+
+Padding conserves data at the borders of activation maps, which leads to better performance, and it can help preserve
+the input's spatial size, which allows an architecture designer to build deeper, higher performing networks. The most
+common cases of padding are:
+\bit
+\item \textbf{Valid} padding where we have no padding at all ($p=0$)
+\item \textbf{Same} padding where the output matrix is the same size as the input size.
+\eit
+
+Hence, the convolutional neuron performs an element-wise dot product with a unique kernel and the output of the
+previous layer's corresponding neuron. This will yield as many intermediate results as there are unique kernels. The
+convolutional neuron is the result of all the intermediate results summed together with the learned bias.
+Subsequently, the convolutional layer of a CNN performs many convolutions with different kernels (neurons). \v
+
+As we have already seen, the convolution changes (usually reduces) the dimensions of the original input. Just for
+completeness we will provide the formulas that calculate the output dimensions. More specifically, given an original
+image of height $h$, width $w$ and depth (channels) $d$, after performing a convolutions with $K$ number of kernels
+of size $f$, stride $s$ and padding $p$ we end up with the final result of height $h^\prime$, width $w^\prime$ and
+depth (channels) $d^\prime$ given by:
+
+\bse
+h^\prime = \frac{h - f +2p}{s} +1, \qquad w^\prime = \frac{w - f +2p}{s} +1, \qquad d^\prime = K
+\ese
+
+After the convolution is done, we feed the final result to an activation function (usually a ReLU). This activation
+function is applied element-wise on every value from the input tensor after every convolutional layer in the network
+architecture. (In simple words, when the activation is a ReLU, we simply substitute all negative values of the result
+of the convolution with 0). This process is also considered as part of the convolutional layer. \v
+
+Now that we fully described the convolutional layer we move to the pooling layer.
+
+\section{Pooling Layer}
+
+There are many types of pooling layers in different CNN architectures, but they all have the purpose of gradually
+decreasing the spatial extent of the network, which reduces the parameters and overall computation of the network. \v
+
+The pooling operation requires selecting a kernel size and a stride length during architecture design. Once selected,
+the operation slides the kernel with the specified stride over the input while only selecting the corresponding
+pooling value at each kernel slice from the input to yield a value for the output.
+
+\be
+For example a max-pooling layer would pick the maximum value of the kernel slice while an average-pooling would pick
+the average value of the kernel slice.
+
+\fig{conv4}{0.35}
+\ee
+
+Pooling layers are used to reduce the dimensions of the feature maps. Thus, they reduce the number of parameters to
+learn and the amount of computation performed in the network. This has as a consequence for pooling layer to act as a
+form of regularization to the network. They carry no parameters themselves hence, they do not contribute to the
+learning directly. The pooling layers summarise the features present in a region of the feature map generated by a
+convolutional layer. So, further operations are performed on summarised features instead of precisely positioned
+features generated by the convolutional layer.s This makes the model more robust to variations in the position of the
+features in the input image. \v
+
+In general in a CNN is typical to have a sequence of convolutional and pooling layers. The more convolutional and
+pooling layers it contains the more deep it is. As we will see, different architectures use different combinations of
+these layers.
+
+\section{Flatten Layer}
+
+After all the convolutional and pooling layers are done, the final result is feed to a so-called ``flatten'' layer.
+This layer converts a three-dimensional layer in the network into a one-dimensional vector to fit the input of a
+fully-connected layer for classification.
+
+\be
+For example, a $(5 \times 5 \times 2)$ matrix would be converted into a vector of size 50. The previous convolutional
+and pooling layers of the network extracted the features from the input image, but now it is time to classify the
+features. \v
+
+\fig{conv5}{0.55}
+\ee
+
+This layer is purely a ``helper'' layer that transforms the data in order to fit the needs of the input of a
+feedforward neural network. It carries no parameters hence, it does not contribute to the learning.
+
+\section{Feedforward Neural Network}
+
+After the flatten layer the image is now in a form that can be fed to a feedforward neural network (i.e.\ a classifier)
+and with this final component the CNN architecture is built, and it's finally ready to make predictions. We have
+already spent a whole chapter talking about feedforward neural networks, and we already know that they carry some
+parameters that we need to learn in order for the model to be trained. However, on top of that, instead of using
+hand-crafted kernels such as edge detectors in the convolutional layers, we can let the model learn meaningful
+kernels/filters in addition to learning the weights of the classifier (remember that pooling layers and flatten layer
+do not carry any parameters). In other words simply by treating these kernels as parameters and learning them in
+addition to the weights of the classifier (using back propagation) we can have a ``new'' more complex neural network
+called a ``convolutional neural network''.
+
+\section{Convolutional Neural Network Architectures}
+
+As it is clear by now, there is an infinite amount of possible CNN architectures based on the combinations of number
+of convolutional and pooling layers in the network and the parameters of the final feedforward neural network. On top
+of that we have also an uncountable number of options for hyperparameters such as filter size, stride, and padding
+for each of the convolutional layers. Long story short, the variety of possible CNNs is endless. It does not come as
+a surprise thus, that there are some heavily researched and widely used architectures that are used regularly in deep
+learning. In this section we will (very quickly) mention some of them!
+
+\subsection*{LeNet}
+
+LeNet is a convolutional neural network structure proposed by Yann LeCun in 1989. In general, LeNet refers to LeNet-5
+and is a simple convolutional neural network.
+
+\fig{conv6}{0.6}
+
+\subsection*{AlexNet}
+
+AlexNet is the name of a convolutional neural network architecture competed in the ImageNet Large Scale Visual
+Recognition Challenge, designed by Alex Krizhevsky, Ilya Sutskever and Geoffrey Hinton.
+
+\fig{conv7}{0.3}
+
+\subsection*{ZFNet}
+
+ZFNet is a classic convolutional neural network very similar to AlexNet. Compared to AlexNet, the filter sizes are
+reduced and the stride of the convolutions are reduced. In the diagram we can see in red numbers the differences in
+the parameters with AlexNet. \v
+
+\fig{conv8}{0.35}
+
+\subsection*{VGGNet}
+
+The VGG network architecture was introduced by Simonyan and Zisserman in their 2014 paper, Very Deep Convolutional
+Networks for Large Scale Image Recognition. This network is characterized by its simplicity, using only $3 \times 3$
+convolutional layers stacked on top of each other in increasing depth.
+
+\fig{conv9}{0.35}
+
+\subsection*{GoogLeNet}
+
+GoogLeNet is a 22 layer deep convolutional neural network that is a variant of the Inception Network, a Deep
+Convolutional Neural Network developed by researchers at Google. The GoogLeNet architecture presented in the ImageNet
+Large Scale Visual Recognition Challenge solved computer vision tasks such as image classification and object detection.
+
+\fig{conv10}{0.35}

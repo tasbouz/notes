@@ -1,0 +1,1337 @@
+%! suppress = Quote
+%! suppress = EscapeUnderscore
+%! suppress = EscapeAmpersand
+Axiomatic set theory is a branch of mathematical logic that studies sets, which informally are collections of objects.
+Although any type of object can be collected into a set, set theory is applied most often to objects that are
+relevant to mathematics. The language of set theory can be used to define nearly all mathematical objects. \v
+
+The modern study of set theory was initiated by Georg Cantor and Richard Dedekind in the 1870s. After the discovery
+of paradoxes in naive set theory, such as Russell's paradox, numerous axiom systems were proposed in the early
+twentieth century, of which the Zermelo–Fraenkel axioms, with or without the axiom of choice, are the best known. \v
+
+Set theory is commonly employed as a foundational system for mathematics, particularly in the form of
+Zermelo–Fraenkel set theory with the axiom of choice. Beyond its foundational role, set theory is a branch of
+mathematics in its own right, with an active research community. Contemporary research into set theory includes a
+diverse collection of topics, ranging from the structure of the real number line to the study of the consistency of
+large cardinals.
+
+\section{Propositional Logic}
+
+\bd [Proposition]
+A \textbf{proposition}\index{proposition} $p$ is a variable\footnote{By this we mean a formal expression, with no
+extra structure assumed.} that can take the values \emph{true}
+($T$) or \emph{false} ($F$), and no others.
+\ed
+
+This is what a proposition is from the point of view of propositional logic. In particular, it is not the task of
+propositional logic to decide whether a complex statement of the form ``there is extraterrestrial life'' is true or
+not. Propositional logic already deals with the complete proposition, and it just assumes that is either true or
+false. It is also not the task of propositional logic to decide whether a statement of the type ``in winter is colder
+than outside'' is a proposition or not (i.e.\ if it has the property of being either true or false). In this
+particular case, the statement looks rather meaningless.
+
+\bd [Tautology]
+A proposition which is always true is called a \textbf{tautology}\index{tautology}.
+\ed
+
+\bd [Contradiction]
+A proposition which is always false is called a \textbf{contradiction}\index{contradiction}.
+\ed
+
+It is possible to build new propositions from given ones using \emph{logical operators}. The simplest kind of logical
+operators are \emph{unary} operators, which take in one proposition and return another proposition. There are four
+unary operators in total, and they differ by the truth value of the resulting proposition which, in general, depends
+on the truth value of $p$. We can represent them in a table as follows:
+\btab[H]
+\centering
+\btb{c||c|c|c|c}
+$p$ & $\neg p$ & $\mathrm{id}(p)$ & $\top p$ & $\bot p$ \\
+\hline
+\rule{0pt}{12pt} F & T & F & T & F \\
+T & F & T & T & F
+\etb
+\etab
+
+where $\neg$ is the \emph{negation} operator, $\mathrm{id}$ is the \emph{identity} operator, $\top$ is the
+\emph{tautology} operator and $\bot$ is the \emph{contradiction} operator. These clearly exhaust all possibilities
+for unary operators. \v
+
+The next step is to consider \emph{binary} operators, i.e.\ operators that take in two propositions and return a new
+proposition. There are four combinations of the truth values of two propositions and, since a binary operator assigns
+one of the two possible truth values to each of those, we have 16 binary operators in total. The operators $\land$,
+$\lor$ and~$\veebar$, called \emph{and}, \emph{or} and \emph{exclusive or} respectively, should already be familiar
+to you:
+\btab[H]
+\centering
+\btb{c|c||c|c|c}
+$p$ & $q$ & $p\land q$ & $p\lor q$ & $p\veebar q$ \\
+\hline
+\rule{0pt}{12pt} F & F & F & F & F \\
+F & T & F & T & T \\
+T & F & F & T & T \\
+T & T & T & T & F
+\etb
+\etab
+
+There is one binary operator, the \emph{implication}\index{implication} operator $\imp$, which is sometimes a little
+ill understood, unless you are already very knowledgeable about these things. Its usefulness comes in conjunction
+with the \emph{equivalence} operator $\eqv$. We have:
+\btab[H]
+\centering
+\btb{c|c||c|c}
+$p$ & $q$ & $p\imp q$ & $p\eqv q$ \\
+\hline
+\rule{0pt}{12pt} F & F & T & T \\
+F & T & T & F \\
+T & F & F & F \\
+T & T & T & T
+\etb
+\etab
+
+While the fact that the proposition $p\imp q$ is true whenever $p$ is false may be surprising at first, it is just
+the definition of the implication operator, and it is an expression of the principle ``Ex falso quod libet'', that
+is, from a false assumption anything follows. Of course, you may be wondering why on earth we would want to define
+the implication operator in this way. The answer to this is hidden in the following result.
+
+\bt[]
+Let $p,q$ be propositions. Then $(p\imp q) \eqv ((\neg q)\imp (\neg p))$.
+\et
+
+\bq
+We simply construct the truth tables for $p\imp q$ and $ (\neg q)\imp (\neg p)$:
+\btab[H]
+\centering
+\btb{c|c||c|c|c|c}
+$p$ & $q$ & $\neg p$ & $\neg q$ & $p\imp q$ & $(\neg q)\imp (\neg p)$ \\
+\hline
+\rule{0pt}{12pt} F & F & T & T & T & T \\
+F & T & T & F & T & T \\
+T & F & F & T & F & F \\
+T & T & F & F & T & T
+\etb
+\etab
+
+The columns for $p\imp q$ and $ (\neg q)\imp (\neg p)$ are identical and hence, we are done.
+\eq
+
+
+We agree on decreasing binding strength in the sequence:
+\bse
+\neg \, , \ \land \, , \ \lor \, , \ \imp \, , \ \eqv
+\ese
+
+For example, $(\neg q)\imp (\neg p)$ may be written unambiguously as $\neg q\imp \neg p$. \v
+
+All higher order operators $\heartsuit (p_1,\ldots,p_N)$ can be constructed from a single binary operator defined by:
+\btab[H]
+\centering
+\btb{c|c||c}
+$p$ & $q$ & $ p \uparrow q$ \\
+\hline
+\rule{0pt}{12pt} F & F & T \\
+F & T & T \\
+T & F & T \\
+T & T & F
+\etb
+\etab
+
+This is called the \emph{nand} operator and, in fact, we have $(p \uparrow q) \eqv \neg (p \land q)$. \v
+
+\section{Predicate Logic}
+
+\bd [Predicate]
+A \textbf{predicate}\index{predicate} is a proposition-valued function of some variable or variables.
+\ed
+
+\bd [Relation]
+A predicate of two variables is called a \textbf{relation}\index{relation}.
+\ed
+
+For example, $P(x)$ is a proposition for each choice of the variable $x$, and its truth value depends on on $x$.
+Similarly, the predicate $Q(x,y)$ is, for any choice of $x$ and $y$, a proposition and its truth value depends on on
+$x$ and $y$. \v
+
+Just like for propositional logic, it is not the task of predicate logic to examine how predicates are built from the
+variables on which they depend. In order to do that, one would need some further language establishing the rules to
+combine the variables $x$ and $y$ into a predicate. Also, you may want to specify from which ``set'' $x$ and $y$ come
+from. Instead, we leave it completely open, and simply consider $x$ and $y$ formal variables, with no extra
+conditions imposed. \v
+
+This may seem a bit weird since from elementary school one is conditioned to always ask where ``x'' comes from upon
+seeing an expression like $P(x)$. However, it is crucial that we refrain from doing this here, since we want to only
+later define the notion of set, using the language of propositional and predicate logic. As with propositions, we can
+construct new predicates from given ones by using the operators define in the previous section. For example, we might
+have:
+\bse
+Q(x,y,z) :\eqv P(x) \land R(y,z)
+\ese
+
+where the symbol $:\eqv$ means ``defined as being equivalent to''. \v
+
+More interestingly, we can construct a new proposition from a given predicate by using \emph{quantifiers}.
+
+\bd [Universal Quantifier]
+Let $P(x)$ be a predicate. Then:
+\bse
+\forall \, x : P(x)
+\ese
+
+is a proposition, which we read as ``for all $x$, $P$ of $x$ (is true)'', and it is defined to be true if $P(x)$ is
+true independently of $x$, false otherwise. The symbol $\forall$\index{$\forall$} is called \textbf{universal
+quantifier}\index{universal quantifier}.
+\ed
+
+\bd [Existential Quantifier]
+Let $P(x)$ be a predicate. Then we define:
+\bse
+\exists \, x : P(x) : \eqv \neg (\forall \, x : \neg P(x))
+\ese
+
+The proposition $\exists \, x : P(x)$ is read as ``there exists (at least one) $x$ such that $P$ of $x$ (is true)''
+and the symbol $\exists$\index{$\exists$} is called \textbf{existential quantifier}\index{existential quantifier}.
+\ed
+
+The following theorem is an immediate consequence of these definitions.
+
+\bt[]
+Let $P(x)$ be a predicate. Then:
+\bse
+\forall \, x : P(x) \eqv \neg (\exists \, x : \neg P(x))
+\ese
+\et
+
+It is possible to define quantification of predicates of more than one variable. In order to do so, one proceeds in
+steps quantifying a predicate of one variable at each step. \v
+
+\be
+Let $P(x,y)$ be a predicate. Then, for fixed $y$, $P(x,y)$ is a predicate of one variable and we define:
+\bse
+Q(y) :\eqv \forall \, x : P(x,y)
+\ese
+
+Hence, we may have the following:
+\bse
+\exists \, y : \forall \, x : P(x,y) :\eqv \exists \, y : Q(y)
+\ese
+
+Other combinations of quantifiers are defined analogously.
+\ee
+
+The order of quantification matters (if the quantifiers are not all the same). For a given predicate $P(x,y)$, the
+propositions:
+\bse
+\exists \, y : \forall \, x : P(x,y) \quad \text{and} \quad \forall \, x :
+\exists \, y : P(x,y)
+\ese
+
+are not necessarily equivalent. \v
+
+\be
+Consider the proposition expressing the existence of additive inverses in the real numbers. We have:
+\bse
+\forall \, x : \exists \, y : \ x+y=0
+\ese
+
+\v
+
+i.e.\ for each $x$ there exists an inverse $y$ such that $x+y=0$. For $1$ this is $-1$, for $2$ it is $-2$ etc.
+Consider now the proposition obtained by swapping the quantifiers in the previous proposition:
+\bse
+\exists \, y : \forall \, x : \ x+y=0
+\ese
+
+\v
+
+What this proposition is saying is that there exists a real number $y$ such that, no matter what $x$ is, we have
+$x+y=0$. This is clearly false, since if $x+y=0$ for some $x$ then $(x+1) +y\neq 0$, so the same $y$ cannot work for
+both $x$ and $x+1$, let alone every $x$. \ee
+
+Notice that the proposition $\exists \, x : P(x)$ means ``there exists \emph{at least one} $x$ such that $P(x)$ is
+true''. Often in mathematics we prove that ``there exists \emph{a unique} $x$ such that $P(x)$ is true''. We
+therefore have the following definition.
+
+\bd [Unique Existential Quantifier]
+Let $P(x)$ be a predicate. We define the \textbf{unique existential quantifier} $\exists !$ by:
+\bse
+\exists ! \, x : P(x) :\eqv (\exists \, x : P(x)) \land \forall \, y : \forall \, z : (P(y)\land P(z) \imp y=z)
+\ese
+\ed
+
+This definition clearly separates the existence condition from the uniqueness condition. An equivalent definition
+with the advantage of brevity is:
+\bse
+\exists ! \, x : P(x) :\eqv (\exists \, x : \forall \, y : P(y) \eqv x=y)
+\ese
+
+\section{Axiomatic Systems \& Theory Of Proofs}
+
+\bd [Axiomatic System]
+An \textbf{axiomatic system} is a finite sequence of propositions $a_1,a_2, \ldots,a_N$, which are called the
+\emph{axioms}\index{axiom} of the system.
+\ed
+
+\bd [Proof]
+A \textbf{proof}\index{proof} of a proposition $p$ within an axiomatic system $a_1,a_2,\ldots,a_N$ is a finite
+sequence of propositions $q_1,q_2,\ldots,q_M$ such that $q_M=p$ and for any $1\leq j \leq M$ one of the following is
+satisfied:
+\ben
+\item[(A)] $q_j$ is a proposition from the list of axioms.
+\item[(T)] $q_j$ is a tautology.
+\item[(M)] $\exists \, 1\leq m,n <j : (q_m\land q_n \imp q_j)$ is true.
+\een
+\ed
+
+If $p$ can be proven within an axiomatic system $a_1,a_2,\ldots,a_N$, we write:
+\bse
+a_1,a_2,\ldots,a_N \vdash p
+\ese
+
+and we read ``$a_1,a_2,\ldots,a_N$ proves $p$''. \v
+
+This definition of proof allows to easily recognise a proof. A computer could easily check that whether the
+conditions (A), (T) and (M) are satisfied by a sequence of propositions. To actually find a proof of a proposition is
+a whole different story. \v
+
+Obviously, any tautology that appears in the list of axioms of an axiomatic system can be removed from the list
+without impairing the power of the axiomatic system. \v
+
+An extreme case of an axiomatic system is propositional logic. The axiomatic system for propositional logic is the
+empty sequence. This means that all we can prove in propositional logic are tautologies.
+
+\bd [Consistent] An axiomatic system $a_1,a_2,\ldots,a_N$ is said to be \textbf{consistent}\index{consistency} if
+there exists a proposition $q$ which cannot be proven from the axioms. In symbols:
+\bse
+\exists \, q : \neg (a_1,a_2,\ldots,a_N \vdash q)
+\ese
+\ed
+
+The idea behind this definition is the following. Consider an axiomatic system which contains contradicting
+propositions:
+\bse
+a_1,\ldots,s,\ldots,\neg s,\ldots,a_N
+\ese
+
+\v
+
+Then, given \emph{any} proposition $q$, the following is a proof of $q$ within this system:
+\bse
+s, \neg s, q
+\ese
+
+Indeed, $s$ and $\neg s$ are legitimate steps in the proof since they are axioms. Moreover, $s\land \neg s$ is a
+contradiction and thus $(s\land \neg s) \imp q$ is a tautology. Therefore, $q$ follows from condition (M). This shows
+that any proposition can be proven within a system with contradictory axioms. \v
+
+In other words, the inability to prove every proposition is a property possessed by no contradictory system, and
+Hence, we define a consistent system as one with this property. \v
+
+Having come this far, we can now state (and prove) an impressively sounding theorem.
+
+\bt[]
+Propositional logic is consistent.
+\et
+
+\bq
+Suffices to show that there exists a proposition that cannot be proven within propositional logic. Propositional
+logic has the empty sequence as axioms. Therefore, only conditions (T) and (M) are relevant here. The latter allows
+the insertion of a proposition $q_j$ such that $(q_m\land q_n) \imp q_j$ is true, where $q_m$ and $q_n$ are
+propositions that precede $q_j$ in the proof sequence. However, since (T) only allows the insertion of a tautology
+anywhere in the proof sequence, the propositions $q_m$ and $q_n$ must be tautologies. Consequently, for $(q_m\land
+q_n) \imp q_j$ to be true, $q_j$ must also be a tautology. Hence, the proof sequence consists entirely of tautologies
+and thus only tautologies can be proven. \v
+
+Now let $q$ be any proposition. Then $q\land \neg q$ is a contradiction, hence, not a tautology and thus cannot be
+proven. Therefore, propositional logic is consistent.
+\eq
+
+While it is perfectly fine and clear how to define consistency, it is perfectly difficult to prove consistency for a
+given axiomatic system, propositional logic being a big exception. \v
+
+\bt[]
+Any axiomatic system powerful enough to encode elementary arithmetic is either inconsistent or contains an
+\emph{undecidable}\index{undecidable} proposition, i.e.\ a proposition that can be neither proven nor disproven
+within the system.
+\et
+
+An example of an undecidable proposition is the Continuum hypothesis within the Zermelo-Fraenkel axiomatic system.
+
+\section[\texorpdfstring{The $\in$-relation}{The epsilon-relation}]{The $\in$-relation}
+
+Set\index{set} theory is built on the postulate that there is a fundamental relation (i.e.\ a predicate of two
+variables) denoted $\in$\index{$\in$} and read as ``epsilon''. There will be no definition of what $\in$ is, or of
+what a set is. Instead, we will have nine axioms concerning $\in$ and sets, and it is only in terms of these nine
+axioms that $\in$ and sets are defined at all. Here is an overview of the axioms. We will have:
+\bit
+\item 2 basic existence axioms, one about the $\in$ relation and the other about the existence of the empty set.
+\item 4 construction axioms, which establish rules for building new sets from given ones. They are the pair set axiom,
+the union set axiom, the replacement axiom and the power set axiom.
+\item 2 further existence/construction axioms, these are slightly more advanced and newer compared to the others.
+\item 1 axiom of foundation, excluding some constructions as not being sets.
+\eit
+
+Using the $\in$-relation we can immediately define the following relations:
+\bit
+\item $x\notin y :\eqv \neg(x\in y)$.
+\item $x\se y :\eqv \forall \, a : (a\in x \imp a\in y)$.
+\item $x = y :\eqv (x\se y) \land (y\se x)$.
+\item $x \ss y :\eqv (x \se y) \land \neg (x = y)$.
+\eit
+
+A comment about notation. Since $\in$ is a predicate of two variables, for consistency of notation we should write
+$\in\!\!(x,y)$. However, the notation $x\in y$ is much more common (as well as intuitive) and hence, we simply define:
+\bse
+x\in y, :\eqv\ \in\!\!(x,y)
+\ese
+
+\v
+
+and we read ``$x$ is in (or belongs to) $y$'' or ``$x$ is an element (or a member) of $y$''. Similar remarks apply to
+the other relations $\notin$, $\se$ and $=$. \v
+
+\section{Zermelo-Fraenkel Axioms Of Set Theory}
+
+Zermelo–Fraenkel set theory, named after mathematicians Ernst Zermelo and Abraham Fraenkel, is an axiomatic system
+that was proposed in the early twentieth century in order to formulate a theory of sets free of paradoxes such as
+Russell's paradox. Today, Zermelo–Fraenkel set theory, with the historically controversial axiom of choice included,
+is the standard form of axiomatic set theory and as such is the most common foundation of mathematics.
+Zermelo–Fraenkel set theory with the axiom of choice included is abbreviated ZFC, where C stands for ``choice'' and
+ZF refers to the axioms of Zermelo–Fraenkel set theory with the axiom of choice excluded. \v
+
+In what follows we will introduce all the axioms of Zermelo–Fraenkel set theory. \v
+
+\textbf{Axiom on the $\in$-relation.}\index{$\in$}\index{relation!$\in$}\index{axiom!on $\in$} \\
+\emph{The expression $x\in y$ is a proposition if, and only if, both $x$ and $y$ are sets. In symbols:}
+\bse
+\forall \, x : \forall \, y : (x\in y) \veebar \neg (x\in y)
+\ese
+
+\v
+
+We remarked, previously, that it is not the task of predicate logic to inquire about the nature of the variables on
+which predicates depend. This first axiom clarifies that the variables on which the relation $\in$ depend are sets.
+In other words, if $x\in y$ is not a proposition (i.e.\ it does not have the property of being either true or false)
+then $x$ and $y$ are not both sets. \v
+
+This seems so trivial that, for a long time, people thought that this not much of a condition. But, in fact, it is.
+It tells us when something is not a set.
+
+\be
+This is the so called ``Russel's Paradox''. Suppose that there is some $u$ which has the following property:
+\bse
+\forall \, x : (x \notin x \eqv x \in u)
+\ese
+
+i.e.\ $u$ contains all the sets that are not elements of themselves, and no others. We wish to determine whether $u$
+is a set or not. In order to do so, consider the expression $u\in u$. If $u$ is a set then, by the first axiom, $u\in
+u$ is a proposition. \v
+
+However, we will show that his is not the case. Suppose first that $u\in u$ is true. Then $\neg(u\notin u)$ is true
+and thus $u$ does not satisfy the condition for being an element of $u$, and hence, is not an element of $u$. Thus:
+\bse
+u \in u \imp \neg(u \in u)
+\ese
+
+\v
+
+and this is a contradiction. Therefore, $u\in u$ cannot be true. Then, if it is a proposition, it must be false.
+However, if $u \notin u$, then $u$ satisfies the condition for being a member of $u$ and thus:
+\bse
+u \notin u \imp \neg(u \notin u)
+\ese
+
+which is, again, a contradiction. Therefore, $u\in u$ does not have the property of being either true or false (it
+can be neither) and hence, it is not a proposition. Thus, our first axiom implies that $u$ is not a set, for if it
+were, then $u\in u$ would be a proposition.
+\ee
+
+The fact that $u$ as defined above is not a set means that expressions like:
+\bse
+u\in u, \quad x\in u, \quad u\in x, \quad x \notin u, \quad \t{etc}
+\ese
+
+are not propositions and thus, they are not part of axiomatic set theory. \v
+
+\textbf{Axiom on the existence of an empty set.}\\
+\emph{There exists a set that contains no elements. In symbols:}
+\bse
+\exists \, y : \forall \, x : x \notin y
+\ese
+
+Notice the use of ``an'' above. In fact, we have all the tools to prove that there is only one empty set. We do not
+need this to be an axiom.
+\bt[]
+There is only one empty set, and we denote it by $\vn$.
+\et
+
+\bq
+Suppose that $x$ and $x'$ are both empty sets. Then $y\in x$ is false as $x$ is the empty set. But then:
+\bse
+(y \in x) \imp (y \in x')
+\ese
+
+\v
+
+is true, and in particular it is true independently of $y$. Therefore:
+\bse
+\forall \, y : (y \in x) \imp (y \in x')
+\ese
+
+and hence, $x \se x'$. \v
+
+Conversely, by the same argument, we have:
+\bse
+\forall \, y : (y \in x') \imp (y \in x)
+\ese
+
+and thus $x' \se x$. \v
+
+Hence, $(x \se x') \land (x' \se x)$ and therefore $x = x'$.
+\eq
+
+\textbf{Axiom on pair sets.} \\
+\emph{Let $x$ and $y$ be sets. Then there exists a set that contains as its elements precisely $x$ and $y$. In symbols:}
+\bse
+\forall \, x : \forall \, y : \exists \, m : \forall \, u : (u\in m \eqv (u = x \lor u = y))
+\ese
+
+\v
+
+The set $m$ is called the \emph{pair set} of $x$ and $y$ and it is denoted by $\{x,y\}$. \v
+
+We have chosen $\{x,y\}$ as the notation for the pair set of $x$ and $y$, but what about $\{y,x\}$? The fact that the
+definition of the pair set remains unchanged if we swap $x$ and $y$ suggests that $\{x,y\}$ and $\{y,x\}$ are the
+same set. Indeed, by definition, we have:
+\bse
+(a \in \{x,y\} \imp a \in \{y,x\} ) \land (a \in \{y,x\} \imp a \in \{x,y\} )
+\ese
+
+independently of $a$, hence, $(\{x,y\} \se \{y,x\}) \land (\{y,x\} \se \{x, y\})$ and thus $\{x,y\} = \{y,x\}$. \v
+
+The pair set $\{x,y\}$ is thus an unordered pair. However, using the axiom on pair sets, it is also possible to
+define an \emph{ordered pair} $(x,y)$ such that $(x,y)\neq(y,x)$. The defining property of an ordered pair is the
+following:
+\bse
+(x,y) = (a,b) \eqv x=a\land y=b
+\ese
+
+\v
+
+One candidate which satisfies this property is $(x,y)\coloneqq\{x,\{x, y\}\}$, which is a set by the axiom on pair
+sets. \v
+
+The pair set axiom also guarantees the existence of one-element sets, called \emph{singletons}\index{singleton}. If
+$x$ is a set, then we define $\{x\}\coloneqq\{x,x\}$. Informally, we can say that $\{x\}$ and $\{x,x\}$ express the
+same amount of information, namely that they contain $x$. \v
+
+\textbf{Axiom on union sets.} \\
+\emph{Let $x$ be a set. Then there exists a set whose elements are precisely the elements of the elements of $x$. In
+symbols:}
+\bse
+\forall \, x : \exists \, u : \forall \, y : (y \in u \eqv \exists \, s :(y \in s\land s \in x))
+\ese
+
+The set $u$ is denoted by $\bigcup x$.
+
+\be Let $a,b$ be sets. Then $\{a\}$ and $\{b\}$ are sets by the pair set axiom, and hence, $x\coloneqq\{\{a\},\{b\}\}$
+is a set, again by the pair set axiom. Then the following expression is a set by the union axiom:
+\bse
+\bigcup x = \{a,b\}
+\ese
+\ee
+
+Notice that, since $a$ and $b$ are sets, we could have immediately concluded that $\{a,b\}$ is a set by the pair set
+axiom. The union set axiom is really needed to construct sets with more than 2 elements.
+
+\be
+Let $a,b,c$ be sets. Then $\{a\}$ and $\{b,c\}$ are sets by the pair set axiom, and hence, $x\coloneqq\{\{a\},\{b,
+c\}\}$ is a set, again by the pair set axiom. Then the expression:
+\bse
+\bigcup x \eqqcolon \{a,b,c\}
+\ese
+
+is a set by the union set axiom. This time the union set axiom was really necessary to establish that $\{a,b,c\}$ is
+a set, i.e.\ in order to be able to use it meaningfully in conjunction with the $\in$-relation.
+\ee
+
+The previous example easily generalises to a definition.
+
+\bd [Union Of Sets]
+Let $a_1,a_2,\ldots,a_N$ be sets. We define recursively for all $N\geq 2$ the \textbf{union of sets} as:
+\bse
+\{a_1,a_2,\ldots,a_{N+1}\} \coloneqq \bigcup \left\{\{a_1,a_2,\ldots, a_{N}\},\{a_{N+1}\} \right\}
+\ese
+\ed
+
+The fact that the $x$ that appears in $\bigcup x$ has to be a set is a crucial restriction. Informally, we can say
+that it is only possible to take unions of as many sets as would fit into a set. The ``collection'' of all the sets
+that do not contain themselves is not a set or, we could say, does not fit into a set. Therefore, it is not possible
+to take the union of all the sets that do not contain themselves. This is very subtle, but also very precise. \v
+
+\textbf{Axiom of replacement.} \\
+\emph{Let $R$ be a functional relation and let $m$ be a set. Then the image of $m$ under $R$, denoted by $\img_R (m)$,
+is again a set.} \v
+
+Of course, we now need to define the new terms that appear in this axiom. Recall that a relation is simply a
+predicate of two variables.
+
+\bd [Functional Relation]
+A relation $R$ is said to be \textbf{functional}\index{relation!functional} if:
+\bse
+\forall \, x : \exists ! \, y : R(x,y)
+\ese
+\ed
+
+\bd [Image Of A Set Under A Relational Functional Relation]
+Let $m$ be a set and let $R$ be a functional relation. The \textbf{image of $m$ under $R$}\index{image} consists of all
+those $y$ for which there is an $x\in m$ such that $R(x,y)$.
+\ed
+
+None of the previous axioms imply that the image of a set under a functional relation is again a set. The assumption
+that it always is, is made explicit by the axiom of replacement. \v
+
+It is very likely that the reader has come across a weaker form of the axiom of replacement, called the
+\emph{principle of restricted comprehension}, which says the following.
+
+\bt[Principle Of Restricted Comprehension]
+Let $P(x)$ be a predicate and let $m$ be a set. Then the elements $y \in m$ such that $P(y)$ is true constitute a
+set, which we denote by:
+\bse
+\{y \in m \mid P(y)\}
+\ese
+\et
+
+\bq
+We have two cases:
+\ben
+\item If $\neg ( \exists \, y \in m : P(y))$, then we define: $\{y \in m \mid P(y)\} \coloneqq \vn$.
+\item If $\exists \, \hat y \in m : P(\hat y)$, then let $R$ be the functional relation:
+\bse
+R(x,y) \coloneqq (P(x)\land x=y)\lor(\neg P(x)\land \hat y = y)
+\ese
+
+and hence, define $\{y \in m \mid P(y)\} \coloneqq \img_R(m)$. \qedhere
+\een
+\eq
+
+Don't worry if you don't see this immediately. You need to stare at the definitions for a while, and then it will
+become clear. \v
+
+The principle of restricted comprehension is not to be confused with the ``principle'' of universal comprehension
+which states that $\{y \mid P(y)\} $ is a set for any predicate and was shown to be inconsistent by Russell. Observe
+that the $y \in m$ condition makes it so that $\{y \in m \mid P(y)\}$ cannot have more elements than $m$ itself. \v
+
+If $y$ is a set, we define the following notation:
+\bse
+\forall \, x \in y : P(x) :\eqv \forall \, x : (x \in y \imp P(x))
+\ese
+
+and:
+\bse
+\exists \, x \in y : P(x) :\eqv \neg (\forall \, x \in y : \neg P(x))
+\ese
+
+\v
+
+Pulling the $\neg$ through, we can also write:
+\bi{rCl}
+\exists \, x \in y : P(x) & \eqv & \neg (\forall \, x \in y : \neg P(x)) \\
+& \eqv & \neg (\forall \, x : (x \in y \imp \neg P(x))) \\
+& \eqv & \exists \, x : \neg (x \in y \imp \neg P(x))) \\
+& \eqv & \exists \, x : (x \in y \land P(x))
+\ei
+
+where we have used the equivalence $(p \imp q) \eqv \neg (p \land \neg q)$. \v
+
+The principle of restricted comprehension is a consequence of the axiom of replacement. \v
+
+We will rarely invoke the axiom of replacement in full. We will only invoke the weaker principle of restricted
+comprehension, with which we are all familiar with. \v
+
+We can now define the intersection and the relative complement of sets.
+
+\bd [Intersection]
+Let $x$ be a set. Then we define the \textbf{intersection} of $x$ by:
+\bse
+\bigcap x \coloneqq \{ a \in \bigcup x \mid \forall \, b \in x : a \in b \}
+\ese
+
+If $a,b\in x$ and $\bigcap x = \vn$, then $a$ and $b$ are said to be \emph{disjoint}.
+\ed
+
+\bd [Complement]
+Let $u$ and $m$ be sets such that $u \se m$. Then the \textbf{complement} of $u$ relative to $m$ is defined as:
+\bse
+m\sm u \coloneqq \{x \in m \mid x \notin u\}
+\ese
+
+\v
+
+These are both sets by the principle of restricted comprehension, which is ultimately due to axiom of replacement.
+\ed
+
+\textbf{Axiom on the existence of power sets.} \\
+\emph{Let $m$ be a set. Then there exists a set, denoted by $\cP(m)$, whose elements are precisely the subsets of $m$.
+In symbols:}
+\bse
+\forall \, x : \exists \, y : \forall \, a : ( a \in y \eqv a \se x)
+\ese
+
+Historically, in naive set theory, the principle of universal comprehension was thought to be needed in order to
+define the power set of a set. Traditionally, this would have been (inconsistently) defined as:
+\bse
+\cP (m) \coloneqq \{y \mid y \se m \}
+\ese
+
+To define power sets in this fashion, we would need to know, a priori, from which ``bigger'' set the elements of the
+power set come from. However, this in not possible based only on the previous axioms and, in fact, there is no other
+choice but to dedicate an additional axiom for the existence of power sets.
+
+\be
+Let $m = \{a,b\}$. Then $\cP(m)=\{\vn,\{a\},\{b\},\{a,b\}\}$.
+\ee
+
+If one defines $\left(a,b\right) \coloneqq \{a,\{a,b\}\}$, then the \emph{cartesian product} $x \times y$ of two sets
+$x$ and $y$, which informally is the set of all ordered pairs of elements of $x$ and $y$, satisfies:
+\bse
+x\times y \se \cP(\cP(\bigcup\,\{x, y\}))
+\ese
+
+Hence, the existence of $x\times y$ as a set follows from the axioms on unions, pair sets, power sets and the
+principle of restricted comprehension. \v
+
+\textbf{Axiom of infinity.} \\
+\emph{There exists a set that contains the empty set and, together with every other element $y$, it also contains the
+set $\{y\}$ as an element. In symbols:}
+\bse
+\exists \, x : \vn \in x \land \forall \, y : (y\in x \imp \{y\} \in x)
+\ese
+
+Let us consider one such set $x$. Then $\vn \in x$ and hence, $\{\vn\}\in x$. Thus, we also have $\{\{\vn\}\}\in x$
+and so on. Therefore:
+\bse
+x = \{\vn,\{\vn\},\{\{\vn\}\},\{\{\{\vn\}\}\},\ldots\}
+\ese
+
+\v
+
+We can introduce the following notation for the elements of $x$:
+\bse
+0 \coloneqq \vn, \quad
+1 \coloneqq \{\vn\},\quad
+2 \coloneqq \{\{\vn\}\}, \quad
+3 \coloneqq \{\{\{\vn\}\}\}, \quad
+\ldots
+\ese
+
+\vspace{-10pt}
+
+\bt[]
+The ``set'' $\N\coloneqq x$\index{$\N$} is a set according to axiomatic set theory.
+\et
+
+This would not be then case without the axiom of infinity since it is not possible to prove that $\N$ constitutes a
+set from the previous axioms. \v
+
+At this point, one might suspect that we would need an extra axiom for the existence of the real numbers. But, in
+fact, we can define $\R \coloneqq \cP(\N)$, which is a set by the axiom on power sets. \v
+
+The version of the axiom of infinity that we stated is the one that was first put forward by Zermelo. A more modern
+formulation is the following. \emph{There exists a set that contains the empty set and, together with every other
+element $y$, it also contains the set $y\cup\{y\}$ as an element.} Here we used the notation:
+\bse
+x \cup y \coloneqq \bigcup \, \{x,y\}
+\ese
+
+\v
+
+With this formulation, the natural numbers look like:
+\bse
+\N \coloneqq \{\vn, \{\vn\}, \{\vn,\{\vn\}\}, \{\vn,\{\vn\},\{\vn, \{\vn\}\}\}, \ldots \}
+\ese
+
+This may appear more complicated than what we had before, but it is much nicer for two reasons. First, the natural
+number $n$ is represented by an $n$-element set rather than a one-element set. Second, it generalises much more
+naturally to the system of transfinite ordinal numbers where the successor operation $s(x)=x\cup\{x\}$ applies to
+transfinite ordinals as well as natural numbers. Moreover, the natural numbers have the same defining property as the
+ordinals: they are transitive sets strictly well-ordered by the $\in$-relation. \v
+
+\textbf{Axiom of choice.}\\
+\emph{Let $x$ be a set whose elements are non-empty and mutually disjoint. Then there exists a set $y$ which contains
+exactly one element of each element of $x$. In symbols:}
+\bse
+\forall \, x : P(x) \imp \exists \, y : \forall \, a \in x :\exists! \, b \in a : a \in y
+\ese
+
+where $P(x) \eqv (\exists \,a : a \in x) \land \left(\forall \, a : \forall \, b : (a\in x \land b \in x) \imp
+\bigcap \, \{a,b\} = \vn \right)$. \v
+
+The axiom of choice is independent of the other 8 axioms, which means that one could have set theory with or without
+the axiom of choice. However, standard mathematics uses the axiom of choice and hence, so will we. There is a number
+of theorems that can only be proved by using the axiom of choice. Amongst these we have:
+\bit
+\item Every vector space has a basis.
+\item There exists a complete system of representatives of an equivalence relation.
+\eit
+
+\v
+
+\textbf{Axiom of foundation.}\\
+\emph{Every non-empty set $x$ contains an element $y$ that has none of its elements in common with $x$. In symbols:}
+\bse
+\forall \, x : (\exists \,a : a \in x) \imp \exists \, y \in x : \bigcap \, \{x,y\} = \vn
+\ese
+
+An immediate consequence of this axiom is that there is no set that contains itself as an element. \v
+
+The totality of all these nine axioms are called \emph{ZFC set theory}, which is a shorthand for Zermelo-Fraenkel set
+theory with the axiom of Choice.
+
+\section{Maps Between Sets}
+
+A recurrent theme in mathematics is the classification of \emph{spaces} by means of structure-preserving \emph{maps}
+between them. \v
+
+A space is usually meant to be some set equipped with some structure, which is usually some other set. We will define
+each instance of space precisely when we will need them. In the case of sets considered themselves as spaces, there
+is no extra structure beyond the set and hence, the structure may be taken to be the empty set.
+
+\bd [Map]
+Let $A,B$ be sets. A \textbf{map}\index{map} $\phi \cl A \to B$ is a relation such that for each $a \in A$ there
+exists exactly one $b \in B$ such that $\phi(a,b)$.
+\ed
+
+The standard notation for a map is:
+\bi{rrCl}
+\phi \cl & A & \to & B\\
+& a & \mapsto & \phi(a)
+\ei
+
+which is technically an abuse of notation since $\phi$, being a relation of two variables, should have two arguments
+and produce a truth value. However, once we agree that for each $a\in A$ there exists exactly one $b\in B$ such that
+$\phi(a,b)$ is true, then for each $a$ we can define $\phi(a)$ to be precisely that unique $b$. It is sometimes
+useful to keep in mind that $\phi$ is actually a relation.
+
+\be
+Let $M$ be a set. The simplest example of a map is the \emph{identity map} on $M$:
+\bi{rrCl}
+\id_M \cl & M & \to & M\\
+& m & \mapsto & m
+\ei
+\ee
+
+We will now provide some very basic and standard terminology for a map $\phi \cl A \to B$, that we will be using
+throughout the notes. It worth spending some time on learning and understanding the terminology.
+
+\fig{img/map}{0.35}
+
+\bit
+\item The set $A$ is called the \textbf{domain} of $\phi$.
+\item The set $B$ is called the \textbf{codomain} or the \textbf{target} of $\phi$.
+\item If $a$ is an element of $A$, then $\phi(a)$ = b (the value of $\phi$ when applied to $a$) is called the
+\textbf{image of element} or the \textbf{output}of $a$ under $\phi$.
+\item If $C$ is a subset of $A$, then $\phi(C)$ (the set of values of $\phi$ when applied to $C$) is called the
+\textbf{image of subset} of $C$ under $\phi$.
+\item The set of all elements that the map $\phi$ can hit in the target $B$ (grey area in $B$) is called the
+\textbf{image} or the \textbf{range} of $A$ under $\phi$ (in other words the image of a map is simply the image of its
+entire domain). Notice that since a map $\phi$ hits every point of the domain $A$, the whole domain $A$ is covered by
+$\phi$ (grey area in $A$). However, it is not necessary that the mapping will also cover the whole target $B$. This is
+why the image of a map is not necessarily equal to the whole target.
+\item The set of all elements of the domain $A$ that are mapped into a given single element $b$ of the target $B$ is
+called the \textbf{fiber} of the element $b$ under $\phi$.
+\item The subset $C$ of all elements of the domain $A$ that are mapped into a subset $\phi(C)$ of the target $B$ is
+called the \textbf{preimage} or the \textbf{inverse image} of $\phi(C)$ under $\phi$.
+\item A map $\phi$ is called \textbf{injective} or an \textbf{injection} or \textbf{one-to-one} if distinct elements of
+the domain $A$ map to distinct elements in the target $B$, or equivalently if each element of the target $B$ is mapped
+to by at most one element of the domain $A$: $\ \forall \, a_1,a_2 \in A : \phi(a_1)=\phi(a_2) \imp a_1 = a_2$.
+\item A map $\phi$ is called \textbf{surjective} or a \textbf{surjection} or \textbf{onto} if its image is equal to the
+entire domain $A$, or equivalently if each element of the target $B$ is mapped to by at least one element of the domain
+$A$: $\img_\phi(A) = B$.
+\item A map $\phi$ is called \textbf{bijective} or a \textbf{bijection} or \textbf{one-to-one and onto} if it is both
+injective and surjective.
+\eit
+
+\bd [Isomorphic Sets]
+Two sets $A$ and $B$ are called \textbf{isomorphic}\index{isomorphism!of sets} if there exists a bijection $\phi \cl
+A \to B$. In this case, we write $A \iset B$.
+\ed
+
+If there is any bijection $A \to B$ then generally there are many. \v
+
+Bijections are the ``structure-preserving'' maps for sets. Intuitively, they pair up the elements of $A$ and $B$ and
+a bijection between $A$ and $B$ exists only if $A$ and $B$ have the same ``size''. This is clear for finite sets, but
+it can also be extended to infinite sets.
+
+\bd[Infinite/Finite Sets]
+A set $A$ is called:
+\bit
+\item \textbf{Infinite} if there exists a proper subset $B\ss A$ such that $B \iset A$. In particular, if $A$ is
+infinite, we further define $A$ to be:
+\bit
+\item[$*$] \textbf{Countably infinite} if $A \iset \N$.
+\item[$*$] \textbf{Uncountably infinite} otherwise.
+\eit
+\item \textbf{Finite} if it is not infinite. In this case, we have $A \iset \{1,2,\ldots,N\}$ for some $N \in \N$, and
+we say that the \emph{cardinality} of $A$, denoted by $|A|$, is $N$.
+\eit
+\ed
+
+Given two maps $\phi \cl A \to B$ and $\psi \cl B \to C$, we can construct a third map, called the \emph{composition}
+of $\phi$ and $\psi$, denoted by $\psi \circ \phi$ (read ``psi after phi''), defined by:
+\bi{rcCl}
+\psi \circ \phi \cl & A & \to & C \\
+& a & \mapsto & \psi(\phi(a))
+\ei
+
+This is often represented by drawing the following diagram:
+\bse
+\begin{tikzcd}
+  &B \ar[dr,"\psi"]& \\
+  A \ar[ur,"\phi"] \ar[rr, "\psi\circ\phi"'] & & C
+\end{tikzcd}
+\ese
+
+and by saying that ``the diagram commutes'' (although sometimes this is assumed even if it is not explicitly stated).
+What this means is that every path in the diagram gives the same result. This might seem notational overkill at this
+point, but later we will encounter situations where we will have many maps, going from many places to many other
+places and these diagrams greatly simplify the exposition.
+
+\bt[]
+Composition of maps is associative.
+\et
+
+\bq
+Indeed, let $\phi \cl A \to B$, $\psi \cl B \to C$ and $\xi \cl C \to D$ be maps. Then we have:
+\bi{rcCl}
+\xi \circ (\psi\circ\phi) \cl & A & \to & D \\
+& a & \mapsto & \xi(\psi(\phi(a)))
+\ei
+
+and:
+\bi{rcCl}
+(\xi \circ\psi)\circ\phi \cl & A & \to & D \\
+& a & \mapsto & \xi(\psi(\phi(a)))
+\ei
+
+Thus, $\xi \circ (\psi\circ\phi) = (\xi \circ\psi)\circ\phi $.
+\eq
+
+The operation of composition is necessary in order to defined inverses of maps.
+
+\bd [Inverse]
+Let $\phi \cl A \to B$ be a bijection. Then the \textbf{inverse} of $\phi$, denoted $\phi^{-1}$, is defined(uniquely)
+by:
+\bse
+\phi^{-1}\circ\phi = \id_A
+\ese
+
+\bse
+\phi\circ\phi^{-1} = \id_B
+\ese
+\ed
+
+Equivalently, we require the following diagram to commute:
+\bse
+\begin{tikzcd}
+  A \ar[loop left, "\id_A"] \ar[rr, bend left,"\phi"] & & B \ar[loop right, "\id_B"] \ar[ll, bend left,"\phi^{-1}"]
+\end{tikzcd}
+\ese
+
+The inverse map is only defined for bijections. However, the notion of the pre-image, which we will often meet in
+topology, is defined for any map. Given the inverse map we can define the pre-image in a more systematic way as follows.
+
+\bd [Pre-image]
+Let $\phi \cl A \to B$ be a map and let $V\se B$. Then we define the set:
+\bse
+\mathrm{preim}_\phi(V) \coloneqq \{a \in A \mid \phi(a) \in V\}
+\ese
+
+called the \textbf{pre-image} of $V$ under $\phi$.
+\ed
+
+Given the pre-image we can now introduce and prove the following theorem.
+
+\bt[]
+Let $\phi \cl A \to B$ be a map, let $U,V \se B$ and $C=\{C_j \mid j \in J\} \se \cP(B)$. Then:
+\ben
+\item[i)] $\mathrm{preim}_\phi(\vn)=\vn$ and $\mathrm{preim}_\phi(B)=A$.
+\item[ii)] $\mathrm{preim}_\phi(U\sm V)=\mathrm{preim}_\phi(U)\sm \mathrm{preim}_\phi(V)$.
+\item[iii)] $\mathrm{preim}_\phi\left(\bigcup C\right)=\bigcup_{j \in J} \mathrm{preim}_\phi(C_j)$ and
+$\mathrm{preim}_\phi\left(\bigcap C\right)=\bigcap_{j \in J} \mathrm{preim}_\phi(C_j)$.
+\een
+\et
+
+\bq
+\ben
+\item[i)] By definition, we have:
+\bse
+\mathrm{preim}_\phi(B) = \{a\in A : \phi(a) \in B\} = A
+\ese
+
+and:
+\bse
+\mathrm{preim}_\phi(\vn) = \{a\in A : \phi(a) \in \vn\} = \vn
+\ese
+
+\item[ii)] We have:
+\bi{rCl}
+a \in \mathrm{preim}_\phi(U\sm V ) & \eqv & \phi(a) \in U \sm V \\
+& \eqv & \phi(a) \in U \land \, \phi(a) \, \notin V \\
+& \eqv & a \in \mathrm{preim}_\phi(U) \, \land \, a \notin \mathrm{preim}_\phi(V) \\
+& \eqv & a \in \mathrm{preim}_\phi(U ) \sm \mathrm{preim}_\phi(V )
+\ei
+
+\item[iii)] We have:
+\bi{rCl}
+a \in \mathrm{preim}_\phi(\textstyle \bigcup C ) & \eqv & \phi(a) \in \textstyle \bigcup C \\
+& \eqv & \textstyle \bigvee_{j\in J} (\phi(a) \in C_j) \\
+& \eqv & \textstyle \bigvee_{j\in J} (a \in \mathrm{preim}_\phi(C_j)) \\
+& \eqv & a \in \textstyle \bigcup_{j\in J}\mathrm{preim}_\phi(C_j)
+\ei
+
+Similarly, we get $\mathrm{preim}_\phi\left( \bigcap C \right) = \bigcap_{j\in J}\mathrm{preim}_\phi(C_j)$. \qedhere
+\een
+\eq
+
+\section{Equivalence Relations}
+
+\bd [Equivalence Relation]
+Let $M$ be a set and let $\sim$ be a relation such that the following conditions are satisfied:
+\ben
+\item[i)] Reflexivity: $\forall \, m \in M: m \sim m$.
+\item[ii)] Symmetry: $\forall \, m,n \in M: m \sim n \eqv n \sim n$.
+\item[iii)] Transitivity: $\forall \, m,n,p \in M: (m \sim n \land n \sim p) \imp m \sim p$.
+\een
+
+Then $\sim$ is called an \textbf{equivalence relation}\index{equivalence relation}\index{relation!equivalence} on $M$.
+\ed
+
+\be
+Consider the following wordy examples.
+\ben[label=\alph*)]
+\item $p\sim q :\Leftrightarrow $ $p$ is of the same opinion as $q$. This relation is reflexive, symmetric and
+transitive. Hence, it is an equivalence relation.
+\item $p\sim q :\Leftrightarrow $ $p$ is a sibling of $q$. This relation is symmetric and transitive but not reflexive
+and hence, it is not an equivalence relation.
+\item $p\sim q :\Leftrightarrow $ $p$ is taller $q$. This relation is transitive, but neither reflexive nor symmetric
+and hence, it is not an equivalence relation.
+\item $p\sim q :\Leftrightarrow $ $p$ is in love with $q$. This relation is generally not reflexive. People don't like
+themselves very much. It is certainly not normally symmetric, which is the basis of much drama in literature. It is also
+not transitive, except in some French films.
+\een
+\ee
+
+\bd [Equivalence Class]
+Let $\sim$ be an equivalence relation on the set $M$. Then, for any $m \in M$, we define the set:
+\bse
+[m] \coloneqq \{n \in M \mid m \sim n\}
+\ese
+
+called the \textbf{equivalence class} of $m$. Note that the condition $m \sim n$ is equivalent to $n \sim m$ since
+$\sim$ is symmetric.
+\ed
+
+The following are two key properties of equivalence classes.
+\bt[]
+Let $\sim$ be an equivalence relation on $M$. Then:
+\ben
+\item[i)] $a \in [m] \imp [a]=[m]$.
+\item[ii)] either $[m]=[n]$ or $[m] \cap [n] = \vn$.
+\een
+\et
+
+\bq
+\ben
+\item[i)] Since $a\in[m]$, we have $a\sim m$. Let $x \in [a]$. Then $x \sim a$ and hence, $x \sim m$ by transitivity.
+Therefore $x \in [m]$ and hence, $[a]\se[m]$. Similarly, we have $[m]\se[a]$ and hence, $[a]=[m]$.
+\item[ii)] Suppose that $[m]\cap[n]\neq\vn$. That is:
+\bse
+\exists \, z : z \in [m] \land z \in [n]
+\ese
+
+Thus, $z \sim m$ and $z \sim n$ and hence, by symmetry and transitivity, $m \sim n$. This implies that $m \in [n]$ and
+Hence, that $[m] = [n]$. \qedhere
+\een
+\eq
+
+\bd [Quotient Set]
+Let $\sim$ be an equivalence relation on $M$. Then we define the \textbf{quotient set} of $M$ by $\sim$ as:
+\bse
+M/\!\sim\ \coloneqq \{[m]\mid m \in M\}
+\ese
+
+\v
+
+This is indeed a set since $[m]\se\cP(M)$ and hence, we can write more precisely:
+\bse
+M/\!\sim\ \coloneqq \{[m]\in\cP(M)\mid m \in M\}
+\ese
+
+Then it is clear that $M/\!\sim$ is a set by the power set axiom and the principle of restricted comprehension.
+\ed
+
+Due to the axiom of choice, there exists a complete system of representatives for $\sim$, i.e.\ a set $R$ such that
+$R \iset M/\!\sim$. \v
+
+Care must be taken when defining maps whose domain is a quotient set if one uses representatives to define the map.
+In order for the map to be \emph{well-defined} one needs to show that the map is independent of the choice of
+representatives. \v
+
+Let's take a look at the following examples. \v
+
+\be
+Let $M = \Z$ and define $\sim$ by:
+\bse
+m\sim n :\eqv n-m \in 2\Z
+\ese
+
+It is easy to check that $\sim$ is indeed an equivalence relation. Moreover, we have:
+\bse
+[0] = [2] = [4] = \cdots = [-2] = [-4] = \cdots
+\ese
+
+and:
+\bse
+[1] = [3] = [5] = \cdots = [-1] = [-3] = \cdots
+\ese
+
+\v
+
+Thus, we have: $\Z/\!\sim\ = \{[0],[1]\}$. We wish to define an addition $\oplus$ on $\Z/\!\sim$ by inheriting the
+usual addition on $\Z$. As a tentative definition we could have:
+\bse
+\oplus \cl \Z/\!\sim \times \ \Z/\!\sim\ \to \Z/\!\sim
+\ese
+
+being given by:
+\bse
+[a]\oplus[b] \coloneqq [a+b]
+\ese
+
+\v
+
+However, we need to check that our definition does not depend on the choice of class representatives, i.e.\ if
+$[a]=[a']$ and $[b]=[b']$, then we should have:
+\bse
+[a]\oplus[b]=[a']\oplus[b'].
+\ese
+
+Indeed, $[a]=[a']$ and $[b]=[b']$ means $a-a'\in 2\Z$ and $b-b'\in 2\Z$, i.e.\ $a-a'=2m$ and $b-b'=2n$ for some $m,n
+\in \Z$. We thus have:
+\bi{rCl}
+[a'+b'] & = & [a-2m+b-2n] \\
+& = & [(a+b)-2(m+n)] \\
+& = & [a+b]
+\ei
+
+where the last equality follows since:
+\bse
+(a+b)-2(m+n) -(a+b) = -2(m+n) \in 2\Z
+\ese
+
+Therefore $[a']\oplus[b'] = [a]\oplus[b] $ and hence, the operation $\oplus$ is well-defined.
+\ee
+
+\be
+As a counterexample, with the same set-up as in the previous example, let us define an operation $\star$ by:
+\bse
+[a]\star[b] \coloneqq \frac{a}{b}
+\ese
+
+\v
+
+This is easily seen to be \emph{ill-defined} since $[1]=[3]$ and $[2]=[4]$ but:
+\bse
+[1]\star[2]=\frac{1}{2}\neq\frac{3}{4} = [3]\star[4]
+\ese
+\ee
+
+\section[\texorpdfstring{Construction Of $\N$, $\Z$, $\Q$ \& $\R$}{Construction of N, Z, Q and R}]{Construction of $\N$,
+$\Z$, $\Q$ and $\R$}
+
+Recall that, invoking the axiom of infinity, we defined the natural numbers:
+\bse
+\N\index{$\N$} \coloneqq \{0,1,2,3,\ldots\}
+\ese
+
+where:
+\bse
+0 \coloneqq \vn, \quad
+1 \coloneqq \{\vn\},\quad
+2 \coloneqq \{\{\vn\}\}, \quad
+3 \coloneqq \{\{\{\vn\}\}\}, \quad
+\ldots
+\ese
+
+\v
+
+We would now like to define an addition operation on $\N$ by using the axioms of set theory. We will need some
+preliminary definitions.
+
+\v
+
+\bd [Successor Map]
+The \textbf{successor map} $S$ on $\N$ is defined by:
+\bi{rcCl}
+S \cl & \N & \to & \N \\
+& n & \mapsto & \{n\}
+\ei
+\ed
+
+\be
+Consider $S(2)$. Since $2 \coloneqq \{\{\vn\}\}$, we have $S(2) = \{\{\{\vn\}\}\}\eqqcolon3$. Therefore, we have $S
+(2)=3$ as we would have expected.
+\ee
+
+To make progress, we also need to define the predecessor map, which is only defined on the set
+$\N^*\coloneqq\N\sm\{\vn\}$.
+
+\v
+
+\bd [Predecessor Map]
+The \textbf{predecessor map} $P$ on $\N^*$ is defined by:
+\bi{rcCl}
+P \cl & \N^* & \to & \N\\
+& n & \mapsto & m \ \t{ such that }\ m \in n
+\ei
+\ed
+
+\be
+We have $P(2) = P(\{\{\vn\}\})=\{\vn\}=1$.
+\ee
+
+\bd [$n$-th Power]
+Let $n \in \N$. The \textbf{$n$-th power} of $S$, denoted $S^n$, is defined recursively by:
+\bi{ll}
+S^n \coloneqq S \circ S^{P(n)} &\qquad \t{if } n \in \N^*\\
+S^0 \coloneqq \id_\N
+\ei
+\ed
+
+We are now ready to define addition.
+
+\bd [Addition Of Natural Numbers]
+The \textbf{addition} operation on $\N$ is defined as a map:
+\bi{rcCl}
++ \cl & \N \times \N & \to & \N\\
+& (m,n) & \mapsto & m +n \coloneqq S^n(m)
+\ei
+\ed
+
+\be
+We have:
+\bse
+2+1=S^1(2)=S(2)=3
+\ese
+
+and:
+\bse
+1+2=S^2(1)=S(S^1(1))=S(S(1))=S(2)=3
+\ese
+\ee
+
+Using this definition, it is possible to show that $+$ is commutative and associative. The \emph{neutral element} of $+$
+is $0$ since:
+\bse
+m+0=S^0(m)=\id_\N(m)=m
+\ese
+
+and:
+\bse
+0+m=S^m(0)=S^{P(m)}(1)=S^{P(P(m))}(2) = \cdots = S^0(m) = m
+\ese
+
+\v
+
+Clearly, there exist no inverses for $+$ in $\N$, i.e.\ given $m \in \N$ (non-zero), there exist no $n \in \N$ such
+that $m+n=0$. This motivates the extension of the natural numbers to the integers. In order to rigorously define
+$\Z$, we need to define the following relation on $\N\times \N$. \v
+
+Let $\sim$ be the relation on $\N\times \N$ defined by:
+\bse
+(m,n) \sim (p,q) :\eqv m+q = p+n
+\ese
+
+It is easy to check that this is an equivalence relation as:
+\ben
+\item[i)] $(m,n) \sim(m,n)$ since $m+n=m+n$.
+\item[ii)] $(m,n) \sim(p,q) \imp (p,q)\sim(m,n)$ since $m+q=p+n\eqv p+n=m+q$.
+\item[iii)] $((m,n) \sim(p,q) \land (p,q)\sim(r,s)) \imp (m,n) \sim(r,s)$ since we have:
+\bse
+m+q=p+n \land p+s=r+q
+\ese
+
+Hence, $m+q+p+s=p+n+r+q$, and thus $m+s=r+n$.
+\een
+
+By equipping this relation we can define the set of integers in the following way.
+
+\bd [Integers]
+We define the set of \textbf{integers} by:
+\bse
+\Z\index{$\Z$} \coloneqq (\N\times\N)/\!\sim
+\ese
+\ed
+
+The intuition behind this definition is that the pair $(m,n)$ stands for ``$m-n$''. In other words, we represent each
+integer by a pair of natural numbers whose (yet to be defined) difference is precisely that integer. There are, of
+course, many ways to represent the same integer with a pair of natural numbers in this way. For instance, the integer
+$-1$ could be represented by $(1,2)$, $(2,3)$, $(112,113)$, \ldots \v
+
+Notice however that $(1,2)\sim(2,3)$, $(1,2)\sim(112,113)$, etc. and indeed, taking the quotient by $\sim$ takes care
+of this ``redundancy''. Notice also that this definition relies entirely on previously defined entities.
+
+In a first introduction to set theory it is not unlikely to find the claim that the natural numbers are part of the
+integers, i.e.\ $\N \se \Z$. However, according to our definition, this is obviously nonsense since $\N$ and
+$\Z\coloneqq (\N\times\N)/\!\sim$ contain entirely different elements. What is true is that $\N$ can be
+\emph{embedded} into $\Z$, i.e.\ there exists an \emph{inclusion map} $\iota$, given by:
+\bi{rcCl}
+\iota \cl & \N & \hookrightarrow & \Z\\
+& n & \mapsto & [(n,0)]
+\ei
+
+and it is in this sense that $\N$ is included in $\Z$. \v
+
+\bd [Inverse Of Integer]
+Let $n \coloneqq [(n,0)] \in \Z$. Then we define the \textbf{inverse} of $n$ to be $-n\coloneqq[(0,n)]$.
+\ed
+
+We would now like to inherit the $+$ operation from $\N$.
+
+\bd [Addition Of Integers]
+We define the \textbf{addition of integers} $+_\Z\cl\Z\times\Z\to\Z$ by:
+\bse
+[(m,n)] +_\Z [(p,q)] \coloneqq [(m+p,n+q)]
+\ese
+\ed
+
+Since we used representatives to define $+_\Z$, we would need to check that $+_\Z$ is well-defined. It is an easy
+exercise.
+
+\be
+$2+_\Z(-3)\coloneqq[(2,0)]+_\Z[(0,3)]=[(2,3)]=[(0,1)]\eqqcolon-1$. Hallelujah!
+\ee
+
+In a similar fashion, we define the set of \emph{rational numbers} by:
+\bse
+\Q\index{$\Q$} \coloneqq (\Z\times\Z^*)/\!\sim
+\ese
+
+where $\Z^*\coloneqq\Z\sm\{0\}$ and $\sim$ is a relation on $\Z\times\Z^*$ given by:
+\bse
+(p,q)\sim(r,s) :\eqv ps = qr
+\ese
+
+assuming that a \emph{multiplication} operation on the integers has already been defined.
+
+\be
+We have $(2,3) \sim (4,6)$ since $2\times 6 = 12 = 3\times 4$.
+\ee
+
+Similarly to what we did for the integers, here we are representing each rational number by the collection of pairs
+of integers (the second one in each pair being non-zero) such that their (yet to be defined) ratio is precisely that
+rational number. Thus, for example, we have:
+\bse
+\frac{2}{3} \coloneqq [(2,3)] = [(4,6)] = \ldots
+\ese
+
+There are many ways to construct the reals from the rationals however we will skip them for now.

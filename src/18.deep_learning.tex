@@ -1,0 +1,1812 @@
+%! suppress = EscapeUnderscore
+\section{Basic Definitions}
+
+\bd [Deep Learning]
+\textbf{Deep learning} is a class of machine learning algorithms that uses multiple layers (Hence, the adjective
+``deep'') to progressively extract higher-level features from the raw input. It is part of a broader family of
+machine learning methods based on artificial neural networks with representation learning.
+\ed
+
+Deep learning architectures such as deep neural networks, deep belief networks, recurrent neural networks and
+convolutional neural networks have been applied to fields including computer vision, machine vision, speech
+recognition, natural language processing, audio recognition, social network filtering, machine translation,
+bioinformatics, drug design, medical image analysis, material inspection and board game programs, where they have
+produced results comparable to and in some cases surpassing human expert performance. \v
+
+The most fundamental unit of a deep neural network is called an artificial neuron. The inspiration comes from the
+brain where the biological neurons are the neural processing units.
+
+\fig{neuron}{0.35}
+
+The layers of a biological neuron are:
+\bit
+\item Dendrite: receives signals from other neurons.
+\item Synapse: point of connection to other neurons.
+\item Soma: processes the information.
+\item Axon: transmits the output of this neuron.
+\eit
+
+Basically, a neuron takes an input signal (dendrite), processes it like the CPU (soma) and passes the output through
+a cable-like structure to other connected neurons (axon to synapse to other neuron's dendrite). Now, this might be
+biologically inaccurate as there is a lot more going on out there but on a higher level, this is what is going on
+with a neuron in our brain. \v
+
+In our brains there is a massively parallel interconnected network of neurons (an average human brain has around
+$10^{11}$ neurons). Briefly what happens is that our sense organs interact with the outside world, they relay
+information to the lowest layer of neurons, some of these neurons may fire in response to this information and in
+turn relay information to other neurons they are connected to. These neurons may also fire and the process continues
+eventually resulting in a response.
+
+\section{McCulloch Pitts Neuron}
+
+The first computational model of a neuron was proposed by Warren MuCulloch (neuroscientist) and Walter Pitts
+(logician) in 1943.
+
+\fig{neuron3}{0.6}
+
+In McCulloch Pitts neuron (MP), the inputs are all binary (either 0 or 1), $g$ is a function that aggregates the
+inputs and the function $f$ takes a decision based on this aggregation following this very simple format:
+\bse
+g(x_1, x_2, \ldots, x_n) = \sum_{i=1}^{n} x_i
+\ese
+
+and:
+\bse
+y = f(g(x_1, x_2, \ldots, x_n)) =
+\begin{cases}
+1, & \text{if } \sum_{i=1}^{n} x_i \geq \theta \\ 0, & \text{if } \sum_{i=1}^{n} x_i < \theta
+\end{cases}
+\ese
+
+\v
+
+where $\theta$ is called the ``thresholding parameter'' and represents the decision boundary. \v
+
+The inputs of MP can either be excitatory or inhibitory. Inhibitory inputs are those that have maximum effect on the
+decision making irrespective of other inputs. In other words if an inhibitory input is on then it defines the
+decision. Excitatory inputs are not the ones that will make the neuron fire on their own but they might fire it when
+combined together. \v
+
+So far we have seen how the MP neuron works. Now lets look at how this very neuron can be used to represent a few
+boolean functions. Mind you that our inputs are all boolean and the output is also boolean so essentially, the neuron
+is just trying to learn a boolean function. A lot of boolean decision problems can be represented by the MP neuron,
+based on appropriate input variables. \v
+
+\be
+An AND function neuron would only fire when all the inputs are on i.e.\ : $\sum_{i=1}^{n} x_i \geq 3$ here.
+
+\fig{and}{0.3}
+
+\ee
+
+\be
+An OR function neuron would fire if any of the inputs is on i.e.\ : $ \sum_{i=1}^{n} x_i \geq 1$ here.
+
+\fig{or}{0.3}
+
+\ee
+
+\be
+For a NOR neuron to fire, we want all the inputs to be 0 so the thresholding parameter should also be 0.
+
+\fig{nor}{0.3}
+
+\ee
+
+\be
+For a NOT neuron, 1 outputs 0 and 0 outputs 1. So we take the input as an inhibitory input and set the thresholding
+parameter to 0.
+
+\fig{not}{0.3}
+
+\ee
+
+It is very useful to understand what MP neuron is doing geometrically. Let's use as an example the OR case.
+
+\be
+We already discussed that the OR function's thresholding parameter $\theta$ is 1. The inputs are obviously boolean,
+so only 4 combinations are possible: $(0,0), (0,1), (1,0)$ and $(1,1)$. Now plotting them on a two dimensional graph
+and making use of the OR function's aggregation equation $x_1 + x_2 \geq 1$ using which we can draw the decision
+boundary as shown in the graph below.
+
+\fig{mp}{0.35}
+
+We just used the aggregation equation i.e.\ $x_1 + x_2 = 1$ to graphically show that all those inputs whose output
+when passed through the OR function MP neuron lie either on or above that line (due to $\geq$) and all the input
+points that lie below that line (due to $<$) are going to output 0. This means that the MP neuron just learnt a
+linear decision boundary! The MP neuron is splitting the input sets into two classes: positive and negative. Positive
+ones (which output 1) are those that lie on or above the decision boundary and negative ones (which output 0) are
+those that lie below the decision boundary.
+\ee
+
+\be
+For an AND function the decision boundary equation is $x_1 + x_2 = 2$. Here, all the input points that lie on or
+above, just $(1,1)$, output 1 when passed through the AND function MP neuron. It fits! The decision boundary works!
+
+\fig{mp2}{0.43}
+
+\ee
+
+\be
+Of course, this generalizes to higher dimensions. As an example let's take a look at a 3 input OR function MP unit. In
+this case, the possible inputs are 8 points:
+\bse
+(0,0,0), (0,0,1), (0,1,0), (1,0,0), (1,0,1), (1, 1, 0), (0,1,1) (1,1,1)
+\ese
+
+\fig{mp3}{0.38}
+
+We can map these on a three dimensional graph and this time we draw a decision boundary in 3 dimensions which is of
+course a plane.
+
+\fig{mp4}{0.38}
+
+With a little effort we can see that all the points that lie on or above that plane (positive half space) will result
+in output 1 when passed through the OR function MP unit and all the points that lie below that plane (negative half
+space) will result in output 0. Subsequently for even higher dimensions the decision boundary is a hyperplane.
+\ee
+
+Now that we introduced the MP neuron, an inevitable question arises: ``can any boolean function be represented using
+the MP neuron''? The answer is no! By hand coding a thresholding parameter, MP neuron is able to conveniently
+represent the boolean functions which are linearly separable, i.e.\ when there exists a line (hyperplane) such that
+all inputs which produce a 1 lie on one side of the line (hyperplane) and all inputs which produce a 0 lie on other
+side of the line (hyperplane). \v
+
+We will postpone for now the ``why MP fails to represent any boolean function'' and we will illustrate the problem
+that arises with non linear separable data in the next section which is more suited. \v
+
+So given an MP the following questions remain unanswered:
+\bit
+\item What about non-boolean, real inputs?
+\item Do we always need to hand code the threshold?
+\item Are all inputs equal? What if we want to assign more importance to some inputs?
+\item What about functions which are not linearly separable?
+\eit
+
+All of these questions will be answered gradually in the next chapters. For now we will introduce a slight
+advancement of MP neuron called ``perceptron'' which is a fundamental block of neural nets and deep learning.
+
+\section{Perceptron}
+
+The perceptron model, proposed by Minsky and Papert, is a more general computational model than the MP neuron. It
+overcomes some of the limitations of the MP neuron by introducing the concept of numerical weights (a measure of
+importance) for inputs, and a mechanism for learning those weights. Inputs are no longer limited to boolean values
+like in the case of an MP neuron since it supports real inputs as well which makes it more useful and generalized.
+
+\fig{perceptron}{0.6}
+
+\vspace{-5pt}
+
+In perceptron the function $g$ that aggregates the inputs and the function $f$ that takes a decision based on this
+aggregation follow this very simple format:
+\bse
+g(x_1, x_2, \ldots, x_n) = \sum_{i=1}^{n} w_i x_i
+\ese
+
+and:
+\bse
+y = f(g(x_1, x_2, \ldots, x_n)) =
+\begin{cases}
+1, & \text{if } \sum_{i=1}^{n} w_i x_i \geq \theta \\ 0, & \text{if } \sum_{i=1}^{n} w_i x_i < \theta
+\end{cases}
+\ese
+
+\v
+
+In perceptron it is quite common to set $w_0 = - \theta$ and $x_0 = 1$ (as we have already done in supervised
+learning). We call $w_0$ the ``bias'' term while the rest of $w_i$'s the ``weights''. We refer to the whole
+collection of weights and bias as the ``parameters''.
+
+\fig{perceptron2}{0.65}
+
+\vspace{-5pt}
+
+Using this convention, the functions $g$ and $f$ can be rewritten as:
+\bse
+g(x_0, x_1, x_2, \ldots, x_n) = \sum_{i=0}^{n} w_i x_i
+\ese
+
+and:
+{\setlength{\jot}{10pt}
+\begin{align*}
+y = f(g(x_0, x_1, x_2, \ldots, x_n)) &=
+\begin{cases}
+1, & \text{if } \sum_{i=1}^{n} w_i x_i - \theta \geq 0 \\ 0, & \text{if } \sum_{i=1}^{n} w_i x_i - \theta < 0
+\end{cases} \\
+&= \begin{cases}
+1, & \text{if } \sum_{i=0}^{n} w_i x_i \geq 0 \\ 0, & \text{if } \sum_{i=0}^{n} w_i x_i < 0
+\end{cases}
+\end{align*}}
+
+From the equations, it is clear that even a perceptron separates the input space into two halves, positive and
+negative. All the inputs that produce an output 1 lie on one side (positive half space) and all the inputs that
+produce an output 0 lie on the other side (negative half space). In other words, a single perceptron can only be used
+to implement linearly separable functions, just like the MP neuron. The difference with MP is that the weights and
+the bias can be learned and the inputs can be real values. \v
+
+\be
+Now we will illustrate the way to obtain the weights and the bias using again an OR example.
+
+\fig{perceptron3}{0.52}
+
+\vspace{-5pt}
+
+The above ``possible solution'' was obtained by solving the linear system of equations on the left. It is clear that
+the solution separates the input space into two spaces, negative and positive half spaces. Note that we can come up
+with a similar set of inequalities and find the value of $\theta$ for a MP neuron also. \v
+\ee
+
+The linear equations in the previous example, have multiple solutions. In general for different values of the
+parameters we obtain different lines that separate the points in different ways. Some of them work (i.e\ they
+separate the points correctly) and some of the don't (i.e\ they misclassify some of the points) hence, they produce
+errors. Different values of the parameters produce different number of errors. \v
+
+\be
+For example, let us fix the bias $w_0 = -1$ and try some random values for the weights $w_1, w_2$.
+
+\fig{errors}{0.68}
+
+We observe that the specific choices we did for the weights produce different number of errors.
+
+\fig{errors2}{0.73}
+
+\vspace{-5pt}
+
+In general we are interested in those values of the parameters which result in 0 error. In the plot below we can see
+the error surface corresponding to different values of $w_1, w_2$ by keeping $w_0 = -1$ fixed. All the combinations
+of $w_1, w_2$ in the dark blue area would work for an OR function with $w_0 = -1$.
+
+\fig{errors3}{0.9}
+
+\ee
+
+Now that we introduced the perceptron, the same inevitable question as the one we had in MP neuron arises: ``can any
+boolean function be represented using the perceptron''? The answer is again no! Now is the time to illustrate why
+not! \v
+
+As we said in the first chapter of the fundamental mathematics part ``axiomatic set theory'', there are 16 boolean
+functions one can design from 2 inputs. Out of these 16, only 14 are linearly separable, and 2 of them (XOR and !XOR)
+are not.
+
+\be
+Let's take as an example the XOR function and see why we cannot draw a line to separate positive inputs from the
+negative ones. If we try to solve the system of equation that arise from a XOR function we obtain the following.
+
+\fig{perceptron5}{0.65}
+
+\vspace{-5pt}
+
+Notice that the fourth equation contradicts the second and the third equation.
+\ee
+
+Point is, there are no perceptron solutions for non-linearly separated data. So the key take away is that a single
+perceptron cannot learn to separate the data that are non-linear in nature. Hence, perceptron, similarly to an MP
+neuron, is able to conveniently represent the boolean functions which are again linearly separable. \v
+
+However, it is worth mentioning the following. What does ``perceptron cannot deal with data not linearly separable''
+mean? It means that the final result would inevitably misclassify some of the observations. In other words the final
+choice of parameters would produce a number of errors different than zero. The thing is that most real world data is
+not linearly separable and will always contain some outliers. In fact, sometimes there may not be any outliers but
+still the data may not be linearly separable. On top of that in most of the cases we could live with some errors.
+Hence, from now on, we will accept that it is hard to drive the error to 0 in most cases and will instead aim to
+reach the minimum possible error.
+
+\fig{errors4}{0.5}
+
+It is worth mentioning that there exists an algorithm able to find the values of the parameters which minimize the
+error, called simply ``perceptron learning algorithm``. However, since is not of use any more we will not get into
+details. Just for the sake completeness here is a sketch of how perceptron learning algorithm works.
+
+\fig{perceptronlearningalgorithm}{0.65}
+
+One can prove that this algorithm always converges, hence, it finds the parameters that minimize the error. We will
+skip the proof. \v
+
+Now let's go back to the questions we posed in the previous section.
+\bit
+\item What about non-boolean, real inputs? \textbf{Real valued inputs are allowed in perceptron!}
+\item Do we always need to hand code the threshold? \textbf{No, we can learn both the weights and the bias (i.e\ the
+threshold)!}
+\item Are all inputs equal? What if we want to assign more importance to some inputs? \textbf{A perceptron allows
+weights to be assigned to inputs!}
+\item What about functions which are not linearly separable? \textbf{Not possible with a single perceptron!}
+\eit
+
+Hence, we solved all the problems but the non linearly separable data! We showed that a single perceptron cannot deal
+with such data, however in what follows we will show that a network of perceptrons can indeed deal with such data.
+Before that, we will introduce yet another advancement on the models we developed called the ``sigmoid neuron''.
+
+\section{Sigmoid Neuron}
+
+As we saw a perceptron will fire if the weighted sum of its inputs is greater than the bias $w_0$. This thresholding
+logic used by a perceptron though is very harsh since it behaves like a step function. In other words there will
+always be this sudden change in the decision (from 0 to 1) when we cross the bias $w_0$. For most real world
+applications we would expect a smoother decision function which gradually changes from 0 to 1.
+
+\fig{dpsigmoid}{0.42}
+
+In order to fix this problem we need to introduce the so called ``sigmoid functions'' that we briefly mentioned in
+the logistic regression section of unsupervised learning chapter.
+
+\bd [Sigmoid Function]
+A \textbf{sigmoid function} is a bounded, differentiable, real function that is defined for all real input values and
+has a non-negative derivative at each point and exactly one inflection point.
+\ed
+
+There are many different functions that can be characterized as sigmoid function such as the logistic function, the
+hyperbolic tangent function, the arctangent function, and many more.
+
+\fig{sigmoids}{0.42}
+
+A sigmoid neurons uses as an output function a sigmoid function hence, it is much smoother than a perceptron that uses
+the step function. As a consequence, we no longer see a sharp transition around the $w_0$. Also, the output is no
+longer binary but a real value between 0 and 1 which can be interpreted as a probability. So instead of yes/no
+decision, we get the probability of yes. The output here is smooth, continuous and differentiable and just how any
+learning algorithm likes it.
+
+\vspace{10pt}
+
+\fig{pervssig}{0.35}
+
+Observe that one could use the logistic function as the sigmoid function. In that case the final sigmoid neuron would
+be exactly the same as logistic regression. Hence, we see that a sigmoid logistic neuron is just another
+representation of logistic regression. The advantage of this representation is that it can be generalized to a
+network by stacking together a lot of these neurons. As we will see in the section that follows this idea of a
+network of neurons can deal with the non linear separable data problem.
+
+\section{Feedforward Neural Networks}
+
+\subsection{Motivation: XOR Function With A Network Of Perceptons}
+
+In the perceptron section we showed that a single perceptron cannot deal with non linearly separable data. Now we
+will consider a network of perceptons and see what can we achieve through that. We will work again with the XOR
+function (that we know is not linearly separable) and we will create the simplest possible network of perceptrons.
+This network contains 3 layers: the layer containing the inputs $x_1$ and $x_2$ called the ``input layer'', the
+middle layer containing the 2 perceptrons called the``hidden layer'', and the final layer containing one output
+neuron called the ``output layer'' (see figure). The terminology is not important right now, we will properly
+introduce the terms in the next section.
+
+\fig{xor}{0.45}
+
+Notice that we need 10 parameters for the middle layer (8 weights and 2 biases) and 4 parameters for the output layer
+(2 weights and 2 biases). The notation of the variables of the parameters and the corresponding values are as denoted
+in the graph. The outputs of the 2 perceptrons in the hidden layer are denoted by $h_1$ and $h_2$. \v
+
+Remember that the XOR function satisfies the following results:
+
+\fig{xor2}{0.42}
+
+\vspace{-5pt}
+
+Remember also that for the perceptron the aggregation function $g$ is:
+\bse
+g(x_0, x_1, x_2, \ldots, x_n) = \sum_{i=0}^{n} w_i x_i
+\ese
+
+and the decision function $y$ is the step function:
+{\setlength{\jot}{10pt}
+\begin{align*}
+y = f(g(x_0, x_1, x_2, \ldots, x_n)) &=
+\begin{cases}
+1, & \text{if } \sum_{i=0}^{n} w_i x_i \geq 0 \\ 0, & \text{if } \sum_{i=0}^{n} w_i x_i < 0
+\end{cases}
+\end{align*}}
+
+Now let's see what this network predicts for the XOR function. Remember that $x_0$ is always equal to 1 by
+definition, so we will skip writing it in the calculations.
+\bit
+\item For $(x_1 = 0, x_2 = 0)$:
+\begin{align*}
+&h_1 = f(g(x_1 = 0, x_2 = 0)) = f(w^{(1)}_{11} \cdot x_1
++ w^{(1)}_{21} \cdot x_2 + w^{(1)}_{01}) = f(2 \cdot 0 + 2 \cdot 0 - 1) = f(-1) = 0 \\
+&h_2 = f(g(x_1 = 0, x_2 = 0)) = f(w^{(1)}_{12} \cdot x_1
++ w^{(1)}_{22} \cdot x_2 + w^{(1)}_{02})) = f(-2 \cdot 0 - 2 \cdot 0 + 3) = f(3) = 1 \\
+&y = f(g(h_1, h_2)) = f(w^{(2)}_{1} \cdot h_1
++ w^{(2)}_{2} \cdot h_2 + w_{0}^{(2)}) = f(2 \cdot 0 + 2 \cdot 1 -3) = f(-2) = 0
+\end{align*}
+
+\item For $(x_1 = 1, x_2 = 0)$:
+\begin{align*}
+&h_1 = f(g(x_1 = 1, x_2 = 0)) = f(w^{(1)}_{11} \cdot x_1
++ w^{(1)}_{21} \cdot x_2 + w^{(1)}_{01}) = f(2 \cdot 1 + 2 \cdot 0 - 1) = f(1) = 1 \\
+&h_2 = f(g(x_1 = 1, x_2 = 0)) = f(w^{(1)}_{12} \cdot x_1
++ w^{(1)}_{22} \cdot x_2 + w^{(1)}_{02}) = f(-2 \cdot 1 - 2 \cdot 0 + 3) = f(1) = 1 \\
+&y = f(g(h_1, h_2)) = f(w^{(2)}_{1} \cdot h_1
++ w^{(2)}_{2} \cdot h_2 + w_{0}^{(2)}) = f(2 \cdot 1 + 2 \cdot 1 - 3) = f(1) = 1
+\end{align*}
+
+\item For $(x_1 = 0, x_2 = 1)$:
+\begin{align*}
+&h_1 = f(g(x_1 = 0, x_2 = 1) = f(w^{(1)}_{11} \cdot x_1
++ w^{(1)}_{21} \cdot x_2 + w^{(1)}_{01}) = f(2 \cdot 0 + 2 \cdot 1 - 1) = f(1) = 1 \\
+&h_2 = f(g(x_1 = 0, x_2 = 1)) = f(w^{(1)}_{12} \cdot x_1
++ w^{(1)}_{22} \cdot x_2 + w^{(1)}_{02}) = f(-2 \cdot 0 - 2 \cdot 1 + 3) = f(1) = 1 \\
+&y = f(g(h_1, h_2)) = f(w^{(2)}_{1} \cdot h_1
++ w^{(2)}_{2} \cdot h_2 + w_{0}^{(2)}) = f(2 \cdot 1 + 2 \cdot 1 - 3) = f(1) = 1
+\end{align*}
+
+\item For $(x_1 = 1, x_2 = 1)$:
+\begin{align*}
+&h_1 = f(g(x_1 = 1, x_2 = 1)) = f(w^{(1)}_{11} \cdot x_1 +
+w^{(1)}_{21} \cdot x_2 + w^{(1)}_{01}) = f(2 \cdot 1 + 2 \cdot 1 - 1) = f(3) = 1 \\
+&h_2 = f(g(x_1 = 1, x_2 = 1)) = f(w^{(1)}_{12} \cdot x_1 +
+w^{(1)}_{22} \cdot x_2 + w^{(1)}_{02}) = f(-2 \cdot 1 - 2 \cdot 1 + 3) = f(-1) = 0 \\
+&y = f(g(h_1, h_2)) = f(w^{(2)}_{1} \cdot h_1
++ w^{(2)}_{2} \cdot h_2 + w_{0}^{(2)}) = f(2 \cdot 1 + 2 \cdot 0 - 3) = f(-1) = 0
+\end{align*}
+\eit
+
+It works! The neural network has obtained the correct answer for every example in the batch. \v
+
+It is very important to understand what exactly happened here, since this is the fundamental idea behind deep
+learning, and it is also the reason ``why'' deep learning works. Fortunately, the idea behind the network is quite
+simple.
+
+\vspace{-5pt}
+
+\fig{xor3}{0.7}
+
+\vspace{-8pt}
+
+What we actually did here is to solve the XOR problem by learning a representation. The bold numbers printed on the
+plot indicate the value that the learned function must output at each point. A linear model applied directly to the
+original input cannot implement the XOR function. When $x_1 = 0$, the model's output must increase as $x_2$ increases.
+When $x_1 = 1$, the model's output must decrease as $x_2$ increases. A linear model must apply a fixed coefficient
+$w_2$ to $x_2$. The linear model therefore cannot use the value of $x_1$ to change the coefficient on $x_2$ and
+cannot solve this problem (left part of the figure). In the transformed space represented by the features extracted
+by a neural network, a linear model can now solve the problem. In our example solution, the two points that must have
+output 1 have been collapsed into a single point in feature space. In other words, the non linear features have
+mapped both $(1, 0)$ and (0,1), to a single point in feature space $(1,1)$. The linear model can now describe the
+function (right part of the figure). \v
+
+In the example, above we simply specified the solution, then showed that it obtained zero error. In a real situation,
+there might be billions of model parameters and billions of training examples, so one cannot simply guess the
+solution as we did here. Instead, a gradient-based optimization algorithm can find parameters that produce very
+little error. The solution we described to the XOR problem is at a global minimum of the loss function, so gradient
+descent could converge to this point. There are other equivalent solutions to the XOR problem that gradient descent
+could also find. The convergence point of gradient descent depends on the initial values of the parameters. In
+practice, gradient descent would usually not find clean, easily understood, integer-valued solutions like the one we
+presented here. \v
+
+One can prove that a multilayer network of perceptrons with a single hidden layer can be used to represent any
+boolean function precisely (i.e\ with no errors). Moreover if one substitutes the perceptrons with sigmoid neurons
+then this multilayer network of neurons with a single hidden layer can be used to approximate any continuous function
+to any desired precision. In other words, there is a guarantee that for any target function $f(x) : R^n \to R^m$ we
+can always find a neural network (with 1 hidden layer containing enough neurons) whose output $g(x)$ satisfies:
+\bse
+| g(x) - f(x)| < \epsilon
+\ese
+
+for some small $\epsilon$. \v
+
+We are finally in a position to introduce the basic structure of a deep learning model. In the next section we will
+develop the most generic network of sigmoid neurons called the ``feedforward neural network''.
+
+\subsection{Feedforward Neural Network (Forward Propagation)}
+
+Feedforward neural networks are the quintessential deep learning models. The goal of a feedforward network is to
+approximate some function $f$ by defining a mapping and learning the value of the parameters that result in the best
+function approximation. These models are called feedforward because information flows through the function being
+evaluated from $x$, through the intermediate computations and finally to the output $y$. There are no feedback
+connections in which outputs of the model are fed back into itself. Feedforward neural networks are of extreme
+importance to machine learning practitioners since they form the basis of many important commercial applications. \v
+
+In this part we will give all the fundamental definitions of deep learning and feedforward neural networks and we
+will develop the most generic feedforward neural networks which is in the core of whatever will follow! Let's begin.
+
+\vspace{-4pt}
+
+\fig{nn}{0.36}
+
+\vspace{-4pt}
+
+The input to the network is an $(n \times 1)$ dimensional feature vector
+$\boldsymbol{x}$:
+\bse
+\boldsymbol{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}
+\ese
+
+From now on, as it is common in deep learning, we will separate the bias from the weights, hence, there is no need for
+the extra $x_0 = 1$ feature and this is why it does not appear in $\boldsymbol{x}$. We will keep the notation $w$ for
+the weights but we will notate the bias as $b$ instead of $w_0$. We usually refer to weights and bias as the
+``parameters'' $\theta$ of the model. \v
+
+We call the first layer of the network (the one with the inputs) the ``input layer'' or the ``$0^{\text{th}}$
+layer''. Each subsequent layer with neurons is called ``$1^{\text{st}}$ hidden layer'', ``$2^{\text{nd}}$ hidden
+layer'' and so on up to the final ``$L$ hidden layer'' which is usually called the ``output layer''. In other words
+the network contains one input layer, $L-1$ hidden layers and one output layer. \v
+
+Each layer $l$ contains a number of neurons $n^{[l]}$ (we usually use the bracket notation $[l]$ to indicate a
+variable for a specific layer $l$). It is obvious that for the input layer $n^{[0]} = n$, i.e.\ the input layer has
+one neuron for each feature. \v
+
+Each neuron in the hidden layers (and output layer) can be split into two parts: pre-activation and activation. For
+each layer $l$ the pre-activation function $a$ aggregates the activations from the previous layer (or the features in
+the case of input layer) with the weights and the biases into a $(n^{[l]} \times 1)$ dimensional vector
+$\boldsymbol{a}^{[l]}$ as:
+\bse
+\boldsymbol{a}^{[l]} = a(\boldsymbol{h}^{[l-1]} ; W^{[l]}, \boldsymbol{b}^{[l]}) = W^{[l]} \boldsymbol{h}^{[l-1]} +
+\boldsymbol{b}^{[l]}
+\ese
+
+\v
+
+where $W^{[l]}$ is a $(n^{[l]} \times n^{[l-1]} )$ dimensional matrix that carries all the weights for the $l$ layer
+and $\boldsymbol{b}^{[l]}$ is a $(n^{[l]} \times 1)$ dimensional vector that carries all the biases for the $l$
+layer, defined as:
+\bse
+W^{[l]} =
+\begin{bmatrix}
+w_{11}^{[l]} & w_{12}^{[l]} & \ldots & w_{1n^{[l-1]}}^{[l]} \\\\
+w_{21}^{[l]} & w_{22}^{[l]} & \ldots & w_{2n^{[l-1]}}^{[l]} \\\\
+\vdots & \vdots & \ddots & \vdots \\\\
+w_{n^{[l]}1}^{[l]} & w_{n^{[l]}2}^{[l]} & \ldots & w_{n^{[l]}n^{[l-1]}}^{[l]}
+\end{bmatrix}, \qquad
+\boldsymbol{b}^{[l]} = \begin{bmatrix} b_{1}^{[l]} \\\\ b_{2}^{[l]} \\\\ \vdots \\\\ b_{n^{[l]}}^{[l]} \end{bmatrix}
+\ese
+
+\vspace{10pt}
+
+We usually denote the full set of parameters of a layer $l$ as $\theta^{[l]}$ (in other words $\theta^{[l]}$ can
+either be $W^{[l]} $ for the weights or $\boldsymbol{b}^{[l]}$ for the biases depending on the occasion). In that way
+we can write just one equation for both weights and biases and avoid repetitions when needed. \v
+
+Finally, in each layer the activation function $g$ (for now a sigmoid function) acts on the pre-activations and spits
+the activations of each neuron i.e.\ a $(n^{[l]} \times 1)$ dimensional vector $\boldsymbol{h}^{[l]}$ defined as:
+\bse
+\boldsymbol{h}^{[l]} = g(\boldsymbol{a}^{[l]})
+\ese
+
+The activation functions define the output of the nodes given the set of inputs. They can be seen as a digital
+network that can be ``on'' (1) or ``off'' (0), depending on input (this is similar to the behaviour of the linear
+perceptron). For the activation at the input layer holds: $\boldsymbol{h}^{[0]} = \boldsymbol{x}$. \v
+
+The activation function at the output layer is usually called ``output activation function`` and it is denoted by $O$
+instead of $g$. Of course, its output is the prediction of the neural network:
+\bse
+\hat{y} = h^{[L]} = O(a^{[L]})
+\ese
+
+The role of the output activation function of the output layer is to provide some additional transformation from the
+features to complete the task that the network must perform. Of course, the choice of the output activation function
+depends on the nature of the problem (e.g: linear function, logistic function, softmax function, etc). Any kind of
+neural network unit that may be used as an output can also be used as a hidden unit. \v
+
+Notice that in the way we constructed the feedforward neural network, the final predicted value $\hat{y}$ of the
+network is simply a sequence of compositions:
+
+\bse
+\hat{y} = O(W^{[L]} \cdot \underbrace{g(\:\:\: \underbrace{\ldots \:\:\: \underbrace{g(W^{[3]}
+\cdot \underbrace{g(W^{[2]} \cdot \underbrace{g(W^{[1]} \boldsymbol{h}^{[0]} +
+\boldsymbol{b}^{[1]})}_{\text{output of first layer}} + \boldsymbol{b}^{[2]})}_{\text{output of second layer}} +
+\boldsymbol{b}^{[3]})}_{\text{output of third layer}} \:\:\: \ldots}_{\vdots} \:\:\:) +
+\boldsymbol{b}^{[L]})}_{\text{output of $l-1$ layer}}
+\ese
+
+\vspace{8pt}
+
+Having in mind the equation above, we can at this point elaborate on why a sigmoid activation function (or any other
+non-linear function that we will introduce later) is essential for a feedforward neural network (Hence, we introduced
+it), and deep learning models in general. \v
+
+Consider, for example, a feedforward neural network where we replace all the sigmoid activation functions $g$ in each
+layer by a simple linear transformation of the form $y= mx + c$. Then the output of the first layer would simply be:
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+g(W^{[1]} \boldsymbol{h}^{[0]} + \boldsymbol{b}^{[1]})
+&= M^{[1]}(W^{[1]} \boldsymbol{h}^{[0]} + \boldsymbol{b}^{[1]}) + C^{[1]} \\
+&= M^{[1]} W^{[1]} \boldsymbol{h}^{[0]} + M^{[1]} \boldsymbol{b}^{[1]} + M^{[1]} C^{[1]} \\
+&= (M^{[1]} W^{[1]}) \boldsymbol{h}^{[0]} + (M^{[1]} \boldsymbol{b}^{[1]} + M^{[1]} C^{[1]}) \\
+& = {W^\prime}^{[1]} \boldsymbol{h}^{[0]} + {\boldsymbol{b}^\prime}^{[1]}
+\end{align*}
+\endgroup
+
+By feeding this output of the first layer to the second layer we would obtain:
+\begin{align*}
+g({W^\prime}^{[1]} \boldsymbol{h}^{[0]} + {\boldsymbol{b}^\prime}^{[1]})
+&= M^{[2]} ({W^\prime}^{[1]} \boldsymbol{h}^{[0]} + {\boldsymbol{b}^\prime}^{[1]}) + C^{[2]} \\
+&= M^{[2]} {W^\prime}^{[1]} \boldsymbol{h}^{[0]} + M^{[2]}{\boldsymbol{b}^\prime}^{[1]} + M^{[2]} C^{[2]} \\
+&= (M^{[2]} {W^\prime}^{[1]}) \boldsymbol{h}^{[0]} + M^{[2]}{\boldsymbol{b}^\prime}^{[1]} + (M^{[2]} C^{[2]}) \\
+& = {W^\prime}^{[2]} \boldsymbol{h}^{[0]} + {\boldsymbol{b}^\prime}^{[2]}
+\end{align*}
+
+By continuing like this in the end the prediction of the network will be:
+\bse
+\hat{y} = O({W^\prime}^{[L]} \boldsymbol{h}^{[0]} + {\boldsymbol{b}^\prime}^{[L]})
+\ese
+
+for some matrices ${W^\prime}^{[L]}$ and ${\boldsymbol{b}^\prime}^{[L]}$. In other words we just learn a linear
+transformation of the inputs hence, we are constrained to learning linear decision boundaries. We cannot learn
+arbitrary decision boundaries. Hence, only non-linear activation functions allow such networks to compute non-trivial
+problems using only a small number of nodes. Actually one can prove (we will skip the proof though) that neural
+networks with non-linear activation functions can represent a wide variety of interesting functions when given
+appropriate weights. This last theorem is usually called the ``universal approximation theorem''. \v
+
+The process we have described so far that builds the network is usually called ``forward propagation''. Notice that
+during building the network one needs to take several decision regarding the architecture (usually called
+``topology'') of the network as for example its number of units $L$ and its number of neurons in each unit $n^{[l]}$.
+We refer to these kind of parameters as ``hyperparameters''. A hyperparameter is a parameter whose value is used to
+control the learning process in contrast to the values of the parameters of the model (weights and biases) that are
+derived via training. Thus, hyperparameters cannot be inferred while fitting the machine to the training set because
+they refer to the model selection task that in principle have no influence on the performance of the model but affect
+the speed and quality of the learning process. Keep in mind that $L$ and $n^{[l]}$ are not the only hyperparameters
+of a network. As we move on we will meet more and more hyperparameters. \v
+
+Once one pass of forward propagation is over we have both $y$ and the predicted value $\hat{y}$, and one can equip a
+loss function $J(y, \hat{y})$ that will quantify the error of the neural network. It turns out that one of the most
+important aspects of the design of a neural network is actually the choice of this loss function. Fortunately, the
+loss functions for neural networks are more or less the same as those for other parametric models, such as linear
+models (e.g: MSE and cross entropy loss functions). In most cases, our parametric model defines a probability
+distribution and we simply use the principle of maximum likelihood as we did in supervised learning. Sometimes, we
+take a simpler approach, where rather than predicting a complete probability distribution over $y$, we merely predict
+some statistic of $y$ conditioned on $x$. Specialized loss functions allow us to train a predictor of these estimates. \v
+
+It makes sense that the choice of loss function is tightly coupled with the choice of the output activation function
+since the choice of how to represent the output determines the form of the loss function. For example it's logical
+that a linear output activation function justifies an MSE loss functions while a sigmoid (like for example softmax)
+output activation function justifies a cross entropy loss function.
+
+\subsection{Backward Propagation}
+
+We have introduced feedforward neural networks and its corresponding loss function that quantifies the errors the
+network makes. We are now interested in finding an algorithm for learning the parameters of this model. Normal
+equation is out of the picture for neural networks, so gradient descent is the way to go. \v
+
+Training a neural network is not much different from training any other machine learning model with gradient descent.
+The largest difference between the linear models we have seen so far and neural networks is that the non-linearity of
+a neural network causes most interesting loss functions to become non-convex. This means that neural networks are
+usually trained by using iterative, gradient-based optimizers that merely drive the loss function to a very low
+value, rather than the linear equation solvers used to train linear regression models or the convex optimization
+algorithms with global convergence guarantees used to train logistic regression or SVMs. Convex optimization
+converges starting from any initial parameters (in theory - in practice it is very robust but can encounter numerical
+problems). Stochastic gradient descent applied to non-convex loss functions has no such convergence guarantee, and is
+sensitive to the values of the initial parameters. For feedforward neural networks, it is important to initialize all
+weights to small random values. The biases may be initialized to zero or to small positive values. \v
+
+For the moment, it suffices to understand that the training algorithm is almost always based on using the gradient to
+descend the loss function in one way or another. The specific algorithms are improvements and refinements on the
+ideas of gradient descent, will be explored in the next section. \v
+
+Remember that in gradient descent the weights are updated as:
+\bse
+\boldsymbol{w} \coloneqq \boldsymbol{w} - \alpha \nabla_{\boldsymbol{w}} J(\boldsymbol{w}, b)
+\ese
+
+and similarly the bias:
+\bse
+b \coloneqq b - \alpha \frac{ \partial{J(\boldsymbol{w}, b)}}{\partial b}
+\ese
+
+\v
+
+Coming to neural networks the difference is that now we have a collection of weights $W^{[l]}$ and biases
+$\boldsymbol{b}^{[l]}$ hence, the update rules turn to:
+\bse
+W^{[l]} \coloneqq W^{[l]} - \alpha \nabla_{W^{[l]}} J
+\ese
+
+and similarly for the bias:
+\bse
+\boldsymbol{b}^{[l]} \coloneqq \boldsymbol{b}^{[l]} - \alpha \nabla_{\boldsymbol{b}^{[l]}} J
+\ese
+
+\v
+
+where $J$ is a function of $y, \hat{y}$ and the parameters:
+\bse
+J = J(y, \hat{y} ; \theta^{[l]}) = J(y, \hat{y} ; W^{[1]}, \boldsymbol{b}^{[1]}, W^{[2]}, \boldsymbol{b}^{[2]},
+\ldots, W^{[L]}, \boldsymbol{b}^{[L]})
+\ese
+
+The problem now is to calculate the derivative of the loss function w.r.t all the parameters of the network. We will
+start from the parameters of the output layer $W^{[L]}$ and $\boldsymbol{b}^{[L]}$, by making use of the chain rule
+we will compute those, and gradually we will propagate backwards (again by making use of the chain rule) and we will
+compute all the derivatives with respect to the parameters until we reach the beginning thus all the derivatives are
+found and we can perform the updates in gradient descent. \v
+
+For the weights:
+{\setlength{\jot}{5pt}
+\begin{align*}
+\nabla_{W^{[L]}} J & = \frac{\partial J}{\partial \hat{y}} \cdot \frac{\partial \hat{y}}{\partial a^{[L]}} \cdot
+\frac{\partial a^{[L]}}{\partial W^{[L]}} \\
+& = \frac{\partial J}{\partial \hat{y}} \cdot \frac{\partial h^{[L]}}{\partial a^{[L]}}
+\cdot \frac{\partial \left( W^{[L]} \boldsymbol{h}^{[L-1]} + \boldsymbol{b}^{[L]} \right)}{\partial W^{[L]}} \\
+& = \frac{\partial J}{\partial \hat{y}} \cdot \frac{\partial g(a^{[L]})}{\partial a^{[L]}}
+\cdot {\boldsymbol{h}^{[l-1]}}^{\intercal} \\
+& = \frac{\partial J}{\partial \hat{y}} \cdot g^\prime (a^{[L]}) \cdot {\boldsymbol{h}^{[l-1]}}^{\intercal}\\
+& = \delta^{[L]} \cdot {\boldsymbol{h}^{[l-1]}}^{\intercal}
+\end{align*}}
+
+For the biases:
+\begingroup
+\allowdisplaybreaks
+{\setlength{\jot}{5pt}
+\begin{align*}
+\nabla_{\boldsymbol{b}^{[L]}} J & = \frac{\partial J}{\partial\hat{y}}
+\cdot \frac{\partial \hat{y}}{\partial a^{[L]}} \cdot \frac{\partial a^{[L]}}{\partial \boldsymbol{b}^{[L]}} \\
+& = \frac{\partial J}{\partial \hat{y}} \cdot \frac{\partial h^{[L]}}{\partial a^{[L]}}
+\cdot \frac{\partial \left( W^{[L]} \boldsymbol{h}^{[L-1]} + \boldsymbol{b}^{[L]} \right)}{\partial \boldsymbol{b}^{[L]}} \\
+& = \frac{\partial J}{\partial \hat{y}} \cdot \frac{\partial g(a^{[L]})}{\partial a^{[L]}} \cdot \mathbb{I} \\
+& = \frac{\partial J}{\partial \hat{y}} \cdot g^\prime (a^{[L]}) \\
+& = \delta^{[L]}
+\end{align*}}
+\endgroup
+
+\vspace{-10pt}
+
+where in both cases $\boldsymbol{\delta^{[l]}}$ is a $(n^{[l]} \times 1)$ dimensional vector defined as :
+\bse
+\delta^{[L]} = \frac{\partial J}{\partial \hat{y}} \cdot g^\prime (a^{[L]})
+\ese
+
+In the case where $l = L \Rightarrow n^{[l]} = n^{[L]} = 1$, $\boldsymbol{\delta^{[l]}}$ has dimensions $(n^{[L]}
+\times 1) = (1 \times 1)$ and this is why (only in this case) $\delta^{[L]}$ is not a vector but a scalar. \v
+
+In a similar way, by using the chain rule we can propagate back and calculate all the derivatives. If one does that
+we can show that we can generalize the results as:
+\bse
+\nabla_{W^{[l]}} J =\boldsymbol{\delta^{[l]}} \cdot {\boldsymbol{h}^{[l-1]}}^{\intercal}
+\ese
+
+and:
+\bse
+\nabla_{\boldsymbol{b}^{[l]}} J = \boldsymbol{\delta^{[l]}}
+\ese
+
+\v
+
+where each $\boldsymbol{\delta^{[l]}}$ depends on the next $\boldsymbol{\delta^{[l+1]}}$ (thus the need of starting
+from the end) through the relation:
+
+\bse
+\boldsymbol{\delta^{[l]}} = \boldsymbol{\delta^{[l+1]}} \cdot W^{[l]} \cdot g^{\prime} ({\boldsymbol{a}}^{[l]})
+\ese
+
+with:
+\bse
+\delta^{[L]} = \frac{\partial J}{\partial \hat{y}} \cdot g^\prime (a^{[L]})
+\ese
+
+\v
+
+Hence, the update rules for gradient descent for the weights turn to:
+\bse
+W^{[l]} \coloneqq W^{[l]} - \alpha \cdot\boldsymbol{\delta^{[l]}} \cdot {\boldsymbol{h}^{[l-1]}}^{\intercal}
+\ese
+
+and similarly for the biases:
+\bse
+\boldsymbol{b}^{[l]} \coloneqq \boldsymbol{b}^{[l]} -\alpha \cdot\boldsymbol{\delta^{[l]}}
+\ese
+
+\v
+
+The process we have described in this section is usually called ``backward propagation'' or more commonly
+``backpropagation''. \v
+
+Now let's summarize what we have so far. In the previous section we showed that by using the process of forward
+propagation one can pick a specific choice of hyperparameters in order to define the topology of their feedforward
+neural network and build it. Once the network is built then we use the method of backward propagation in order to
+train it, i.e.\ to learn the parameters of the model that minimize the loss. The following figure summarizes all we
+have developed so far on forward and backward propagation. \v
+
+\fig{nlsum}{0.45}
+
+\subsection{Generalize To Full Dataset}
+
+We can generalize the notation a bit more for the case that someone has $m$ training examples instead of just one
+that we have seen so far:
+\bse
+\{ \boldsymbol{x}^{(i)}, y^{(i)})\} = \{ (\boldsymbol{x}^{(1)}, y^{(1)}), (\boldsymbol{x}^{(2)}, y^{(2)}),
+\ldots, (\boldsymbol{x}^{(m)}, y^{(m)})\}
+\ese
+
+Of course, nothing really changes, in theory, one must pass all the training examples through the network in order to
+obtain the prediction, however when it comes to notation one can equip a handy way of combining together all the
+training examples and quantities that appear during forward propagation in vectors and matrices. \v
+
+The usefulness of this subsection is more practical than theoretical, since once someone wants to use programming to
+actually train a model switching to vectors and matrices is inevitable. \v
+
+Starting from the features one can stack all the feature vectors $\{ \boldsymbol{x}^{(1)}, \boldsymbol{x}^{(2)},
+\ldots, \boldsymbol{x}^{(m)} \}$ next to each other in one big $(n \times m)$ dimensional matrix $X$ and all the
+targets $\{ y^{(1)}, y^{(2)}, \ldots, y^{(m)} \}$ next to each other into one $(1 \times m)$ dimensional row vector
+$\boldsymbol{y}$ defined as:
+\bse
+X = \begin{bmatrix} {\boldsymbol{x}^{(1)}} & {\boldsymbol{x}^{(2)}} & \ldots & {\boldsymbol{x}^{(m)}} \end{bmatrix} =
+\begin{bmatrix}
+x_{1}^{(1)} & x_{1}^{(2)} & \ldots & x_{1}^{(m)} \\\\
+x_{2}^{(1)} & x_{2}^{(2)} & \ldots & x_{2}^{(m)} \\\\
+\vdots & \vdots & \ddots & \vdots \\\\
+x_{n}^{(1)} & x_{n}^{(2)} & \ldots & x_{n}^{(m)}
+\end{bmatrix}, \qquad
+\boldsymbol{y} = \begin{bmatrix} y^{(1)} & y^{(2)} & \ldots & y^{(m)} \end{bmatrix}
+\ese
+
+\vspace{8pt}
+
+Then for each layer we will have one pre-activation vector $\boldsymbol{a}^{[l](i)}$ per training example that we can
+further stack next to each other into one $(n^{[l]} \times m)$ dimensional matrix $A^{[l]}$ defined as:
+\bse
+A^{[l]} =
+\begin{bmatrix} {\boldsymbol{a}^{[l](1)}} & {\boldsymbol{a}^{[l](2)}} & \ldots & {\boldsymbol{a}^{[l](m)}} \end{bmatrix}
+= \begin{bmatrix}
+a^{[l](1)}_1 & a^{[l](2)}_1 & \ldots & a^{[l](m)}_1 \\\\
+a^{[l](1)}_2 & a^{[l](2)}_2 & \ldots & a^{[l](m)}_2 \\\\
+\vdots & \vdots & \ddots & \vdots \\\\
+a^{[l](1)}_{n^{[l]}} & a^{[l](2)}_{n^{[l]}} & \ldots & a^{[l](m)}_{n^{[l]}}
+\end{bmatrix}
+\ese
+
+\v
+
+where for $A^{[l]}$ holds:
+\bse
+A^{[l]} = a(H^{[l-1]} ; W^{[l]}, B^{[l]}) = W^{[l]} H^{[l-1]} + B^{[l]}
+\ese
+
+\v
+
+with $H^{[l]}$ being again one $(n^{[l]} \times m)$ matrix that stacks together all the activation vectors
+$\boldsymbol{h}^{[l](i)}$ for each training example as:
+
+\bse
+H^{[l]} =
+\begin{bmatrix} {\boldsymbol{h}^{[l](1)}} & {\boldsymbol{h}^{[l](2)}} & \ldots & {\boldsymbol{h}^{[l](m)}} \end{bmatrix}
+= \begin{bmatrix}
+h^{[l](1)}_1 & h^{[l](2)}_1 & \ldots & h^{[l](m)}_1 \\\\
+h^{[l](1)}_2 & h^{[l](2)}_2 & \ldots & h^{[l](m)}_2 \\\\
+\vdots & \vdots & \ddots & \vdots \\\\
+h^{[l](1)}_{n^{[l]}} & h^{[l](2)}_{n^{[l]}} & \ldots & h^{[l](m)}_{n^{[l]}}
+\end{bmatrix}
+\ese
+
+\vspace{8pt}
+
+where $W^{[l]}$ is the same $(n^{[l]} \times n^{[l-1]} )$ dimensional matrix of weights as before, and the matrix
+$B^{[l]}$ is simply a $(n^{[l]} \times m)$ matrix of biases which is created by stacking together
+$\boldsymbol{b}^{[l]}$ $m$ times in order for the dimensions to work out:
+
+\bse
+W^{[l]} =
+\begin{bmatrix}
+w_{11}^{[l]} & w_{12}^{[l]} & \ldots & w_{1n^{[l-1]}}^{[l]} \\\\
+w_{21}^{[l]} & w_{22}^{[l]} & \ldots & w_{2n^{[l-1]}}^{[l]} \\\\
+\vdots & \vdots & \ddots & \vdots \\\\
+w_{n^{[l]}1}^{[l]} & w_{n^{[l]}2}^{[l]} & \ldots &
+w_{n^{[l]}n^{[l-1]}}^{[l]}
+\end{bmatrix}, \qquad
+B^{[l]} =
+\underbrace{
+\begin{bmatrix}
+\boldsymbol{b}^{[l]} & \boldsymbol{b}^{[l]} & \ldots & \boldsymbol{b}^{[l]} \end{bmatrix}}_{\text{$m$ times}}
+=\begin{bmatrix}
+b_{1}^{[l]} & b_{1}^{[l]} & \ldots & b_{1}^{[l]} \\\\
+b_{2}^{[l]} & b_{2}^{[l]} & \ldots & b_{2}^{[l]} \\\\
+\vdots & \vdots & \ddots & \vdots \\\\
+b_{{n^{[l]}}}^{[l]} & b_{{n^{[l]}}}^{[l]} & \ldots & b_{{n^{[l]}}}^{[l]}
+\end{bmatrix}
+\ese
+
+\vspace{8pt}
+
+Following this notation, the activation at the output layer now is itself a $(1 \times m)$ dimensional row vector
+$\hat{\boldsymbol{y}}$ given by:
+\bse
+\hat{\boldsymbol{y}} = H^{[L]} = O(A^{[L]})
+\ese
+
+\v
+
+which gives one prediction for each entry of the $(1 \times m)$ dimensional target row vector $\boldsymbol{y}$. \v
+
+In exactly the same way one can define a loss function $J(\boldsymbol{y}, \hat{\boldsymbol{y}})$ that quantifies the
+error of the network which would be simply the average of all errors from all training examples:
+\bse
+J(\boldsymbol{y}, \hat{\boldsymbol{y}}) = \frac{1}{m} \sum_{i=1}^{m} J(y^{(i)}, \hat{y}^{(i)})
+\ese
+
+where $J(y^{(i)}, \hat{y}^{(i)})$ is the loss of the training example $\{ (\boldsymbol{x}^{(i)}, y^{(i)}) \}$, i.e.\
+exactly what we developed in the previous section of forward and backward propagation with one single observation. \v
+
+Finally, one can use gradient descent for backward propagation in exactly the same way with the update rules being:
+\bse
+W^{[l]} \coloneqq W^{[l]} - \alpha \cdot \Delta^{[l]} \cdot {\boldsymbol{H}^{[l-1]}}^{\intercal}
+\ese
+
+and:
+\bse
+B^{[l]} \coloneqq B^{[l]} - \alpha \cdot \Delta^{[l]}
+\ese
+
+\v
+
+where $\Delta^{[l]}$ is a $(n^{[l]} \times m)$ matrix acting as the generalization of $\boldsymbol{\delta^{[l]}}$
+defined as:
+\bse
+\Delta^{[l]} = \Delta^{[l+1]} \cdot W^{[l]} \cdot g^{\prime} (A^{[l]})
+\ese
+
+with:
+\bse
+\Delta^{[L]} = \frac{\partial J}{\partial \hat{\boldsymbol{y}}} \cdot g^\prime (A^{[L]})
+\ese
+
+\v
+
+At this point we have introduced the most fundamental structure of a deep learning model, i.e.\ the feedforward
+neural network. As we will see, from now on everything we will explore is either advancements on various aspects of a
+feedforward neural network, or some ideas we implement on top of a feedforward neural network so we make it more
+suitable to treat independent cases. When it comes to the latter, since these models are more ``advanced'' and not
+that ``basic'' as the name of this chapter indicates, we will introduce them properly in a separate chapter. For now
+we will focus on the advancements one can implement on a feedforward neural network.
+
+\section{Modified Gradient Descent Algorithms}
+
+Feedforward neural networks, and many other deep learning models that we will introduce after, tend to be quite heavy
+in calculations. Passing through the network just one single observations is not as fast as passing it from a
+supervised learning model. On top of that in deep learning most of the time the datasets are huge (much bigger than
+datasets used in supervised and unsupervised learning) with millions of observations. As a consequence, training a
+neural network can be tedious. For this reasons it is always a good practice to try to make the optimization process
+as light as possible in order to be efficient. We will now introduce some modified gradient descent algorithms
+heavily used in deep learning.
+
+\subsection{Mini-Batch \& Stochastic Gradient Descent}
+
+We have already introduced the concepts of mini-match \& stochastic gradient descent in supervised learning. Back in
+that chapter we mentioned that in most supervised learning models batch gradient descent works just fine so we don't
+need these alternative techniques. However, in deep learning models both of them are heavily used in order to train
+neural networks. \v
+
+Let us briefly remind ourselves of the algorithms.
+\bit
+\item \textbf{Mini-Batch Gradient Descent} In mini-batch gradient descent we divide the whole dataset to $b$ subsets
+of $\frac{m}{b}$ training examples each, called ``mini-batches'', and we update the parameters using each of the
+mini-batches in each iteration.
+\item \textbf{Stochastic Gradient Descent} In stochastic gradient descent, which can be seen as an extreme case of
+mini-batch gradient descent where $b=m$, we only use one training example per iteration to update the parameters. In
+every iteration we are estimating the total gradient based on just one single data point that we pick randomly hence
+the name ``stochastic''. One has to keep in mind that since this is an approximation there is no guarantee that each
+step will decrease the loss function. \v
+\eit
+
+In most of the cases stochastic gradient descent (and its modifications that we will introduce in a while) is the
+main optimizer used in deep learning. A very useful and heavily ``jargon'' of deep learning is the concept of the
+``epoch''.
+
+\bd [Epoch]
+An \textbf{epoch} is one full pass over the entire dataset.
+\ed
+
+For (batch) gradient descent 1 epoch is equal to 1 parameters' update since we use the whole dataset in order to
+perform the update, while for stochastic gradient descent 1 epoch is equal to $m$ parameters' updates (where $m$ is
+the number of training examples / observations) since we update the parameters in every single pass of one training
+example. Finally, in mini-batch gradient descent in 1 epoch happen $\frac{m}{b}$ parameters' update.
+
+\subsection{Gradient Descent With Momentum}
+
+Another problem of plain gradient descent is that it takes a lot of time to navigate regions having a gentle slope
+due to the fact that the gradient in these regions is very small. This again makes the optimization slow. Gradient
+descent with momentum deals with this problem by making use of exponentially weighted moving averages.
+
+\bd[Exponentially Weighted Moving Average]
+An exponentially weighted moving average (EWMA) is a first-order infinite impulse response filter that applies
+weighting factors which decrease exponentially. The weighting for each older datum decreases exponentially, never
+reaching zero. The EWMA $S$ for a series $Y$ may be calculated recursively as:
+\bse
+S_{t}={\begin{cases} (1-\beta) Y_{1},&t=1\\ (1-\beta ) Y_{t}+ \beta \cdot S_{t-1},&t>1 \end{cases}}
+\ese
+
+where:
+\bit
+\item The coefficient $\beta$ represents the degree of weighting decrease, a constant smoothing factor between 0 and
+1. A higher $\beta$ discounts older observations faster.
+\item $Y_t$ is the value at a time period $t$.
+\item $S_t$ is the value of the EWMA at any time period t.
+\eit
+\ed
+
+By using the EWMA we define the updates $[V_{\theta^{[l]}}]_t$ we want to implement to our parameters at each step
+$t$ as:
+\bse
+[V_{\theta^{[l]}}]_t = \begin{cases}
+(1-\beta) \nabla_{\theta^{[l]}_1} J &t=1 \\ (1-\beta) \nabla_{\theta^{[l]}_t} J +\beta [V_{\theta^{[l]}}]_{t-1}, &t>1
+\end{cases}
+\ese
+
+\v
+
+Lately, in most of the cases, in gradient descent with momentum we slightly modify the above formula by discarding
+the $(1-\beta)$ factor:
+\bse
+[V_{\theta^{[l]}}]_t =
+\begin{cases}
+\nabla_{\theta^{[l]}_1} J &t=1\\ \nabla_{\theta^{[l]}_t} J + \beta [V_{\theta^{[l]}}]_{t-1}, &t>1
+\end{cases}
+\ese
+
+\v
+
+For now we will use this second version since it's the most likely version one could find in literature. The update
+rule for gradient descent with momentum for the parameters turns to:
+\bse
+\theta^{[l]}_{t+1} = \theta^{[l]}_t - \alpha [V_{\theta^{[l]}}]_t
+\ese
+
+Notice that now in the update rule we do not use the gradient of the loss function but the update we defined earlier. \v
+
+It would be easier to demonstrate what this algorithm does by calculating the first few steps for the parameters by
+making use of the equations we just wrote. \v
+
+For the first step $t=1$, straight from the definition we get $[V_{\theta^{[l]}}]_1 = \nabla_{\theta^{[l]}_1} J$
+Hence, the update rule:
+\bse
+\theta^{[l]}_2 = \theta^{[l]}_1 - \alpha \nabla_{\theta^{[l]}_1} J
+\ese
+
+As we see nothing really changed, this is exactly the update rule of the gradient descent without momentum. \v
+
+For the second step $t=2$ we obtain:
+\begin{align*}
+[V_{\theta^{[l]}}]_2 & = \nabla_{\theta^{[l]}_2} J + \beta [V_{\theta^{[l]}}]_{1} \\
+&= \nabla_{\theta^{[l]}_2} J + \beta \nabla_{\theta^{[l]}_1} J
+\end{align*}
+
+Hence:
+\bse
+\theta^{[l]}_3 = \theta^{[l]}_2 - \alpha (\nabla_{\theta^{[l]}_2} J + \beta \nabla_{\theta^{[l]}_1} J )
+\ese
+
+\v
+
+Using the same calculations one can show that for the third update it is:
+\bse
+\theta^{[l]}_4 = \theta^{[l]}_3 - \alpha (\nabla_{\theta^{[l]}_3} J + \beta \nabla_{\theta^{[l]}_2} J
++ \beta^2 \nabla_{\theta^{[l]}_1} J)
+\ese
+
+and so on. \v
+
+As we see in gradient descent with momentum at every step $t$ in addition to the update $\nabla_{\theta^{[l]}_t} J$
+of plain gradient descent, we also look at the history of updates with diminishing weight factors $\beta$ (remember
+that $0 \leq \beta \geq 1$). In other words the current update $\nabla_{\theta^{[l]}_t} J$ is the one with the most
+weight (i.e\ 1), $\nabla_{\theta^{[l]}_{t-1}} J$ is trusted a bit less (i.e\ $\beta$), $\nabla_{\theta^{[l]}_{t-2}}
+J$ is trusted even lesser ($\beta^2$), and so on. Intuitively this means that if the descent repeatedly moves in the
+same direction then gradient descent with momentum ``adds'' some confidence and starts taking bigger steps in that
+direction, just as a ball gains momentum while rolling down a slope. As a result even in the regions having gentle
+slopes, gradient descent with momentum is able to take large steps because the momentum carries it along! \v
+
+Observe that in gradient descent with momentum (and all the other algorithms that will follow in this section) we
+need to keep a history of all the updates. Previously (in plain gradient descent) once we updated the parameters we
+forgot about the update and we moved on. Notation wise this is the reason why in plain gradient decent we used $
+\coloneqq $ for denoting the update, while now we use the steps $t$ to denote the update at each point $t$. Nothing
+really changes in practice, but the notation indicates the fact that we actually need the history of the updates for
+future updates! \v
+
+Of course, gradient descent with momentum carries its own drawbacks. The main problem is that towards the end (i.e.\
+when we are very close to the minimum) the algorithm has gained a lot of momentum towards the right direction and it
+oscillates in and out of the minima valley as the momentum carries it out of the valley. This oscillations in the end
+slow down gradient descent with momentum a bit. Fortunately we can deal with this issue. The result is called
+``Nesterov accelerated gradient descent''.
+
+\subsection{Nesterov Accelerated Gradient Descent}
+
+Nesterov accelerated gradient descent deals with the problem of oscillations of gradient descent with momentum by
+``looking before taking a leap''. Let's see what this means. \v
+
+Recall that in gradient descent with momentum we update the parameters as:
+\bse
+\theta^{[l]}_{t+1} = \theta^{[l]}_t - \alpha [V_{\theta^{[l]}}]_t
+\ese
+
+\v
+
+By substituting $[V_{\theta^{[l]}}]_t $ and rearranging the terms we have:
+\begin{align*}
+ \theta^{[l]}_{t+1} &= \theta^{[l]}_t - \alpha [V_{\theta^{[l]}}]_t \\ &= \theta^{[l]}_t - \alpha
+ \nabla_{\theta^{[l]}_t} J - \alpha \beta [V_{\theta^{[l]}}]_{t-1} \\ &= ( \theta^{[l]}_t - \alpha \beta
+ [V_{\theta^{[l]}}]_{t-1}) - \alpha \nabla_{\theta^{[l]}_t} J \\ &= {\theta^{\prime}}^{[l]}_{t} - \alpha
+ \nabla_{\theta^{[l]}_t} J
+\end{align*}
+
+where we defined the so called ``look ahead'' parameters prime ${\theta^{\prime}}^{[l]}_{t} $ as:
+\bse
+{\theta^{\prime}}^{[l]}_{t} = \theta^{[l]}_t - \alpha \beta [V_{\theta^{[l]}}]_{t-1}
+\ese
+
+In Nesterov accelerated gradient descent we update the parameters by computing the derivative of the loss function
+with respect to those ``look ahead'' parameters instead of the parameters at time $t$. In other words the updates for
+the parameters turn to:
+\bse
+[V_{\theta^{[l]}}]_t =
+\begin{cases}
+\nabla_{{\theta^{\prime}}^{[l]}_{1}} J &t=1\\
+\nabla_{{\theta^{\prime}}^{[l]}_{t}} J + \beta [V_{\theta^{[l]}}]_{t-1}, &t>1
+\end{cases}
+\ese
+
+\v
+
+While the update rules stay the same:
+\bse
+\theta^{[l]}_{t+1} = \theta^{[l]}_t - \alpha [V_{\theta^{[l]}}]_t
+\ese
+
+Looking ahead helps Nesterov accelerated gradient descent in correcting its course quicker than momentum based
+gradient descent, hence, the oscillations are smaller and the chances of escaping the minima valley also smaller!
+
+\subsection{Adaptive Gradient Descent (AdaGrad)}
+
+Another important drawback of gradient descent is the following. As we proved, the updates of the weights in gradient
+descent follow:
+\bse
+W^{[l]} \coloneqq W^{[l]} - \alpha \cdot\boldsymbol{\delta^{[l]}} \cdot {\boldsymbol{h}^{[l-1]}}^{\intercal}
+\ese
+
+and for the biases:
+\bse
+\boldsymbol{b}^{[l]} \coloneqq \boldsymbol{b}^{[l]} - \alpha \cdot \boldsymbol{\delta^{[l]}}
+\ese
+
+\v
+
+Recall that both ${\boldsymbol{h}^{[l-1]}}$ and $\boldsymbol{\delta^{[l]}}$ are function of the inputs
+${\boldsymbol{h}^{[0]}} = \boldsymbol{x}$ and actually it holds:
+\bse
+{\boldsymbol{h}^{[l]}}, \boldsymbol{\delta^{[l]}} \sim \boldsymbol{x}, \:\:\: \forall l
+\ese
+
+In the case where some specific feature $x$ is very sparse (e.g.\ if its value is 0 for most inputs) then the terms
+${\boldsymbol{h}^{[l]}}$ and $\boldsymbol{\delta^{[l]}}$ will be 0 for most inputs and hence, the parameters that
+correspond to this specific feature will not get enough updates. In addition if the feature $x$ happens to be sparse
+as well as important we would want to take the updates to the parameters more seriously. For this reason we want to
+have a different learning rate for each parameter that takes care of the frequency of features. \v
+
+Adaptive gradient descent (or AdaGrad) is a modified gradient descent algorithm with per-parameter learning rate,
+first published in 2011. Informally, this increases the learning rate for sparser parameters and decreases the
+learning rate for ones that are less sparse. This strategy often improves convergence performance over standard
+gradient descent in settings where data is sparse and sparse parameters are more informative. \v
+
+The updates for AdaGrad are:
+\bse
+[V_{\theta^{[l]}}]_t =
+\begin{cases}
+\left(\nabla_{\theta^{[l]}_1} J \right)^2 &t=1\\
+\left(\nabla_{\theta^{[l]}_t} J \right)^2 + [V_{\theta^{[l]}}]_{t-1}, &t>1
+\end{cases}
+\ese
+
+\v
+
+where the square term is just for getting rid of the sign of the gradient. The important part is coming from the
+update rule for AdaGrad which is:
+\bse
+\theta^{[l]}_{t+1} = \theta^{[l]}_t - \frac{\alpha}{\sqrt{[V_{\theta^{[l]}}]_t}} \nabla_{\theta^{[l]}_t} J
+\ese
+
+Notice that now in the update rule we use the gradient of the loss function and we use the update we defined for
+AdaGrad only in the denominator. \v
+
+Using a parameter specific learning rate ensures that despite sparsity the parameters get a higher learning rates and
+Hence, larger updates. Further, it also ensures that if the parameters undergo a lot of updates its effective learning
+rate decreases because of the growing denominator. In practice, this does not work so well if we remove the square
+root from the denominator. \v
+
+As usual, AdaGrad carries its own flipsides. Namely, Adagrad decays the learning rate very aggressively (as the
+denominator grows) having as a result for the frequent parameters to start receiving very small updates because of
+the decayed learning rate and over time the effective learning rate for the parameters will decay to an extent that
+there will be no further updates to them. \v
+
+To avoid this we have yet another modified gradient descent algorithm called ``root mean square propagation''.
+
+\subsection{Root Mean Square Propagation (RMSProp)}
+
+As we already said AdaGrad decays the learning rate very aggressively (as the denominator grows) having as a result
+after a while the frequent parameters will start receiving very small updates because of the decayed learning rate.
+To avoid this we decay the denominator and prevent its rapid growth. \v
+
+Root mean square propagation (RMSProp) is also a method in which the learning rate is adapted for each of the
+parameters. The idea is to divide the learning rate for a weight by an exponentially weighted moving average of the
+magnitudes of recent gradients for that weight, hence, the updates for RMSProp reads:
+\bse
+[V_{\theta^{[l]}}]_t =
+\begin{cases}
+(1 - \beta) \left(\nabla_{\theta^{[l]}_1} J \right)^2 &t=1\\
+(1 - \beta) \left(\nabla_{\theta^{[l]}_t} J \right)^2 + \beta [V_{\theta^{[l]}}]_{t-1}, &t>1
+\end{cases}
+\ese
+
+\v
+
+while the update rule for RMSProp has the same form:
+\bse
+\theta^{[l]}_{t+1} = \theta^{[l]}_t - \frac{\alpha}{\sqrt{[V_{\theta^{[l]}}]_t}} \nabla_{\theta^{[l]}_t} J
+\ese
+
+\subsection{Adaptive Moment Estimation (Adam)}
+
+Adaptive moment estimation (Adam) is one of the most used optimization techniques in deep learning and it's actually
+a combination of almost every algorithm that we developed earlier, hence, it deals with all the problems of gradient
+descent we mentioned at the same time (slow updates due to learning rate, oscillations at minimum valley, sparse
+features, etc). In a way Adam can be seen as RMSProp optimizer with momentum thus the updates and the update rule is
+simply a combination of the updates and the updates rules of RMSProp and gradient descent with momentum. \v
+
+Hence, more specifically, in Adam we take the updates from gradient descent with momentum (we notate them with $m$
+now to avoid confusion):
+
+\bse
+[m_{\theta^{[l]}}]_t =
+\begin{cases}
+(1 - \beta_{m}) \nabla_{\theta^{[l]}_1} J &t=1\\
+(1 - \beta_{m}) \nabla_{\theta^{[l]}_t} J + \beta_{m} [m_{\theta^{[l]}}]_{t-1}, &t>1
+\end{cases}
+\ese
+
+\v
+
+and we rescale them by dividing with a bias correction term as:
+\bse
+[\hat{m}_{\theta^{[l]}}]_t = \frac{[m_{\theta^{[l]}}]_t}{1-\beta_{m}^t}
+\ese
+
+Next we take the updates from RMSProp (we notate them with $u$ now to avoid confusion):
+\bse
+[u_{\theta^{[l]}}]_t =
+\begin{cases}
+(1 - \beta_{u}) \left(\nabla_{\theta^{[l]}_1} J \right)^2 &t=1\\
+(1 - \beta_{u}) \left(\nabla_{\theta^{[l]}_t} J \right)^2 + \beta_{u} [u_{\theta^{[l]}}]_{t-1}, &t>1
+\end{cases}
+\ese
+
+\v
+
+and we rescale them by dividing with a bias correction term as:
+\bse
+[\hat{u}_{\theta^{[l]}}]_t = \frac{[u_{\theta^{[l]}}]_t}{1-\beta_{u}^t}
+\ese
+
+\v
+
+Now that we have the updates, we equip the update rules of gradient descent
+with momentum:
+\bse
+\theta^{[l]}_{t+1} = \theta^{[l]}_t - \alpha [m_{\theta^{[l]}}]_t
+\ese
+
+and the update rules for RMSProp:
+\bse
+\theta^{[l]}_{t+1} = \theta^{[l]}_t - \frac{\alpha}{\sqrt{[u_{\theta^{[l]}}]_t}} \nabla_{\theta^{[l]}_t} J
+\ese
+
+and we mix them together by making use of the rescaled updates to yield the update rule for Adam:
+\bse
+\theta^{[l]}_{t+1} = \theta^{[l]}_t - \frac{\alpha}{\sqrt{[\hat{u}_{\theta^{[l]}}]_t}} [\hat{m}_{\theta^{[l]}}]_t
+\ese
+
+As we said this Adam's update rules treats many problems at the same time. Adam seems to be more or less the default
+choice now. Having said that, many papers report that stochastic gradient descent with momentum (both the plain one
+or Nesterov one) with a simple annealing learning rate schedule also works well in practice. However, Adam might just
+be the best choice overall. \v
+
+Before we close the section on Adam, let us provide an explanation on why we need to rescale the updates by dividing
+with those bias correction terms. Let's start by focusing on the momentum part of Adam. Note that we are taking a
+running average of the gradients of $[m_{\theta^{[l]}}]_t$. The reason we are doing this is that we don't want to
+rely too much on the current gradient and instead rely on the overall behaviour of the gradients over many timesteps.
+One way of looking at this is that we are interested in the expected value of the gradients and not on a single point
+estimate computed at time $t$. However, instead of computing the right quantity:
+\bse
+E\Big[\nabla_{\theta^{[l]}_t} J \Big]
+\ese
+
+\v
+
+we are computing the exponentially moving average:
+\bse
+E \Big[ [m_{\theta^{[l]}}]_t \Big]
+\ese
+
+Ideally we would want to hold:
+\bse
+E \Big[ [m_{\theta^{[l]}}]_t \Big] = E\left[\nabla_{\theta^{[l]}_t} J \right]
+\ese
+
+\v
+
+Let us see if that is the case. \v
+
+For the first step $t=1$, straight from the definition of $[m_{\theta^{[l]}}]_t $ we get:
+\bse
+[m_{\theta^{[l]}}]_1 = (1 - \beta_m) \nabla_{\theta^{[l]}_1} J
+\ese
+
+For the second step $t=2$ we obtain:
+\begin{align*}
+[m_{\theta^{[l]}}]_2 & = (1 - \beta_m) \nabla_{\theta^{[l]}_2} J + \beta_m [m_{\theta^{[l]}}]_{1} \\
+&= (1 - \beta_m) \nabla_{\theta^{[l]}_2} J + \beta_m (1 - \beta_m) \nabla_{\theta^{[l]}_1} J \\
+&= (1 - \beta_m) \left( \nabla_{\theta^{[l]}_2} J + \beta_m \nabla_{\theta^{[l]}_1} J \right)
+\end{align*}
+
+For the third step $t=3$ we obtain:
+\begin{align*}
+[m_{\theta^{[l]}}]_3 & = (1 - \beta_m) \nabla_{\theta^{[l]}_3} J + \beta_m [m_{\theta^{[l]}}]_{2} \\
+&= (1 - \beta_m) \nabla_{\theta^{[l]}_2} J + \beta_m \left( (1 - \beta_m) \nabla_{\theta^{[l]}_2} J 
++ \beta_m (1 - \beta_m) \nabla_{\theta^{[l]}_1} \right) \\
+&= (1 - \beta_m) \nabla_{\theta^{[l]}_2} J + \beta_m (1 - \beta_m) \nabla_{\theta^{[l]}_2} J 
++ {\beta_m}^2 (1 - \beta_m) \nabla_{\theta^{[l]}_1} \\
+&= (1 - \beta_m) \left( \nabla_{\theta^{[l]}_2} J + \beta_m \nabla_{\theta^{[l]}_2} J 
++ {\beta_m}^2 \nabla_{\theta^{[l]}_1} \right)
+\end{align*}
+
+Observing the pattern we can write that for any step $t$:
+\bse
+[m_{\theta^{[l]}}]_t = (1-\beta_m) \sum_{i=1}^{t} \beta_m^{t-i} \cdot \nabla_{\theta^{[l]}_i}
+\ese
+
+Subsequently for the expected value:
+\begin{align*}
+E \Big[ [m_{\theta^{[l]}}]_t \Big] &= E \Big[ (1-\beta_m) \sum_{i=1}^{t} \beta_m^{t-i} 
+\cdot \nabla_{\theta^{[l]}_i} \Big] \\
+&= (1-\beta_m) E \Big[ \sum_{i=1}^{t} \beta_m^{t-i} \cdot \nabla_{\theta^{[l]}_i} \Big] \\
+&= (1-\beta_m) \sum_{i=1}^{t} E \Big[ \beta_m^{t-i} \cdot \nabla_{\theta^{[l]}_i} \Big] \\
+&= (1-\beta_m) \sum_{i=1}^{t} \beta_m^{t-i} \cdot E \Big[\nabla_{\theta^{[l]}_i} \Big]
+\end{align*}
+
+At this point we make the assumption that all $\nabla_{\theta^{[l]}_i}$ are coming from the same distribution hence:
+\bse
+E \Big[\nabla_{\theta^{[l]}_i} \Big] = E \Big[\nabla_{\theta^{[l]}_t} \Big], \:\:\: \forall i
+\ese
+
+Thus:
+\begin{align*}
+E \Big[ [m_{\theta^{[l]}}]_t \Big] &= (1-\beta_m) \sum_{i=1}^{t} \beta_m^{t-i} 
+\cdot E \Big[\nabla_{\theta^{[l]}_t} \Big] \\
+&= (1-\beta_m) \cdot E \Big[\nabla_{\theta^{[l]}_t} \Big] \sum_{i=1}^{t} \beta_m^{t-i} \\
+&= (1-\beta_m) \cdot E \Big[\nabla_{\theta^{[l]}_t} \Big] \cdot \frac{1-\beta_m^t}{1 - \beta_m} \\
+&= E \Big[\nabla_{\theta^{[l]}_t} \Big] \cdot(1-\beta_m^t)
+\end{align*}
+
+Hence, we see that:
+\bse
+E \Big[ [m_{\theta^{[l]}}]_t \Big] \neq E\left[\nabla_{\theta^{[l]}_t} J \right]
+\ese
+
+\v
+
+due to this extra $(1-\beta_m^t)$ factor. \v
+
+By dividing with the factor this last equation we obtain:
+{\setlength{\jot}{10pt}
+\begin{align*}
+\left(\frac{1}{1-\beta_m^t} \right) E \Big[ [m_{\theta^{[l]}}]_t \Big] 
+&= E \Big[\nabla_{\theta^{[l]}_t} \Big] \Rightarrow \\
+E \left[ \frac{[m_{\theta^{[l]}}]_t}{1-\beta_m^t} \right] &= E \Big[\nabla_{\theta^{[l]}_t} \Big]
+\end{align*}}
+
+By defining:
+\bse
+[{\hat{m}}_{\theta^{[l]}}]_t = \frac{[m_{\theta^{[l]}}]_t}{1-\beta_m^t}
+\ese
+
+\v
+
+we end up with:
+\bse
+E \Big[ [{\hat{m}}_{\theta^{[l]}}]_t \Big] = E \Big[\nabla_{\theta^{[l]}_t} \Big]
+\ese
+
+\v
+
+Thus, while $ [m_{\theta^{[l]}}]_t$ does not satisfy the equality, the rescaled by the bias correction one 
+$[{\hat{m}}_{\theta^{[l]}}]_t$ does. This is the reason for the bias correction. Similarly we do the same for the 
+RMSProp update of Adam.
+
+\subsection{Learning Rate Decay}
+
+As a final way to improve the optimization of a neural network we are going talk about ``learning rate decay''. As we
+have already discussed when the learning rate $\alpha$ is too big, optimization algorithm fails to find the minimum 
+due to very big oscillations around it while, on the other hand, if we set $\alpha$ to a really small value the steps
+will be so small that optimization will be very slow. \v
+
+The best of 2 worlds is if we start with a large learning rate (so we move fast towards the minimum) and then as 
+epochs pass we gradually decrease learning rate so we are able to obtain the minimum. This is the idea of ``learning 
+rate decay''. \v
+
+There are many different learning rate schedules but the most common are the following:
+\bit
+\item \textbf{Time-based learning schedules} alter the learning rate depending on the learning rate of the previous 
+time iteration. Factoring in the decay the mathematical formula for the learning rate is:
+\bse
+\alpha_{t+1} = \frac{\alpha_{t}}{1 + d_t}
+\ese
+
+\item \textbf{Step-based learning schedules} changes the learning rate according to some pre defined steps. The decay
+application formula is here defined as:
+\bse
+\alpha_t = \alpha_{0} \cdot d^{\text{ floor}(\frac{1+t}{r})}
+\ese
+
+\item \textbf{Exponential learning schedules} are similar to step-based but instead of steps a decreasing exponential
+function is used. The mathematical formula for factoring in the decay is:
+\bse
+\alpha _{t} = \alpha _{0} \cdot e^{-d \cdot t}
+\ese
+
+where $t$ is the iteration step, $\alpha_t$ is the learning rate at iteration $t$, $\alpha_0$ is the initial learning
+rate, $d_t$ is the decay parameter at time $t$ (i.e\ how much the learning rate should change at each drop) and $r$ 
+corresponds to the droprate, or how often the rate should be dropped (i.e.\ drop every $r$ iterations). 
+\eit
+
+Notice that decay parameter is yet another hyperparameter that needs to be fixed by us.
+
+\section{Errors, Evaluation \& Regularization}
+
+Notice that despite its complexity a feedforward neural network is simply just another supervised learning model as 
+the ones we developed in the supervised learning chapter. Everything we developed in the supervised learning chapter 
+around errors, errors analysis, train/cross-validation/test split, bias variance trade-off and 
+undefitting/overfitting hold true also for feedforward neural network, and all the other neural networks that we will
+develop. \v
+
+One of the things that slightly change in neural networks is the way to deal with high bias (underfitting) and high 
+variance (overfitting). In contrast to what we said for supervised learning models, for neural networks here are some
+of the techniques that we follow:
+\bit
+\item \textbf{For high bias (underfitting)}
+\bit
+\item Increase network size (layers and node).
+\item Train the network for longer time.
+\item Use different network topology (architecture).
+\eit
+\item \textbf{For high variance (overfitting)}
+\bit
+\item Find more training examples.
+\item Use different network topology (architecture).
+\item Regularization.
+\eit
+\eit
+
+\subsection{L2 Regularization}
+
+L2 regularization works in the exact same way as we described in supervised learning with some small adjustments in 
+order to fit the more complex nature of a neural network. Let's do a small review of L2 regularization and introduce 
+these adjustments. \v
+
+As we said in neural networks the loss function $J$ depends on the weights and biases:
+\bse
+J = J(y, \hat{y} ; \theta^{[l]}) = J(y, \hat{y} ; W^{[1]}, \boldsymbol{b}^{[1]}, W^{[2]}, \boldsymbol{b}^{[2]},
+\ldots, W^{[L]}, \boldsymbol{b}^{[L]})
+\ese
+
+Recall from the theory of L2 regularization that we developed, the reason of overfitting is that the parameters 
+appear in the loss function are free to get any value. With regularization we penalize the parameters by imposing an 
+extra constraint on all $W^{[l]}$, and by making use of the theory of constrained optimization of 
+Appendix~\ref{ch:constrained-optimization} the Lagrangian for L2 regularization for neural networks turns to:
+ 
+{\setlength{\jot}{10pt}
+\bse
+\mathcal{L}(y, \hat{y} ; \theta^{[l]}) = J(y, \hat{y} ; \theta^{[l]}) 
++ \frac{\lambda}{2m} \sum_{l=1}^{L} || W^{[l]} ||^2_F
+\ese}
+
+where $|| W^{[l]} ||^2_F$ is the so called ``Frobenius Norm'' given by:
+\bse
+|| W^{[l]} ||^2_F = \sum_{i=1}^{n^{[l-1]}} \sum_{j=1}^{n^{[l]}} (W^{[l]}_{ij})^2
+\ese
+
+At this point we can consider the Lagrangian $\mathcal{L}$ as a ``new'' loss function $J_{\text{new}}$ that we need
+to optimize hence, we can completely forget about regularization and solve this problem with gradient descent where in
+order to update the weights we use:
+\bse
+W^{[l]} \coloneqq W^{[l]} - \alpha \nabla_{W^{[l]}} J_{\text{new}}
+\ese
+
+and then we follow backward propagation for iterations. \v
+
+Notice that we only regularize the weights and not the biases. Since overfitting usually requires the output of the 
+model to be sensitive to small changes in the input data (i.e\ to exactly interpolate the target values, you tend to
+need a lot of curvature in the fitted function), the bias parameters don't contribute to the curvature of the model, 
+so there is usually little point in regularising them as well. \v
+
+One can prove that L2 regularization is simply adding some Gaussian noise to the inputs. We will skip the proof for 
+now since it is quite simple and quite unnecessary at the same time.
+
+\subsection{Dataset Augmentation}
+
+Dataset augmentation is a very simple technique based one the idea ``more data = better learning'', where it applies 
+transformations to the training examples in order to create more for them. The transformations can be as simple as 
+flipping an image, or as complicated as applying neural style transfer. The idea is that by changing the makeup of 
+the data, one can improve the performance the neural network by increasing the training set size. Dataset 
+augmentation works well for image classification / object recognition tasks and it has also been shown to work well 
+for speech. However, for some tasks it may not be clear how to generate such data.
+
+\subsection{Adding Noise To The Inputs/Outputs}
+
+Another good method for regularization is to add some Gaussian noise to either the inputs or the outputs, or even to 
+both of them:
+\bse
+\tilde{x}_{i} = x_i + \epsilon_i
+\ese
+
+where:
+\bse
+\epsilon_i \sim N(0, \sigma^2)
+\ese
+
+\v
+
+In a way, adding noise can be seen as another form of dataset augmentation.
+
+\subsection{Early Stopping}
+
+We have already introduced early stopping as a regularization method back in supervise learning chapter. Let us 
+briefly remind ourselves of it. \v
+
+In general as the neural network learns, its prediction error on the training set goes down, along with its 
+prediction error on the validation set. After a while though, the validation error stops decreasing and starts to go 
+back up. This indicates that the model has started to overfit the training data. Early stopping just stops training 
+as soon as the validation error reaches the minimum. \v
+
+Early stopping is more frequently used in deep learning that usual, simpler, supervised learning models.
+
+\subsection{Ensemble Methods}
+
+By using ensemble methods (we have already introduced the concept in the supervised learning chapter), we can combine
+the output of different models to reduce generalization error. The models can correspond to different classifiers or 
+they could be different instances of the same classifier trained with different features, hyperparameters, data, etc.
+
+\subsection{Dropout}
+
+Dropout (also called dilution) is yet another, heavily used, regularization method that approximates training a large
+number of neural networks with different architectures in parallel. During training, some number of layer outputs are
+randomly ignored or ``dropped out'', hence, the naming. This has the effect of making the layer look-like and be
+treated-like a layer with a different number of nodes and connectivity to the prior layer. In effect, each update to 
+a layer during training is performed with a different view of the configured layer. \v
+
+Dropout has the effect of making the training process noisy, forcing nodes within a layer to probabilistically take 
+on more or less responsibility for the inputs. This conceptualization suggests that perhaps dropout breaks-up 
+situations where network layers co-adapt to correct mistakes from prior layers, in turn making the model more robust. \v
+
+Dropout simulates a sparse activation from a given layer, which interestingly, in turn, encourages the network to 
+actually learn a sparse representation as a side-effect. As such, it may be used as an alternative to activity 
+regularization for encouraging sparse representations in autoencoder models. \v
+
+Because the outputs of a layer under dropout are randomly subsampled, it has the effect of reducing the capacity or 
+thinning the network during training. As such, a wider network, e.g.\ more nodes, may be required when using dropout.
+
+\section{Improvements On A Feedforward Neural Network}
+
+In this section we will introduce some of the latest advancements in deep learning that can improve a feedforward 
+neural network.
+
+\subsection{Activation Functions}
+
+Up to this point we have considered as activation functions only functions from the broad family of sigmoid functions.
+Recall, for example, that in the perceptron section we said that one could use the logistic function as the sigmoid
+function playing the part of activation function which would lead to logistic regression. Indeed, a logistic function
+used to be the most widely used sigmoid function. However, it carries three huge drawbacks. \v
+
+Starting with the first one, recall that the updates of the weights in gradient descent follow:
+\bse
+W^{[l]} \coloneqq W^{[l]} - \alpha \cdot\boldsymbol{\delta^{[l]}} \cdot {\boldsymbol{h}^{[l-1]}}^{\intercal}
+\ese
+
+and similarly the biases:
+\bse
+\boldsymbol{b}^{[l]} \coloneqq \boldsymbol{b}^{[l]} - \alpha \cdot \boldsymbol{\delta^{[l]}}
+\ese
+
+\v
+
+where:
+\bse
+\boldsymbol{\delta^{[l]}} = \boldsymbol{\delta^{[l+1]}} \cdot W^{[l]} \cdot g^{\prime} ({\boldsymbol{a}}^{[l]})
+\ese
+
+\v
+
+Hence, the derivative of the activation function is also part of the the update rule of the parameters. Since the
+logistic function is of the form:
+\bse
+S(x) = \frac {1}{1+e^{-x}}
+\ese
+
+its derivative is:
+\bse
+S^{\prime}(x) = - \frac {(-e^{-x})}{(1+e^{-x})^2} = \frac {1}{1+e^{-x}} \cdot \frac{e^{-x}}{1+e^{-x}} 
+= \frac{1}{1+e^{-x}} \cdot \left(1-\frac {1}{1+e^{-x}} \right) = S(x) \cdot (1-S(x))
+\ese
+
+Hence, $\boldsymbol{\delta^{[l]}}$ can be written as:
+\bse
+\boldsymbol{\delta^{[l]}} = \boldsymbol{\delta^{[l+1]}} \cdot W^{[l]} 
+\cdot g({\boldsymbol{a}}^{[l]}) \cdot (1-g({\boldsymbol{a}}^{[l]}))
+\ese
+
+\bd [Saturated Neuron]
+A \textbf{saturated neuron} is a neuron where its outputs values are close to the asymptotic ends of the bounded 
+activation function. 
+\ed
+
+In the case of the logistic function a saturate neuron would have:
+\bse
+g({\boldsymbol{a}}^{[l]}) = 0 \quad \text{or} \quad g({\boldsymbol{a}}^{[l]}) =1
+\ese
+
+The problem with logistic function is similar to the problem we described in AdaGrad where we said that since 
+${\boldsymbol{h}^{[l]}}, \boldsymbol{\delta^{[l]}} \sim \boldsymbol{x}, \:\:\: \forall l$, in the case where some 
+specific feature $x$ is very sparse (e.g.\ if its value is 0 for most inputs) then the terms ${\boldsymbol{h}^{[l]}}$
+and $\boldsymbol{\delta^{[l]}}$ will be 0 for most inputs and hence, the parameters that correspond to this specific
+feature will not get enough updates. Exactly the same behaviour one has for the case of saturated neurons where the 
+update terms get to zero and the update of the parameters do not happen any more. In other words saturated neurons 
+cause the gradient to vanish. \v
+
+The second problem with logistic function is that it is not zero centered. What this means is that since the output 
+of a logistic function is always positive (since logistic function compresses all its inputs to the range $[0,1]$), 
+essentially, either all the gradients at a layer are positive or all the gradients at a layer are negative having as 
+a result the restriction of the possible update directions. \v
+
+Finally, the third and last problem with logistic function is that it is computationally expensive due to the
+exponential. \v
+
+As an alternative to the logistic function, it was proposed the hyperbolic tangent function $\tanh$ which is also 
+part of the sigmoid family.
+
+\fig{tanh}{0.3}
+
+Hyperbolic tangent function solves the problem of the logistic function not being zero centered since it compresses 
+all its inputs to the range $[-1,1]$ hence, it is zero centered. However, its gradient still vanishes at saturation since:
+\bse
+(tanh(x))^{\prime} = (1 - tanh^{2}(x))
+\ese
+
+Finally, it is also computationally expensive. Despite all its problems hyperbolic tangent function is still used in
+LSTM's and RNNs model that we will introduce later. \v
+
+In general all sigmoid functions, due to its shapes, will have the problems of saturation. Thus, there was a need for
+some alternatives to sigmoid functions.
+
+\bd[Rectified Linear Unit (ReLU)]
+The \textbf{rectified linear unit }(ReLU) is an activation function defined as the positive part of its argument:
+\bse
+f(x)= \max(0,x)
+\ese
+
+where $x$ is the input to a neuron.
+\ed
+
+\fig{relu}{0.3}
+
+ReLU activation function was first introduced to a dynamical network with strong biological motivations and 
+mathematical justifications. It was demonstrated for the first time in 2011 to enable better training of deeper 
+networks, compared to the widely used logistic function and hyperbolic tangent. ReLU is, as of 2017, the most popular
+activation function for deep neural networks and it is more or less the standard unit for convolutional neural 
+networks that we will introduce later. \v
+
+The advantages of ReLU is that it does not saturate in the positive region, it is computationally efficient and it 
+converges much faster than the sigmoid functions we have mentioned. In practice one should keep in mind that a large 
+fraction of ReLU units can die if the learning rate is set too high so it is advised to initialize the bias to a 
+positive value. Finally, it is worth mentioning two variations of ReLU\@.
+
+\bd[Leaky Rectified Linear Unit (Leaky ReLU)]
+The \textbf{leaky rectified linear unit }(leaky ReLU) is an activation function defined as:
+\bse
+f(x)= \max(0.01x,x)
+\ese
+\ed
+
+\bd[Parametric Rectified Linear Unit (Leaky ReLU)]
+The \textbf{parametric rectified linear unit }(parametric ReLU) is an activation function defined as:
+\bse
+f(x)= \max(\alpha x,x)
+\ese
+
+where $\alpha$ is a parameter of the model that gets updated during backpropagation.
+\ed
+
+\subsection{Initialization Strategies}
+
+As we have discussed, in order to build a feedforward neural network we need to initialize the parameters to some 
+values during forward propagation. After the initialization the values will be updated during backpropagation so we 
+do not need to do anything, but for the very first step of forward propagation we need to to the initialization. 
+Although the choices of the activation functions are not completely irrelevant to the whole topic of initialization, 
+for now we will assume that more or less what we will say is valid for all activation functions. \v
+
+The simplest way to initialize the parameters is by setting all the weight and bias to be zero. However, if all 
+parameters start with the value of zero, the system can never learn. This is because error is propagated back through
+the parameters in proportion to the values of the parameters. This means that all hidden units connected directly to 
+the output units will get identical error signals, and, since the parameters changes depend on the error signals, the
+parameters from those units to the output units will always be the same (not zero, but the same). Hence, the system is
+starting out at a kind of unstable equilibrium point that keeps the parameters equal through training. Notice that 
+the same exact problem appears when we initialize all the parameters to the same constant value, even if it is not 
+zero. This known problem is usually called the ``symmetry breaking problem''. \v
+
+Hence, we just saw that initializing all the parameters to the same value leads to failure of learning. So, the next 
+idea is to initialize the parameters to some small, different to each other, random values following, let's say, some
+normal distribution. However, if one does that they will discover that after some small amount of training iterations
+all the weights will end up being zero, or very close to zero, leading to the whole problem of vanishing gradients 
+and not learning.
+
+\fig{weights}{0.55}
+
+Similarly, by initializing the parameters to some big, different to each other, random values following some normal 
+distribution will again make the parameters to be either zero or one after a small amount of training iterations 
+which again will lead to saturated neurons and to vanishing gradients.
+
+\fig{weights2}{0.5}
+
+It turns out that one has to take into account the variance of the activations and their relations with the variance 
+of the parameters in order to realize what is the right initialization method. One can show, without proving, that 
+for sigmoid activation functions the best initialization method is for the parameters to follow a Normal Gaussian 
+distribution scaled down by the square root of number of units:
+\bse
+\theta \sim \frac{1}{\sqrt{n}} N(0, 1)
+\ese
+
+By doing so we can see that after many iterations the distribution of the parameters remain the same.
+
+\fig{weights3}{0.55}
+
+
+Finally, for a ReLU activation function the initialization must follow:
+\bse
+\theta \sim \frac{1}{\sqrt{n/2}} N(0, 1)
+\ese
+
+Intuitively, we need the extra factor of $1/2$ due to the fact that the range of ReLU neurons is restricted only to 
+the positive half of the space. Once again by doing so we can see that after many iterations the distribution of the 
+parameters remain the same.
+
+\fig{weights4}{0.5}
+
+\subsection{Batch Normalization}
+
+Batch normalization is a technique for improving the performance and stability of neural networks, through 
+normalization of the layers inputs by re-centering and re-scaling. It is also a technique that makes more 
+sophisticated deep learning architectures work in practice. As a method it was proposed by Sergey Loffe and Christian
+Szegedy in 2015. \v
+
+The idea is to normalise the inputs of each layer (instead of just normalising the inputs to the network) in such a 
+way that they have a mean output activation of zero and standard deviation of one. This is analogous to how the 
+inputs to networks are standardised. Thought of as a series of neural networks feeding into each other, we normalize 
+the output of one layer before applying the activation function, and then feed it into the following layer. In other 
+words batch normalization occurs after each fully-connected layer, but before the activation function. This is the 
+reason why it is called ``batch'' normalization; because during training we normalise the activations of previous 
+layers for each batch. \v
+
+So, how does this help? We know that normalising the inputs to a network helps it learn. But a network is just a 
+series of layers, where the output of one layer becomes the input to the next. That means we can think of any layer 
+in a neural network as the first layer of a smaller subsequent network. While the effect of batch normalization is 
+evident, the reasons behind its effectiveness remain under discussion. It was believed that it can mitigate the 
+problem of internal covariate shift, where parameter initialization and changes in the distribution of the inputs of 
+each layer affect the learning rate of the network. Recently, some scholars have argued that batch normalization does
+not reduce internal covariate shift, but rather smooths the objective function, which in turn improves the 
+performance. However, at initialization, batch normalization in fact induces severe gradient explosion in deep 
+networks, which is only alleviated by skip connections in residual networks. Others sustain that batch normalization
+achieves length-direction decoupling, and thereby accelerates neural networks.
+
+\fig{batch}{0.55}
+
+Some of the benefits of batch normalization are:
+\bit
+\item \textbf{Networks train faster.} \\ Whilst each training iteration will be slower because of the extra 
+normalisation calculations during the forward pass and the additional hyperparameters to train during back 
+propagation. However, it should converge much more quickly, so training should be faster overall.
+\item \textbf{Allows higher learning rates.} \\ Gradient descent usually requires small learning rates for the 
+network to converge. As networks get deeper, gradients get smaller during back propagation, and so require even more 
+iterations. Using batch normalisation allows much higher learning rates, increasing the speed at which networks train.
+\item \textbf{Makes weights easier to initialise.} \\ Weight initialisation can be difficult, especially when 
+creating deeper networks. Batch normalisation helps reduce the sensitivity to the initial starting weights.
+\item \textbf{Makes more activation functions viable.} \\ Some activation functions don't work well in certain 
+situations. Sigmoid functions lose their gradient quickly, which means they can't be used in deep networks, and 
+ReLU's often die out during training (stop learning completely), so we must be careful about the range of values fed 
+into them. But as batch normalisation regulates the values going into each activation function, non linearities that 
+don't work well in deep networks tend to become viable again.
+\item \textbf{Simplifies the creation of deeper networks.} \\ The previous 4 points make it easier to build and 
+faster to train deeper neural networks, and deeper networks generally produce better results.
+\item \textbf{Provides some regularisation.} \\ Batch normalisation adds a little noise to your network, and in some 
+cases, (e.g.\ Inception modules) it has been shown to work as well as dropout. You can consider batch normalisation as
+a bit of extra regularization, allowing you to reduce some of the dropout you might add to a network. 
+\eit
+
+After batch norm, many other normalization methods have been introduced, such as instance normalization, layer 
+normalization and group normalization.

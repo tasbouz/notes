@@ -1,0 +1,448 @@
+%! suppress = EscapeUnderscore
+\section{Derivatives}
+
+\bd[Derivative]
+A \textbf{derivative} is a contract for a future transacion between two parties, that derives its value from the
+performance of an underlying entity.
+\ed
+
+\bd[Underlying]
+The \textbf{underlying} is an asset, index, rate, or any variable from which a derivative is derived from.
+\ed
+
+\be
+A stock option, for example, is a derivative whose value is dependent on the price of a stock. However, derivatives
+can be dependent on almost any variable, from the price of hogs to the amount of snow falling at a certain ski resort.
+\ee
+
+\bd[Derivative Market]
+A \textbf{derivative market} is a submarket of capital markets where people trade derivatives.
+\ed
+
+The derivatives markets are much bigger than the stock market when measured in terms of underlying assets. Depending
+on the market being traded derivatives can be either ``exchange-traded'' or ``over-the-counter''.
+
+\bd[Exchange-Traded Derivative]
+An \textbf{exchange-traded derivative} is a standardized derivative that is traded on a regulated derivative exchange.
+\ed
+
+\bd[Derivative Exchange]
+A \textbf{derivative exchange} is a central derivative market where people can trade standardized exchange-traded
+derivatives defined by the exchange.
+\ed
+
+Once two traders have agreed to a trade offered by an exchange, it is handled by the clearing house.
+
+\bd[Clearing House]
+A \textbf{clearing house} is an organization that facilitates tradings between two parties and manages the risks.
+\ed
+
+The advantage of a clearing house is that traders do not have to worry about the creditworthiness of the people they
+are trading with. The clearing house takes care of credit risk by requiring each of the two traders to deposit funds
+to ensure that they will live up to their obligations. \v
+
+Traditionally exchange-traded derivatives traders used to physically meet on the floor of the exchange, shouting, and
+using a complicated set of hand signals to indicate the trades they would like to carry out. Exchanges have largely
+replaced this system by electronic trading which involves the use of algorithms to initiate trades, often without human
+intervention, and has become an important feature of derivatives markets.
+
+\bd[Over-The-Counter Derivative]
+An \textbf{over-the-counter (OTC) derivative} is a derivative that is traded off-exchange.
+\ed
+
+\bd[Over-The-Counter Market]
+An \textbf{over-the-counter (OTC) market} is a decentralized derivative market where trading of OTC derivatives is done
+directly between two parties without a central exchange or clearing house.
+\ed
+
+Banks, other large financial institutions, fund managers, and corporations are the main participants in OTC
+derivatives markets. Credit risk has traditionally been a feature of OTC derivatives markets. In an attempt to
+reduce credit risk, the OTC market has borrowed some ideas from exchange-traded markets. Once an OTC trade has been
+agreed, the two parties can either present it to a central counterparty (CCP), which is like an exchange clearing
+house, or clear the trade bilaterally where the two parties have usually signed an agreement covering all their
+transactions with each other.
+
+\bd[Central Counterparty]
+A \textbf{central counterparty (CCP)} stands between the two parties to the derivatives transaction so that one party
+does not have to bear the risk that the other party will default.
+\ed
+
+\bd[Bilateral Clearing]
+\textbf{Bilateral clearing} is the process of clearing a trade between two parties without the use of a central
+counterparty.
+\ed
+
+While OTC markets were largely unregulated, following the financial crisis of 2008 we have seen the development of
+many new regulations affecting the operation of OTC markets. The main objectives of the regulations are to improve
+the transparency of OTC markets and reduce systemic risk. The OTC market in some respects is being forced to become
+more like the exchange-traded market. \v
+
+Both OTC and exchange-traded markets for derivatives are huge. The number of derivatives transactions per year in OTC
+markets is smaller than in exchange-traded markets, but the average size of the transactions is much greater, making
+the volume of business in OTC market much larger than in the exchange-traded one. \v
+
+Derivatives markets have been outstandingly successful. The main reason is that they have attracted many different
+types of traders and have a great deal of liquidity. When a trader wants to take one side of a contract, there is
+usually no problem in finding someone who is prepared to take the other side.
+
+\section{Forwards \& Futures}
+
+\bd[Forward / Future]
+A \textbf{forward} or \textbf{future} is a contract between two parties to buy or sell an underlying asset at a
+specified price $K$, at a specified future date $T$.
+\ed
+
+The main difference between a forward and a future is that a forward is an OTC contract (i.e.\ a private contract
+between two parties) hence it is not standardized and it carries some credit risk, while a future is an
+exchange-traded contract hence it is standardized and (virtually) it carries no credit risk. Another crucial
+difference is that forwards are settled at the end of their life, while futures are, as settled daily. From now on
+we will use the term ``future'' to refer to both forwards and futures.
+
+When developing a new future contract, the exchange must specify in some detail the exact nature of the agreement
+between the two parties. In particular, it must specify:
+\bit
+\item \textbf{The Asset}: When the asset is a commodity, there may be quite a variation in the quality of what is
+available in the marketplace. When the asset is specified, it is therefore important that the exchange stipulate the
+commodity that are acceptable. On the other hand, the financial assets in futures contracts are generally well-defined
+and unambiguous.
+\item \textbf{The Contract Size}: The contract size specifies the amount of the asset that has to be delivered under
+one contract. This is an important decision for the exchange.
+\item \textbf{Delivery Arrangements}: The place where delivery will be made must be specified by the exchange. This is
+particularly important for commodities that involve significant transportation costs.
+\item \textbf{Delivery Months}: A futures contract is referred to by its delivery month. The exchange must specify the
+precise period during the month when delivery can be made. The delivery months vary from contract to contract and are
+chosen by the exchange to meet the needs of market participants.
+\item \textbf{Price Quotes}: The exchange defines how prices will be quoted.
+\item \textbf{Price Limits and Position Limits}: For most contracts, daily price movement limits are specified by
+the exchange. Position limits are the maximum number of contracts that a speculator may hold. The purpose of daily
+price limits is to prevent large price movements from occurring because of speculative excesses. However, limits can
+become an artificial barrier to trading when the price of the underlying commodity is advancing or declining
+rapidly. Whether price limits are, on balance, good for futures markets is controversial.
+\eit
+
+Now, let's move on to some important definitions regarding futures contracts.
+
+\bd[Long Position]
+The party that agrees to buy the asset is said to be in a \textbf{long position}.
+\ed
+
+\bd[Short Position]
+The party that agrees to sell the asset is said to be in a \textbf{short position}.
+\ed
+
+\bd[Delivery Date / Maturity Date]
+The specified future date $T$ in a future is called the \textbf{delivery} or \textbf{maturity date}.
+\ed
+
+\bd[Delivery Price / Future Price]
+The specified price $K$ in a forward or future is called the \textbf{delivery} or \textbf{future price}.
+\ed
+
+This price, like any other price, is determined by the laws of supply and demand. If, at a particular time, more
+traders wish to sell rather than buy, the price will go down. New buyers then enter the market so that a balance
+between buyers and sellers is maintained. If more traders wish to buy rather than sell the price goes up. New
+sellers then enter the market and a balance between buyers and sellers is maintained. \v
+
+It is important to mention that the vast majority of futures contracts do not lead to the delivery of the underlying
+asset. Instead, they are ``closed out'' early, prior to the delivery period specified in the contract. Nevertheless,
+it is the possibility of eventual delivery that determines the futures price.
+
+\bd[Closing Out]
+\textbf{Closing out} a position means entering into the opposite trade to the original one.
+\ed
+
+Beside the future price, there is also the price of the underlying asset, which is called the ``spot price''.
+
+\bd[Spot Price]
+The \textbf{spot price} $S_t$ is the price of an asset for immediate delivery at time t.
+\ed
+
+Given the future price and the spot price, it is quite straightforward to determine the payoff from a long or short
+position in a future contract. More specifically, the payoff from a long position $P_{\text{long}}$ in a forward or
+future on one unit of an asset is:
+\bse
+P_{\text{long}} = S_T - K
+\ese
+
+where $S_T$ is the spot price of the asset at maturity of the contract. This is because the holder of the contract is
+obligated to buy an asset worth $S_T$ for $K$. \v
+
+Similarly, the payoff from a short position $P_{\text{short}}$ in a forward of future contract on one unit of an asset
+is:
+\bse
+P_{\text{short}} = K - S_T
+\ese
+
+These payoffs can be positive or negative. Because it costs nothing to enter into a future contract, the payoff from
+the contract is also the trader's total gain or loss from the contract.
+
+\vspace{5pt}
+\fig{dv1}{0.65}
+
+As the delivery period for a futures contract is approached, the futures price converges to the spot price of the
+underlying asset. When the delivery period is reached, the futures price equals—or is very close to—the spot price.
+This is known as the ``convergence property'' of futures prices. If that was not the case, then traders could make
+riskless profits by exploiting the difference between the futures price and the spot price as the delivery period
+approaches.
+
+\fig{dv2}{0.55}
+
+If two traders get in touch with each other directly and agree to trade an asset in the future for a certain price,
+there are obvious risks. One of the traders may regret the deal and try to back out. Alternatively, the trader
+simply may not have the financial resources to honor the agreement. One of the key roles of the exchange is to
+organize trading so that contract defaults are avoided. This is where ``margin accounts'' come in.
+
+\bd[Margin Account]
+A \textbf{margin account} is an account in which a trader must keep funds in to ensure that they will be able to meet
+the obligations of a contract.
+\ed
+
+The whole purpose of the margining account is to ensure that funds are available to pay traders when they make a
+profit. Overall the system has been very successful.
+
+\bd[Initial Margin]
+The amount that must be deposited in the margin account at the time the contract is entered into is known as the
+\textbf{initial margin}.
+\ed
+
+At the end of each trading day, the margin account is adjusted to reflect the trader's gain or loss. This practice is
+referred to as ``daily settlement'' or ``marking to market''.
+
+\bd[Daily Settlement / Marking To Market]
+\textbf{Daily settlement} or \textbf{marking to market} is the process of adjusting the margin account to reflect the
+trader's gain or loss at the end of each trading day.
+\ed
+
+Daily settlement leads to funds flowing each day between traders with long positions and traders with short positions.
+If the futures price increases from one day to the next, funds flow from traders with short positions to traders with
+long positions. If the futures price decreases from one day to the next, funds flow in the opposite direction, from
+traders with short positions to traders with long positions.This daily flow of funds between traders to reflect gains
+and losses is known as ``variation margin''.
+
+\bd[Variation Margin]
+The amount that must be paid to the margin account to reflect the trader's gain or loss is called the \textbf{variation
+margin}.
+\ed
+
+As it makes sense, variation margins change the balance in the margin account. Margin accounts have a minimum balance
+that must be maintained at all times, known as the ``maintenance margin''.
+
+\bd[Maintenance Margin]
+The minimum amount that must be maintained in the margin account is called the \textbf{maintenance margin}.
+\ed
+
+Initial and maintenance margins are set by the exchange clearing house and are determined by the variability of the
+price of the underlying asset and are revised when necessary. (The higher the variability, the higher the margin
+levels). Individual brokers may require greater margins from their clients than the minimum levels specified by the
+exchange clearing house. The maintenance margin is usually about 75\% of the initial margin. Note that margin
+requirements are the same on short futures positions as they are on long futures positions. It is just as easy to
+take a short futures position as it is to take a long one. The spot market does not have this symmetry. Taking a
+long position in the spot market involves buying the asset for immediate delivery and presents no problems. Taking a
+short position involves selling an asset that you do not own. This is a more complex transaction that may or may not
+be possible in a particular market. \v
+
+If the balance in the margin account falls below the maintenance margin, due to the variation margin being negative,
+the trader will receive a ``margin call'' from the exchange.
+
+\bd[Margin Call]
+A \textbf{margin call} is a demand for additional funds to be deposited in the margin account, when the balance in it
+falls below the maintenance margin, to bring the balance up to the initial margin level.
+\ed
+
+The trader who receives a margin call is expected to top up the margin account to the initial margin level within a
+short period of time. If the trader does not provide this variation margin, the broker closes out the position. On
+the other hand, if the trader's contract increases in value, the balance in the margin account increases. The trader
+is entitled to withdraw any balance in the margin account that is in excess of the initial margin.
+
+\be
+Here is a simple example of a margin account with an initial margin of \$12,000, and maintenance margin of \$9,000.
+The daily gains represent the variation margins that are either added or subtracted from the margin account.
+\fig{dv3}{0.4}
+\ee
+
+Most brokers pay traders interest on the balance in a margin account wiyh interest rates being competitive with what
+could be earned elsewhere. To satisfy the initial margin requirements, but not subsequent margin calls, a trader can
+usually deposit securities with the broker. The market value of the securities is reduced by a certain amount to
+determine their value for margin purposes. This reduction is known as a ``haircut''.
+
+\bd[Haircut]
+A \textbf{haircut} is the reduction in the market value of securities that are deposited with a broker to satisfy the
+initial margin requirements.
+\ed
+
+\subsection{Hedging Using Futures}
+
+Many of the participants in futures markets are hedgers. Their aim is to use futures markets to reduce a particular
+risk that they face. When one chooses to use futures markets to hedge a risk, the objective is often to take a
+position that neutralizes the risk as far as possible.
+
+\bd[Perfect Hedge]
+A \textbf{perfect hedge} is a hedge that completely eliminates the risk.
+\ed
+
+Perfect hedges are rare. For the most part, therefore, a study of hedging using futures contracts is a study of the
+ways in which hedges can be constructed so that they perform as close to perfectly as possible.
+
+There are two main types of hedges: short hedges and long hedges.
+
+\bd[Short Hedge]
+A \textbf{short hedge} is a hedge that involves a short position in futures contracts.
+\ed
+
+A short hedge is appropriate when the hedger already owns an asset and expects to sell it at some time in the
+future, or when an asset is not owned right now but will be owned and ready for sale at some time in the future.
+
+\be
+Consider a company that knows it will gain \$10,000 for each 1 cent increase in the price of a commodity over the next
+3 months and lose \$10,000 for each 1 cent decrease in the price during the same period. \v
+
+Assume that it is May 15 today and that the company has just negotiated a contract to sell 1 million units of the
+commodity. It has been agreed that the price that will apply in the contract is the market price on August 15.
+Suppose that on May 15 the spot price is \$50 per unit and the commodity futures price for August delivery is \$49 per
+unit. Because each futures contract is for the delivery of 1,000 units, the company can hedge its exposure by
+shorting (i.e., selling) 1,000 futures contracts ($1,000 \text{Contrancts} \times 1,000 \text{Units} = 1,000,000
+\text{Units})$. \v
+
+Suppose that the spot price on August 15 proves to be \$45 per unit. The company realizes \$45 million for the commodity
+under its sales contract, and $\$49 - \$45 = \$4$ per unit, or \$4 million from the short futures position. The total
+amount realized from both the futures position and the sales contract is therefore approximately \$49 million. \v
+
+For an alternative outcome, suppose that the price of the commodity on August 15 proves to be \$55 per unit. The company
+realizes \$55 million for the commodity under its sales contract, and loses $\$55 - \$49 = \$6$ per unit, or \$6 million
+from the short futures position. The total amount realized from both the futures position and the sales contract is
+therefore approximately \$49 million. \v
+
+It is easy to see that in all cases the company ends up with approximately \$49 million.
+\ee
+
+\bd[Long Hedge]
+A \textbf{long hedge} is a hedge that involves a long position in futures contracts.
+\ed
+
+A long hedge is appropriate when a company knows it will have to purchase a certain asset in the future and wants to
+lock in a price now.
+
+\be
+Suppose that it is now January 15. A company knows it will require 100,000 units of a commodity on May 15 to meet a
+certain contract. The spot price of commodity is \$3.40 per unit, and the futures price for May delivery is \$3.20 per
+unit. The company can hedge its position by taking a long position in four futures contracts of 25,000 units of the
+commodity. The strategy has the effect of locking in the price of the required commodity at close to \$3.20 per pound.
+\v
+
+Suppose that the spot price of the commodity on May 15 proves to be \$3.25 per unit. The company therefore gains
+approximately $100,000 * (\$3.25 - \$3.20) = \$5,000$ on the futures contracts. It pays $100,000 * \$3.25 = \$325,000$
+for the commodity, making the net cost approximately $\$325,000 - \$5,000 = \$320,000$. \v
+
+For an alternative outcome,suppose that the spot price is \$3.05 per unit on May 15. The company then loses
+approximately $100,000 * (\$3.20 - \$3.05) = \$15,000$ on the futures contracts, and pays $100,000 * \$3.05 = \$305,000$
+for the commodity, making the net cost approximately $\$305,000 + \$15,000 = \$320,000$. \v
+
+Again, it is easy to see that in all cases the company ends up paying approximately \$320 million.
+\ee
+
+The arguments in favor of hedging are so obvious that they hardly need to be stated. Most nonfinancial companies are
+in the business of manufacturing, or retailing or wholesaling, or providing a service. They have no particular
+skills or expertise in predicting variables such as interest rates, exchange rates, and commodity prices. It makes
+sense for them to hedge the risks associated with these variables as they become aware of them. The companies can
+then focus on their main activities. By hedging, they avoid unpleasant surprises such as sharp rises in the price of
+a commodity that is being purchased. \v
+
+However, if hedging is not the norm in a certain industry, it may not make sense for one particular company to
+choose to be different from all others. Competitive pressures within the industry may be such that the prices of the
+goods and services produced by the industry fluctuate to reflect raw material costs, interest rates, exchange rates,
+and so on. In other words, all the implications of price changes on a company’s profitability should be taken into
+account in the design of a hedging strategy to protect against the price changes. A company that does not hedge can
+expect its profit margins to be roughly constant. However, a company that does hedge can expect its profit margins
+to fluctuate! It is important to realize thus, that a hedge using futures contracts can result in a decrease or an
+increase in a company’s profits relative to the position it would be in with no hedging. It is important for
+executives within the organization to fully understand the nature of hedging before a hedging program is put in
+place. Ideally, hedging strategies are set by a company’s board of directors and are clearly communicated to both
+the company’s management and the shareholders. \v
+
+In real life, hedging is often not quite as straightforward as in the examples above. One of the main reasons, among
+others, is that the asset whose price is to be hedged may not be exactly the same as the asset underlying the futures
+contract. This is known as ``cross hedging''.
+
+\bd[Cross Hedging]
+\textbf{Cross hedging} is a hedging strategy that involves taking a position in a futures contract that is different
+from the asset being hedged.
+\ed
+
+\be
+Consider, for example, an airline that is concerned about the future price of jet fuel. Because jet fuel futures are
+not actively traded, it might choose to use heating oil futures contracts to hedge its exposure.
+\ee
+
+Let us explore the concept of cross hedging in more detail. We begin by defining the ``hedge ratio''.
+
+\bd[Hedge Ratio]
+The \textbf{hedge ratio} is the ratio of the size of the position taken in futures contracts to the size of the
+exposure.
+\ed
+
+When the asset underlying the futures contract is the same as the asset being hedged, it is natural to use a hedge
+ratio of 1. This is the hedge ratio we have used in the examples considered so far. When cross hedging is used,
+setting the hedge ratio equal to 1 is not always optimal. The hedger should choose a value for the hedge ratio that
+minimizes the variance of the value of the hedged position. We now consider how the hedger can do this.
+
+\section{Options}
+
+\bd[Option]
+An \textbf{option} is a contract that gives the holder the right, but not the obligation, to buy or sell an underlying
+asset at a specified price $K$ at a specified future date $T$.
+\ed
+
+Based on if the holder has the right to buy or sell the underlying asset, we distinguish between ``call'' and ``put''
+options.
+
+\bd[Call Option]
+A \textbf{call option} is an option that gives the holder the right to buy an underlying asset at a specified price $K$
+at a specified future date $T$.
+\ed
+
+\bd[Put Option]
+A \textbf{put option} is an option that gives the holder the right to sell an underlying asset at a specified price $K$
+at a specified future date $T$.
+\ed
+
+It should be emphasized that an option gives the holder the right to do something. The holder does not have to
+exercise this right. This is what distinguishes options from forwards and futures, where the holder is obligated to
+buy or sell the underlying asset.
+
+\bd[Strike Price / Exercise Price]
+The specified price $K$ in an option is called the \textbf{strike price} or \textbf{exercise price}.
+\ed
+
+\bd[Expiration Date / Maturity]
+The specified future date $T$ in an option is called the \textbf{expiration date} or \textbf{maturity}.
+\ed
+
+Options are traded both on exchanges and in the over-the-counter market. Based on if the option can be exercised only
+on the expiration date or at any time up to the expiration date, we distinguish between ``European'' and ``American''
+options.
+
+\bd[European Option]
+A \textbf{European option} is an option that can be exercised only on the expiration date.
+\ed
+
+\bd[American Option]
+An \textbf{American option} is an option that can be exercised at any time up to the expiration date.
+\ed
+
+Note that the terms American and European do not refer to the location of the option or the exchange. Some options
+trading on North American exchanges are European. Most of the options that are traded on exchanges are American.
+European options are generally easier to analyze than American options, and some of the properties of an American
+option are frequently deduced from those of its European counterpart. \v
+
+At this stage we note that there are four types of participants in options markets:
+\bit
+\item Buyers of calls.
+\item Sellers of calls.
+\item Buyers of puts.
+\item Sellers of puts.
+\eit
+
+As with forwards and futures, buyers are referred to as having long positions and sellers are referred to as having
+short positions. Selling an option is also known as ``writing'' the option. \v
+
+Whereas it costs nothing to enter into a forward or futures contract, there is a cost to acquiring an option.

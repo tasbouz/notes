@@ -1,0 +1,376 @@
+%! suppress = EscapeUnderscore
+In this chapter we will introduce another way of inference called ``parametric inference''. In this model the goal
+is given a sample of $n$ realizations of i.i.d r.v's to learn the underlying distribution $P$ of $X$.
+
+\section{Basic Definitions}
+
+\bd[Statistical Model]
+
+Let the observed outcome of a random experiment be a sample $\{ X_{1}, X_{2}, \ldots, X_{n} \}$ of $n$ i.i.d r.v's in
+some measurable space $E \subseteq R$, and $P$ their common distribution. A \textbf{statistical model} associated to
+that statistical experiment is the tuple $(E, (P_{\theta})_{\theta \in \Theta})$ where:
+\bit
+\item $E$: Sample space where $X$ lives.
+\item $P_{\theta}$: Family of probability measures.
+\item $\Theta$: Parameter set (usually $\Theta = R^d$).
+\eit
+\ed
+
+Intuitively, given a set of observed outcomes $\{ X_{1}, X_{2}, \ldots, X_{n} \}$ we will assume that they follow
+some broad family of probability measures $P_{\theta}$ parametrized by some parameter $\theta$ (e.g: a Bernoulli
+distribution Bern(p) where $\theta = p$). Our goal is based on the given sample to specify this parameter and
+subsequently the underlying distribution. \v
+
+Let's see some examples of statistical models.
+\bit
+\item Bernoulli Statistical Model: $( \{ 0,1 \}, \:\:\: (Bern(p))_{ {p} \in [0,1]})$\v
+\item Exponential Statistical Model: $( (0,\infty), \:\:\: (Expo(\lambda))_{\lambda \in [0,\infty)}$\v
+\item Poisson Statistical Model: $( N, \:\:\: (Pois(\lambda))_{ \lambda \in [0,\infty)}$\v
+\item Gaussian Statistical Model: $( R, \:\:\: (N(\mu, \sigma^2))_{\mu \in R, \:\:\: \sigma^2 \in (0,\infty) }$\v
+\item Uniform Statistical Model: $( [0, \infty), \:\:\: (Unif(a,b))_{a \in [0,\infty), \:\:\: n \in [0,\infty)})$ \v
+\eit
+
+\bd[True Parameter]
+We always make the assumption that $\exists \: \theta^{*} \in \Theta : X \sim P_{\theta}$. We call this specific
+$\theta^{*}$ the \textbf{true parameter}.
+\ed
+
+\bd[Estimator]
+An \textbf{estimator} $\hat{\theta}_{n}$ is a function that maps the sample space to a set of sample estimates:
+\bse
+\hat{\theta}_{n} = \hat{\theta}_{n}(X_{1}, X_{2}, \ldots, X_{n})
+\ese
+\ed
+
+Notice that since $\{ X_{1}, X_{2}, \ldots, X_{n} \}$ are r.v's subsequently $\hat{\theta}_{n}$ is also a r.v since
+it is a function of r.v's. The true parameter on the other hand is a deterministic real number. \v
+
+From the law of large numbers, we get that for the estimator holds:
+\bse
+\lim_{n\to\infty} \hat{\theta}_{n} = \theta
+\ese
+
+Given the true parameter and the estimator, we can define some measures of error as follows.
+
+\bd[Error]
+Given a true parameter $\theta$ and an estimator $\hat{\theta}_{n}$, we define the \textbf{error} $e$ of the estimator
+$\hat{\theta}_{n}$ as:
+\bse
+e = \hat{\theta}_{n} - \theta
+\ese
+\ed
+
+\bd[Mean Squared Error]
+Given a true parameter $\theta$ and an estimator $\hat{\theta}_{n}$, we define the \textbf{mean squared error} (MSE)
+of the estimator $\hat{\theta}_{n}$ as:
+\bse
+MSE = E[(\hat{\theta}_{n} - \theta)^2]
+\ese
+\ed
+
+\bd[Efficient Estimator]
+An estimator $\hat{\theta}_{n}$ is called \textbf{efficient} if MSE is sufficient small.
+\ed
+
+\bd[Consistent Estimator]
+An estimator $\hat{\theta}_{n}$ is called \textbf{consistent} if:
+\bse
+\lim_{n \to \infty} MSE = 0
+\ese
+\ed
+
+\bd[Sampling Deviation]
+Given a true parameter $\theta$ and an estimator $\hat{\theta}_{n}$, we define the \textbf{sampling deviation} $d$ of the
+estimator $\hat{\theta}_{n}$ as:
+\bse
+d = \hat{\theta}_{n} - E[\hat{\theta}_{n}]
+\ese
+\ed
+
+\bd[Bias]
+Given a true parameter $\theta$ and an estimator $\hat{\theta}_{n}$, we define the \textbf{bias} $B$ of the estimator
+$\hat{\theta}_{n}$ as:
+\bse
+B = E[\hat{\theta}_{n} - \theta] = E[\hat{\theta}_{n}] - E[\theta] = E[\hat{\theta}_{n}] - \theta
+\ese
+\ed
+
+\bd[Unbiased Estimator]
+An estimator $\hat{\theta}_{n}$ is called \textbf{unbiased} if $B=0$.
+\ed
+
+\bd[Variance]
+Given a true parameter $\theta$ and an estimator $\hat{\theta}_{n}$, we define the \textbf{variance} Var of the estimator
+$\hat{\theta}_{n}$ as:
+\bse
+Var = E[(\hat{\theta}_{n} - E[\hat{\theta}_{n}])^2]
+\ese
+\ed
+
+By manipulating MSE we can show:
+\begin{align*}
+MSE &= E[(\hat{\theta}_{n} - \theta)^2] \\
+&= E[\hat{\theta}_{n}^2 - 2\hat{\theta}_{n}\theta + \theta^2] \\
+&= E[\hat{\theta}_{n}^2] - E[2 \hat{\theta}_{n} \theta] + E[\theta^2] \\
+&= E[\hat{\theta}_{n}^2] - 2 \theta E[\hat{\theta}_{n}] + \theta^2 \\
+&= E[\hat{\theta}_{n}^2] - 2 \theta E[\hat{\theta}_{n}] + \theta^2 + E^2[\hat{\theta}_{n}] - E^2[\hat{\theta}_{n}] \\
+&= (E[\hat{\theta}_{n}^2] - E^2[\hat{\theta}_{n}]) + (E^2[\hat{\theta}_{n}] - 2 \theta E[\hat{\theta}_{n}] + \theta^2) \\
+&= (E[\hat{\theta}_{n}^2] - E^2[\hat{\theta}_{n}]) + (E[\hat{\theta}_{n}] - \theta)^2 \\
+&= Var + B^2
+\end{align*}
+
+Hence, we showed that the MSE of an estimator can actually be split into the variance and the bias of the estimator.
+
+\section{Maximum Likelihood}
+
+As we explained in the previous section our goal in parametric inference is given a statistical model $(E,
+P_{\theta})$ associated with a sample of i.i.d r.v's $\{ X_{1}, X_{2}, \ldots, X_{n} \}$, by making the assumption
+that there always exists a true parameter $\theta^{*}$ such that $X \sim P_{\theta^{*}}$, to find this true parameter. \v
+
+Our initial step is to define an estimator $\hat{\theta}_{n}$, that subsequently defines a probability distribution
+$P_{\hat{\theta}_{n}}$. Hence, now we have two quantities: the probability distribution we actually want to find
+$P_{\theta^{*}}$ and the probability distribution that we begin with $P_{\hat{\theta}_{n}}$. Since the difference of
+these two is what we want to minimize, it makes sense to define the absolute distance between them as follows.
+
+\bd[Total Variation Distance]
+The \textbf{total variation distance} TV of two probability distributions $P_{\theta}$ and $P_{\theta^{\prime}}$ is
+defined as the largest possible difference between the probabilities that the two probability distributions can
+assign to the same event:
+\bse
+TV(P_{\theta}, P_{\theta}^{\prime}) = \max_{A \subseteq E} |P_{\theta}(A) - P_{\theta}^{\prime}(A)|
+\ese
+\ed
+
+The total variation distance satisfies the following properties:
+\bit
+\item $TV(P_{\theta}, P_{\theta}^{\prime}) = TV(P_{\theta}^{\prime}, P_{\theta})$.
+\item $TV(P_{\theta}, P_{\theta}^{\prime}) \geq 0$.
+\item $TV(P_{\theta}, P_{\theta}^{\prime}) =0 \Rightarrow P_{\theta} = P_{\theta}^{\prime}$.
+\item $TV(P_{\theta}, P_{\theta}^{\prime}) \leq TV(P_{\theta}, P_{\theta}^{\prime\prime}) + TV(P_{\theta^{\prime\prime}}, P_{\theta}^{\prime})$.
+\eit
+
+These properties imply that total variation distance is indeed a distance measure between probability distributions
+(Hence, the name).
+
+\fig{totalvariationdistance}{0.4}
+
+Due to the ``max'' term that appears in total variation distance it's very hard to manipulate it. Fortunately,
+there is an alternative way of describing the same concept. As we see in the figure above, since total variation
+distance is just the absolute difference of two probabilities it can also be expressed as the two times the area
+under the curve that it is not common in the two distributions. (The white area in the graph) Moreover, by defining
+the area $A^*$ as the area in which $P_{\theta} \geq P_{\theta}^{\prime}$, we can get rid of the max in total
+variation distance as:
+
+{\setlength{\jot}{10pt}
+\begin{align*}
+TV(P_{\theta}, P_{\theta}^{\prime}) & = \max_{A \subseteq E} |P_{\theta} (A) - P_{\theta}^{\prime}(A)| \\
+&= |P_{\theta}(A^*) - P_{\theta}^{\prime}(A^*)| \\
+&= P_{\theta}(A^*) - P_{\theta}^{\prime}(A^*) \\
+&= \int_{A^*} (p_{\theta}(x) - p_{\theta}^{\prime}(x)) dx \\
+&= \frac{1}{2} \int_{A^*} (p_{\theta}(x) - p_{\theta}^{\prime}(x)) dx + \frac{1}{2} \int_{(A^*)^C}
+(p_{\theta}^{\prime}(x) - p_{\theta}(x)) dx \\
+&= \frac{1}{2} \int_{E} |p_{\theta}(x) - p_{\theta}^{\prime}(x)| dx
+\end{align*}}
+
+Hence, we showed that:
+\bse
+TV(P_{\theta}, P_{\theta}^{\prime}) = \frac{1}{2} \int_{E} |p_{\theta}(x) - p_{\theta}^{\prime}(x)| dx
+\ese
+
+and similarly for a discrete distribution:
+\bse
+TV(P_{\theta}, P_{\theta}^{\prime}) = \frac{1}{2} \sum_{x \in E} |p_{\theta}(x) - p_{\theta}^{\prime}(x)|
+\ese
+
+Coming back to our case if we set $\theta = \hat{\theta}$ to be our estimator and $\theta^{\prime} = \theta^{*}$ to
+be our true parameter, we have an equation for the total variation distance that includes something that we can work
+with (i.e.\ PDFs). And since, as we argued, total variation distance is just the distance between the two
+probabilities, our goal is to minimize it as much as possible. That way the distance between our estimator
+probability and true probability will be as low as it can be, hence, very the estimation will be very close to the
+real distribution. \v
+
+The problem with total variation distance as it is, is that it carries an absolute value which makes it impossible to
+minimize it. For this reason we are going to introduce another quantity.
+
+\bd[Kullback - Leibler Divergence]
+The \textbf{Kullback - Leibler divergence} KL of two probability distributions $P_{\theta}$ and $P_{\theta^{\prime}}$
+is defined in terms of their PDFs as follows:
+\bse
+KL(P_{\theta}, P_{\theta}^{\prime}) = \int_{E} p_{\theta}(x) \ln \frac{p_{\theta}}{p_{\theta}^{\prime}(x)} dx
+\ese
+\ed
+
+The Kullback - Leibler divergence satisfies the following properties:
+\bit
+\item $KL(P_{\theta}, P_{\theta}^{\prime}) \neq KL(P_{\theta}^{\prime}, P_{\theta})$.
+\item $KL(P_{\theta}, P_{\theta}^{\prime}) \geq 0$.
+\item $KL(P_{\theta}, P_{\theta}^{\prime}) =0 \Rightarrow P_{\theta} = P_{\theta}^{\prime}$.
+\item $KL(P_{\theta}, P_{\theta}^{\prime}) \nleq KL(P_{\theta}, P_{\theta}^{\prime\prime}) +
+KL(P_{\theta^{\prime\prime}}, P_{\theta}^{\prime})$.
+\eit
+
+These properties imply that Kullback - Leibler divergence is not a distance measure between probability distributions
+(Hence, the name divergence). \v
+
+By manipulating the Kullback - Leibler divergence we get:
+\bse
+KL(P_{\theta}, P_{\theta}^{\prime}) = \int_{E} p_{\theta}(x) \ln \frac{p_{\theta}}{p_{\theta}^{\prime}(x)} dx =
+E_{\theta} [\ln \frac{p_{\theta}}{p_{\theta}^{\prime}}] = E_{\theta} [\ln p_{\theta} - \ln{p_{\theta}^{\prime}}] =
+E_{\theta} [\ln p_{\theta}] - E_{\theta}[\ln{p_{\theta}^{\prime}}]
+\ese
+
+\v
+
+Coming back to our case if we set $\theta = \theta^{*}$ to be our estimator and $\theta^{\prime} = \hat{\theta}$ to
+be our true parameter, then by using the manipulated the Kullback - Leibler divergence we have:
+\bse
+KL(P_{\theta^{*}}, P_{\hat{\theta}}) = E_{\theta^{*}} [\ln p_{\theta^{*}}] - E_{\theta^{*}}[\ln {p_{\hat{\theta}}}] =
+c - E_{\theta^{*}}[\ln {p_{\hat{\theta}}}]
+\ese
+
+\v
+
+As we said, Kullback - Leibler divergence is not a distance measure however it still is a good quantity to minimize
+in order to find a good estimation for the true probability distribution. Hence, the estimator is simply the argument
+that minimizes Kullback - Leibler divergence: \v
+
+\bse
+\hat{\theta} = \argmin_{\theta} \Big( KL(P_{\theta^{*}}, P_{\theta}) \Big) =
+\argmin_{\theta} \Big( c - E_{\theta^{*}}[\ln {p_{\theta}}] \Big) =
+\argmin_{\theta} ( c ) - \argmin_{\theta} \Big( E_{\theta^{*}}[\ln {p_{\theta}}] \Big)
+\ese
+
+\v
+
+The term $\argmin(c)$ is just a constant that does not depend on $\theta$. Same $\theta$ that minimizes $f(\theta)$
+minimizes also $c - f(\theta)$. So we can just drop it from the equation and get:
+\bse
+\hat{\theta} = - \argmin_{\theta} \Big( E_{\theta^{*}}[\ln {p_{\theta}}] \Big)
+\ese
+
+As we discussed previously we can approximate the expected value with sample mean $E_{\theta^{*}} \to \frac{1}{n}
+\sum_{i}$:
+\begingroup
+\allowdisplaybreaks
+\begin{align*}
+\hat{\theta} &= - \argmin_{\theta} \Big( \frac{1}{n} \sum_{i=1}^{n} \ln {p_{\theta}}(x_{i}) \Big) \\
+&= - \argmin_{\theta} \Big( \sum_{i=1}^{n} \ln {p_{\theta}}(x_{i}) \Big) \\
+&= \argmax_{\theta} \Big( \sum_{i=1}^{n} \ln {p_{\theta}}(x_{i}) \Big) \\
+&= \argmax_{\theta} \Big( \ln \prod_{i=1}^{n} {p_{\theta}}(x_{i}) \Big) \\
+&= \argmax_{\theta} \Big( \prod_{i=1}^{n} {p_{\theta}}(x_{i}) \Big)
+\end{align*}
+\endgroup
+
+Based on this last two equation we define the concept of ``likelihood'' as follows.
+
+\bd[Likelihood]
+Let X be a random variable following a probability distribution with probability density function $f_{\theta}(x)$
+depending on a parameter $\theta$. Then the \textbf{likelihood} $\mathcal {L} (\theta \mid x)$ is formed from the
+joint probability of a sample of data of $X$:
+\bse
+\mathcal {L} (\theta \mid x) = \prod_{i=1}^{n} {f_{\theta}}(x_{i})
+\ese
+\ed
+
+More often than not, it is more handy to use the logarithm of the likelihood which we define as the
+``log-likelihood''.
+
+\bd[Log-likelihood]
+The \textbf{log-likelihood} $l(\theta \mid x)$ is simply the logarithm of the likelihood:
+\bse
+l(\theta \mid x) = \ln \mathcal {L} (\theta \mid x)
+\ese
+\ed
+
+So we can find the estimator $\hat{\theta}$ by maximizing the likelihood or the log-likelihood, i.e\ :
+\bse
+\frac{d \mathcal {L}}{d\theta} \Big|_{\theta=0} = 0 \qquad \text{or} \qquad
+\frac{dl}{d\theta} \Big|_{\theta=0}
+\ese
+
+The solution of either of these equations gives back the best estimator. This process is called ``the principle of
+maximum likelihood'' or simply ``the maximum likelihood method''.
+
+\subsection{Application: Maximum Likelihood In Bernoulli Distribution}
+
+Let us have a collection of i.i.d r.v's $\{ X_{1}, X_{2}, \ldots, X_{n} \}$ following a Bernoulli distribution Bern
+(p). Our goal is based on the sample $\{ X_{1}, X_{2}, \ldots, X_{n} \}$ to estimate the value of the parameter $p$. \v
+
+We start by forming the likelihood:
+\bse
+\mathcal {L} = \prod_{i=1}^{n} P(x_{i}) = \prod_{i=1}^{n} p^{x_{i}} (1-p)^{1-x_{i}}
+\ese
+
+Subsequently, for the log-likelihood:
+\bse
+l = \ln \mathcal {L} = \ln \prod_{i=1}^{n} p^{x_{i}} (1-p)^{1-x_{i}}
+\ese
+
+Now we can manipulate the log-likelihood to obtain a more handy expression:
+\begingroup
+\allowdisplaybreaks
+{\setlength{\jot}{10pt}
+\begin{align*}
+l &= \ln \prod_{i=1}^{n} p^{x_{i}} (1-p)^{1-x_{i}} \\
+&= \sum_{i=1}^{n} \Big[ \ln ( p^{x_{i}} (1-p)^{1-x_{i}}) \Big] \\
+&= \sum_{i=1}^{n} \Big[ \ln p^{x_{i}} + \ln (1-p)^{1-x_{i}} \Big] \\
+&= \sum_{i=1}^{n} \Big[ x_{i} \cdot \ln p + (1-x_{i}) \cdot \ln(1-p) \Big] \\
+&= \sum_{i=1}^{n} \Big[ x_{i} \cdot \ln p \Big] + \sum_{i=1}^{n} \Big[ (1-x_{i}) \cdot \ln (1-p) \Big] \\
+&= \ln p \cdot \sum_{i=1}^{n} \Big[ x_{i} \Big] + \ln (1-p) \cdot \sum_{i=1}^{n} \Big[ (1-x_{i}) \Big] \\
+&= n \cdot \ln p \cdot \sum_{i=1}^{n} \Big[ \frac{1}{n} x_{i} \Big] +
+n \cdot \ln (1-p) \cdot \sum_{i=1}^{n} \Big[ \frac{1}{n} (1-x_{i}) \Big] \\
+&= n \cdot \ln p \cdot \bar{x} + n \cdot \ln (1-p) \cdot (1 - \bar{x}) \\
+&= n (\bar{x} \ln p +(1 - \bar{x}) \ln (1-p))
+\end{align*}}
+\endgroup
+
+For the derivative of the log-likelihood we obtain:
+\bse
+\frac{dl}{dp} = \frac{d}{dp} \Big( n (\bar{x} \ln p + (1 - \bar{x}) \ln(1-p)) \Big) =
+n \Big( \frac{\bar{x}}{p} - \frac{1 - \bar{x}}{1-p} \Big) =
+\ldots = n(\bar{x} - p)
+\ese
+
+Finally, from principle of maximum likelihood, we can obtain the best estimator by setting the derivative to zero:
+\bse
+\frac{dl}{dp} = 0 \Rightarrow p = \bar{x}
+\ese
+
+Hence, we proved that the estimator that maximizes the likelihood for a Bernoulli distribution is actually the
+average of the sample. In a similar way we can show the same for all the distributions we have introduced. \v
+
+Now let's compute some of the characteristics of this estimator. \v
+
+For the error of the estimator:
+\bse
+e = \hat{\theta}_{n} - \theta = \bar{x} - p
+\ese
+
+For the sampling deviation:
+\bse
+d = \hat{\theta}_{n} - E[\hat{\theta}_{n}] = \bar{x} - E[\bar{x}] =
+\bar{x} - E \Big[ \frac{1}{n} \sum_{i=1}^{n}x_{i} \Big] = \bar{x} - \frac{1}{n} \sum_{i=1}^{n} E[x_{i}] =
+\bar{x} - \frac{1}{n} \sum_{i=1}^{n} p =
+\bar{x} - \frac{1}{n} n p = \bar{x} - p
+\ese
+
+For the bias:
+\bse
+E[\hat{\theta}_{n}] - \theta = E[\bar{x}] - p = p - p = 0
+\ese
+
+Hence, the estimator $\bar{x}$ is unbiased. \v
+
+For the variance:
+\bse
+Var(\theta) = Var(\bar{x}) = Var(\frac{1}{n} \sum_{i=1}^{n} x_{i}) = \frac{1}{n^2} \sum_{i=1}^{n} Var(x_{i}) =
+\frac{1}{n^2} \sum_{i=1}^{n} p(1-p) = \frac{p(1-p)}{n}
+\ese
+
+For the mean squared error:
+\bse
+MSE = Var + B^2 = \frac{p(1-p)}{n}+ 0^2 = \frac{p(1-p)}{n}
+\ese
+
+Finally, observe that since $MSE \propto \frac{1}{n}$ we have that as $n \to \infty$, $MSE \to 0$, so the estimator
+$\bar{x}$ is consistent.

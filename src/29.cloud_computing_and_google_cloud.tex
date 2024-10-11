@@ -1,0 +1,2240 @@
+%! suppress = EscapeUnderscore
+%! suppress = Ellipsis
+%! suppress = Quote
+%! suppress = EscapeHashOutsideCommand
+\section{Cloud Computing}
+
+\bd[Cloud Computing]
+\textbf{Cloud computing} is a model for enabling ubiquitous, convenient, on-demand network access to a shared pool of
+configurable computing resources that can be rapidly provisioned and released with minimal management effort or
+service provider interaction.
+\ed
+
+In simple words, cloud computing is the on-demand availability of computer system resources, especially data storage
+and computing power, without direct active management by the user.
+
+\be Some examples of the aforementioned resources are networks, servers, storage, applications, services and many
+more.
+\ee
+
+Large clouds often have functions distributed over multiple locations, each of which is a data center. Cloud
+computing relies on sharing of resources to achieve coherence and typically uses a ``pay as you go'' model, which can
+help in reducing capital expenses but may also lead to unexpected operating expenses for users. Cloud computing
+allows companies to avoid or minimize upfront IT infrastructure costs, and enterprises to get their applications up
+and running faster, with improved manageability and less maintenance. \v
+
+Cloud computing is composed of five essential characteristics:
+\bit
+\item \textbf{On-demand Self-Service}: A consumer can unilaterally provision computing capabilities as needed,
+automatically without requiring human interaction with each service provider.
+\item \textbf{Broad Network Access}: Capabilities are available over the network and accessed through standard
+mechanisms that promote use by heterogeneous thin or thick client platforms
+\item \textbf{Resource Pooling}: The provider's computing resources are pooled to serve multiple consumers using a
+multi-tenant model, with different physical and virtual resources dynamically assigned and reassigned according to
+consumer demand. There is a sense of location independence in that the customer generally has no control or knowledge
+over the exact location of the provided resources but may be able to specify location at a higher level of abstraction.
+\item \textbf{Rapid Elasticity}: Capabilities can be elastically provisioned and released, in some cases automatically,
+to scale rapidly outward and inward commensurate with demand. To the consumer, the capabilities available for
+provisioning often appear to be unlimited and can be appropriated in any quantity at any time.
+\item \textbf{Measured Service}: Cloud systems automatically control and optimize resource use by leveraging a metering
+capability at some level of abstraction appropriate to the type of service. Resource usage can be monitored, controlled,
+and reported, providing transparency for both the provider and consumer of the utilized service.
+\eit
+
+The three most used ones cloud computing providers are:
+\bit
+\item Google Cloud by Google.
+
+\fig{gcp}{0.06}
+
+\item Amazon Web Services (AWS) by Amazon.
+
+\fig{aws}{0.03}
+
+\item Azure by Microsoft.
+
+\fig{azure}{0.08}
+
+\eit
+
+\subsection{Deployment Models}
+
+The deployment model identifies the specific type of cloud environment based on ownership, scale, and access, as well
+as the cloud's nature and purpose. The location of the servers you're utilizing and who controls them are defined by
+a cloud deployment model. It specifies how your cloud infrastructure will look, what you can change, and whether you
+will be given services or will have to create everything yourself. Relationships between the infrastructure and your
+users are also defined by cloud deployment types. \v
+
+Cloud computing comes in four different deployment models, let's see them.
+
+\bd[Public Cloud]
+
+\textbf{Public cloud} is the deployment model of cloud infrastructure which is provisioned for open use by the
+general public. It may be owned, managed, and operated by a business, academic, or government organization, or some
+combination of them. It exists on the premises of the cloud provider.
+\ed
+
+\fig{gcp1}{0.2}
+
+In simple words, the public cloud model is defined as computing services offered by third-party providers over the
+public internet making them available to anyone who wants to use or purchase them. This means that all 3 cloud computing
+providers we just saw fall under this category.
+
+\bd[Multi Cloud]
+
+\textbf{Multi cloud} is the deployment model of cloud infrastructure which is a composition of two or more cloud
+computing vendors, giving organizations more flexibility to optimize performance, control costs, and leverage the
+best cloud technologies available.
+\ed
+
+\fig{gcp2}{0.4}
+
+Is simple words, multi cloud deployment is the case where public clouds are also connected and used together within a
+single environment. A multi cloud implementation can be extremely effective if architected in the right way for
+disaster recovery where the architecture would be replicated across the different public clouds in case one were to
+go down another could pick up the slack. \v
+
+What drives many cases of a multi cloud deployment is to prevent the so called ``vendor lock'', where you
+are locked into a particular cloud provider's infrastructure and unable to move due to the vendor's specific feature
+set. The main downfall to this type of architecture is that the infrastructure of the public cloud that you're using
+cannot be fully utilized as each cloud vendor has their own proprietary resources that will only work in their
+specific infrastructure. In other words in order to replicate the environment it needs to be the same within each
+cloud, which removes each cloud's unique features which is what makes them so special and the resources so compelling.
+
+\bd[Private Cloud]
+\textbf{Private cloud} is the deployment model of cloud infrastructure which is provisioned for exclusive use by a
+single organization comprising multiple consumers (business units). It may be owned, managed, and operated by the
+organization, a third party, or some combination of them, and it may exist on or off premises.
+\ed
+
+\fig{gcp3}{0.3}
+
+In simple words, private cloud refers to the architecture that exists on premise and restricted to the business
+itself with no public access, yet it still carries the same five essential characteristics. Each of the major cloud
+providers have their own flavor of private cloud that can be implemented on site. Google Cloud has ``Anthos'', AWS
+has ``AWS Outposts'' and Azure has ``Azure Stack''. All of them show the same characteristic and leverage similar
+technologies that can be found in the vendor's public cloud, yet can be installed on your own on-premise infrastructure.
+
+\bd[Hybrid Cloud]
+\textbf{Hybrid cloud} is the deployment model of cloud infrastructure which is a composition of two or more distinct
+cloud infrastructures (public, multi, or private) that remain unique entities, but are bound together by standardized
+or proprietary technology that enables data and application portability.
+\ed
+
+\fig{gcp4}{0.18}
+
+In simple words, hybrid cloud is the situation where one combines the use of private cloud with public cloud as a
+single system. \v
+
+Given the complexity of the 4 models, sometimes finding the right strategy can be tricky depending on the scenario.
+
+\subsection{Service Models}
+
+Application are deployed in an infrastructure stack which is a collection of needed infrastructure that the application
+needs to run on. It is layered and each layer builds on top of the one previous to it.
+
+\fig{gcp5}{0.38}
+
+In the ``pre-cloud'' era all the components were managed by the customer: the purchasing of the data center and all
+the network and storage involved, the physical servers, the virtualization, the licensing for the operating systems,
+the staff that's needed to put it all together, cabling, physical security and many more. While the advantages to
+this is that it allowed for major flexibility, in order for the organization to put this together by themselves they
+were looking at huge costs. \v
+
+Just before cloud became big in the market, there was a model where the data center was hosted for you so a vendor
+would come along, and they would take care of everything in regard to the data center.
+
+\fig{gcp6}{0.38}
+
+In the cloud computing era providers offer their services according to different models usually called ``service
+models'' and most commonly referred to as ``XaaS''. Although there are many XaaS service models, the three standard
+models in increasing abstraction are Infrastructure as a Service (IaaS), Container as a Service (CaaS), Platform
+as a Service (PaaS), and Software as a Service (SaaS).
+
+\bd[Infrastructure As A Service (IaaS)]
+\textbf{Infrastucture As A Service (IaaS)} is a cloud computing service model by means of which computing
+resources are supplied by a cloud services provider. The IaaS vendor emulates the computer hardware by providing the
+storage, network, servers and virtualization.
+\ed
+
+\fig{gcp7}{0.38}
+
+This service enable users to free themselves from maintaining an on-premise data center. The IaaS provider is hosting
+these resources in either a public cloud, private cloud, or hybrid cloud, It provides the customer with high-level
+APIs used to dereference various low-level details of underlying network infrastructure like backup, data
+partitioning, scaling, security, physical computing resources, etc.
+
+\bd[Container As A Service (CaaS)]
+\textbf{Container As A Service (CaaS)} is a cloud-based service that allows software developers and IT departments to
+upload, organize, run, scale, and manage containers by using container-based virtualization.
+\ed
+
+\fig{gcp8}{0.38}
+
+CaaS is essentially automated hosting and deployment of containerized software packages and it enables development
+teams to think at the higher order container level instead of mucking around with lower infrastructure management.
+
+\bd[Platform As A Service (PaaS)]
+\textbf{Platform As A Service (PaaS)} is a category of cloud computing services that allows customers to
+provision, instantiate, run, and manage a modular bundle comprising a computing platform and one or more applications,
+without the complexity of building and maintaining the infrastructure typically associated with developing and
+launching the application(s); and to allow developers to create, develop, and package such software bundles.
+\ed
+
+\fig{gcp9}{0.38}
+
+\bd[Software As A Service (SaaS)]
+\textbf{Software As A Service (SaaS)} is a software licensing and delivery model in which software is licensed on
+a subscription basis and is centrally hosted. SaaS is also known as ``on-demand software'' and ``Web-based'' or
+``Web-hosted'' software.
+\ed
+
+\fig{gcp10}{0.38}
+
+SaaS apps are typically accessed by users of a web browser and became common delivery models for many business
+applications. SaaS has been incorporated into the strategy of nearly all enterprise software companies.
+
+\subsection{Geography \& Regions}
+
+\bd[Data Centers]
+\textbf{Data centers} are the large data center facilities vendors use to provide their services, which combine large
+drives, computer nodes organized in aisles of racks, internal and external networking, environmental controls (mainly
+cooling and humidification control), and operations software (especially as concerns load balancing and fault tolerance).
+\ed
+
+\bd[Zone]
+A \textbf{zone} is the smallest entity in the global infrastructure and it is a deployment area within a region
+considered as a single failure domain within a region.
+\ed
+
+To deploy fault-tolerant applications with high availability and help protect against unexpected failures, deploy
+your applications across multiple zones in a region. As a best practice resources should always be deployed in zones
+that are closest to the users for optimal latency.
+
+\bd[Region]
+\textbf{Regions} are independent geographic areas that consist of zones.
+\ed
+
+A region can be considered as a collection of zones. The intercommunication between zones within a region is under five
+milliseconds so rest assured that data is always traveling at optimal speeds. \v
+
+Zones and regions are logical abstractions of underlying physical resources provided in one or more physical data
+centers. These data centers may be owned by the vendors and listed on the vendor's locations page, or they may be
+leased from third-party data center providers.
+
+\bd[Multi-Region]
+\textbf{Multi-regions} are large geographic areas that contain two or more regions and this allows services to maximize
+redundancy and distribution within and across regions.
+\ed
+
+\fig{gcp11}{0.35}
+
+Up to this point we discussed cloud computing in general. From now on, and for the remaining of this chapter, we will
+be focusing specifically on Google Cloud.
+
+\bd[Google Cloud]
+\textbf{Google Cloud} offered by Google, is a suite of cloud computing services that runs on the same infrastructure 
+that Google uses internally for its end-user products. Alongside a set of management tools, it provides a series of 
+modular cloud services including computing, data storage, data analytics and machine learning.
+\ed
+
+\section{Resources}
+
+Let's begin by defining the concept of ``resources''.
+
+\bd[Resources]
+\textbf{Resources} is a very abstract term that refers to the all the individual components of Google Cloud that are
+used to process the workload of an end-user.
+\ed
+
+Google Cloud resources are organized hierarchically using a parent-child relationship. All resources except for the
+highest resource in a hierarchy have exactly one parent. At the lowest level, service resources are the fundamental
+components that make up all Google Cloud services. \v
+
+This hierarchy is designed to map an organization's operational structure to Google Cloud and to manage access 
+control and permissions for groups of related resources, giving organizations better management of permissions and 
+access control. \v
+
+Building the structure from the top down we start off with the ``organization''.
+
+\bd[Organization]
+The \textbf{organization} resource represents an organization (company) and is the root node in the Google Cloud
+resource hierarchy when present.
+\ed
+
+The organization resource is the hierarchical ancestor of folder and project resources. \v
+
+Google Cloud users are not required to have an organization resource, but some features of Resource Manager will not
+be usable without one. The organization resource is closely associated with a Google Workspace or Cloud Identity
+account. When a user with a Google Workspace or Cloud Identity account creates a Google Cloud project resource, an
+organization resource is automatically provisioned for them. \v
+
+An organization resource is required as a prerequisite to use folders.
+
+\bd[Folder]
+\textbf{Folder} resource is an additional, optional grouping mechanism after organization resource acting as an
+isolation boundary between each project.
+\ed
+
+Folder resources optionally provide an additional grouping mechanism and isolation boundaries between projects. They
+can be seen as sub-organizations within the organization resource. Folder resources can be used to model different
+legal entities, departments, and teams within a company.
+
+\be
+For example, a first level of folder resources could be used to represent the main departments in your organization.
+\ee
+
+Since folder resources can contain project resources and other folders, each folder resource could then include other
+sub-folders to represent different teams. Each team folder could contain additional sub-folders to represent
+different applications. A folder can contain multiple subfolders but a folder can have exactly one parent. \v
+
+The project resource is the base-level organizing entity. Organization and folder resources may contain multiple
+projects.
+
+\bd[Project]
+A \textbf{project} resource is required to use Google Cloud, and forms the basis for creating, enabling, and using
+all Google Cloud services, managing APIs, enabling billing, managing permissions, and many more.
+\ed
+
+All project resources consist of the following:
+\bit
+\item A project resource ID, which is a unique identifier for the project resource.
+\item A read-only project resource number, which is automatically assigned when you create the project.
+\item One mutable display name.
+\item The lifecycle state of the project resource.
+\item A collection of labels that can be used for filtering projects.
+\item The time when the project resource was created.
+\eit
+
+Here is a diagram summarizing all the resources we introduced.
+
+\fig{gcp12}{0.63}
+
+\section{Billing}
+
+\bd[Billing Account]
+\textbf{Billing account} is a Google Cloud level resource used to define who pays for a given set of Google Cloud
+resources and APIs.
+\ed
+
+Billing account is a cloud level resource, managed in the cloud console. It defines who pays for a given set of
+Google Cloud resources. A cloud billing account can be linked to one or more projects. It also has billing specific
+roles and permissions to control accessing and modifying billing related functions that are established by identity
+and access management (IAM) roles that we will see in a while. \v
+
+A billing account tracks all of the costs incurred by Google Cloud usage and it is connected to a Google payments
+profile which includes a payment instrument to which costs are charged.
+
+\bd[Payment Profile]
+\textbf{Payment profile} is a Google level resource used to store information about the individual or organization
+that is legally responsible for costs generated by all Google services (not just for Google Cloud), and payment methods.
+\ed
+
+The payments profile contains contact information, payment methods and settings, and a unique numeric ID which
+appears on account invoices and other documents. It connects to all of your google services such as Google Cloud,
+google ads, and many more. It stores information like your name address and who is responsible for the profile. It
+stores your various payment methods like credit cards debit cards and bank accounts. The payments profile functions
+as a single pane of glass where you can view invoices payment history and so on. It also controls who can view and
+receive invoices for your various cloud billing accounts and products.
+
+\fig{gcp13}{0.29}
+
+Here is a figure summarizing the differences between a billing account and a payment profile.
+
+\fig{gcp14}{0.52}
+
+\section{Identity \& Access Management (IAM)}
+
+Identity \& Access Management (IAM), is a very important concept in Google Cloud and for this reason we need to dive
+into it and understand it well. It contains a lot of layers and a lot of definitions, so we will see everything step
+by step.
+
+\subsection{Principal}
+
+\bd[Principal]
+A \textbf{principal}\footnote{In the past, principals used to to be called members. Some APIs
+still use this term, however in this notes we will stick with the new terminology of principals.} can be a Google
+account (for end users), a service account (for applications and compute workloads), a Google group, or a Google
+workspace account or Cloud identity domain that can access a resource.
+\ed
+
+Each principal has its own identifier, which is typically an email address. Principals can be of many different types.
+In what follows we will take a close look to each one of them.
+
+\subsubsection*{Google Account}
+
+\bd[Google Account]
+A \textbf{Google account} is a user account that is required for access, authentication and authorization to certain
+online Google services. It is also often used as single sign on for third party services.
+\ed
+
+In simple words, a Google account is the usual account in Google that common users create. In the context of Google
+Cloud it represents a developer, an administrator, or any other person who interacts with Google Cloud. \v
+
+Any email address that's associated with a Google account can be an identity, including ``gmail.com'' or other domains.
+New users can sign up for a Google account by going to the Google account signup page.
+
+\subsubsection*{Service Account}
+
+\bd[Service Account]
+A \textbf{service account} is a special type of Google account used for an application or compute workload instead of
+an individual end user.
+\ed
+
+In simple words, a service account is a special type of Google account used by an application rather than a person,
+intended to represent a non-human user that needs to authenticate and be authorized to Google Cloud resources. \v
+
+Applications use service accounts to make authorized API calls by authenticating as the service account itself. When
+you run an application that's hosted on Google Cloud, the code runs as the account you specify by using the service
+account to authenticate between the application and Google Cloud services so that the users aren't directly involved.
+As with Google account, similarly a service account is identified by its email address, which is unique to the
+account. \v
+
+Each service account is located in a project. By default, you can create up to 100 service accounts in a project. If
+you need to create additional service accounts, request a quota increase. So in essence, you can create as many
+service accounts as needed to represent the different logical components of your application. After you create a
+service account, you cannot move it to a different project. \v
+
+There are a two ways to organize your service accounts into projects. The first way is to create service accounts and
+resources in the same project. This approach makes it easy to get started with service accounts. However, it can be
+difficult to keep track of your service accounts when they are spread across many projects. The second way is to use
+centralize service accounts in separate projects. This approach puts all of the service accounts for your
+organization in a small number of projects, which can make the service accounts easier to manage. However, it
+requires extra setup if you attach service accounts to resources in other projects, which allows those resources to
+use the service account as their identity. \v
+
+There are 3 different types of service accounts, and we will see them all now.
+
+\bd[User-Managed Service Accounts]
+\textbf{User-managed service accounts} are service accounts created and managed by users.
+\ed
+
+You can create user-managed service accounts in your project using the IAM API, the Google Cloud console, or the
+Google Cloud CLI, that we will see later. You are responsible for managing and securing these accounts. \v
+
+By default, you can create up to 100 user-managed service accounts in a project. If this quota does not meet your
+needs, you can use the Google Cloud console to request a quota increase. The default service accounts described on
+this page do not count towards this quota. \v
+
+When you create a user-managed service account in your project, you choose a name for the service account. This name
+appears in the email address that identifies the service account, which uses the following format:
+\code{service-account-name@project-id.iam.gserviceaccount.com}
+
+\bd[Default Service Accounts]
+\textbf{Default service accounts} are user-managed service accounts created by Google and managed by the user, that
+enable some Google Cloud services to deploy jobs that access other Google Cloud resources.
+\ed
+
+When you enable or use some Google Cloud services, they create user-managed service accounts that enable the service
+to deploy jobs that access other Google Cloud resources. These accounts are known as default service accounts. \v
+
+If your application runs in a Google Cloud environment that has a default service account, your application can use
+the credentials for the default service account to call Google Cloud APIs. Alternatively, you can create your own
+user-managed service account and use it to authenticate. \v
+
+When default service accounts are created, they appear with an email address which uses the format
+\code{project-id@appspot.gserviceaccount.com} or \code{project-number-compute@developer.gserviceaccount.com}.
+
+\bd[Google-Managed Service Accounts]
+\textbf{Google-managed service accounts} are service accounts created and managed by Google.
+\ed
+
+Some Google Cloud services need access to your resources so that they can act on your behalf. To meet this need,
+Google creates and manages service accounts for many Google Cloud services. These service accounts are known as
+Google-managed service accounts. You might see Google-managed service accounts in your project's allow policy, in
+audit logs, or on the IAM page in the Google Cloud console. Google-managed service accounts are not listed on the
+Service accounts page in the Google Cloud console. These service accounts aren't located in your project, and you can't
+access them. \v
+
+Now, let's move on to the very important concept of the impersonation of a service account. The most common use case
+impersonating a service account is to temporarily delegate access to Google Cloud resources across different project,
+organizations, or accounts. Service accounts can be impersonated by a Google user through the use of ``short-
+lived service account credentials''.
+
+\bd[Short-Lived Service Account Credentials]
+\textbf{Short-lived service account credentials} allow you to impersonate the identity of a Google Cloud service
+account and can be used to authenticate calls to Google Cloud APIs or other non-Google APIs.
+\ed
+
+\be
+For example, instead of providing an external caller with the permanent credentials of a highly-privileged service
+account, temporary emergency access can be granted instead. Alternatively, a designated service account with fewer
+permissions can be impersonated by an external caller without requiring a more highly privileged service account's
+credentials.
+\ee
+
+Short-lived service account credentials are very important to the identity of service accounts. For the identification
+of service accounts we have to start our discussion from the key pairs.
+
+\bd[Google-Managed Key Pair]
+Each service account is associated with an internal public/private RSA key pair known as the \textbf{Google-managed key
+pair} by Google Cloud to create short-lived service account credentials, and to sign blobs and JSON Web Tokens (JWTs).
+\ed
+
+Google-managed key pairs are used by Google Cloud services to generate short-lived credentials for service accounts.
+These key pairs are automatically rotated and used for signing for a maximum of two weeks. The rotation process is
+probabilistic; usage of the new key will gradually ramp up and down over the key's lifetime. The private key in a
+Google-managed key pair is always held in escrow, and you can never access it directly. The public key in a Google-
+managed key pair is publicly accessible, so that anyone can verify signatures that are created with the private key. \v
+
+In addition to Google-managed key pairs there are also the user-managed key pairs.
+
+\bd[User-Managed Key Pair]
+A principal can create multiple external public/private RSA key pairs, known as \textbf{user-managed key pairs}, and use
+the private key to authenticate with Google APIs.
+\ed
+
+You can create user-managed key pairs for a service account, then use the private key from each key pair to
+authenticate with Google APIs. This private key is known as a service account key. Service account keys are a
+security risk if they aren't managed correctly. If possible, use a different method to authenticate. \v
+
+If you create service account keys, you are responsible for the security of the private key and for other management
+operations, such as key rotation. You should also follow the best practices for managing service account keys. Each
+service account can have up to 10 service account keys. Google stores only the public portion of a user-managed key
+pair. \v
+
+Another way to grant identities to system accounts is the ``workload identity federation'' and ``application default
+credentials''.
+
+\bd[Workload Identity Federation]
+\textbf{Workload identity federation} allow you to grant identities to a workload that runs outside of Google Cloud.
+\ed
+
+This lets you access resources directly, using short-lived credentials, instead of using a service account key. The
+most common use of workload identity federation is to grand identities for AWS or Azure, in order for them to
+impersonate a service account.
+
+\bd[Application Default Credentials]
+\textbf{Application default credentials} is a tool that Google Cloud Client Libraries use to automatically discover
+service account credentials.
+\ed
+
+You can specify a service account key in an environment variable, and application default credentials automatically
+uses that service account key. If you do not specify a key, then application default credentials uses the service
+account that is attached to the resource that is running your code, or the default service account for the service
+that is running your code. \v
+
+To sum up, let's see how service accounts differ from user accounts:
+\bit
+\item Service accounts do not have passwords, and cannot log in via browsers or cookies.
+\item Service accounts are associated with public/private RSA key pairs that are used for multiple purposes, such as
+signing data.
+\item You can let other users or service accounts impersonate a service account.
+\item Service accounts do not belong to your Google workspace, unlike user accounts. If you share Google workspace
+assets, like docs or events, with your entire Google workspace, they are not shared with service accounts.
+\eit
+
+\subsubsection*{Google Group}
+
+\bd[Google Group]
+A \textbf{Google group} account is a named collection of Google accounts and service accounts.
+\ed
+
+Every Google group has a unique email address that's associated with the group. Google groups are a convenient way to
+apply access controls to a collection of users. You can grant and change access controls for a whole group at once
+instead of granting or changing access controls one at a time for individual users or service accounts. You can also
+easily add principals to and remove principals from a Google group instead of updating an allow policy to add or
+remove users. Google groups don't have login credentials, and you cannot use Google groups to establish identity to
+make a request to access a resource.
+
+\subsubsection*{Google Workspace}
+
+\bd[Google Workspace]
+A \textbf{Google workspace} account represents a virtual group of all of the Google accounts that it contains.
+\ed
+
+Google workspace accounts are associated with your organization's internet domain name (such as example.com). When
+you create a Google account for a new user, (such as username@example.com), that Google account is added to the
+virtual group for your Google workspace account. Like Google groups, Google workspace accounts cannot be used to
+establish identity, but they enable convenient permission management.
+
+\subsubsection*{Cloud Identity Domain}
+
+\bd[Cloud Identity Domain]
+A \textbf{cloud identity domain} is like a Google workspace account, because it represents a virtual group of all Google
+accounts in an organization, however, cloud identity domain users don't have access to Google workspace applications
+and features.
+\ed
+
+\subsubsection*{All Authenticated Users}
+
+\bd[All Authenticated Users]
+The value \textbf{allAuthenticatedUsers} is a special identifier that represents all service accounts and all users on
+the internet who have authenticated with a Google account.
+\ed
+
+This identifier includes accounts that aren't connected to a Google workspace account or cloud identity domain, such
+as personal Gmail accounts. Users who aren't authenticated, such as anonymous visitors, aren't included.
+
+\subsubsection*{All Users}
+
+\bd[All Users]
+The value \textbf{allUsers} is a special identifier that represents anyone who is on the internet, including
+authenticated and unauthenticated users.
+\ed
+
+\subsection{Permissions}
+
+\bd[Permissions]
+\textbf{Permissions} determine what operations are allowed on a resource.
+\ed
+
+Permissions are represented in the form of \code{service.resource.verb}
+
+\be
+For example a permission could be \code{pubsub.subscriptions.consume} where it allows to consume from a subscription
+in Pub/Sub.
+\ee
+
+Permissions often correspond one-to-one with REST API methods. That is, each Google Cloud service has an associated
+set of permissions for each REST API method that it exposes. The caller of that method needs those permissions to
+call that method.
+
+\be
+For example, if you use Pub/Sub, and you need to call the \code{topics.publish()} method, you must have the
+\code{pubsub.topics.publish} permission for that topic.
+\ee
+
+An important side-note is that since a service account beside of an identity is also a resource it can be granted with
+permissions.
+
+\subsection{Role}
+
+Although someone would expect that permissions are granted to principals, the truth is that you don't grant permissions
+to principals directly. Instead, you identify roles that contain the appropriate permissions, and then grant those
+roles to the principal. When you grant a role to a principal, you grant them all the permissions that the role contains.
+
+\bd[Role]
+A \textbf{role} is a collection of permissions.
+\ed
+
+Each role has the following components:
+\bit
+\item \textbf{Title}: A human-readable name for the role. The role title is used to identify the role in the Google
+Cloud console.
+\item \textbf{Name}: An identifier for the role in one of the following formats:
+\bit
+\item \textbf{Predefined Roles}: \code{roles/SERVICE.ROLE}
+\item \textbf{Project-Level Custom Roles}: \code{projects/PROJECT\_ID/roles/ROLE}
+\item \textbf{Organization-Level Custom Roles}: \code{organizations/ORG\_ID/roles/ROLE}
+\eit
+\item \textbf{ID}: A unique identifier for the role. For basic and predefined roles, the ID is the same as the role
+name. For custom roles, the ID is everything after \code{roles/} in the role name.
+\item \textbf{Description}: A human-readable description of the role.
+\item \textbf{Stage}: The stage of the role in the launch lifecycle, such as \code{ALPHA}, \code{BETA}, or \code{GA}.
+\item \textbf{Permissions}: The permissions included in the role. When you grant a role to a principal, the principal
+gets all of the permissions in the role.
+\item \textbf{ETag}: An identifier for the version of the role to help prevent concurrent updates from overwriting each
+other. Basic and predefined roles always have the ETag \code{AA==}. ETags for custom roles change each time you modify
+the roles.
+\eit
+
+There are several kinds of roles that we will see now.
+
+\bd[Basic Role]
+A \textbf{basic role} is historically available in the Google Cloud console.
+\ed
+
+There are 3 basic roles: Viewer, Editor, and Owner.
+
+\bd[Viewer]
+\textbf{Viewer} role (\code{roles/viewer}), has permissions for read-only actions that do not affect state, such as
+viewing (but not modifying) existing resources or data.
+\ed
+
+\bd[Editor]
+\textbf{Editor} role (\code{roles/editor}), has all viewer permissions, plus permissions for actions that modify
+state, such as changing existing resources.
+\ed
+
+\bd[Owner]
+\textbf{Owner} role (\code{roles/owner}), has all Editor permissions and permissions for managing roles and permissions
+for a project and all resources within the project, and setting up billing for a project.
+\ed
+
+All 3 basic roles include thousands of permissions across all Google Cloud services. In production environments, do not
+grant basic roles unless there is no alternative. Instead, grant the most limited predefined roles or custom roles
+that meet your needs.\footnote{This is in accordance to the ``Principle Of Least Privilege'' which states that a user,
+program, or process should have only the bare minimum privileges necessary to perform its function.} \v
+
+\be
+For example, when a default service account is created, it is automatically granted the Editor role on your project.
+This role includes a very large number of permissions. To follow the principle of least privilege, Google strongly
+recommends that you either disable the automatic role grant by adding a constraint to your organization policy, or
+revoke the Editor role manually. If you disable or revoke the role grant, you must decide which roles to grant to the
+default service accounts. \ee
+
+In addition to the basic roles, there are additional predefined roles that give granular access to specific Google
+Cloud resources.
+
+\bd[Predefined Role]
+A \textbf{predefined role} gives granular and finer-grained access control than the basic roles.
+\ed
+
+Predefined roles are created and maintained by Google. Google automatically updates their permissions as necessary,
+such as when Google Cloud adds new features or services. You can grant multiple roles to the same user, at any level
+of the resource hierarchy.
+
+\be
+For example, the predefined role Pub/Sub Publisher (\code{roles/pubsub.publisher}) provides access to only publish
+messages to a Pub/Sub topic.
+\ee
+
+\bd[Custom Role]
+A \textbf{custom role} is a custom predefined role with tailored permissions to the needs of your organization when
+predefined roles don't meet your needs.
+\ed
+
+Custom roles are user-defined, and allow you to bundle one or more supported permissions to meet your specific needs.
+Custom roles are not maintained by Google; when new permissions, features, or services are added to Google Cloud,
+your custom roles will not be updated automatically. \v
+
+When you create a custom role, you must choose an organization or project to create it in. You can then grant the
+custom role on the organization or project, as well as any resources within that organization or project. \v
+
+There are some specific roles one can grant to Google accounts that impersonate service accounts:
+\bit
+\item \textbf{The Service Account User Role}: Granting the Service Account User role to a user for a project gives
+the user access to all service accounts in the project, including service accounts that might be created in the
+future. Granting the Service Account User role to a user for a specific service account gives a user access to only
+that service account. As a result, users granted the Service Account User role on a service account can use it to
+indirectly access all the resources to which the service account has access.
+\item \textbf{The Service Account Token Creator Role}: This role lets principals impersonate service accounts to create
+OAuth 2.0 access tokens which you can use to authenticate with Google APIs, to create OpenID Connect (OIDC) ID
+tokens and to sign JSON Web Tokens (JWTs) and binary blobs so that they can be used for authentication.
+\item \textbf{The Workload Identity User Role}: This role lets principals impersonate service accounts from GKE
+workloads.
+\eit
+
+\subsection{Binding}
+
+\bd[Binding]
+A \textbf{binding} is a collection of principals and roles.
+\ed
+
+In simple words a binding binds one or more principals, to a single role. They act as an intermediate step for policies.
+
+\subsection{Policy}
+
+\bd[Policy / Allow Policy / IAM Policy]
+A \textbf{policy} or \textbf{allow policy} or \textbf{IAM policy} is a collection of role bindings that bind one or more
+principals to individual roles, defining and enforcing what roles are granted to which principals.
+\ed
+
+Each allow policy is attached to a resource. When you want to define who (principal) has what type of access (role)
+on a resource, you create an allow policy and attach it to the resource. \v
+
+For some types of Google Cloud resources, a policy can also specify a condition, which is a logical expression that
+allows access to a resource only if the expression evaluates to true. A condition can add constraints based on
+attributes of the request, the resource, or both.
+
+\be
+An example of a policy:
+\fig{gcp15}{0.65}
+\ee
+
+Policies can be written in \code{JSON} or \code{YAML} formats.
+
+\be
+An example of a policy written in JSON:
+\begin{block}
+{
+  "bindings": [
+    {
+      "role": "roles/resourcemanager.organizationAdmin",
+      "members": [
+        "user:mike@example.com",
+        "group:admins@example.com",
+        "domain:google.com",
+        "serviceAccount:my-project-id@appspot.gserviceaccount.com"
+      ]
+    },
+    {
+      "role": "roles/resourcemanager.organizationViewer",
+      "members": [
+        "user:eve@example.com"
+      ],
+      "condition": {
+        "title": "expirable access",
+        "description": "Does not grant access after Sep 2020",
+        "expression": "request.time < timestamp('2020-10-01T00:00:00.000Z')",
+      }
+    }
+  ],
+  "etag": "BwWWja0YfJA=",
+  "version": 3
+}
+\end{block}
+\ee
+
+\be
+An example of a policy written in YAML:
+\begin{block}
+bindings:
+- members:
+  - user:mike@example.com
+  - group:admins@example.com
+  - domain:google.com
+  - serviceAccount:my-project-id@appspot.gserviceaccount.com
+  role: roles/resourcemanager.organizationAdmin
+- members:
+  - user:eve@example.com
+  role: roles/resourcemanager.organizationViewer
+  condition:
+    title: expirable access
+    description: Does not grant access after Sep 2020
+    expression: request.time < timestamp('2020-10-01T00:00:00.000Z')
+etag: BwWWja0YfJA=
+version: 3
+\end{block}
+\ee
+
+You can set an allow policy at any level in the resource hierarchy: the organization level, the folder level, the
+project level, or the resource level. Resources inherit the allow policies of all of their parent resources. The
+effective allow policy for a resource is the union of the allow policy set on that resource and the allow policies
+inherited from higher up in the hierarchy. \v
+
+This policy inheritance is transitive; in other words, resources inherit allow policies from the project, which
+inherit allow policies from folders, which inherit allow policies from the organization. Therefore, the organization-
+level allow policies also apply at the resource level. \v
+
+The allow policies for child resources inherit from the allow policies for their parent resources. For example, if
+you grant the Editor role to a user for a project, and grant the Viewer role to the same user for a child resource,
+then the user still has the Editor role grant for the child resource. If you change the resource hierarchy, the
+policy inheritance changes as well.
+
+\be
+For example, moving a project into an organization causes the project to inherit from the organization's allow policy.
+\ee
+
+\subsection{Identity \& Access Management (IAM)}
+
+\bd[Identity \& Access Management (IAM)]
+\textbf{Identity \& Access Management (IAM)} lets you manage access control by defining policies, i.e.\ who (
+principals) has what access (role) for which resource.
+\ed
+
+IAM provides a set of methods that you can use to create and manage allow policies on Google Cloud resources. These
+methods are exposed by the services that support IAM. These IAM methods are:
+\bit
+\item \code{setIamPolicy()}: Sets allow policies on your resources.
+\item \code{getIamPolicy()}: Gets an allow policy that was previously set.
+\item \code{testIamPermissions()}: Tests whether the caller has the specified permissions for a resource.
+\eit
+
+When an authenticated principal attempts to access a resource, IAM checks the resource's allow policy to determine
+whether the action is permitted. With IAM, every API method across all Google Cloud services is checked to ensure
+that the principal making the API request has the appropriate permission to use the resource. The IAM API is
+eventually consistent. In other words, if you write data with the IAM API, then immediately read that data, the read
+operation might return an older version of the data. Also, changes you make might take time to affect access checks.
+
+\section{APIs \& Services}
+
+\bd[Google Cloud APIs]
+\textbf{Google Cloud APIs} are programmatic interfaces to Google Cloud services.
+\ed
+
+Google Cloud APIs are a key part of Google Cloud Platform, allowing you, by exposing network API services, to easily
+add the power of everything from computing to networking to storage to machine-learning-based data analysis to your
+applications. \v
+
+You can access Google Cloud APIs from server applications with the client libraries in many popular programming
+languages, from mobile apps via the Firebase SDKs, or by using third-party clients. You can also access Google Cloud
+APIs with the Google Cloud CLI tools or Google Cloud console. \v
+
+All Cloud APIs provide a simple JSON HTTP interface that you can call directly or via Google API Client Libraries.
+Most Cloud APIs also provide a gRPC interface you can call via Google Cloud Client Libraries, which provide better
+performance and usability. You can also use third-party clients. \v
+
+Cloud APIs are shared among millions of developers and users. To ensure fair usage and minimize abuse risks, all
+Cloud APIs are enforcing rate limits and resource quotas on usage, commonly known as quotas. You can also use these
+quotas to control your spending on Google Cloud products by reducing your own quota limits. If you need more quotas
+than the default limits, you need to file quota increase requests. \v
+
+Most Cloud APIs provide you with detailed information on your project's usage of that API, including traffic levels,
+error rates, and latencies. It helps you to quickly triage problems with applications that use Cloud APIs. You can
+view this information in the Google Cloud API Dashboard in the Google Cloud console. You can also create custom
+dashboards and alerts in Cloud Monitoring. \v
+
+Before using any Google Cloud APIs, you should use Google Cloud console API Library to browse available Google Cloud
+APIs and discover the ones that best meet your business needs. \v
+
+Once you find a suitable Google Cloud API, then you need to enable it. Some Cloud APIs are enabled by default, but in
+order to use a Google Cloud API that is not enabled by default, you must enable it for your project. Depending on which
+services and which projects are involved from your application, including the client project and resource projects,
+you may need to enable an API for multiple projects. When you enable an API that depends on other APIs, those APIs
+are also enabled at the same time. \v
+
+To enable an API for a project using the console simply go to the Google Cloud console API Library and in the API
+Library select the API you want to enable and click ``ENABLE''. From the same page you can disable an API for your
+project if you no longer use it to avoid misuse and accidental billing charges. \v
+
+Some Cloud APIs charge for usage. You need to enable billing for your project before you can start using these APIs
+in your project. The API usage in a project is charged to the billing account associated with the project. \v
+
+Last but not least, you need to authenticate and enabled API in order to be able to use it. How you authenticate to
+an API depends on your development environment and what authentication methods the API supports. Setting up
+application default credentials for use in a variety of environments is the most common approach, and is recommended
+for most applications. If the API supports API keys, that is another option.
+
+\subsection{Client Libraries}
+
+\bd[Client Libraries]
+\textbf{Client libraries} are collections of code specific to one programming language that makes it easier to use a
+Google Cloud API\@.
+\ed
+
+Client libraries make it easier to access Google Cloud APIs from a supported language. While you can use Google Cloud
+APIs directly by making raw requests to the server, client libraries provide simplifications that significantly
+reduce the amount of code you need to write. \v
+
+Cloud Client Libraries are the recommended option for accessing Cloud APIs programmatically, where available. Cloud
+Client Libraries use the latest client library model and:
+\bit
+\item Provide idiomatic code in each language to make Cloud APIs simple and intuitive to use.
+\item Provide a consistent style across client libraries to simplify working with Google Cloud APIs.
+\item Handle all the low-level details of communication with the server, including authentication.
+\item Can be installed using familiar package management tools such as \code{npm} and \code{pip}.
+\eit
+
+A few Google Cloud APIs don't have cloud client libraries available in all languages. If you want to use one
+of these APIs and there is no cloud client library for your preferred language, you can still use the previous style
+of client library, called ``Google API Client Libraries''.
+
+\section{Google Cloud SDK}
+
+\bd[Google Cloud SDK]
+\textbf{Google Cloud SDK} is a set of command line interface (CLI) tools to create and manage Google Cloud resources.
+\ed
+
+Google Cloud SDK is so powerful that it can be used to perform all (and even more) tasks that one can do with the
+Google Cloud console. \v
+
+Google Cloud SDK can be installed via Homebrew:
+\begin{bash}
+# install Google Cloud SDK via Homebrew
+brew install google$-$cloud$-$sdk
+\end{bash}
+
+Once installed, to make sure that everything is working properly one can check the current version of Google Cloud
+SDK by:
+\begin{bash}
+# see version of Google Cloud SDK
+gcloud version
+\end{bash}
+
+As it is clear by now, due to the endless possibilities of what one can do in Google Cloud, the list of commands of
+Google Cloud SDK is enormous, and it's getting longer every day. Writing down an exhaustive list of Google Cloud SDK
+commands is impossible. \v
+
+Although we will go through a group of the most useful and used commands, before that we will give a general instruction
+on how to discover commands. The generic form of the Google Cloud SDK command follows a nested approach, matching web
+console's nesting, going from ``big'' to ``small'':
+\begin{bash}
+# generic gcloud command format
+gcloud | (release*) | (component) | (sub$-$component*) | (operation) | (target) | $--$(flags) |
+\end{bash}
+
+Where:
+\bit
+\item Release is optional and refers to the command's release status. The default value is \code{GA} standing for
+``General Availability'' and it is omitted. The non-default values are \code{alpha} and \code{beta}.
+\item Component and the optional sub-components refers to different Google Cloud services.
+\item Operation refers to the imperative verb form of the operation
+\item Target is the target upon which the operation will be performed.
+\item Flags refer to the additional arguments, \code{$--$flag-name(=value)}, passed in to the command.
+\eit
+
+Probably the most important command is the one for getting help. In order to do so, one can use the flag \code{--help}
+at any \code{gcloud} level:
+
+\begin{bash}
+# get help
+gcloud $--$help
+gcloud | (component) $--$help
+...
+\end{bash}
+
+\subsection{Authorization}
+
+In order to access Google Cloud, you will usually have to authorize the Google Cloud SDK. To grant authorization to
+the Google Cloud SDK to access Google Cloud, you can use either a user account or a service account. \v
+
+Both Google Cloud SDK and Google Cloud use ``OAuth2'' for authentication and authorization.
+
+\bd[OAuth2]
+The \textbf{OAuth2} authorization framework enables a third-party application to obtain limited access to an HTTP service,
+either on behalf of a resource owner by orchestrating an approval interaction between the resource owner and the HTTP
+service, or by allowing the third-party application to obtain access on its own behalf.
+\ed
+
+The OAuth 2.0 framework outlines various authentication ``flows'' or authentication approaches. Generally, the
+application presents credentials, which represent a principal (either a user or a service account), to an
+intermediate module called an Authorization Server. The Authorization Server responds with a token, which the
+application can use to authenticate with the service and access resources. The token includes one or more scopes,
+which reflect what access the application is authorized to make. The application then presents the token to the
+resource server to gain access to the resources. \v
+
+To authorize with a user account use the following Google Cloud SDK command:
+\begin{bash}
+# authorize access with a user account
+gcloud auth login
+\end{bash}
+
+During authorization, the command obtains account credentials from Google Cloud and store them on the local system.
+Credential files are stored in the user configuration directory: \code{$~$/.config/gcloud} \v
+
+The specified account becomes the active account in your configuration. The Google Cloud SDK uses the stored credentials
+to access Google Cloud. You can have any number of accounts with stored credentials for a single Google Cloud SDK
+installation, but only one account is active at a time. More on that later. \v
+
+To authorize with a service account, first you need to create service account keys through IAM and then use the
+following Google Cloud SDK command:
+\begin{bash}
+# authorize access with a service account
+gcloud auth login $--$cred$-$file=CONFIGURATION\_OR\_KEY\_FILE
+\end{bash}
+
+To list the accounts whose credentials are stored on the local system, run \code{gcloud auth list}:
+\begin{bash}
+# list the accounts whose credentials are stored on the local system
+gcloud auth list
+\end{bash}
+
+You can revoke credentials when you want to disallow access by the Google Cloud SDK by a particular account by running
+\code{gcloud auth revoke}:
+\begin{bash}
+# revoke credentials for a particular account
+gcloud auth revoke [ACCOUNT]
+\end{bash}
+
+Last but not least, a very important concept about ``application default credentials''. We defined application
+default credentials as a tool that Google Cloud Client Libraries use to automatically discover service account
+credentials. \v
+
+While this is true, application default credentials is also a strategy used by the Google authentication libraries to
+automatically find credentials based on the application environment. In simple words, by making use of application
+default credentials we can solve the problem of wanting to run an application locally while the application needs
+access to Google Cloud and it cannot access our credentials directly.
+
+\be
+The most common case is when we want to get authorization inside a docker container running locally. The container by
+definition is an isolated virtual environment and it cannot have access to the enclosing environment which is the one
+that is authenticate to use Google Cloud.
+\ee
+
+When you set up application default credentials and use a client library, your code can run in either a development
+or production environment without changing how your application authenticates to Google Cloud services and APIs. \v
+
+The Google Cloud SDK provides support for managing application default credentials with the command:
+\begin{bash}
+# create application default credentials
+gcloud auth application$-$default login
+\end{bash}
+
+Once the command is run, a set of application default credentials are created in \code{$~$/.config/gcloud}
+called \code{application\_default\_credentials.json}. Important to know that these credentials are not used by the
+Google Cloud SDK. Once they are created, the \code{GOOGLE\_APPLICATION\_CREDENTIALS} environment variable is used to
+provide the location of a credential JSON file. \v
+
+Now these credentials can be used by our local code to access Google Cloud.
+
+\be
+For example we can include the \code{application\_default\_credentials.json} inside a docker container by mounting them
+in the \code{docker-compose.yml} file. This will make the container able to look for the right place for authentication.
+\ee
+
+This way of authentication emulates the way production environment accessing Google Cloud resources, hence, we do not
+need to change anything in production. \v
+
+Once we are done with the application default credentials we can delete them by:
+\begin{bash}
+# revoke application default credentials
+gcloud auth application$-$default revoke
+\end{bash}
+
+This command deletes the \code{application\_default\_credentials.json} file. \v
+
+For more information on authentication:
+\begin{bash}
+gcloud auth $--$help
+\end{bash}
+
+\subsection{Properties \& Configurations}
+
+\bd[Properties]
+\textbf{Properties} are settings that govern the behavior of the Google Cloud SDK\@.
+\ed
+
+You can use properties to define a per-product or per-service setting such as the account used by the Google Cloud SDK
+for authorization, the default region to use when working with resources, or the option to turn off automatic Google
+Cloud SDK component update checks. Properties can also be used to define Google Cloud SDK preferences like verbosity
+level and prompt configuration for Google Cloud SDK commands. \v
+
+The Google Cloud SDK supports some global flags and command flags that have the same effect as Google Cloud SDK
+properties.
+
+\be
+For example, the Google Cloud SDK supports both the \code{--project} flag and \code{project} property.
+\ee
+
+Properties allow you to maintain the same settings across command executions while flags affect command behavior on a
+per-invocation basis. Note that flags override properties when both are set.
+
+\bd[Configuration]
+A \textbf{configuration} is a named set of Google Cloud SDK properties.
+\ed
+
+Properties that are commonly stored in configurations include default Compute Engine zone, verbosity level, usage
+reporting, project ID, and an active user or service account. Configurations allow you to define and enable these and
+other settings together as a group. Configurations are stored in your user config directory in \code{~/.config
+/gcloud}. \v
+
+Usually, if you're working with just one project, the default configuration, named \code{default}, should be sufficient.
+
+\bd[Default Configuration]
+The Google Cloud SDK starts you off with a single configuration named \textbf{default}.
+\ed
+
+In the previous section we introduced the command \code{gcloud auth login} which simply authorizes the Google Cloud
+SDK to Google Cloud. However, there is another command called \code{gcloud init} which authorizes access and on top
+of that it performs other common setup steps. These other steps create the configuration. \v
+
+So in simple words, you can create the default configuration by running the \code{gcloud init} command which
+authorizes and configures the Google Cloud SDK at the same time:
+\begin{bash}
+# authorize, and configure the Google Cloud SDK
+gcloud init
+\end{bash}
+
+There is nothing special about the initial default configuration; it is created as a convenience. You can name this
+and any additional configurations however you'd like. \v
+
+The single \code{default} configuration is suitable for many use cases. However, you can also create additional
+configurations and switch between them as required using \code{gcloud config configurations activate}. Multiple
+configurations are useful if you want to:
+\bit
+\item Use multiple projects since you can create a separate configuration for each project.
+\item Use multiple authorization accounts.
+\item Perform generally independent tasks.
+\eit
+
+To create a configuration, use the \code{gcloud config configurations create} command:
+\begin{bash}
+# create a configuration
+gcloud config configurations create [NAME]
+\end{bash}
+
+To delete a configuration, use the \code{gcloud config configurations delete} command:
+\begin{bash}
+# delete a configuration
+gcloud config configurations delete [NAME]
+\end{bash}
+
+To list the configurations in your Google Cloud SDK installation and show which configuration is active run \code{gcloud
+config configurations list}:
+\begin{bash}
+# display all available configurations
+gcloud config configurations list
+\end{bash}
+
+As it makes sense, only one of your multiple configurations can be active at a given time. The active configuration
+is the configuration whose properties will govern the current behavior of the Google Cloud SDK. \v
+
+You can't delete the active configuration. You first need to switch to another configuration before deleting. In
+order to switch to a another configuration you must activate it. To activate a new configuration or switch to a new
+active configuration, run: \code{gcloud config configurations activate}:
+\begin{bash}
+# activate a configuration
+gcloud config configurations activate [NAME]
+\end{bash}
+
+To define or fetch a property use the \code{gcloud config set} or \code{gcloud config get} commands:
+\begin{bash}
+# define a property for the current configuration
+gcloud config set
+\end{bash}
+
+\begin{bash}
+# fetch value of a Google Cloud SDK property
+gcloud config get
+\end{bash}
+
+To show all the properties in your active configuration use \code{gcloud config list}:
+\begin{bash}
+# display all the properties for the current configuration
+gcloud config list
+\end{bash}
+
+For more information on properties and configurations:
+\begin{bash}
+gcloud config $--$help
+\end{bash}
+
+\subsection{Components}
+
+\bd[Component]
+A \textbf{component} is the installable SDK tool part of the Google Cloud SDK\@.
+\ed
+
+When you install Google Cloud SDK, the following most used components are installed by default:
+\bit
+\item \textbf{gcloud}: Default Google Cloud SDK tools for interacting with Google Cloud.
+\item \textbf{bq}: BigQuery CLI tool for working with data in BigQuery.
+\item \textbf{gsutil}: Cloud Storage CLI tool for performing tasks related to Cloud Storage.
+\item \textbf{core} Google Cloud SDK core libraries used internally by the Google Cloud SDK tools.
+\eit
+
+The list of available components is very long and it keeps being updated so it doesn't make sense to include
+an exhaustive list here. To see a list of components that are available and currently installed:
+\begin{bash}
+# see a list of components that are available and currently installed
+gcloud components list
+\end{bash}
+
+To install a component:
+\begin{bash}
+# install specific component
+gcloud components install <component>
+\end{bash}
+
+For more information on components:
+\begin{bash}
+gcloud components $--$help
+\end{bash}
+
+\subsection{Projects}
+
+Although a project is a property of a configuration one can, given that a project is of crucial importance to Google
+Cloud, one can check a few characteristics of projects without focusing on the configuration. Namely:
+\begin{bash}
+# list all available projects
+gcloud projects list
+\end{bash}
+
+\begin{bash}
+# set a default Google Cloud project to work on
+gcloud config set project [PROJECT]
+\end{bash}
+
+\begin{bash}
+# display metadata for a project
+gcloud projects describe [PROJECT]
+\end{bash}
+
+For more information on projects:
+\begin{bash}
+gcloud projects $--$help
+\end{bash}
+
+\subsection{IAM}
+
+The \code{gcloud iam} command group lets you manage Google Cloud Identity \& Access Management (IAM) service accounts
+and keys. \v
+
+IAM is better, and more convenient, to be used through Google Cloud console instead of Google Cloud SDK. However, here
+is a short list of some useful commands:
+\begin{bash}
+# list IAM grantable roles for a resource
+gcloud iam list-grantable-roles
+\end{bash}
+
+\begin{bash}
+# create a custom role for a project or org
+gcloud iam roles create
+\end{bash}
+
+\begin{bash}
+# create a service account for a project
+gcloud iam service-accounts create
+\end{bash}
+
+\begin{bash}
+# replace existing IAM policy binding
+gcloud iam service-accounts set-iam-policy
+\end{bash}
+
+\begin{bash}
+# list a service account's keys
+gcloud iam service-accounts keys list
+\end{bash}
+
+For more information on iam:
+\begin{bash}
+gcloud iam $--$help
+\end{bash}
+
+\section{Google Compute Engine (GCE)}
+
+\bd[Virtualization]
+\textbf{Virtualization} is the act of creating a virtual (rather than actual) version of something at the same
+abstraction level, including virtual computer hardware platforms, storage devices, and computer network resources.
+\ed
+
+\bd[Virtual Machine (VM)]
+\textbf{Virtual Machine (VM)} is the virtualization of a computer system.
+\ed
+
+VMs are based on computer architectures and provide functionality of a physical computer. Their implementations may
+involve specialized hardware, software, or a combination.
+
+\bd[Google Compute Engine (GCE)]
+\textbf{Google Compute Engine (GCE)} is the infrastructure as a service (IaaS) component of Google Cloud which enables
+users to launch VMs on demand.
+\ed
+
+In the Google Cloud terminology GCE creates ``instances'' rather than VMs.
+
+\bd[Instance]
+An \textbf{instance} is a VM hosted on GCE\@.
+\ed
+
+Each instance carry a unique and permanent name, a set of optional labels and a permanent region and zone. \v
+
+Instances can be configured in many different ways and allow you the flexibility to fulfill the requests for your
+specific scenario. There are four different base options when it comes to configuration of the instance that you are
+preparing to launch, and we will see them right now.
+
+\subsection{Machine Configuration}
+
+This section describes the machine families, machine series, and machine types that you can choose from to create a
+instance with the CPU and memory you need.
+
+\bd[Machine Family]
+\textbf{Machine family} is a curated set of processor and hardware configurations optimized for specific workloads.
+\ed
+
+There are 3 machine families in Google Cloud: ``general-purpose machine family'', ``compute-optimized machine family'',
+and ``memory-optimized machine family''.
+
+\bd[General-Purpose Machine Family]
+The \textbf{general-purpose machine family} offers several machine series with the best price-performance ratio for a
+variety of workloads.
+\ed
+
+\bd[Compute-Optimized Machine Family]
+The \textbf{compute-optimized machine family} has the highest performance per core on GCE and is optimized for compute-
+intensive workloads.
+\ed
+
+\bd[Memory-Optimized Machine Family]
+The \textbf{memory-optimized machine family} has machine series that are ideal for your most memory intensive workloads.
+\ed
+
+Moving on from machine families, we define the machine series concept.
+
+\bd[Machine Series \& Generation]
+Machine families are further classified by \textbf{machine series} and the corresponding series' \textbf{generation}.
+\ed
+
+Generally, generations of a machine series use a higher number to describe the newer generation.
+
+\bd[Machine Type]
+Every machine series has predefined \textbf{machine types} that provide a set of resources for your instance.
+\ed
+
+Machine types have the following notation:
+\begin{bash}
+series/generation$-$type$-$CPU
+\end{bash}
+
+\be
+For example the machine type \code{e2$-$standard$-$32} is a machine type of the second generation of the series
+\code{e2}, of the type \code{standard} with 32 CPUs.
+\ee
+
+To sum up, when you create an instance, you select a machine type from a machine series of a machine family that
+determines the resources available to that instance. There are several machine families you can choose from and each
+machine family is further organized into machine series and predefined machine types within each series. If a
+predefined machine type does not meet your needs, you can also create a custom machine type. \v
+
+Here is a visualisation of all different machine families, series and types.
+
+\fig{gcp16}{0.35}
+
+\subsection{Boot Disc}
+
+Once you've determined a machine type for your instance you will need to provide it an image with an operating system
+to boot up with. GCE offers many pre-configured public images that have compatible linux or windows operating systems.
+You can use most public images at no additional cost but be aware that there are some premium images that do add
+additional cost to your instances. \v
+
+There is also the option of custom images which are private images that you own and control access to. Custom images
+are available only to your cloud project unless you specifically decide to share them with another project or another
+organization. \v
+
+The third and final option that you have, is by using a marketplace image. Google Cloud marketplace lets you quickly
+deploy functional software packages that run on Google Cloud without having to manually configure the software, the
+instances, the storage, or even the network settings. This is an all-in-one instance template that includes the
+operating system and the software pre-configured and you can deploy a software package whenever you like and is by
+far the easiest way to launch a software package. \v
+
+Of course, once you've decided the image that you wanted to use, the next step is to choose the boot disc type that
+you want. This is where performance versus cost comes into play as you have the option to pay less and have a slower
+disk speed or you can choose to have fast disk speed with higher costs. The slowest and most inexpensive of these
+options is the ``standard persistent disk'' which is backed by standard hard disk drives. The next option is the
+``balance persistent disk'' which is backed by solid state drives and it's faster and than the standard option.
+Finally, the third and last option is the ``ssd persistent disk'' which is the fastest option.
+
+\subsection{Billing}
+
+When it comes to billing of instances Google Cloud follows a resource based method i.e.\ each individual vCPU and
+each GB of memory is billed separately. All vCPUs, GPUs, and GB of memory are charged by the second with a minimum of
+1 minute. Another major factor of billing is the so called ``instance uptime'' which is the number of seconds between
+when you start an instance and when you stop an instance (terminated). \v
+
+Another important concept of Google Cloud is the so called ``reservations''. By reserving resources, you ensuring
+that resources are available for when you need it, you are covered for possible future increases in demand and for any
+planned or unplanned spikes, and you have a backup and disaster recovery.
+
+\subsection{Connecting To An Instance}
+
+Once an instance is created, we can connect to it through a secure shell (SSH) protocol. First create a pair of
+public-private keys with a suitable name:
+\begin{bash}
+# create public-private key pair
+ssh$-$keygen $-$t <algorithm> $-$f <filename> $-$C <comment>
+\end{bash}
+
+Copy the public key to the clipboard:
+\begin{bash}
+# copy public key to clipboard
+cat \<public\_key\> \| pbcopy
+\end{bash}
+
+Finally, go to Google Cloud console, then ``Compute Engine'' and finally ``Metadata''. Under the ``SSH Keys'', add
+the public key.Important to notice that this will give you access to all available instances in the project, since
+they will inherit the added SSH key. \v
+
+Now you can SSH into the instances by running:
+\begin{bash}
+# connect to an instance
+ssh <username>@<IP>
+\end{bash}
+
+\section{Google Kubernetes Engine (GKE)}
+
+The rise of microservices architecture, increased the usage of container technologies, because the containers
+actually offer the perfect host for small independent applications. This rise of containers in the microservice
+technology, resulted in applications that are now comprised of hundreds or sometimes maybe even thousands of
+containers. As it makes sense, managing those loads of containers across multiple environments using scripts and
+self$-$made tools can be really complex and sometimes even impossible. This caused the need for having container
+orchestration technologies.
+
+\bd[Container Orchestration]
+\textbf{Container orchestration} is the automation of the operational effort required to run containerized workloads
+and services, including container's lifecycle, provisioning, deployment, scaling (up and down), networking, load
+balancing and many more.
+\ed
+
+What those orchestration technologies do, is providing high availability (the application has no downtime and it's
+always accessible by the user), scalability (the application has high performance, loads fast and the users have very
+high response rates) and disaster recovery (the infrastructure has mechanisms to restore the application to its
+latest state after an unexpected disaster).
+
+\subsection{Kubernetes}
+
+\bd[Kubernetes]
+Kubernetes is an open$-$source container orchestration system for automating container application deployment, scaling,
+and management.
+\ed
+
+Kubernetes was founded by Ville Aikas, Joe Beda, Brendan Burns, and Craig McLuckie, who were quickly joined by other
+Google engineers including Brian Grant and Tim Hockin, and was first announced by Google in mid$-$2014. It was
+released on July 21, 2015 and it is now maintained by the Cloud Native Computing Foundation which is a Google
+partnership with the Linux Foundation. \v
+
+The design and development of Kubernetes was influenced by Google's Borg cluster manager. Many of its top
+contributors had previously worked on Borg; they codenamed Kubernetes ``Project 7'' after the Star Trek ex$-$Borg
+character Seven of Nine and gave its logo a seven$-$spoked wheel. Unlike Borg, which was written in C++, Kubernetes
+source code is in the Go language. \v
+
+Kubernetes aims to provide a platform for automating deployment, scaling, and operations of container workloads.
+Google was already offering managed Kubernetes services, while Red Hat was supporting Kubernetes as part of OpenShift
+since the inception of the Kubernetes project in 2014. In 2017, the principal competitors rallied around Kubernetes
+and announced adding native support for it. Kubernetes works with a variety of container runtimes such as Docker,
+Containerd, and CRI$-$O. \v
+
+Kubernetes 1.0 was released on July 21, 2015. Google worked with the Linux Foundation to form the Cloud Native
+Computing Foundation (CNCF) and offer Kubernetes as a seed technology. In February 2016, the Helm package manager for
+Kubernetes was released. \v
+
+On March 6, 2018, Kubernetes Project reached ninth place in the list of GitHub projects by the number of commits, and
+second place in authors and issues, after the Linux kernel.
+
+\subsection{Components}
+
+Kubernetes consists of a large collection of components, each one with its own usage. It is crucial to understand
+these individual components since they are the basis of the Kubernetes architecture. For this reason in this section
+we will go through each one of them and explain their role. \v
+
+Let's start with ``containers''. We have already defined the concept of a Docker container in the Docker chapter as a
+way to package applications with everything they need inside the package, including the dependencies and all the
+necessary configuration. The definition of a container in Kubernetes is exactly the same, however one needs to keep
+in mind that now we are not focusing exclusively on Docker containers although more often than not Docker is the
+preferred container technology.
+
+\bd[Container]
+A \textbf{container} is a ready$-$to$-$run software package, containing everything needed to run an application: the
+code and any runtime it requires, application and system libraries, and default values for any essential settings.
+\ed
+
+\fig{img/k81}{0.45}
+
+The container is the lowest level of a microservice, which holds the running application, libraries, and their
+dependencies. Kubernetes containers are not restricted to a specific operating system, unlike virtual machines.
+Instead, they are able to share operating systems and run anywhere. The most common container technology is Docker. \v
+
+Although containers, is the lowest level of microservices, it is not the lowest level of Kubernetes. The basic
+component, or the smallest unit of Kubernetes, is a ``pod''.
+
+\bd[Pod]
+The basic scheduling unit in Kubernetes is a \textbf{pod} which is a grouping of containerized components. A container
+resides inside a pod.
+\ed
+
+\fig{img/k82}{0.45}
+
+Pod is an abstraction over a container, creating a layer on top of the container in order to abstract away the
+underlying container technology so that you can replace them, if you want to, and also to don't have to directly work
+with whatever container technology you use and only interact with the Kubernetes layer. \v
+
+Usually one runs only one application per pod. This is one of best practices, and it is a good rule to follow since
+makes things easier and aligns the philosophy of a container with this of a pod, and it also aligns with the general
+philosophy of microservices. However, more often than not, one needs more than one applications in parallel (for
+example an app and a database), hence, more than one pods in parallel. For this reason, Kubernetes has a component
+called a ``node'' (or ``worker node'').
+
+\bd[Node / Worker Node]
+A \textbf{node} (or \textbf{worker node}) is a physical or virtual server where pods are deployed in.
+\ed
+
+\fig{img/k83}{0.45}
+
+Kubernetes offers an out of the box virtual network which means that each pod within a node gets its own IP address
+which can use to communicate with other pods in the node. This is of course an internal IP address, so an application
+pod can communicate with a database pod but not anyone else.
+
+\fig{img/k84}{0.45}
+
+Another important concept in Kubernetes is that pod components are ephemeral, which means that they can die very
+easily. When that happens, a new one gets created in its place and it is assigned a new IP address. This obviously is
+inconvenient since if you communicate with other pods by using IP addresses, you have to adjust them every time a pod
+restarts. In order to solve this problem, Kubernetes uses another component called ``service''.
+
+\bd[Service]
+A \textbf{service} is a set of pods that work together, such as one tier of a multi$-$tier application. The set of
+pods that constitute a service are defined by a label selector.
+\ed
+
+Service assigns a stable IP address and DNS name to each pod, and load balances traffic to network connections of
+that IP address among the pods, matching the selector (even as failures cause the pods to move from machine to
+machine). In other words, services and pods' lifecycles are not connected, so even if a pod dies the service will
+stay so you don't have to change that endpoint.
+
+\fig{img/k85}{0.45}
+
+As we already said, services (and IPs) are only for internal communication and not accessible outside a node.
+However, one would want the application to be accessible from outside (through a browser for example) and for this
+reason one would have to create an external service that opens the communication from external sources. Obviously
+though, you wouldn't want your database to be open to the public requests. For this reason, there is another
+component of Kubernetes called ``ingress''.
+
+\bd[Ingress]
+\textbf{Ingress} is an API object that provides routing rules to manage external users' access to the services in a
+node, typically via HTTPS/HTTP\@.
+\ed
+
+\fig{img/k86}{0.5}
+
+With ingress, you can easily set up rules for routing traffic without creating a bunch of load balancers or exposing
+each service on the node. In this way, instead of service, the request goes first to ingress, and ingress does the
+forwarding then to the service. \v
+
+A common application challenge is deciding where to store and manage configuration information, some of which may
+contain sensitive data. Configuration data can be anything as fine$-$grained as individual properties or
+coarse$-$grained information like entire configuration files or JSON / XML documents. Kubernetes provides two closely
+related mechanisms to deal with this need: ``configmaps'' and ``secrets'', both of which allow for configuration
+changes to be made without requiring an application build.
+
+\bd[ConfigMap]
+A \textbf{ConfigMap} is an API object used to store non$-$confidential data in key$-$value pairs. Pods can consume
+ConfigMaps as environment variables, command$-$line arguments, or even as configuration files.
+\ed
+
+\bd[Secret]
+\textbf{Secret} is an object that contains a small amount of sensitive data such as a password, a token, or a key. Such
+information might otherwise be put in a Pod specification or in a container image. Using a Secret means that you don't
+need to include confidential data in your application code.
+\ed
+
+\fig{img/k88}{0.5}
+
+Configmap is used to provide access to configuration through the filesystem visible to the container, while secret is
+use to provide access to credentials needed to access remote resources securely, by providing those credentials on
+the filesystem visible only to authorized containers. The biggest difference between a configmap and a secret is that
+the content of the data in a secret is base64 encoded. \v
+
+Recent versions of Kubernetes have introduced support for encryption
+to be used as well. Secrets are often used to store data like certificates, passwords, pull secrets (credentials to work
+with image registries), and ssh keys. \v
+
+A configmap and/or a secret is only sent to a node if a pod on that node requires it. Kubernetes will keep it in
+memory on that node. Once the pod that depends on the secret or configmap is deleted, the in$-$memory copy of all
+bound configmaps and secrets are deleted as well. \v
+
+As we already said, the data is accessible to the pod through one of two ways: either as environment variables (which
+will be created by Kubernetes when the pod is started) or available on the container filesystem that is visible only
+from within the pod. \v
+
+Filesystems in the Kubernetes container provide ephemeral storage, by default. This means that a restart of the pod
+will wipe out any data on such containers, and therefore, this form of storage is quite limiting in anything but
+trivial applications. For this reason we use ``volumes''.
+
+\bd[Volume]
+A \textbf{volume} is a directory that contains data accessible to containers in a given pod in the orchestration and
+scheduling platform.
+\ed
+
+\fig{img/k89}{0.5}
+
+Volumes provide a plug$-$in mechanism to connect ephemeral containers with persistent data stores elsewhere. A pod
+can define a volume, such as a local disk directory or a network disk, and expose it to the containers in the pod. A
+volume provides persistent storage that exists for the lifetime of the pod itself. This storage can also be used as
+shared disk space for containers within the pod. \v
+
+As we already discussed in Docker chapter, volumes are mounted at specific mount points within the container, which
+are defined by the pod configuration, and cannot mount onto other volumes or link to other volumes. The same volume
+can be mounted at different points in the filesystem tree by different containers. \v
+
+A node has multiple application pods with containers running on it and the way Kubernetes does that, is by using
+three processes that must be installed on every node, that are used to schedule and manage those parts. \v
+
+The first process that needs to run on every node is the container runtime.
+
+\bd[Container Runtime]
+A \textbf{container runtime}, also known as container engine, is a software component that can run containers on a host
+operating system.
+\ed
+
+More often than not, Docker is the container runtime since in almost all cases developers use the Docker technology
+for containerization. However, it could be any other container technology as well.
+
+\fig{img/k90}{0.42}
+
+The process that actually schedules container runtime in pods and monitors the containers underneath is kubelet which
+is a process of Kubernetes itself, unlike container runtime.
+
+\bd[Kubelet]
+\textbf{Kubelet} is responsible for the running state of each node, ensuring that all containers on the node are
+healthy.
+\ed
+
+Kubelet takes care of starting, stopping, and maintaining application containers organized into pods as directed by
+the control plane. Kubelet monitors the state of a pod, and if not in the desired state, the pod re$-$deploys to the
+same node. Kubelet is also responsible for assigning resources like CPU, RAM, and storage from the node to the pods
+(containers).
+
+\fig{img/k91}{0.42}
+
+The third process that is installed in a node is the so called ``kube$-$proxy''.
+
+\bd[Kube$-$Proxy]
+\textbf{Kube$-$Proxy} is an implementation of a network proxy and a load balancer. It maintains network rules on the
+node which allow network communication to the pods from network sessions.
+\ed
+
+\fig{img/k92}{0.42}
+
+Kube$-$proxy supports the service abstraction along with other networking operation and it is responsible for routing
+traffic to the appropriate pod (container) based on IP and port number of the incoming request. \v
+
+This pretty much sums up the basic components of a node. What happens though, if the application pod dies, or
+crashes, or one has to restart the pod because she built a new container image? As it makes sense, one would have a
+downtime where a user cannot reach the application which is obviously a very bad thing if it happens in production. \v
+
+This is exactly the advantage of distributed systems and containers. Instead of relying on just one application pod
+and one database pod, we are replicating everything on multiple servers so we would have another node where a replica
+of our application would run. This collection of replica nodes is called a ``cluster''.
+
+\bd[Cluster]
+A \textbf{cluster} is a set of nodes that run containerized applications. Clusters allow containers to run across
+multiple machines and environments: virtual, physical, cloud$-$based, and on$-$premises.
+\ed
+
+Previously we said that the service is like an persistent static IP address with a DNS name so that you don't have to
+constantly adjust the endpoint when a pod dies. However, service is also a load balancer which means that the service
+will actually catch the request and forward it to whichever part is list busy. So services have both of these
+functionalities and for this reason they are not really parts of specific nodes but they are shared between nodes
+acting as the links among the nodes in a cluster.
+
+\fig{img/k93}{0.4}
+
+As it makes sense, Kubernetes needs to make sure that a stable set of replica Pods are running at any given time.
+This is achieved with another component called ``ReplicaSet''.
+
+\bd[ReplicaSet]
+A \textbf{ReplicaSet} maintains a stable set of replica pods running at any given time. As such, it is often used to
+guarantee the availability of a specified number of identical Pods.
+\ed
+
+A ReplicaSet is defined with fields, including a selector that specifies how to identify pods it can acquire, a
+number of replicas indicating how many pods it should be maintaining, and a pod template specifying the data of new
+pods it should create to meet the number of replicas criteria. A ReplicaSet then fulfills its purpose by creating and
+deleting pods as needed to reach the desired number. When a ReplicaSet needs to create new pods, it uses its pod
+template. \v
+
+While a ReplicaSet declares the number of instances of a pod that is needed, another component called
+``ReplicationController'' manages the system so that the number of healthy pods that are running matches the number
+of pods declared in the ReplicaSet.
+
+\bd[ReplicationController]
+A \textbf{ReplicationController} ensures that a specified number of pod replicas are running at any time.
+\ed
+
+In other words, a ReplicationController makes sure that a pod or a homogeneous set of pods is always up and available.
+If there are too many pods, the ReplicationController terminates the extra pods. If there are too few, the
+ReplicationController starts more pods. Unlike manually created pods, the pods maintained by a ReplicationController
+are automatically replaced if they fail or are terminated.
+
+\fig{img/k94}{0.38}
+
+In order to create multiple nodes in the cluster, you wouldn't need to define each replica separately from the
+scratch, but instead you would need to define a blueprint for a pod and specify how many replicas you would like to
+run. This blueprint is defined through another component called ``deployment''.
+
+\bd[Deployment]
+\textbf{Deployments} are a higher level management mechanism for ReplicaSets, providing declarative updates for pods and
+replicaSets.
+\ed
+
+While the ReplicationController manages the scale of the ReplicaSet, deployments will manage what happens to the
+ReplicaSet $-$ whether an update has to be rolled out, or rolled back, etc. When deployments are scaled up or down,
+this results in the declaration of the ReplicaSet changing $-$ and this change in declared state is managed by the
+ReplicationController.
+
+\fig{img/k95}{0.38}
+
+As pods are a layer of abstraction on top of containers, deployment is another abstraction on top of pods. In
+practice you would not be working with pods, nodes, ReplicaSets and ReplicationControllers, but you would be creating
+deployments. In deployments you specify how many replicas you want, and you can also scale up or scale down the
+number of replicas that you need, which is more convenient than interacting with pods directly. With deployment in
+place, if one of the replicas of your application pod would die, the service will forward the requests to another one
+so your application would still be accessible for the user. \v
+
+As it makes sense, we can't replicate database pods using a deployment, because database has a state which is its
+data, meaning that if we have replicas of the database they would all need to access the same shared data storage. So
+one would need some kind of mechanism that manages which pods are currently writing to that storage or which pods are
+reading from that storage in order to avoid data inconsistencies. This mechanism in addition to replicating feature
+is offered by another Kubernetes component called ``StatefulSet''.
+
+\bd[StatefulSet]
+\textbf{StatefulSet} manages the deployment and scaling of a set of pods, and provides guarantees about the ordering and
+uniqueness of these pods.
+\ed
+
+Like a deployment, a StatefulSet manages pods that are based on an identical container spec. Unlike a deployment, a
+StatefulSet maintains a sticky identity for each of their pods. These pods are created from the same spec, but are
+not interchangeable: each has a persistent identifier that it maintains across any rescheduling. If you want to use
+storage volumes to provide persistence for your workload, you can use a StatefulSet as part of the solution. Although
+individual pods in a StatefulSet are susceptible to failure, the persistent pod identifiers make it easier to match
+existing volumes to the new pods that replace any that have failed.
+
+\fig{img/k96}{0.4}
+
+In reality, deploying database applications using stateful sets in Kubernetes clusters can be somewhat tedious so
+it's definitely more difficult than working with deployments where you don't have all these challenges. That's why
+it's also a common practice to host database applications outside of the Kubernetes clusters and just have the
+deployments or stateless applications that replicate and scale with no problem inside of the Kubernetes cluster and
+communicate with the external database. \v
+
+Now let's get into the details of a cluster. Clusters are comprised of one master node usually called ``master'' or
+``control plane'' and a number of worker nodes (the ones we have seen so far) which can either be physical computers
+or virtual machines, depending on the cluster.
+
+\bd[Master Node / Control Plane]
+The \textbf{master node} (or \textbf{control plane}) is a node which controls and manages a set of worker nodes and
+resembles a cluster in Kubernetes.
+\ed
+
+In other words, the master node controls the state of the cluster; which applications are running and their
+corresponding container images. The master node is the origin for all task assignments. It coordinates processes such
+as scheduling and scaling applications maintaining a cluster's state and implementing updates.
+
+\fig{img/k97}{0.4}
+
+While worker nodes have the three processes we already described (container runtime, kubelet, kube$-$proxy), master
+nodes have four completely different processes running inside them. As with worker nodes, these four processes run on
+every master node that control the cluster. \v
+
+The first processes is called ``API server''.
+
+\bd[API Server]
+The \textbf{API server} is a key component and serves the Kubernetes API using JSON over HTTP, which provides both the
+internal and external interface to Kubernetes.
+\ed
+
+The API server processes and validates REST requests and updates the state of the API objects, thereby allowing
+clients to configure workloads and containers across worker nodes.
+
+\fig{img/k98}{0.4}
+
+In simple words, when you as a user wants to deploy a new application in a Kubernetes cluster, you interact with the
+API server using some client (it could be a UI like Kubernetes dashboard, or it could be a command line tool like
+kubelet, or a Kubernetes API). In essence, API server is like a cluster Gateway which gets the initial request of any
+updates into the cluster or even the queries from the cluster and it also acts as a gatekeeper for authentication to
+make sure that only authenticated and authorized requests get through. That means that whatever you want to do, you
+have to talk to the API server on the master node and the API server then will validate your request, and if
+everything is fine then it will forward your request to other processes. This is very good for security, because you
+just have one entry point into the cluster \v
+
+Whenever you make a request to the API server, after it validates your request, it will hand it to another process in
+the master node called ``scheduler'' which will perform the request through a new pod on one of the worker nodes.
+
+\bd[Scheduler]
+The \textbf{scheduler} is the pluggable component that selects which node an unscheduled pod runs on, based on resource
+availability.
+\ed
+
+The scheduler tracks resource use on each node to ensure that workload is not scheduled in excess of available
+resources. For this purpose, the scheduler must know the resource requirements, resource availability, and other
+user$-$provided constraints and policy directives such as quality$-$of$-$service, affinity/anti$-$affinity
+requirements, data locality, and so on. In essence, the scheduler's role is to match resource supply to workload demand.
+
+\fig{img/k99}{0.4}
+
+Scheduler instead of just randomly assigning to any node, it has this whole intelligent way of deciding on which
+specific worker node the next pod will be scheduled. First it will look at your request and see how much resources
+(CPU, RAM, etc) the pod that you want to schedule will need. Then it's going to go through all the worker nodes and
+see the available resources on each one of them. If it says that one of them is the least busy or has the most
+resources available it will schedule the new pod on that note. \v
+
+An important point here is that the scheduler just decides on which node a new pod will be scheduled. The process
+that actually starts that pod within the node is kubelet, which gets the request from the scheduler and executes it
+on that specific node. \v
+
+The next process is called ``controller manager'' and it is another crucial component that detects the pods that have
+died and reschedules them as soon as possible.
+
+\bd[Controller Manager]
+A \textbf{Controller Manager} is a reconciliation loop that drives actual cluster state toward the desired cluster
+state, communicating with the API server to create, update, and delete the resources it manages (pods, service
+endpoints, etc).
+\ed
+
+The controller manager is a process that manages a set of core Kubernetes controllers.
+
+\fig{img/k100}{0.4}
+
+What controller manager does, is detecting the state changes (like crashing of pods) and trying to recover the
+cluster state as soon as possible. In order to do so, it makes a request to the scheduler to reschedule those dead
+pods. At the same time scheduler decides, based on the resource calculation, which worker nodes should restart those
+pods again and makes requests to the corresponding kubelet on those worker nodes to actually restart the pods. \v
+
+Finally, the last master process is called ``etcd'' and it is a key$-$value store of a cluster state.
+
+\bd[etcd]
+\textbf{etcd} is a persistent, lightweight, distributed, key$-$value data store developed by CoreOS that reliably
+stores the configuration data of the cluster, representing the overall state of the cluster at any given point of
+time.
+\ed
+
+\fig{img/k101}{0.4}
+
+You can think of etcd as the cluster's brain, which means that every change in the cluster gets saved or updated into
+this key$-$value data store of edcd. The reason why etcd is so important for a cluster, is because all the other
+processes (scheduler, controller manager, etc) work because of etcd's data. For example, scheduler knows what
+resources are available on worker node, and controller manager knows that a cluster state changed in some way, due to
+the information that is stored in etcd. \v
+
+It is important to note that the actual application data (e.g.\ database application running inside a cluster) will not
+be stored in etcd, since the latter is just a database for cluster's state information used for master processes. \v
+
+So now you probably already understood why that four master processes are absolutely crucial for the cluster's
+operation. In practice a Kubernetes' cluster is usually made up of multiple masters nodes where each of them runs its
+processes. Of course, the API server is also load balanced and the etcd store forms a distributed storage across all
+the master nodes. \v
+
+In a very small cluster you would probably have two or three master nodes and a couple of worker notes. Also to note
+here that the hardware resources of master and worker nodes actually differ. Master processes are more important but
+they actually have less load of work, so they need less resources than worker nodes, which do the actual job of
+running those pods. As your application complexity, and its demand of resources increases, you may actually need to
+add more master and worker nodes to your cluster, and thus forming a more powerful and robust cluster to meet your
+application resource requirements.
+
+\fig{img/k102}{0.4}
+
+\subsection{Google Kubernetes Engine (GKE)}
+
+\bd[Google Kubernetes Engine (GKE)]
+\textbf{Google Kubernetes Engine (GKE)} provides a managed environment for deploying, managing, and scaling your
+containerized applications, powered by the Kubernetes open source cluster management system which provides the
+mechanisms through which you interact with your cluster.
+\ed
+
+The GKE environment consists of multiple machines (specifically, compute engine instances) grouped together to form a
+cluster. You then use Kubernetes commands and resources to deploy and manage your instances, perform administration
+tasks, set policies, and monitor the health of your deployed workloads. Kubernetes draws on the same design
+principles that run popular Google services and provides the same benefits: automatic management, monitoring and
+liveness probes for application containers, automatic scaling, rolling updates, and more. When you run your
+applications on a cluster, you're using technology based on Google's 10+ years of experience running production
+workloads in containers.
+
+\subsection{Kubectl}
+
+In the previous section we went through the basic components of Kubernetes, and we explained each one of them $-$,
+what do they do and what is their purpose in Kubernetes. Now, we obviously need some way to interact with Kubernetes
+(more specifically with the GKE cluster) in order to create and manipulate all the components we have just introduced.\v
+
+Recall that one of the four master node processes was the ``API server'' which is actually the main entry point into
+the Kubernetes cluster. In other words, in order to do anything in the cluster you have to talk to the API server.
+Kubernetes offers three different ways to talk to the API server: Kubernetes Dashboard, Kubernetes API, and Kubectl.
+
+\bd[Kubernetes Dashboard]
+\textbf{Kubernetes Dashboard} is a web-based Kubernetes user interface used to deploy containerized applications to a
+Kubernetes cluster, troubleshoot your containerized application, and manage the cluster resources.
+\ed
+
+You can use Kubernetes dashboard to get an overview of applications running on your cluster, as well as for creating
+or modifying individual Kubernetes components. Kubernetes dashboard also provides information on the state of
+Kubernetes resources in your cluster and on any errors that may have occurred.
+
+\bd[Kubernetes API]
+\textbf{Kubernetes API} lets you query and manipulate the state of API objects in Kubernetes.
+\ed
+
+While you can access the API directly using REST calls through a client library, most operations can be performed
+through the kubectl command-line interface which in turn use the API\@.
+
+\bd[Kubectl]
+\textbf{Kubectl} is the Kubernetes command$-$line tool which allows us to run commands against Kubernetes clusters $-$
+deploying applications, inspecting and managing cluster resources, and viewing logs.
+\ed
+
+Kubectl is actually the most powerful of all the three clients because through it you can basically do anything, and
+this will be the focus of the current section. \v
+
+Kubectl is one of the default installed components of Google Cloud SDK hence, it can be installed in the same way as
+\code{gcloud}, i.e.\ :
+\begin{bash}
+# install Google Cloud SDK via Homebrew
+brew install google$-$cloud$-$sdk
+\end{bash} can be installed via Homebrew:
+
+Once installed one can check the current version as usual by:
+\begin{bash}
+# show kubectl version
+kubectl version
+\end{bash}
+
+In order to begin, the \code{kubectl create} command creates a resource from a file or from stdin. Recall in the
+previous section, we said that we will not be working with pods, nodes, ReplicaSets and ReplicationControllers, but
+we will be creating deployments where in there we will specify everything we need. With the \code{kubectl create
+deployment} command one can create everything she needs:
+
+\begin{bash}
+# create a deployment with a given name from a given image
+kubectl create deployment <name> --image=<image>
+\end{bash}
+
+As we have already said, deployment is a blueprint that has all the information needed for creating the pod. The
+command above is the most basic configuration for a deployment where we are just stating the name and the image, and
+the rest is just the defaults. However, in most cases we want to specify a lot of thing in the deployment. \v
+
+In case we want to change something in the deployment we can use the \code{kubectl edit deployment} command:
+
+\begin{bash}
+# edit a deployment
+kubectl edit deployment <name>
+\end{bash}
+
+Similarly to delete a deployment:
+
+\begin{bash}
+# delete a deployment
+kubectl delete deployment <name>
+\end{bash}
+
+With the \code{kubectl get} command one can print a table of the most important information about the specified
+component.
+
+\begin{bash}
+# print table of most important information about the component
+kubectl get <component>
+\end{bash}
+
+The component can be any component we introduced in the previous section: \code{nodes}, \code{pod}, \code{services},
+\code{deployment}, \code{replicaset}, etc. Including the output flag \code{$-$o} one can get the information in a
+desired output format. Among the most useful output formats are: \code{json}, \code{yaml}, \code{name},
+\code{go-template} and \code{wide}:
+
+\begin{bash}
+# print table of most important information about the component in specified format
+kubectl get <component> $-o$ <format>
+\end{bash}
+
+One can get a detailed description of a pod, including related resources such as events or controllers by using the
+\code{kubectl describe} command:
+
+\begin{bash}
+# show details of a specific pod
+kubectl describe <pod>
+\end{bash}
+
+When it comes to troubleshooting, if something goes wrong in the pod, you want to see the logs of the pod by:
+
+\begin{bash}
+# batch$-$retrieve logs present at the time of execution
+kubectl logs <pod>
+\end{bash}
+
+More often than not one wants to actually connect to the pod and use the terminal directly in the container. We can
+achieve this with a combination of tty \code{$-$t} flag which allocates a pseudo$-$TTY and interactive \code{$-$i}
+flag which keeps \code{STDIN} open:
+
+\begin{bash}
+# connect to the terminal of a running pod
+kubectl exec $-$i $-$t <pod>
+\end{bash}
+
+In a previous section we gave a minimalistic example of creating a deployment, where we just specified the name
+and the image, and we said that in most cases we want to specify a lot of things in the deployment. Obviously writing
+all this configuration down in command line will be impractical. Because of that, in practice you would usually work
+with Kubernetes configuration files.
+
+\bd[Configuration File]
+A \textbf{configuration file} is a file that defines the configuration for a Kubernetes object.
+\ed
+
+In a configuration file one can specify what the type of the component is (e.g.\ deployment, pod, service, etc), what
+the name of the component is, what image is it based off, and many other options. Once all the specifications are
+gathered in the configuration file, you just tell kubectl to execute that configuration file by using the
+\code{kubectl apply} command which takes the configuration file as a parameter and does whatever you have written there:
+
+\begin{bash}
+# create cluster through a configuration file
+kubectl apply $-$f <configuration_file>
+\end{bash}
+
+From now on we will be doing everything related to Kubernetes through configuration files. So for example, in order
+to delete a cluster, we will simply delete the configuration file that created the cluster by using the command:
+
+\begin{bash}
+# delete a cluster by deleting the configuration file
+kubectl delete $-$f <configuration_file>
+\end{bash}
+
+Kubernetes configuration files are more often than not \code{YAML} files, stored in version control systems before
+being pushed to the cluster (this allows us to quickly roll back a configuration change if necessary). The format of
+a configuration file is very specific. In the first two lines we specify the API version we want to use (best
+practice is to use the latest stable API version) and the kind of component we want to create (e.g.\ deployment, pod,
+service, etc):
+
+\begin{block}
+apiVersion: <latest_stable_api_version>
+kind: <component>
+\end{block}
+
+After the first two lines, each configuration file consists of three main parts. The first part is called
+``metadata'' and, as the name suggests, is where the metadata of the component that you're creating resides. Metadata
+include the name of the component, a label to distinguish it among other components and many other things:
+
+\begin{block}
+apiVersion: <latest_stable_api_version>
+kind: <component>
+metadata:
+   name: <component_name>
+   labels: \dots
+\end{block}
+
+The second part is called ``spec'' and here we configure the actual objects that make up the component. Obviously the
+attributes will be specific to the kind of a component we create, so, for example, deployment will have its own
+attributes that only apply for deployments and service will have its own stuff:
+
+\begin{block}
+apiVersion: <latest_stable_api_version>
+kind: <component>
+metadata:
+   name: <component_name>
+   labels: \dots
+specs:
+    \dots
+\end{block}
+
+The complete list of Kubernetes attributes for each component is, of course, very large. \v
+
+The third and last part is called ``status'' and it is automatically generated and added by Kubernetes. The way it
+works is that Kubernetes compares what is the desired state of the component (as specified in the configuration file)
+and what is the actual state of the component (i.e.\ the status of the component) as it is stated in the \code{etcd}.
+If the desired state and status do not match then Kubernetes knows there's something to be fixed. \v
+
+In reality, a project may have multiple configuration files (one for each component), or configuration files with
+many components in them (either as nested configurations or separated by dashes). Let's see an example of a project
+with built with configuration files to get a better understanding.
+
+\subsection*{Application: A Mongo Database With UI Build With Configuration Files}
+
+In this example we will deploy two applications: a Mongo database (MongoDB) and a Mongo Express UI (Mongo Express). \v
+
+First things first, let's create a secret configuration map which we will call \code{mongo-secret.yaml} to store the
+credentials for the Mongo database:
+
+\begin{block}
+apiVersion: v1
+kind: Secret
+metadata:
+    name: mongodb-secret
+type: Opaque
+data:
+    mongo-root-username: dXNl-cm5hbWU=
+    mongo-root-password: cGFzc3dvc-mQ=
+\end{block}
+
+Before anything we need to create the secret component inside the cluster in order to be available for the next
+configuration files:
+
+\begin{bash}
+# create secret component
+kubectl apply $-$f mongo$-$secret.yaml
+\end{bash}
+
+Now we will create the MongoDB pod and an internal service in order for other components inside the cluster to be
+able to talk to it. We will do that through a deployment configuration file which it will have a nested configuration
+template for creating the MongoDB pod, and attached to it will have a service configuration file (since it makes
+sense to be put together). Let's call this configuration file \code{mongo-db.yaml}: \v
+
+\begin{block}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-deployment
+  labels:
+    app: mongodb
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo
+        ports:
+        - containerPort: 27017
+        env:
+        - name: MONGO_INITDB_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-secret
+              key: mongo-root-username
+        - name: MONGO_INITDB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-secret
+              key: mongo-root-password
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb-service
+spec:
+  selector:
+    app: mongodb
+  ports:
+    - protocol: TCP
+      port: 27017
+      targetPort: 27017
+\end{block}
+
+Now everything is in place so let's create the MongoDB components (pod and service) inside the cluster:
+
+\begin{bash}
+# create MongoDB components
+kubectl apply $-$f mongo$-$db.yaml
+\end{bash}
+
+Now we want to create the Mongo Express UI. Before that, we're going to need a database URL of Mongo database so that
+Mongo Express can connect to it and, of course, credentials of the database. Credentials are already in place with
+the secret component, however we are going to create a config map component that contains the database URL. Let's
+name this configuration file \code{mongo-configmap.yaml}:
+
+\begin{block}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mongodb-configmap
+data:
+  database_url: mongodb-service
+\end{block}
+
+As with the secret component, before anything we need to create the config map component inside the cluster in order
+to be available for the next configuration files:
+
+\begin{bash}
+# create mongo database component
+kubectl apply $-$f mongo$-$configmap.yaml
+\end{bash}
+
+Now we can create the Mongo Express component through another deployment configuration file which we will call it
+\code{mongo-express.yaml}. In this configuration file we will also include an external service in order for us to be
+able to reach the UI:
+
+\begin{block}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-express
+  labels:
+    app: mongo-express
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo-express
+  template:
+    metadata:
+      labels:
+        app: mongo-express
+    spec:
+      containers:
+      - name: mongo-express
+        image: mongo-express
+        ports:
+        - containerPort: 8081
+        env:
+        - name: ME_CONFIG_MONGODB_ADMIN_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-secret
+              key: mongo-root-username
+        - name: ME_CONFIG_MONGODB_ADMIN_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongodb-secret
+              key: mongo-root-password
+        - name: ME_CONFIG_MONGODB_SERVER
+          valueFrom:
+            configMapKeyRef:
+              name: mongodb-configmap
+              key: database_url
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-express-service
+spec:
+  selector:
+    app: mongo-express
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 8081
+      nodePort: 30000
+\end{block}
+
+Finally, we create the Mongo Express in the same way as MongoDB\@.

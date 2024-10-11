@@ -1,0 +1,1280 @@
+\bd[Computer]
+A \textbf{computer} is a machine that can be instructed to carry out sequences of arithmetic or logical operations
+automatically.
+\ed
+
+\section{Early Computing}
+
+The earliest recognized device for computing was the abacus, invented in Mesopotamia around 2500 BCE. It's
+essentially a hand operated calculator, that helps add and subtract many numbers. It also stores the current state of
+the computation, much like your hard drive does today. \v
+
+The abacus was created because the scale of society had become greater than what a single person could keep and
+manipulate in their mind. There might be thousands of people in a village or tens of thousands of cattle. There are
+many variants of the abacus, but let's look at a really basic version with each row representing a different power of
+ten. So each bead on the bottom row represents a single unit, in the next row they represent 10, the row above 100,
+and so on.
+
+\fig{abacus}{0.25}
+
+\vspace{-15pt}
+
+\be
+Let's say we have 3 heads of cattle represented by 3 beads on the bottom row on the right side. If we were to buy 4
+more cattle we would just slide 4 more beads to the right for a total of 7. But if we were to add 5 more after the
+first 3 we would run out of beads, so we would slide everything back to the left, slide one bead on the second row to
+the right, representing ten, and then add the final 2 beads on the bottom row for a total of 12. \v
+\ee
+
+Over the next 4000 years, humans developed all sorts of clever computing devices, like the astrolabe, which enabled
+ships to calculate their latitude at sea, or the slide rule, for assisting with multiplication and division. And
+there are literally hundred of types of clocks created that could be used to calculate sunrise, tides, positions of
+celestial bodies, and even just the time. Each one of these devices made something that was previously laborious to
+calculate much faster, easier, and often more accurate. It lowered the barrier to entry, and at the same time,
+amplified our mental abilities. \v
+
+As early computer pioneer Charles Babbage said: ``At each increase of knowledge, as well as on the contrivance of
+every new tool, human labour becomes abridged''. However, none of these devices were called ``computers''. The
+earliest documented use of the word ``computer'' is from 1613, in a book by Richard Braithwait. And it wasn't a
+machine at all, it was a job title. Braithwait said: ``I have read the truest computer of times, and the best
+arithmetician that ever breathed, and he reduceth thy dayes into a short number''. In those days, computer was a
+person who did calculations, sometimes with the help of machines, but often not. This job title persisted until the
+late 1800s, when the meaning of computer started shifting to refer to devices. \v
+
+Notable among these devices was the step reckoner, built by German polymath Gottfried Leibniz in 1694. Leibniz said:
+``it is beneath the dignity of excellent men to waste their time in calculation when any peasant could do the work
+just as accurately with the aid of a machine''. It worked kind of like the odometer in your car, which is really just
+a machine for adding up the number of miles your car has driven. The device had a series of gears that turned; each
+gear had ten teeth, to represent the digits from 0 to 9. Whenever a gear bypassed nine, it rotated back to 0 and
+advanced the adjacent gear by one tooth. Kind of like when hitting 10 on that basic abacus. This worked in reverse
+when doing subtraction, too. With some clever mechanical tricks, the Step Reckoner was also able to multiply and
+divide numbers, since multiplications and divisions are really just many additions and subtractions.
+
+\fig{step_rekoner}{0.25}
+
+The step reckoner was the first machine that could do all four basic operations. And this design was so successful it
+was used for the next three centuries of calculator design. \v
+
+Unfortunately, even with mechanical calculators, most real world problems required many steps of computation before
+an answer was determined. It could take hours or days to generate a single result. Also, these hand-crafted machines
+were expensive, and not accessible to most of the population. Before 20th century, most people experienced computing
+through pre-computed tables assembled by those amazing ``human computers'' we talked about. \v
+
+Speed and accuracy is particularly important on the battlefield, and so militaries were among the first to apply
+computing to complex problems. A particularly difficult problem is accurately firing artillery shells, which by the
+1800s could travel well over a kilometer (or a bit more than half a mile). Add to this varying wind conditions,
+temperature, and atmospheric pressure, and even hitting something as large as a ship was difficult. \v
+
+``Range tables'' were created that allowed gunners to look up environmental conditions and the distance they wanted to
+fire, and the table would tell them the angle to set the canon. These range tables worked so well, they were used
+well into World War Two. \v
+
+The problem was, if you changed the design of the cannon or of the shell, a whole new table had to be computed, which
+was massively time consuming and inevitably led to errors. Charles Babbage acknowledged this problem in 1822 in a
+paper to the Royal Astronomical Society entitled: ``Note on the application of machinery to the computation of
+astronomical and mathematical tables''. xHe proposed a new mechanical device called the ``difference engine'', a much
+more complex machine that could approximate polynomials. Babbage started construction in 1823, and over the next two
+decades, tried to fabricate and assemble the 25.000 components, collectively weighing around 15 tons. Unfortunately,
+the project was ultimately abandoned.
+
+\fig{Babbage_Difference_Engine}{0.04}
+
+But, in 1991, historians finished constructing a ``difference engine'' based on Babbage's drawings and writings - and it
+worked! But more importantly, during construction of the difference engine, Babbage imagined an even more complex
+machine - the ``analytical engine''. \v
+
+Unlike the difference engine, the step reckoner, and all other computational devices before, the analytical engine was
+a ``general purpose computer'', i.e.\ it could be used for many things, not just one particular computation.
+
+\bd[General Purpose Computer]
+A \textbf{general purpose computer} is a computer able to carry out a variety of different tasks.
+\ed
+
+The analytical engine was programmable. It could be given data and run operations in sequence. It had memory and even
+a primitive printer. Like the difference engine, it was ahead of its time, and was never fully constructed. However,
+the idea of an ``automatic computer'', one that could guide itself through a series of operations automatically, was
+a huge deal, and would foreshadow computer programs.
+
+\fig{Babbages_Analytical_Engine}{0.38}
+
+English mathematician Ada Lovelace wrote hypothetical programs for the analytical engine, saying: ``a new, a vast,
+and a powerful language is developed for the future use of analysis''. For her work, Ada is often considered the
+world's first programmer. The analytical engine would inspire, arguably, the first generation of computer scientists,
+who incorporated many of Babbage's ideas in their machines. This is why Babbage is often considered the ``father of
+computing''. \v
+
+So by the end of the 19th century, computing devices were used for special purpose tasks in the sciences and
+engineering, but rarely seen in business, government or domestic life. However, the US government faced a serious
+problem for its 1890 census that demanded the kind of efficiency that only computers could provide. The Census bureau
+turned to Herman Hollerith, who had built a tabulating machine. His machine was ``electro-mechanical'', it used
+traditional mechanical systems for keeping count, like Leibniz's step reckoner, but coupled them with
+electrically-powered components. \v
+
+\fig{hollerith1}{0.19}
+
+Hollerith's machine used punch cards which were paper cards with a grid of locations that can be punched out to
+represent data.
+
+\bd[Punch Card]
+A \textbf{punch card} is a piece of stiff paper that can be used to contain digital data represented by the presence
+or absence of holes in predefined positions.
+\ed
+
+\be
+For example, imagine a series of holes for marital status. If you were married, you would punch out the married
+spot, then when the card was inserted into Hollerith's machine, little metal pins would come down over the card, if a
+spot was punched out, the pin would pass through the hole in the paper and into a little vial of mercury, which
+completed the circuit. The completed circuit powered an electric motor, which turned a gear to add one, in this
+case, to the ``married'' total.
+\ee
+
+Hollerith's machine was roughly 10x faster than manual tabulations, and the Census was completed in just two and a
+half years - saving the census office millions of dollars. Businesses began recognizing the value of computing, and
+saw its potential to boost profits by improving labor and data-intensive tasks, like accounting, insurance
+appraisals, and inventory management. \v
+
+To meet this demand, Hollerith founded The Tabulating Machine Company, which later merged with other machine makers
+in 1924 to become The International Business Machines Corporation or IBM. These electro-mechanical ``business
+machines'' were a huge success, transforming commerce and government, and by the mid-1900s, the explosion in world
+population and the rise of globalized trade demanded even faster and more flexible tools for processing data, setting
+the stage for digital computers. \v
+
+One of the largest electro-mechanical computers built was the ``Harvard Mark I'', completed in 1944 by IBM for the
+Allies during World War 2. It contained 765.000 components, three million connections, and five hundred miles of wire.
+To keep its internal mechanics synchronized, it used a 50-foot shaft running right through the machine driven by a
+five horsepower motor. One of the earliest uses for this technology was running simulations for the Manhattan Project.
+
+\fig{mark1}{0.1}
+
+The brains of these huge electro-mechanical beasts were relays: electrically-controlled mechanical switches. In a
+relay, there is a control wire that determines whether a circuit is opened or closed. The control wire connects to a
+coil of wire inside the relay. When current flows through the coil, an electromagnetic field is created, which in
+turn, attracts a metal arm inside the relay, snapping it shut and completing the circuit.The controlled circuit can
+then connect to other circuits, or to something like a motor, which might increment a count on a gear, like in
+Hollerith's tabulating machine. \v
+
+Unfortunately, the mechanical arm inside of a relay has mass, and therefore can't move instantly between opened and
+closed states. A good relay in the 1940's might be able to flick back and forth fifty times in a second. That might
+seem pretty fast, but it's not fast enough to be useful at solving large, complex problems. The Harvard Mark I could
+do 3 additions or subtractions per second; multiplications took 6 seconds, and divisions took 15. And more complex
+operations, like a trigonometric function, could take over a minute. In addition to slow switching speed, another
+limitation was wear and tear. Anything mechanical that moves will wear over time. Some things break entirely, and
+other things start getting sticky, slow, and just plain unreliable. And as the number of relays increases, the
+probability of a failure increases too. The Harvard Mark I had roughly 3500 relays. Even if you assume a relay has an
+operational life of 10 years, this would mean you'd have to replace, on average, one faulty relay every day! That's a
+big problem when you are in the middle of running some important, multi-day calculation. \v
+
+And that's not all engineers had to contend with. These huge, dark, and warm machines also attracted insects. In
+September 1947, operators on the Harvard Mark II pulled a dead moth from a malfunctioning relay. Grace Hopper noted:
+``from then on, when anything went wrong with a computer, we said it had bugs in it''. And that's where we get the term
+computer bug.
+
+\bd[Bug]
+A \textbf{bug} is an error, flaw or fault in a computer program or system that causes it to produce an incorrect or
+unexpected result, or to behave in unintended ways.
+\ed
+
+\bd[Debugging]
+The process of finding and fixing bugs is termed \textbf{debugging}.
+\ed
+
+Coming back to 1950, it was clear that a faster, more reliable alternative to electro-mechanical relays was needed if
+computing was going to advance further, and fortunately that alternative already existed! In 1904, English physicist
+John Ambrose Fleming developed a new electrical component called a thermionic valve, which housed two electrodes
+inside an airtight glass bulb - this was the first vacuum tube. One of the electrodes could be heated, which would
+cause it to emit electrons – a process called thermionic emission. The other electrode could then attract these
+electrons to create the flow of our electric faucet, but only if it was positively charged - if it had a negative or
+neutral charge, the electrons would no longer be attracted across the vacuum so no current would flow. \v
+
+An electronic component that permits the one-way flow of current is called a diode, but what was really needed was a
+switch to help turn this flow on and off. Luckily, shortly after, in 1906, American inventor Lee de Forest added a
+third ``control'' electrode that sits between the two electrodes in Fleming's design. By applying a positive charge
+to the control electrode, it would permit the flow of electrons as before, but if the control electrode was given a
+negative charge, it would prevent the flow of electrons. So by manipulating the control wire, one could open or close
+the circuit. It's pretty much the same thing as a relay - but importantly, vacuum tubes have no moving parts. This
+meant there was less wear, and more importantly, they could switch thousands of times per second. \v
+
+These triode vacuum tubes would become the basis of radio, long distance telephone, and many other electronic devices
+for nearly a half century. Of course, that vacuum tubes weren't perfect - they're kind of fragile, and can burn out
+like light bulbs, but they were a big improvement over mechanical relays.
+
+\fig{vacum_tubes}{0.07}
+
+Initially vacuum tubes were expensive – a radio set often used just one, but a computer might require hundreds or
+thousands of electrical switches. But by the 1940s, their cost and reliability had improved to the point where they
+became feasible for use in computers, at least by people with deep pockets, like governments. This marked the shift
+from electro-mechanical computing to the new electronic computing. \v
+
+The first large-scale use of vacuum tubes for computing was the Colossus Mk 1 designed by engineer Tommy Flowers and
+completed in December of 1943.
+
+\fig{colosus}{0.25}
+
+The first version of Colossus contained 1600 vacuum tubes, and in total, ten Colossi were built to help with
+code-breaking. Colossus is regarded as the first programmable, electronic computer. The Colossus was installed at
+Bletchley Park, in the UK, and helped to decrypt Nazi communications. This may sound familiar because two years prior
+Alan Turing, often called the father of computer science, had created an electromechanical device, also at Bletchley
+Park, called the Bombe. It was an electromechanical machine designed to break Nazi Enigma codes, but the Bombe wasn't
+technically what we would call a computer.
+
+\section{Alan Turing \& The Turing Machine}
+
+Alan Mathison Turing was born in London in 1912, and showed an incredible aptitude for maths and science throughout
+his early education. His first brush of what we now call computer science came in 1935 while he was a masters student
+at King's College in Cambridge. He set out to solve a problem posed by German mathematician David Hilbert known as
+the ``entscheidungs problem'' or ``decision problem'', which asked the following: ``Is there an algorithm that takes, as
+input, a statement written in formal logic, and produces a ``yes'' or ``no'' answer that's always accurate?'' If such
+an algorithm existed, we could use it to answer questions like: ``Is there a number bigger than all numbers?'' No,
+there's not. We know the answer to that one, but there are many other questions in mathematics that we'd like to know
+the answer to. So if this algorithm existed, we'd want to know it. \v
+
+The American mathematician, Alonzo Church, first presented a solution to this problem in 1935. He developed a system
+of mathematical expressions called ``lambda calculus'', and demonstrated that no such universal algorithm could exist.
+Although Lambda calculus was capable of representing any computation, the mathematical technique was difficult to
+apply and understand. At pretty much the same time on the other side of the Atlantic, Alan Turing came up with his
+own approach to solve the decision problem. He proposed a hypothetical computing machine, which we now call a
+``Turing machine''.
+
+\bd[Turing Machine]
+A \textbf{Turing machine} is a mathematical model of computation that defines an abstract machine that manipulates
+symbols on a strip of tape according to a table of rules.
+\ed
+
+Turing machines provided a simple, yet powerful mathematical model of computation. Despite the model's simplicity,
+given any computer algorithm, a Turing machine capable of simulating that algorithm's logic can be constructed.
+Although using totally different mathematics, they were functionally equivalent to lambda calculus in terms of their
+computational power. However, their relative simplicity made them much more popular in the burgeoning field of
+computer science. \v
+
+A Turing machine is a theoretical computing device equipped with an infinitely long memory tape which stores symbols,
+and a device called a read-write head which can read and write or modify symbols on that tape. There's also a state
+variable, in which we can hold a piece of information about the current state of the machine, and a set of rules that
+describes what the machine does given a state and the current symbol the head is reading. The rule can be to write a
+symbol on the tape, change the state of the machine, move the read-write head to the left or right by one spot, or
+any combination of these actions.
+
+\be
+To make this concrete, let's work through a simple example. A Turing machine that reads a string of ones ending in a
+zero, and computes whether there is an even number of ones. If that's true, the machine will write a 1 to the tape,
+and if it's false, it will write a 0. First, we need to define our Turing machine rules. If the state is ``even'', and
+the current symbol on the tape is 1, then we update the machine state to ``odd'', and move the head to the right. \v
+
+On the other hand, if the state is ``even'', and the current symbol is 0 (which means we've reached the end of the
+string of ones), then we write 1 to the tape, and change the state to ``Halt'' (as in we're finished, and the Turing
+Machine has completed the computation). We also need rules for when the Turing machine is in an ``odd'' state, one rule
+for when the symbol on the tape is a 0, and another for when it is 1. Lastly, we need to define a starting state,
+which we'll set to be ``even''. \v
+
+Now that we've defined the rules and starting state of our Turing machine, which is comparable to a computer program,
+we can run it on some example input. Let's say we store ``1 1 0'' onto tape. That's two ones, which means there is an
+even number of ones. Notice that our rules only ever move the head to the right, so the rest of the tape is
+irrelevant. We'll leave it blank for simplicity. \v
+
+Our Turing machine is all ready to go, so let's start it. Our state is ``even'', and the first number we see is a 1.
+That matches our topmost rule, and so we execute the effect, which is to update the state to ``odd'', and move the
+read-write head to the right by one spot. Okay. Now we see another 1 on the tape, but this time our state is ``odd'',
+and so we execute our third rule, which sets the the state back to ``even'' and moves the head to the right. Now we
+see a 0, and our current state is ``even'', so we execute our second rule, which is to write a 1 to the tape signifying
+that, yes, it's true. There is an even number of ones. And finally, the machine halts.
+\ee
+
+Turing showed that this simple, hypothetical machine can perform any computation if given enough time and memory.
+It's a general-purpose computer. Our program was a simple example, but with enough rules, states, and tape, you could
+build anything. A web browser, World of Warcraft, whatever. Of course, it would be ridiculously inefficient, but it
+is theoretically possible, and that's why, as a model of computing, it's such a powerful idea. In fact, in terms of
+what it can and cannot compute, there is no computer more powerful than a Turing machine. A computer that is as
+powerful is called ``Turing complete''. Every modern computing system, your laptop, your smartphone, and even the
+little computer inside your microwave and thermostat, are all Turing complete. \v
+
+To answer Hilbert's decision problem, Turing applied his new Turing machines to an intriguing computational puzzle,
+the halting problem. Put simply, this asks: ``Is there an algorithm that can determine given a description of a
+Turing machine and the input from its tape, whether the machine will run forever or halt''? For example, we know our
+Turing machine will halt when given the input ``1 1 0'', because we literally walked through the example until it
+halted. But what about a more complex problem? Is there a way to figure out if a program will halt without executing
+it? Some programs might take years to run, so it would be useful to know before we run it, and wait. Turing came up
+with a proof that shows the halting problem was, in fact, unsolvable. \v
+
+At this point in 1936, Turing was only 24-years-old, and really, only just beginning his career. From 1936 through
+1938, he completed a PhD at Princeton University under the guidance of Church, then after graduating he returned to
+Cambridge. Shortly after in 1939, Britain became embroiled in World War II. Turing's genius was quickly applied to
+the war effort. In fact, a year before the war started, he was already working part-time at the UK's Government Code
+and Cypher School, which was the British code-breaking group based out of Bletchley Park. One of his main efforts was
+figuring out how to decrypt German communications, especially those that used the Engima Machine.
+
+\fig{enigma}{0.25}
+
+In short, these machines scramble text, like you type the letters, ``H E L L O'', and the letters, ``X W D V J'',
+would come out. This process is called encryption. The scrambling in Enigma Machine wasn't random. The behavior was
+defined by a series of reorderable rotors on the top of the Enigma Machine, each with 26 possible rotational
+positions. There was also a plug-board at the front of the machine that allowed pairs of letters to be swapped. In
+total, there were billions of possible settings. If you had your own Enigma Machine, and you knew the correct rotor
+and plug-board settings, you could type in ``XWDVJ'', and, ``HELLO'', would come out. In other words, you decrypted
+the message. Of course, the German military wasn't sharing their Enigma settings, so the Allies had to break the code.
+With billions of rotor and plug-board combinations, there was no way to check them all by hand. \v
+
+Fortunately for Turing, Enigma Machines and the people who operated them were not perfect. Like, one key flaw was
+that a letter would never be encoded as itself. As in, an H was never encrypted as an H. Turing, building on earlier
+work by Polish code-breakers designed a special-purpose electromechanical computer called ``The Bombe'', that took
+advantage of this flaw.
+
+\fig{bombe}{0.24}
+
+The Bombe tried lots and lots of combinations of Enigma settings for a given encrypted message. If The Bombe found a
+setting that lead to a letter being encoded as itself, which we know the real Enigma Machine couldn't do, that
+combination was discarded. Then, the machine moved on to try another combination. \v
+
+So, Bombes were used to greatly narrow the number of possible Enigma settings. This allowed human code-breakers to
+hone their efforts on the most probable solutions, looking for things like common German words in fragments of
+decoded text. Periodically, the Germans would suspect someone was decoding their communications, and upgrade the
+Enigma Machine. Like, they'd add another rotor creating many more combinations. They even built entirely new
+encryption machines. Throughout the war, Turing and his colleagues at Bletchley Park worked tirelessly to defeat
+these mechanisms, and overall the intelligence gained from decrypted German communications gave the Allies an edge in
+many theaters, with some historians arguing it shortened the war by years. \v
+
+After the war, Turing returned to academia, and contributed to many early electronic computing efforts like the
+Manchester Mark 1, which was an early and influential stored program computer. But his most famous post-war
+contribution was to artificial intelligence, a field so new that it didn't even get that name until 1956. In 1950,
+Turing could envision a future where computers were powerful enough to exhibit intelligence equivalent to, or at
+least indistinguishable from that of a human. Turing postulated that a computer would deserve to be called
+intelligent if it could deceive a human into believing that it was human. This became the basis of a simple test, now
+called the ``Turing Test''.
+
+\bd[Turing Test]
+The \textbf{Turing test}, originally called the \textbf{imitation game} by Alan Turing in 1950 is a test of a
+machine's ability to exhibit intelligent behaviour equivalent to, or indistinguishable from, that of a human.
+\ed
+
+Turing proposed that a human evaluator would judge natural language conversations between a human and a machine
+designed to generate human-like responses. The evaluator would be aware that one of the two partners in conversation
+is a machine, and all participants would be separated from one another. The conversation would be limited to a
+text-only channel such as a computer keyboard and screen so the result would not depend on the machine's ability to
+render words as speech. If the evaluator cannot reliably tell the machine from the human, the machine is said to have
+passed the test. The test results do not depend on the machine's ability to give correct answers to questions, only
+how closely its answers resemble those a human would give. \v
+
+\be
+Imagine that you are having a conversation with two different people, not by voice, or in person, but by sending
+typed notes back-and-forth. You can ask any questions you want, and you get replies, but one of those two people is
+actually a computer. If you can't tell which one is human and which one is a computer, then the computer passes the
+test.
+\ee
+
+There's a modern version of this test called a Completely Automated Public Turing Test to tell Computers and Humans
+Apart, or CAPTCHA, for short. These are frequently used on the internet to prevent automated systems from doing
+things like posting spam on websites. \v
+
+Normally in this notes, we don't delve into the personal lives of these historical figures, but in Turing's case, his
+name has been inextricably tied to tragedy, so his story is worth mentioning. Turing was gay in a time when
+homosexuality was illegal in the United Kingdom and much of the world. An investigation into a 1952 burglary at his
+home revealed his sexual orientation to the authorities, who charged him with gross indecency. Turing was convicted
+and given a choice between imprisonment, or probation with hormonal treatment to suppress his sexuality. He chose the
+latter, in-part to continue his academic work, but it altered his mood and personality. Although the exact
+circumstances will never be known, it's most widely-accepted that Alan Turing took his own life by poison in 1954. He
+was only 41. \v
+
+Many things have been named in recognition of Turing's contributions to theoretical computer science, but perhaps the
+most prestigious among them is the Turing Award, the highest distinction in the field of computer science, equivalent
+to a Noble Prize in Physics, Chemistry, or other sciences. Despite a life cut-short, Alan inspired the first
+generation of computer scientists, and laid key ground-work that enabled the digital era we get to enjoy today.
+
+\section{First Computers}
+
+Recall than in Colossus, programming was done by plugging hundreds of wires into plug boards, sort of like old school
+telephone switchboards, in order to set up the computer to perform the right operations. So while ``programmable'',
+it still had to be configured in detail even to perform a very specific computation. \v
+
+Enter the The Electronic Numerical Integrator and Calculator – or ENIAC – completed a few years later in 1946 at the
+University of Pennsylvania. Designed by John Mauchly and J. Presper Eckert, this was the world's first truly general
+purpose, programmable, electronic computer.
+
+\fig{eniac}{0.11}
+
+ENIAC could perform 5000 ten-digit additions or subtractions per second, many, many times faster than any machine
+that came before it. It was operational for ten years, and is estimated to have done more arithmetic than the entire
+human race up to that point. But with that many vacuum tubes, failures were common, and ENIAC was generally only
+operational for about half a day at a time before breaking down.
+
+By the 1950's, even vacuum-tube-based computing was reaching its limits. To reduce cost and size, as well as improve
+reliability and speed, a radical new electronic switch would be needed. In 1947, Bell Laboratory scientists John
+Bardeen, Walter Brattain, and William Shockley invented the transistor, and with it, a whole new era of computing was
+born! \v
+
+\bd[Transistor]
+A \textbf{transistor} is a semiconductor device used to amplify or switch electronic signals and electrical power.
+\ed
+
+A transistor is just like a relay or vacuum tube - it's a switch that can be opened or closed by applying electrical
+power via a control wire. Typically, transistors have two electrodes separated by a material that sometimes can
+conduct electricity, and other times resist it – a semiconductor. In this case, the control wire attaches to a
+``gate'' electrode. By changing the electrical charge of the gate, the conductivity of the semiconducting material
+can be manipulated, allowing current to flow or be stopped.
+
+\fig{trans_1}{0.2}
+
+Even the very first transistor at Bell Labs showed tremendous promise – it could switch between on and off states 10000
+times per second. Further, unlike vacuum tubes made of glass and with carefully suspended, fragile components,
+transistors were solid material known as a solid state component. Almost immediately, transistors could be made
+smaller than the smallest possible relays or vacuum tubes. This led to dramatically smaller and cheaper computers,
+like the IBM 608, released in 1957 – the first fully transistor-powered, commercially-available computer. It
+contained 3000 transistors and could perform 4500 additions, or roughly 80 multiplications or divisions, every
+second. IBM soon transitioned all of its computing products to transistors, bringing transistor-based computers into
+offices, and eventually, homes. \v
+
+\fig{ibm_608}{0.24}
+
+Today, computers use transistors that are smaller than 50 nanometers in size – for reference, a sheet of paper is
+roughly 100,000 nanometers thick. And they're not only incredibly small, they're super fast – they can switch states
+millions of times per second, and can run for decades. \v
+
+\fig{trans_2}{0.1}
+
+A lot of this transistor and semiconductor development happened in the Santa Clara Valley, between San Francisco and
+San Jose, California. Since the most common material used to create semiconductors is silicon, this region soon
+became known as ``Silicon Valley''. Even William Shockley moved there, founding Shockley Semiconductor, whose
+employees later founded Fairchild Semiconductors, whose employees later founded Intel - the world's largest computer
+chip maker today. \v
+
+To fully appreciate computing hardware's explosive growth in power and sophistication though, we need to go back to
+the birth of electronic computing. From roughly the 1940's through the mid-1960s, every computer was built from
+individual parts, called discrete components, which were all wired together. For example, the ENIAC, consisted of
+more than 17000 vacuum tubes, 70000 resistors, 10000 capacitors, and 7000 diodes, all of which required 5 million
+hand-soldered connections. \v
+
+Adding more components to increase performance meant more connections, more wires, and just more complexity, what was
+dubbed the ``Tyranny of Numbers''. \v
+
+By the mid 1950s, transistors were becoming commercially available and being incorporated into computers. They were
+much smaller, faster and more reliable than vacuum tubes, but each transistor was still one discrete component. In
+1959, IBM upgraded their vacuum-tube-based computers to transistors by replacing all the discrete vacuum tubes with
+discrete transistors. The new machine, the IBM 7090, was six times faster and half the cost. These transistorized
+computers marked the second generation of electronic computing. However, although faster and smaller, discrete
+transistors didn't solve the Tyranny of Numbers. It was getting unwieldy to design, let alone physically manufacture
+computers with hundreds of thousands of individual components. By the the 1960s, this was reaching a breaking point.
+The insides of computers were often just huge tangles of wires. \v
+
+The breakthrough came in 1958, when Jack Kilby, working at Texas Instruments, demonstrated such an electronic part,
+``wherein all the components of the electronic circuit are completely integrated''. Put simply: instead of building
+computer parts out of many discrete components and wiring them all together, you put many components together, inside
+of a new, single component. These are called Integrated Circuits (ICs) and are most commonly known as ``chips''. A
+few months later in 1959, Fairchild Semiconductor, lead by Robert Noyce, made ICs practical. Kilby built his ICs out
+of germanium, a rare and unstable material but, Fairchild used the abundant silicon, which makes up about a quarter
+of the earth's crust! It's also more stable, therefore more reliable. For this reason, Noyce is widely regarded as
+the father of modern ICs, ushering in the electronics era, and also Silicon Valley, where Fairchild was based and
+where many other semiconductor companies would soon pop up.
+
+\bd[Integrated Circuit (IC) / Chip]
+An \textbf{Integrated Circuit} (\textbf{IC}), also referred to as a \textbf{chip}, is a set of electronic circuits on
+one small flat piece of semiconductor material, usually silicon.
+\ed
+
+\fig{chip}{0.1}
+
+In the early days, an IC might only contain a simple circuit with just a few transistors. But even this allowed
+simple circuits, like the logic gates we introduced, to be packaged up into a single component. ICs are sort of like
+Legos for computer engineers ``building blocks'' that can be arranged into an infinite array of possible designs.
+However, they still have to be wired together at some point to create even bigger and more complex circuits, like a
+whole computer. For this, engineers had another innovation: printed circuit boards, or PCBs. Instead of soldering and
+bundling up bazillions of wires, PCBs, which were mass manufactured, have all the metal wires etched right into
+them to connect components together.
+
+\bd[Printed Circuit Board (PCB)]
+A \textbf{printed circuit board} (\textbf{PCB}) is a laminated structure of conductive and insulating layers.
+\ed
+
+CBs have two complementary functions. The first is to affix electronic components in designated locations on the
+outer layers by means of soldering. The second is to provide reliable electrical connections (and also reliable open
+circuits) between the component's terminals in a controlled manner often referred to as PCB design. Each of the
+conductive layers is designed with an artwork pattern of conductors(similar to wires on a flat surface) that provides
+electrical connections on that conductive layer. Another manufacturing process adds vias, plated-through holes that
+allow interconnections between layers.
+
+\fig{chip2}{0.2}
+
+By using PCBs and ICs together, one could achieve exactly the same functional circuit as that made from discrete
+components, but with far fewer individual components and tangled wires. Plus, it's smaller, cheaper and more reliable. \v
+
+Many early ICs were manufactured using teeny tiny discrete components packaged up as a single unit. However, even
+when using really small components, it was hard to get much more than around five transistors onto a single IC. To
+achieve more complex designs, a radically different fabrication process was needed that changed everything:
+Photolithography!
+
+\bd[Photolithography]
+In integrated circuit manufacturing, \textbf{photolithography} is a general term for techniques that use light to
+produce minutely patterned thin films of suitable materials over a substrate, such as a silicon wafer, to protect
+selected areas of it during subsequent etching, deposition, or implantation operations.
+\ed
+
+In short, it's a way to use light to transfer complex patterns to a material, like a semiconductor. It only has a few
+basic operations, but these can be used to create incredibly complex circuits. Photolithography can also create other
+useful electronic elements, like resistors and capacitors, all on a single piece of silicon (plus all the wires
+needed to hook them up into circuits). \v
+
+As photolithography techniques improved, the size of transistors shrunk, allowing for greater densities. At the start
+of the 1960s, an IC rarely contained more than 5 transistors, they just couldn't possibly fit. But, by the mid 1960s,
+we were starting to see ICs with over 100 transistors on the market. In 1965, Gordon Moore could see the trend: that
+approximately every 2 years, thanks to advances in materials and manufacturing, you could fit twice the number of
+transistors into the same amount of space. This is called Moore's Law.
+
+\bd[Moore's Law]
+\textbf{Moore's law} is the observation that the number of transistors in a dense integrated circuit (IC) doubles about
+every two years.
+\ed
+
+The observation is named after Gordon Moore, the co-founder of Fairchild Semiconductor and Intel (and former CEO of
+the latter), who in 1965 posited a doubling every year in the number of components per integrated circuit, and
+projected this rate of growth would continue for at least another decade. \v
+
+In 1975, looking forward to the next decade, he revised the forecast to doubling every two years. Moore's law is an
+observation and projection of a historical trend. Rather than a law of physics, it is an empirical relationship
+linked to gains from experience in production. In other words it's not really a law at all, more of a trend. \v
+
+IC prices also fell dramatically, from an average of \$50 in 1962 to around \$2 in 1968. Today, you can buy ICs for
+cents. Smaller transistors and higher densities had other benefits too. The smaller the transistor, the less charge
+you have to move around, allowing it to switch states faster and consume less power. Plus, more compact circuits
+meant less delay in signals resulting in faster clock speeds. In 1968, Robert Noyce and Gordon Moore teamed up and
+founded a new company, combining the words Integrated and Electronics in ``Intel'' the largest chip maker today. \v
+
+The Intel 4004 CPU that we introduced earlier was a major milestone. Released in 1971, it was the first processor
+that shipped as an IC, what's called a microprocessor, because it was so beautifully small! It contained 2,300
+transistors. \v
+
+People marveled at the level of integration, an entire CPU in one chip, which just two decades earlier would have
+filled an entire room using discrete components. This era of integrated circuits, especially microprocessors, ushered
+in the third generation of computing. And the Intel 4004 was just the start. CPU transistor count exploded! By 1980,
+CPUs contained 30 thousand transistors. By 1990, CPUs breached the 1 million transistor count. By 2000, 30 million
+transistors, and by 2010, one billion transistors. To achieve this density, the finest resolution possible with
+photolithography has improved from roughly 10 thousand nanometers, that's about one tenth of the thickness of a human
+hair, to around 14 nanometers today. That's over 400 times smaller than a red blood cell! And of course, CPU's weren
+'t the only components to benefit. Most electronics advanced essentially exponentially: RAM, graphics cards, solid
+state hard drives, camera sensors, you name it. Today's processors,like the A10 CPU inside of an iPhone, contains a
+mind melting 3.3 billion transistors in an IC roughly 1cm by 1cm. That's smaller than a postage stamp! \v
+
+And modern engineers aren't laying out these designs by hand, one transistor at a time - it's not humanly possible.
+Starting in the 1970's, very-large-scale integration, or VLSI software, has been used to automatically generate chip
+designs instead. Using techniques like logic synthesis, where whole, high-level components can be laid down, like a
+memory cache, the software generates the circuit in the most efficient way possible. Many consider this to be the
+start of fourth generation computers. Unfortunately, experts have been predicting the end of Moore's Law for decades,
+and we might finally be getting close to it. \v
+
+There are two significant issues holding us back from further miniaturization. First, we're bumping into limits on
+how fine we can make features on a photomask and it's resultant wafer due to the wavelengths of light used in
+photolithography. In response, scientists have been developing light sources with smaller and smaller wavelengths
+that can project smaller and smaller features. The second issue is that when transistors get really really small,
+where electrodes might be separated by only a few dozen atoms, electrons can jump the gap, a phenomenon called
+quantum tunneling. If transistors leak current, they don't make very good switches. Nonetheless, scientists and
+engineers are hard at work figuring out ways around these problems. Transistors as small as 1 nanometer have been
+demonstrated in research labs.
+
+\section{The Personal Computer Revolution}
+
+Pretty much immediately after World War II concluded in 1945, there was tension between the world's two new
+superpowers: the United States, and the USSR. The Cold War had begun, and with it, massive government spending on
+science and engineering. Computing, which had already demonstrated its value in wartime efforts like the Manhattan
+Project, and code breaking Nazi communications, was lavished with government funding. They enabled huge, ambitious
+com \v
+
+This spurred rapid advances that simply weren't possible in the commercial sector alone, where projects were
+generally expected to recoup development costs through sales. This began to change in the early 1950s, especially
+with Eckert and Mauchley's UNIVAC I, the first commercially successful computer. Unlike any ENIAC or ATLAS, this
+wasn't just one single computer, it was a model of computer. In total, more than forty were built. Most of these
+UNIVAC's went to government offices or large companies, which was part of the growing military industrial complex in
+the United States, with pockets deep enough to afford the cutting edge. Famously a UNIVAC I built for the US Atomic
+Energy Commission was used by CBS to predict the results of the 1952 US Presidential Election. With just one per cent
+of the vote the computer correctly predicted an Eisenhower landslide while pundits favoured Stevenson. It was a media
+event that helped propel computing to the forefront of the public's imagination. \v
+
+Computing was unlike machines of the past which generally augmenting human physical abilities. Trucks allowed us to
+carry more, automatic looms wove faster, machine saws were more precise, and so on for a bunch of contraptions that
+typified the industrial revolution. Computers on the other hand could augment human intellect. \v
+
+This potential wasn't lost on Vannevar Bush who in 1945 published an article on the hypothetical computing device he
+called the MEMEX. This was a device in which an individual stores all his books, records, and communications, and
+which is mechanized so that it may be consulted with exceeding speed and flexibility. It is an enlarged intimate
+supplement for his memory. He also predicted that wholly new forms of encyclopedia will appear, ready-made with a
+mesh of associative trails running through them. \v
+
+Vannevar Bush was the head of the US Office of Scientific Research and Development which was responsible for funding
+and coordinating the scientific research during World War II. With the Cold War brewing, Bush lobbied for the
+creation of a peace-time equivalent, the National Science Foundation, formed in 1950. To this day the NSF provides
+federal funding to provide scientific funding in the United States and it is a major reason the US has continued to
+be a leader in the technology sector. \v
+
+It was also in the 1950s that consumers started to buy transistor powered gadgets. Notable among them was the
+transistor radio, which was small, durable, battery-powered, and it was portable, unlike the vacuum tube based radio
+sets from the 1940s and before. \v
+
+The Japanese government, looking for industrial opportunities to bolster their post-war economy, soon got in on the
+action, licensing the rights to transistors from Bell Labs in 1952, helping launch the Japanese semi-conductor and
+electronics industry. \v
+
+In 1955 the first Sony product was released, the TR-55 transistor radio. Concentrating on quality and price, Japanese
+companies captured half the US market for portable radios in just five years. This planted the first seeds of a major
+industrial rivalry in the decades to come. \v
+
+In 1953 there were only around 100 computers on the entire planet and at this point the USSR was only a few years
+behind the west in computing technology, completing their first programmable computer in 1950. But the Soviets were
+way ahead in the burgeoning space race. \v
+
+The Soviet's launched the world's first satellite into orbit, Sputnik I, in 1957 and a few years later in 1961,
+Soviet cosmonaut Yuri Gagarin became the first human in space. This didn't sit well with the American public and
+prompted President Kennedy a month after Gagarin's mission to encourage the nation to land a man on the moon within
+the decade. And it was expensive. NASA's budget grew almost ten-fold, peaking in 1966 at roughly 4.5\% of the US's
+Federal Budget. Today it's around half a percent. \v
+
+NASA used this funding to tackle a huge array of enormous challenges. This culminated in the Apollo program, which,
+at its peak, employed roughly 400, 000 people, further support by over 20,000 universities and companies. \v
+
+One of these huge challenges was navigating in space. NASA needed a computer to process complex trajectories and
+issue guidance commands to the spacecraft, for this, they built the Apollo Guidance Computer. There were three
+significant requirements. First the computer had to be fast, no surprise there, second it had to be small and
+lightweight there was not enough room in the spacecraft and every ounce is precious when you're flying a quarter
+million miles ot the moon, and finally, it had to be really, really, ridiculously reliable. This is super important
+in a space craft where there's lots of vibrations, radiation and temperature change and there's no running to Best
+Buy if something breaks. The technology of the era, vacuum tubes and discrete transistors, just weren't up to the
+task. So NASA turned to a brand new technology, integrated circuits. The Apollo Guidance Computer was the first
+computer to use them, a huge paradigm shift. NASA was also the only place that could afford them. Initially, each
+chip cost around \$50, and the guidance computer needed thousands of them. But, by paying that price the Americans
+were able to beat the Soviets to the moon. \v
+
+Although the Apollo guidance computer is credited with spurring the development and adoption of integrated circuits
+it was a low volume product, there were only 17 Apollo missions after all. It was actually military applications,
+especially the Minute Man and Polaris nuclear missile systems that allowed integrated circuits to become a
+mass-produced item. This rapid advancement was further accelerated by the US building and buying huge powerful
+computers, often called supercomputers because they were frequently ten times faster than any other computer on the
+planet upon their release. \v
+
+But these machines, built by companies like IBM were also super in cost and soon pretty much only governments could
+afford to buy them. In the US these machines went to government agencies like the NSA and government research labs
+like Los Almos National Laboratories. \v
+
+Initially, the US semiconductor industry boomed, buoyed by high-profit government contracts. However, this meant that
+most US companies overlooked the consumer market, where profit margins were small. \v
+
+The Japanese semiconductor industry came to dominate this niche. By having to operate with lean profit margins in the
+1950s and 60s the Japanese have invested heavily in manufacturing capacity to achieve economies of scale, in research
+to improve economy and yield and in automation to keep manufacturing costs low. \v
+
+In the 1970s with the space race and Cold War subsiding, previously juicy defence contracts began to dry up and
+American semiconductor and electronics companies found it harder to compete. It didn't help that many computing
+components had been commoditized. DRAM was DRAM so why buy expensive Intel memory when you could buy the same chip
+for less from Hitachi. \v
+
+Throughout the 1970s, US companies began to downsize, consolidate or outright fail. Intel had to lay off a third of
+its workforce in 1974 and even the storied Fairchild semiconductor was acquired in 1979 after near bankruptcy. To
+survive many of these companies began to outsource their manufacturing in a bid to reduce costs. Intel withdrew from
+its main product category, memory ICs, and decided to refocus on processors which ultimately saved the company. \v
+
+This lull in the US electronics industry allowed Japanese companies like Sharp and Casio to dominate the breakout
+computing product of the 1970s, hand-held electronic calculators. By using integrated circuits, these could be made
+small and cheap. They replaced expensive desktop adding machines you'd find in offices. For most people it was the
+first time they didn't have to do math on paper or use a slide-rule. They were an instant hit, selling by the
+millions. This further drove-down the cost of integrated circuits and led to the development and widespread use of
+microprocessors, like the Intel 4004 we've discussed previously. This chip was built by Intel in 1971 at the request
+of Japanese calculator company Busicom. Soon Japanese electronics were everywhere, from televisions and VCRs to
+digital wristwatches and Walkmans. \v
+
+The availability of inexpensive microprocessors formed entirely new products like video arcades. The world got Pong
+in 1972 and Breakout in 1976. As cost continued to plummet, soon it became possible for regular people to afford
+computing devices. During this time we see the emergence of the first successful home computers, like the 1975 ALTAIR
+8800 and also the first home gaming consoles like the Atari 2600 in 1977. That seems like a small thing today, but
+this was the dawn of a whole new ear in computing. In just three decades computers had evolved from machines where
+you could literally walk inside of the Super U, assuming you had government clearance, to the point where a child
+could play with a handheld toy containing a microprocessor many times faster. \v
+
+Critically, this dramatic evolution would not have been possible without two powerful forces at play: governments and
+consumers. Government funding like the United States provided during the Cold War enabled early adoption of many
+later computer technologies. This funding helped float entire industries relating to computing long enough for the
+technology to mature and become commercially feasible. Then businesses, and ultimately consumers, provided the demand
+to take it mainstream. The Cold War may be over but this relationship continues today. Governments are still funding
+science research, intelligence agencies are still buying supercomputers, humans are still being launched into space,
+and you're still buying TVs, Xboxes, Playstations, laptops, and smart phones, and for these reasons computing
+continues to advance at a lightning pace. \v
+
+The idea of having a computer all to yourself - a personal computer - was elusive for the first three decades of
+electronic computing. It was just way too expensive for a computer to be owned and used by one single person. But by
+the early 1970s, all the required components had fallen into place to build a low-cost but still usefully powerful
+computer. Not a toy, but a tool. Most influential in this transition was the advent of the single-chip CPU's, which
+were surprisingly powerful yet small and inexpensive. \v
+
+Advances in integrated circuits also offered low-cost solid-state memory, both for computer RAM and ROM. Suddenly it
+was possible to have an entire computer on one circuit board, dramatically reducing manufacturing costs.
+Additionally, there was cheap and reliable computer storage, like magnetic tapes cassettes and floppy disks. And
+finally the last ingredient was low-cost displays, often just repurposed televisions.  \v
+
+If you blended these four ingredients together in the 1970s, you got, what was called a microcomputer, because these
+things were so tiny compared to ``normal'' computers of that era - the types you'd see in businesses or universities.
+\v
+
+But more important than their size was their cost. These were, for the first time, sufficiently cheap.It was
+practical to buy one and only have one person ever use it. No time sharing, no multi-user logins, just a single
+owner, and user. The personal computer era had arrived.  \v
+
+The first commercially successful personal computer was the Altair 8800.
+
+\fig{altar}{0.55}
+
+This machine debuted on the cover of Popular Electronics in 1975, and was sold as a \$439 kit that you built yourself.
+Inflation-adjusted, that's about \$2000 today, which isn't chump change, but extremely cheap for a computer in
+1975. Tens of thousands of kits were sold to computer hobbyists, and because of its popularity, there were soon all
+sorts of nifty add-ons available like extra memory, a paper tape reader, and even a teletype interface. This allowed
+you to load a longer, more complicated program from punch tape, and then interact with it using a teletype terminal. \v
+
+However, these programs still had to be written in machine code, which was really low level and nasty, even for
+hardcore computer enthusiasts. This problem didn't escape a young Bill Gates and Paul Allen, who were 19 and 22
+respectively. They contacted MITS, the company making the Altair 8800, suggesting the computer would be more
+attractive to hobbyists if it could run programs written in BASIC, a popular and simple programming language. (More
+on programming languages in the next chapter) To do this, they needed to write a program that converted BASIC
+instructions into native machine code, what's called an interpreter. This is very similar to a compiler, but happens
+as the program runs, instead of beforehand. (We will define the compiler and the interpreter later) \v
+
+MITS was interested and agreed to meet Bill and Pual for a demonstration. Problem is, they hadn't written the
+interpreter yet. So they hacked it together in just a few weeks without even an Altair 8800 to develop on, finishing
+the final piece of code on the plane. The first time they knew their code worked was at MITS headquarters in Albuquerque, New Mexico, for the demo.
+Fortunately, it went well and MITS agreed to distribute their software. Altair BASIC became the newly formed
+Microsoft's first product. Although computer hobbyists existed prior to 1975, the Altair 8800 really jump-started the
+movement. Enthusiast groups formed, sharing knowledge and software and passion about computing. \v
+
+Most legendary among these is the Homebrew Computer Club, which met for the first time in March 1975 to see a review
+unit of the Altair 8800, one of the first to ship to California. At that first meeting was 24-year-old Steve Wozniak,
+who was so inspired by the Altair 8800 that he set out to design his own computer. \v
+
+In May 1976, he demonstrated his prototype to the Club and shared the schematics with interested members. Unusual for
+the time, it was designed to connect to a TV and offered a text interface - a first for a low-cost computer. Interest
+was high, and shortly after fellow club member and college friend Steve Jobs, suggested that instead of just sharing
+the designs for free, that they should just sell an assembled motherboard. However, you still had to add your own
+keyboard, power supply, and enclosure. It went on sale in July 1976 with a price tag of \$666.66. It was called the
+Apple 1, and it was Apple Computer's first product.
+
+\fig{apple1}{0.23}
+
+Like the Altair 8800, the Apple 1 was sold as a kit. It appealed to hobbyists, who didn't mind tinkering and
+soldering, but consumers and businesses weren't interested. This changed in 1977, with the release of three
+game-changing computers, that could be used right out of the box. First was the Apple II, Apple's earliest product
+that sold as a complete system that was professionally designed and manufactured. It also offered rudimentary color
+graphics and sound output, amazing features for a low machine.
+
+\fig{apple2}{0.038}
+
+The Apple II series of computers sold by the millions and quickly propelled Apple to the forefront of the personal
+computing industry. The second computer was the TRS-80 Model I, made by the Tandy Corporation and sold by Radioshack
+- hence, the ``TRS''.
+
+\fig{trs}{1}
+
+Although less advanced than the Apple II, it was half the cost and sold like hot cakes. Finally, there was the
+Commodore PET 2001, with a unique all-in-one design that combined computer, monitor, keyboard, and tape drive into
+one device, aimed to appeal to consumers. It started to blur the line between computer and appliance.
+
+\fig{comodore}{0.2}
+
+These three computers became known as the ``1977 Trinity''. They all came bundled with BASIC interpreters, allowing
+non-computer-wizards to create programs. The consumer software industry also took off, offering games and
+productivity tools for personal computers, like calculators and word processors. \v
+
+The killer app of the era was 1979s VisiCalc, the first spreadsheet program - which was infinitely better than paper
+- and the forbearer of programs like Microsoft Excel and Google Sheets. But perhaps the biggest legacy of these
+computers was their marketing - they were the first to be targeted at households, and not just businesses and
+hobbyists. \v
+
+And for the first time in a substantial way, computers started to appear in homes, and also small businesses and
+schools. This caught the attention of the biggest computer company on the planet, IBM, who had seen its share of the
+overall computer market shrink from 60\% in 1970 to around 30\% by 1980. This was mainly because IBM had ignored the
+microcomputer market, which was growing at about 40\% annually. \v
+
+As microcomputers evolved into personal computers, IBM knew it needed to get in on the action. But to do this, it
+would have to radically rethink its computer strategy and design. In 1980, IBM's least-expensive computer, the 5120,
+cost roughly \$10,000, which was never going to compete with the likes of the Apple II. This meant starting from
+scratch. A crack team of twelve engineers, later nicknamed the dirty dozen, were sent off to offices in Boca Raton,
+Florida, to be left alone and put their talents to work. Shielded from IBM internal politics, they were able to
+design a machine as they desired. Instead of using IBM propriety CPUs, they chose Intel chips. Instead of using IBM's
+preferred operating system, CP/M, they licensed Microsoft's Disk Operating System: DOS and so on, from the screen to
+the printer. For the first time, IBM divisions had to compete with outside firms to build hardware and software for
+the new computer. This radical break from the company tradition of in-house development kept costs low and brought
+partner firms into the fold. \v
+
+After just a year of development, the IBM Personal Computer, or IBM PC was released.
+
+\fig{ibmpc.png}{0.5}
+
+IBM PC was an immediate success, especially with businesses that had long trusted the IBM brand. But most influential
+to its ultimate success was that the computer featured an open architecture, with good documentation and expansion
+slots, allowing third parties to create new hardware and peripherals for the platform. That included things like
+graphics cards, sound cards, external hard drives, joysticks, and countless other add-ons. This spurred innovation,
+and also competition, resulting in a huge ecosystem of products. This open architecture became known as ``IBM
+Compatible''. If you bought an ``IBM Compatible'' computer, it meant you could use that huge ecosystem of software
+and hardware. \v
+
+Being an open architecture also meant that competitor companies could follow the standard and create their own IBM
+Compatible computers. Soon, Compaq and Dell were selling their own PC clones. And Microsoft was happy to license
+MS-DOS to them, quickly making it the most popular PC operating system. IBM alone sold two million PCs in the first
+three years, overtaking Apple. With a large user base, software and hardware developers concentrated their efforts on
+IBM Compatible platforms - there were just more users to sell to. Then, people wishing to buy a computer bought the
+one with the most software and hardware available, and this effect snowballed; whereas companies producing
+non-IBM-compatible computers, often with superior specs, failed. \v
+
+Only Apple kept significant market share without IBM compatibility. Apple ultimately chose to take the opposite
+approach - a ``closed architecture'' - proprietary designs that typically prevent people from adding new hardware to
+their computers. This meant that Apple made its own computers, with its own operating system, and often its own
+peripherals, like displays, keyboards, and printers. \v
+
+By controlling the full stack, from hardware to software, Apple was able to control the user experience and improve
+reliability. These competing business strategies were the genesis of the ``Mac'' versus ``PC'' division that still
+exists today. \v
+
+To survive the onslaught of low-cost PCs, Apple needed to up its game, and offer a user experience that PCs and DOS
+couldn't. Their answer was the Macintosh, released in 1984.
+
+\fig{mac}{0.09}
+
+This groundbreaking, reasonably-low-cost, all-in-one computer booted not a command-line text interface, but rather a
+graphical user interface. \v
+
+Let's take a small break from the actual mechanical computers and focus on, most probably, the most important factor
+of the development of the personal computer this of the ``Human-Computer Interaction''.
+
+\bd[Human-Computer Interaction (HCI)]
+\textbf{Human–computer interaction} (\textbf{HCI}) is research in the design and the use of computer technology,
+which focuses on the interfaces between people (users) and computers. HCI researchers observe the ways humans
+interact with computers and design technologies that allow humans to interact with computers in novel ways.
+\ed
+
+As we discussed at the very beginning of the notes, the earliest mechanical and electro-mechanical computing devices
+used physical controls for inputs and outputs, like gears, knobs and switches, and this was pretty much the extent of
+the human interface. Even the first electronic computers, like Colossus and ENIAC, were configured using huge panels
+of mechanical controls and patch wires. It could take weeks to enter in a single program, let alone run it, and to
+get data out after running a program, results were most often printed to paper. Paper printers were so useful that
+even Babbage designed one for his Difference Engine, and that was in the 1820s! However, by the 1950s, mechanical
+inputs were rendered obsolete by programs and data stored entirely on mediums like punch cards and magnetic tape.
+Paper printouts were still used for the final output, and huge banks of indicator lights were developed to provide
+real time feedback while the program was in progress. \v
+
+It's important to recognize that computer input of this era was designed to be as simple and robust as possible for
+computers. Ease and understanding for users was a secondary concern. Punch tape is a great example – this was
+explicitly designed to be easy for computers to read. The continuous nature of tape made it easy to handle
+mechanically, and the holes could be reliably detected with a mechanical or optical system, which encoded
+instructions and data. But of course, humans don't think in terms of little punched holes on strips of paper. So, the
+burden was on programmers. They had to spend the extra time and effort to convert their ideas and programs into a
+language and a format that was easy for computers of the era to understand – often with the help of additional staff
+and auxiliary devices. \v
+
+It's also important to note that early computers, basically pre-1950, had an extremely simple notion of human input.
+Yes, humans input programs and data into computers, but these machines generally didn't respond interactively to
+humans. Once a program was started, it typically ran until it was finished. That's because these machines were very
+expensive to be waiting around for humans to type commands. Inputs needed for computations were fed in at the same time
+as the program.\v
+
+This started to change in the late 1950s. On one hand, smaller-scale computers started to become cheap enough that it
+was feasible to have a human-in-the loop; that is, a back and forth between human and computer. And on the other
+hand, big fancy computers became fast and sophisticated enough to support many programs and users at once, what were
+called multitasking and time-sharing systems. But these computers needed a way to get input from users. For this,
+computers borrowed the ubiquitous data entry mechanism of the era: keyboards. \v
+
+At this point, typing machines had already been in use for a few centuries, but it was Christopher Latham Sholes, who
+invented the modern typewriter in 1868. It took until 1874 to refine the design and manufacture it, but it went on to
+be a commercial success. Sholes' typewriter adopted an unusual keyboard layout that you know well – QWERTY – named
+for the top-left row of letter keys.
+
+\bd[QWERTY]
+\textbf{QWERTY} is a keyboard design for Latin-script alphabets. The name comes from the order of the first six keys
+on the top left letter row of the keyboard: Q W E R T Y\@.
+\ed
+
+There has been a lot of speculation as to why this design was used. The most prevalent theory is that it put common
+letter pairings in English far apart to reduce the likelihood of type bars jamming when entered in sequence. It's a
+convenient explanation, but it's also probably false, or at least not the full story. In fact, QWERTY puts many
+common letter pairs together. And we know that Sholes and his team went through many iterations before arriving at
+this iconic arrangement. Regardless of the reason, the commercial success of Sholes' typewriter meant the competitor
+companies that soon followed duplicated his design. Many alternative keyboard layouts have been proposed over the
+last century, claiming various benefits. But, once people had invested the time to learn QWERTY, they just didn't
+want to learn something new. This is what economists would call a switching barrier or switching cost. And it's for
+this very basic human reason that we still use QWERTY keyboards almost a century and a half later! I should mention
+that QWERTY isn't universal. There are many international variants, like the French AZERTY layout, or the QWERTZ
+layout common in central Europe. Interestingly, Sholes didn't envision that typing would ever be faster than
+handwriting, which is around 20 words per minute. Typewriters were introduced chiefly for legibility and
+standardization of documents, not speed. However, as they became standard equipment in offices, the desire for speedy
+typing grew, and there were two big advances that unlocked typing's true potential. \v
+
+Around 1880, Elizabeth Longley, a teacher at the Cincinnati Shorthand and Type-Writer Institute, started to promote
+ten-finger typing. This required much less finger movement than hunt-and-peck, so it offered enhanced typing speeds.
+Then, a few years later, Frank Edward McGurrin, a federal court clerk in Salt Lake City, taught himself to
+touch-type; as in, he didn't need to look at the keys while typing. In 1888, McGurrin won a highly publicized
+typing-speed contest, after which ten-finger, touch-typing began to catch on. Professional typists were soon able to
+achieve speeds upwards of 100 words per minute, much faster than handwriting! \v
+
+So, humans are pretty good with typewriters, but we can't just plunk down a typewriter in front of a computer and
+have it type – they have no fingers! Instead, early computers adapted a special type of typewriter that was used for
+telegraphs, called a teletype machine. These were electro-mechanically-augmented typewriters that could send and
+receive text over telegraph lines. Pressing a letter on one teletype keyboard would cause a signal to be sent, over
+telegraph wires, to a teletype machine on the other end, which would then electro-mechanically type that letter. This
+allowed two humans to type to one another over long distances. Since these teletype machines already had an
+electronic interface, they were easily adapted for computer use, and teletype computer interfaces were common in the
+1960s and 70s. \v
+
+Interaction was pretty straightforward. Users would type a command, hit enter, and then the computer would type back,
+going back and forth. These were called command line interfaces, and they remained the most prevalent form of
+human-computer interaction up until around the 1980s.
+
+\bd[Command Line Interface (CLI)]
+A \textbf{Command Line Interface} (\textbf{CLI}) processes commands to a computer program in the form of lines of text.
+\ed
+
+The program which handles the interface is called a command-line interpreter or command-line processor. Operating
+systems implement a command-line interface in a shell for interactive access to operating system functions or
+services. Such access was primarily provided to users by computer terminals starting in the mid-1960s, and continued
+to be used throughout the 1970s and 1980s on VAX/VMS, Unix systems and personal computer systems including DOS, CP/M
+and Apple DOS. \v
+
+Command line interfaces, while simple, are very powerful. Computer programming is still very much a written task, and
+as such, command lines are a natural interface. For this reason, even today, most programmers use command line
+interfaces as part of their work. And they're also the most common way to access computers that are far away, like a
+server in a different country. If you're running Windows, macOS or Linux, your computer has a command line interface.
+However, for the most users HCI component is the so called ``Graphical User Interface`` or GUI\@.
+
+\bd[Graphical User Interface (GUI)]
+The \textbf{Graphical User Interface} (\textbf{GUI}) is a form of user interface that allows users to interact with
+electronic devices through graphical icons and audio indicator such as primary notation, instead of text-based user
+interfaces, typed command labels or text navigation. GUIs were introduced in reaction to the perceived steep learning
+curve of command-line interfaces which require commands to be typed on a computer keyboard.
+\ed
+
+GUI was a radical evolution from the command line interfaces found on all other personal computers of the era.
+Instead of having to remember or guess the right commands to type in, a graphical user interface shows you what
+functions are possible. You just have to look around the screen for what you want to do. It's a point and click
+interface. All of the sudden, computers were much more intuitive. Anybody, not just hobbyists or computer scientists
+could figure things out all by themselves. Now let's go back to the history of the computers. \v
+
+The Macintosh is credited with taking graphical user interfaces, or GUI's, mainstream but in reality they were the
+results of many decades of research. Arguably the true forefather of modern GUIs was Douglas Engelbert. During WWII
+while Engelbert was stationed in the Philippines as a radar operator, he read Vannevar Bush's article on the Memex.
+These ideas inspired him and when his navy service ended, he returned to school completing a phD in 1955 at UC
+Berkeley. Heavily involved in the emerging computing scene, he collected his thoughts in the seminal 1962 report
+titled Augmenting Human Intellect. Engelbert believed that the complexity of the problems facing mankind was growing
+faster than our ability to solve them. \v
+
+Therefore, finding ways to augment our intellect would seem to be both a necessary and a desirable goal. He saw that
+computers could be used for beyond just automation and be essential interactive tools for future knowledge workers to
+tackle complex problems. Further inspired by Ivan Sutherland's recently demonstrated sketchpad, Englebert set out to
+make his vision a reality, recruiting a team to build the oN-Line System. He recognized that a keyboard alone was
+insufficient for the type of applications he was hoping to enable. In his words: ``We envisions problem-solvers using
+computer-aided working stations to augment their efforts. They required the ability to interact with information
+displays using some sort of device to move (a cursor) around the screen''. \v
+
+And in 1964, working with colleague Bill English, he created the first computer mouse. The wire came from the bottom
+of the device and looked very much like a rodent and the nickname stuck. \v
+
+In 1968 Englebert demonstrated his whole system at the Fall Joint Computer Conference, in what's often referred to
+as, ``the mother of all demos''. The demo was ninety minutes long and demonstrated many features of modern computing
+- bitmap graphics, video conferencing, word processing, and collaborative, real-time editing documents. There were
+also precursors to modern GUIs, like the mouse and multiple windows, although they couldn't overlap. It was way ahead
+of its time and like many products with that label it ultimately failed, at least commercially, but its influence on
+computer researchers of the day was huge. Englebert was recognized for this watershed moment in computing with a
+Turing Award in 1997. \v
+
+Federal funding started to reduce in the early 1970s, and at that point many of Englebert's team, including Bill
+English, left and went to Xerox's newly formed, Paolo Alto research center,more commonly known as Xerox Parc. It was
+here that the first true GUI computer system was developed, the Xerox Alto, finished in 1973.
+
+\fig{xerox}{0.042}
+
+So for the computer to be easy to use it needed to be more than just fancy graphics. It needed to be built around a
+concept that people were already familiar with so they'd immediately recognize how to use the interface with little
+or no training. Xerox's answer was to treat the 2D screen like the top of a desk, or a desktop. Just like how you can
+have many pages laid out on a desk, a user could have several computer programs on at once, each was contained in
+their own frame which offered a view onto the application called a window. \v
+
+Also, like papers on a desk, these windows could overlap blocking the items behind them and there were desk
+accessories like a calculator and clock that the user could place on the screen and move around. It wasn't an exact
+copy of a desktop though, instead it was a metaphor of a desktop. For this reason, surprisingly, it's called the
+desktop metaphor. \v
+
+There are many ways to design an interface like this but the Alto team did it with windows, icons, menus and a
+pointer, what's called a WIMP interface.
+
+\bd[WIMP]
+\textbf{WIMP} stands for ``windows, icons, menus, pointer'' denoting a style of interaction using these elements of the
+user interface.
+\ed
+
+WIMP is what most desktop GUIs use today. It also offered a basic set of widgets, reusable graphical building blocks,
+things like buttons, check boxes, sliders, and tabs which were also drawn from real world objects to make them
+familiar. GUI applications are constructed from these widgets. \v
+
+Roughly two thousand Xerox Altos were made and used at Xerox and given to university labs. They were never sold
+commercially,instead the Parc team kept refining the hardware and software culminating in the Xerox Star system
+released in 1981.
+
+\fig{xeroxstar}{0.032, angle=270}
+
+The Xerox Star extended the desktop metaphor. Now files looked like pieces of paper and they could be stored in
+little folders all of which could sit on your desktop or be put away into digital filing cabinets. It's a metaphor
+that sits on top of the underlying file system. From the user's perspective this is a new level of abstraction. \v
+
+Xerox, being in the printing machine business also advanced text and graphics creations. For example, they introduced
+the terms cut, copy, and paste. This metaphor was drawn from how people dealt with making edited documents written on
+typewriters. You would literally cut text out with scissors and then paste it with glue into the spot you wanted in
+another document, then you photocopied the page to flatten it back down into a single layer, making the change
+invisible. This manual process was moot with the advent of word processing software which existed on platforms like
+the Apple II and Commadore PET. But Xerox went way beyond the competition with the idea that whatever you made on the
+computer should look exactly like the real world version if you printed it out. They dubbed this
+``what-you-see-is-what-you-get'' or WYSIWYG. Unfortunately, like Englebert's on-line system, the Xerox style was
+ahead of its time. Sales were sluggish because it had a price tag equivalent to nearly \$200,000 today for an office
+set up. It also didn't help than the IBM PC launched that same year followed by a tsunami of cheap IBM compatible PC
+clones. \v
+
+But the great ideas that Parc researchers had been cultivating and building for almost a decade didn't go to waste.
+In December of 1979, a year and a half before the Xerox Star shipped, a guy you may have heard of visited, Steve Jobs. \v
+
+There's a lot of lore surrounding this visit, with many suggesting that Steve Jobs and Apple stole Xerox's ideas, but
+that simply isn't true. In fact, Xerox approached Apple, hoping to partner with them. Ultimately Xerox was able to
+buy a million dollar stake in Apple before its highly anticipated IPO, but it came with an extra provision: disclose
+everything cool going on at Xerox Parc. \v
+
+Steve knew they had some of the greatest minds in computing but he wasn't prepared for what he saw. There was a
+demonstration of Xerox's Graphic User Interface running on a crisp Bitmap display, all driven with intuitive mouse
+input. Steve later said: ``it was like a veil being lifted from my eyes. I could see the future of what computing was
+destined to be''. \v
+
+Steve returned to Apple with his engineering entourage and they got to work inventing new features, like the menu bar
+and a trashcan to store all the files to be deleted. Apple's first product with Graphical User Interface and a mouse
+was the Apple Lisa, released in 1983.
+
+\fig{lisa}{0.24}
+
+It was a super advanced machine with a super advanced price, almost \$25,000 today. That was significantly cheaper
+than the Xerox Star but it turned out to be an equal flop in the market. \v
+
+Luckily, Apple had another project up its sleeve, the Macintosh, released a year later in 1984. It had a price of
+around \$6,000 today, a quarter of the Lisa's cost, and it hit the mark, selling 70,000 units in the first 100 days.
+But after the initial craze sales started to falter and Apple was selling more of its Apple 2 computers than Macs. A
+big problem was that no one was making the software for this new machine with its new radical interface and it got
+worse because the competition caught up fast. \v
+
+Soon other personal computers had primitive but usable GUIs on a computers a fraction of the cost. Consumers ate it
+up and so did PC software developers. With Apple's finances looking increasingly dire, and tensions growing with
+Apples new CEO, John Scully, Steve Jobs was ousted. A few months later, Microsoft released Windows 1.0. It may not
+have been as pretty as Mac OS but it was the first salvo in what would become a bitter rivalry and near dominance of
+the industry by Microsoft. Within ten years, Microsoft Windows was running on almost 95\% of personal computers. \v
+
+Initially fans of Mac OS could rightly claim superior graphics and ease of use. Those early versions of Windows were
+all built on top of DOS, which was never designed to run GUIs but. After Windows 3.1, Microsoft began to develop a
+new consumer orientate OS with an upgraded GUI called Windows95. This was a significant rewrite that offered much
+more than just polished graphics. It also had advanced features Mac OS didn't have like program multitasking and
+protective memory. Windows95 introduced many GUI elements still seen in Windows versions today like the start menu,
+task bar, and Windows Explorer file manager. \v
+
+Microsoft wasn't infallible though. Looking to make the desktop metaphor even easier and friendlier, it worked on a
+product called Microsoft BOB and it took the idea of using metaphors to the extreme. Now you had a whole virtual room
+on your screen with applications embodied as objects that you could put onto tables and shelves. It even came with a
+crackling fireplace and a virtual dog to offer assistance. As you might have guessed, it was not a success. \v
+
+This is a great example of how the user interfaces we enjoy today are the product of what's essentially natural
+selection. Whether you're running Windows, Mac, Linux, or some other desktop GUI, it's almost certainly an evolved
+version of the WIMP paradigm first introduced on the Xerox Alto. Along the way a lot of bad ideas were tried and
+failed everything had to be invented, tested, refined, adopted, or dropped. \v
+
+Today GUIs are everywhere and while they're good, they're not always great. No doubt, you've experienced
+design-related frustrations after downloading an application, used someone else's phone, or visited a website and for
+this reason computer scientists and interface designers continue to work hard to craft computing experiences that are
+easier and more powerful. Ultimately working towards Englebert's vision of augmenting human intellect.
+
+\section{Programming}
+
+Up to this point, we've seen how computers have evolved from mechanical devices to electronic devices, and how they
+have evolved from huge machines that filled entire rooms to small devices that can fit in our pockets. We've also
+seen how computers have evolved from devices that were used by a few people to devices that are used by billions of
+people. Before we move on to the next chapter, we will briefly describe the evolution of programming and programming
+languages that happened in parallel. \v
+
+In the early days of computing, people had to write entire programs in a high-level version of a program on paper, in
+English. An informal, high-level description of a program like this is called ``pseudocode''.
+
+\bd[Pseudocode]
+\textbf{Pseudocode} is a plain language description of the steps in an algorithm or another system.
+\ed
+
+Pseudocode often uses structural conventions of a normal programming language, but is intended for human reading
+rather than machine reading. It typically omits details that are essential for machine understanding of the algorithm,
+such as variable declarations and language-specific code. The programming language is augmented with natural
+language description details, where convenient, or with compact mathematical notation. The purpose of using
+pseudocode is that it is easier for people to understand than conventional programming language code, and that it is
+an efficient and environment-independent description of the key principles of an algorithm. It is commonly used in
+textbooks and scientific publications to document algorithms and in planning of software and other algorithms. When
+the pseudocode was done and the program was all figured out on paper, they'd painstakingly expand and translate it
+into binary machine code by hand, using things like opcode tables. After the translation was complete, the program
+could be fed into the computer and run. \v
+
+As you might imagine, people quickly got fed up with this process. So, by the late 1940s and into the 50s,
+programmers had developed slightly higher-level languages that were more human-readable. Opcodes were given simple
+names, called mnemonics, which were followed by operands, to form instructions. \v
+
+So instead of having to write instructions as a bunch of 1's and 0's, programmers could write something like ``LOAD A
+14''. Of course, a CPU has no idea what ``LOAD A 14'' is. It doesn't understand text-based language, only binary. And
+so programmers came up with a clever trick. They created reusable helper programs, in binary, that read in text-based
+instructions, and assemble them into the corresponding binary instructions automatically. This program is called an
+``assembler''.
+
+\bd[Assembler]
+An \textbf{assembler} is a program that takes basic computer instructions and converts them into a pattern of bits
+that the computer's processor can use to perform its basic operations.
+\ed
+
+Assembler reads in a program written in an assembly language and converts it to native machine code.
+
+\bd[Assembly Language]
+\textbf{Assembly language} is any low-level programming language in which there is a very strong correspondence
+between the instructions in the language and the architecture's machine code instructions.
+\ed
+
+Assembly language usually has one statement per machine instruction, but constants, comments, assembler directives,
+symbolic labels of, e.g, memory locations, registers, and macros are generally also supported. In general, each
+assembly language instruction converts directly to a corresponding machine instruction - a one-to-one mapping - so
+it's inherently tied to the underlying hardware. And the assembler still forces programmers to think about which
+registers and memory locations they will use. If you suddenly needed an extra value, you might have to change a lot
+of code to fit it in. \v
+
+This problem did not escape Dr. Grace Hopper. As a US naval officer, she was one of the first programmers on the
+Harvard Mark 1 computer, which we talked in the previous chapter. Programming the Mark 1 was kind of a nightmare!
+After the war, Hopper continued to work at the forefront of computing. To unleash the potential of computers, she
+designed a high-level programming language called ``Arithmetic Language Version 0'', or A-0 for short.
+
+\bd[A-0]
+The \textbf{A-0} (Arithmetic Language version 0), written by Grace Murray Hopper in 1951 and 1952 for the UNIVAC I,
+was an early compiler related tool developed for electronic computers.
+\ed
+
+Assembly languages have direct, one-to-one mapping to machine instructions. But, a single line of a high-level
+programming language might result in dozens of instructions being executed by the CPU. To perform this complex
+translation, Hopper built the first compiler in 1952.
+
+\bd[Compiler]
+A \textbf{compiler} is a computer program that translates computer code written in one programming language (the
+source language) into another language (the target language).
+\ed
+
+The name ``compiler'' is primarily used for programs that translate source code from a high-level programming
+language to a lower level language (e.g.\ assembly language, object code, or machine code) to create an executable
+program. \v
+
+Apart from a compiler, we also have the concept of an ``interpreter''.
+
+\bd[Interpreter]
+An \textbf{interpreter} is a computer program that directly executes instructions written in a programming language,
+without requiring them previously to have been compiled into a machine language program.
+\ed
+
+An interpreter generally uses one of the following strategies for program execution:
+\bit
+\item Parse the source code and perform its behavior directly.
+\item Translate source code into some efficient intermediate representation or object code and immediately execute that.
+\item Explicitly execute stored precompiled code made by a compiler which is part of the interpreter system.
+\eit
+
+Despite the promise of easier programming, many people were skeptical of Hopper's idea. She once said: ``I had a
+running compiler and nobody would touch it. They carefully told me, computers could only do arithmetic; they could
+not do programs''. But the idea was a good one, and soon many efforts were underway to craft new programming
+languages -- today there are hundreds! \v
+
+While in assembly code, we had to fetch values from memory, deal with registers, and other low-level details in
+high-level languages there are no registers or memory locations to deal with -- the compiler takes care of that
+stuff, abstracting away a lot of low-level and unnecessary complexity. The programmer just creates abstractions for
+needed memory locations,  known as variables, and gives them names. \v
+
+While it was an important historical milestone, A-0 and its later variants weren't widely used. Fortran, derived from
+``Formula Translation``, was released by IBM a few years later, in 1957, and came to dominate early computer
+programming. John Backus, the FORTRAN project director, said: ``Much of my work has come from being lazy. I didn't
+like writing programs, and so I started work on a programming system to make it easier to write programs''.
+
+\bd[Fortran]
+\textbf{Fortran}, an abbreviation of ``Formula Translation'', is one of the very first high-level programming languages,
+originally designed in the 1950s and still in use.
+\ed
+
+On average, programs written in Fortran were 20 times shorter than equivalent handwritten assembly code. Then the
+Fortran compiler would translate and expand that into native machine code. \v
+
+The community was skeptical that the performance would be as good as hand written code, but the fact that programmers
+could write more code more quickly, made it an easy choice economically: trading a small increase in computation time
+for a significant decrease in programmer time. \v
+
+Of course, IBM was in the business of selling computers, and so initially, Fortran code could only be compiled and
+run on IBM computers. And most programming languages and compilers of the 1950s could only run on a single type of
+computer. So, if you upgraded your computer, you'd often have to rewrite all the code too! In response, computer
+experts from industry, academia and government formed a consortium in 1959, the Committee on Data Systems Languages,
+advised by Grace Hopper, to guide the development of a common programming language that could be used across
+different machines. The result was the high-level ``Common Business-Oriented Language'', or ``COBOL'' for short.
+
+\bd[COBOL]
+\textbf{COBOL} (an acronym for ``common business-oriented language'') is a compiled English-like computer programming
+language designed for business use. It is an imperative, procedural and, since 2002, object-oriented language.
+\ed
+
+To deal with different underlying hardware, each computing architecture needed its own COBOL compiler. But
+critically, these compilers could all accept the same COBOL source code, no matter what computer it was run on. This
+notion is called write once, run anywhere. It's true of most programming languages today, a benefit of moving away
+from assembly and machine code, which is still CPU specific. \v
+
+The biggest impact of all this was reducing computing's barrier to entry. Before high level programming languages
+existed, it was a realm exclusive to computer experts and enthusiasts. And it was often their full time profession.
+But now, scientists, engineers, doctors, economists, teachers, and many others could incorporate computation into
+their work. Thanks to these languages, computing went from a cumbersome and esoteric discipline to a general purpose
+and accessible tool. At the same time, abstraction in programming allowed those computer experts to create
+increasingly sophisticated programs, which would have taken millions, tens of millions, or even more lines of
+assembly code. \v
+
+COBOL is primarily used in business, finance, and administrative systems for companies and governments. COBOL is
+still widely used in applications deployed on mainframe computers, such as large-scale batch and transaction
+processing jobs. However, due to its declining popularity and the retirement of experienced COBOL programmers,
+programs are being migrated to new platforms, rewritten in modern languages or replaced with software packages. Most
+programming in COBOL is now purely to maintain existing applications; however, many large financial institutions were
+still developing new systems in COBOL as late as 2006. \v
+
+This history didn't end in 1959. In fact, a golden era in programming language design jump started, evolving in
+lockstep with dramatic advances in computer hardware. In the 1960s, we had languages like ALGOL, LISP and BASIC. In
+the 70's: Pascal, C and Smalltalk were released. The 80s gave us C++, Objective-C, and Perl. And the 90's: Python,
+Ruby, and Java. And the new millennium has seen the rise of Swift, C\#, and Go. That list is just the tip of the
+iceberg. And languages with fancy, new features are proposed all the time. Each new language attempts to leverage new
+and clever abstractions to make some aspect of programming easier or more powerful, or take advantage of emerging
+technologies and platforms, so that more people can do more amazing things, more quickly.
+
+\subsection{Software}
+
+The increasing usage of programming and programming languages, has turned programming into a discipline of its own,
+usually referred to as ``software development''. But let's start with the definition of ``software'' which is closely
+related to programming since, in a way, programming is the process of writing and maintaining software through the use
+of programming languages.
+
+\bd[Software]
+\textbf{Software} is a collection of instructions that tell a computer how to work.
+\ed
+
+Roughly speaking, there are three categories of software:
+\bit
+\item \textbf{Application Software}: Uses the computer system to perform special functions beyond the basic operation of
+the computer itself. There are many different types of application software because the range of tasks that can be
+performed with a modern computer is so large.
+\item \textbf{System Software}: Manages hardware behaviour, as to provide basic functionalities that are required by
+users, or for other software to run properly, if at all. System software is also designed for providing a platform for
+running application software.
+\item \textbf{Malicious Software or Malware}: Software that is developed to harm or disrupt computers. Malware is
+closely associated with computer-related crimes.
+\eit
+
+The process of developing software is called ``software development''.
+
+\bd[Software Development]
+\textbf{Software development} is the process of conceiving, specifying, designing,programming, documenting, testing,
+and bug fixing involved in creating and maintaining applications, frameworks, or other software components.
+\ed
+
+To build huge software programms, software developes use a set of tools and practices. Taken together, these form the
+discipline of ``software engineering'', a term coined by engineer Margaret Hamilton, who helped NASA prevent serious
+problems on the Apollo 11 mission to the moon.
+
+\bd[Software Engineering]
+\textbf{Software engineering} is the systematic application of engineering approaches to the development of software.
+\ed
+
+\bd[Software Engineer]
+A \textbf{software engineer} is a person who applies the principles of software engineering to design, develop,
+maintain, test, and evaluate computer software.
+\ed

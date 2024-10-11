@@ -1,0 +1,473 @@
+%! suppress = EscapeUnderscore
+As we saw in the previous chapter, reccurent neural networks, long short-term memory and gated recurrent neural
+networks in particular, have been firmly established as state-of-the-art approaches in sequence modeling and
+transduction problems such as language modeling and machine translation. Numerous efforts have since continued to
+push the boundaries of recurrent language models and encoder-decoder architectures. \v
+
+Despite their usufullness, recurrent models have a major computational drawback. As we already showed, recurrent
+models typically factor computation along the symbol positions of the input and output sequences. Aligning the
+positions to steps in computation time, they generate a sequence of hidden states $\boldsymbol{s}_{t}$, as a
+function of the previous hidden state $\boldsymbol{s}_{t-1}$ and the input for position $t$, $\boldsymbol{x}_{t}$.
+This inherently sequential nature precludes parallelization within training examples, which becomes critical at
+longer sequence lengths, as memory constraints limit batching across examples. On top of that, this parallelization
+limitation makes them very slow to train, since we have to wait for the previous element to be processed before we
+can process the next one, due to the recurrent relation between steps. \v
+
+Recent work has achieved significant improvements in computational efficiency through factorization tricks and
+conditional computation, while also improving model performance in case of the latter. The fundamental constraint of
+sequential computation, however, remains. \v
+
+A solution to this problem was introduced in 2017 by Vaswani et al.\ in a paper called
+\href{https://arxiv.org/pdf/1706.03762}{``Attention Is All You Need''}. The solution is called a ``transformer''.
+\footnote{According to the authors: "the goal of reducing sequential computation also forms the foundation of the
+Extended Neural GPU, ByteNet and ConvS2S, all of which use convolutional neural networks as basic building block,
+computing hidden representations in parallel for all input and output positions. In these models,the number of
+operations required to rexlate signals from two arbitrary input or output positions grows in the distance between
+positions, linearly for ConvS2S and logarithmically for ByteNet. This makes it more difficult to learn dependencies
+between distant positions. In the transformer this is reduced to a constant number of operations, albeit at the cost of
+reduced effective resolution due to averaging attention-weighted positions, an effect we counteract with multi-head
+attention".}
+
+\bd[Transformer]
+A \textbf{transformer} is an encoder-decoder neural network architecture eschewing recurrence and instead relying
+entirely on an attention mechanism to draw global dependencies between input and output.
+\ed
+
+The transformer architecture allows for significantly more parallelization and can reach a new state of the art in
+translation quality after being trained for as little as twelve hours on eight P100 GPUs. In what follows we will go
+step by step through the transformer architecture, and we will dive into the details of each component. \v
+
+An important note before we begin. Although the transformer architecture is used in a variety of tasks, their recent
+success has been mainly in the field of natural language processing (NLP) (which is a subfield of artificial
+intelligence that focuses on the interaction between computers and humans using natural language) and more
+specifically in the development of large language models (LLMs). For this reason, we will focus on the transformer
+architecture in the context of NLP tasks, meaning that we will mainly treat the input as text, i.e.\ as a sequence
+of words.
+
+\fig{trf01}{0.16}
+
+\section{Tokenization}
+
+Let us begin by introducing some basic NLP terminology which is important for transformers, and all NLP models, and
+that we will be using throughout the chapter.
+
+\bd[Corpus]
+A \textbf{corpus} is a collection of text documents.
+\ed
+
+A corpus can be seen as a sequence of sentences, which can be further broken down into a sequence of words, which can
+be further broken down into a sequence of characters. The first step in processing a corpus is to break it down into
+smaller units, which are called ``tokens''.
+
+\bd[Token]
+A \textbf{token} is a single, indivisible unit of text.
+\ed
+
+The process of breaking down a corpus into tokens is called ``tokenization''.
+
+\bd[Tokenization]
+\textbf{Tokenization} is the process of converting a sequence of characters into a sequence of tokens.
+\ed
+
+It is important to realize that a token can be a word, a sub-word, or even a character or a (meaningless) collection
+of characters. The choice of the tokenization method, and subsequently the tokens themselves, depends on the task at
+hand, the language, and the size of the corpus.
+
+\bd[Vocabulary]
+A \textbf{vocabulary} $V$ is the set of all unique tokens in a corpus.
+\ed
+
+\bd[Vocabulary Size]
+The \textbf{vocabulary size} $|V|$ is the cardinality of a vocabulary $V$.
+\ed
+
+An important thing to mention. Although a token can be any unit of text, for convenience, in what follows we will
+assume that a token is a word, and we will use the terms ``word'' and ``token'' interchangeably. In this case, the
+vocabulary is the set of all unique words in the corpus, and the vocabulary size is the number of unique words in
+the corpus. This is not the truth in real life applications of transformers, but it is a convenient lie that will
+simplify things, since the actual forms of the token are not really important in the explanation of a transformer.
+
+\section{Input Embedding}
+
+\fig{trf02}{0.2}
+
+Once the tokenization process is done, a transformer architecture starts with the encoder, which, in its turn, starts
+with the so called ``input embedding''.
+
+\bd[Input Embedding]
+\textbf{Input embedding} is a simple embedding layer that takes as input a token sequence, and outputs a vector
+representation of dimension $d_{\text{model}}$ for each token of the input sequence.
+\ed
+
+\be
+\fig{trf04}{0.44}
+\ee
+
+\bd[Embedding Matrix]
+An \textbf{embedding matrix} is a matrix of dimensions $(d_{\text{model}} \times |V|)$, where $d_{\text{model}}$ is the
+dimension of the embedding and $|V|$ is the vocabulary size, that contains the vector representation of each token
+in the vocabulary.
+\ed
+
+Since the input embedding takes a token sequence, and since we assume that tokens are actually words, the input
+embedding is sometimes also called ``word embedding''.
+
+\bd[Word Embedding]
+\textbf{Word embedding} is the vectorial representation of words, typically in the form of a real valued vector.
+\ed
+
+Word embeddings can be obtained using a set of language modelling and feature learning techniques where words or
+phrases from the vocabulary are mapped to vectors of real numbers. Conceptually it involves a mathematical embedding
+from a space with many dimensions per word to a continuous vector space with a much lower dimension. \v
+
+There are two big classes of methods of word embedding: the ``count based models'' which they use the co-occurrence
+counts of words, and the ``prediction based models'' which directly learn word representations. The first class of count
+based models were the one used before the discovery of deep learning while prediction based models are the latest
+advancements in the area of word embedding that make use of deep learning. We will begin by briefly introducing the
+count based models, since they will be useful for later, and then we switch to the main part of prediction based models.
+
+\subsection{Label Encoding}
+
+\bd[Label Encoding]
+Given a vocabulary $V$ with vocabulary size $|V|$, the \textbf{label encoding} is a scalar (numerical) representation
+of each element in the vocabulary, usually with an integer in range $[0,|V|-1]$.
+\ed
+
+\be
+An example of a label encoding of the vocabulary $V = [$"red", "green", "blue"$]$:
+
+\fig{labelencode}{0.22}
+\ee
+
+Label encoding is the simplest way to encode words, however it is rarely used due to its scalar nature.
+
+\subsection{One-Hot Encoding}
+
+\bd[One-Hot Encoding]
+Given a vocabulary $V$ with vocabulary size $|V|$, the \textbf{one-hot encoding} is a vectorial representation of each
+element in the vocabulary, where each vector is of dimension $|V|$, and it has only one element equal to 1, and the
+rest equal to 0.
+\ed
+
+\be
+An example of a one-hot encoding of the vocabulary $V = [$"red", "green", "blue"$]$:
+\fig{onehot}{0.25}
+\ee
+
+While one-hot encoding is very simple and intuitive, it carries a lot of problems. First of all, usually vocabularies
+tend to be very large hence, the vector space turns enormous which is computationally very inefficient. Second, the
+representation is very sparse, meaning that the vast majority of the entries are zeros. Third, and most important, the
+representation does not capture any notion of similarity among the words, since the Euclidean distance between any two
+words in the vocabulary is simply$\sqrt{2}$. Similarly, the cosine similarity between any two words in the vocabulary
+is $0$.
+
+\subsection{Distributed Encoding}
+
+\bd[Co-Occurrence Matrix]
+Given a vocabulary $V$ with vocabulary size $|V|$, the \textbf{co-occurrence matrix} is an $($|V|$ \times $|V|$)$ matrix
+which captures the number of times a term appears in a predefined window of words $k$ around the terms.
+\ed
+
+\bd[Distributed Encoding]
+Given the co-occurence matrix of a vocabulary $V$, one can represent each element in the vocabulary as a column (or row)
+of the matrix. The final representation is called \textbf{distributed encoding}.
+\ed
+
+\be
+As an example, let us build a co-occurrence matrix for a toy corpus with $k = 2$. The corpus consist of the following
+sentences: $[$"Human machine interface for computer applications", "User opinion of computer system response time",
+"User interface management system", "System engineering for improved response time", "System engineers optimize for
+human experience"$]$. \v
+
+The vocabulary is then: $V = [$"Human", "Machine", "Interface", "For", \ldots$]$, and the corresponding co-occurrence
+matrix:
+\vspace{-8pt}
+\fig{cooccurance}{0.5}
+\vspace{-8pt}
+Each column vector then, represents the word in the distributed encoding.
+\ee
+
+Of course, as with one-hot, also this representation carries its own problems. First of all, stop words like (``a'',
+``the'', `` for'', \ldots) are very frequent hence, these counts will be very high. This however, is easily solvable
+since we can either ignore very frequent words or simply set a threshold $t$ (for example $t=100$) and whenever the
+count of a word gets more that $t$ we simply stop counting further, and we use the threshold $t$ as the value,
+ignoring all the other occurrences. \v
+
+The most important problems of distributed encoding though are that, as in hot-one encoding, it is very high
+dimensional, it is very sparse, and it grows with the size of the vocabulary. All of these problems were solved by
+using singular value decomposition as a dimensionality reduction technique. However, we will not see that in more
+detail since it is not related to deep learning, and it gets out of topic.
+
+\subsection{Word2vec}
+
+In 2006 and after, after the discovery of deep learning, we switched gears from the whole idea of counting word
+occurrences and co-occurrence matrices of count based models to direct, prediction based models that uses statistics
+to predict outcomes. In what follows we will introduce the most heavily used group of techniques of prediction based
+models called ``Word2vec''.
+
+\bd[Word2vec]
+\textbf{Word2vec} is a technique for natural language processing published in 2013, that uses a neural network model to
+learn word associations from a large corpus of text and to detect synonymous words or suggest additional words for a
+partial sentence.
+\ed
+
+As the name implies, Word2vec represents each distinct word with a particular vector. The vectors are chosen
+carefully such that a simple mathematical function (the cosine similarity between the vectors) indicates the level
+of semantic similarity between the words represented by those vectors. Embedding vectors created using the Word2vec
+algorithm have some advantages compared to earlier algorithms that we described previously. \v
+
+Word2vec is a group of related models that are used to produce word embeddings. These models are shallow, two-layer
+neural networks that are trained to reconstruct linguistic contexts of words. Word2vec takes as its input a large
+corpus of text and produces a vector space, typically of several hundred dimensions, with each unique word in the
+corpus being assigned a corresponding vector in the space. Word vectors are positioned in the vector space such that
+words that share common contexts in the corpus are located close to one another in the space. \v
+
+As we mentioned, Word2vec can utilize either of two model architectures to produce a distributed encoding of words:
+``continuous bag-of-words (CBOW)'' and ``Continuous skip-gram''. In what follows we will introduce both of them since
+they are the standard way of dealing with word embeddings today.
+
+\subsubsection{Continuous Bag-Of-Words}
+
+\bd[Continuous Bag-Of-Words (CBOW)]
+\textbf{Continuous Bag-Of-Words} (\textbf{CBOW}) is a model that tries to predict a target word based on the context of
+surrounding words.
+\ed
+
+CBOW tries to understand the context of the words and takes this as input. It then tries to predict words that are
+contextually accurate. In other words it tries to predict the current target word based on the source context words
+(surrounding words) by using a feedforward neural network. The input to the network will be a one-hot encoding of the
+context words and the output, will be a probability distribution over all possible words in the vocabulary (multi-class
+classification problem). \v
+
+The CBOW network is shallow since it contains only one single hidden layer. The first set of weights $W^{[1]}$ are of
+course of dimensions $(k \times |V|)$ where $k$ is the number of units in the hidden layer and $|V|$ is the size of
+the vocabulary which is of course also the size of the one-hot encoding vectors. It is common practice to call $W^{[1]}$
+simply $W_{\text{context}}$. Notice that we carry no biases. The pre-activations are:
+
+\bse
+\textbf{a}^{[1]} =W_{\text{context}} \cdot \textbf{x}
+\ese
+
+and the activation function $g$ is as simple as $g(\textbf{x}) = \textbf{x}$, hence, the activation of the hidden
+layer $\textbf{h}^{[1]}$ is:
+
+\bse
+\textbf{h}^{[1]} =W_{\text{context}} \cdot \textbf{x}
+\ese
+
+Notice that the product $W_{\text{context}} \cdot \textbf{x}$, given that $\textbf{x}$ is a one hot-vector, is
+simply the $\text{i}^{\text{th}}$ column of $W_{\text{context}}$ since everything else will be multiplied by 0.
+So when the $\text{i}^{\text{th}}$ word is present the $\text{i}^{\text{th}}$ element in the one-hot vector
+is on and the $\text{i}^{\text{th}}$ column of $W_{\text{context}}$ gets selected. In other words, there is a
+one-to-one correspondence between the words and the column of $W_{\text{context}}$. More specifically, we can treat
+the $\text{i}^{\text{th}}$ column of $W_{\text{context}}$ as the representation of the
+$\text{i}^{\text{th}}$ context. \v
+
+Moving on, the weights of the output layer $W^{[2]}$ are of course of dimensions $(|V| \times k)$, since we need an
+output (aka a probability) for each possible word in the vocabulary (aka a probability distribution). It is common
+practice to call $W^{[2]}$ simply $W_{\text{word}}$. The pre-activations now are:
+\bse
+\textbf{a}^{[2]} =W_{\text{word}} \cdot \textbf{h}^{[1]}
+\ese
+
+and for the output function $O$ it makes sense to use a softmax since we are dealing with a multi-class
+classification problem, hence:
+\bse
+\hat{\textbf{y}} = P(\text{word \:} | \text{\: context}) = \frac{e^{W_{\text{word}} \cdot
+\textbf{h}^{[1]}}}{\sum_{\text{words}} e^{W_{\text{word}} \cdot \textbf{h}^{[1]}}}
+\ese
+
+As we can see, since:
+\bse
+W_{\text{word}} \cdot \textbf{h}^{[1]} = W_{\text{word}} \cdot W_{\text{context}} \cdot \textbf{x}
+\ese
+
+\v
+
+and since from the product $W_{\text{context}} \cdot \textbf{x} \:$ survives only the column of
+$W_{\text{context}}$ associated with the context, it turns out that $P (\text{word \:} | \text{\: context})$ is
+proportional to the dot product between of $W_{\text{context}}$ and $W_{\text{word}}$. In other words the
+probability for each word depends on the $\text{i}^{\text{th}}$ column of $W_{\text{word}}$. We thus treat the
+$\text{i}^{\text{th}}$ column of $W_{\text{word}}$ as the representation of the $\text{i}^{\text{th}}$ word. \v
+
+Now the forward propagation is done and the network is built. In order to train it we move to backpropagation. First
+of all, we need to calculate the loss function. Since we are dealing with a multi-class classification problem we
+will use the cross entropy loss function. We have already calculated the cross-entropy loss function for logistic
+regression. The calculations for a softmax regression are very similar, so we will skip them. Just for completeness
+we will use the principle of maximum likelihood to obtain the cross entropy loss function for softmax which simply
+is:
+\bse
+\mathcal{L}(\theta) = - \ln P(\text{word \:} | \text{\: context}) = - \ln \frac{e^{W_{\text{word}}
+\cdot \textbf{h}^{[1]}}}{\sum_{\text{words}} e^{W_{\text{word}} \cdot \textbf{h}^{[1]}}}
+\ese
+
+From here we just follow the backpropagation theory we have already developed, i.e.\ we calculate the update rules
+using the chain rule, and we simply train the model through iteration of passing data. Notice however, that the
+softmax function at the output is computationally very expensive since the denominator requires a summation over all
+words in the vocabulary.
+
+\be
+Consider the simple sentence ``the man sat on a chair''. This can be seen as pairs of ([context], word) where if we
+consider a context window of size 1 (for simplicity) we have (["the"], "man"), (["man"], "sat"), (["sat"], "on"),
+(["on"], "a"), (["a"], "chair"). Notice that for a window of size 2 we would have (["the", "man"], "sat"), (["man",
+"sat"], "on") \ldots \v
+
+The model tries to predict the target word based on the context word. The input layer to the network is a one-hot
+encoding of the context word ``sat'' which is: $\text{``sat''} = [0,1,0,0, \ldots, 0]$
+\fig{cbow}{0.59}
+\ee
+
+\subsubsection{Continuous Skip-Gram}
+
+\bd[Continuous Skip-Gram]
+\textbf{Continuous Skip-Gram} is the reverse of CBOW, trying to predict the context of a word based on the target word.
+\ed
+
+In the case of where the context window is equal to 1, the two models are in practice identical since both of them
+try to predict one word based on another word. However, in the case where the window is greater than 1, then CBOW
+tries to predict one word based on all the context words, while skip-gram tried to predict all the context words
+based on one word. This is why we said that skip-gram is actually the reverse of CBOW\@. \v
+
+Just like we discussed in the CBOW model, we need to model this skip-gram architecture now as a deep learning
+classification model such that we take in the target word as our input and try to predict the context words. \v
+
+The architecture is similar to the CBOW model with the difference that now everything is reversed. The input is
+again just one word in one-hot encoding but now the name of the weights are reversed since their meaning is
+reversed. So far only the naming has changed. The mathematical difference is at the outcome, where now instead of
+just on word we want to predict all the context words. We do that by having multiple predictions, hence, multiple
+softmax output function and subsequently the loss function is simply the sum of all individual cross-entropy loss
+functions:
+\bse
+\mathcal{L}(\theta) = - \sum_{\text{words in window}} \ln P(\text{word\:} | \text{\: context})
+\ese
+
+From this point on everything is exactly the same. We train the model through backpropagation simply by computing the
+update rules and running training iterations. \v
+
+Notice that the same problem as with CBOW is also present here, since the softmax function at the output is
+computationally very expensive since the denominator requires a summation over all words in the vocabulary. There
+are 3 popular ways to overcome this problem: ``negative sampling", ``contrastive estimation", and ``hierarchical
+softmax", however all 3 are out of the purpose of this section, so we won't dive into them.
+
+\be
+Considering our simple sentence from earlier, ``the man sat on a chair'', we get pairs of (context, word) where if we
+consider a context window of size 1, we have examples like (["the"], "man"), (["man"], "sat"), (["sat"], "on") and so
+on. \v
+
+Now considering that the skip-gram model's aim is to predict the context from the word, the model typically inverts
+the contexts and words, and tries to predict each context word from its target word. Hence, the task becomes to predict
+the context [the] given target word ``man'' and so on. Thus, the model tries to predict the context window words based
+on the target word.
+\vspace{-5pt}
+\fig{skipgram}{0.47}
+\ee
+
+\section{Positional Encoding}
+
+\fig{trf03}{0.2}
+
+With the input embedding, we have turned words into vectors. However, since the model contains no recurrence and no
+convolution, it has no information regarding the order of the sequence of the words in each sentence. Ideally, we
+would want each word to carry some information about its relative or absolute position in the sentence, and the
+model to treat words that appear close to each other as ``close'' and words that are distant as ``distant''. On top
+of that, we would want to represent this pattern as something that can be learned by the model. This is the role of
+``positional encoding".
+
+\bd[Positional Encoding]
+\textbf{Positional encoding} is a simple embedding layer used to inject information about the relative or absolute
+position of the words in a sentence by taking as input the position of each element of the input sequence, and giving
+as output a vector representation for each position, which is then added to the embedding vector.
+\ed
+
+There are many choices of positional encodings, learned and fixed, but in transformers we use trigonometric functions
+of different frequencies, defined by the formulas:
+\bse
+\text{PE}(\text{pos}, 2i) = \sin\Bigg(\frac{\text{pos}}{10000^{\frac{2i}{d_{\text{model}}}}}\Bigg), \qquad
+\text{PE}(\text{pos}, 2i+1) = \cos\Bigg(\frac{\text{pos}}{10000^{\frac{2i}{d_{\text{model}}}}}\Bigg)
+\ese
+
+where $\text{pos}$ is the position and $i$ is the dimension. That is, each dimension of the positional encoding
+corresponds to a sine wave. We chose this function because it may allow the model to extrapolate to sequence lengths
+longer than the ones encountered during training. \v
+
+It is important to notice that the positional encodings have the same dimension $d_{\text{model}}$ as the input
+embeddings, so that the two can be summed.
+
+\be
+\fig{llm05}{0.44}
+\ee
+
+Notice that the positional encodings depend only on the position and the dimension and not on the actual input
+embedding (i.e.\ word). This means that we only need to compute the positional encodings once and then reuse them for
+every sentence, no matter if it is training or inference.
+
+\be
+\fig{llm07}{0.44}
+\ee
+
+\section{Attention}
+
+Once the positional encoding is added to the input embedding then the enconder input is ready to be fed to the
+Multi-Head Attention part of the transformer.
+
+\fig{trf05}{0.16}
+
+Recall that we defined attention in the context of RNNs, as a mechanism that allows a model to focus on the relevant
+parts of the input sequence at each time-step. The key difference between attention in RNNs and attention in
+transformers is that in the latter, attention is not restricted to be between the hidden states of the encoder and
+the decoder, but instead, it is expanded between any two elements of the input sequence. \v
+
+First things first, let us begin by introducting some basic terminology that we will need in order to define attention
+in a more abstract and generic way, to fit our needs for the context of transformers.
+
+\bd[Query]
+A \textbf{query} $Q$ is a quantity that we want to use to retrieve information from the input sequence.
+\ed
+
+\bd[Key]
+A \textbf{key} $K$ is a quantity that we use to retrieve information from the input sequence.
+\ed
+
+\bd[Value]
+A \textbf{value} $V$ is a quantity that we want to retrieve from the input sequence.
+\ed
+
+Based on the query and the key, we can define the concept of ``similarity'' between them, which correspons to the
+concept of ``alignment score'' in the context of RNNs.
+
+\bd[Similarity]
+The \textbf{similarity} S between a query $Q$ and a key $K$ is a quantity that measures how similar the query is to
+the key:
+\bse
+S(Q,K) = f(Q,K)
+\ese
+\ed
+
+Once again, there are many functions $f$ that can be used to compute the similarity that have been proposed in the
+literature. The most used one, and the one used in the paper of Vaswani et al.\ is the so-called ``scaled dot-product''
+which is defined as:
+\bse
+S(Q,K) = \frac{QK^T}{\sqrt{d_k}}
+\ese
+
+where $d_k$ is the dimension of the query and the key. \v
+
+Gienv the similarity we can now define the attention weights.
+
+\bd[Attention Weights]
+The \textbf{attention weights} $\alpha$ are the normalized similarities between a query $Q$ and a key $K$:
+\bse
+\alpha(Q,K) = \text{softmax}(S) = \text{softmax}\Big( \frac{QK^T}{\sqrt{d_k}} \Big)
+\ese
+\ed
+
+Given the similarity, as we did in the context of RNNs, we can now define attention in the context of transformers.
+
+\bd[Attention]
+Given a query $Q$, a key $K$, and a value $V$, attention $\alpha$ is a vector defined as:
+\bse
+\boldsymbol{\alpha}(Q,K,V) = \alpha(Q,K) \times V = \text{softmax}\Big( \frac{QK^T}{\sqrt{d_k}} \Big) \times V
+\ese
+\ed
+
+% TODO: Finish up transformers

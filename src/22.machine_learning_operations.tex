@@ -1,0 +1,1328 @@
+%! suppress = EscapeHashOutsideCommand
+\section{Research VS Production}
+
+In the previous chapters we covered the theoretical aspects of ML, focusing a lot on the research part of ML. In this
+chapter we will cover the practical aspects of putting an ML model in production. We will start by covering the
+differences between ML in research and ML in production. \v
+
+As we saw, research projects in ML often prioritize model performance, seeking state-of-the-art results on benchmark
+datasets. However, ML in production is very different from ML in research. When bringing an ML system into production,
+different stakeholders with conflicting requirements can make it challenging to select a model that satisfies
+everyone. Additionally, there are differences in computational priorities, with research focusing on fast training
+and production prioritizing fast inference. Data used in research is often clean and well-formatted, while production
+data is messy, noisy, and constantly changing. Fairness and interpretability are often overlooked in research but
+become critical considerations in production, as models can perpetuate biases and require explanations for
+decision-making.
+
+\fig{ml_industry_vs_academia}{0.51}
+
+Another big difference between academia and industry is the matter of objectives. In any ML project there are two
+sets of objectives. ML and business objectives. Research tends to care about the ML objectives, i.e.\ the metrics
+about the performance of ML systems. On the other hand, most companies don't care about ML metrics but about business
+metrics with the ultimate goal of increasing profits. For an ML project to succeed within a business organization, it
+is crucial to tie the performance of an ML system to the overall business performance.
+
+\section{Machine Learning Operations (MLOps)}
+
+Machine Learning Operations (MLOps) is a term that's been gaining popularity in the industry, quickly becoming a
+critical component of successful ML projects deployment in the enterprise. It's a process that helps organizations
+and business leaders generate long-term value and reduce risk associated with ML initiatives.
+
+\bd[Machine Learning Operations (MLOps)]
+\textbf{Machine learning operations} (\textbf{MLOps}) is a compound of ``machine learning'' and ``operations'' and
+it's a set of best practices that aims to deploy and maintain ML models in production reliably and efficiently.
+\ed
+
+If the definition (or even the name MLOps) sounds familiar, that's because it pulls heavily from the concept of
+DevOps, which streamlines the practice of software changes and updates. Indeed, the two have quite a bit in common
+like robust automation and trust between teams, the idea of collaboration and increased communication between teams,
+the end-to-end service life cycle (build, test, release), and prioritizing continuous delivery and high quality. \v
+
+Yet there is one critical difference between MLOps and DevOps that makes the latter not immediately transferable to
+ML teams: deploying software code into production is fundamentally different from deploying ML models into
+production.
+
+\fig{ml_vs_swe}{0.5}
+
+Some of the key differences between software engineering and ML are the following:
+\bit
+\item \textbf{Code \& Data}: In DevOps code and data are separated but ML systems are part code, part data.
+\item \textbf{Test \& Version}: In DevOps you test \& version only code, but in ML you include data too.
+\item \textbf{Size}: In contrast to DevOps, ML models require a lot of memory.
+\item \textbf{Monitoring \& Debugging}: Monitoring and debugging ML models in production is nontrivial.
+\eit
+
+\section{Development Process}
+
+Developing an ML system is an iterative and, in most cases, never-ending process. Here is a simplified summary of what
+the iterative process of developing ML systems in production consists of:
+\bit
+\item \textbf{Step 1. Scoping}: A project starts with scoping the project, laying out goals, objectives, and constraints.
+Stakeholders should be identified and involved.
+\item \textbf{Step 2. Data}: A vast majority of ML models today learn from data, so developing ML models starts with
+data.
+\item \textbf{Step 3. Modeling}: With the initial set of data, we'll need to extract features and develop initial models
+leveraging these features. This is the stage that requires the most ML knowledge.
+\item \textbf{Step 4. Deployment}: After a model is developed, it needs to be made accessible to users. Developing an ML
+system is like writing—you will never reach the point when your system is done. But you do reach the point when you have
+to put your system out there.
+\item \textbf{Step 5. Monitoring \& Maintenance}: Once in production, models need to be monitored for performance decay
+and maintained to be adaptive to changing environments and requirements.
+\eit
+
+\fig{steps}{0.45}
+
+\subsection{Scoping}
+
+\bd[Scoping]
+\textbf{Scoping} is the process of defining the goals, objectives, and constraints of a project.
+\ed
+
+The questions that we like to answer with scoping are what project or projects should we work on, which are the
+metrics for success and what are the resources such as data, time, and people needed to execute this project. \v
+
+A scoping process can start with brainstorming business problems (not necessarily ML problems), and then
+brainstorming possible ML solution. After that, a natural next step is assessing the feasibility and value of
+potential solutions, determining milestones, and finally budgeting for resources. \v
+
+A project scoping naturally comes with performance targets, technical infrastructure requirements, and cost
+constraints; all of these factors can be captured as key performance indicators (KPIs), which will ultimately enable
+the business performance of models in production to be monitored.
+
+\bd[Key Performance Indicator (KPI)]
+A \textbf{key performance indicator} (\textbf{KPI}) is a measurable value that demonstrates how effectively a company
+is achieving key business objectives.
+\ed
+
+\subsection{Data}
+
+With clear business objectives defined, it is time to bring together subject-matter experts and data scientists to
+begin the journey of developing the ML model. This starts with the research, collection, and organization of suitable
+data. In general, it is a good practice to track down and document all the steps taken to collect and organize data.
+
+\bd[Data Lineage / Data Provenance]
+\textbf{Data lineage} or \textbf{data provenance} is the history of data and its origins, including the life cycle of
+data, where it came from and how it was processed over time.
+\ed
+
+\subsubsection{Data Sources}
+
+An ML system can work with data from many different sources. They have different characteristics, can be used for
+different purposes, and require different processing methods. Let's take a look at some common data sources.
+
+\bd[User Input Data]
+\textbf{User input data} are data explicitly input by users.
+\ed
+
+User input data can be text, images, videos, uploaded files, etc, and can be easily malformatted. User input data
+requires more heavy-duty checking and processing. On top of that, users also have little patience. In most cases,
+when we input data, we expect to get results back immediately. Therefore, user input data tends to require fast
+processing.
+
+\bd[System Generated Data]
+\textbf{System generated data} are data generated by different components of your systems.
+\ed
+
+System generated data include various types of logs (which record the state and significant events of the system),
+and system outputs such as model predictions. Because these data are system generated, they are much less likely to
+be malformatted the way user input data is. Overall, they don't need to be processed as soon as they arrive, the way
+you would want to process user input data.
+
+\bd[Internal Databases]
+\textbf{Internal databases} are generated by various services and enterprise applications in a company.
+\ed
+
+Internal databases manage assets such as inventory, customer relationship, users, and more. This kind of data can be
+used by ML models directly or by various components of an ML system. The data inside internal databases are usually
+called ``first party data''.
+
+\bd[First Party Data]
+\textbf{First party data} is the data that your company already collects about your users or customers.
+\ed
+
+Similarly, there are ``second party data'' and ``third party data''.
+
+\bd[Second Party Data]
+\textbf{Second party data} is the data collected by another company on their own customers that they make available
+to you, though you'll probably have to pay for it.
+\ed
+
+\bd[Third Party Data]
+\textbf{Third party data} is the data that companies collect on the public who aren't their direct customers.
+\ed
+
+Once you have data, you might want to store it (or ``persist'' it, in technical terms). Since your data comes from
+multiple sources with different access patterns, storing your data isn't always straightforward and, for some cases,
+can be costly.
+
+\subsubsection{Data Formats}
+
+It's important to think about how the data will be used in the future so that the format you use will make sense.
+Based on the format of the data, we can categorize data into two types: structured and unstructured data.
+
+\bd[Structured Data]
+\textbf{Structured data} is data that has a standardized format for efficient access by software and humans.
+\ed
+
+Structured data follows a predefined data model, also known as a ``database schema''.
+
+\bd[Data Schema]
+The \textbf{data schema} is the structure of a database described in a formal language supported by the database
+management system. The term ``schema'' refers to the organization of data as a blueprint of how the database is
+constructed.
+\ed
+
+The disadvantage of structured data is that you have to commit your data to a predefined schema. If your schema
+changes, something that happens all the time, you'll have to retrospectively update all your data, often causing
+mysterious bugs in the process. Because business requirements change over time, committing to a predefined data
+schema can become too restricting. Or you might have data from multiple data sources that are beyond your control,
+and it's impossible to make them follow the same schema. This is where ``unstructured data'' becomes appealing.
+
+\bd[Unstructured Data]
+\textbf{Unstructured data} is data that either does not have a predefined data model or is not organized in a predefined
+database schema.
+\ed
+
+Unstructured data doesn't adhere to a predefined data schema. It's usually text but can also be numbers, dates,
+images, audio, etc. Even though unstructured data doesn't adhere to a schema, it might still contain intrinsic
+patterns that help you extract structures.
+
+\bd[Feature Store]
+A \textbf{feature store} is a centralized repository for storing features, which are data points that have been
+transformed and aggregated from raw data sources and are ready to be used by ML models.
+\ed
+
+There are two main types of feature stores: ``data warehouses'' and ``data lakes''.
+
+\bd[Data Warehouse]
+A repository for storing structured data is called a \textbf{data warehouse}.
+\ed
+
+A data warehouse is a technology that aggregates data from one or more sources so that it can be processed and
+analyzed. It is usually meant for long-running batch jobs and their storage is optimized for read operations. Data
+entering into the warehouse may not be in real time, and they need to follow a consistent schema. A data warehouse is
+subject oriented and the information that's stored in it revolves around a topic. The data collected in a data
+warehouse is usually timestamped to maintain the context of when it was generated. Data warehouses are nonvolatile,
+which means the previous versions of data are not erased when new data is added. That means that you can access the
+data stored in a data warehouse as a function of time and understand how that data has evolved.
+
+\bd[Data Lake]
+A repository for storing both structured and unstructured data is called a \textbf{data lake}.
+\ed
+
+A data lake is a system or repository of data stored in its natural and raw format, which is usually in the form of
+files. A data lake, like a data warehouse, aggregates data from various sources of enterprise data. It can include
+structured, semi-structured, or unstructured data like a collection of images or documents, and so forth. Since data
+lake store data in its raw format, they don't do any processing, and they usually don't follow a schema. \v
+
+The primary difference between data warehoused and data lakes is that in a data warehouse, data is stored in a
+consistent format which follows a schema, whereas in data lakes, the data is usually in its raw format. In data lakes,
+the reason for storing the data is often not determined ahead of time. This is usually not the case for a data
+warehouse, where it's usually stored for a particular purpose. Data warehouses are often used by business
+professionals as well, whereas data lakes are typically used only by data professionals. Since the data in data
+warehouses is stored in a consistent format, changes to the data can be complex and costly. Data lakes however are
+more flexible, and make it easier to make changes to the data.
+
+\fig{str_unst}{0.65}
+
+\subsubsection{Data Models}
+
+\bd[Data Model]
+A \textbf{data model} is an abstract model that organizes elements of data and standardizes how they relate to one
+another and to the properties of real-world entities.
+\ed
+
+Data models describe how data is represented. How you choose to represent data not only affects the way your systems
+are built, but also the problems your systems can solve. In this section, we'll study two types of models that seem
+opposite to each other but are actually converging: relational models and NoSQL models. We'll go over examples to
+show the types of problems each model is suited for. \v
+
+Relational models are among the most persistent ideas in computer science. Invented by Edgar F. Codd in 1970, the
+relational model is still going strong today, even getting more popular.
+
+\bd[Relational Model]
+The \textbf{relational model} is an approach to managing data using a structure and language consistent with first-order
+predicate logic where all data is represented in terms of tuples, grouped into relations.
+\ed
+
+The idea is simple but powerful. In this model, data is organized into relations; each relation is a set of tuples. A
+table is an accepted visual representation of a relation, and each row of a table makes up a tuple. Relations are
+unordered. You can shuffle the order of the rows or the order of the columns in a relation, and it's still the same
+relation. Data following the relational model is usually stored in file formats like \code{CSV}. \v
+
+Databases built around the relational data model are relational databases.
+
+\bd[Relational Database]
+A database organized in terms of the relational model is called a \textbf{relational database}
+\ed
+
+Once you've put data in your databases, you'll want a way to retrieve it. The language that you can use to specify
+the data that you want from a database is called a query language.
+
+\bd[Query Language]
+A \textbf{query language} is a computer language used to make queries in databases and information systems.
+\ed
+
+The most popular query language for relational databases today is SQL\@.
+
+\bd[Structured Query Language (SQL)]
+\textbf{Structured query language} (\textbf{SQL}) is a domain-specific query language used in programming and designed
+for managing data held in a relational databases.
+\ed
+
+SQL, unlike Python, is a declarative language. It specifies the desired data pattern, tables, conditions, and
+transformations, but not how to retrieve the data. The database system decides how to execute the query, which can be
+challenging and may not always be feasible or tractable.
+
+\subsubsection{Extract, Transform, Load (ETL)}
+
+In the early days of the relational data model, data was mostly structured. When data is extracted from different
+sources, it's first transformed into the desired format before being loaded into the target destination such as a
+database or a data warehouse.
+
+\bd[Extract]
+\textbf{Extract} is extracting the data you want from all your data sources.
+\ed
+
+Some of them will be corrupted or malformatted. In the extracting phase, you need to validate your data and reject
+the data that doesn't meet your requirements. For rejected data, you might have to notify the sources. Since this is
+the first step of the process, doing it correctly can save you a lot of time downstream.
+
+\bd[Transform]
+\textbf{Transform} is the part of the process, where most of the data processing is done.
+\ed
+
+During transform, you might want to join data from multiple sources and clean it. You might want to standardize the
+value ranges. You can apply operations such as transposing, de-duplicating, sorting, aggregating, deriving new
+features, more data validating, etc.
+
+\bd[Load]
+\textbf{Load} is deciding how and how often to load your transformed data into the target destination, which can be a
+file, a database, or a data warehouse.
+\ed
+
+This process is called ``ETL'', which stands for ``extract, transform, load''.
+
+\bd[Extract, Transform, Load (ETL)]
+\textbf{Extract, transform, load} (\textbf{ETL}), is a three-phase process where data is extracted, transformed and
+loaded into an output data container.
+\ed
+
+\subsection{Modeling}
+
+After data collection the next step is modeling. Usually before developing any kind of model, ML practitioners spend
+some time in the so called ``before ML'' phase. In this phase, time is spent in researching literature to see what's
+possible (courses, blogs, open-source projects), finding open-source implementations if available and trying to make
+predictions with non-ML solutions with the simplest heuristics. \v
+
+Then they move to the second phase of ``developing the simplest ML models''. For the first ML models, they want to
+start with simple, quick-and-dirty models from different categories using standard parameters, which will allow them
+to validate the usefulness of the problem framing and the data. Simple models are also easier to implement and deploy,
+which allow them to quickly build out a framework of exploration. When selecting a model for your problem, you don't
+choose from every possible model out there, but usually focus on a set of models suitable for your problem. In this
+stage, it is important to avoid the state-of-the-art trap and focus on the simplest models that can be implemented
+quickly. \v
+
+Moving on to the next phase of ``optimizing simple models'', once they have an ML framework in place, they can focus
+on optimizing the simple ML models with different objective functions, hyperparameter search, feature engineering,
+more data, and ensembles. In this stage it is important to measure and compare the performance of the different models.
+\v
+
+Finally, in the last phase of ``complex models'', once they have reached the limit of the simple models and the use
+case demands significant model improvement, they start experimenting with more complex models. In this stage it's
+important to consider not only the model's performance but also its other properties, such as how much data, compute,
+and time it needs to train, what's its inference latency, and what's its interpretability. More often than not one
+will need to evaluate possible trade-offs. \v
+
+Model development is an iterative process. In any of the aforementioned stages it's common to go back and forth
+between them, and it's important to go through the loop of Training - Tuning - Data as fast as possible.
+
+\fig{mdlc1}{0.23}
+
+\subsubsection{Experiment Tracking \& Versioning}
+
+During the modeling process, you often have to experiment with many architectures, many different datasets, and many
+different models to choose the best one for your problem.
+
+\bd[Experiment]
+In ML language, an \textbf{experiment} is a systematic procedure to test a hypothesis.
+\ed
+
+Some models might seem similar to each other and differ in only one hyperparameter and yet their performances are
+dramatically different. In essence any combination that differentiates two runs, is an experiment. In real life, a
+typical ML engineer runs a lot of experiments before she decides which one is better. It's important to keep track of
+all the definitions needed to re-create an experiment and its relevant artifacts.
+
+\bd[Artifact]
+An \textbf{artifact} is a file generated during an experiment.
+\ed
+
+Artifacts enable you to compare different experiments and choose the one best suited for your needs. Comparing
+different experiments can also help you understand how small changes affect your model's performance, which, in turn,
+gives you more visibility into how your model works. Examples of artifacts can be files that show the loss curve,
+evaluation loss graph, logs, or intermediate results of a model throughout a training process. \v
+
+In order to figure out which experiments are worth pursuing, we programmatically track them down as we go and we compare
+them.
+
+\bd[Experiment Tracking]
+\textbf{Experiment tracking} is the process of tracking the progress and results of an experiment during training.
+\ed
+
+Since many problems can arise during the training process, it's important to track what's going on during training
+not only to detect and address these issues but also to evaluate whether your model is learning anything useful. In
+theory, it's not a bad idea to track everything you can. Most of the time, you probably don't need to look at most of
+them. But when something does happen, one or more of them might give you clues to understand and/or debug your model.
+However, in practice, due to the limitations of tooling today, it can be overwhelming to track too many things, and
+tracking less important things can distract you from tracking what is really important. \v
+
+Among the things to consider tracking for each experiment during its training process are: the values over time of
+any parameter and hyperparameter whose changes can affect your model's performance, the loss curve corresponding to
+the train split and each of the eval splits, the model performance metrics that you care about on all non-test splits,
+the log of corresponding data, predictions, and ground truth labels, the speed of your model, evaluated by the
+number of steps per second, and the system performance metrics such as memory usage and CPU/GPU utilization.
+
+\bd[Versioning]
+\textbf{Versioning} is the process of logging all the details of an experiment for the purpose of possibly recreating it
+later or comparing it with other experiments.
+\ed
+
+Experiment tracking and versioning go hand in hand. There are many tools created for experiment tracking and
+versioning. Two of the most popular ones are:
+\bit
+\item \href{https://www.wandb.com/}{\textbf{Weights \& Biases}}: A paied tool for experiment tracking and versioning.
+\item \href{https://mlflow.org/}{\textbf{MLflow}}: An open-source platform for managing the end-to-end MDLC\@.
+\eit
+
+\subsection{Deployment}
+
+Once a final model has been decided, it is a good step to present your solution to gather feedback. Document what you
+have done and create a nice presentation, ensuring that your key findings are communicated through beautiful
+visualizations or easy -to-remember statements. Make sure you highlight the big picture first, and explain why your
+solution achieves the business objective. Describe what worked and what did not and most importantly list your
+assumptions and your system's limitations. \v
+
+Once you present and gather feedback, your model is ready for deployment.
+
+\bd[Deployment]
+\textbf{Deployment} is the process of making the model available in production environments in order to provide
+predictions to other software systems.
+\ed
+
+\subsubsection{Research VS Production Environment}
+
+During modeling, your model usually runs in a so-called ``research'', or ``development'', environment.
+
+\bd[Research / Development Environment]
+A \textbf{research} or \textbf{development} environment is an isolated environment, without contact to live data, where
+research is taken place.
+\ed
+
+To be deployed, your model will have to leave the development environment and deployed to a ``production''\footnote{
+Production is a spectrum. It might mean generating nice plots in notebooks or keeping your models up and running for
+millions of users a day. If you want to deploy a model for a few users to play with, all you have to do is to wrap
+your predict function in an API and push your model and its associated container to a cloud service to expose the
+endpoint. If you want to make your model available to millions of users with a latency of milliseconds and 99\% uptime,
+then you need to do a lot more.} environment to be used by your end users.
+
+\bd[Production Environment]
+A \textbf{production} environment is an environment where the model can receive live data and make predictions that can
+be used by other software systems.
+\ed
+
+It goes without saying that both research and production ML pipelines should be reproducible, i.e.\ when
+both research and production environment receive the same raw data, they both should produce the same prediction.
+
+\subsubsection{Machine Learning Pipelines}
+
+Deployment is a loose term that generally means making your model running and accessible. Deploying a model in a
+production environment includes a cycle between training and inference usually called ``model development life cycle''.
+
+\bd[Model Development Life Cycle (MDLC)]
+\textbf{Model development life cycle} (\textbf{MDLC}) is a term commonly used to describe the flow between training and
+inference.
+\ed
+
+\fig{mdlc}{0.44}
+
+When we refer to model deployment and MDLC, we usually mean deployment of an ML pipeline.
+
+\bd[Machine Learning Pipeline]
+A \textbf{machine learning pipeline} is a way to codify and automate an ML workflow, consisting of multiple, sequential
+components of computations that are cyclic in nature, enabling a sequence of data sent through these components to be
+transformed and correlated together in a model that can be tested and evaluated to achieve an outcome.
+\ed
+
+\fig{mpl1}{0.7}
+
+In order to efficiently create an ML pipeline one needs to identify the bottlenecks in the process, look for
+automations where they can apply, not necessarily automate everything, and monitor the ML pipeline health. Automation
+is really important since it reduces since it reduces man-hours spent on maintaining existing assets, reduces
+bottleneck situations and scalse all the ML pipeline workflows. \v
+
+In many companies, the responsibility of deploying models falls into the hands of the same people who developed those
+models. In many other companies, once a model is ready to be deployed, it will be exported and handed off to another
+team to deploy it. However, this separation of responsibilities can cause high overhead communications across teams
+and make it slow to update your model. It also can make it hard to debug should something go wrong. \v
+
+As already mentioned, MLOps is a vastly expanding field, and there are many tools and frameworks that can help you
+build your ML pipelines. Three of the most popular ones are: \href{https://airflow.apache.org/}{Airflow},
+\href{https://metaflow.org/}{Metaflow}, and \href{https://www.kubeflow.org/}{Kubeflow}.
+
+\subsubsection*{Airflow}
+
+Airflow was created in 2014 at Airbnb, and it is now part of the Apache foundation. Airflow is a platform to
+programmatically orchestrate (i.e.\ author, schedule, and monitor) increasingly complex data engineering workflows.
+It leverages DAGs instead of classic pipelines and its workflows are implemented through a python library. It is
+available in all major cloud services. \v
+
+Airflow has a quite steep luring curve, and it's not easy to do local tests. It's also not easy to run operations on
+Kubernetes. Although it is a good fit for ETLs and data engineering pipelines, it's not really a good fit for ML
+pipelines since it was not originally designed with ML pipelines in mind.
+
+\subsubsection*{Metaflow}
+
+Metaflow is a human-centric framework for data science, developed by Netflix and open-sourced in 2019, focused on
+collaboration and complexity management. It is a python library that allows running the pipeline locally and on the
+cloud. It has a decorator approach to DAGs, built-in support for parallelism, and object-oriented programming. It
+also emphasises logging and versioning, and CLI tools helps inspect pipelines in visual way. \v
+
+The biggest caveat of Metaflow is that it is tightly coupled to Amazon Web Services and it's not supported on Windows.
+
+\subsubsection*{Kubeflow}
+
+Kubeflow is an open-source platform for ML on Kubernetes introduced by Google, used for automating deployment,
+scaling, and management of containerized applications, stored as YAML files, which represent the ML pipeline. It is a
+platform that is dedicated to making deployments of ML workflows on Kubernetes simple, portable, and scalable. It
+solves the problem of how to take ML from research to production by providing tools to help with model
+productionization. \v
+
+In essence, Kubeflow is a collection of cloud native tools for all of the stages of model development life cycle:
+\bit
+\item \textbf{Data Exploration}: Spin up instances of Jupyter that interact with clusters and other components.
+\item \textbf{Feature Preparation}: Support of different tools like Apache Spark and TensorFlow Transform.
+\item \textbf{Model Training}: Support of a variety of training frameworks like TensorFlow and PyTorch.
+\item \textbf{Hyperparameter Tuning}: Fully automated process of hyperparameter tuning.
+\item \textbf{Model Validation}: Cross-validation, A/B testing and multi-armed bandit supported.
+\item \textbf{Inference}: Multi-framework component for model serving.
+\item \textbf{Monitoring \& Maintenance}: Possible via the cloud native design of Kubeflow.
+\eit
+
+All these different stages are represented with different software components, while Kubeflow allows these components
+to work seamlessly together. An important part of this process is the pipeline system, which allows users to build
+integrated end-to-end pipelines that connect all components of their MDLC. Pipelines enable reusability and
+governance of experiments. To do this, Kubeflow treats MDLC as an ML pipeline and implements it as a graph, where
+each node is a stage in a workflow. \v
+
+Kubeflow can be run either locally in your development environment or on a production cluster. Often pipelines will
+be developed locally and migrated once the pipelines are ready. Kubeflow provides a unified system, leveraging
+Kubernetes for containerization seeking to tackle the problem of simplifying ML through three features:
+\bit
+\item \textbf{Composability}: Components can be used independently or composed to end-to-end pipelines.
+\item \textbf{Portability}: No particular environment needs. Switch between research and development.
+\item \textbf{Scalability}: Dynamically scale according to the demand of cluster, by manipulating containers.
+\eit
+
+Now let's explore each component of Kubeflow in detail, and explain the role they play in the overall architecture.
+
+\bit
+\item \textbf{Central Dashboard}: The main interface which allows access to the majority of components.
+\item \textbf{JupyterHub}: A hub of notebooks that allows developers to even manage Kubernetes resources.
+\item \textbf{Training Operators}: Training operators\footnote{In Kubeflow, distributed training jobs are managed by
+application-specific controllers, known as operators. These operators extend the Kubernetes APIs to create, manage,
+and manipulate the state of resources. These operators allow the automation of important deployment concepts such as
+scalability, observability, and failover. They can also be used by pipelines to chain their execution with the
+execution of other components of the system.} to automate the execution of ML algorithms.
+\item \textbf{Pipelines}: Orchestration of the execution of ML applications by making ML jobs repeatable. \v
+
+When running a pipeline you must choose an experiment. Experiment here is just a convenience grouping for pipeline
+executions (runs). At a high level, the execution of a pipeline contains the following components:
+\bit
+\item \textbf{UI}: For managing and tracking pipelines and their execution.
+\item \textbf{Python SDK}: An intuitive Domain Specific Language (DSL) in Python to create components.
+\item \textbf{DSL Compiler}: Compiles Python built pipelines into a YAML file that Kubeflow can consume.
+\item \textbf{Pipeline Service}: Creates a pipeline run from the static configuration.
+\item \textbf{Kubernetes Resources}: Calls Kubernetes API to create resources to run the pipeline.
+\item \textbf{Orchestration Controllers}: Execute the containers specified by the Kubernetes resources.
+\item \textbf{Artifact Storage}: Storing of metadata and artifacts like experiments, metrics, views, etc.
+\eit
+\item \textbf{Katib}: Hyperparameter optimizations by leveraging advanced searching algorithms. \v
+
+Katib is based on four main concepts:
+\bit
+\item \textbf{Experiment}: A single optimization run over a feasible space.
+\item \textbf{Trial}: A list of parameter values that lead to a single evaluation of the model.
+\item \textbf{Job}: A process responsible for evaluating a pending trial and calculating its objective value.
+\item \textbf{Suggestion}: An algorithm to construct a parameter set.
+\eit
+\item \textbf{KFServing}: Generalizes all inference concerns of autoscaling, networking, and health checking.
+\item \textbf{ML Metadata}: Records and retrieves metadata associated with an ML workflow. \v
+
+The information, which can be registered in the ML Metadata component includes data sources used for the model's
+creation, artifacts generated through the components/steps of the pipeline, executions of these components/steps.
+and the pipeline and associated lineage information.
+\eit
+
+\subsubsection{Online VS Batch}
+
+One fundamental decision you'll have to make that will affect both your end users and developers working on your
+system is how it generates and serves its predictions to end users: online or batch. The terminologies surrounding
+batch and online prediction are still quite confusing due to the lack of standardized practices in the industry.
+
+\bd[Online Prediction]
+\textbf{Online prediction} (or \textbf{synchronous prediction}) is when predictions are generated and returned as soon
+as requests for these predictions arrive.
+\ed
+
+\fig{online}{0.2}
+
+Traditionally, when doing online prediction, requests are sent to the prediction service via REST APIs. \v
+
+A problem with online prediction is that your model might take too long to generate predictions. In that case, there
+are three main approaches to reduce its inference latency: make it do inference faster (inference optimization), make
+the model smaller (model compression), or make the hardware it's deployed on run faster. \v
+
+Instead of generating predictions as soon as they arrive, what if you compute predictions in advance and store them
+in your database, and fetch them when requests arrive? This is exactly what batch prediction does, which is a
+workaround for when online prediction isn't cheap enough or isn't fast enough.
+
+\bd[Batch Prediction]
+\textbf{Batch prediction} (or \textbf{asynchronous prediction}) is when predictions are generated periodically or
+whenever triggered.
+\ed
+
+\fig{batch1}{0.19}
+
+Traditionally, when doing batch prediction, the predictions are stored somewhere, such as in SQL tables or a database,
+and retrieved as needed. \v
+
+Batch prediction is good for when you want to generate a lot of predictions and don't need the results immediately.
+Because the predictions are precomputed, you don't have to worry about how long it'll take your models to generate
+predictions. For this reason, batch prediction can also be seen as a trick to reduce the inference latency of more
+complex models—the time it takes to retrieve a prediction is usually less than the time it takes to generate it. \v
+
+The problem with batch prediction is that it makes your model less responsive to users' change preferences. Another
+problem with batch prediction is that you need to know what requests to generate predictions for in advance. \v
+
+In many applications, online prediction and batch prediction are used side by side for different use cases. Many
+people believe that online prediction is less efficient, both in terms of cost and performance, than batch prediction
+because you might not be able to batch inputs together and leverage vectorization or other optimization techniques.
+However, this is not necessarily true. Also, with online prediction, you don't have to generate predictions for users
+who aren't visiting your site. Here is a table that summarizes the differences between online and batch predictions.
+
+\fig{batchvsonline}{0.45}
+
+\subsubsection{Cloud VS Edge}
+
+Another decision you'll want to consider is where your model's computation will happen: on the cloud or on the edge.
+
+\bd[On The Cloud]
+\textbf{On the cloud} means a large chunk of computation is done on the cloud, either public clouds or private clouds.
+\ed
+
+The easiest way is to package your model up and deploy it via a managed cloud service, and this is how many companies
+deploy when they get started in ML. Cloud services have done an incredible job to make it easy for companies to bring
+ML models into production. However, there are many downsides to cloud deployment, with number one being cost, since
+ML models can be compute-intensive, and compute is expensive.
+
+\bd[On The Edge]
+\textbf{On the edge} means a large chunk of computation is done on consumer devices, which are also known as edge
+devices.
+\ed
+
+Other than help with controlling costs, there are many properties that make edge computing appealing. The first is
+that it allows your applications to run where cloud computing cannot. When your models are on public clouds, they
+rely on stable internet connections to send data to the cloud and back. Edge computing allows your models to work in
+situations where there are no internet connections or where the connections are unreliable. Second, when your models
+are already on consumers' devices, you can worry less about network latency. Requiring data transfer over the network
+might make some use cases impossible. In many cases, network latency is a bigger bottleneck than inference latency. \v
+
+Putting your models on the edge is also appealing when handling sensitive user data. ML on the cloud means that your
+systems might have to send user data over networks, making it susceptible to being intercepted. Cloud computing also
+often means storing data of many users in the same place, which means a breach can affect many people. Edge computing
+makes it easier to comply with regulations, like GDPR, about how user data can be transferred or stored. \v
+
+To move computation to the edge, the edge devices have to be powerful enough to handle the computation, have enough
+memory to store ML models and load them into memory, as well as have enough battery or be connected to an energy
+source to power the application for a reasonable amount of time. Because of the many benefits that edge computing has
+over cloud computing, companies are in a race to develop edge devices optimized for different ML use
+cases.
+
+\subsection{Monitoring \& Maintenance}
+
+Once your model is deployed, you'll want to monitor its performance and maintain it. Monitoring and maintenance are
+two sides of the same coin. Monitoring is about detecting failures, and maintenance is about fixing them.
+
+\subsubsection{Failures \& Model Decay}
+
+Software doesn't age like fine wine. It ages poorly. The phenomenon in which a software program degrades over time
+even if nothing seems to have changed is known as ``software rot'' or ``bit rot''.
+
+\bd[Software Rot / Bit Rot]
+\textbf{Software rot} or \textbf{bit rot} is the gradual decay of software performance over time.
+\ed
+
+ML systems aren't immune to it. Deploying a model isn't the end of the process. A model's performance degrades over
+time in production. This phenomenon is known as ``model decay'' or ``model drift''.
+
+\bd[Model Decay / Model Drift]
+\textbf{Model decay} or \textbf{model drift} is the phenomenon in which an ML model's performance degrades over time in
+production.
+\ed
+
+The most usual reason for model decay is failures in production. A failure happens when one or more expectations of
+the system is violated. In traditional software, we mostly care about a system's operational expectations: whether
+the system executes its logic within the expected operational metrics. For an ML system, we care about both its
+operational metrics and its ML performance metrics. \v
+
+Operational expectation violations are easier to detect, as they're usually accompanied by an operational breakage
+such as a timeout, a 404 error on a webpage, or an out-of-memory error. However, ML performance expectation
+violations are harder to detect. To effectively detect and fix ML system failures in production, it's useful to
+understand why a model, after proving to work well during development, would fail in production. \v
+
+We'll examine two types of failures: ``software system failures'' and ``machine learning-specific failures''.
+
+\bd[Software System Failures]
+\textbf{Software system failures} are failures that would have happened to non ML systems.
+\ed
+
+Keep in mind that just because some failures are not specific to ML doesn't mean they're not important for ML engineers
+to understand. \v
+
+Some common categories of software system failures are:
+\bit
+\item \textbf{Dependency Failure}: A library your system depends on breaks, so your system also breaks.
+\item \textbf{Deployment Failure}: Failures caused by deployment errors.
+\item \textbf{Hardware Failure}: The hardware you use to deploy your model doesn't behave the way it should.
+\item \textbf{Downtime Failure}: The server which your component lives is down.
+\item \textbf{Network Failure}: The network your system depends on is down.
+\eit
+
+A reason for the prevalence of software system failures is that because ML adoption in the industry is still nascent,
+tooling around ML production is limited and best practices are not yet well-developed or standardized. However, as
+tooling and best practices for ML production mature, there are reasons to believe that the proportion of software
+system failures will decrease and the proportion of machine learning-specific failures will increase.
+
+\bd[Machine Learning-Specific Failures]
+\textbf{Machine learning-specific failures} are failures specific to ML systems.
+\ed
+
+Due to the complexity of ML systems and the poor practices in deploying them, a large percentage of what might look
+like data shifts on monitoring dashboards are really caused by internal errors. Some common categories of machine
+learning-specific failures are:
+\bit
+\item \textbf{Pipeline Differences}: Changes in training pipeline not replicated in inference one and vice versa.
+\item \textbf{Training \& Production Data}: Distribution of training data is not the same as the production one.
+\item \textbf{Edge Cases}: Data samples so extreme that they cause the model to make catastrophic mistakes.
+\item \textbf{Degenerate Feedback Loops}: Outputs are used to generate inputs, which influence outputs \ldots
+\eit
+
+On top of the aforementioned machine learning-specific failures, one of the most common reasons for model decay is
+that the real world isn't stationary. Both the distributions of the data and the underlying relationship of the data
+might change over time, which causes the model's predictions to become less accurate as time passes. These changes
+happen all the time, suddenly, gradually, or seasonally. In what follows we will study the different types of these
+changes, starting with the changes in the distributions of the data usually referred to as ``data drift''.
+
+\bd[Data Drift]
+\textbf{Data drift} occurs when data changes, so the distribution of input and output variables is meaningfully
+different. As a result, the trained model is not relevant for this new data.
+\ed
+
+Data drift can happen in two ways:
+
+\bd[Covariate Shift]
+\textbf{Covariate shift} is the change of distributions of the independent variables $X$ (features).
+\ed
+
+\bd[Prior Probability Shift]
+\textbf{Prior probability shift} is the change of distribution in the dependent variable $Y$ (target).
+\ed
+
+Beside the change in the distributions of data, the relationship between feature $X$ and target $Y$ has also changed.
+This phenomenon is refered to as ``concept drift''.
+
+\bd[Concept Drift]
+\textbf{Concept drift} occurs when the relationships between the input and output variables change
+\ed
+
+This means that the distributions of input and output variables might even remain the same, and we must instead focus
+on the changes in the relationship between $X$ and $Y$.
+
+\subsubsection{Monitoring}
+
+As the industry realized that many things can go wrong with an ML system in production, many companies started
+investing in monitoring of their ML systems.
+
+\bd[Monitoring]
+\textbf{Monitoring} refers to the act of tracking, measuring, and logging different metrics that can help us determine
+when something goes wrong.
+\ed
+
+Monitoring is all about metrics. Because ML systems are software systems, the first class of metrics you'd need to
+monitor are the operational metrics.
+
+\bd[Operational Metrics]
+\textbf{Operational metrics} are metrics that are designed to convey the health of your systems.
+\ed
+
+Operational metrics are generally divided into three levels: the network the system is run on, the machine the system
+is run on, and the application that the system runs. Examples of these metrics are latency; throughput; number of
+prediction requests; percentage of succesful requests; CPU /GPU utilization; memory utilization; etc. \v
+
+Hence, operational metrics are the first class of metrics you'd need to monitor, and they are all about the health of
+your systems. No matter how good your ML model is, if the system is down, you're not going to benefit from it.
+Operational metrics are usually encaptured in the so called ``service level objectives''.
+
+\bd[Service Level Objectives (SLO)]
+The conditions to determine whether a system is up are defined in the so-called \textbf{service level objectives}
+(\textbf{SLOs}).
+\ed
+
+The second class of metrics you'd need to monitor are the ML-specific metrics.
+
+\bd[ML-Specific Metrics]
+\textbf{ML-specific metrics} are metrics that are designed to convey the health of your models.
+\ed
+
+Within ML-specific metrics, there are generally four artifacts to monitor:
+\bit
+\item \textbf{Raw Inputs Metrics}: Not easy to monitor, as they vary in sources, formats and structures.
+\item \textbf{Features Metrics}: Changes in features (and their transoformations) a model uses.
+\item \textbf{Predictions Metrics}: Most common artifact to monitor, easy to visualize, and compute statistics.
+\item \textbf{Accuracy Metrics}: Help you decide whether a model's performance has degraded.
+\eit
+
+These four artifacts are generated at four different stages of an ML system pipeline, as shown in the following figure.
+
+\fig{failures}{0.65}
+
+The deeper into the pipeline an artifact is, the more transformations it has gone through, which makes a change in
+that artifact more likely to be caused by errors in one of those transformations. However, the more transformations
+an artifact has gone through, the more structured it's become and the closer it is to the metrics you actually care
+about, which makes it easier to monitor. \v
+
+The last one, feature monitoring, is appealing because compared to raw input data, features are well-structured
+following a predefined schema. The first step of feature monitoring is feature validation: ensuring that your
+features follow an expected schema. The expected schemas are usually generated from training data or from common
+sense. If these expectations are violated in production, there might be a shift in the underlying distribution. \v
+
+There are four major concerns when doing feature monitoring:
+\begin{enumerate}
+\item A company might have many models in production, and each model uses many features.
+\item Feature monitoring is useful for debugging, but not for detecting model decay.
+\item Feature extraction is often done in multiple steps, using multiple libraries, on multiple services.
+\item The schema that your features follow can change over time.
+\end{enumerate}
+
+Before we finish this section, we need to mention that measuring, tracking, and interpreting metrics for complex
+systems is a nontrivial task, and engineers rely on a set of tools to help them do so. Let's take a look at some of
+the tools that are commonly used for monitoring ML systems.
+
+\subsubsection*{Logs}
+
+Traditional software systems rely on logs to record events produced at runtime. An event is anything that can be of
+interest to the system developers, either at the time the event happens or later for debugging and analysis purposes.
+\v
+
+When we log an event, we want to make it as easy as possible for us to find it later. This practice with microservice
+architecture is called ``distributed tracing''. We want to give each process a unique ID so that, when something goes
+wrong, the error message will contain that ID. This allows us to search for the log messages associated with it. We
+also want to record with each event all the metadata necessary. \v
+
+Because logs have grown so large and so difficult to manage, there have been many tools developed to help companies
+manage and analyze logs. Analyzing billions of logged events manually is futile, so many companies use ML to analyze
+logs.
+
+\subsubsection*{Dashboards}
+
+Visualizing metrics are critical for monitoring. Since monitoring isn't just for the developers of a system, but also
+for non-engineering stakeholders including product managers and business developers, dashboards is a great tool for
+making monitoring accessible to non-engineers. \v
+
+Even though graphs can help a lot with understanding metrics, they aren't sufficient on their own. You still need
+experience and statistical knowledge. Graphs are useful for making sense of numbers, but they aren't sufficient.
+Excessive metrics on a dashboard can also be counterproductive, a phenomenon known as ``dashboard rot''. It's
+important to pick the right metrics or abstract out lower-level metrics to compute higher-level signals that make
+better sense for your specific tasks.
+
+\subsubsection*{Alerts}
+
+When our monitoring system detects something suspicious, it's necessary to alert the right people about it. An alert
+consists of the following three components:
+\bit
+\item \textbf{Alert Policy}: The condition for an alert.
+\item \textbf{Notification Channels}: Who is to be notified when the condition is met.
+\item \textbf{Alert Description}: Helps the alerted person understand what's going on.
+\eit
+
+Depending on the audience of the alert, it's often necessary to make the alert actionable by providing mitigation
+instructions or a runbook, a compilation of routine procedures and operations that might help with handling the alert.
+
+\subsubsection{Iteration}
+
+Since a model's performance decays over time, we want to continually update our ML model. This process
+is widely known as ``iteration'', or ``continual learning''.
+
+\bd[Iteration / Continual Learning]
+\textbf{Iteration} or \textbf{continual learning} is the process of continually update an ML model in production.
+\ed
+
+Iteration isn't about the retraining frequency, but the manner in which the model is retrained. Once the
+infrastructure has been set up to update a model quickly, then the question of how often should we update the models
+emerges. \v
+
+To answer that question, we need to figure out how much gain a model will get from being updated with fresh data. The
+more gain your model can get from fresher data, the more frequently it should be retrained. In other words, the
+question of how often to update a model becomes a lot easier if we know how much the model performance will improve
+with updating. One way to figure out the gain is by training your model on the data from different time windows in
+the past and evaluating it on the data from today to see how the performance changes. \v
+
+There are two types of iterations: ``model iteration'' and ``data iteration''.
+
+\bd[Model Iteration]
+In \textbf{model iteration} a new feature is added to an existing model architecture or the model architecture is
+changed.
+\ed
+
+\bd[Data Iteration]
+In \textbf{data iteration} the model architecture and features remain the same, but the model is refreshed with new
+data.
+\ed
+
+During an iteration, the updated model shouldn't be deployed until it's been evaluated. This means that you shouldn't
+make changes to the existing model directly. Instead, you create a replica of the existing model and update this
+replica on new data, and only replace the existing model with the updated replica if the updated replica proves to be
+better.
+
+\bd[Champion Model]
+An existing model in production is called \textbf{champion model}.
+\ed
+
+\bd[Challenger Model]
+An updated replica of a champion model is called \textbf{challenger model}.
+\ed
+
+\fig{replica}{0.4}
+
+Iteration can happen in two ways: ``stateless retraining'' and ``stateful training''.
+
+\bd[Stateless Retraining]
+In \textbf{stateless retraining} the model is trained from scratch each time.
+\ed
+
+Stateless retraining is mostly applied for model iteration, as changing the model architecture or adding a new
+feature requires training the resulting model from scratch. It usually happens in the early stages of a company,
+since in the beginning, the team is focusing on developing new models and updating existing models takes a backseat.
+They update an existing model from the scratch when the model's performance has degraded to the point that it's doing
+more harm than good, and your team has time to update it.
+
+\bd[Stateful Training]
+In \textbf{stateful training}, or \textbf{fine-tuning}, or \textbf{incremental learning}, the model continues training
+on new data.
+\ed
+
+Stateful training is mostly applied for data iteration, as refreshing the data does not require training the
+resulting model from scratch. It also updates models with fewer data, avoids data storage, and addresses privacy
+concerns.
+
+\fig{stateless}{0.3}
+
+Even though iteration has many use cases and many companies have applied it with great success, it still has many
+challenges. First of all we are dealing with the challenge to get fresh data to update the model. Currently, many
+companies pull new training data from their data warehouses, but being able to pull fresh data isn't enough. If a
+model needs labeled data to update, as most models today do, this data will need to be labeled as well. In many
+applications, the speed at which a model can be updated is bottlenecked by the speed at which data is labeled. Second,
+we need to make sure that this update is good enough to be deployed. The more frequently you update your models,
+the more opportunities there are for updates to fail. Finally, iteration makes your models more susceptible to
+coordinated manipulation and adversarial attack. Because your models learn online from real-world data, it makes it
+easier for users to input malicious data to trick models into learning wrong things. \v
+
+All these challenges are usually interconnected. Assuming that the fresher the data, the more likely it is to come
+from the current distribution, one idea is to evaluate your model on the most recent data that you have access to. So,
+after you've updated your model on the data from the last day, you might want to test this model on the data from
+the last hour (assuming that data from the last hour wasn't included in the data used to update your model).
+
+\bd[Backtest]
+The method of testing a predictive model on data from a specific period of time in the past is known as a
+\textbf{backtest}.
+\ed
+
+Because data distributions shift, the fact that a model does well on the data from the last hour doesn't mean that it
+will continue doing well on the data in the future. The only way to know whether a model will do well in production
+is to deploy it. There are techniques to help you evaluate your models in production safely like ``shadow deployment'',
+``canary release'', and ``blue-green deployment''.
+
+\bd[Shadow Deployment]
+\textbf{Shadow deployment} is the method of deploying a model in parallel with an existing model, but not serving
+its predictions to users until its performance is satisfactory enough to replace the existing model.
+\ed
+
+Shadow deployment isn't always favorable because it's expensive. It doubles the number of predictions your system has
+to generate, which generally means doubling your inference compute cost.
+
+\bd[Canary Release]
+\textbf{Canary release} is the method of deploying a model (called the canary model) in parallel with an existing model,
+and gradually routing more and more traffic to the new model until it's ready to replace the existing model, or the
+canary is aborted.
+\ed
+
+\bd[Blue-Green Deployment]
+\textbf{Blue-Green deployment} is a deployment strategy in which you create two separate, but identical environments.
+Old environment (blue) is running the current application version and new environment (green) is running the new
+application version. Once production traffic is fully transferred from blue to green, blue can be standby in case of
+rollback or pulled from production and updated to become the template upon which the next update is made.
+\ed
+
+\section{Distributed Systems}
+
+\bd[Distributed System]
+A \textbf{distributed system} is a system whose its several autonomous nodes (computers) are located on different
+networks, which communicate and coordinate their actions by passing messages to one another.
+\ed
+
+The word ``distributed'' originally referred to computer networks where individual computers were physically
+distributed within some geographical area. The terms are nowadays used in a much wider sense, referring to autonomous
+processes that run on the same physical computer. In general, the structure of the system is not known in advance,
+the system may consist of different kinds of computers and network links, and the system may change during the
+execution of a distributed program. As a result, each computer has only a limited, incomplete view of the system.
+
+\bd[Ditributed Computing]
+\textbf{Distributed computing} is the use of distributed systems to solve computational problems by dividing them
+into several tasks where each task is computed in an individual computer.
+\ed
+
+Three significant challenges of distributed programming are: maintaining concurrency of components, overcoming the lack
+of a global clock, and managing the independent failure of components.
+
+\bd[Distributed Program]
+A \textbf{distributed program} is a computer program that runs within a distributed system.
+\ed
+
+\bd[Distributed Programming]
+\textbf{Distributed programming} is the process of writing distributed programs.
+\ed
+
+Distributed programing is especially relevant in ML, from collecting and preprocessing data with great variety at
+increasing speeds, to training complex ML models, running efficient hyperparameter selection, building
+entirely new and custom models, and serving models to showcase them. At the same time, it might be inevitable to
+scale these workloads to a compute cluster.
+
+\subsection{Ray}
+
+\bd[Ray]
+\textbf{Ray} is a simple, flexible, unified, Python-first, distributed computing framework built in C++, used for
+scaling AI and Python applications.
+\ed
+
+Ray is as lean as it gets and helps you reason effectively about the distributed programs you want to write. You can
+efficiently parallelize Python programs on your laptop and run the code you tested locally on a cluster practically
+without any changes. \v
+
+While Ray works out of the box on single machines, to run Ray applications on multiple nodes you
+must first deploy a Ray cluster. Ray provides native cluster deployment support on AWS, GCP and on Kubernetes, via
+the officially supported KubeRay project. Its high-level libraries are easy to configure and can seamlessly be used
+together. \v
+
+Ray is built with several design principles in mind. Its API is designed for:
+\bit
+\item \textbf{Simplicity \& Abstraction}: Ray's API prioritizes simplicity and intuitiveness, making it easy for 
+users to grasp. Whether you're utilizing CPU cores on a single laptop or multiple machines in a cluster, the core Ray
+code remains largely consistent. Ray takes care of task distribution and coordination behind the scenes, relieving 
+users from the complexities of distributed computing and allowing them to concentrate on their tasks.
+\item \textbf{Flexibility \& Heterogeneity}: Ray's API is designed to enable flexible and composable code for AI 
+workloads. It supports Python expressions, allowing users to distribute their work with Ray and ensure adequate 
+resource availability. Ray also offers flexibility in handling heterogeneous computations, accommodating both light 
+and intensive workloads within different workflows.
+\item \textbf{Speed \& Scalability}: Ray emphasizes speed in task execution, capable of handling millions of tasks 
+per second with minimal latencies, typically measured in milliseconds. Ray efficiently distributes and schedules 
+tasks across compute clusters while maintaining fault tolerance, ensuring that it scales effectively for demanding 
+distributed computing needs.
+\eit
+
+Ray consists of three main layers: Ray Core, Ray Libraries \& Ray AIR, and Ray Ecosystem. In what follows we will
+study each one of them in detail.
+
+\subsubsection{Ray Core}
+
+\bd[Ray Core]
+\textbf{Ray Core} is a low-level distributed computing framework for Python with a concise core API and tooling
+for cluster deployment, that makes scaling easy and efficient.
+\ed
+
+Ray Core with its API is at the center of things, on which everything else builds. It is designed to be flexible and
+easy to use, and it's built to support a wide variety of use cases. \v
+
+In order to understand what Ray Core is and how it works, we need first to provide some basic definitions, starting
+with the concept of ``synchronous'' and ``asynchronous'' executions.
+
+\bd[Synchronous Execution]
+Two tasks are \textbf{executed synchronously} if the first one must finish before the later one can start.
+\ed
+
+\bd[Asynchronous Execution]
+Two tasks are \textbf{executed asynchronously} if the latter one can begin executing in parallel, without waiting for
+the first task to finish.
+\ed
+
+Python functions and classes are executed synchronously. This means that when you call a function, or you instantiate
+a class, the caller waits for the function, or class, to finish before continuing. \v
+
+Ray enables these arbitrary, synchronous Python functions and classes to be executed asynchronously. These
+asynchronous functions are called ``Ray remote functions'', and these asynchronous classes are called ``Ray remote
+classes''.
+
+\bd[Ray Remote Function]
+A \textbf{Ray remote function} is an asynchronous Python function.
+\ed
+
+\bd[Ray Remote Class]
+A \textbf{Ray remote class} is an asynchronous Python class.
+\ed
+
+The asynchronous invocations of Ray remote functionss are called ``Ray tasks'' while the asynchronous invocations of
+Ray remote classes are called ``Ray actors''.
+
+\bd[Ray Task]
+A \textbf{Ray task} is an asynchronous, remote, stateless invocation of a Ray remote function.
+\ed
+
+\bd[Ray Actor]
+A \textbf{Ray actor} is an asynchronous, remote, stateful invocation of a Ray remote class.
+\ed
+
+Both Ray tasks and Ray actors are executed asynchronously, and they can be executed in parallel. When a Ray task and
+Ray actor are scheduled, they are executed on a process different from the caller, and potentially on a different
+machine, and the caller can continue without waiting for them to finish. This process, in the Ray ecosystem, is
+called ``Ray worker''.
+
+\bd[Ray Worker]
+A \textbf{Ray worker} is a process that runs user defined tasks and actors in the background.
+\ed
+
+In Ray, tasks and actors create and compute on objects. We refer to these objects as ``Ray remote objects'' because
+they can be stored anywhere in the distributed system.
+
+\bd[Ray Remote Object]
+A \textbf{Ray remote object} is the value that is returned by a task or the methods of an actor.
+\ed
+
+\bd[Lineage]
+A \textbf{lineage} is the set of tasks or methods of an actor that was originally executed to produce a remote object.
+\ed
+
+If an object's value is lost due to a failure, Ray may attempt to recover the value by re-executing the object's
+lineage. \v
+
+Each remote object carries some characteristics such as:
+\bit
+\item \textbf{Object ID}: A unique identifier for a remote object.
+\item \textbf{ObjectRef}: A reference (i.e.\ a pointer) to a remote object (i.e\ an application value).
+\item \textbf{Object Ownership}: The concept used to decide where metadata for a certain ObjectRef (and the task that
+creates the value) should be stored.
+\eit
+
+Remote objects are cached in Ray's distributed shared-memory object store.
+
+\bd[Object Store]
+An \textbf{object store} is a distributed shared-memory object store for storing Ray objects.
+\ed
+
+Having introduced the concept of tasks, actors, and objects, we are now in a position to define what a ``Ray
+application'' and a ``Ray job'' are.
+
+\bd[Ray Application]
+A \textbf{Ray application} is a collection of Ray tasks, actors, and objects originated from the same script.
+\ed
+
+\bd[Ray Job]
+A \textbf{Ray job} is a packaged Ray application that can be executed on a remote Ray cluster.
+\ed
+
+Ray jobs are the unit of isolation in Ray. The are isolated from each other, and can be run without interfering with
+each other. \v
+
+Now, we are in a position to define the most important concept of Ray Core which is that of a ``Ray cluster''.
+
+\bd[Ray Cluster]
+A \textbf{Ray cluster} is a cluster of nodes (computers) that can run Ray jobs.
+\ed
+
+In practice, Ray Core sets up and manages Ray clusters, which are consisted of nodes that are connected to each other
+via a network, and they are in charge of allocating resources, creating nodes, and ensuring they are healthy.
+
+\bd[Ray Node]
+A \textbf{Ray node} is a physical or virtual machine that is part of a Ray cluster.
+\ed
+
+Ray clusters are composed of two types of nodes: ``workers nodes'' and a single ``head node''.
+
+\bd[Worker Node]
+A \textbf{worker node} is a node used only to run Ray jobs.
+\ed
+
+Worker nodes do not run any management processes, but are used solely for running Ray jobs. They also participate in
+distributed scheduling, as well as the storage and distribution of Ray objects in cluster memory. \v
+
+Worker nodes consist of Ray workers to be able to run Ray tasks and actors, and ``Raylets'' to be able to store and
+retrieve Ray objects.
+
+\bd[Raylet]
+A \textbf{Raylet} is a system process that runs on each Ray node, responsible for scheduling and object management.
+\ed
+
+Raylets are responsible for scheduling Ray jobs on the node, and monitor the object usage of the node. They consist
+of an object store, we mentioned earlier, for storing and retrieving objects, and the so-called ``Ray scheduler''
+for scheduling Ray jobs.
+
+\bd[Ray Scheduler]
+The \textbf{Ray scheduler} is a component of the Raylet that is responsible for scheduling tasks and actors on the
+node.
+\ed
+
+Beside a number of worker nodess, every Ray cluster has one special node which is designated as the ``head node'' of
+the cluster.
+
+\bd[Head Node]
+The \textbf{head node} is the node that runs extra cluster-level processes in addition to those processes running on a
+worker node.
+\ed
+
+Every Ray cluster has only one head node which is identical to other worker nodes except that it also runs singleton
+processes responsible for cluster management. More specifically, the head node is responsible for:
+\bit
+\item \textbf{Resource Management}: Allocates and monitors resources to applications running on the cluster.
+\item \textbf{Node Management}: Starts, terminates, and monitors the health of nodes on the cluster.
+\item \textbf{Metadata Management}: Stores metadata of objects and jobs in the object store.
+\eit
+
+The extra cluster-level processes the head node contains are the ``Ray driver'', the ``Global Control Store'' or GCS,
+and the ``autoscaler''.
+
+\bd[Ray Driver]
+The \textbf{Ray driver} is the name of the process running the main script that starts all other processes.
+\ed
+
+\bd[Global Control Store (GCS)]
+The \textbf{Global Control Store} (or \textbf{GCS}) runs on the head node and has functions like managing node
+membership and actor directory, acting like a centralized metadata server for a Ray cluster.
+\ed
+
+\bd[Autoscaler]
+The \textbf{autoscaler} is a Ray component on the head node that scales up and down the Ray cluster by adding and
+removing Ray nodes according to the resources requested by applications running on the cluster.
+\ed
+
+While Ray clusters can be fixed-size, at the same time they can autoscale up and down according to the resources
+requested by applications running on the cluster. When the resource demands of the Ray workload exceed the current
+capacity of the cluster, the autoscaler will try to increase the number of worker nodes. When worker nodes sit idle,
+the autoscaler will remove worker nodes from the cluster. It is important to understand that the autoscaler only
+reacts to task and actor resource requests, and not application metrics or physical resource utilization.
+
+\fig{ray4}{0.4}
+
+Now that we have provided the main definitons of Ray Core, and we explored its main components and its system
+architecture, let's switch to the more practical aspects of Ray Core, and see how can we use so called ``Ray Core API''
+to write Ray applications.
+
+\bd[Ray Core API]
+The \textbf{Ray Core API} is the API that allows users to write Ray applications.
+\ed
+
+Ray Core API is a Python library, so to use it you need to install it first. You can install Ray Core API using pip:
+\begin{bash}
+pip install ray
+\end{bash}
+
+Once you've installed Ray Core API, you can import it in your Python script:
+\begin{bash}
+import ray
+\end{bash}
+
+Althoug the Ray Core API contains a lot of differen methods, the six major ones used while using the Ray Core API are:
+
+\begin{bash}
+# initializes your Ray Cluster. Pass in an address to connect to an existing cluster
+ray.init()
+\end{bash}
+
+\begin{bash}
+# turn functions into tasks and classes into actors
+@ray.remote
+\end{bash}
+
+\begin{bash}
+# put values into Ray's object store
+ray.put()
+\end{bash}
+
+\begin{bash}
+# get values from the object store
+\end{bash}
+
+\begin{bash}
+# run actor methods or tasks on your Ray Cluster and instantiate actors
+.remote()
+\end{bash}
+
+\begin{bash}
+# return two lists of object references, one with finished and one with unfinished tasks
+ray.wait()
+\end{bash}
+
+\subsubsection{Ray Libraries \& Ray AIR}
+
+\bd[Ray Libraries]
+\textbf{Ray Libraries} are a set of high-level, distributed, ML lifecycle specific, libraries built and maintained
+by the creators of Ray, built on top of Ray Core and provide a domain-specific abstraction layer.
+\ed
+
+To be more specific, the aforementioned libraries are:
+
+\bd[Ray Dataset]
+The \textbf{Ray Dataset} is a library for parallel and distributed data processing.
+\ed
+
+\bd[Ray Training]
+The \textbf{Ray Training} is a library for distributed model training for supervised learning.
+\ed
+
+\bd[Ray RLlib]
+The \textbf{Ray RLlib} is a library for reinforcement learning workloads.
+\ed
+
+\bd[Ray Tune]
+The \textbf{Ray Tune} is a library for hyperparameter tuning.
+\ed
+
+\bd[Ray Serve]
+The \textbf{Ray Serve} is a library for serving models.
+\ed
+
+Beside the libraries, the so-called ``Ray AI Runtime'' (Ray AIR) makes it able to use these libraries in a common
+runtime, with a unified API, and the ability to scale workloads when needed.
+
+\bd[Ray AIR]
+The \textbf{Ray AI Runtime} (Ray AIR) makes it able to use these libraries in a common runtime, with a unified API,
+and the ability to scale workloads when needed.
+\ed
+
+Ray AIR can be seen as an umbrella that links Ray libraries and offers a consistent framework for dealing with common
+AI workloads.
+
+\subsubsection{Ray Ecosystem}
+
+As we saw, Ray's high-level libraries are powerful and their usefulness for the MDLC is undeniable. On top of those
+libraries Ray integrates well with existing solutions and ideas. As a reuslt there are many useful third-party
+libraries built on top of Ray, creating a growing Ray ecosystem.
+
+\bd[Ray Ecosystem]
+The \textbf{Ray Ecosystem} is a growing ecosystem of integrations and partnerships with other notable projects that
+leverage Ray Core and Ray Libraries to provide a unified experience for users.
+\ed
+
+In simple words, Ray doesn't try to replace all eixsting tools, but rather integrates with them while still giving
+you access to its native library.
+
+With Ray Ecosystem we have completed our study of Ray.
+
+\fig{ray7}{0.5}

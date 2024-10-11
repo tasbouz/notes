@@ -1,0 +1,111 @@
+Probability theory is the branch of mathematics concerned with probability. Although there are several different
+probability interpretations, probability theory treats the concept in a rigorous mathematical manner by expressing it
+through a set of axioms. Typically, these axioms formalise probability in terms of a probability space, which assigns
+a measure taking values between 0 and 1, termed the probability measure, to a set of outcomes called the sample space.
+Any specified subset of these outcomes is called an event. \v
+
+Central subjects in probability theory include discrete and continuous random variables, probability distributions,
+and stochastic processes, which provide mathematical abstractions of non-deterministic or uncertain processes or
+measured quantities that may either be single occurrences or evolve over time in a random fashion. \v
+
+Although it is not possible to perfectly predict random events, much can be said about their behaviour. Two major
+results in probability theory describing such behaviour are the law of large numbers and the central limit theorem. \v
+
+As a mathematical foundation for statistics, probability theory is essential to many human activities that involve
+quantitative analysis of data. Methods of probability theory also apply to descriptions of complex systems given only
+partial knowledge of their state, as in statistical mechanics. A great discovery of twentieth-century physics was the
+probabilistic nature of physical phenomena at atomic scales, described in quantum mechanics. \v
+
+Before we proceed with developing the basic probability theory, we will provide some basic and heavily used
+terminology in probability theory and statistics that we will be using through this part.
+
+\section{Basic Definitions \& Terminology}
+
+\bd[Data]
+\textbf{Data} are individual units of information that have been collected.
+\ed
+
+Based on the nature of the data, we have two fundamental distinctions: qualitative and quantitative data.
+
+\bd[Qualitative/Categorical Data]
+\textbf{Qualitative (or categorical) data} are nonnumerical data, on which mathematical operations are meaningless.
+\ed
+
+\bd[Quantitative Data]
+\textbf{Quantitative data} are numerical data, on which mathematical operations are meaningful.
+\ed
+
+More specifically, quantitative data can be divided into two categories: discrete and continuous data.
+
+\bd[Discrete Data]
+\textbf{Discrete data} are finite and countable data.
+\ed
+
+\bd[Continuous Data]
+\textbf{Continuous data} are infinite and uncountable data.
+\ed
+
+Regarding the scale that data are measured on we have different levels of levels of measurement.
+
+\bd[Levels/Scales Of Measurement]
+\textbf{Level of measurement or scale of measure} is a classification that describes the nature of data within the
+values assigned to variables.
+\ed
+
+Levels of measurement consist of four levels, or scales: nominal, ordinal, interval, and ratio.
+
+\bd[Nominal]
+\textbf{Nominal} level differentiates between items or subjects based only on their names or other qualitative
+classifications they belong to. No ranking or mathematical operation have meaning.
+\ed
+
+Examples of nominal scaled data are gender, nationality, ethnicity, language, genre, style, biological species, etc.
+
+\bd[Ordinal]
+\textbf{Ordinal} level allows for rank order (1st, 2nd, 3rd, etc.) by which data can be sorted, but still does not
+allow for relative degree of difference between them. No mathematical operation have meaning.
+\ed
+
+Examples of ordinal scaled data include data as ``sick'' vs ``healthy'' when measuring health, ``guilty'' vs.
+not-guilty'' when making judgments in courts, or clothing size: Small, Medium, Large, Extra Large etc.
+
+\bd[Interval]
+\textbf{Interval} level allows for the degree of difference between items, but not the ratio between them. Both
+ranking and some mathematical operations are valid but there is no meaningful zero.
+\ed
+
+An example of interval scaled data is temperature with the Celsius scale, which has two defined points (the freezing
+and boiling point of water at specific conditions) and then separated into 100 intervals. Ratios are not meaningful
+since 20 \textdegree{}C cannot be said to be ``twice as hot'' as 10 \textdegree{}C, nor can multiplication/division be
+carried out between any two dates directly.
+
+\bd[Ratio]
+\textbf{Ratio} level takes its name from the fact that measurement is the estimation of the ratio between a magnitude
+of a continuous quantity and a unit magnitude of the same kind. A ratio scale possesses a meaningful (unique and
+non-arbitrary) zero value.
+\ed
+
+Examples of ratio scaled data include mass, length, duration, plane angle, energy and electric charge. In contrast to
+interval scales, ratios are now meaningful because having a non-arbitrary zero point makes it meaningful to say, for
+example, that one object has ``twice the length''. \v
+
+Now that we have given the basic definitions of data, let's move on defining the science of studying data.
+
+\bd[Statistics]
+\textbf{Statistics} is the science of collecting, analysing, summarizing, interpreting, and drawing conclusion out of
+data.
+\ed
+
+The general definition of statistics can be split into two parts: descriptive and inferential statistics.
+
+\bd[Descriptive Statistics]
+\textbf{Descriptive statistics} is the process that quantitatively describes or summarizes features of a collection of
+data.
+\ed
+
+\bd[Inferential Statistics]
+\textbf{Inferential statistics} is the process of using data analysis to deduce properties of an underlying
+probability distribution.
+\ed
+
+Now let's start developing the theory of probability.
