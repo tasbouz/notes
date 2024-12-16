@@ -2349,7 +2349,123 @@
 
 \newpage
 
-\section{Decision Tree}
+\section{Ensemble Learning}
+
+Suppose one poses a complex question to thousands of random people, then aggregate their answers. In many cases they
+will find that this aggregated answer is better than an expert's answer. This is called the ``wisdom of the crowd''.
+
+\bd[Wisdom Of The Crowd]
+The \textbf{wisdom of the crowd} is the collective opinion of a diverse and independent group of individuals rather
+than that of a single expert, with the main idea being that large groups of people are collectively smarter than
+individual experts when it comes to problem-solving, decision-making, innovating, and predicting.
+\ed
+
+Similarly, if one aggregates the predictions of a group of predictors, they will often get better predictions than
+with the best individual predictor. In machine learning terminology a group of predictors is called an ``ensemble''.
+
+\bd[Ensemble]
+In machine learning, an \textbf{ensemble} is a finite collection of models.
+\ed
+
+\bd[Ensemble Learning]
+\textbf{Ensemble learning} is a machine learning technique that uses an ensemble of learning algorithms to obtain better
+predictive performance than could be obtained from any of the constituent learning algorithms alone.
+\ed
+
+An ensemble learning model is itself a supervised learning algorithm, because it can be trained and then used to
+make predictions. The trained ensemble, therefore, represents a single hypothesis. This hypothesis, however, is not
+necessarily contained within the hypothesis space of the models from which it is built. Thus, ensembles can be shown
+to have more flexibility in the functions they can represent. This flexibility can, in theory, enable them to
+overfit the training data more than a single model would, but in practice, some ensembles tend to reduce problems
+related to overfitting of the training data. \v
+
+Empirically, ensembles tend to yield better results when there is a significant diversity among the models they
+consist of. Many ensembles, therefore, seek to promote diversity among the models they combine. Although perhaps
+non-intuitive, more random algorithms can be used to produce a stronger ensemble than very deliberate algorithms.
+Using a variety of strong learning algorithms, however, has been shown to be more effective than using techniques
+that attempt to dumb-down the models in order to promote diversity. \v
+
+While the number of component models of an ensemble has a great impact on the accuracy of prediction, there is a
+limited number of studies addressing this problem. More recently, a theoretical framework suggested that there is an
+ideal number of component models for an ensemble such that having more or less than this number  would deteriorate
+the accuracy. This is called ``the law of diminishing returns in ensemble construction''. Their theoretical
+framework shows that using the same number of independent component models as class labels gives the highest
+accuracy. \v
+
+Let us now define the two borad categories of ensemble learning: ``hard'' and ``soft voting ensembles''.
+
+\bd[Hard Voting Ensemble]
+An ensemble that aggregates the predictions of a collection of trained models and predicts the class that gets the most
+votes is called a \textbf{hard voting ensemble}.
+\ed
+
+\bd[Soft Voting Ensemble]
+An ensemble that aggregates the predictions, among with their corresponding probabilities, of a collection of trained
+models and predicts the class with the highest class probability, averaged over all the individual models is called a
+\textbf{soft voting ensemble}.
+\ed
+
+\fig{ensemble}{0.45}
+
+Somewhat surprisingly, those voting ensembles often achieve a higher accuracy than the best model in the ensemble.
+In fact, even if each model is a weak learner (meaning it does only slightly better than random guessing), the
+ensemble can still be strong learner (achieving high accuracy), provided there are a sufficient number of weak
+learners and they are sufficiently diverse. \v
+
+Both hard and soft voting ensembles work best when the models are as independent of one another as possible. The
+most straight forward to get diverse models is to train them using very different algorithms. This increases the
+chance that they will make very different types of errors, improving the ensemble's accuracy. \v
+
+However, the most succesful approach to get diverse models, is to use the same training algorithm for every model
+and perform random sampling, i.e.\ train them on different random subsets of the training set. In what follows we will
+examine two of the most popular sampling methods in ensemble learning: ``bootstraping'' and ``boosting'', along with
+a couple of new models that use these methods.
+
+\subsection{Bootstraping}
+
+\bd[Bootstraping]
+\textbf{Bootstraping} is the process of randomly sampling the original dataset with replacement and generating a new
+dataset of the same size as the original.
+\ed
+
+For the sake of completeness, we will also provide the definition of the opposite process of bootstraping, the so called
+``pasting''.
+
+\bd[Pasting]
+\textbf{Pasting} is the process of randomly sampling the original dataset without replacement and generating a new
+dataset of unequal size as the original.
+\ed
+
+In what follows we will be focusing exclusively on bootstraping, since pasting is not that popular in ensemble learning.
+
+\bd[Bootstrap Dataset]
+The \textbf{bootstrap dataset} is the dataset obtained by bootstraping an original dataset.
+\ed
+
+Given that the bootstrap dataset must be the same size as the original dataset, this means that it can have
+duplicate objects. It also means that there is another dataset consisted of the remaining entries that did not
+make it to the bootstrap dataset, called the ``out-of-bag dataset''.
+
+\bd[Out-Of-Bag Dataset]
+The \textbf{out-of-bag dataset} is the dataset of the remaining entries which were not in the bootstrap dataset.
+\ed
+
+\fig{ensemble2}{0.27}
+
+\subsection{Bagging}
+
+A special form of bootstraping is the so called ``bagging''.
+
+\bd[Bagging]
+\textbf{Bagging} (from \textbf{b}ootstrap \textbf{agg}regat\textbf{ing}) is the process of performing bootstraping
+multiple times, training a model with each bootstrap dataset, and aggegating the predictions of each model.
+\ed
+
+\fig{ensemble3}{0.29}
+
+The most common implementation of bagging is the ``Random Forest'' algorithm.
+
+\subsubsection{Decision Tree}
 
 Decision trees are the fundamental building blocks of a random forest (that we will see later in the notes), which is
 among the most powerful machine learning algorithms available today. This is the main motivation why we need to study
@@ -2562,125 +2678,7 @@ rules that can even be applied manually if need be. Their main drawback is that 
 variations in the training data, hence they overfit the data. ``Random forests'' can limit this instability by
 averaging predictions over many trees, as we will see right next.
 
-\section{Ensemble Learning}
-
-Suppose one poses a complex question to thousands of random people, then aggregate their answers. In many cases they
-will find that this aggregated answer is better than an expert's answer. This is called the ``wisdom of the crowd''.
-
-\bd[Wisdom Of The Crowd]
-The \textbf{wisdom of the crowd} is the collective opinion of a diverse and independent group of individuals rather
-than that of a single expert, with the main idea being that large groups of people are collectively smarter than
-individual experts when it comes to problem-solving, decision-making, innovating, and predicting.
-\ed
-
-Similarly, if one aggregates the predictions of a group of predictors, they will often get better predictions than
-with the best individual predictor. In machine learning terminology a group of predictors is called an ``ensemble''.
-
-\bd[Ensemble]
-In machine learning, an \textbf{ensemble} is a finite collection of models.
-\ed
-
-\bd[Ensemble Learning]
-\textbf{Ensemble learning} is a machine learning technique that uses an ensemble of learning algorithms to obtain better
-predictive performance than could be obtained from any of the constituent learning algorithms alone.
-\ed
-
-An ensemble learning model is itself a supervised learning algorithm, because it can be trained and then used to
-make predictions. The trained ensemble, therefore, represents a single hypothesis. This hypothesis, however, is not
-necessarily contained within the hypothesis space of the models from which it is built. Thus, ensembles can be shown
-to have more flexibility in the functions they can represent. This flexibility can, in theory, enable them to
-overfit the training data more than a single model would, but in practice, some ensembles tend to reduce problems
-related to overfitting of the training data. \v
-
-Empirically, ensembles tend to yield better results when there is a significant diversity among the models they
-consist of. Many ensembles, therefore, seek to promote diversity among the models they combine. Although perhaps
-non-intuitive, more random algorithms can be used to produce a stronger ensemble than very deliberate algorithms.
-Using a variety of strong learning algorithms, however, has been shown to be more effective than using techniques
-that attempt to dumb-down the models in order to promote diversity. \v
-
-While the number of component models of an ensemble has a great impact on the accuracy of prediction, there is a
-limited number of studies addressing this problem. More recently, a theoretical framework suggested that there is an
-ideal number of component models for an ensemble such that having more or less than this number  would deteriorate
-the accuracy. This is called ``the law of diminishing returns in ensemble construction''. Their theoretical
-framework shows that using the same number of independent component models as class labels gives the highest
-accuracy. \v
-
-Let us now define the two categories of ensemble learning: ``hard'' and ``soft voting ensembles''.
-
-\bd[Hard Voting Ensemble]
-An ensemble that aggregates the predictions of a collection of trained models and predicts the class that gets the most
-votes is called a \textbf{hard voting ensemble}.
-\ed
-
-\bd[Soft Voting Ensemble]
-An ensemble that aggregates the predictions, among with their corresponding probabilities, of a collection of trained
-models and predicts the class with the highest class probability, averaged over all the individual models is called a
-\textbf{soft voting ensemble}.
-\ed
-
-\fig{ensemble}{0.38}
-
-Somewhat surprisingly, those voting ensembles often achieve a higher accuracy than the best model in the ensemble.
-In fact, even if each model is a weak learner (meaning it does only slightly better than random guessing), the
-ensemble can still be strong learner (achieving high accuracy), provided there are a sufficient number of weak
-learners and they are sufficiently diverse.
-
-\subsection{Bootstraping}
-
-Both hard and soft voting ensembles work best when the models are as independent of one another as possible. The
-most straight forward to get diverse models is to train them using very different algorithms. This increases the
-chance that they will make very different types of errors, improving the ensemble's accuracy. \v
-
-However, the most succesful approach to get diverse models, is to use the same training algorithm for every model
-and perform random sampling, i.e.\ train them on different random subsets of the training set. The most popular way
-of doing sampling in machine learning is the so called ``bootstraping''\footnote{For the sake of completeness, the
-opposite of bootstraping is a process called ``pasting'' in which one performs random sampling without replacement.}.
-
-\bd[Bootstraping]
-\textbf{Bootstraping} is the process of randomly sampling the original dataset with replacement and generating a new
-dataset of the same size as the original.
-\ed
-
-\bd[Bootstrap Dataset]
-The \textbf{bootstrap dataset} is the dataset obtained by bootstraping an original dataset.
-\ed
-
-Given that the bootstrap dataset must be the same size as the original dataset, this means that it can have
-duplicate objects. It also means that there is another dataset consisted of the remaining entries that did not
-make it to the bootstrap dataset, called the ``out-of-bag dataset''.
-
-\bd[Out-Of-Bag Dataset]
-The \textbf{out-of-bag dataset} is the dataset of the remaining entries which were not in the bootstrap dataset.
-\ed
-
-\fig{ensemble2}{0.27}
-
-\subsubsection{Bagging}
-
-A special form of bootstraping is the so called ``bagging''.
-
-\bd[Bagging]
-\textbf{Bagging} (from \textbf{b}ootstrap \textbf{agg}regat\textbf{ing}) is the process of performing bootstraping
-multiple times, training a model with each bootstrap dataset, and aggegating the predictions of each model.
-\ed
-
-\fig{ensemble3}{0.29}
-
-The most common implementation of bagging is the ``Random Forest'' algorithm.
-
-\subsubsection{Boosting}
-
-\bd[Boosting]
-\textbf{Boosting} is the process of incrementally building an ensemble by training each new model instance to emphasize
-the training instances that previous models mis-classified.
-\ed
-
-\fig{ensemble4}{0.1}
-
-The most common implementation of boosting are ``AdaBoost'' (short for Adaptive  Boosting) and ``Gradient Boosting''
-algorithms that we will see right after random forests.
-
-\section{Random Forest}
+\subsubsection{Random Forest}
 
 \bd[Random Forest]
 \textbf{Random forest} is a hard voting, bagging, ensemble learning model for regression and classification that works
@@ -2713,4 +2711,18 @@ Once again, this technique trades more bias for a lower variance. It also makes 
 than regular random forests, because finding the best possible threshold for each feature at every node is one of
 the most time-consuming tasks of growing a tree.
 
-\section{AdaBoost \& Gradient Boosting}
+\subsection{Boosting}
+
+\bd[Boosting]
+\textbf{Boosting} is the process of incrementally building an ensemble by training each new model instance to emphasize
+the training instances that previous models mis-classified.
+\ed
+
+\fig{ensemble4}{0.1}
+
+The most common implementation of boosting are ``AdaBoost'' (short for Adaptive  Boosting) and ``Gradient Boosting''
+algorithms that we will see right after random forests.
+
+\subsubsection{AdaBoost}
+
+\subsubsection{Gradient Boosting}
