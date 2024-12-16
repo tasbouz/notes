@@ -2331,7 +2331,7 @@ avoids tied votes. One popular way of choosing the empirically optimal $k$ in th
 The special case where the class is predicted to be the class of the closest training sample (i.e.\ when $k = 1$) is
 called the ``nearest neighbor'' algorithm. \v
 
-\fig{knn}{0.55}
+\fig{knn}{0.40}
 
 $k$-NN has many advantages. First of all the algorithm is very simple and easy to implement. Also, there is no need
 to build a model, tune several parameters, or make additional assumptions. Finally the algorithm is versatile, i.e.\
@@ -2345,128 +2345,107 @@ examples of a more frequent class tend to dominate the prediction of the new exa
 among the $k$ nearest neighbors due to their large number. In order to overcome this problem (both for classification
 and regression), a useful technique can be to assign weights to the contributions of the neighbors, so that the
 nearer neighbors contribute more to the average than the more distant ones. For example, a common weighting scheme
-consists in giving each neighbor a weight of $\frac{1}{d}$, where $d$ is the distance to the neighbor. \v
+consists in giving each neighbor a weight of $\frac{1}{d}$, where $d$ is the distance to the neighbor.
 
-One final, general comment is in order. Up to this point, all the algorithms we developed were model-based algorithms
-since in each of them we built a model based on the data. $k$-NN is the first instance-based algorithm we introduce,
-where the function is only approximated locally and all computation is deferred until function evaluation. In other
-words, the neighbors are taken from a set of objects for which the class is known. This can be thought of as the
-training set for the algorithm, though no explicit training step is required. This has as a consequence for the
-$k$-NN algorithm to be sensitive to the local structure of the data. Since this algorithm relies on distance for
-classification, normalizing the training data can improve its accuracy dramatically.
+\section{Decision Tree}
 
-\section{Decision Trees \& Random Forests}
-
-Like SVM and $k$-NN, decision trees are versatile, non-parametric machine learning algorithms that can perform both
-classification and regression tasks. They go from observations about an item (represented in the branches) to
-conclusions about the item's target value (represented in the leaves). They are powerful algorithms, capable of
-fitting complex datasets. Decision trees are also the fundamental components of random forests (that we will see
-right after), which are among the most powerful machine learning algorithms available today.
-
-\subsection{Decision Trees}
+Decision trees are the fundamental building blocks of a random forest (that we will see later in the notes), which is
+among the most powerful machine learning algorithms available today. This is the main motivation why we need to study
+decision trees.
 
 \bd [Decision Tree]
-A \textbf{decision tree} is a decision support tool that uses a flowchart-like tree-like structure of decisions and
-their possible consequences, including chance event outcomes, resource costs, and utility. It is one way to display
-an algorithm that only contains conditional control statements.
+A \textbf{decision tree} is a decision support recursive partitioning structure that uses a tree-like model of
+decisions and their possible alternatives or outcomes.
 \ed
 
-The flowchart-like structure of a decision tree helps in decision making. It's a visualization like a flowchart
-diagram which easily mimics the human-level thinking. That is why decision trees are easy to understand and interpret. \v
+Decision trees are versatile (can perform both classification and regression tasks), non-parametric (the number of
+parameters is not determined prior to training), powerful, machine learning algorithms, capable of fitting complex
+datasets. They go from observations about an item to conclusions about the item's target value. They are one way to
+display an algorithm that only contains conditional control statements. Their flowchart-like structure helps in
+decision making since it mimics the human-level thinking. That is why decision trees are easy to understand and
+interpret. \v
 
-Now let's give some basic definitions.
+Let's begin with some basic definitions.
 
-\bd [Node]
-A \textbf{node} of a decision tree represents a feature.
+\bd[Decision Node]
+A \textbf{decision node}, depicted by a square, represents a condition, or choice, to be made on a feature or attribute.
 \ed
 
-\bd [Root Node]
-The topmost node in a decision tree is known as the \textbf{root node}, or top decision node, of the decision tree.
-It represents the entire population or sample and this further gets divided into two or more homogeneous sets.
+\bd[Root Decision Node]
+The topmost decision node in a decision tree is known as the \textbf{root decision node}.
 \ed
 
-The root node learns to partition based on the attribute value. It partitions the tree in a recursive manner called
-``recursive partitioning''.
+The root decision node represents the entire population (or sample) which then gets divided into two or more homogeneous
+sets. This process of division is called ``splitting''.
 
-\bd [Splitting]
-\textbf{Splitting} is a process of dividing a node into two or more sub-nodes.
-\ed
-
-\bd [Pruning]
-\textbf{Pruning} is the process when one reduces the size of decision trees by removing nodes (opposite of splitting).
-\ed
-
-\bd [Decision Node]
-When a sub-node splits into further sub-nodes, then it is called a\textbf{decision node}.
-\ed
-
-\bd [Parent / Child Node]
-A node which is divided into sub-nodes is called a \textbf{parent node} of sub-nodes whereas sub-nodes are the
-\textbf{child} of a parent node.
-\ed
-
-\bd [Leaf]
-A \textbf{leaf}, or terminal node, is a node with no children (no further split) and it represents the outcome of a
-decision rule.
+\bd[Splitting]
+\textbf{Splitting} is a process of dividing a decision node into two or more sub-nodes.
 \ed
 
 \bd [Branch]
-A \textbf{branch}, or subtree, is a subsection of the decision tree and it represents a decision rule.
+A \textbf{branch} represents one of the alternatives of a decision node.
 \ed
 
-\vspace{-10pt}
+\bd[Parent Node]
+A decision node which is divided into sub-nodes is called a \textbf{parent node}.
+\ed
 
-\fig{decisiontree}{0.6}
+\bd[Child Node]
+The sub-nodes of a parent node are called a \textbf{child nodes}.
+\ed
 
-Decision trees classify (or regress) the examples by sorting them down the tree, from the root to some leaf node,
-with the leaf node providing the classification (or regression) to the example. This approach is called a
-``top-down'' approach. Each node in the tree acts as a test case for some attribute, and each edge descending from
-that node corresponds to one of the possible answers to the test case. \v
+As it makes sense, the root decision node does not have a parent node.
+
+\bd[Terminal Node / Leaf]
+A \textbf{terminal node}, or \textbf{leaf}, is a decision node with no children nodes and it represents the decision,
+or outcome, of a decision tree.
+\ed
+
+\fig{decisiontree}{0.35}
+
+Decision trees regress/classify the examples in a top-down approach by sorting them down the tree, from the root to
+some leaf node, with the leaf node providing the regression/classification to the example. Each node in the tree
+acts as a test case for some attribute, and each branch descending from that node corresponds to one of the possible
+answers to the test case. \v
 
 The algorithm begins by selecting the best attribute using something called ``attribute selection measures'' to
-split the records. Then it makes that attribute a decision node and breaks the dataset into smaller subsets. Is
-starts tree building by repeating this process recursively for each child until one of the condition will match:
-\bit
-\item All the tuples belong to the same feature value.
-\item There are no more remaining feature.
-\item There are no more instances.
-\eit
+split the records. Then it makes that attribute a decision node and breaks the dataset into smaller subsets. It then
+starts the tree building by repeating this process recursively for each child node until all the tuples belong to
+the same feature value, or there are no more remaining feature or instances.
 
-Attribute selection measure is a heuristic for selecting the splitting criterion that partition data into the best
-possible manner. It is also known as ``splitting rules'' because it helps us to determine breakpoints for tuples on
-a given node. Attribute selection measure provides a rank to each feature by explaining the given dataset. Best score
-attribute will be selected as a splitting attribute. In the case of a continuous-valued attribute, split points for
-branches also need to define. \v
+\bd[Attribute Selection Measure]
+An \textbf{attribute selection measure} is a heuristic for selecting the splitting that partition data into the best
+possible manner.
+\ed
 
-Two of the most popular selection measures are: ``information gain'', and ``Gini impurity'' and we will now
-explain what they are. Both information gain and Gini impurity measure the impurity of a node. So let's start by
-defining what impurity is.
+Two of the most popular attribute selection measures are the ``information gain'' and the ``Gini impurity''. Both of
+them measure the ``impurity'' of a node, so let's start by defining what impurity is.
 
 \bd [Node Impurity]
 \textbf{Node impurity} is a measure of the homogeneity of the labels at the node.
 \ed
 
-\bd [Pure / Impure Node]
-A node is called \textbf{pure} when all of its data belongs to a single class. Subsequently a node is called
-\textbf{impure} when not all of its data belongs to a single class. A node is 100\% impure when a node is split
-evenly 50/50.
+\bd [Pure Node]
+A node is called \textbf{pure} when all of its data belongs to a single class.
+\ed
+
+\bd [Impure Node]
+A node is called \textbf{impure} when not all of its data belongs to a single class.
 \ed
 
 \be
-As an example, in the figure below C requires less information to describe as all values are similar. On the other
-hand, B requires more information to describe it and A requires the maximum information. In other words, we can say
-that C is a pure node, B is less impure and A is more impure.
+In this figure, node C requires less information to describe as all values are similar, while node B requires more
+information to describe it and node A requires the maximum information. In impurity terms, C is a pure node, B is less
+impure and A is more impure.
 
-\fig{purity}{0.5}
+\fig{purity}{0.45}
 \ee
 
-As a final step we need to introduce the concept of information entropy.
+Information gain is defined through ``information entropy'', so let's start by defining the later.
 
 \bd [Information Entropy]
-In information theory, the \textbf{information entropy}, or simply entropy, of a random variable is the average level
-of information inherent in the variable's possible outcomes. Given a discrete random variable $X$, with possible
-outcomes $\{x_{1}, \ldots, x_{n} \}$ which occur with probability $ P(x_{1}), \ldots, P (x_{n})$, the entropy of $X$
-is formally defined as:
+Given a discrete random variable $X$, with possible outcomes $\{x_{1}, \ldots, x_{n} \}$ which occur with probabilities
+$P(x_{1}), \ldots, P (x_{n})$, the \textbf{information entropy} $H$ of $X$ is defined as:
 \bse
 H(X) = -\sum _{i=1}^{n} {P(x_{i}) \log P(x_{i})}
 \ese
@@ -2476,44 +2455,41 @@ H(X) = -\sum _{i=1}^{n} {P(x_{i}) \log P(x_{i})}
 where the summation is over the variable's possible values.
 \ed
 
-Having defined entropy we can now define information gain.
+Having defined information entropy we can now define information gain.
 
 \bd [Information Gain]
 \textbf{Information gain} $IG$ is the change in information entropy $H$ from a prior state $T$ to a state that takes
 some information $a$ as given:
 \bse
-IG(T,a) =H(T) - H(T|a)
+IG(T,a) = H(T) - H(T|a)
 \ese
-
-where $H(T)$ is the entropy of the parent node and $H(T|a)$ is the sum of the entropies of all children nodes.
 \ed
 
-Informally speaking, information gain is a statistical property that measures how well a given attribute separates
-the training examples according to their target classification. It is a synonym for ``Kullback-Leibler
-divergence'', that we introduced in the parametric inference chapter,, which shows the amount of information gained
-about a random variable or signal from observing another random variable. However, in the context of decision trees,
-the term is sometimes used synonymously with mutual information, which is the conditional expected value of the
-Kullback-Leibler divergence of the univariate probability distribution of one variable from the conditional
-distribution of this variable given the other one. \v
+In a decision tree $H(T)$ is the information entropy of the parent node and $H(T|a)$ is the sum of the information
+entropies of all children nodes. Informally speaking, information gain is a statistical property that measures how
+well a given attribute separates the training examples according to their target classification. It is a synonym for
+Kullback-Leibler divergence, that we introduced in the parametric inference chapter.
 
+\be
 In the figure below, we can see that a feature with low information gain splits the data relatively evenly and as a
 result doesn't bring us any closer to a decision.
 
-\fig{purity2}{0.5}
+\fig{purity2}{0.48}
 
 Whereas, an attribute with high information gain splits the data into groups with an uneven number of positives and
 negatives and as a result, helps in separating the two from each other.
 
-\fig{purity3}{0.5}
+\fig{purity3}{0.48}
 
-In other words we are always looking to maximize the information gain after any splitting. Having defined information
-gain we can now define Gini impurity.
+In other words we are always looking to maximize the information gain after any splitting.
+\ee
 
-\bd [Gini Impurity]
-\textbf{Gini impurity}, or Gini index, $I_{G}$ measures the degree or probability of a particular variable being
-wrongly classified when it is randomly chosen. Given a discrete random variable $X$, with possible outcomes $\{x_{1},
-x_{2}, \ldots, x_{n} \}$ which occur with probability $ P(x_{1}), P(x_{2}), \ldots, P(x_{n})$, the Gini impurity of
-$X$ is formally defined as:
+Having defined information gain we can now move on to Gini impurity.
+
+\bd [Gini Impurity \ Gini Index]
+Given a discrete random variable $X$, with possible outcomes $\{x_{1}, x_{2}, \ldots, x_{n} \}$ which occur with
+probabilities $ P(x_{1}), P(x_{2}), \ldots, P(x_{n})$, the \textbf{Gini impurity}, or \textbf{Gini index}, $I_{G}$ of
+$X$ is defined as:
 \bse
 I_{G}(X) = 1 - \sum _{i=1}^{n} P^2(x_{i})
 \ese
@@ -2523,49 +2499,37 @@ I_{G}(X) = 1 - \sum _{i=1}^{n} P^2(x_{i})
 where the summation is over the variable's possible values.
 \ed
 
-Gini impurity is a measure of how often a randomly chosen element from the set would be incorrectly labeled if it was
-randomly labeled according to the distribution of labels in the subset. \v
+In simple words, Gini impurity measures the degree or probability of a particular variable being wrongly classified
+when it is randomly chosen.  \v
 
-Now that we have defined both information gain and Gini impurity, a good question is ``which one should one use''? In
-general keep in mind that it only matters in 2\% of the cases whether you use Gini impurity or information gain. And
-given that information gain uses information entropy (which uses logarithms), it might be a little slower to compute.
-Hence, most of the algorithms use Gini impurity as a selection measure. \v
+Now that we have defined both information gain and Gini impurity, a good question is which one should one use as an
+attribute selection measure. In general keep in mind that it only matters in 2\% of the cases whether you use Gini
+impurity or information gain. And given that information gain uses information entropy (which uses logarithms), it
+might be a little slower to compute. Hence, most of the algorithms use Gini impurity as an attribute selection
+measure. \v
 
 In any case, by using either information gain or Gini impurity one can start building (training) the tree. The
-building (training) is usually done through a procedure called ``Classification and Regression Tree'' (CART) algorithm.
-The algorithm works by first splitting the training set into two subsets using a single feature $k$ and a threshold
-$t_k$, by searching for the pair ($k$, $t_k$) that produces the purest subsets (weighted by their size). The loss
-function that the algorithm tries to minimize is the so called ``CART loss function''. There is one CART loss function
-for classification and one for regression. Let's start with the classification one.
+building (training) is usually done through a procedure called ``Classification and Regression Tree'' (CART)
+algorithm. The algorithm works by first splitting the training set into two subsets using a single feature $k$ and a
+threshold $t_k$, by searching for the pair ($k$, $t_k$) that produces the purest subsets (weighted by their size).
+Once the it has successfully split the training set in two, it splits the subsets using the same logic, then the
+sub-subsets, and so on, recursively. Once the CART algorithm finished, the building (training) part is over and the
+decision tree is ready. One can now feed a new instance to the tree and by asking the corresponding question of each
+node they will end up in one of the leafs, hence, to a decision. \v
 
-\bd [CART Loss Function (For Classification)]
-We define the \textbf{CART loss function} for classification as:
+The loss function that the algorithm tries to minimize is the so called ``CART loss function''\footnote{For regression,
+CART algorithm instead of trying to split the training set in a way that minimizes impurity, it tries to split the
+training set in a way that minimizes the MSE\@.}.
+
+\bd [CART Loss Function]
+The \textbf{CART loss function for regression} is defined as:
 \bse
-J(k, t_{k}) = \frac{m_{\text{left}}}{m} G_{\text{left}} + \frac{m_{\text{right}}}{m} G_{\text{right}}
+J(k, t_{k}) = \frac{m_{\text{left}}}{m} \text{MSE}_{\text{left}} + \frac{m_{\text{right}}}{m}\text{MSE}_{\text{right}}
 \ese
 
-\v
-
-where $m$ is the total number of instances in both left and right subsets, $m_{\text{left}}$ and
-$m_{\text{right}}$ are the number of instances in the left and right subset, and $G_{\text{left}}$ and
-$G_{\text{right}}$ measure the impurity of the left and the right subset ($G$ could be either information gain or
-Gini impurity).
-\ed
-
-For regression, CART algorithm instead of trying to split the training set in a way that minimizes impurity, it now
-tries to split the training set in a way that minimizes the MSE. Hence, the corresponding CART loss function for
-regression looks like the following.
-
-\bd [CART Loss Function (For Regression)]
-We define the \textbf{CART loss function} for regression as:
-\bse
-J(k, t_{k}) = \frac{m_{\text{left}}}{m} \text{MSE}_{\text{left}}
-+ \frac{m_{\text{right}}}{m}\text{MSE}_{\text{right}}
-\ese
-
-where $m$ is the total number of instances in both left and right subsets, $m_{\text{left}}$ and
-$m_{\text{right}}$ are the number of instances in the left and right subset, and $\text{MSE}_{\text{left}}$ and
-$\text{MSE}_{\text{right}}$ are the mean squared errors of the left and the right subsets given by:
+where $m$ is the total number of instances in both left and right subsets, $m_{\text{left}}$ and $m_{\text{right}}$ are
+the number of instances in the left and right subset, and $\text{MSE}_{\text{left}}$ and $\text{MSE}_{\text{right}}$ are
+the mean squared errors of the left and the right subsets given by:
 \bse
 \text{MSE}_{\text{node}} = \sum_{i \in \text{node}} ({\hat{y}}_\text{node} - y^{(i)})^2
 \ese
@@ -2574,191 +2538,177 @@ where:
 \bse
 {\hat{y}}_\text{node} = \frac{1}{m_{\text{node}}} \sum_{i \in \text{node}} y^{(i)}
 \ese
+
+The \textbf{CART loss function for classification} is defined as:
+\bse
+J(k, t_{k}) = \frac{m_{\text{left}}}{m} G_{\text{left}} + \frac{m_{\text{right}}}{m} G_{\text{right}}
+\ese
+
+where $m$ is the total number of instances in both left and right subsets, $m_{\text{left}}$ and $m_{\text{right}}$ are
+the number of instances in the left and right subset, and $G_{\text{left}}$ and $G_{\text{right}}$ are an attribute
+selection measure (either information gain or Gini impurity).
 \ed
 
-In both cases (classification and regression), once the CART algorithm has successfully split the training set in
-two, it splits the subsets using the same logic, then the sub-subsets, and so on, recursively. As we can see, the
-CART algorithm is a greedy algorithm. It greedily searches for an optimum split at the top level, then repeats the
-process at each subsequent level. It does not check whether or not the split will lead to the lowest possible
-impurity several levels down. A greedy algorithm often produces a solution that's reasonably good but not guaranteed
-to be optimal. Unfortunately, finding the optimal tree requires $O(\exp(m)) $ time, making the problem intractable
-even for small training sets. This is why we must settle for a ``reasonably good'' solution. \v
+CART algorithm is greedy, since it greedily searches for an optimum split at the top level, then repeats the process
+at each subsequent level. It does not check whether or not the split will lead to the lowest possible impurity
+several levels down. A greedy algorithm often produces a solution that's reasonably good but not guaranteed to be
+optimal. Unfortunately, finding the optimal tree requires $O(\exp(m))$ time, making the problem intractable even for
+small training sets. This is why we must settle for a ``reasonably good'' solution. \v
 
-Once the CART algorithm finished, the building (training) part is over and the decision tree is ready. One can now
-feed a new instance to the tree and by asking the corresponding question of each node they will end up in one of the
-leafs, hence, to a decision. In order to have a better understanding of the procedure (although it is really simple)
-we will provide two small examples (one for classification and one for regression). \v
+Decision trees are intuitive, and their decisions are easy to interpret. They provide nice, simple classification
+rules that can even be applied manually if need be. Their main drawback is that they are very sensitive to small
+variations in the training data, hence they overfit the data. ``Random forests'' can limit this instability by
+averaging predictions over many trees, as we will see right next.
 
-Let's start with classification. One starts at the root node (depth 0, at the top). This node asks whether the
-flower's petal length is smaller than 2.45 cm. If it is, then they move down to the root's left child node (depth 1,
-left). In this case, it is a leaf node (i.e.\ it does not have any child nodes), so it does not ask any questions but
-simply look at the predicted class for that node, and the decision tree predicts that the flower is a ``setosa''. Now
-suppose one finds another flower, and this time the petal length is greater than 2.45 cm. They must move down to the
-root's right child node (depth 1, right), which is not a leaf node, so the node asks another question: ``is the petal
-width smaller than 1.75 cm''? If it is, then the flower is most likely a ``versicolor'' (depth 2, left). If not, it is
-likely a ``virginica'' (depth 2, right).
-
-\fig{iris}{0.4}
-
-\v
-
-The regression decision tree example looks very similar to the classification one with the main difference that
-instead of predicting a class in each node, it predicts a value. Suppose you want to make a prediction for a new
-instance with $x_1 = 0.6$. You traverse the tree starting at the root, and you eventually reach the leaf node that
-predicts $value=0.111$. This prediction is the average target value of the 110 training instances associated with
-this leaf node, and it results in a mean squared error equal to 0.015 over these 110 instances.
-
-\v
-
-\fig{iris2}{0.4}
-
-\v
-
-Decision trees are intuitive, and their decisions are easy to interpret. Such models are often called ``white box''
-models. In contrast, as we will see, random forests or neural networks are generally considered ``black box'' models.
-They make great predictions, and you can easily check the calculations that they performed to make these predictions,
-nevertheless, it is usually hard to explain in simple terms why the predictions were made. Conversely, decision trees
-provide nice, simple classification rules that can even be applied manually if need be. The main drawback of decision
-trees is that they are very sensitive to small variations in the training data. Random forests can limit this
-instability by averaging predictions over many trees, as we will see in a while.
-
-\subsection{Ensemble Learning}
+\section{Ensemble Learning}
 
 Suppose one poses a complex question to thousands of random people, then aggregate their answers. In many cases they
 will find that this aggregated answer is better than an expert's answer. This is called the ``wisdom of the crowd''.
+
+\bd[Wisdom Of The Crowd]
+The \textbf{wisdom of the crowd} is the collective opinion of a diverse and independent group of individuals rather
+than that of a single expert, with the main idea being that large groups of people are collectively smarter than
+individual experts when it comes to problem-solving, decision-making, innovating, and predicting.
+\ed
+
 Similarly, if one aggregates the predictions of a group of predictors, they will often get better predictions than
-with the best individual predictor. A group of predictors is called an ``ensemble'', thus, this technique is called
-``ensemble learning'', and an ensemble learning algorithm is called an ``ensemble method''. \v
+with the best individual predictor. In machine learning terminology a group of predictors is called an ``ensemble''.
 
-As an example of an ensemble method, one can train a group of decision tree classifiers, each on a different random
-subset of the training set. To make predictions, one obtain the predictions of all the individual trees, then predict
-the class that gets the most votes. Such an ensemble of decision trees is called a ``random forest'', and despite its
-simplicity, this is one of the most powerful machine learning algorithms available today. More on random forests in
-the next section. \v
-
-An ensemble method is itself a supervised learning algorithm, because it can be trained and then used to make
-predictions. The trained ensemble method, therefore, represents a single hypothesis. This hypothesis, however, is not
-necessarily contained within the hypothesis space of the models from which it is built. Thus, ensemble methods can be
-shown to have more flexibility in the functions they can represent. This flexibility can, in theory, enable them to
-overfit the training data more than a single model would, but in practice, some ensemble methods tend to reduce
-problems related to overfitting of the training data. \v
-
-Empirically, ensembles tend to yield better results when there is a significant diversity among the models. Many
-ensemble methods, therefore, seek to promote diversity among the models they combine. Although perhaps non-intuitive,
-more random algorithms can be used to produce a stronger ensemble than very deliberate algorithms. Using a variety of
-strong learning algorithms, however, has been shown to be more effective than using techniques that attempt to
-dumb-down the models in order to promote diversity. \v
-
-While the number of component classifiers of an ensemble has a great impact on the accuracy of prediction, there is a
-limited number of studies addressing this problem. A priori determining of ensemble size and the volume and velocity
-of big data streams make this even more crucial for online ensemble classifiers. Mostly statistical tests were used
-for determining the proper number of components. More recently, a theoretical framework suggested that there is an
-ideal number of component classifiers for an ensemble such that having more or less than this number of classifiers
-would deteriorate the accuracy. It is called ``the law of diminishing returns in ensemble construction''. Their
-theoretical framework shows that using the same number of independent component classifiers as class labels gives the
-highest accuracy. \v
-
-Let us now define the two most broad categories of ensemble learning: hard and soft voting classifiers.
-
-\bd[Hard Voting Classifier]
-An algorithm that aggregates the predictions of a collection of trained classifiers and predicts the class that gets
-the most votes is called a \textbf{hard voting classifier}.
+\bd[Ensemble]
+In machine learning, an \textbf{ensemble} is a finite collection of models.
 \ed
 
-\bd[Soft Voting Classifier]
-An algorithm that aggregates the predictions, among with their corresponding probabilities, of a collection of
-trained classifiers and predicts the class with the highest class probability, averaged over all the individual
-classifiers is called a \textbf{soft voting classifier}.
+\bd[Ensemble Learning]
+\textbf{Ensemble learning} is a machine learning technique that uses an ensemble of learning algorithms to obtain better
+predictive performance than could be obtained from any of the constituent learning algorithms alone.
 \ed
 
-\v
+An ensemble learning model is itself a supervised learning algorithm, because it can be trained and then used to
+make predictions. The trained ensemble, therefore, represents a single hypothesis. This hypothesis, however, is not
+necessarily contained within the hypothesis space of the models from which it is built. Thus, ensembles can be shown
+to have more flexibility in the functions they can represent. This flexibility can, in theory, enable them to
+overfit the training data more than a single model would, but in practice, some ensembles tend to reduce problems
+related to overfitting of the training data. \v
 
-\fig{ensemble}{0.55}
+Empirically, ensembles tend to yield better results when there is a significant diversity among the models they
+consist of. Many ensembles, therefore, seek to promote diversity among the models they combine. Although perhaps
+non-intuitive, more random algorithms can be used to produce a stronger ensemble than very deliberate algorithms.
+Using a variety of strong learning algorithms, however, has been shown to be more effective than using techniques
+that attempt to dumb-down the models in order to promote diversity. \v
 
-\v
+While the number of component models of an ensemble has a great impact on the accuracy of prediction, there is a
+limited number of studies addressing this problem. More recently, a theoretical framework suggested that there is an
+ideal number of component models for an ensemble such that having more or less than this number  would deteriorate
+the accuracy. This is called ``the law of diminishing returns in ensemble construction''. Their theoretical
+framework shows that using the same number of independent component models as class labels gives the highest
+accuracy. \v
 
-Somewhat surprisingly, those voting classifiers often achieve a higher accuracy than the best classifier in the
-ensemble. In fact, even if each classifier is a weak learner (meaning it does only slightly better than random
-guessing), the ensembles can still be strong learners (achieving high accuracy), provided there are a sufficient
-number of weak learners and they are sufficiently diverse. Coming to this last comment, both hard and soft voting
-classifiers work best when the predictors are as independent from one another as possible. One way to get diverse
-classifiers is to train them using very different algorithms. This increases the chance that they will make very
-different types of errors, improving the ensemble's accuracy. \v
+Let us now define the two categories of ensemble learning: ``hard'' and ``soft voting ensembles''.
 
-Another approach, in order to get diverse classifiers, is to use the same training algorithm for every predictor and
-train them on different random subsets of the training set. When sampling is performed with replacement, this method
-is called ``bagging'' (short for bootstrap aggregating), while when sampling is performed without replacement, it is
-called ``pasting''. In other words, both bagging and pasting allow training instances to be sampled several times
-across multiple predictors, but only bagging allows training instances to be sampled several times for the same
-predictor (i.e.\ with bagging, some instances may be sampled several times for any given predictor, while others may
-not be sampled at all). In general, bootstrapping introduces a bit more diversity in the subsets that each predictor
-is trained on, so bagging ends up with a slightly higher bias than pasting, but the extra diversity also means that
-the predictors end up being less correlated, so the ensemble's variance is reduced. Overall, bagging often results in
-better models, which explains why it is generally preferred.
+\bd[Hard Voting Ensemble]
+An ensemble that aggregates the predictions of a collection of trained models and predicts the class that gets the most
+votes is called a \textbf{hard voting ensemble}.
+\ed
 
-\vspace{7pt}
+\bd[Soft Voting Ensemble]
+An ensemble that aggregates the predictions, among with their corresponding probabilities, of a collection of trained
+models and predicts the class with the highest class probability, averaged over all the individual models is called a
+\textbf{soft voting ensemble}.
+\ed
 
-\fig{ensemble2}{0.45}
+\fig{ensemble}{0.38}
 
-\v
+Somewhat surprisingly, those voting ensembles often achieve a higher accuracy than the best model in the ensemble.
+In fact, even if each model is a weak learner (meaning it does only slightly better than random guessing), the
+ensemble can still be strong learner (achieving high accuracy), provided there are a sufficient number of weak
+learners and they are sufficiently diverse.
 
-Another ensemble method called ``boosting'', involves incrementally building an ensemble by training each new model
-instance to emphasize the training instances that previous models mis-classified. In some cases, boosting has been
-shown to yield better accuracy than bagging, but it also tends to be more likely to over-fit the training data. By
-far, the most common implementation of boosting is ``AdaBoost'' (short for Adaptive Boosting) and ``Gradient Boosting''.
-\v
+\subsection{Bootstraping}
 
-In AdaBoost, a new predictor corrects its predecessor by paying a bit more attention to the training instances that
-the predecessor underfitted. This results in new predictors focusing more and more on the hard cases. For example,
-when training an AdaBoost classifier, the algorithm first trains a base classifier (such as a decision tree) and uses
-it to make predictions on the training set. The algorithm then increases the relative weight of misclassified
-training instances. Then it trains a second classifier, using the updated weights, and again makes predictions on the
-training set, updates the instance weights, and so on.
+Both hard and soft voting ensembles work best when the models are as independent from one another as possible. The
+most straight forward to get diverse models is to train them using very different algorithms. This increases the
+chance that they will make very different types of errors, improving the ensemble's accuracy. \v
 
-\vspace{7pt}
+However, the most succesful approach to get diverse models, is to use the same training algorithm for every model
+and perform random sampling, i.e.\ train them on different random subsets of the training set. The most popular way
+of doing sampling in machine learning is the so called ``bootstraping''\footnote{For the sake of completeness, the
+opposite of bootstraping is a process called ``pasting'' in which one performs random sampling without replacement.}.
 
-\fig{adaboost}{0.4}
+\bd[Bootstraping]
+\textbf{Bootstraping} is the process of randomly sampling the original dataset with replacement and generating a new
+dataset of the same size as the original.
+\ed
 
-\v
+\bd[Bootstrap Dataset]
+The \textbf{bootstrap dataset} is the dataset obtained by bootstraping an original dataset.
+\ed
 
-Just like AdaBoost, gradient boosting works by sequentially adding predictors to an ensemble, each one correcting its
-predecessor. However, instead of tweaking the instance weights at every iteration like AdaBoost does, this method
-tries to fit the new predictor to the residual errors made by the previous predictor. \v
+Given that the bootstrap dataset must be the same size as the original dataset, this means that it can have
+duplicate objects. It also means that there is another dataset consisted of the remaining entries that did not
+make it to the bootstrap dataset, called the ``out-of-bag dataset''.
 
-One final famous ensemble method is ``stacking'', which involves training a learning algorithm to combine the
-predictions of several other learning algorithms. Stacking is based on a simple idea: instead of using trivial
-functions (such as hard voting) to aggregate the predictions of all predictors in an ensemble, why don't we train a
-model to perform this aggregation? First, all of the other algorithms are trained using the available data, then a
-combiner algorithm is trained to make a final prediction using all the predictions of the other algorithms as
-additional inputs. If an arbitrary combiner algorithm is used, then stacking can theoretically represent any of the
-ensemble techniques described in this article, although, in practice, a logistic regression model is often used as
-the combiner. \v
+\bd[Out-Of-Bag Dataset]
+The \textbf{out-of-bag dataset} is the dataset of the remaining entries which were not in the bootstrap dataset.
+\ed
 
-Stacking typically yields performance better than any single one of the trained models. It has been successfully used
-on both supervised learning tasks and unsupervised learning. It has also been used to estimate bagging's error rate.
+\fig{ensemble2}{0.27}
 
-\subsection{Random Forests}
+\subsubsection{Bagging}
 
-Random forests are an ensemble learning method for classification, regression and other tasks that operate by
-constructing a multitude of decision trees at training time and outputting the class that is the mode of the classes
-(classification) or mean prediction (regression) of the individual trees. \v
+A special form of bootstraping is the so called ``bagging''.
 
-Random forests usually use the method of bagging for developing. So, when one is growing a tree in a random forest,
-at each node only a random subset of the features is considered for splitting. Hence, random forests introduce extra
-randomness when growing trees since instead of searching for the very best feature when splitting a node, they search
-for the best feature among a random subset of features. The algorithm results in greater tree diversity, which trades
-a higher bias for a lower variance, generally yielding an overall better model. As a result, random forests correct
-for decision trees' habit of overfitting to their training set. \v
+\bd[Bagging]
+\textbf{Bagging} (from \textbf{b}ootstrap \textbf{agg}regat\textbf{ing}) is the process of performing bootstraping
+multiple times, training a model with each bootstrap dataset, and aggegating the predictions of each model.
+\ed
+
+\fig{ensemble3}{0.29}
+
+The most common implementation of bagging is the ``Random Forest'' algorithm.
+
+\subsubsection{Boosting}
+
+\bd[Boosting]
+\textbf{Boosting} is the process of incrementally building an ensemble by training each new model instance to emphasize
+he training instances that previous models mis-classified.
+\ed
+
+\fig{ensemble4}{0.1}
+
+The most common implementation of boosting are ``AdaBoost'' (short for Adaptive  Boosting) and ``Gradient Boosting''
+algorithms that we will see right after random forests.
+
+\section{Random Forest}
+
+\bd[Random Forest]
+\textbf{Random forest} is a hard voting, bagging, ensemble learning model for regression and classification that works
+by combining a multitude of decision trees in training time and outputting the class that is the most voted of the
+classes (classification) or mean prediction (regression) of the individual trees.
+\ed
+
+In random forest model, one trains a group of decision trees, each on a different random subset of the same size as
+the training set (bagging). To make predictions, one obtains the predictions of all the individual trees, then
+predicts the class that gets the most votes (hard voting). Despite its simplicity, random forest model is one of the
+most powerful machine learning algorithms available today. \v
+
+When one is growing a decision tree in a random forest, on top of bagging, at each node, they only select a random
+subset of the features to be considered for splitting. That way, random forests introduce extra randomness when
+growing trees since instead of searching for the very best feature when splitting a node, they search for it among a
+random subset of features. The algorithm results in greater tree diversity, which trades a higher bias for a lower
+variance, generally yielding an overall better model. As a result, random forests correct for decision trees' habit
+of overfitting to their training set. \v
 
 It is possible to make trees even more random by also using random thresholds for each feature rather than searching
 for the best possible thresholds, like regular decision trees do. A forest of such extremely random trees is called
-an ``Extremely Randomized Trees'' or ``Extra-Trees''. Once again, this technique trades more bias for a lower variance.
-It also makes Extra-Trees much faster to train than regular random forests, because finding the best possible
-threshold for each feature at every node is one of the most time-consuming tasks of growing a tree. \v
+an ``Extremely Randomized Trees''.
 
-Yet another great quality of random forests is that they make it easy to measure the relative importance of each
-feature. As a result, random forests are very handy to get a quick understanding of what features actually matter, in
-particular in feature selection. \v
+\bd[Extremely Randomized Trees]
+\textbf{Extremely randomized trees} is a random forest algorithm using random thresholds for each feature rather than
+searching for the best possible thresholds, like regular decision trees.
+\ed
 
-Random forests are frequently used as ``blackbox'' models in businesses, as they generate reasonable predictions
-across a wide range of data while requiring little configuration.
+Once again, this technique trades more bias for a lower variance. It also makes Extra-Trees much faster to train
+than regular random forests, because finding the best possible threshold for each feature at every node is one of
+the most time-consuming tasks of growing a tree.
+
+\section{AdaBoost \& Gradient Boosting}
