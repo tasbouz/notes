@@ -2405,38 +2405,30 @@ models and predicts the class with the highest class probability, averaged over 
 \textbf{soft voting ensemble}.
 \ed
 
-\fig{ensemble}{0.45}
+\fig{ensemble}{0.42}
 
 Somewhat surprisingly, those voting ensembles often achieve a higher accuracy than the best model in the ensemble.
-In fact, even if each model is a weak learner (meaning it does only slightly better than random guessing), the
-ensemble can still be strong learner (achieving high accuracy), provided there are a sufficient number of weak
-learners and they are sufficiently diverse. \v
+In fact, even if each model is a weak learner, the ensemble can still be strong learner, provided there are a
+sufficient number of weak learners and they are sufficiently diverse. \v
 
 Both hard and soft voting ensembles work best when the models are as independent of one another as possible. The
 most straight forward to get diverse models is to train them using very different algorithms. This increases the
-chance that they will make very different types of errors, improving the ensemble's accuracy. \v
-
-However, the most succesful approach to get diverse models, is to use the same training algorithm for every model
-and perform random sampling, i.e.\ train them on different random subsets of the training set. In what follows we will
-examine two of the most popular sampling methods in ensemble learning: ``bootstraping'' and ``boosting'', along with
-a couple of new models that use these methods.
+chance that they will make very different types of errors, improving the ensemble's accuracy. However, the most
+succesful approach to get diverse models, is to use the same training algorithm for every model and perform random
+sampling, i.e.\ train them on different random subsets of the training set. In what follows we will examine two of
+the most popular sampling methods in ensemble learning along with a couple of new models that use these methods.
 
 \subsection{Bootstraping}
+
+First, we will begin by defining ``bootstraping''\footnote{For the sake of completeness, we will also provide the
+definition of the opposite process of bootstraping, the so called ``pasting'' which is the process of randomly sampling
+the original dataset without replacement and generating a new dataset of unequal size as the original. Pasting is not
+that popular in ensemble learning.} since the two aforementioned methods are built on top of bootstraping.
 
 \bd[Bootstraping]
 \textbf{Bootstraping} is the process of randomly sampling the original dataset with replacement and generating a new
 dataset of the same size as the original.
 \ed
-
-For the sake of completeness, we will also provide the definition of the opposite process of bootstraping, the so called
-``pasting''.
-
-\bd[Pasting]
-\textbf{Pasting} is the process of randomly sampling the original dataset without replacement and generating a new
-dataset of unequal size as the original.
-\ed
-
-In what follows we will be focusing exclusively on bootstraping, since pasting is not that popular in ensemble learning.
 
 \bd[Bootstrap Dataset]
 The \textbf{bootstrap dataset} is the dataset obtained by bootstraping an original dataset.
@@ -2450,26 +2442,28 @@ make it to the bootstrap dataset, called the ``out-of-bag dataset''.
 The \textbf{out-of-bag dataset} is the dataset of the remaining entries which were not in the bootstrap dataset.
 \ed
 
-\fig{ensemble2}{0.27}
+\fig{ensemble2}{0.34}
 
 \subsection{Bagging}
 
-A special form of bootstraping is the so called ``bagging''.
+A special and very powerful form of bootstraping is the so called ``bagging'', mainly used to decrease variance.
 
 \bd[Bagging]
 \textbf{Bagging} (from \textbf{b}ootstrap \textbf{agg}regat\textbf{ing}) is the process of performing bootstraping
 multiple times, training a model with each bootstrap dataset, and aggegating the predictions of each model.
 \ed
 
-\fig{ensemble3}{0.29}
+\fig{ensemble3}{0.35}
 
-The most common implementation of bagging is the ``Random Forest'' algorithm.
+Bagging is a special case of the ensemble averaging approach. It is specifically designed to improve the stability
+and accuracy of ML classification and regression algorithms. It also reduces variance and overfitting. Although it can
+be used with any type of method, the most popular implementation of bagging is in the ``Random Forest'' algorithm.
 
 \subsubsection{Decision Tree}
 
-Decision trees are the fundamental building blocks of a random forest (that we will see later in the notes), which is
-among the most powerful machine learning algorithms available today. This is the main motivation why we need to study
-decision trees.
+Decision trees are the fundamental building blocks of a random forest (that we will see right after), which is among
+the most powerful machine learning algorithms available today. This is the main motivation why we need to study decision
+trees first.
 
 \bd [Decision Tree]
 A \textbf{decision tree} is a decision support recursive partitioning structure that uses a tree-like model of
@@ -2519,7 +2513,7 @@ A \textbf{terminal node}, or \textbf{leaf}, is a decision node with no children 
 or outcome, of a decision tree.
 \ed
 
-\fig{decisiontree}{0.35}
+\fig{decisiontree}{0.38}
 
 Decision trees regress/classify the examples in a top-down approach by sorting them down the tree, from the root to
 some leaf node, with the leaf node providing the regression/classification to the example. Each node in the tree
@@ -2556,7 +2550,7 @@ In this figure, node C requires less information to describe as all values are s
 information to describe it and node A requires the maximum information. In impurity terms, C is a pure node, B is less
 impure and A is more impure.
 
-\fig{purity}{0.45}
+\fig{purity}{0.5}
 \ee
 
 Information gain is defined through ``information entropy'', so let's start by defining the latter.
@@ -2592,12 +2586,12 @@ Kullback-Leibler divergence, that we introduced in the parametric inference chap
 In the figure below, we can see that a feature with low information gain splits the data relatively evenly and as a
 result doesn't bring us any closer to a decision.
 
-\fig{purity2}{0.48}
+\fig{purity2}{0.4}
 
 Whereas, an attribute with high information gain splits the data into groups with an uneven number of positives and
 negatives and as a result, helps in separating the two from each other.
 
-\fig{purity3}{0.48}
+\fig{purity3}{0.4}
 
 In other words we are always looking to maximize the information gain after any splitting.
 \ee
@@ -2633,14 +2627,14 @@ threshold $t_k$, by searching for the pair ($k$, $t_k$) that produces the purest
 Once it has successfully split the training set in two, it splits the subsets using the same logic, then the
 sub-subsets, and so on, recursively. Once the CART algorithm finished, the building (training) part is over and the
 decision tree is ready. One can now feed a new instance to the tree and by asking the corresponding question of each
-node they will end up in one of the leafs, hence, to a decision. \v
+node they will end up in one of the leaves, hence, to a decision. \v
 
-The loss function that the algorithm tries to minimize is the so called ``CART loss function''\footnote{For regression,
-CART algorithm instead of trying to split the training set in a way that minimizes impurity, it tries to split the
-training set in a way that minimizes the MSE\@.}.
+The loss function that the algorithm tries to minimize is the so called ``CART loss function''.
 
 \bd [CART Loss Function]
-The \textbf{CART loss function for regression} is defined as:
+The \textbf{CART loss function for regression}\footnote{For regression, CART algorithm instead of trying to split the
+training set in a way that minimizes impurity, it tries to split the training set in a way that minimizes the MSE\@.}
+is defined as:
 \bse
 J(k, t_{k}) = \frac{m_{\text{left}}}{m} \text{MSE}_{\text{left}} + \frac{m_{\text{right}}}{m}\text{MSE}_{\text{right}}
 \ese
@@ -2682,21 +2676,21 @@ averaging predictions over many trees, as we will see right next.
 
 \bd[Random Forest]
 \textbf{Random forest} is a hard voting, bagging, ensemble learning model for regression and classification that works
-by combining a multitude of decision trees in training time and outputting the class that is the most voted of the
-classes (classification) or mean prediction (regression) of the individual trees.
+by combining a multitude of decision trees and outputting the class that is the most voted of the classes
+(classification) or mean prediction (regression) of the individual trees.
 \ed
 
 In random forest model, one trains a group of decision trees, each on a different random subset of the same size as
-the training set (bagging). To make predictions, one obtains the predictions of all the individual trees, then
-predicts the class that gets the most votes (hard voting). Despite its simplicity, random forest model is one of the
-most powerful machine learning algorithms available today. \v
+the training set (bagging). On top of that, at each node, they only select a random subset of the features to be
+considered for splitting. That way, random forests introduce extra randomness when growing trees since instead of
+searching for the very best feature when splitting a node, they search for it among a random subset of features. The
+algorithm results in greater tree diversity, which trades a higher bias for a lower variance, generally yielding an
+overall better model. As a result, random forests correct for decision trees' habit of overfitting to their training
+set. Finally, to make predictions, one obtains the predictions of all the individual trees, then predicts the class
+that gets the most votes for classification, or the mean prediction for regression (hard voting). Despite its
+simplicity, random forest model is one of the most powerful machine learning algorithms available today.
 
-When one is growing a decision tree in a random forest, on top of bagging, at each node, they only select a random
-subset of the features to be considered for splitting. That way, random forests introduce extra randomness when
-growing trees since instead of searching for the very best feature when splitting a node, they search for it among a
-random subset of features. The algorithm results in greater tree diversity, which trades a higher bias for a lower
-variance, generally yielding an overall better model. As a result, random forests correct for decision trees' habit
-of overfitting to their training set. \v
+\fig{randomforest}{0.24}
 
 It is possible to make trees even more random by also using random thresholds for each feature rather than searching
 for the best possible thresholds, like regular decision trees do. A forest of such extremely random trees is called
@@ -2713,16 +2707,121 @@ the most time-consuming tasks of growing a tree.
 
 \subsection{Boosting}
 
+A some-what imporved version of bagging is the so called ``boosting'', mainly used to decrease bias.
+
 \bd[Boosting]
 \textbf{Boosting} is the process of incrementally building an ensemble by training each new model instance to emphasize
 the training instances that previous models mis-classified.
 \ed
 
-\fig{ensemble4}{0.1}
+In practise, boosting tries to build a strong model from the mistakes of several weaker models. It starts by
+creating a model from the training data. Then, it creates a second model from the previous one by trying to reduce
+the errors from the previous model. Models are added sequentially, each correcting its predecessor, until the
+training data is predicted perfectly or the maximum number of models have been added. It basically tries to reduce
+the bias error which arises when models are not able to identify relevant trends in the data, by evaluating the
+difference between predicted and actual value.
+
+\fig{ensemble4}{0.11}
 
 The most common implementation of boosting are ``AdaBoost'' (short for Adaptive  Boosting) and ``Gradient Boosting''
-algorithms that we will see right after random forests.
+algorithms that we will see right now.
+
+\subsubsection{Stump}
+
+Similar to decision trees being the fundamental building blocks of random forests, stumps are the fundamental building
+blocks of boosting algorithms. Fortunately, stumps are just very simple decision trees.
+
+\bd[Stump]
+A \textbf{stump} is a decision tree with a single node and two leaves.
+\ed
+
+Stumps are the simplest forms of decision trees and given their naive simplicity they are weak learners, i.e.\ they are
+not great at making accurate classifications. That, however, is the point of using them in boosting algorithms. The
+idea is to combine many weak learners to create a strong learner, with the hope that the ``wisdom of the crowd'' will
+prevail.
 
 \subsubsection{AdaBoost}
 
+\bd[AdaBoost]
+\textbf{AdaBoost} is a soft voting, boosting, ensemble learning model mainly used for classification, that works by
+combining a multitude of stumps and outputting a weighted sum of each stump's predictided class.
+\ed
+
+In AdaBoost, first and foremost, the algorithm assigns a ``sample weight'' to each training instance.
+
+\bd[Sample Weight]
+The \textbf{sample weight} of training instance $i$, $w^{(i)}$ is the weight assigned to each training instance,
+initally given by:
+\bse
+w^{(i)} = \frac{1}{m}
+\ese
+
+where $m$ is the number of instances in the training set.
+\ed
+
+Then, it computes an attribute selection measure called the ``weighted Gini impurity'' or ``weighted Gini index'',
+for each one of the features.
+
+\bd[Weighted Gini Impurity \ Weighted Gini Index]
+Given a discrete random variable $X$, with possible outcomes $\{x_{1}, x_{2}, \ldots, x_{n} \}$ which occur with
+probabilities $ P(x_{1}), P(x_{2}), \ldots, P(x_{n})$, the \textbf{weighted Gini impurity}, or \textbf{weighted Gini
+index}, $I_{G}$ of $X$ is defined as:
+\bse
+I_{G}(X) = 1 - \sum _{i=1}^{n} w^{(i)} P^2(x_{i})
+\ese
+
+where $w^{(i)}$ is the sample weight of the training instance $i$, and the summation is over the variable's possible
+values.
+\ed
+
+Then, based on the weighted Gini index, it selects the feature that produces the purest subsets, and creates the
+first stump. Based on the stump's performance, the algorithm then computes the ``stump's error rate''.
+
+\bd[Stump Error Rate]
+The \textbf{stump error rate} $e$ is the sum of the weights of the misclassified instances divided by the sum of all the
+weights, given by:
+\bse
+e = \frac{\sum_{i=1}^{m} w^{(i)} \cdot \mathbb{I}(\hat{y}^{(i)} \neq y^{(i)})}{\sum_{i=1}^{m} w^{(i)}}
+\ese
+
+where $\hat{y}^{(i)}$ is the predicted class of the $i$-th instance, $y^{(i)}$ is the actual class of the $i$-th
+instance, and $w^{(i)}$ is the weight of the $i$-th instance.
+\ed
+
+The algorithm then assigns a weight to the stump, based on the stump's error rate.
+
+\bd[Stump Weight]
+The \textbf{stump weight} $\alpha$ is the weight assigned to a stump based on the stump's error rate, given by:
+\bse
+\alpha = \frac{1}{2} \log \left( \frac{1 - e}{e} \right)
+\ese
+
+where $e$ is the stump's error rate.
+\ed
+
+The algorithm then updates the sample weights, by increasing the weights of the misclassified instances and
+decreasing the weights of the correctly classified instances, so that the next stump will focus more on the
+misclassified instances. The new sample weights are given by:
+\bse
+w^{(i)}_{\textit{new}} =
+\begin{cases}
+w^{(i)} \cdot \exp(\alpha) & \text{if } \hat{y}^{(i)} \neq y^{(i)} \\
+w^{(i)} \cdot \exp(-\alpha) & \text{if } \hat{y}^{(i)} = y^{(i)}
+\end{cases}
+\ese
+
+Then, it normalizes the new sample weights by dividing each one of them by the sum of all the weights, so that they
+sum up to 1. \v
+
+Finally, the algorithm repeats the same process for the next stump, and so on, until the desired number of stumps is
+reached. Given that during each iteration we update the weights of the instances based on the previous stump's
+performance, the algorithm is able to focus more on the misclassified instances, hence, it is able to correct the
+mistakes of the previous stumps (boosting). In that way the algorithm is able to build a strong model from the
+mistakes of several weaker models. \v
+
+To make predictions, one obtains the predictions of all the individual stumps weighted by their stump weight, then
+predicts the class with the highest weighted sum of the individual stumps' predictions (soft voting).
+
 \subsubsection{Gradient Boosting}
+
+\subsubsection{Extreme Gradient Boosting (XGBoost)}
