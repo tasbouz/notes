@@ -378,14 +378,13 @@ on this later).
 \eit
 
 \be
-For example, the command \code{gcloud compute instances list --project=my-project} lists all the instances in the
+For example, the command \code{gcloud compute instances list $-$$-$project=my-project} lists all the instances in the
 project \code{my-project}, where \code{compute} is the component, \code{instances} is the subcomponent, \code{list}
-is the operation, and \code{--project} is the flag.
+is the operation, and \code{$-$$-$project} is the flag.
 \ee
 
-Probably the most important command is the one for getting help. In order to do so, one can use the flag \code{--help}
-at any \code{gcloud} level:
-
+Probably the most important command is the one for getting help. In order to do so, one can use the flag
+\code{$-$$-$help} at any \code{gcloud} level:
 \begin{bash}
 # get help
 gcloud $--$help
@@ -417,8 +416,8 @@ on a per-invocation basis, properties allow to maintain the same settings across
 override properties when both are set.
 
 \be
-For example, the GCP SDK supports both the \code{--project} flag and \code{project} property. If one sets the
-\code{project} property to \code{my-project} and run a command that uses the \code{--project} flag, the flag will
+For example, the GCP SDK supports both the \code{$-$$-$project} flag and \code{project} property. If one sets the
+\code{project} property to \code{my-project} and run a command that uses the \code{$-$$-$project} flag, the flag will
 override the property.
 \ee
 
@@ -445,38 +444,33 @@ one is working with just one project, the default configuration should be suffic
 The default configuration is created during the \code{gcloud auth login} command which authorizes access to GCP\@,
 and we introduced it in the previous section. However, \code{gcloud auth login} does not let you set other
 properties other than the account. For this reason, there is another command \code{gcloud init} which authorizes
-access (exactly same behavior as \code{gcloud auth login}) and on top of that it performs other common setup steps.
-
+access (exactly same behavior as \code{gcloud auth login}) and on top of that it performs other common setup steps:
 \begin{bash}
 # authorize and configure the GCP SDK at the same time
 gcloud init
 \end{bash}
 
 One can create additional configurations and switch between them as required. This is useful if one is working with
-multiple accounts or projects, or if they want to perform generally independent tasks.
-
+multiple accounts or projects, or if they want to perform generally independent tasks:
 \begin{bash}
 # create a configuration
 gcloud config configurations create <configuration>
 \end{bash}
 
-Once a new configuration is created, it is added to the list of available configurations.
-
+Once a new configuration is created, it is added to the list of available configurations:
 \begin{bash}
 # display all available configurations
 gcloud config configurations list
 \end{bash}
 
 As it makes sense, only one of your multiple configurations can be active at a given time. The active configuration
-is the configuration whose properties will govern the current behavior of the GC SDK\@.
-
+is the configuration whose properties will govern the current behavior of the GC SDK\@:
 \begin{bash}
 # activate a configuration
 gcloud config configurations activate <configuration>
 \end{bash}
 
-Of course, one can set and get all properties for any given configuration.
-
+Of course, one can set and get all properties for any given configuration:
 \begin{bash}
 # define a property for the current configuration
 gcloud config set <property> <value>
@@ -508,8 +502,7 @@ can set within a configuration:
     \eit
 \eit
 
-Lastly, one can delete a configuration.
-
+Lastly, one can delete a configuration:
 \begin{bash}
 # delete a configuration
 gcloud config configurations delete <configuration>
@@ -592,7 +585,6 @@ All projects consist of the following:
 \fig{gcp12}{0.5}
 
 One can use the GCP SDK to interact with projects. Here are some useful commands:
-
 \begin{bash}
 # list all available projects
 gcloud projects list
@@ -722,22 +714,19 @@ gcloud auth login
 \end{bash}
 
 During authorization, a set of credentials are obtained from GCP and stored locally, in the directory:
-\code{$~$/.config/gcloud}. One can also revoke the account credentials at any time.
-
+\code{$~$/.config/gcloud}. One can also revoke the account credentials at any time:
 \begin{bash}
 # revoke access to a Google account
 gcloud auth revoke <account>
 \end{bash}
 
 Upon authorization the account becomes active and GCP SDK uses the credentials to access GCP\@.
-
 \begin{bash}
 # get the active account
 gcloud config get account
 \end{bash}
 
 One can have any number of accounts for a single GCP SDK installation, but only one active at a time.
-
 \begin{bash}
 # list all accounts with stored credentials
 gcloud auth list
@@ -773,7 +762,7 @@ The reccomended way to set up ADC is by providing the Google account credentials
 by running:
 \begin{bash}
 # create application default credentials
-gcloud auth application-default login
+gcloud auth application$-$default login
 \end{bash}
 
 This command places a JSON file called ``application\_default\_credentials.json'' containing the provided Google
@@ -786,10 +775,10 @@ account, and not the GCP SDK configuration. Changing to a different GCP SDK conf
 used by the GCP SDK, but it does not affect the local ADC file. \v
 
 If one no longer needs the ADC credentials file, they can revoke them by using the following command which deletes
-the ``application\_default\_credentials.json''
+the ``application\_default\_credentials.json'':
 \begin{bash}
 # revoke application default credentials
-gcloud auth application-default revoke
+gcloud auth application$-$default revoke
 \end{bash}
 
 To summarize: when one signs in to the GCP SDK, they use the \code{gcloud auth login} command to authenticate a
@@ -863,40 +852,39 @@ service accounts, from now on we will focus on user-managed service accounts. Fo
 as service accounts. \v
 
 Through the GCP SDK, one can interact with service accounts. Here are some useful commands:
-
 \begin{bash}
 # create a service account
-gcloud iam service-accounts create <service-account> --display-name=<display-name> --description=<description>
+gcloud iam service$-$accounts create <service$-$account> $-$$-$display$-$name=<display$-$name> $-$$-$description=<description>
 \end{bash}
 
 \begin{bash}
 # update a service account
-gcloud iam service-accounts update <service-account> --display-name=<display-name> --description=<description>
+gcloud iam service$-$accounts update <service$-$account> $-$$-$display$-$name=<display$-$name> $-$$-$description=<description>
 \end{bash}
 
 \begin{bash}
 # disable a service account
-gcloud iam service-accounts disable <service-account>
+gcloud iam service$-$accounts disable <service$-$account>
 \end{bash}
 
 \begin{bash}
 # enable a service account
-gcloud iam service-accounts enable <service-account>
+gcloud iam service$-$accounts enable <service$-$account>
 \end{bash}
 
 \begin{bash}
 # delete a service account
-gcloud iam service-accounts delete <service-account>
+gcloud iam service$-$accounts delete <service$-$account>
 \end{bash}
 
 \begin{bash}
 # get metadata for a service account
-gcloud iam service-accounts describe <service-account>
+gcloud iam service$-$accounts describe <service$-$account>
 \end{bash}
 
 \begin{bash}
 # list all a service accounts
-gcloud iam service-accounts list
+gcloud iam service$-$accounts list
 \end{bash}
 
 Once a service account is created, it is then ready for use. Remember that service accounts are created in order for
@@ -948,26 +936,26 @@ as a service account:
 One can create service account keys and store them to a specified output file through GCP SDK:
 \begin{bash}
 # create a service account key for a specific service account and store it to an output file
-gcloud iam service-accounts keys create <output-file> --iam-account=<service-account>
+gcloud iam service$-$accounts keys create <output$-$file> $-$$-$iam$-$account=<service$-$account>
 \end{bash}
 
 To see all the service account keys that are created for a service account, including their ids, creation time, and
 expiration time, one can use the following command:
 \begin{bash}
 # list all service account keys for a specific service account
-gcloud iam service-accounts keys list --iam-account=<service-account>
+gcloud iam service$-$accounts keys list $-$$-$iam$-$account=<service$-$account>
 \end{bash}
 
 To delete a service account key, one can use the following command:
 \begin{bash}
 # delete a service account key
-gcloud iam service-accounts keys delete <key-id> --iam-account=<service-account>
+gcloud iam service$-$accounts keys delete <key$-$id> $-$$-$iam$-$account=<service$-$account>
 \end{bash}
 
 Once a service account key is created, it can be used to authenticate as the service account by using the command:
 \begin{bash}
 # authorize access with a service account key
-gcloud auth activate-service-account <service-account> --key-file=<key-file>
+gcloud auth activate$-$service$-$account <service$-$account> $-$$-$key$-$file=<key$-$file>
 \end{bash}
 
 One can verify that the service account key is active by using the \code{gcloud auth list} command that we saw earlier,
@@ -983,7 +971,7 @@ in production, and then use ADC to authenticate the application locally in the d
 reason one cannot create ADC through their Google account, they can create them through the service account by using:
 \begin{bash}
 # create application default credentials through a service account
-gcloud auth application-default login --impersonate-service-account <service-account>
+gcloud auth application$-$default login $-$$-$impersonate$-$service$-$account <service$-$account>
 \end{bash}
 
 If neither of these options are available, then one can use service account keys as a last resort.
@@ -1171,17 +1159,17 @@ version: 3
 Once a policy is created, it is attached to a project by using the GCP SDK command:
 \begin{bash}
 # set policy for a resource
-gcloud projects set-iam-policy <project> <policy-file>
+gcloud projects set$-$iam$-$policy <project> <policy$-$file>
 \end{bash}
 
 \begin{bash}
 # get policy for a resource
-gcloud projects get-iam-policy <project>
+gcloud projects get$-$iam$-$policy <project>
 \end{bash}
 
 \begin{bash}
 # remove policy for a resource
-gcloud projects remove-iam-policy <project> <policy-file>
+gcloud projects remove$-$iam$-$policy <project> <policy$-$file>
 \end{bash}
 
 Policies can be set at any level in the resource hierarchy, i.e.\ at organization, folder, project, or resource level.
@@ -1214,147 +1202,106 @@ console, where one can easily manage policies for all resources in a project or 
 
 \section{Google Compute Engine (GCE)}
 
-\bd[Virtualization]
-\textbf{Virtualization} is the act of creating a virtual (rather than actual) version of something at the same
-abstraction level, including virtual computer hardware platforms, storage devices, and computer network resources.
-\ed
-
-\bd[Virtual Machine (VM)]
-\textbf{Virtual Machine (VM)} is the virtualization of a computer system.
-\ed
-
-VMs are based on computer architectures and provide functionality of a physical computer. Their implementations may
-involve specialized hardware, software, or a combination.
-
 \bd[Google Compute Engine (GCE)]
-\textbf{Google Compute Engine (GCE)} is the infrastructure as a service (IaaS) component of Google Cloud which enables
-users to launch VMs on demand.
+\textbf{Google Compute Engine} (\textbf{GCE}) is an infrastructure as a service (IaaS) component of GCP which offers
+self-managed virtual machines (VMs).
 \ed
 
-In the Google Cloud terminology GCE creates ``instances'' rather than VMs.
+Some of the benefits of using GCE are:
+\bit
+\item \textbf{Extensibility}: GCE integrates with other GCP technologies to extend beyond the basic computational
+capability to create more complex and sophisticated applications.
+\item \textbf{Scalability}: One can scale the number of compute resources as needed without having to manage the
+underlying infrastructure. This is useful for businesses that experience sudden increases in traffic, because they can
+quickly add more resources to handle the increase and remove the resources after they are no longer needed.
+\item \textbf{Reliability}: Google's infrastructure is highly reliable, with a 99.9\% uptime guarantee.
+\item \textbf{Cost-effectiveness}: GCE offers a variety of pricing options, and it follows a pay-as-you-go model, where
+one only pays for the resources that they use, without up-front costs.
+\eit
 
 \bd[Instance]
-An \textbf{instance} is a VM hosted on GCE\@.
+An \textbf{instance} is a VM hosted on GCE\@, carrying a unique and permanent name, and location
 \ed
 
-Each instance carry a unique and permanent name, a set of optional labels and a permanent region and zone. \v
+Instances can be configured in different ways allowing flexibility to fulfill the needs of each project:
+\bit
+\item \textbf{Location Selection}: Google offers worldwide regions for deploying GCE resources. Once can choose a
+region that best fits the requirements of the workload based on factors such as: region-specific restrictions, user
+latency by region, latency requirements of the application, amount of control over latency, and balance between low
+latency and simplicity.
+\item \textbf{Machine Configuration}: There are several machine families once can choose from, and each family is
+further organized into machine series and machine types. One can choose the machine family, series, and type that
+best fits the requirements of the workload. There are 3 types of machine families:
+\bit
+\item \textbf{General-purpose}: Offers several machine series with the best price-performance ratio for a variety of
+workloads.
+\item \textbf{Compute-optimized}: Has the highest performance per core on GCE and is optimized for compute-intensive
+workloads.
+\item \textbf{Memory-optimized}: Ideal for the most memory-intensive workloads.
+\eit
+\fig{gcp16}{0.35}
+\item \textbf{Operating System}: One can choose from a variety of operating systems, including public images, private
+custom images, and marketplace images.
+\item \textbf{Storage Options}: One can choose from a variety of storage options:
+\bit
+\item \textbf{Persistent Disk}: High-performance and redundant network storage. Each volume is striped across hundreds
+of physical disks.
+\item \textbf{Hyperdisk}: The fastest redundant network storage for GCE, with configurable performance and volumes that
+can be resized dynamically. Each volume is striped across hundreds of physical disks.
+\item \textbf{Local SSD}: Physical drives that are attached directly to the same server as a compute instance. They
+offer better performance, but are not durable. If the instance is shut down, then the Local SSD disks are deleted.
+\eit
+\eit
 
-Instances can be configured in many different ways and allow you the flexibility to fulfill the requests for your
-specific scenario. There are four different base options when it comes to configuration of the instance that you are
-preparing to launch, and we will see them right now.
+Last but not least, when it comes to billing of instances, GCP follows a resource based method i.e.\ each individual
+vCPU and each GB of memory is billed separately. All vCPUs, GPUs, and GB of memory are charged by the second with a
+minimum of 1 minute. Another major factor of billing is the so called ``instance uptime'' which is the number of
+seconds between when one starts an instance and when the instance is terminated.
 
-\subsection{Machine Configuration}
+\subsection{gcloud compute}
 
-This section describes the machine families, machine series, and machine types that you can choose from to create a
-instance with the CPU and memory you need.
+GCE can be accessed using the GCP console, the GCP SDK, or using a REST-based API. It can also be used through a variety
+of programming languages available with client libraries. As usual, in these notes we will focus on the GCP SDK\@.
 
-\bd[Machine Family]
-\textbf{Machine family} is a curated set of processor and hardware configurations optimized for specific workloads.
-\ed
-
-There are 3 machine families in Google Cloud: ``general-purpose machine family'', ``compute-optimized machine family'',
-and ``memory-optimized machine family''.
-
-\bd[General-Purpose Machine Family]
-The \textbf{general-purpose machine family} offers several machine series with the best price-performance ratio for a
-variety of workloads.
-\ed
-
-\bd[Compute-Optimized Machine Family]
-The \textbf{compute-optimized machine family} has the highest performance per core on GCE and is optimized for compute-
-intensive workloads.
-\ed
-
-\bd[Memory-Optimized Machine Family]
-The \textbf{memory-optimized machine family} has machine series that are ideal for your most memory intensive workloads.
-\ed
-
-Moving on from machine families, we define the machine series concept.
-
-\bd[Machine Series \& Generation]
-Machine families are further classified by \textbf{machine series} and the corresponding series' \textbf{generation}.
-\ed
-
-Generally, generations of a machine series use a higher number to describe the newer generation.
-
-\bd[Machine Type]
-Every machine series has predefined \textbf{machine types} that provide a set of resources for your instance.
-\ed
-
-Machine types have the following notation:
 \begin{bash}
-series/generation$-$type$-$CPU
+# create an instance with a specific configuration
+gcloud compute instances create <instance> $-$$-$zone=<zone> $-$$-$machine$-$type=<machine$-$type> $-$$-$image=<image>
 \end{bash}
 
-\be
-For example the machine type \code{e2$-$standard$-$32} is a machine type of the second generation of the series
-\code{e2}, of the type \code{standard} with 32 CPUs.
-\ee
+\begin{bash}
+# list all instances
+gcloud compute instances list
+\end{bash}
 
-To sum up, when you create an instance, you select a machine type from a machine series of a machine family that
-determines the resources available to that instance. There are several machine families you can choose from and each
-machine family is further organized into machine series and predefined machine types within each series. If a
-predefined machine type does not meet your needs, you can also create a custom machine type. \v
+\begin{bash}
+# start an instance
+gcloud compute instances start <instance>
+\end{bash}
 
-Here is a visualisation of all different machine families, series and types.
+\begin{bash}
+# stop an instance
+gcloud compute instances stop <instance>
+\end{bash}
 
-\fig{gcp16}{0.35}
+\begin{bash}
+# delete an instance
+gcloud compute instances delete <instance>
+\end{bash}
 
-\subsection{Boot Disc}
-
-Once you've determined a machine type for your instance you will need to provide it an image with an operating system
-to boot up with. GCE offers many pre-configured public images that have compatible linux or windows operating systems.
-You can use most public images at no additional cost but be aware that there are some premium images that do add
-additional cost to your instances. \v
-
-There is also the option of custom images which are private images that you own and control access to. Custom images
-are available only to your cloud project unless you specifically decide to share them with another project or another
-organization. \v
-
-The third and final option that you have, is by using a marketplace image. Google Cloud marketplace lets you quickly
-deploy functional software packages that run on Google Cloud without having to manually configure the software, the
-instances, the storage, or even the network settings. This is an all-in-one instance template that includes the
-operating system and the software pre-configured and you can deploy a software package whenever you like and is by
-far the easiest way to launch a software package. \v
-
-Of course, once you've decided the image that you wanted to use, the next step is to choose the boot disc type that
-you want. This is where performance versus cost comes into play as you have the option to pay less and have a slower
-disk speed or you can choose to have fast disk speed with higher costs. The slowest and most inexpensive of these
-options is the ``standard persistent disk'' which is backed by standard hard disk drives. The next option is the
-``balance persistent disk'' which is backed by solid state drives and it's faster and than the standard option.
-Finally, the third and last option is the ``ssd persistent disk'' which is the fastest option.
-
-\subsection{Billing}
-
-When it comes to billing of instances Google Cloud follows a resource based method i.e.\ each individual vCPU and
-each GB of memory is billed separately. All vCPUs, GPUs, and GB of memory are charged by the second with a minimum of
-1 minute. Another major factor of billing is the so called ``instance uptime'' which is the number of seconds between
-when you start an instance and when you stop an instance (terminated). \v
-
-Another important concept of Google Cloud is the so called ``reservations''. By reserving resources, you ensuring
-that resources are available for when you need it, you are covered for possible future increases in demand and for any
-planned or unplanned spikes, and you have a backup and disaster recovery.
-
-\subsection{Connecting To An Instance}
-
-Once an instance is created, we can connect to it through a secure shell (SSH) protocol. First create a pair of
-public-private keys with a suitable name:
+Once an instance is created, we can connect to it through a secure shell (SSH) protocol. To do so, first we need to
+create a pair of public-private RSA keys and copy the public key to the clipboard:
 \begin{bash}
 # create public-private key pair
-ssh$-$keygen $-$t <algorithm> $-$f <filename> $-$C <comment>
+ssh-keygen -f <filename> && cat <public_key> | pbcopy
 \end{bash}
 
-Copy the public key to the clipboard:
+The, we can add the public key to the instance's metadata:
 \begin{bash}
-# copy public key to clipboard
-cat \<public\_key\> \| pbcopy
+# add public key to instance's metadata
+gcloud compute instances add-metadata <instance> --metadata-from-file ssh-keys=<public_key>
 \end{bash}
 
-Finally, go to Google Cloud console, then ``Compute Engine'' and finally ``Metadata''. Under the ``SSH Keys'', add
-the public key.Important to notice that this will give you access to all available instances in the project, since
-they will inherit the added SSH key. \v
-
-Now you can SSH into the instances by running:
+Now we can SSH into the instance by running:
 \begin{bash}
 # connect to an instance
 ssh <username>@<IP>
@@ -1362,671 +1309,175 @@ ssh <username>@<IP>
 
 \section{Google Kubernetes Engine (GKE)}
 
-The rise of microservices architecture, increased the usage of container technologies, because the containers
-actually offer the perfect host for small independent applications. This rise of containers in the microservice
-technology, resulted in applications that are now comprised of hundreds or sometimes maybe even thousands of
-containers. As it makes sense, managing those loads of containers across multiple environments using scripts and
-self$-$made tools can be really complex and sometimes even impossible. This caused the need for having container
-orchestration technologies.
-
-\bd[Container Orchestration]
-\textbf{Container orchestration} is the automation of the operational effort required to run containerized workloads
-and services, including container's lifecycle, provisioning, deployment, scaling (up and down), networking, load
-balancing and many more.
-\ed
-
-What those orchestration technologies do, is providing high availability (the application has no downtime and it's
-always accessible by the user), scalability (the application has high performance, loads fast and the users have very
-high response rates) and disaster recovery (the infrastructure has mechanisms to restore the application to its
-latest state after an unexpected disaster).
-
-\subsection{Kubernetes}
-
-\bd[Kubernetes]
-Kubernetes is an open$-$source container orchestration system for automating container application deployment, scaling,
-and management.
-\ed
-
-Kubernetes was founded by Ville Aikas, Joe Beda, Brendan Burns, and Craig McLuckie, who were quickly joined by other
-Google engineers including Brian Grant and Tim Hockin, and was first announced by Google in mid$-$2014. It was
-released on July 21, 2015 and it is now maintained by the Cloud Native Computing Foundation which is a Google
-partnership with the Linux Foundation. \v
-
-The design and development of Kubernetes was influenced by Google's Borg cluster manager. Many of its top
-contributors had previously worked on Borg; they codenamed Kubernetes ``Project 7'' after the Star Trek ex$-$Borg
-character Seven of Nine and gave its logo a seven$-$spoked wheel. Unlike Borg, which was written in C++, Kubernetes
-source code is in the Go language. \v
-
-Kubernetes aims to provide a platform for automating deployment, scaling, and operations of container workloads.
-Google was already offering managed Kubernetes services, while Red Hat was supporting Kubernetes as part of OpenShift
-since the inception of the Kubernetes project in 2014. In 2017, the principal competitors rallied around Kubernetes
-and announced adding native support for it. Kubernetes works with a variety of container runtimes such as Docker,
-Containerd, and CRI$-$O. \v
-
-Kubernetes 1.0 was released on July 21, 2015. Google worked with the Linux Foundation to form the Cloud Native
-Computing Foundation (CNCF) and offer Kubernetes as a seed technology. In February 2016, the Helm package manager for
-Kubernetes was released. \v
-
-On March 6, 2018, Kubernetes Project reached ninth place in the list of GitHub projects by the number of commits, and
-second place in authors and issues, after the Linux kernel.
-
-\subsection{Components}
-
-Kubernetes consists of a large collection of components, each one with its own usage. It is crucial to understand
-these individual components since they are the basis of the Kubernetes architecture. For this reason in this section
-we will go through each one of them and explain their role. \v
-
-Let's start with ``containers''. We have already defined the concept of a Docker container in the Docker chapter as a
-way to package applications with everything they need inside the package, including the dependencies and all the
-necessary configuration. The definition of a container in Kubernetes is exactly the same, however one needs to keep
-in mind that now we are not focusing exclusively on Docker containers although more often than not Docker is the
-preferred container technology.
-
-\bd[Container]
-A \textbf{container} is a ready$-$to$-$run software package, containing everything needed to run an application: the
-code and any runtime it requires, application and system libraries, and default values for any essential settings.
-\ed
-
-\fig{img/k81}{0.45}
-
-The container is the lowest level of a microservice, which holds the running application, libraries, and their
-dependencies. Kubernetes containers are not restricted to a specific operating system, unlike virtual machines.
-Instead, they are able to share operating systems and run anywhere. The most common container technology is Docker. \v
-
-Although containers, is the lowest level of microservices, it is not the lowest level of Kubernetes. The basic
-component, or the smallest unit of Kubernetes, is a ``pod''.
-
-\bd[Pod]
-The basic scheduling unit in Kubernetes is a \textbf{pod} which is a grouping of containerized components. A container
-resides inside a pod.
-\ed
-
-\fig{img/k82}{0.45}
-
-Pod is an abstraction over a container, creating a layer on top of the container in order to abstract away the
-underlying container technology so that you can replace them, if you want to, and also to don't have to directly work
-with whatever container technology you use and only interact with the Kubernetes layer. \v
-
-Usually one runs only one application per pod. This is one of best practices, and it is a good rule to follow since
-makes things easier and aligns the philosophy of a container with this of a pod, and it also aligns with the general
-philosophy of microservices. However, more often than not, one needs more than one applications in parallel (for
-example an app and a database), hence, more than one pods in parallel. For this reason, Kubernetes has a component
-called a ``node'' (or ``worker node'').
-
-\bd[Node / Worker Node]
-A \textbf{node} (or \textbf{worker node}) is a physical or virtual server where pods are deployed in.
-\ed
-
-\fig{img/k83}{0.45}
-
-Kubernetes offers an out of the box virtual network which means that each pod within a node gets its own IP address
-which can use to communicate with other pods in the node. This is of course an internal IP address, so an application
-pod can communicate with a database pod but not anyone else.
-
-\fig{img/k84}{0.45}
-
-Another important concept in Kubernetes is that pod components are ephemeral, which means that they can die very
-easily. When that happens, a new one gets created in its place and it is assigned a new IP address. This obviously is
-inconvenient since if you communicate with other pods by using IP addresses, you have to adjust them every time a pod
-restarts. In order to solve this problem, Kubernetes uses another component called ``service''.
-
-\bd[Service]
-A \textbf{service} is a set of pods that work together, such as one tier of a multi$-$tier application. The set of
-pods that constitute a service are defined by a label selector.
-\ed
-
-Service assigns a stable IP address and DNS name to each pod, and load balances traffic to network connections of
-that IP address among the pods, matching the selector (even as failures cause the pods to move from machine to
-machine). In other words, services and pods' lifecycles are not connected, so even if a pod dies the service will
-stay so you don't have to change that endpoint.
-
-\fig{img/k85}{0.45}
-
-As we already said, services (and IPs) are only for internal communication and not accessible outside a node.
-However, one would want the application to be accessible from outside (through a browser for example) and for this
-reason one would have to create an external service that opens the communication from external sources. Obviously
-though, you wouldn't want your database to be open to the public requests. For this reason, there is another
-component of Kubernetes called ``ingress''.
-
-\bd[Ingress]
-\textbf{Ingress} is an API object that provides routing rules to manage external users' access to the services in a
-node, typically via HTTPS/HTTP\@.
-\ed
-
-\fig{img/k86}{0.5}
-
-With ingress, you can easily set up rules for routing traffic without creating a bunch of load balancers or exposing
-each service on the node. In this way, instead of service, the request goes first to ingress, and ingress does the
-forwarding then to the service. \v
-
-A common application challenge is deciding where to store and manage configuration information, some of which may
-contain sensitive data. Configuration data can be anything as fine$-$grained as individual properties or
-coarse$-$grained information like entire configuration files or JSON / XML documents. Kubernetes provides two closely
-related mechanisms to deal with this need: ``configmaps'' and ``secrets'', both of which allow for configuration
-changes to be made without requiring an application build.
-
-\bd[ConfigMap]
-A \textbf{ConfigMap} is an API object used to store non$-$confidential data in key$-$value pairs. Pods can consume
-ConfigMaps as environment variables, command$-$line arguments, or even as configuration files.
-\ed
-
-\bd[Secret]
-\textbf{Secret} is an object that contains a small amount of sensitive data such as a password, a token, or a key. Such
-information might otherwise be put in a Pod specification or in a container image. Using a Secret means that you don't
-need to include confidential data in your application code.
-\ed
-
-\fig{img/k88}{0.5}
-
-Configmap is used to provide access to configuration through the filesystem visible to the container, while secret is
-use to provide access to credentials needed to access remote resources securely, by providing those credentials on
-the filesystem visible only to authorized containers. The biggest difference between a configmap and a secret is that
-the content of the data in a secret is base64 encoded. \v
-
-Recent versions of Kubernetes have introduced support for encryption
-to be used as well. Secrets are often used to store data like certificates, passwords, pull secrets (credentials to work
-with image registries), and ssh keys. \v
-
-A configmap and/or a secret is only sent to a node if a pod on that node requires it. Kubernetes will keep it in
-memory on that node. Once the pod that depends on the secret or configmap is deleted, the in$-$memory copy of all
-bound configmaps and secrets are deleted as well. \v
-
-As we already said, the data is accessible to the pod through one of two ways: either as environment variables (which
-will be created by Kubernetes when the pod is started) or available on the container filesystem that is visible only
-from within the pod. \v
-
-Filesystems in the Kubernetes container provide ephemeral storage, by default. This means that a restart of the pod
-will wipe out any data on such containers, and therefore, this form of storage is quite limiting in anything but
-trivial applications. For this reason we use ``volumes''.
-
-\bd[Volume]
-A \textbf{volume} is a directory that contains data accessible to containers in a given pod in the orchestration and
-scheduling platform.
-\ed
-
-\fig{img/k89}{0.5}
-
-Volumes provide a plug$-$in mechanism to connect ephemeral containers with persistent data stores elsewhere. A pod
-can define a volume, such as a local disk directory or a network disk, and expose it to the containers in the pod. A
-volume provides persistent storage that exists for the lifetime of the pod itself. This storage can also be used as
-shared disk space for containers within the pod. \v
-
-As we already discussed in Docker chapter, volumes are mounted at specific mount points within the container, which
-are defined by the pod configuration, and cannot mount onto other volumes or link to other volumes. The same volume
-can be mounted at different points in the filesystem tree by different containers. \v
-
-A node has multiple application pods with containers running on it and the way Kubernetes does that, is by using
-three processes that must be installed on every node, that are used to schedule and manage those parts. \v
-
-The first process that needs to run on every node is the container runtime.
-
-\bd[Container Runtime]
-A \textbf{container runtime}, also known as container engine, is a software component that can run containers on a host
-operating system.
-\ed
-
-More often than not, Docker is the container runtime since in almost all cases developers use the Docker technology
-for containerization. However, it could be any other container technology as well.
-
-\fig{img/k90}{0.42}
-
-The process that actually schedules container runtime in pods and monitors the containers underneath is kubelet which
-is a process of Kubernetes itself, unlike container runtime.
-
-\bd[Kubelet]
-\textbf{Kubelet} is responsible for the running state of each node, ensuring that all containers on the node are
-healthy.
-\ed
-
-Kubelet takes care of starting, stopping, and maintaining application containers organized into pods as directed by
-the control plane. Kubelet monitors the state of a pod, and if not in the desired state, the pod re$-$deploys to the
-same node. Kubelet is also responsible for assigning resources like CPU, RAM, and storage from the node to the pods
-(containers).
-
-\fig{img/k91}{0.42}
-
-The third process that is installed in a node is the so called ``kube$-$proxy''.
-
-\bd[Kube$-$Proxy]
-\textbf{Kube$-$Proxy} is an implementation of a network proxy and a load balancer. It maintains network rules on the
-node which allow network communication to the pods from network sessions.
-\ed
-
-\fig{img/k92}{0.42}
-
-Kube$-$proxy supports the service abstraction along with other networking operation and it is responsible for routing
-traffic to the appropriate pod (container) based on IP and port number of the incoming request. \v
-
-This pretty much sums up the basic components of a node. What happens though, if the application pod dies, or
-crashes, or one has to restart the pod because she built a new container image? As it makes sense, one would have a
-downtime where a user cannot reach the application which is obviously a very bad thing if it happens in production. \v
-
-This is exactly the advantage of distributed systems and containers. Instead of relying on just one application pod
-and one database pod, we are replicating everything on multiple servers so we would have another node where a replica
-of our application would run. This collection of replica nodes is called a ``cluster''.
-
-\bd[Cluster]
-A \textbf{cluster} is a set of nodes that run containerized applications. Clusters allow containers to run across
-multiple machines and environments: virtual, physical, cloud$-$based, and on$-$premises.
-\ed
-
-Previously we said that the service is like an persistent static IP address with a DNS name so that you don't have to
-constantly adjust the endpoint when a pod dies. However, service is also a load balancer which means that the service
-will actually catch the request and forward it to whichever part is list busy. So services have both of these
-functionalities and for this reason they are not really parts of specific nodes but they are shared between nodes
-acting as the links among the nodes in a cluster.
-
-\fig{img/k93}{0.4}
-
-As it makes sense, Kubernetes needs to make sure that a stable set of replica Pods are running at any given time.
-This is achieved with another component called ``ReplicaSet''.
-
-\bd[ReplicaSet]
-A \textbf{ReplicaSet} maintains a stable set of replica pods running at any given time. As such, it is often used to
-guarantee the availability of a specified number of identical Pods.
-\ed
-
-A ReplicaSet is defined with fields, including a selector that specifies how to identify pods it can acquire, a
-number of replicas indicating how many pods it should be maintaining, and a pod template specifying the data of new
-pods it should create to meet the number of replicas criteria. A ReplicaSet then fulfills its purpose by creating and
-deleting pods as needed to reach the desired number. When a ReplicaSet needs to create new pods, it uses its pod
-template. \v
-
-While a ReplicaSet declares the number of instances of a pod that is needed, another component called
-``ReplicationController'' manages the system so that the number of healthy pods that are running matches the number
-of pods declared in the ReplicaSet.
-
-\bd[ReplicationController]
-A \textbf{ReplicationController} ensures that a specified number of pod replicas are running at any time.
-\ed
-
-In other words, a ReplicationController makes sure that a pod or a homogeneous set of pods is always up and available.
-If there are too many pods, the ReplicationController terminates the extra pods. If there are too few, the
-ReplicationController starts more pods. Unlike manually created pods, the pods maintained by a ReplicationController
-are automatically replaced if they fail or are terminated.
-
-\fig{img/k94}{0.38}
-
-In order to create multiple nodes in the cluster, you wouldn't need to define each replica separately from the
-scratch, but instead you would need to define a blueprint for a pod and specify how many replicas you would like to
-run. This blueprint is defined through another component called ``deployment''.
-
-\bd[Deployment]
-\textbf{Deployments} are a higher level management mechanism for ReplicaSets, providing declarative updates for pods and
-replicaSets.
-\ed
-
-While the ReplicationController manages the scale of the ReplicaSet, deployments will manage what happens to the
-ReplicaSet $-$ whether an update has to be rolled out, or rolled back, etc. When deployments are scaled up or down,
-this results in the declaration of the ReplicaSet changing $-$ and this change in declared state is managed by the
-ReplicationController.
-
-\fig{img/k95}{0.38}
-
-As pods are a layer of abstraction on top of containers, deployment is another abstraction on top of pods. In
-practice you would not be working with pods, nodes, ReplicaSets and ReplicationControllers, but you would be creating
-deployments. In deployments you specify how many replicas you want, and you can also scale up or scale down the
-number of replicas that you need, which is more convenient than interacting with pods directly. With deployment in
-place, if one of the replicas of your application pod would die, the service will forward the requests to another one
-so your application would still be accessible for the user. \v
-
-As it makes sense, we can't replicate database pods using a deployment, because database has a state which is its
-data, meaning that if we have replicas of the database they would all need to access the same shared data storage. So
-one would need some kind of mechanism that manages which pods are currently writing to that storage or which pods are
-reading from that storage in order to avoid data inconsistencies. This mechanism in addition to replicating feature
-is offered by another Kubernetes component called ``StatefulSet''.
-
-\bd[StatefulSet]
-\textbf{StatefulSet} manages the deployment and scaling of a set of pods, and provides guarantees about the ordering and
-uniqueness of these pods.
-\ed
-
-Like a deployment, a StatefulSet manages pods that are based on an identical container spec. Unlike a deployment, a
-StatefulSet maintains a sticky identity for each of their pods. These pods are created from the same spec, but are
-not interchangeable: each has a persistent identifier that it maintains across any rescheduling. If you want to use
-storage volumes to provide persistence for your workload, you can use a StatefulSet as part of the solution. Although
-individual pods in a StatefulSet are susceptible to failure, the persistent pod identifiers make it easier to match
-existing volumes to the new pods that replace any that have failed.
-
-\fig{img/k96}{0.4}
-
-In reality, deploying database applications using stateful sets in Kubernetes clusters can be somewhat tedious so
-it's definitely more difficult than working with deployments where you don't have all these challenges. That's why
-it's also a common practice to host database applications outside of the Kubernetes clusters and just have the
-deployments or stateless applications that replicate and scale with no problem inside of the Kubernetes cluster and
-communicate with the external database. \v
-
-Now let's get into the details of a cluster. Clusters are comprised of one master node usually called ``master'' or
-``control plane'' and a number of worker nodes (the ones we have seen so far) which can either be physical computers
-or virtual machines, depending on the cluster.
-
-\bd[Master Node / Control Plane]
-The \textbf{master node} (or \textbf{control plane}) is a node which controls and manages a set of worker nodes and
-resembles a cluster in Kubernetes.
-\ed
-
-In other words, the master node controls the state of the cluster; which applications are running and their
-corresponding container images. The master node is the origin for all task assignments. It coordinates processes such
-as scheduling and scaling applications maintaining a cluster's state and implementing updates.
-
-\fig{img/k97}{0.4}
-
-While worker nodes have the three processes we already described (container runtime, kubelet, kube$-$proxy), master
-nodes have four completely different processes running inside them. As with worker nodes, these four processes run on
-every master node that control the cluster. \v
-
-The first processes is called ``API server''.
-
-\bd[API Server]
-The \textbf{API server} is a key component and serves the Kubernetes API using JSON over HTTP, which provides both the
-internal and external interface to Kubernetes.
-\ed
-
-The API server processes and validates REST requests and updates the state of the API objects, thereby allowing
-clients to configure workloads and containers across worker nodes.
-
-\fig{img/k98}{0.4}
-
-In simple words, when you as a user wants to deploy a new application in a Kubernetes cluster, you interact with the
-API server using some client (it could be a UI like Kubernetes dashboard, or it could be a command line tool like
-kubelet, or a Kubernetes API). In essence, API server is like a cluster Gateway which gets the initial request of any
-updates into the cluster or even the queries from the cluster and it also acts as a gatekeeper for authentication to
-make sure that only authenticated and authorized requests get through. That means that whatever you want to do, you
-have to talk to the API server on the master node and the API server then will validate your request, and if
-everything is fine then it will forward your request to other processes. This is very good for security, because you
-just have one entry point into the cluster \v
-
-Whenever you make a request to the API server, after it validates your request, it will hand it to another process in
-the master node called ``scheduler'' which will perform the request through a new pod on one of the worker nodes.
-
-\bd[Scheduler]
-The \textbf{scheduler} is the pluggable component that selects which node an unscheduled pod runs on, based on resource
-availability.
-\ed
-
-The scheduler tracks resource use on each node to ensure that workload is not scheduled in excess of available
-resources. For this purpose, the scheduler must know the resource requirements, resource availability, and other
-user$-$provided constraints and policy directives such as quality$-$of$-$service, affinity/anti$-$affinity
-requirements, data locality, and so on. In essence, the scheduler's role is to match resource supply to workload demand.
-
-\fig{img/k99}{0.4}
-
-Scheduler instead of just randomly assigning to any node, it has this whole intelligent way of deciding on which
-specific worker node the next pod will be scheduled. First it will look at your request and see how much resources
-(CPU, RAM, etc) the pod that you want to schedule will need. Then it's going to go through all the worker nodes and
-see the available resources on each one of them. If it says that one of them is the least busy or has the most
-resources available it will schedule the new pod on that note. \v
-
-An important point here is that the scheduler just decides on which node a new pod will be scheduled. The process
-that actually starts that pod within the node is kubelet, which gets the request from the scheduler and executes it
-on that specific node. \v
-
-The next process is called ``controller manager'' and it is another crucial component that detects the pods that have
-died and reschedules them as soon as possible.
-
-\bd[Controller Manager]
-A \textbf{Controller Manager} is a reconciliation loop that drives actual cluster state toward the desired cluster
-state, communicating with the API server to create, update, and delete the resources it manages (pods, service
-endpoints, etc).
-\ed
-
-The controller manager is a process that manages a set of core Kubernetes controllers.
-
-\fig{img/k100}{0.4}
-
-What controller manager does, is detecting the state changes (like crashing of pods) and trying to recover the
-cluster state as soon as possible. In order to do so, it makes a request to the scheduler to reschedule those dead
-pods. At the same time scheduler decides, based on the resource calculation, which worker nodes should restart those
-pods again and makes requests to the corresponding kubelet on those worker nodes to actually restart the pods. \v
-
-Finally, the last master process is called ``etcd'' and it is a key$-$value store of a cluster state.
-
-\bd[etcd]
-\textbf{etcd} is a persistent, lightweight, distributed, key$-$value data store developed by CoreOS that reliably
-stores the configuration data of the cluster, representing the overall state of the cluster at any given point of
-time.
-\ed
-
-\fig{img/k101}{0.4}
-
-You can think of etcd as the cluster's brain, which means that every change in the cluster gets saved or updated into
-this key$-$value data store of edcd. The reason why etcd is so important for a cluster, is because all the other
-processes (scheduler, controller manager, etc) work because of etcd's data. For example, scheduler knows what
-resources are available on worker node, and controller manager knows that a cluster state changed in some way, due to
-the information that is stored in etcd. \v
-
-It is important to note that the actual application data (e.g.\ database application running inside a cluster) will not
-be stored in etcd, since the latter is just a database for cluster's state information used for master processes. \v
-
-So now you probably already understood why that four master processes are absolutely crucial for the cluster's
-operation. In practice a Kubernetes' cluster is usually made up of multiple masters nodes where each of them runs its
-processes. Of course, the API server is also load balanced and the etcd store forms a distributed storage across all
-the master nodes. \v
-
-In a very small cluster you would probably have two or three master nodes and a couple of worker notes. Also to note
-here that the hardware resources of master and worker nodes actually differ. Master processes are more important but
-they actually have less load of work, so they need less resources than worker nodes, which do the actual job of
-running those pods. As your application complexity, and its demand of resources increases, you may actually need to
-add more master and worker nodes to your cluster, and thus forming a more powerful and robust cluster to meet your
-application resource requirements.
-
-\fig{img/k102}{0.4}
-
-\subsection{Google Kubernetes Engine (GKE)}
+\textbf{Important}:~\textit{This section requires a basic understanding of Kubernetes. If you are not familiar with
+Kubernetes, we suggest you to first read the corresponding ``Kubernetes'' (\ref{sec:kubernetes}) section in the
+``Tecnologies'' chapter of these notes.}
 
 \bd[Google Kubernetes Engine (GKE)]
-\textbf{Google Kubernetes Engine (GKE)} provides a managed environment for deploying, managing, and scaling your
-containerized applications, powered by the Kubernetes open source cluster management system which provides the
-mechanisms through which you interact with your cluster.
+\textbf{Google Kubernetes Engine} (\textbf{GKE}) is a container as a service (CaaS) component of GCP which offers
+a managed environment for deploying, managing, and scaling containerized applications, powered by Kubernetes.
 \ed
 
-The GKE environment consists of multiple machines (specifically, compute engine instances) grouped together to form a
-cluster. You then use Kubernetes commands and resources to deploy and manage your instances, perform administration
-tasks, set policies, and monitor the health of your deployed workloads. Kubernetes draws on the same design
-principles that run popular Google services and provides the same benefits: automatic management, monitoring and
-liveness probes for application containers, automatic scaling, rolling updates, and more. When you run your
-applications on a cluster, you're using technology based on Google's 10+ years of experience running production
-workloads in containers.
+Some of the benefits of using GKE are:
+\bit
+\item \textbf{Platform Management}: GKE manages the underlying infrastructure, including the nodes and the control
+plane, so that one can focus on deploying and managing applications.
+\item \textbf{Improved Security Posture}: GKE provides a hardened node operating system, built-in security measures,
+automatic upgrades to new GKE versions, and integrated security posture monitoring tooling.
+\item \textbf{Cost Optimization}: GKE offers a pay-as-you-go pricing model, where one only pays for the resources
+that they use.
+\item \textbf{Reliability and Availability}: GKE offers a 99\% monthly uptime service level objective (SLO), and
+proactive monitoring and recommendations to mitigate potential workload disruptions.
+\eit
+
+A GKE environment consists of of a control plane and multiple nodes (worker machines) which are GCE instances (VMs),
+that are grouped together to form a GKE cluster. GKE manages the entire underlying infrastructure of clusters,
+including the control plane, nodes, and all system components. \v
+
+The control plane is the unified endpoint for the cluster running all the necessary processes including managing
+what runs on all of the cluster's nodes, scheduling and managing apps' lifecycle, and managing network and storage
+resources. \v
+
+The user packages apps into containers, and deploys sets of containers as pods to the nodes. Then, the user uses
+Kubernetes to interact with the GKE cluster through the control plane and perform processes including administering,
+scaling, and monitoring the cluster and its nodes.
+
+\fig{gcp6}{0.5}
 
 \subsection{Kubectl}
 
-In the previous section we went through the basic components of Kubernetes, and we explained each one of them $-$,
-what do they do and what is their purpose in Kubernetes. Now, we obviously need some way to interact with Kubernetes
-(more specifically with the GKE cluster) in order to create and manipulate all the components we have just introduced.\v
-
-Recall that one of the four master node processes was the ``API server'' which is actually the main entry point into
-the Kubernetes cluster. In other words, in order to do anything in the cluster you have to talk to the API server.
-Kubernetes offers three different ways to talk to the API server: Kubernetes Dashboard, Kubernetes API, and Kubectl.
-
-\bd[Kubernetes Dashboard]
-\textbf{Kubernetes Dashboard} is a web-based Kubernetes user interface used to deploy containerized applications to a
-Kubernetes cluster, troubleshoot your containerized application, and manage the cluster resources.
-\ed
-
-You can use Kubernetes dashboard to get an overview of applications running on your cluster, as well as for creating
-or modifying individual Kubernetes components. Kubernetes dashboard also provides information on the state of
-Kubernetes resources in your cluster and on any errors that may have occurred.
-
-\bd[Kubernetes API]
-\textbf{Kubernetes API} lets you query and manipulate the state of API objects in Kubernetes.
-\ed
-
-While you can access the API directly using REST calls through a client library, most operations can be performed
-through the kubectl command-line interface which in turn use the API\@.
-
 \bd[Kubectl]
-\textbf{Kubectl} is the Kubernetes command$-$line tool which allows us to run commands against Kubernetes clusters $-$
-deploying applications, inspecting and managing cluster resources, and viewing logs.
+\textbf{Kubectl} is the GCP SDK component which allows to interact with GKE clusters.
 \ed
 
-Kubectl is actually the most powerful of all the three clients because through it you can basically do anything, and
-this will be the focus of the current section. \v
-
-Kubectl is one of the default installed components of Google Cloud SDK hence, it can be installed in the same way as
-\code{gcloud}, i.e.\ :
+Kubectl is not one of the default components of GCP SDK and it needs to be installed separately:
 \begin{bash}
-# install Google Cloud SDK via Homebrew
-brew install google$-$cloud$-$sdk
-\end{bash} can be installed via Homebrew:
-
-Once installed one can check the current version as usual by:
-\begin{bash}
-# show kubectl version
-kubectl version
+# install kubectl
+gcloud components install kubectl
 \end{bash}
 
-In order to begin, the \code{kubectl create} command creates a resource from a file or from stdin. Recall in the
-previous section, we said that we will not be working with pods, nodes, ReplicaSets and ReplicationControllers, but
-we will be creating deployments where in there we will specify everything we need. With the \code{kubectl create
-deployment} command one can create everything she needs:
-
+To begin, with the \code{kubectl create deployment} command one can create everything they need:
 \begin{bash}
 # create a deployment with a given name from a given image
 kubectl create deployment <name> --image=<image>
 \end{bash}
 
-As we have already said, deployment is a blueprint that has all the information needed for creating the pod. The
-command above is the most basic configuration for a deployment where we are just stating the name and the image, and
-the rest is just the defaults. However, in most cases we want to specify a lot of thing in the deployment. \v
+As we have already said in the Kubernetes section, deployment is a blueprint that has all the information needed for
+creating the pod. The command above is the most basic configuration for a deployment where we are just stating the
+name and the image, and the rest is just the defaults. However, in most cases we want to specify a lot of thing in
+the deployment. More on that, in the next section. \v
 
 In case we want to change something in the deployment we can use the \code{kubectl edit deployment} command:
-
 \begin{bash}
 # edit a deployment
 kubectl edit deployment <name>
 \end{bash}
 
 Similarly to delete a deployment:
-
 \begin{bash}
 # delete a deployment
 kubectl delete deployment <name>
 \end{bash}
 
-With the \code{kubectl get} command one can print a table of the most important information about the specified
-component.
-
+With the \code{kubectl get} command one can display a table of the most important information about the specified
+component:
 \begin{bash}
-# print table of most important information about the component
-kubectl get <component>
-\end{bash}
-
-The component can be any component we introduced in the previous section: \code{nodes}, \code{pod}, \code{services},
-\code{deployment}, \code{replicaset}, etc. Including the output flag \code{$-$o} one can get the information in a
-desired output format. Among the most useful output formats are: \code{json}, \code{yaml}, \code{name},
-\code{go-template} and \code{wide}:
-
-\begin{bash}
-# print table of most important information about the component in specified format
+# display important information about the component in specified format
 kubectl get <component> $-o$ <format>
 \end{bash}
 
+The component can be any component we introduced in the Kubernetes section: \code{nodes}, \code{pod}, \code{services},
+\code{deployment}, \code{replicaset}, etc. Including the output flag \code{-o} one can get the information in a
+desired output format. Among the most useful output formats are: \code{json}, \code{yaml}, \code{name},
+\code{go-template} and \code{wide}.
+
 One can get a detailed description of a pod, including related resources such as events or controllers by using the
 \code{kubectl describe} command:
-
 \begin{bash}
 # show details of a specific pod
 kubectl describe <pod>
 \end{bash}
 
-When it comes to troubleshooting, if something goes wrong in the pod, you want to see the logs of the pod by:
-
+When it comes to troubleshooting, if something goes wrong in the pod, one can see its logs by:
 \begin{bash}
 # batch$-$retrieve logs present at the time of execution
 kubectl logs <pod>
 \end{bash}
 
 More often than not one wants to actually connect to the pod and use the terminal directly in the container. We can
-achieve this with a combination of tty \code{$-$t} flag which allocates a pseudo$-$TTY and interactive \code{$-$i}
-flag which keeps \code{STDIN} open:
-
+achieve this with a combination of tty \code{-t} flag which allocates a pseudo-TTY and interactive \code{-i} flag which
+keeps \code{STDIN} open:
 \begin{bash}
-# connect to the terminal of a running pod
+# connect to a running pod
 kubectl exec $-$i $-$t <pod>
 \end{bash}
 
-In a previous section we gave a minimalistic example of creating a deployment, where we just specified the name
-and the image, and we said that in most cases we want to specify a lot of things in the deployment. Obviously writing
-all this configuration down in command line will be impractical. Because of that, in practice you would usually work
-with Kubernetes configuration files.
+\subsection{Configuration Files}
+
+Previously, with the \code{kubectl create deployment} command, we gave a minimalistic example of creating a deployment,
+where we just specified the name and the image. As we also mentioned, in most cases we want to specify a lot of things
+in the deployment. Obviously writing all this configuration down in command line will be impractical. Because of that,
+in practice one would usually work with the so-called ``configuration files''.
 
 \bd[Configuration File]
 A \textbf{configuration file} is a file that defines the configuration for a Kubernetes object.
 \ed
 
-In a configuration file one can specify what the type of the component is (e.g.\ deployment, pod, service, etc), what
-the name of the component is, what image is it based off, and many other options. Once all the specifications are
-gathered in the configuration file, you just tell kubectl to execute that configuration file by using the
-\code{kubectl apply} command which takes the configuration file as a parameter and does whatever you have written there:
+Kubernetes configuration files are more often than not \code{YAML} files, stored in version control systems before
+being pushed to the cluster (this allows us to quickly roll back a configuration change if necessary). \v
 
+The format of a configuration file is very specific:
+\bit
+\item \textbf{apiVersion}: The file starts with the API version that we want to use in the first line.
+\item \textbf{kind}: It continues with the kind of component we want to create (e.g.\ deployment, pod, service, etc) in
+the second line.
+\item \textbf{metadata}: The next couple of lines are the metadata of the component, including the name of the
+component, a label to distinguish it among other components and many other things.
+\item \textbf{specs}: The next part is the actual specifications of the component, where we configure the actual objects
+that make up the component.
+\item \textbf{status}: The last part is the status of the component, which is automatically generated by Kubernetes.
+\eit
+
+\begin{block}
+apiVersion: <api_version>
+kind: <component>
+metadata:
+    name: <component_name>
+    labels:
+        <label_name>: <label_value>
+    $\dots$
+specs:
+    $\dots$
+status:
+    $\dots$
+\end{block}
+
+Once all the specifications are gathered in the configuration file, one just tells kubectl to execute that configuration
+file by using the \code{kubectl apply} command which takes the configuration file as a parameter and performs the
+instructions in it:
 \begin{bash}
 # create cluster through a configuration file
 kubectl apply $-$f <configuration_file>
 \end{bash}
 
-From now on we will be doing everything related to Kubernetes through configuration files. So for example, in order
-to delete a cluster, we will simply delete the configuration file that created the cluster by using the command:
-
+In real life, one interacts with Kubernetes through configuration files, so from now on we will be doing everything
+related to Kubernetes through configuration files. So for example, in order to delete a cluster, one would simply
+delete the configuration file that created the cluster:
 \begin{bash}
 # delete a cluster by deleting the configuration file
 kubectl delete $-$f <configuration_file>
 \end{bash}
 
-Kubernetes configuration files are more often than not \code{YAML} files, stored in version control systems before
-being pushed to the cluster (this allows us to quickly roll back a configuration change if necessary). The format of
-a configuration file is very specific. In the first two lines we specify the API version we want to use (best
-practice is to use the latest stable API version) and the kind of component we want to create (e.g.\ deployment, pod,
-service, etc):
+As a last note, a project may have multiple configuration files (one for each component), or a single configuration file
+with many components (either as nested configurations or separated by dashes). \v
 
-\begin{block}
-apiVersion: <latest_stable_api_version>
-kind: <component>
-\end{block}
-
-After the first two lines, each configuration file consists of three main parts. The first part is called
-``metadata'' and, as the name suggests, is where the metadata of the component that you're creating resides. Metadata
-include the name of the component, a label to distinguish it among other components and many other things:
-
-\begin{block}
-apiVersion: <latest_stable_api_version>
-kind: <component>
-metadata:
-   name: <component_name>
-   labels: \dots
-\end{block}
-
-The second part is called ``spec'' and here we configure the actual objects that make up the component. Obviously the
-attributes will be specific to the kind of a component we create, so, for example, deployment will have its own
-attributes that only apply for deployments and service will have its own stuff:
-
-\begin{block}
-apiVersion: <latest_stable_api_version>
-kind: <component>
-metadata:
-   name: <component_name>
-   labels: \dots
-specs:
-    \dots
-\end{block}
-
-The complete list of Kubernetes attributes for each component is, of course, very large. \v
-
-The third and last part is called ``status'' and it is automatically generated and added by Kubernetes. The way it
-works is that Kubernetes compares what is the desired state of the component (as specified in the configuration file)
-and what is the actual state of the component (i.e.\ the status of the component) as it is stated in the \code{etcd}.
-If the desired state and status do not match then Kubernetes knows there's something to be fixed. \v
-
-In reality, a project may have multiple configuration files (one for each component), or configuration files with
-many components in them (either as nested configurations or separated by dashes). Let's see an example of a project
-with built with configuration files to get a better understanding.
+Let's see an example of a project with built with configuration files to get a better understanding.
 
 \subsection*{Application: A Mongo Database With UI Build With Configuration Files}
 
-In this example we will deploy two applications: a Mongo database (MongoDB) and a Mongo Express UI (Mongo Express). \v
-
+In this example we will deploy two applications: a Mongo database (MongoDB) and a Mongo Express UI (Mongo Express).
 First things first, let's create a secret configuration map which we will call \code{mongo-secret.yaml} to store the
 credentials for the Mongo database:
-
 \begin{block}
 apiVersion: v1
 kind: Secret
@@ -2040,17 +1491,15 @@ data:
 
 Before anything we need to create the secret component inside the cluster in order to be available for the next
 configuration files:
-
 \begin{bash}
 # create secret component
 kubectl apply $-$f mongo$-$secret.yaml
 \end{bash}
 
-Now we will create the MongoDB pod and an internal service in order for other components inside the cluster to be
-able to talk to it. We will do that through a deployment configuration file which it will have a nested configuration
-template for creating the MongoDB pod, and attached to it will have a service configuration file (since it makes
-sense to be put together). Let's call this configuration file \code{mongo-db.yaml}: \v
-
+Now we will create the MongoDB pod and an internal service for other components inside the cluster to be able to talk
+to it. We will do that via a configuration file which it will have a nested configuration template for creating the
+MongoDB pod, and attached to it will have a service configuration file (since it makes sense to be put together). Let's
+call this configuration file \code{mongo-db.yaml}:
 \begin{block}
 apiVersion: apps/v1
 kind: Deployment
@@ -2098,18 +1547,16 @@ spec:
       targetPort: 27017
 \end{block}
 
-Now everything is in place so let's create the MongoDB components (pod and service) inside the cluster:
-
+Now we are ready to create the MongoDB components (pod and service) inside the cluster:
 \begin{bash}
 # create MongoDB components
 kubectl apply $-$f mongo$-$db.yaml
 \end{bash}
 
-Now we want to create the Mongo Express UI. Before that, we're going to need a database URL of Mongo database so that
-Mongo Express can connect to it and, of course, credentials of the database. Credentials are already in place with
-the secret component, however we are going to create a config map component that contains the database URL. Let's
-name this configuration file \code{mongo-configmap.yaml}:
-
+Now we want to create the Mongo Express UI. Before that, we're going to need a database URL of Mongo database (so that
+Mongo Express can connect to it) and credentials of the database. Credentials are already in place with the secret
+component, however will create a config map component that contains the database URL. Let's name this configuration f
+ile \code{mongo-configmap.yaml}:
 \begin{block}
 apiVersion: v1
 kind: ConfigMap
@@ -2121,16 +1568,13 @@ data:
 
 As with the secret component, before anything we need to create the config map component inside the cluster in order
 to be available for the next configuration files:
-
 \begin{bash}
 # create mongo database component
 kubectl apply $-$f mongo$-$configmap.yaml
 \end{bash}
 
 Now we can create the Mongo Express component through another deployment configuration file which we will call it
-\code{mongo-express.yaml}. In this configuration file we will also include an external service in order for us to be
-able to reach the UI:
-
+\code{mongo-express.yaml}
 \begin{block}
 apiVersion: apps/v1
 kind: Deployment
@@ -2169,20 +1613,9 @@ spec:
             configMapKeyRef:
               name: mongodb-configmap
               key: database_url
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: mongo-express-service
-spec:
-  selector:
-    app: mongo-express
-  type: LoadBalancer
-  ports:
-    - protocol: TCP
-      port: 8081
-      targetPort: 8081
-      nodePort: 30000
 \end{block}
 
 Finally, we create the Mongo Express in the same way as MongoDB\@.
+
+\section{Google App Engine (GAE)}
+
