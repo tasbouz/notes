@@ -214,8 +214,8 @@ FaaS is a serverless computing service allowing developers to execute individual
 events, without the complexity of building and maintaining the needed infrastructure.
 
 \be
-Two great examples of FaaS in GCP is Google Cloud Functions which are single-purpose functions that are triggered by
-cloud events, and Google Cloud Run which is a service that lets you run serverless containers on Google's infrastructure.
+A great examples of FaaS in GCP is Cloud Run which is a service that lets you run serverless containers on Google's
+infrastructure.
 \ee
 
 Here follows a figure summarizing all service models.
@@ -378,13 +378,13 @@ on this later).
 \eit
 
 \be
-For example, the command \code{gcloud compute instances list $-$$-$project=my-project} lists all the instances in the
+For example, the command \code{gcloud compute instances list --project=my-project} lists all the instances in the
 project \code{my-project}, where \code{compute} is the component, \code{instances} is the subcomponent, \code{list}
-is the operation, and \code{$-$$-$project} is the flag.
+is the operation, and \code{--project} is the flag.
 \ee
 
 Probably the most important command is the one for getting help. In order to do so, one can use the flag
-\code{$-$$-$help} at any \code{gcloud} level:
+\code{--help} at any \code{gcloud} level:
 \begin{bash}
 # get help
 gcloud $--$help
@@ -416,8 +416,8 @@ on a per-invocation basis, properties allow to maintain the same settings across
 override properties when both are set.
 
 \be
-For example, the GCP SDK supports both the \code{$-$$-$project} flag and \code{project} property. If one sets the
-\code{project} property to \code{my-project} and run a command that uses the \code{$-$$-$project} flag, the flag will
+For example, the GCP SDK supports both the \code{--project} flag and \code{project} property. If one sets the
+\code{project} property to \code{my-project} and run a command that uses the \code{--project} flag, the flag will
 override the property.
 \ee
 
@@ -539,9 +539,9 @@ Some examples of account level resources are: organization, folder, project, and
 \ee
 
 Resources are organized hierarchically using a parent-child relationship. All resources except for the highest resource
-in a hierarchy have exactly one parent. At the lowest level, service level resources are the fundamental components
-that make up all GCP computing services. This hierarchy is designed to map an organization's operational structure and
-to manage access control and permissions for groups of related resources, giving organizations better management of
+in a hierarchy have exactly one parent. At the lowest level, service level resources are the fundamental components that
+make up all GCP computing services. This hierarchy is designed to map an organization's operational structure and to
+manage access control and permissions for groups of related resources, giving organizations better management of
 permissions and access control. \v
 
 Building the structure from the top down we start off with the ``organization''.
@@ -638,7 +638,7 @@ profile are divided into two types:
 \subsection{APIs}
 
 \bd[GCP APIs]
-\textbf{GCP APIs} are application programmatic interfaces to Google Cloud services.
+\textbf{GCP APIs} are application programmatic interfaces to GCP services.
 \ed
 
 GCP APIs are a key part of GCP, allowing to interact with its services and resources. One could use the GCP console
@@ -663,7 +663,7 @@ code one needs to write. \v
 Client libraries are the recommended option for accessing the APIs programmatically, where available, since they:
 \bit
 \item Provide idiomatic code in each language to make Cloud APIs simple and intuitive to use.
-\item Provide a consistent style across client libraries to simplify working with Google Cloud APIs.
+\item Provide a consistent style across client libraries to simplify working with GCP APIs.
 \item Handle all the low-level details of communication with the server, including authentication.
 \item Can be installed using familiar package management tools such as \code{npm} and \code{pip}.
 \eit
@@ -737,11 +737,11 @@ gcloud auth list
 gcloud config set account <account>
 \end{bash}
 
-An important thing to underastand is that everything we descirbed so far, and all the commands we introduced,
-are used to authenticate and authorize the GCP SDK to access GCP resources in the CLI. \v
+An important thing to underastand is that everything we descirbed so far, and all the commands we introduced, are used
+to authenticate and authorize the GCP SDK to access GCP resources in the CLI. \v
 
-However, when one is working outside the CLI with third-party clients and libraries, those clients and libraries
-won't be able to be authenticated and authorized automatically with the GCP SDK credentials created during
+However, when one is working outside the CLI with third-party clients and libraries, those clients and libraries won't
+be able to be authenticated and authorized automatically with the GCP SDK credentials created during
 \code{gcloud auth login} and stored in \code{$~$/.config/gcloud}. Instead, they need to have their own credentials,
 that are obtained through a different strategy called ``application default credentials''.
 
@@ -765,17 +765,17 @@ by running:
 gcloud auth application$-$default login
 \end{bash}
 
-This command places a JSON file called ``application\_default\_credentials.json'' containing the provided Google
-account credentials in \code{$~$/.config/gcloud/application\_default\_credentials.json}. Important to notice that
-the credentials one provides to ADC by using the GCP SDK are distinct from the actual credentials the GCP SDK uses
-to authenticate to GCP\@. \v
+This command places a JSON file called ``application\_default\_credentials.json'' containing the provided Google account
+credentials in \code{$~$/.config/gcloud/application\_default\_credentials.json}. Important to notice that the
+credentials one provides to ADC by using the GCP SDK are distinct from the actual credentials the GCP SDK uses to
+authenticate to GCP\@. \v
 
 An important thing: this local ADC ``application\_default\_credentials.json'' file is associated with the Google
 account, and not the GCP SDK configuration. Changing to a different GCP SDK configuration might change the identity
 used by the GCP SDK, but it does not affect the local ADC file. \v
 
-If one no longer needs the ADC credentials file, they can revoke them by using the following command which deletes
-the ``application\_default\_credentials.json'':
+If one no longer needs the ADC credentials file, they can revoke them by using the following command which deletes the
+``application\_default\_credentials.json'':
 \begin{bash}
 # revoke application default credentials
 gcloud auth application$-$default revoke
@@ -805,8 +805,8 @@ involved. Service accounts do not have passwords, and cannot log in via browsers
 Applications use service accounts to make authorized API calls by authenticating as the service account itself. When
 one runs an application that's on GCP, the code runs as the account they specify by using the service account to
 authenticate between the application and GCP services so that the users aren't directly involved. When an application
-authenticates as a service account, it has access to all resources that the service account has permission to access. As
-with a Google account, similarly a service account is identified by its email address, which is unique to the account
+authenticates as a service account, it has access to all resources that the service account has permission to access.
+As with a Google account, similarly a service account is identified by its email address, which is unique to the account
 and its form depends on the type of service account, as we will see later. \v
 
 One can create as many service accounts as needed to represent the different logical components of an application. All
@@ -1291,14 +1291,14 @@ gcloud compute instances delete <instance>
 Once an instance is created, we can connect to it through a secure shell (SSH) protocol. To do so, first we need to
 create a pair of public-private RSA keys and copy the public key to the clipboard:
 \begin{bash}
-# create public-private key pair
-ssh-keygen -f <filename> && cat <public_key> | pbcopy
+# create public$-$private key pair
+ssh$-$keygen $-$f <filename> && cat <public$-$key> | pbcopy
 \end{bash}
 
 The, we can add the public key to the instance's metadata:
 \begin{bash}
 # add public key to instance's metadata
-gcloud compute instances add-metadata <instance> --metadata-from-file ssh-keys=<public_key>
+gcloud compute instances add-metadata <instance> --metadata-from-file ssh-keys=<public$-$key>
 \end{bash}
 
 Now we can SSH into the instance by running:
@@ -1439,12 +1439,12 @@ that make up the component.
 \eit
 
 \begin{block}
-apiVersion: <api_version>
+apiVersion: <api-version>
 kind: <component>
 metadata:
-    name: <component_name>
+    name: <component-name>
     labels:
-        <label_name>: <label_value>
+        <label-name>: <label-value>
     $\dots$
 specs:
     $\dots$
@@ -1457,7 +1457,7 @@ file by using the \code{kubectl apply} command which takes the configuration fil
 instructions in it:
 \begin{bash}
 # create cluster through a configuration file
-kubectl apply $-$f <configuration_file>
+kubectl apply $-$f <configuration$-$file>
 \end{bash}
 
 In real life, one interacts with Kubernetes through configuration files, so from now on we will be doing everything
@@ -1465,7 +1465,7 @@ related to Kubernetes through configuration files. So for example, in order to d
 delete the configuration file that created the cluster:
 \begin{bash}
 # delete a cluster by deleting the configuration file
-kubectl delete $-$f <configuration_file>
+kubectl delete $-$f <configuration$-$file>
 \end{bash}
 
 As a last note, a project may have multiple configuration files (one for each component), or a single configuration file
@@ -1555,8 +1555,8 @@ kubectl apply $-$f mongo$-$db.yaml
 
 Now we want to create the Mongo Express UI. Before that, we're going to need a database URL of Mongo database (so that
 Mongo Express can connect to it) and credentials of the database. Credentials are already in place with the secret
-component, however will create a config map component that contains the database URL. Let's name this configuration f
-ile \code{mongo-configmap.yaml}:
+component, however will create a config map component that contains the database URL. Let's name this configuration
+file \code{mongo-configmap.yaml}:
 \begin{block}
 apiVersion: v1
 kind: ConfigMap
@@ -1617,5 +1617,663 @@ spec:
 
 Finally, we create the Mongo Express in the same way as MongoDB\@.
 
-\section{Google App Engine (GAE)}
+%TODO: Write the Google App Engine (GAE) section
 
+\section{Cloud Run}
+
+\bd[Cloud Run]
+\textbf{Cloud Run} is a function as a service (FaaS) component of GCP which offers a managed platform for running
+containerized applications on Google's scalable infrastructure.
+\ed
+
+Cloud Run supports containerized image applications written in any programming language. While Cloud Run requires the
+application to be packaged in a container image, it doesn't require the developer to build the container image
+themselves, since one can use the source-based deployment option that builds the container automatically, using the
+best practices for the language in use. \v
+
+On top of that, Cloud Run was built to work well together with other services on GCP, so one can build full-featured
+applications. In short, Cloud Run allows developers to spend their time writing their code, and very little time
+operating, configuring, and scaling their Cloud Run service. Onr doesn't have to create a cluster or manage
+infrastructure in order to be productive with Cloud Run\@. \v
+
+Cloud Run is a good fit for use cases serving requests, built to handle multiple instances of the app running
+simultaneously, that do not require a local persistent file system, and more than 8 CPU and 32 GiB of memory per
+instance. \v
+
+To enable the Cloud Run Admin API for the project:
+\begin{bash}
+# enable Cloud Run Admin API
+gcloud services enable run.googleapis.com
+\end{bash}
+
+After Cloud Run is enabled, the Compute Engine default service account is automatically created. \v
+
+Cloud Run requires Cloud Build\footnote{For more information on Cloud Build check the corresponding chapter
+(\ref{sec:cloud_build}).} to build container images, so one needs to enable it. In order for Cloud Build to be able to
+build sources, we need to grant the \code{Cloud Build Service Account} role to the Compute Engine default service
+account by running:
+\begin{bash}
+# grant Cloud Build Service Account role to Compute Engine default service account
+gcloud projects add$-$iam$-$policy$-$binding <project$-$id>
+    $-$$-$member=serviceAccount:<project$-$number>$-$compute@developer.gserviceaccount.com
+    $-$$-$role=roles/cloudbuild.builds.builder
+\end{bash}
+
+Cloud Run also requires Artifact Registry\footnote{For more information on Artifact Registry check the corresponding
+chapter (\ref{sec:artifact_registry}).} to store container images, so one needs to enable it. In order to be able to
+push images to the Artifact Registry, we need to grant the \code{Storage Object Admin} role to the Compute Engine
+default service account by running:
+\begin{bash}
+# grant Storage Object Viewer role to the Compute Engine default service account
+gcloud projects add$-$iam$-$policy$-$binding <project$-$id>
+    $-$$-$member=serviceAccount:<project$-$number>$-$compute@developer.gserviceaccount.com
+    $-$$-$role=roles/storage.objectViewer
+\end{bash}
+
+Last but not least, a good (but optional) idea, is to set the default Cloud Run region with the GCP SDK properties to
+avoid prompts from the command line:
+\begin{bash}
+# set the default Cloud Run region
+gcloud config set run/region <region>
+\end{bash}
+
+On Cloud Run, code can run in 3 different ways that we will examine separately:
+\bit
+\item As a \textbf{service}: A long-lived container that listens for incoming requests, events, or functions.
+\item As a \textbf{function}: A special form of service, including a container that runs a single function in response
+to an event.
+\item As a \textbf{job}: A container that runs a single job to completion.
+\eit
+
+\subsection{Cloud Run Service}
+
+\bd[Cloud Run Service]
+\textbf{Cloud Run service} is used to run code continuously, responding to requests, events, or functions.
+\ed
+
+\fig{gcr}{0.45}
+
+A Cloud Run service provides the infrastructure required to run a reliable, long-lived container that listens for
+incoming HTTP requests, Pub/Sub messages, or other events, and serves responses. User's responsibility is to make
+sure the application listens on a port and handles requests. Possible use cases include websites and applications,
+APIs and microservices, streaming data processing, asynchronous workloads, and AI inference. Some of the features of
+Cloud Run services are:
+
+\bit
+\item \textbf{Unique HTTPS Endpoint}: Every Cloud Run service is provided with an HTTPS endpoint on a unique
+subdomain of the \code{*.run.app} domain. This endpoint is automatically generated by Cloud Run and is based on the
+service name and the region where the service is deployed. Cloud Run takes care of all the underlying infrastructure
+needed.
+
+\item \textbf{Fast Request-Based Auto Scaling}: Cloud Run is built to rapidly and automatically add and remove
+instances to handle all incoming requests or to handle increased CPU utilization outside requests. For this to work,
+the billing must be set to ``instance-based billing'' where one is charged for the entire lifetime of an instance,
+without per-request fees. On the other hand one can choose the ``request-based billing'' where one is charged
+per-request, and when an instance is not processing requests, they're not charged. \v
+
+A service can rapidly scale out to one thousand instances. One can utilize even more than one thousand instance by
+requesting a quota increase. On the other hand, if one is concerned about costs or overloading downstream systems,
+they can also limit the maximum number of instances to less than one thousand. \v
+
+If demand decreases, Cloud Run removes idle containers, and if there are no incoming requests to the service, even
+the last remaining instance will be removed. This behavior is commonly referred to as ``scale to zero'' and is
+useful for services that have low or intermittent traffic. When a service scales to zero, it doesn't consume any
+resources, and one doesn't pay for any instances. When a new request comes in, Cloud Run automatically starts a new
+instance to handle the request. This negatively impacts the response time for these first requests, depending on how
+fast the container becomes ready to handle requests. To make sure a service doesn't scale to zero instances, one can
+configure Cloud Run to keep a minimum amount of instances active.
+
+\item \textbf{Built-In Traffic Management}: Every deployment creates a new immutable revision. One can route
+incoming traffic to the latest revision, roll back to a previous revision, or split traffic to multiple revisions at
+the same time, to perform a gradual rollout. This is useful if one wants to reduce the risk of deploying a new
+revision. They can start with sending 1\% of requests to a new revision, and increase that percentage gradually as
+they gain confidence in the new revision.
+
+\item \textbf{Private and Public Services}: A Cloud Run service can be reachable from the internet, or can restrict
+access by specifying an access policy using Cloud IAM, by using ingress settings to restrict network access (this is
+useful if one wants to allow only internal traffic from the VPC and internal services, or by allowing only
+authenticated users with Identity-Aware Proxy (IAP).
+
+\item \textbf{Disposable Container Filesystem}: Instances on Cloud Run are disposable. Every container has an
+in-memory, writable filesystem overlay, which is not persisted if the container shuts down. Cloud Run decides
+independently when to stop sending requests to an instance and shut it down. This means that the container must be
+stateless, and any data that needs to be persisted must be stored in an external data store. One can achieve this by
+integrating with Cloud Storage.
+\eit
+
+Now, let's move on and see how we can deploy an application to Cloud Run. First and foremost, as we have already
+seen, in order to be able to deploy in Cloud Run, one has to enable the Cloud Run Admin API, the Cloud Build API,
+and the Artifact Registry API, and assign the necessary roles to the Compute Engine default service account. \v
+
+Secondly, one needs (of course) an application to run. While Cloud Run allows the code to be built in any
+programming language, in these notes we will be assuming an application built in Python. On top of that, Cloud Run
+also expects the application to be stateless (not reyling on a persistent local state) and to be listening for
+requests. One can choose among HTTP requests, Pub/Sub messages, or events. In these notes we will be assuming a web
+server application that listens for HTTP requests. (One can use any web server framework they like, such as Flask,
+Django, FastAPI, etc). A very important caveat is that the service must listen for requests on the port specified by
+the \code{PORT} environment variable, which be default is the port \code{8080}. \v
+
+Finally, as we already mentioned, Cloud Run requires a container image to run. This step can be done in two different
+ways, depending on the deployment method one picks: ``source-based deployment'' or ``container-based deployment''.
+
+\subsubsection{Deploying A Cloud Run Service With Source-Based Deployment}
+
+\bd[Source-Based Deployment]
+\textbf{Source-based deployment} is a deployment method where Cloud Run automatically builds a container image from
+source code and deploys it to the Cloud Run service.
+\ed
+
+Source-based deployment is the easiest way to deploy an application to Cloud Run, as it doesn't require the developer
+to build the container image themselves. Cloud Run automatically builds the container image from the source code
+using Cloud Build, and deploys it to the Cloud Run service. \v
+
+In order to do so, the user must include a \code{Procfile} in the root of the project, which specifies the command that
+starts the application:
+\begin{block}
+web: <command>
+\end{block}
+
+\be
+For example, for a Python application, an option for the command would be \code{web: python3 app.py}.
+\ee
+
+Then, one can deploy the application to Cloud Run using the following command:
+\begin{bash}
+# deploy an application to Cloud Run using source-based deployment
+gcloud run deploy <service> $-$$-$source=<source>
+\end{bash}
+
+Upon successful completion, a message is displayed along with the URL of the deployed service. One can then see the
+Cloud Run service listed by running:
+\begin{bash}
+# list all Cloud Run services
+gcloud run services list
+\end{bash}
+
+\begin{bash}
+# show details of a specific Cloud Run service
+gcloud run services describe <service>
+\end{bash}
+
+\begin{bash}
+# delete a Cloud Run service
+gcloud run services delete <service>
+\end{bash}
+
+While source-based deployment is the easiest way to deploy an application to Cloud Run, it is generally not recommended
+for production workloads, since it it lacks some of the flexibility of ``container-based deployment''.
+
+\subsubsection{Deploying A Cloud Run Service With Container-Based Deployment}
+
+\bd[Container-Based Deployment]
+\textbf{Container-based deployment} is a deployment method where one builds a container image and deploys it to the
+Cloud Run service.
+\ed
+
+Container-based deployment is the most flexible (and the go-to way) to deploy an application to Cloud Run, as it allows
+the developer to build the container image themselves, and to customize the container image as needed. One can pick any
+container technology they like, however, in these notes we will be working exclusively with Docker.\footnote{For more
+information on Docker check the corresponding chapter (\ref{sec:docker}).} \v
+
+Cloud Run expects the docker container images to be stored in the Artifact Registry, so we need to build a repository
+in the Artifact Registry to store the docker container images:
+\begin{bash}
+# create a repository in the Artifact Registry
+gcloud artifacts repositories create <repository>
+    $-$$-$repository$-$format=docker
+    $-$$-$repository$-$mode=standard
+    $-$$-$description=<description>
+    $-$$-$immutable$-$tags
+    $-$$-$async
+\end{bash}
+
+Optionally we can also configure Docker to get access to Artifact Registry:
+\begin{bash}
+# configure Docker to authenticate to Artifact Registry
+gcloud auth configure$-$docker <location>$-$docker.pkg.dev
+\end{bash}
+
+As we descirbed in the Docker section, the way to containerize an application (and what Cloud Run expects) is by
+creating a \code{Dockerfile} in the root of the project and build the container image by running:
+\begin{bash}
+# build the container image locally
+docker build . $-$$-$tag <image$-$url>
+\end{bash}
+
+where the \code{$<$image-url$>$}'' is the URL of the container image and must satisfy the following format:
+\begin{block}
+<location>$-$docker.pkg.dev/<project$-$id>/<repository>/<image>:<tag>
+\end{block}
+
+Then, one can push the container image to the Artifact Registry:
+\begin{bash}
+# push the container image to the Artifact Registry
+docker push <image$-$url>
+\end{bash}
+
+Once the docker container image is pushed to the Artifact Registry, one can see it by using the commands described
+in the Artifact Registry section. One can deploy the application to Cloud Run by:
+\begin{bash}
+# deploy an application to Cloud Run using container$-$based deployment
+gcloud run deploy <service> $-$$-$image=<image$-$url> $-$$-$allow$-$unauthenticated
+\end{bash}
+
+The \code{--allow-unauthenticated} flag assigns the \code{Cloud Run Invoker IAM} role to \code{allUsers}, hence it
+allows unauthenticated invocations. This is useful for public services. Conversely, one can use the flag
+\code{--no-allow-unauthenticated} to disallow unauthenticated invocations. \v
+
+As with the case of source-based deployment, upon successful completion, a message is displayed along with the URL
+of the deployed service. \v
+
+If one needs to redeploy a new revision of the service, they can simply run the same command. Cloud Run will
+automatically create a new revision, will add a \code{--revision-suffix} to the service name, and will route incoming
+traffic to the new revision. The user has the option to choose their own revision name by using the
+\code{--revision-suffix} flag. \v
+
+As the reader can see, this process contains a lot of manual steps that one can automate by using Cloud Build. To do so,
+one needs to create a \code{cloudbuild.yaml} file with all the aforementioned steps:
+\begin{block}
+steps:
+
+    $\#$ Build the container image
+    - name: 'gcr.io/cloud-builders/docker'
+      entrypoint: 'docker'
+      args: ['build', '.', '--tag', '<image-url>']
+
+    $\#$ Push the container image to Artifact Registry
+    - name: 'gcr.io/cloud-builders/docker'
+      entrypoint: 'docker'
+      args: ['push', '<image-url>']
+
+    $\#$ Deploy container image to Cloud Run
+    - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+      entrypoint: gcloud
+      args: ['run', 'deploy', '<service>', '--image', '<image-url>','--allow-unauthenticated']
+\end{block}
+
+Then, one can build, push, and deploy the container image using Cloud Build:
+\begin{bash}
+# build, push, and deploy the container image using Cloud Build
+gcloud builds submit
+\end{bash}
+
+On top of that, one can also automate the deployment process by using Cloud Build triggers, as described in the
+Cloud Build section (\ref{subsec:cloud_build_triggers}).
+
+\subsection{Cloud Run Functions}
+
+A special form of Cloud Run services are the so-called ``Cloud Run functions''\footnote{Cloud Run Functions used to be
+a sepate service called ``Cloud Functions''. This service was integrated into Cloud Run and now it is called `` Cloud
+Run Functions''.}.
+
+\bd[Cloud Run Functions]
+A \textbf{Cloud Run function} is a Cloud Run service that is designed to run a single function in response to an event.
+\ed
+
+Cloud Run functions are lightweight, stateless, and ephemeral containers designed to run a single function in response
+to an event, rather than continuously listening for incoming requests. That makes them useful for running code that
+performs a single task. \v
+
+The use case boundary between Cloud Run services and Cloud Run functions is not always clear, but as a rule of
+thumb, one would pick Cloud Run functions over Cloud Run services when they have small, single-purpose functions
+that respond to events, and they prefer a simpler deployment model without the overhead of a full container setup. \v
+
+Due to their simplistic nature, Cloud Run functions are also quite simple to implement. One can write a function in
+any programming language, as long as it listens for events on the port specified by the \code{PORT} environment
+variable, which by default is the port \code{8080}. In these notes, as usual, we will be assuming a function written in
+Python. \v
+
+The only things one needs to deploy a Cloud Run function in Python is a `requirements.txt and a `main.py` file. \v
+
+Starting with the \code{requirements.txt}, this is the usual requirements file that lists the dependencies of the
+function, including the \code{functions\_framework} library.
+
+\bd[Functions Framework]
+\textbf{Functions Framework} is an open source library for writing portable Python functions that run in Cloud Run
+environment, developed by Google.
+\ed
+
+Functions Framework requires:
+\bit
+\item \textbf{Entry Point}: An entry point for the function, which is the particular code that is executed when
+the Cloud Run function is invoked. For Python, this is the name of the function as defined in the \code{main.py} file.
+One specifies  entry point during deployment.
+\item \textbf{Signature Type}: The signature type of the function, which is the type of the function that is executed
+when the Cloud Run function is invoked. It can be one of the two types:
+\bit
+\item \textbf{HTTP Functions}: A function that registers an HTTP handler function. Used when the function needs to
+have a URL endpoint and respond to HTTP requests.
+\item \textbf{CloudEvents Functions}: A function that registers a CloudEvents handler function. Used when the function
+should be triggered directly in response to events, such as messages on a Pub/Sub topic or changes in a Cloud Storage
+bucket.
+\eit
+\eit
+
+Moving on to the \code{main.py} file, this is the file that contains the function itself. As we already mentioned,
+the name of the function acts as the entry point, and for the signature type to be declared, the function must be
+wrapped with the \code{@functions\_framework.http} decorator for HTTP functions, or the
+\code{@functions\_framework.cloud\_event} decorator for CloudEvents functions. In both cases, the function must have
+an argument called \code{request} for HTTP functions, or \code{cloud\_event} for CloudEvents functions, that
+represents the incoming request or event. \v
+
+Once the function is written, one can deploy it to Cloud Run using the following command:
+\begin{bash}
+# deploy a function to Cloud Run
+gcloud run deploy <function> $-$$-$source=. $-$$-$function=<function> $-$$-$base$-$image=<base$-$image>
+\end{bash}
+
+Upon successful completion, a message is displayed along with the URL of the deployed function. Since Cloud Run
+functions are simply a special form of Cloud Run services, one can manipulate them in the same way as Cloud Run
+services, by using the commands described in the Cloud Run service section. \v
+
+Optionally, after deploying a function, one can add triggers to the function. Given that a trigger is a highly
+customizable object, it requires a lot of parameters to be set, which is why it is recommended to use the GCP Console
+to add triggers to a function, instead of the GCP SDK\@.
+
+\subsection{Cloud Run Job}
+
+\bd[Cloud Run Job]
+A \textbf{Cloud Run job} is used to run code that performs work (a job) and quits when the work is done.
+\ed
+
+While Cloud Run services (and functions) are designed to run continuously, responding to requests or events, a Cloud
+Run job provides the infrastructure required to run code that performs unattended work to completion and then stops,
+without listening for incoming requests. \v
+
+A Cloud Run job can start one instance to run the code (that's a common way to run a script), or many identical,
+independent instances in parallel, known as an ``array job'', to process a large number of independent tasks in
+parallel. Possible use cases include running a script or tool, performing highly parallelized processes, and running
+scheduled or recurring jobs.
+
+\fig{gcr6}{0.4}
+
+The way to deploy a Cloud Run job is similar to the way to deploy a service or a function. First, one needs to build a
+container image and push it to the Artifact Registry in the same way they would do for a service or a function. Then,
+one can deploy the job to Cloud Run using a slightly different command:
+\begin{bash}
+# deploy a job to Cloud Run
+gcloud run jobs deploy <job> $-$$-$image=<image$-$url>
+\end{bash}
+
+Upon successful completion, a message is displayed. One can then see the Cloud Run job listed by running:
+\begin{bash}
+# list all Cloud Run jobs
+gcloud run jobs list
+\end{bash}
+
+\begin{bash}
+# show details of a specific Cloud Run job
+gcloud run jobs describe <job>
+\end{bash}
+
+\begin{bash}
+# delete a Cloud Run job
+gcloud run jobs delete <job>
+\end{bash}
+
+Opposite to services and functions, once the job is deployed, it is not executed immediately (unless one uses the
+\code{--execute-now} flag during deployment). Instead, one needs to execute the job manually by running:
+\begin{bash}
+# execute a job on Cloud Run
+gcloud run jobs execute <job>
+\end{bash}
+
+Finally, one can also schedule a job to run at a specific time by using the ``Cloud Scheduler'' service.
+
+\bd[Cloud Scheduler]
+\textbf{Cloud Scheduler} is a fully managed cron job service that allows one to schedule jobs.
+\ed
+
+With Cloud Scheduler one can set up scheduled units of work to be executed at defined times or regular intervals.
+These work units are commonly known as ``cron jobs''.
+
+\bd[Cron Job]
+A \textbf{cron job} is a time-based job scheduler in Unix-like operating systems. Cron jobs are used to schedule
+commands or scripts to run periodically and at fixed intervals.
+\ed
+
+Each cron job created using Cloud Scheduler is sent to a target according to a specified schedule, where the work
+for the task is accomplished. \v
+
+Cloud Scheduler is designed to provide "at least once" delivery; that is, the job will run at least once per
+scheduled execution. In some rare circumstances, it is possible for a job to run multiple times in association with
+a single instance of the schedule. \v
+
+To enable the Cloud Scheduler API for the project:
+\begin{bash}
+# enable Cloud Scheduler API
+gcloud services enable cloudscheduler.googleapis.com
+\end{bash}
+
+One can create a job in Cloud Scheduler to trigger the Cloud Run job at a specific time by using:
+\begin{bash}
+# create a job in Cloud Scheduler
+gcloud scheduler jobs create http <scheduler$-$job$-$name> \
+    $-$$-$schedule="<cron$-$schedule>" \
+    $-$$-$uri=<cloud$-$run$-$job$-$url> \
+    $-$$-$http$-$method=POST \
+    $-$$-$oauth$-$service$-$account$-$email=<service$-$account$-$email>
+\end{bash}
+
+\section{Cloud Build}\label{sec:cloud_build}
+
+\bd[Cloud Build]
+\textbf{Cloud Build} is a fully managed service that executes builds on GCP\@.
+\ed
+
+Cloud Build can import source code from a variety of repositories or cloud storage spaces, execute builds following
+specifications, fetch dependencies, run unit tests, static analyses, and integration tests, and produce artifacts. \v
+
+To enable the Cloud Build API for the project:
+\begin{bash}
+# enable Cloud Build API
+gcloud services enable cloudbuild.googleapis.com
+\end{bash}
+
+After the Cloud Build API is enabled, the Cloud Build default service account is automatically created.
+
+\subsection{Build Config File}
+
+One can interacth with Cloud Build by creating a ``build config file''.
+
+\bd[Build Config File]
+A \textbf{build config file} is a YAML\footnote{Build config files can also be written in JSON format, but in these
+notes we will stick with YAMl.} file that provides instructions to Cloud Build on what tasks to perform.
+\ed
+
+One starts by creating the build config file. The file must be named \code{cloudbuild.yaml} and must be located in the
+root directory of the project, as Cloud Build looks for the build config file in the root directory of the source code.
+\begin{bash}
+# create a build config file
+touch cloudbuild.yaml
+\end{bash}
+
+Cloud Build executes a build as a series of steps defined in the \code{steps} section of the build config file. Each
+of the steps in the build config file defines a part of the task you want to perform. Executing steps is analogous
+to executing commands in a script.
+\begin{block}
+steps:
+\end{block}
+
+Each step is run in a Docker container, specified by the \code{name} field in the step, which is the only required
+field.
+\begin{block}
+steps:
+    - name: <image-url>
+\end{block}
+
+The value of the \code{$<$image-url$>$} points to the image URL of a ``cloud builder''.
+
+\bd[Cloud Builder]
+\textbf{Cloud builder} is a container image with common tools and languages installed in it.
+\ed
+
+Cloud Build provides and maintains a list of pre-built cloud builders such as \code{gcr.io/cloud-builders/docker} for
+docker, \code{gcr.io/cloud-builders/gcloud} for gcloud, etc. On top of that, Cloud Build allows the usage of any
+publicly available image as a cloud builder. \v
+
+To use a cloud builder, one specifies the image URL in the \code{name} field of \code{steps} in the build config file,
+then uses the \code{entrypoint} field to specify the command that the cloud builder should run, and then the \code{args}
+field to specify the arguments that the command should take (if the builder in the name field does not have an
+\code{entrypoint}, the first element in \code{args} is used as the entrypoint).
+\begin{block}
+steps:
+    - name: <image-url>
+      entrypoint: '<entrypoint>'
+      args: ['<arg1>', '<arg2>', $\dots$]
+\end{block}
+
+Finally, one can include any additional build configuration fields. For the complete list of fields one can include
+see the \href{https://cloud.google.com/build/docs/build-config-file-schema}{Build Configuration Overview}. \v
+
+Once the build config file is created, one can run the build by using the following command:
+\begin{bash}
+# run a build using the build config file
+gcloud builds submit $-$$-$config <build$-$config$-$file$-$path> <source$-$path>
+\end{bash}
+
+If one does not specify the \code{--config} flag, Cloud Build assumes that the build config file and the source code
+are in the current working directory.
+
+\subsection{Cloud Build Triggers}\label{subsec:cloud_build_triggers}
+
+Cloud Build uses ``cloud build triggers'' to enable CI/CD automation.
+
+\bd[Cloud Build Trigger]
+A \textbf{Cloud Build trigger} is a configuration that tells Cloud Build to automatically execute a build when certain
+conditions are met.
+\ed
+
+Cloud Build triggers are useful for automating the build process. One can choose among various triggers types:
+\bit
+\item \textbf{Repository Event Triggers}: Execute builds on repository events hosted in all widely used hosts such as
+GitHub, Bitbucket, and Cloud Source Repositories.
+\item \textbf{Pub/Sub Triggers}: Execute builds when a message is published to a Pub/Sub topic.
+\item \textbf{Webhook Triggers}: Execute builds when a webhook is sent to a specific URL\@.
+\item \textbf{Manual Triggers}: Execute builds manually from the Cloud Build console.
+\eit
+
+In these notes we will focus on repository event triggers, and more specifically on GitHub repository event triggers. \v
+
+First and foremost, one needs to connect the GitHub repository to Cloud Build. To do so, one needs to run the following
+command:
+\begin{bash}
+# connect the GitHub repository to Cloud Build
+gcloud builds connections create github <connection$-$name> $-$$-$region=<region>
+\end{bash}
+
+and follow the instructions. \v
+
+Once the connection has been established, one can link a specific repository to the Github connection by:
+\begin{bash}
+# connect to a specific repository
+gcloud builds repositories create <repo$-$name>
+    $-$$-$remote$-$uri=<repo$-$uri>
+    $-$$-$connection=<connection$-$name>
+    $-$$-$region=<region>
+\end{bash}
+
+Finally, one can create a trigger by using the \code{gcloud builds triggers create} command. Given that a trigger is a
+highly customizable object, it requires a lot of parameters to be set, which is why it is recommended to use the GCP
+Console to add triggers to a function, instead of the GCP SDK\@.
+
+\section{Artifact Registry}\label{sec:artifact_registry}
+
+In a previous chapter we defined an artifact as an item generated during a process (\ref{def:artifact}). GCP provides a
+service that stores, manages, and secures artifacts called ``Artifact Registry''.
+
+\bd[Artifact Registry]
+\textbf{Artifact Registry} is a service that centrally stores, manages, and secures artifacts.
+\ed
+
+To enable the Artifact Registry API:
+\begin{bash}
+# enable Artifact Registry API
+gcloud services enable artifactregistry.googleapis.com
+\end{bash}
+
+To disable the Artifact Registry API:
+\begin{bash}
+# disable Artifact Registry API
+gcloud services disable artifactregistry.googleapis.com
+\end{bash}
+
+The way Artifact Registry works is by creating repositories to store artifacts. One can create multiple repositories
+and each one carries some specific characteristics with the most important ones being:
+\bit
+\item \textbf{Format}: Each repository is associated with a specific artifact format. One can choose among
+many different supported formats including Docker container images, Python and Node.js packages, and many others.
+\item \textbf{Mode}: Each repository has a mode, and each mode serves a different purpose, so one cannot change
+the repository mode after its creation. There are 3 diffent repository modes>
+\bit
+\item \textbf{Standard}: Standard repositories are regular Artifact Registry repositories for private artifacts where
+one can upload and download artifacts directly from the repositories.
+\item \textbf{Remote}: Remote repositories are read-only repositories that act as proxies to store artifacts from either
+standard Artifact Registry repositories or external sources such as Docker Hub, the Python Package Index (PyPI), etc.
+\item \textbf{Virtual}: Virtual repositories are read-only repositories that act as single access points to download,
+install, or deploy artifacts of the same format from other standard, remote, or virtual repositories.
+\eit
+\item \textbf{Location}: Each repository is associated with a specific location, which is a GCP region or multi-region
+where the repository's artifacts are stored. One can choose the location that best fits the requirements of the workload
+based on factors such as latency, availability, and costs.
+\item \textbf{Description}: Each repository has a description that provides information about the repository's purpose,
+contents, or other relevant details.
+\eit
+
+In the vast majority of cases, one will be using standard repositories to store private artifacts. To create a standard
+repository in the Artifact Registry use the following command:
+\begin{bash}
+# create a repository in the Artifact Registry
+gcloud artifacts repositories create <repository>
+    $-$$-$repository$-$format=docker
+    $-$$-$repository$-$mode=standard
+    $-$$-$location=<location>
+    $-$$-$description=<description>
+\end{bash}
+
+To update a repository decription in the Artifact Registry use the following command:
+\begin{bash}
+# update a repository decription in the Artifact Registry
+gcloud artifacts repositories update <repository>
+    $-$$-$project=<project>
+    $-$$-$location=<location>
+    $-$$-$description=<description>
+\end{bash}
+
+To view the repositories in the Artifact Registry use the following command:
+\begin{bash}
+# list all repositories in the Artifact Registry
+gcloud artifacts repositories list
+\end{bash}
+
+To describe a repository in the Artifact Registry use the following command:
+\begin{bash}
+# describe a repository in the Artifact Registry
+gcloud artifacts repositories describe <repository>
+\end{bash}
+
+To delete a repository in the Artifact Registry use the following command:
+\begin{bash}
+# delete a repository in the Artifact Registry
+gcloud artifacts repositories delete <repository>
+\end{bash}
+
+Last but not least, one can view and manipulate the contents of a repository in the Artifact Registry.
+
+\begin{bash}
+# list all artifacts in a repository
+gcloud artifacts files list
+    $-$$-$project=<project>
+    $-$$-$repository=<repository>
+    $-$$-$location=<location>
+\end{bash}
+
+\begin{bash}
+# download an artifact from a repository
+gcloud artifacts files download
+    $-$$-$project=<project>
+    $-$$-$repository=<repository>
+    $-$$-$location=<location>
+    $-$$-$destination=<destination>
+    <artifact>
+\end{bash}
