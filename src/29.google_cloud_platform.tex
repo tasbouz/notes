@@ -441,10 +441,10 @@ about the initial default configuration; it is created as a convenience. One can
 configurations, however they'd like. The default configuration, however, is suitable for most use cases. Usually, if
 one is working with just one project, the default configuration should be sufficient. \v
 
-The default configuration is created during the \code{gcloud auth login} command which authorizes access to GCP\@,
-and we introduced it in the previous section. However, \code{gcloud auth login} does not let you set other
-properties other than the account. For this reason, there is another command \code{gcloud init} which authorizes
-access (exactly same behavior as \code{gcloud auth login}) and on top of that it performs other common setup steps:
+The default configuration is created during the \code{gcloud auth login} command which authorizes access to GCP\@, and
+we will see in the next section. However, \code{gcloud auth login} does not let you set other properties other than the
+account. For this reason, there is another command \code{gcloud init} which authorizes access (exactly same behavior as
+\code{gcloud auth login}) and on top of that it performs other common setup steps:
 \begin{bash}
 # authorize and configure the GCP SDK at the same time
 gcloud init
@@ -592,22 +592,22 @@ gcloud projects list
 
 \begin{bash}
 # create a new project
-gcloud projects create <project>
+gcloud projects create <project-id>
 \end{bash}
 
 \begin{bash}
 # delete a project
-gcloud projects delete <project>
+gcloud projects delete <project-id>
 \end{bash}
 
 \begin{bash}
 # set a default GCP project to work on
-gcloud config set project <project>
+gcloud config set project <project-id>
 \end{bash}
 
 \begin{bash}
 # display metadata for a project
-gcloud projects describe <project>
+gcloud projects describe <project-id>
 \end{bash}
 
 \subsection{Billing}
@@ -1106,7 +1106,7 @@ of the resource hierarchy.
 
 \bd[Custom Role]
 A \textbf{custom role} is a user-define role with tailored permissions that meet specific needs. Custom roles have a
-name in the format \code{projects/<project>/roles/<role-name>}.
+name in the format \code{projects/<project-id>/roles/<role-name>}.
 \ed
 
 Custom roles are created within a project or organization, and they allow to bundle one or more supported permissions
@@ -1159,17 +1159,17 @@ version: 3
 Once a policy is created, it is attached to a project by using the GCP SDK command:
 \begin{bash}
 # set policy for a resource
-gcloud projects set$-$iam$-$policy <project> <policy$-$file>
+gcloud projects set$-$iam$-$policy <project-id> <policy$-$file>
 \end{bash}
 
 \begin{bash}
 # get policy for a resource
-gcloud projects get$-$iam$-$policy <project>
+gcloud projects get$-$iam$-$policy <project-id>
 \end{bash}
 
 \begin{bash}
 # remove policy for a resource
-gcloud projects remove$-$iam$-$policy <project> <policy$-$file>
+gcloud projects remove$-$iam$-$policy <project-id> <policy$-$file>
 \end{bash}
 
 Policies can be set at any level in the resource hierarchy, i.e.\ at organization, folder, project, or resource level.
@@ -2055,6 +2055,183 @@ gcloud scheduler jobs create http <scheduler$-$job$-$name> \
     $-$$-$oauth$-$service$-$account$-$email=<service$-$account$-$email>
 \end{bash}
 
+\section{Vertex AI}
+
+Recall from the ``Development Process'' section of the ``Machine Learning Opearations'' chapter
+(\ref{sec:development_process}) that the development process of a machine learning system consists of: ``Scoping'' ,
+``Data'' ,``Modeling'' ,``Deployment'' ,``Monitoring \& Maintenance''. Leaving outside ``Scoping'', GCP offers a
+service called ``Vertex AI'' that provides tools for all the remaining, technical, individual steps.
+
+\bd[Vertex AI]
+\textbf{Vertex AI} is an ML platform for training, deploying, and scaling ML models and AI applications, combining data
+engineering, data science, and ML engineering workflows, and enabling team collaboration using a common toolset.
+\ed
+
+To enable the Vertex AI API for the project:
+\begin{bash}
+# enable Vertex AI API
+gcloud services enable aiplatform.googleapis.com
+\end{bash}
+
+The list of services Vertex AI provides is quite extensive, and keeps growing. Here we will go through some of them,
+categorizing them according to the steps of the development process they belong.
+
+\subsection{Data}
+
+\bd[Vertex AI Datasets]
+\textbf{Vertex AI Datasets} is a service for importing, creating, managing, and generating statistics and visualizations
+on datasets.
+\ed
+
+Vertex AI Datasets is not a service that is used frequently, since it can be replaced by other services such as
+BigQuery, or Google Cloud Storage. \v
+
+On top of Vertex AI Datasets, Vertex AI provides the ``Vertex AI Feature Store'' service for storing and serving
+features.
+
+\bd[Vertex AI Feature Store]
+\textbf{Vertex AI Feature Store} is a service for importing, organizing, monitoring,and serving features for ML models.
+\ed
+
+As of now, Vertex AI Feature Store is the only feature store solution provided by GCP\@. However, one can use other
+open source solutions such as Feast. \v
+
+Last but not least, for the initial phase of exploring, visualizing, and manipulating data, Vertex AI provides the
+``Vertex AI Workbench'' service.
+
+\bd[Vertex AI Workbench]
+\textbf{Vertex AI Workbench} is a fully managed Jupyter notebook-based development environment.
+\ed
+
+Vertex AI Workbench's notebooks integrate with all necessary GCP services, including Vertex AI itself, BigQuery and
+Cloud Storage. In this way, Vertex AI Workbench allows fast access and exploration of data from within a Jupyter
+notebook and it automates recurring updates of models by using scheduled executions of notebook's code as a step in
+Vertex AI Pipeline that will be discussed later. \v
+
+To start using Vertex AI Workbench one needs to create a new instance. One can use the GCP SDK for that, but given
+that the creation of a new instance is a highly configurable process with a couple of parameters, it is recommended
+to use the GCP Console. All Vertex AI Workbench instancess are prepackaged with JupyterLab and have a preinstalled
+suite of deep learning packages, including support for TensorFlow and PyTorch frameworks. They also support the
+ability to sync with a GitHub repository. All instances are protected by Google Cloud authentication and authorization.
+\v
+
+While Vertex AI Workbench is a good fit for teams that want to work together on the same project, as it provides a
+centralized environment for data exploration and model development, it is another ``optional'' service, since one can
+simply work on their local machine with Jupyter notebooks.
+
+\subsection{Modeling}
+
+When it comes to modeling, Vertex AI provides a couple of services ranging from high level solutions that provides a
+point-and-click interface for using pre-built models, to low level solutions that provides a fully managed service for
+training custom models. \v
+
+Starting with the high level solutions, Vertex AI provides the ``Model Garden'' service.
+
+\bd[Model Garden]
+\textbf{Model Garden} is a service for discovering, testing, customizing, and deploying Vertex AI and other selected
+open-source models.
+\ed
+
+Model Garden provides a collection of pre-built models that are ready to be used, and can be customized and deployed
+to production. Model Garden is a good fit for teams that want to use pre-built models, as it provides a centralized
+location for discovering, testing, and deploying models. \v
+
+Moving on to the low level solutions, Vertex AI provides the ``Vertex AI Training'' service for training custom models.
+
+\bd[Vertex AI Training]
+\textbf{Vertex AI Training} is a service for training ML models using the preferred ML framework.
+\ed
+
+Vertex AI Training works with the so called ``Vertex AI  Training Pipelines''.
+
+\bd[Vertex AI Training Pipeline]
+A \textbf{Vertex AI Training Pipeline} is a managed Kubeflow service which helps orchestrate complex data and ML
+workflows.
+\ed
+
+Vertex AI Training Pipelines are the primary model training workflow in Vertex AI\@. Vertex AI Training Pipelines
+provide a couple of features including support for the Kubeflow Pipelines SDK, TensorFlow Extended (TFX), and the
+ability to deploy vertically scalable components as containers. \v
+
+Vertex AI Training provides two model training options:
+\bit
+\item \textbf{AutoML}: For training tabular, image, text, or video data without writing code or preparing data splits.
+\item \textbf{Custom Training}: For complete control over the training process, including using the preferred ML
+framework and writing own training code.
+\eit
+
+Vertex AI Training is yet another optional (and quite limiting and vendor-locking) service of Vertex AI. Alternatively
+one can simply use Kubeflow on GKE or even better Airflow in Composer (more on that later) which gives more flexibility
+and control over the training frameworks one can use. \v
+
+On top of Vertex AI Training, Vertex AI provides two more modeling related services: ``Vertex AI Experiments'' and
+``Vertex AI Metadata''.
+
+\bd[Vertex AI Experiments]
+\textbf{Vertex AI Experiments} is a service for tracking and comparing ML experiments.
+\ed
+
+\bd[Vertex AI Metadata]
+\textbf{Vertex AI Metadata} is a service for managing the lifecycle of metadata consumed and produced by ML workflows,
+by storing parameters and artifacts to enable lineage tracking, auditing, model reproducibility.
+\ed
+
+As of now, Vertex AI Experiments and Metadata are the only experiment and metadata tracking solution provided by GCP\@.
+However, one can use other open source solutions such as MLflow.
+
+\subsection{Deployment}
+
+Moving on to deployment, Vertex AI provides a couple of services that helps with the deployment of models. Let's start
+with the ``Vertex AI Model Registry'' service.
+
+\bd[Vertex AI Model Registry]
+\textbf{Vertex AI Model Registry} is a centralized registry for ML models.
+\ed
+
+In Vertex AI Model Registry one can store all trained ML models for versioning, regardless of whether they were
+custom models or models generated by using AutoML capabilities. It also integrates with validation and deployment
+features, offering the ability to compare models. \v
+
+As of now, Vertex AI Model Registry is the only model registry solution provided by GCP\@. However, one can use other
+open source solutions such as MLflow. \v
+
+Moving on to serving models, Vertex AI provides the ``Vertex AI Online Prediction'' and ``Vertex AI Batch Prediction''
+services.
+
+\bd[Vertex AI Online Prediction]
+\textbf{Vertex AI Online Prediction} is a service for getting predictions from a trained model in real-time.
+\ed
+
+Vertex AI Online Prediction works with the so called ``Vertex AI Endpoints''.
+
+\bd[Vertex AI Endpoints]
+\textbf{Vertex AI Endpoints} is a managed model serving capability for real-time prediction use cases.
+\ed
+
+Vertex AI Endpoints features include a configurable serving infrastructure, autoscaling capabilities, and the
+ability to detect the number of performance issues relating to increased prediction latency, capacity bottlenecks, \v
+
+\bd[Vertex AI Batch Prediction]
+\textbf{Vertex AI Batch Prediction} is a service for getting predictions from a trained model in batch.
+\ed
+
+Vertex AI Batch Prediction intakes a group of prediction requests and outputs the results to a specified location. Batch
+prediction does not require an immediate response and can process accumulated data with a single request. \v
+
+Both Vertex AI Online Prediction and Vertex AI Batch Prediction services are optional services, since one can simply
+deploy their model to Cloud Run and get predictions from there.
+
+\subsection{Monitoring \& Maintenance}
+
+Last but not least, Vertex AI provides the ``Vertex AI Monitoring'' service.
+
+\bd[Vertex AI Monitoring]
+\textbf{Vertex AI Monitoring} is a service for monitoring deployed models in production.
+\ed
+
+Vertex Al Monitoring helps automate the monitoring of deployed models in production to identify performance issues
+proactively. Key features include drift detection and training-serving skew detection.
+
 \section{Cloud Build}\label{sec:cloud_build}
 
 \bd[Cloud Build]
@@ -2235,7 +2412,7 @@ To update a repository decription in the Artifact Registry use the following com
 \begin{bash}
 # update a repository decription in the Artifact Registry
 gcloud artifacts repositories update <repository>
-    $-$$-$project=<project>
+    $-$$-$project=<project-id>
     $-$$-$location=<location>
     $-$$-$description=<description>
 \end{bash}
@@ -2263,7 +2440,7 @@ Last but not least, one can view and manipulate the contents of a repository in 
 \begin{bash}
 # list all artifacts in a repository
 gcloud artifacts files list
-    $-$$-$project=<project>
+    $-$$-$project=<project-id>
     $-$$-$repository=<repository>
     $-$$-$location=<location>
 \end{bash}
@@ -2271,7 +2448,7 @@ gcloud artifacts files list
 \begin{bash}
 # download an artifact from a repository
 gcloud artifacts files download
-    $-$$-$project=<project>
+    $-$$-$project=<project-id>
     $-$$-$repository=<repository>
     $-$$-$location=<location>
     $-$$-$destination=<destination>
