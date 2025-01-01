@@ -222,7 +222,7 @@ Here follows a figure summarizing all service models.
 
 \fig{service_models}{0.42}
 
-\subsection{Geography}
+\subsection{Geography}\label{subsec:geography}
 
 \bd[Data Center]
 A \textbf{data center} is a facility composed of networked computers and storage that cloud computing providers use to
@@ -291,7 +291,7 @@ GCP console allows to create, manage, and monitor computing services. The consol
 with GCP, and it is recommended for new users. However, in these notes we will focus on the GCP SDK, which is more
 powerful and flexible.
 
-\subsection{SDK}
+\subsection{GCP SDK}
 
 \bd[GCP SDK]
 \textbf{GCP SDK} is a command-line interface (CLI) for managing GCP computing services.
@@ -306,14 +306,7 @@ GCP SDK can be installed via Homebrew:
 brew install google$-$cloud$-$sdk
 \end{bash}
 
-To make sure that everything is working properly, one can check the current version of GCP SDK by:
-\begin{bash}
-# see version of GCP SDK
-gcloud version
-\end{bash}
-
-This command will show the version of the GCP SDK that is currently installed on the system, and it will also show a
-list of ``components'' together with their installed status and their version.
+This command will install the GCP SDK and some, but not all, of its ``components''.
 
 \bd[Component]
 A \textbf{component} is an installable part of the GCP SDK that provides a specific set of functionalities, acting as
@@ -325,8 +318,21 @@ Upon installation of GCP SDK, the following components are installed by default:
 \item \textbf{gcloud}: Default GCP SDK tools for interacting with GCP resources.
 \item \textbf{bq}: BigQuery CLI tool for working with data in BigQuery.
 \item \textbf{gsutil}: Cloud Storage CLI tool for performing tasks related to Cloud Storage.
-\item \textbf{core} GCP SDK core libraries used internally by the GCP SDK tools.
+\item \textbf{core}: GCP SDK core libraries used internally by the GCP SDK tools.
 \eit
+
+Out of these, \code{gcloud} is the most important one, and it is the one that we will be using the most.
+
+\bd[gcloud]
+\textbf{gcloud} is the default GCP SDK tool for interacting with GCP resources.
+\ed
+
+To make sure that everything is working properly, one can check the current version of GCP SDK among with a list of
+components together with their installed status and their version by running:
+\begin{bash}
+# see version of GCP SDK
+gcloud version
+\end{bash}
 
 The full list of available components is long, and it keeps being updated so it is impossible to include an exhaustive
 list here. To see the list of all components that are available and their installed status:
@@ -335,28 +341,25 @@ list here. To see the list of all components that are available and their instal
 gcloud components list
 \end{bash}
 
-To install a component:
+Lastly, some basic commands for managing components:
 \begin{bash}
 # install component
 gcloud components install <component>
 \end{bash}
 
-To update a component:
 \begin{bash}
 # update component
 gcloud components update <component>
 \end{bash}
 
-To remove a component:
 \begin{bash}
 # remove component
 gcloud components remove <component>
 \end{bash}
 
-Due to the endless possibilities of what one can do in GCP, the list of commands of GCP SDK, including its components,
-is enormous, and it's getting longer every day. Hence, writing down an exhaustive list of GCP SDK commands is impossible.
-Throughout the notes we will see many examples of GCP SDK commands, so that the reader can get a good understanding of
-how to use it. \v
+Due to the endless possibilities of what one can do in GCP, the list of commands of GCP SDK, including its
+components, is enormous, and it's getting longer every day. Throughout the notes we will see many examples of GCP
+SDK commands, so that the reader can get a good understanding of how to use it. \v
 
 All GCP SDK commands, however, obey the same generic form. This generic from follows a nested approach, matching GCP
 console's nesting, going from ``big'' to ``small'':
@@ -367,14 +370,13 @@ gcloud | (release*) | (component) | (subcomponent*) | (operation) | (target*) | 
 
 where:
 \bit
-\item \textbf{release}: (optional) Refers to the command's release status. The default value is \code{GA} standing for
-``General Availability'' and it is omitted. The non-default values are \code{alpha} and \code{beta}.
-\item \textbf{component}: (required) Refers to the main GCP service by mentioning the component of the operation (more
-on this later).
-\item \textbf{subcomponent}: (optional) Refers to the subcomponent of the operation (if any).
-\item \textbf{operation}: (required) Refers to the operation of the component that will be performed on the target.
-\item \textbf{target}: (optional) Refers to the target resource that the operation will be performed on.
-\item \textbf{flags}: (optional) Refers to the flags that can be used to modify the operation.
+\item \textbf{release}: (optional) Release status. The default value is \code{GA} standing for ``General Availability''
+and it is omitted. The non-default values are \code{alpha} and \code{beta}.
+\item \textbf{component}: (required) Component of the operation.
+\item \textbf{subcomponent}: (optional) Subcomponent of the operation (if any).
+\item \textbf{operation}: (required) Operation of the component that will be performed on the target.
+\item \textbf{target}: (optional) Target resource that the operation will be performed on.
+\item \textbf{flags}: (optional) Flags that can be used to modify the operation.
 \eit
 
 \be
@@ -383,8 +385,7 @@ project \code{my-project}, where \code{compute} is the component, \code{instance
 is the operation, and \code{--project} is the flag.
 \ee
 
-Probably the most important command is the one for getting help. In order to do so, one can use the flag
-\code{--help} at any \code{gcloud} level:
+One important flag is the \code{--help} that can be used at any \code{gcloud} level:
 \begin{bash}
 # get help
 gcloud $--$help
@@ -1200,6 +1201,202 @@ making the API request has the appropriate permission to use the resource. \v
 Although as we saw GCP SDK provides commands to interact with IAM, the most efficient way to do is to use the GCP
 console, where one can easily manage policies for all resources in a project or organization.
 
+\section{Cloud Storage}
+
+From a high level perspective, every cloud computing provider can be seen as a provider of storage and compute
+resources. In this chapter we will focus on the storage part, and more specifically on GCP's storage service called
+``Cloud Storage''. The remaining chapters then will focus on compute.
+
+\bd[Cloud Storage]
+\textbf{Cloud Storage} is a service for storing objects in GCP\@.
+\ed
+
+Cloud Storage can be accessed through the GCP console, the GCP SDK, third-party client libraries, or using REST-based
+APIs. As usual, in these notes we will focus on the GCP SDK\@.\footnote{Historically, Cloud Storage could be accessed
+through the preinstalled \code{gsutil} component which acted as the Cloud Storage CLI tool for performing tasks related
+to Cloud Storage. However, \code{gsutil} is now considered a legacy Cloud Storage CLI and is replaced by the
+\code{gcloud storage} component-operation command. In these notes we will stick with the \code{gcloud storage} command.}
+
+\subsection{Buckets}
+
+Everything one stores in Cloud Storage must be contained in container resources called ``buckets''.
+
+\bd[Bucket]
+A \textbf{bucket} is the basic container for storing objects in Cloud Storage.
+\ed
+
+Each bucket is associated with a project. After one creates a project, they can create multiple Cloud Storage buckets,
+and then upload and download unlimited individual objects to them. They can also grant permissions to make objects
+accessible to principals they specify or accessible to everyone on the public internet. Important to notice that while
+buckets cannot be nested, but Cloud Storage supports the concept of folders which we will see in a while. \v
+
+Cloud Storage offers a fine-grained control over securing data uploaded to Cloud Storage including IAM policies, data
+encryption, authentication, bucket locks, soft deletes, and more. \v
+
+Two of the most important parts of a bucket is its name and its location. Starting with the name, it is important to
+know that bucket names must be globally unique across all of GCP and that they are publicly visible. On top of that,
+bucket names must follow the following naming rules:
+\bit
+\item Must contain only lowercase letters, numbers, dashes, and underscores.
+\item Must start and end with a number or letter.
+\item Must be between 3 and 63 characters long.
+\item Cannot be represented as an IP address in dotted-decimal notation.
+\item Cannot begin with the \code{goog} prefix and cannot contain \code{google} or any close misspellings.
+\eit
+
+Once a bucket is created, its name cannot be changed. However, once a bucket is deleted, anyone can reuse its name for
+a new bucket. \v
+
+One important thing to notice is that the bucket name is different from the resource name of the bucket, which is the
+unique name that identifies the bucket. While the bucket name is the name that one gives to the bucket, the resource
+name is the name that GCP uses to identify the bucket and is in the form of \code{projects/\_/buckets/<bucket-name>}.
+\v
+
+Moving on to location, a bucket's location defines the physical place where object data in the bucket resides. The
+location of a bucket can be any region or multi-region, as described in the ``Geography'' section of the notes
+(\ref{subsec:geography}). \v
+
+Similar to bucket names, bucket locations are permanent and cannot be changed after the bucket is created. However,
+one can move their data to a bucket in a different location.
+
+\newpage
+
+Here follows a list of GCP SDK commands that can be used to interact with buckets:
+\begin{bash}
+# create a bucket
+gcloud storage buckets create gs://<bucket$-$name> $-$$-$location=<bucket$-$location>
+\end{bash}
+
+\begin{bash}
+# list all buckets
+gcloud storage ls
+\end{bash}
+
+\begin{bash}
+# view metadata of a bucket
+gcloud storage buckets describe gs://<bucket$-$name>
+\end{bash}
+
+\begin{bash}
+# view size of a bucket
+gcloud storage du gs://<bucket$-$name> $-$$-$summarize
+\end{bash}
+
+\begin{bash}
+# delete a bucket
+gcloud storage rm --recursive gs://<bucket$-$name>
+\end{bash}
+
+\subsection{Objects}
+
+Although we have already mentioned ``objects'', let us know define them more formally.
+
+\bd[Object]
+An \textbf{object} is an individual, immutable, piece of data consisting of a file of any format, that is stored in a
+bucket in Cloud Storage.
+\ed
+
+Each object is stored in a bucket. As we already mentioned, after one creates a project, they can create multiple Cloud
+Storage buckets, and then upload and download unlimited individual objects to them. Objects have two components: The
+``Object Data'' which is the actual file to store in Cloud Storage, and the ``Object Metadata'' which is a collection of
+name-value pairs that describe various object qualities. \v
+
+One can use access control lists (ACLs) to control access to individual objects. One can also IAM to control access to
+all the objects within a bucket or a managed folder. \v
+
+Two of the most important parts of object metadata common to all objects are the object's name and its generation number,
+which together uniquely identify the object within a bucket. Starting with the name, when naming objects in Cloud Storage,
+it's essential to adhere to specific requirements to ensure compatibility and prevent errors:
+\bit
+\item Can contain any sequence of valid Unicode characters.
+\item Cannot contain Carriage Return or Line Feed characters.
+\item Cannot start with \code{.well-known/acme-challenge/.}
+\item Cannot be \code{.} or \code{..}.
+\eit
+
+Objects are immutable, which means that an uploaded object cannot change throughout its storage lifetime. An
+object's storage lifetime is the time between successful object creation, such as uploading, and successful object
+deletion. In practice, this means that one cannot make incremental changes to objects, such as append operations or
+truncate operations. However, it is possible to replace objects that are stored in Cloud Storag. \v
+
+One important thing to notice is that the object name is different from the resource name of the object, which is the
+unique name that identifies the object in the bucket. While the object name is the name that one gives to the object,
+the resource name is the name that GCP uses to identify the object and is in the form of
+\code{projects/\_/buckets/<bucket-name>/objects/<object-name>} \v
+
+Moving on to the generation number, when one adds an object to a Cloud Storage bucket and specify the object name, Cloud
+Storage assigns a generation number that uniquely identifies the object. Each object in a bucket has a unique generation
+number that changes each time the object is replaced. \v
+
+Here follows a list of GCP SDK commands that can be used to interact with objects:
+\begin{bash}
+# upload an object to a bucket
+gcloud storage cp <local$-$file> gs://<bucket$-$name>
+\end{bash}
+
+\begin{bash}
+# copy an object from one bucket to another
+gcloud storage cp gs://<bucket$-$name>/<object$-$name> gs://<bucket$-$name>/<new$-$object$-$name>
+\end{bash}
+
+\begin{bash}
+# move an object from one bucket to another
+gcloud storage mv gs://<bucket$-$name>/<object$-$name> gs://<bucket$-$name>/<new$-$object$-$name>
+\end{bash}
+
+\begin{bash}
+# list all objects in a bucket
+gcloud storage ls --recursive gs://<bucket$-$name>/**
+\end{bash}
+
+\begin{bash}
+# view metadata of an object
+gcloud storage object describe gs://<bucket$-$name>/<object$-$name>
+\end{bash}
+
+\begin{bash}
+# download an object from a bucket
+gcloud storage cp gs://<bucket$-$name>/<object$-$name> <local$-$file>
+\end{bash}
+
+\begin{bash}
+# delete an object from a bucket
+gcloud storage rm gs://<bucket$-$name>/<object$-$name>
+\end{bash}
+
+\subsection{Folders}
+
+Finally, Cloud Storage supports the concept of ``folders'' which are used to organize objects in a bucket.
+
+\bd[Folder]
+A \textbf{folder} is a virtual container within a bucket that can contain objects or folders.
+\ed
+
+Folders help with structuring by allowing grouping related objects, thus making it easier to navigate and manage them.
+Folders can also set up granular access control for the objects, enabling one to specify who can view, edit, or
+delete objects within a bucket. Each bucket can contain multiple folders. Opposite to buckets, folders can be nested. \v
+
+Here follows a list of GCP SDK commands that can be used to interact with folders:
+\begin{bash}
+# create a folder in a bucket
+gcloud storage folders create $-$$-$recursive gs://<bucket$-$name>/<folder$-$name>
+\end{bash}
+
+\begin{bash}
+# list all folders in a bucket
+gcloud storage folders list gs://<bucket$-$name>/**
+\end{bash}
+
+\begin{bash}
+# view metadata of a folder
+gcloud storage folders describe gs://<bucket$-$name>/<folder$-$name>
+\end{bash}
+
+\begin{bash}
+# delete a folder from a bucket
+gcloud storage folders delete $-$$-$recursive gs://<bucket$-$name>/<folder$-$name>
+\end{bash}
+
 \section{Google Compute Engine (GCE)}
 
 \bd[Google Compute Engine (GCE)]
@@ -1347,7 +1544,7 @@ scaling, and monitoring the cluster and its nodes.
 \subsection{Kubectl}
 
 \bd[Kubectl]
-\textbf{Kubectl} is the GCP SDK component which allows to interact with GKE clusters.
+\textbf{Kubectl} is the GCP SDK component which allows to interact with GKE\@.
 \ed
 
 Kubectl is not one of the default components of GCP SDK and it needs to be installed separately:
