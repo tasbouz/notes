@@ -37,6 +37,9 @@ decorate}}
 % captions config
 \captionsetup{font=footnotesize}
 
+% footnotes config
+\interfootnotelinepenalty=10000
+
 % extras (theorems, lemmas, etc...)
 \theoremstyle{plain}
 \newtheorem{definition}{Definition}[chapter]
@@ -49,6 +52,19 @@ decorate}}
 \newtheorem*{notation}{Notation}
 \newtheorem{remark}{Remark}[chapter]
 \newtheorem*{solution}{Solution}
+
+% colors config
+\definecolor{none}{RGB}{255, 255, 255}
+\definecolor{scheduled}{RGB}{204, 181, 145}
+\definecolor{queued}{RGB}{118, 118, 118}
+\definecolor{running}{RGB}{96, 206, 63}
+\definecolor{success}{RGB}{55, 126, 34}
+\definecolor{failed}{RGB}{232, 50, 35}
+\definecolor{skipped}{RGB}{200, 159, 168}
+\definecolor{upstream_failed}{RGB}{242, 169, 59}
+\definecolor{up_for_retry}{RGB}{249, 218, 74}
+\definecolor{up_for_reschedule}{RGB}{108, 205, 194}
+\definecolor{shutdown}{RGB}{0, 0, 255}
 
 % shortcuts
 \def\ba{\begin{array}}
