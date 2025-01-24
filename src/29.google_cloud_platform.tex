@@ -2646,21 +2646,33 @@ gcloud artifacts files download
     <artifact>
 \end{bash}
 
-\section{Google Cloud Composer}
+\section{Cloud Composer}
 
-For the purposes of this tutorial, hosting Airflow locally as a docker container is more than enough. However, in
-real life, hosting Airflow on-prem can create a lot of problems since you will need to spend a lot of time doing
+\textbf{Important}:~\textit{This section requires a basic understanding of Airflow. If you are not familiar with
+Airflow, we suggest you to first read the corresponding ``Airflow'' (\ref{sec:airflow}) section in the ``Tecnologies''
+chapter of these notes.}
+
+\bd[Cloud Composer]
+\textbf{Cloud Composer} is a fully managed Airflow workflow orchestration service, operated using Python, that allows
+creating, scheduling, monitoring, and managing workflow pipelines.
+\ed
+
+By using Cloud Composer instead of a local instance of Apache Airflow, you can benefit from the best of Airflow with
+no installation or management overhead. Cloud Composer helps you create managed Airflow environments quickly and use
+Airflow-native tools, such as the powerful Airflow web interface and command-line tools, so you can focus on your
+workflows and not your infrastructure.
+
+Hosting Airflow on-prem can create a lot of problems since one will need to spend a lot of time doing
 DevOps work like creating a new server, managing Airflow installation, taking care of dependency management, making
 sure your server always up and running, and even then you will have to deal with scaling and security issues. If you
 don't want to deal with all of those DevOps problem, and instead just want to focus on your workflow, then Google
 Cloud composer is a great solution for you.
 
->*Of course you have to pay for the hosting service, but the cost is low compare to if you have to host a production
+Of course you have to pay for the hosting service, but the cost is low compare to if you have to host a production
 airflow server on your own. This is an ideal solution if you are a startup in need of Airflow and you don't have a
 lot of DevOps folks in-house.*
 
-**Google Cloud Composer** is a fully managed Airflow to make workflow creation and management easy, powerful, and
-consistent. It you create Airflow environments quickly and easily, so you can focus on your workflows and not your
+It you create Airflow environments quickly and easily, so you can focus on your workflows and not your
 infrastructure.
 
 Some of the key Cloud Composer features are:

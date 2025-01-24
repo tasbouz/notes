@@ -2478,8 +2478,9 @@ running those pods. As your application complexity, and its demand of resources 
 add more master and worker nodes to your cluster, and thus forming a more powerful and robust cluster to meet your
 application resource requirements.
 
-\fig{k102}{0.35}~\section[Airflow] {Airflow\footnote{This chapter requires prior knowledge on the concept of ``cron''.
-The reader is advised to read the part of the notes on ``Cron'' (\ref{subsec:cron}) before proceeding.}}
+\fig{k102}{0.35}
+
+\section{Airflow}\label{sec:airflow}
 
 \fig{airflow0}{0.022}
 
@@ -2589,8 +2590,8 @@ completed.
 
 Although the graph representation of a workflow provides an intuitive overview of the tasks and their dependencies,
 one may be wondering why not just use a simple script to run this linear chain of tasks. Indeed, in the recent past,
-the way of running and scheduling graphs, was through running scripts with cron jobs. Although this is a quite
-straight forward solution, it comes with some very basic problems:
+the way of running and scheduling graphs, was through running scripts with cron jobs (\ref{subsec:cron}). Although this
+is a quite straight forward solution, it comes with some very basic problems:
 \bit
 \item \textbf{Failure Handling}: What to do in the case of a failure? What if a single task has failed?
 \item \textbf{Monitoring}: How to monitor the status of the workflow run?
