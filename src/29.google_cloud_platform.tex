@@ -2646,42 +2646,58 @@ gcloud artifacts files download
     <artifact>
 \end{bash}
 
-\section{Google Cloud Composer}
+\section{Cloud Composer}
 
-For the purposes of this tutorial, hosting Airflow locally as a docker container is more than enough. However, in
-real life, hosting Airflow on-prem can create a lot of problems since you will need to spend a lot of time doing
-DevOps work like creating a new server, managing Airflow installation, taking care of dependency management, making
-sure your server always up and running, and even then you will have to deal with scaling and security issues. If you
-don't want to deal with all of those DevOps problem, and instead just want to focus on your workflow, then Google
-Cloud composer is a great solution for you.
+\textbf{Important}:~\textit{This section requires a basic understanding of Airflow. If you are not familiar with
+Airflow, we suggest you to first read the corresponding ``Airflow'' (\ref{sec:airflow}) section in the ``Tecnologies''
+chapter.} \v
 
->*Of course you have to pay for the hosting service, but the cost is low compare to if you have to host a production
-airflow server on your own. This is an ideal solution if you are a startup in need of Airflow and you don't have a
-lot of DevOps folks in-house.*
+Hosting Airflow on-prem, as described in the Airflow section (\ref{sec:airflow}), can create a lot of problems since one
+will need to spend a lot of time doing DevOps work like creating a new server, managing Airflow installation, taking
+care of dependency management, making sure the server is always up and running, and dealing with scaling and security
+issues. If one doesn't want to deal with all of those DevOps problem, and instead just want to focus on the workflows,
+then ``Cloud Composer'' is a great solution.
 
-**Google Cloud Composer** is a fully managed Airflow to make workflow creation and management easy, powerful, and
-consistent. It you create Airflow environments quickly and easily, so you can focus on your workflows and not your
-infrastructure.
+\bd[Cloud Composer]
+\textbf{Cloud Composer} is a fully managed Airflow workflow orchestration service, operated using Python, that allows
+creating, scheduling, monitoring, and managing workflow pipelines.
+\ed
 
-Some of the key Cloud Composer features are:
-* Simplicity
-    * One-click to create a new Airflow environment.
-    * Client tooling including Google Cloud SDK and Google Developer Console.
-    * Easy and controlled access to the Airflow Web Ul.
-* Security:
-    * Identity access management (IAM): manage credentials, permissions, and access policies.
-* Scalability:
-    * Easy to scale with Google infrastructure.
-* Production monitoring:
-    * Stackdriver logging and monitoring:
-        * Provide logging and monitoring metrics, and alert when your workflow is not running.
-    * Simplified DAG (workflow) management.
-    * Python package management.
-* Comprehensive GCP integration:
-    * Integrate with all of Google Cloud services: Big Data, Machine Learning...
-    * Run jobs elsewhere: Other cloud provider, or on-premises.
+To enable the Cloud Composer API for the project:
+\begin{bash}
+# enable Cloud Composer API
+gcloud services enable composer.googleapis.com
+\end{bash}
 
-To create a Google Cloud Composer enviroment, go to Google Cloud, click on the Google Cloud Composer and follow the instructions. After the environment is created, deployment is simple, since Google Cloud Composer uses Cloud Storage to store Apache Airflow DAGs, so one can easily add, update, and delete a DAG from the environment through:
-* Manual deployment where one can drag-and-drop Python files for the DAG to the Composer environment's DAGs folder in Cloud Storage.
-* Cloud SDK commands.
-* Continuous integration pipelines that automatically deploy every time a merge request is done in the master branch.
+By using Cloud Composer instead of a local instance of Airflow, one can benefit from the best of Airflow with no
+installation or management overhead. Cloud Composer helps creating managed Airflow environments quickly and use
+Airflow-native tools, such as the powerful Airflow web interface and command-line tools, so one can focus on
+workflows and not infrastructure. (Of course one has to pay for the hosting service, but the cost is low compare to
+if they have to host a production airflow server on their own.) \v
+
+Cloud Composer is deplyed in the so-called ``Cloud Composer'' environments which are self-contained Airflow deployments
+based on Google Kubernetes Engine. They work with other Google Cloud services using connectors built into Airflow. One
+can create one or more environments in a single Google Cloud project, in any supported region. The main components of an
+environment are:
+\bit
+\item \textbf{GKE Cluster}: Airflow components such as Airflow schedulers, triggerers, and workers run as GKE workloads
+in a single cluster created for an environment, and are responsible for processing and executing DAGs.
+\item \textbf{Airflow Webserver}: The web server runs the Airflow UI\@.
+\item \textbf{Airflow Database}:The database holds the Airflow metadata.
+\item \textbf{Cloud Storage Bucket}: Cloud Composer associates a Cloud Storage bucket with an environment. This bucket,
+stores the DAGs, logs, custom plugins, and data for the environment.
+\eit
+
+One can create and configure Cloud Composer environments in console, GCP SDK, or Cloud Composer API. In these notes,
+as usual, we will stick with the GCP SDK\@:
+\begin{bash}
+# create a new environment with the Cloud Composer
+gcloud composer environments create <environment>
+    $-$$-$location=<location>
+    $-$$-$image$-$version <image$-$version>
+\end{bash}
+
+Once Cloud Composer is up and running, one can manage DAGs from the console, the native Airflow UI, or by running GCP
+SDK and Airflow CLI commands. However, the most common way is to create a service in a specific programming language,
+e.g.\ Python, and control the DAGs in the service. For more details on how to do that, check the Airflow section
+(\ref{sec:airflow}) in the in the ``Tecnologies'' chapter of these notes.
