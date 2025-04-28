@@ -2,18 +2,28 @@
 \section{Derivatives}
 
 \bd[Derivative]
-A \textbf{derivative} is a contract for a future transacion between two parties, that derives its value from the
-performance of an underlying entity.
+A \textbf{derivative} is a contract for a future transaction of an underlying asset between two parties, the buyer and
+the seller, which derives its value from the performance of the underlying asset.
 \ed
 
-\bd[Underlying]
-The \textbf{underlying} is an asset, index, rate, or any variable from which a derivative is derived from.
+\bd[Underlying Asset]
+The \textbf{underlying asset} is any asset that has a value which can be measured, from which a derivative derives its
+value from.
 \ed
 
 \be
-A stock option, for example, is a derivative whose value is dependent on the price of a stock. However, derivatives
-can be dependent on almost any variable, from the price of hogs to the amount of snow falling at a certain ski resort.
+The underlying asset can be really anything. From a financial asset such as a stock, an index, or a rate, to a
+non-financial asset such as a piece of real estate or a car, or even a non-physical asset, such as a weather condition,
+or the outcome of a sports game.
 \ee
+
+In the derivatives jargon, the buyer of the derivative is referred to as the ``long'' position and the seller is
+referred to as the ``short'' position.
+
+\bd[Long / Short Position]
+The party that agrees to buy the asset is said to be in a \textbf{long position}, while the party that agrees to sell
+the asset is said to be in a \textbf{short position}.
+\ed
 
 \bd[Derivative Market]
 A \textbf{derivative market} is a submarket of capital markets where people trade derivatives.
@@ -55,79 +65,40 @@ An \textbf{over-the-counter (OTC) market} is a decentralized derivative market w
 directly between two parties without a central exchange or clearing house.
 \ed
 
-Banks, other large financial institutions, fund managers, and corporations are the main participants in OTC
-derivatives markets. Credit risk has traditionally been a feature of OTC derivatives markets. In an attempt to
-reduce credit risk, the OTC market has borrowed some ideas from exchange-traded markets. Once an OTC trade has been
-agreed, the two parties can either present it to a central counterparty (CCP), which is like an exchange clearing
-house, or clear the trade bilaterally where the two parties have usually signed an agreement covering all their
-transactions with each other.
-
-\bd[Central Counterparty]
-A \textbf{central counterparty (CCP)} stands between the two parties to the derivatives transaction so that one party
-does not have to bear the risk that the other party will default.
-\ed
-
-\bd[Bilateral Clearing]
-\textbf{Bilateral clearing} is the process of clearing a trade between two parties without the use of a central
-counterparty.
-\ed
+Banks, other large financial institutions, fund managers, and corporations are the main participants in OTC derivatives
+markets. Credit risk has traditionally been a feature of OTC derivatives markets. In an attempt to reduce credit risk,
+the OTC market has borrowed some ideas from exchange-traded markets. Once an OTC trade has been agreed, the two parties
+can either present it to a central counterparty, which is like an exchange clearing house, or clear the trade
+bilaterally where the two parties have usually signed an agreement covering all their transactions with each other. \v
 
 While OTC markets were largely unregulated, following the financial crisis of 2008 we have seen the development of
 many new regulations affecting the operation of OTC markets. The main objectives of the regulations are to improve
 the transparency of OTC markets and reduce systemic risk. The OTC market in some respects is being forced to become
 more like the exchange-traded market. \v
 
-Both OTC and exchange-traded markets for derivatives are huge. The number of derivatives transactions per year in OTC
+Both exchange-traded and OTC markets for derivatives are huge. The number of derivatives transactions per year in OTC
 markets is smaller than in exchange-traded markets, but the average size of the transactions is much greater, making
 the volume of business in OTC market much larger than in the exchange-traded one. \v
 
 Derivatives markets have been outstandingly successful. The main reason is that they have attracted many different
 types of traders and have a great deal of liquidity. When a trader wants to take one side of a contract, there is
-usually no problem in finding someone who is prepared to take the other side.
+usually no problem in finding someone who is prepared to take the other side. \v
 
-\section{Forwards \& Futures}
-
-\bd[Forward / Future]
-A \textbf{forward} or \textbf{future} is a contract between two parties to buy or sell an underlying asset at a
-specified price $K$, at a specified future date $T$.
-\ed
-
-The main difference between a forward and a future is that a forward is an OTC contract (i.e.\ a private contract
-between two parties) hence it is not standardized and it carries some credit risk, while a future is an
-exchange-traded contract hence it is standardized and (virtually) it carries no credit risk. Another crucial
-difference is that forwards are settled at the end of their life, while futures are, as settled daily. From now on
-we will use the term ``future'' to refer to both forwards and futures.
-
-When developing a new future contract, the exchange must specify in some detail the exact nature of the agreement
-between the two parties. In particular, it must specify:
+In general, three broad categories of traders can be identified:
 \bit
-\item \textbf{The Asset}: When the asset is a commodity, there may be quite a variation in the quality of what is
-available in the marketplace. When the asset is specified, it is therefore important that the exchange stipulate the
-commodity that are acceptable. On the other hand, the financial assets in futures contracts are generally well-defined
-and unambiguous.
-\item \textbf{The Contract Size}: The contract size specifies the amount of the asset that has to be delivered under
-one contract. This is an important decision for the exchange.
-\item \textbf{Delivery Arrangements}: The place where delivery will be made must be specified by the exchange. This is
-particularly important for commodities that involve significant transportation costs.
-\item \textbf{Delivery Months}: A futures contract is referred to by its delivery month. The exchange must specify the
-precise period during the month when delivery can be made. The delivery months vary from contract to contract and are
-chosen by the exchange to meet the needs of market participants.
-\item \textbf{Price Quotes}: The exchange defines how prices will be quoted.
-\item \textbf{Price Limits and Position Limits}: For most contracts, daily price movement limits are specified by
-the exchange. Position limits are the maximum number of contracts that a speculator may hold. The purpose of daily
-price limits is to prevent large price movements from occurring because of speculative excesses. However, limits can
-become an artificial barrier to trading when the price of the underlying commodity is advancing or declining
-rapidly. Whether price limits are, on balance, good for futures markets is controversial.
+\item \textbf{Hedgers}: Use derivatives to reduce the risk that they face from potential future movements in a market
+variable.
+\item \textbf{Speculators}: Use derivatives to bet on the future direction of a market variable.
+\item \textbf{Arbitrageurs}: Take offsetting positions in two or more instruments to lock in a profit.
 \eit
 
-Now, let's move on to some important definitions regarding futures contracts.
+\section{Futures / Forwards}
 
-\bd[Long Position]
-The party that agrees to buy the asset is said to be in a \textbf{long position}.
-\ed
-
-\bd[Short Position]
-The party that agrees to sell the asset is said to be in a \textbf{short position}.
+\bd[Future / Forward]
+A \textbf{future} or \textbf{forward}\footnote{The main difference between a future and a forward is that a future is an
+exchange-traded derivative while a forward is an OTC derivative. From now on we will be using the term ``future'' to
+refer to both futures amd forwards.} is a derivative that obligates the buyer to buy and the seller to sell the
+underlying asset at a specified future date $T$ for a specified price $K$.
 \ed
 
 \bd[Delivery Date / Maturity Date]
@@ -135,13 +106,25 @@ The specified future date $T$ in a future is called the \textbf{delivery} or \te
 \ed
 
 \bd[Delivery Price / Future Price]
-The specified price $K$ in a forward or future is called the \textbf{delivery} or \textbf{future price}.
+The specified price $K$ in a future is called the \textbf{delivery} or \textbf{future price}.
 \ed
 
-This price, like any other price, is determined by the laws of supply and demand. If, at a particular time, more
+Future price, like any other price, is determined by the laws of supply and demand. If, at a particular time, more
 traders wish to sell rather than buy, the price will go down. New buyers then enter the market so that a balance
 between buyers and sellers is maintained. If more traders wish to buy rather than sell the price goes up. New
 sellers then enter the market and a balance between buyers and sellers is maintained. \v
+
+When developing a future, the exchange must specify in some detail the exact nature of the agreement between the two
+parties. In particular, it must specify:
+\bit
+\item \textbf{The Asset}: Acceptable commodities or well-defined financial assets.
+\item \textbf{The Contract Size}: The amount of the asset to be delivered per contract.
+\item \textbf{Delivery Arrangements}: The delivery location, crucial for commodities with high transport costs.
+\item \textbf{Delivery Months}: The delivery period during the month, varying by contract.
+\item \textbf{Price Quotes}: How prices are quoted.
+\item \textbf{Price \& Position Limits}: Daily price movement limits to prevent speculative excesses, and position
+limits for speculators.
+\eit
 
 It is important to mention that the vast majority of futures contracts do not lead to the delivery of the underlying
 asset. Instead, they are ``closed out'' early, prior to the delivery period specified in the contract. Nevertheless,
@@ -154,12 +137,12 @@ it is the possibility of eventual delivery that determines the futures price.
 Beside the future price, there is also the price of the underlying asset, which is called the ``spot price''.
 
 \bd[Spot Price]
-The \textbf{spot price} $S_t$ is the price of an asset for immediate delivery at time t.
+The \textbf{spot price} $S_t$ is the price of an asset for immediate delivery at time $t$.
 \ed
 
-Given the future price and the spot price, it is quite straightforward to determine the payoff from a long or short
-position in a future contract. More specifically, the payoff from a long position $P_{\text{long}}$ in a forward or
-future on one unit of an asset is:
+Given the future price and the spot price, it is quite straightforward to determine the payoff for a long and a short
+position in a future. More specifically, the payoff for a long position $P_{\text{long}}$ in a future on one unit of an
+asset is:
 \bse
 P_{\text{long}} = S_T - K
 \ese
@@ -167,25 +150,26 @@ P_{\text{long}} = S_T - K
 where $S_T$ is the spot price of the asset at maturity of the contract. This is because the holder of the contract is
 obligated to buy an asset worth $S_T$ for $K$. \v
 
-Similarly, the payoff from a short position $P_{\text{short}}$ in a forward of future contract on one unit of an asset
-is:
+Similarly, the payoff for a short position $P_{\text{short}}$ in a future on one unit of an asset is:
 \bse
 P_{\text{short}} = K - S_T
 \ese
 
-These payoffs can be positive or negative. Because it costs nothing to enter into a future contract, the payoff from
-the contract is also the trader's total gain or loss from the contract.
-
 \vspace{5pt}
-\fig{dv1}{0.65}
+\fig{dv1}{0.56}
+
+These payoffs can be positive or negative. Because it costs nothing to enter into a future contract, the payoff from
+the contract is also the trader's total gain or loss from the contract. \v
 
 As the delivery period for a futures contract is approached, the futures price converges to the spot price of the
-underlying asset. When the delivery period is reached, the futures price equals—or is very close to—the spot price.
+underlying asset. When the delivery period is reached, the futures price equals, or is very close to, the spot price.
 This is known as the ``convergence property'' of futures prices. If that was not the case, then traders could make
 riskless profits by exploiting the difference between the futures price and the spot price as the delivery period
 approaches.
 
-\fig{dv2}{0.55}
+\fig{dv2}{0.45}
+
+\subsection{Margin Accounts}
 
 If two traders get in touch with each other directly and agree to trade an asset in the future for a certain price,
 there are obvious risks. One of the traders may regret the deal and try to back out. Alternatively, the trader
@@ -216,7 +200,7 @@ trader's gain or loss at the end of each trading day.
 Daily settlement leads to funds flowing each day between traders with long positions and traders with short positions.
 If the futures price increases from one day to the next, funds flow from traders with short positions to traders with
 long positions. If the futures price decreases from one day to the next, funds flow in the opposite direction, from
-traders with short positions to traders with long positions.This daily flow of funds between traders to reflect gains
+traders with long positions to traders with short positions. This daily flow of funds between traders to reflect gains
 and losses is known as ``variation margin''.
 
 \bd[Variation Margin]
@@ -231,18 +215,11 @@ that must be maintained at all times, known as the ``maintenance margin''.
 The minimum amount that must be maintained in the margin account is called the \textbf{maintenance margin}.
 \ed
 
-Initial and maintenance margins are set by the exchange clearing house and are determined by the variability of the
-price of the underlying asset and are revised when necessary. (The higher the variability, the higher the margin
-levels). Individual brokers may require greater margins from their clients than the minimum levels specified by the
-exchange clearing house. The maintenance margin is usually about 75\% of the initial margin. Note that margin
-requirements are the same on short futures positions as they are on long futures positions. It is just as easy to
-take a short futures position as it is to take a long one. The spot market does not have this symmetry. Taking a
-long position in the spot market involves buying the asset for immediate delivery and presents no problems. Taking a
-short position involves selling an asset that you do not own. This is a more complex transaction that may or may not
-be possible in a particular market. \v
-
-If the balance in the margin account falls below the maintenance margin, due to the variation margin being negative,
-the trader will receive a ``margin call'' from the exchange.
+The maintenance margin is usually 75\% of the initial margin, however, both initial and maintenance margins are set
+by the exchange clearing house and are determined by the variability of the price of the underlying asset and are
+revised when necessary. As it makes sence, the higher the variability, the higher the margin levels. If the balance
+in the margin account falls below the maintenance margin, due to the variation margin being negative, the trader
+will receive a ``margin call'' from the exchange.
 
 \bd[Margin Call]
 A \textbf{margin call} is a demand for additional funds to be deposited in the margin account, when the balance in it
@@ -442,7 +419,35 @@ At this stage we note that there are four types of participants in options marke
 \item Sellers of puts.
 \eit
 
-As with forwards and futures, buyers are referred to as having long positions and sellers are referred to as having
-short positions. Selling an option is also known as ``writing'' the option. \v
-
 Whereas it costs nothing to enter into a forward or futures contract, there is a cost to acquiring an option.
+
+
+
+
+
+Another crucial
+difference is that forwards are settled at the end of their life, while futures are, as settled daily.
+
+
+The purpose of hedging is to reduce risk. There is no guarantee that the outcome with hedging will be better than the
+outcome without hedging.
+
+There is a fundamental difference between the use of forward contracts and options
+for hedging. Forward contracts are designed to neutralize risk by fixing the price that
+the hedger will pay or receive for the underlying asset. Option contracts, by contrast,
+provide insurance. They offer a way for investors to protect themselves against adverse
+price movements in the future while still allowing them to benefit from favorable price
+movements. Unlike forwards, options involve the payment of an up-front fee.
+
+Futures and options are similar instruments for speculators in that they both provide a
+way in which a type of leverage can be obtained. However, there is an important
+difference between the two. When a speculator uses futures, the potential loss as well as
+the potential gain is very large. When options are purchased, no matter how bad things
+get, the speculator's loss is limited to the amount paid for the options.
+
+
+Derivatives are very versatile instruments.
+
+
+
+It is this very versatility that can cause problems.
