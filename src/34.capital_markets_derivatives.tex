@@ -98,11 +98,7 @@ variable.
 A \textbf{future} or \textbf{forward}\footnote{The main difference between a future and a forward is that a future is an
 exchange-traded derivative while a forward is an OTC derivative. From now on we will be using the term ``future'' to
 refer to both futures amd forwards.} is a derivative that obligates the buyer to buy and the seller to sell the
-underlying asset at a specified future date $T$ for a specified price $K$.
-\ed
-
-\bd[Delivery Date / Maturity Date]
-The specified future date $T$ in a future is called the \textbf{delivery} or \textbf{maturity date}.
+underlying asset for a specified price $K$ at a specified future date $T$.
 \ed
 
 \bd[Delivery Price / Future Price]
@@ -112,7 +108,11 @@ The specified price $K$ in a future is called the \textbf{delivery} or \textbf{f
 Future price, like any other price, is determined by the laws of supply and demand. If, at a particular time, more
 traders wish to sell rather than buy, the price will go down. New buyers then enter the market so that a balance
 between buyers and sellers is maintained. If more traders wish to buy rather than sell the price goes up. New
-sellers then enter the market and a balance between buyers and sellers is maintained. \v
+sellers then enter the market and a balance between buyers and sellers is maintained.
+
+\bd[Delivery Date / Maturity Date]
+The specified future date $T$ in a future is called the \textbf{delivery} or \textbf{maturity date}.
+\ed
 
 When developing a future, the exchange must specify in some detail the exact nature of the agreement between the two
 parties. In particular, it must specify:
@@ -167,7 +167,7 @@ This is known as the ``convergence property'' of futures prices. If that was not
 riskless profits by exploiting the difference between the futures price and the spot price as the delivery period
 approaches.
 
-\fig{dv2}{0.45}
+\fig{dv2}{0.55}
 
 \subsection{Margin Accounts}
 
@@ -212,7 +212,7 @@ As it makes sense, variation margins change the balance in the margin account. M
 that must be maintained at all times, known as the ``maintenance margin''.
 
 \bd[Maintenance Margin]
-The minimum amount that must be maintained in the margin account is called the \textbf{maintenance margin}.
+The minimum amount that must be maintained in a margin account is called \textbf{maintenance margin}.
 \ed
 
 The maintenance margin is usually 75\% of the initial margin, however, both initial and maintenance margins are set
@@ -222,7 +222,7 @@ in the margin account falls below the maintenance margin, due to the variation m
 will receive a ``margin call'' from the exchange.
 
 \bd[Margin Call]
-A \textbf{margin call} is a demand for additional funds to be deposited in the margin account, when the balance in it
+A \textbf{margin call} is a demand for additional funds to be deposited in a margin account, when the balance in it
 falls below the maintenance margin, to bring the balance up to the initial margin level.
 \ed
 
@@ -237,17 +237,138 @@ The daily gains represent the variation margins that are either added or subtrac
 \fig{dv3}{0.4}
 \ee
 
-Most brokers pay traders interest on the balance in a margin account wiyh interest rates being competitive with what
-could be earned elsewhere. To satisfy the initial margin requirements, but not subsequent margin calls, a trader can
-usually deposit securities with the broker. The market value of the securities is reduced by a certain amount to
-determine their value for margin purposes. This reduction is known as a ``haircut''.
+\section{Options}
 
-\bd[Haircut]
-A \textbf{haircut} is the reduction in the market value of securities that are deposited with a broker to satisfy the
-initial margin requirements.
+\bd[Option]
+An \textbf{option}\footnote{As with futures and forewards, options can be both exchange-traded and OTC derivatives. In
+what follows we will be using the term ``option'' to refer to both exchange-traded and OTC options.} is a derivative
+that gives the buyer the right to buy or sell, and the seller the obligation to sell or buy, an underlying asset for a
+specified price $K$ at a specified future date $T$.
 \ed
 
-\subsection{Hedging Using Futures}
+It should be emphasized that what distinguishes options from futures and forwards, is that an option gives the buyer
+the right to buy or sell. The buyer does not have to exercise this right, if it is not advantageous to do so. For this
+reason, in the context of options, the buyer is also referred to as the ``holder'' or the ``owner'' of the option. (In
+what follows we will be using these terms interchangeably.) On the other hand, the seller of the option is obligated to
+sell or buy the underlying asset if the buyer chooses to exercise the option. This is the reason why the seller of the
+option is also referred to as the ``writer'' of the option. \v
+
+Although, as we already said, the undrelying asset can be anything, in practice, the underlying asset is usually a
+stock or a stock index. In what follows, we will be using the term option to refer to stock options, unless otherwise
+specified. \v
+
+\bd[Strike Price / Exercise Price]
+The specified price $K$ in an option is called the \textbf{strike} or \textbf{exercise price}.
+\ed
+
+Strike prices are generally spaced 5 points apart for stocks, although for more expensive stocks, the striking prices
+may be 10 points apart, while for less expensive stocks, they may be 2.5 points apart. However, these intervals are not
+set in stone, since the exchange may alter them to improve depth and liquidity.
+
+\be
+A \$35 stock might, for example, have options with strike prices of \$30, \$35, and \$40, while a \$255 stock might
+have one at \$250 and one at \$260. A cheaper stoke, say \$17, might have strikes at \$15, \$17.50, and \$20.
+\ee
+
+\bd[Expiration Date / Maturity]
+The specified future date $T$ in an option is called the \textbf{expiration date} or \textbf{maturity}.
+\ed
+
+The expiration date is usually given as the month in which the option expires. The exact date of expiration is fixed
+within each month, and it's the third Friday in the expiration month.
+
+Based on if the option can be exercised only on the expiration date or at any time up to the expiration date, we
+distinguish between ``European'' and ``American'' options.
+
+\bd[European Option]
+A \textbf{European option} is an option that can be exercised only on the expiration date.
+\ed
+
+\bd[American Option]
+An \textbf{American option} is an option that can be exercised at any time up to the expiration date.
+\ed
+
+Note that the terms ``American'' and ``European'' do not refer to the location of the option or the exchange. Most of
+the options that are traded on exchanges are American. European options are generally easier to analyze than American
+options, and some of the properties of an American option are frequently deduced from those of its European counterpart.
+\v
+
+Based on if the holder has the right to buy or sell the underlying asset, we distinguish between ``call'' and ``put''
+option types.
+
+\bd[Call Option]
+A \textbf{call option} is an option that gives the holder the right to buy an underlying asset at a specified future
+date $T$ for a specified price $K$.
+\ed
+
+\bd[Put Option]
+A \textbf{put option} is an option that gives the holder the right to sell an underlying asset at a specified future
+date $T$ for a specified price $K$.
+\ed
+
+Hence, there are four types of participants in options markets:
+\bit
+\item Buyers of calls.
+\item Sellers of calls.
+\item Buyers of puts.
+\item Sellers of puts.
+\eit
+
+The abovementioned four specifications: underlying asset, expiration date, strike price, and type, uniquely describe
+any option contract.
+
+\be
+An option referred to as an \code{XYZ July 50 Call} is an option to buy (Call) the underlying stock (XYZ) for \$50
+(50) per share. The option expires in July (July).
+\ee
+
+Given these four specifications, one can group options into ``classes'' and ``series''.
+
+\bd[Class of Options]
+A \textbf{class of options} is a group of options of any type (calls and puts) that have the same underlying asset,
+expiration date, and strike price.
+\ed
+
+\bd[Series of Options]
+A \textbf{series of options} is a group of options of any type (calls and puts) that have the same underlying asset and
+expiration date, but different strike prices.
+\ed
+
+\bd[Opening Transaction]
+An \textbf{opening transaction} is the initial transaction that creates a new position in an option.
+\ed
+
+There are two types of opening transactions: ``buy to open'' and ``sell to open''.
+
+\bd[Buy To Open]
+A \textbf{buy to open} transaction is an opening transaction that creates a new long position in an option.
+\ed
+
+\bd[Sell To Open]
+A \textbf{sell to open} transaction is a transaction that creates a new short position in an option.
+\ed
+
+
+\bd[Closing Transaction]
+A \textbf{closing transaction} is a transaction that closes an existing position in an option.
+\ed
+
+
+
+
+An option is a ``wasting'' asset; that is, it has only an initial value that declines (or ``wastes'' away) as time
+passes. It may even expire worthless, or the holder may have to exercise it in order to recover some value before
+expiration. Of course, the holder may sell the option in the listed option market before expiration. An option is
+also a security by itself, but it is a derivative security. The option is irrevocably linked to the underlying
+stock; its price fluctuates as the price of the underlying stock rises or falls. Splits and stock dividends in the
+underlying stock affect the terms of listed options, although cash dividends do not. The holder of a call does not
+receive any cash dividends paid by the underlying stock.
+
+
+
+Whereas it costs nothing to enter into a forward or futures contract, there is a cost to acquiring an option.
+
+Another crucial difference is that forwards are settled at the end of their life, while futures are, as settled daily.
 
 Many of the participants in futures markets are hedgers. Their aim is to use futures markets to reduce a particular
 risk that they face. When one chooses to use futures markets to hedge a risk, the objective is often to take a
@@ -269,185 +390,24 @@ A \textbf{short hedge} is a hedge that involves a short position in futures cont
 A short hedge is appropriate when the hedger already owns an asset and expects to sell it at some time in the
 future, or when an asset is not owned right now but will be owned and ready for sale at some time in the future.
 
-\be
-Consider a company that knows it will gain \$10,000 for each 1 cent increase in the price of a commodity over the next
-3 months and lose \$10,000 for each 1 cent decrease in the price during the same period. \v
-
-Assume that it is May 15 today and that the company has just negotiated a contract to sell 1 million units of the
-commodity. It has been agreed that the price that will apply in the contract is the market price on August 15.
-Suppose that on May 15 the spot price is \$50 per unit and the commodity futures price for August delivery is \$49 per
-unit. Because each futures contract is for the delivery of 1,000 units, the company can hedge its exposure by
-shorting (i.e., selling) 1,000 futures contracts ($1,000 \text{Contrancts} \times 1,000 \text{Units} = 1,000,000
-\text{Units})$. \v
-
-Suppose that the spot price on August 15 proves to be \$45 per unit. The company realizes \$45 million for the commodity
-under its sales contract, and $\$49 - \$45 = \$4$ per unit, or \$4 million from the short futures position. The total
-amount realized from both the futures position and the sales contract is therefore approximately \$49 million. \v
-
-For an alternative outcome, suppose that the price of the commodity on August 15 proves to be \$55 per unit. The company
-realizes \$55 million for the commodity under its sales contract, and loses $\$55 - \$49 = \$6$ per unit, or \$6 million
-from the short futures position. The total amount realized from both the futures position and the sales contract is
-therefore approximately \$49 million. \v
-
-It is easy to see that in all cases the company ends up with approximately \$49 million.
-\ee
-
 \bd[Long Hedge]
 A \textbf{long hedge} is a hedge that involves a long position in futures contracts.
 \ed
 
-A long hedge is appropriate when a company knows it will have to purchase a certain asset in the future and wants to
-lock in a price now.
-
-\be
-Suppose that it is now January 15. A company knows it will require 100,000 units of a commodity on May 15 to meet a
-certain contract. The spot price of commodity is \$3.40 per unit, and the futures price for May delivery is \$3.20 per
-unit. The company can hedge its position by taking a long position in four futures contracts of 25,000 units of the
-commodity. The strategy has the effect of locking in the price of the required commodity at close to \$3.20 per pound.
-\v
-
-Suppose that the spot price of the commodity on May 15 proves to be \$3.25 per unit. The company therefore gains
-approximately $100,000 * (\$3.25 - \$3.20) = \$5,000$ on the futures contracts. It pays $100,000 * \$3.25 = \$325,000$
-for the commodity, making the net cost approximately $\$325,000 - \$5,000 = \$320,000$. \v
-
-For an alternative outcome,suppose that the spot price is \$3.05 per unit on May 15. The company then loses
-approximately $100,000 * (\$3.20 - \$3.05) = \$15,000$ on the futures contracts, and pays $100,000 * \$3.05 = \$305,000$
-for the commodity, making the net cost approximately $\$305,000 + \$15,000 = \$320,000$. \v
-
-Again, it is easy to see that in all cases the company ends up paying approximately \$320 million.
-\ee
-
-The arguments in favor of hedging are so obvious that they hardly need to be stated. Most nonfinancial companies are
-in the business of manufacturing, or retailing or wholesaling, or providing a service. They have no particular
-skills or expertise in predicting variables such as interest rates, exchange rates, and commodity prices. It makes
-sense for them to hedge the risks associated with these variables as they become aware of them. The companies can
-then focus on their main activities. By hedging, they avoid unpleasant surprises such as sharp rises in the price of
-a commodity that is being purchased. \v
-
-However, if hedging is not the norm in a certain industry, it may not make sense for one particular company to
-choose to be different from all others. Competitive pressures within the industry may be such that the prices of the
-goods and services produced by the industry fluctuate to reflect raw material costs, interest rates, exchange rates,
-and so on. In other words, all the implications of price changes on a company’s profitability should be taken into
-account in the design of a hedging strategy to protect against the price changes. A company that does not hedge can
-expect its profit margins to be roughly constant. However, a company that does hedge can expect its profit margins
-to fluctuate! It is important to realize thus, that a hedge using futures contracts can result in a decrease or an
-increase in a company’s profits relative to the position it would be in with no hedging. It is important for
-executives within the organization to fully understand the nature of hedging before a hedging program is put in
-place. Ideally, hedging strategies are set by a company’s board of directors and are clearly communicated to both
-the company’s management and the shareholders. \v
-
-In real life, hedging is often not quite as straightforward as in the examples above. One of the main reasons, among
-others, is that the asset whose price is to be hedged may not be exactly the same as the asset underlying the futures
-contract. This is known as ``cross hedging''.
-
-\bd[Cross Hedging]
-\textbf{Cross hedging} is a hedging strategy that involves taking a position in a futures contract that is different
-from the asset being hedged.
-\ed
-
-\be
-Consider, for example, an airline that is concerned about the future price of jet fuel. Because jet fuel futures are
-not actively traded, it might choose to use heating oil futures contracts to hedge its exposure.
-\ee
-
-Let us explore the concept of cross hedging in more detail. We begin by defining the ``hedge ratio''.
-
-\bd[Hedge Ratio]
-The \textbf{hedge ratio} is the ratio of the size of the position taken in futures contracts to the size of the
-exposure.
-\ed
-
-When the asset underlying the futures contract is the same as the asset being hedged, it is natural to use a hedge
-ratio of 1. This is the hedge ratio we have used in the examples considered so far. When cross hedging is used,
-setting the hedge ratio equal to 1 is not always optimal. The hedger should choose a value for the hedge ratio that
-minimizes the variance of the value of the hedged position. We now consider how the hedger can do this.
-
-\section{Options}
-
-\bd[Option]
-An \textbf{option} is a contract that gives the holder the right, but not the obligation, to buy or sell an underlying
-asset at a specified price $K$ at a specified future date $T$.
-\ed
-
-Based on if the holder has the right to buy or sell the underlying asset, we distinguish between ``call'' and ``put''
-options.
-
-\bd[Call Option]
-A \textbf{call option} is an option that gives the holder the right to buy an underlying asset at a specified price $K$
-at a specified future date $T$.
-\ed
-
-\bd[Put Option]
-A \textbf{put option} is an option that gives the holder the right to sell an underlying asset at a specified price $K$
-at a specified future date $T$.
-\ed
-
-It should be emphasized that an option gives the holder the right to do something. The holder does not have to
-exercise this right. This is what distinguishes options from forwards and futures, where the holder is obligated to
-buy or sell the underlying asset.
-
-\bd[Strike Price / Exercise Price]
-The specified price $K$ in an option is called the \textbf{strike price} or \textbf{exercise price}.
-\ed
-
-\bd[Expiration Date / Maturity]
-The specified future date $T$ in an option is called the \textbf{expiration date} or \textbf{maturity}.
-\ed
-
-Options are traded both on exchanges and in the over-the-counter market. Based on if the option can be exercised only
-on the expiration date or at any time up to the expiration date, we distinguish between ``European'' and ``American''
-options.
-
-\bd[European Option]
-A \textbf{European option} is an option that can be exercised only on the expiration date.
-\ed
-
-\bd[American Option]
-An \textbf{American option} is an option that can be exercised at any time up to the expiration date.
-\ed
-
-Note that the terms American and European do not refer to the location of the option or the exchange. Some options
-trading on North American exchanges are European. Most of the options that are traded on exchanges are American.
-European options are generally easier to analyze than American options, and some of the properties of an American
-option are frequently deduced from those of its European counterpart. \v
-
-At this stage we note that there are four types of participants in options markets:
-\bit
-\item Buyers of calls.
-\item Sellers of calls.
-\item Buyers of puts.
-\item Sellers of puts.
-\eit
-
-Whereas it costs nothing to enter into a forward or futures contract, there is a cost to acquiring an option.
-
-
-
-
-
-Another crucial
-difference is that forwards are settled at the end of their life, while futures are, as settled daily.
-
-
 The purpose of hedging is to reduce risk. There is no guarantee that the outcome with hedging will be better than the
 outcome without hedging.
 
-There is a fundamental difference between the use of forward contracts and options
-for hedging. Forward contracts are designed to neutralize risk by fixing the price that
-the hedger will pay or receive for the underlying asset. Option contracts, by contrast,
-provide insurance. They offer a way for investors to protect themselves against adverse
-price movements in the future while still allowing them to benefit from favorable price
-movements. Unlike forwards, options involve the payment of an up-front fee.
+There is a fundamental difference between the use of forward contracts and options for hedging. Forward contracts
+are designed to neutralize risk by fixing the price that the hedger will pay or receive for the underlying asset.
+Option contracts, by contrast, provide insurance. They offer a way for investors to protect themselves against
+adverse price movements in the future while still allowing them to benefit from favorable price movements. Unlike
+forwards, options involve the payment of an up-front fee.
 
-Futures and options are similar instruments for speculators in that they both provide a
-way in which a type of leverage can be obtained. However, there is an important
-difference between the two. When a speculator uses futures, the potential loss as well as
-the potential gain is very large. When options are purchased, no matter how bad things
+Futures and options are similar instruments for speculators in that they both provide a way in which a type of
+leverage can be obtained. However, there is an important difference between the two. When a speculator uses futures,
+the potential loss as well as the potential gain is very large. When options are purchased, no matter how bad things
 get, the speculator's loss is limited to the amount paid for the options.
 
-
 Derivatives are very versatile instruments.
-
-
 
 It is this very versatility that can cause problems.
