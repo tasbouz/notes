@@ -344,14 +344,33 @@ There are two types of opening transactions: ``buy to open'' and ``sell to open'
 A \textbf{buy to open} transaction is an opening transaction that creates a new long position in an option.
 \ed
 
+In practice, for buy to open, one can either buy a call or a put option. The buyer of a call option is said to be
+``bullish'' on the underlying asset, while the buyer of a put option is said to be ``bearish'' on the underlying asset.
+
 \bd[Sell To Open]
 A \textbf{sell to open} transaction is a transaction that creates a new short position in an option.
 \ed
 
+In practice, for sell to open, one can either sell a call or a put option. The seller of a call option is said to be
+``bearish'' on the underlying asset, while the seller of a put option is said to be ``bullish'' on the underlying asset.
 
 \bd[Closing Transaction]
 A \textbf{closing transaction} is a transaction that closes an existing position in an option.
 \ed
+
+There are two types of closing transactions: ``buy to close'' and ``sell to close''.
+
+\bd[Buy To Close]
+A \textbf{buy to close} transaction is a closing transaction that closes an existing short position in an option.
+\ed
+
+In practice, for buy to close, the
+
+\bd[Sell To Close]
+A \textbf{sell to close} transaction is a closing transaction that closes an existing long position in an option.
+\ed
+
+
 
 
 
@@ -410,4 +429,4 @@ get, the speculator's loss is limited to the amount paid for the options.
 
 Derivatives are very versatile instruments.
 
-It is this very versatility that can cause problems.
+It is this very versatility that can cause problems.b
