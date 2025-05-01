@@ -247,15 +247,13 @@ specified price $K$ at a specified future date $T$.
 \ed
 
 It should be emphasized that what distinguishes options from futures and forwards, is that an option gives the buyer
-the right to buy or sell. The buyer does not have to exercise this right, if it is not advantageous to do so. For this
-reason, in the context of options, the buyer is also referred to as the ``holder'' or the ``owner'' of the option. (In
-what follows we will be using these terms interchangeably.) On the other hand, the seller of the option is obligated to
-sell or buy the underlying asset if the buyer chooses to exercise the option. This is the reason why the seller of the
-option is also referred to as the ``writer'' of the option. \v
+the right to buy or sell. The buyer does not have to exercise this right, if it is not advantageous to do so. On the
+other hand, the seller of the option is obligated to sell or buy the underlying asset if the buyer chooses to exercise
+the option.
 
 Although, as we already said, the undrelying asset can be anything, in practice, the underlying asset is usually a
 stock or a stock index. In what follows, we will be using the term option to refer to stock options, unless otherwise
-specified. \v
+specified.
 
 \bd[Strike Price / Exercise Price]
 The specified price $K$ in an option is called the \textbf{strike} or \textbf{exercise price}.
@@ -275,23 +273,7 @@ The specified future date $T$ in an option is called the \textbf{expiration date
 \ed
 
 The expiration date is usually given as the month in which the option expires. The exact date of expiration is fixed
-within each month, and it's the third Friday in the expiration month.
-
-Based on if the option can be exercised only on the expiration date or at any time up to the expiration date, we
-distinguish between ``European'' and ``American'' options.
-
-\bd[European Option]
-A \textbf{European option} is an option that can be exercised only on the expiration date.
-\ed
-
-\bd[American Option]
-An \textbf{American option} is an option that can be exercised at any time up to the expiration date.
-\ed
-
-Note that the terms ``American'' and ``European'' do not refer to the location of the option or the exchange. Most of
-the options that are traded on exchanges are American. European options are generally easier to analyze than American
-options, and some of the properties of an American option are frequently deduced from those of its European counterpart.
-\v
+within each month, and it's the third Friday in the expiration month. \v
 
 Based on if the holder has the right to buy or sell the underlying asset, we distinguish between ``call'' and ``put''
 option types.
@@ -314,6 +296,62 @@ Hence, there are four types of participants in options markets:
 \item Sellers of puts.
 \eit
 
+Each one of these four categories are considered to be a so called ``opening transaction'', that creates a new position
+in an option.
+
+\bd[Opening Transaction]
+An \textbf{opening transaction} is the initial transaction that creates a new position in an option.
+\ed
+
+An opening transaction can be further classified as either a ``buy to open'' or a ``sell to open'' transaction.
+
+\bd[Buy To Open]
+A \textbf{buy to open} transaction is a transaction that buys the option and, thus, creates a new long position.
+\ed
+
+In practice, for ``buy to open'', one can either buy a call or a put option. As it makes sense, the buyer of a call
+option is said to be ``bullish'' on the underlying asset, while the buyer of a put option is said to be ``bearish''. In
+both cases, the buyer of the option is said to be ``long'' the option contract, and in the jargon of options, is
+referred to as the ``holder'' or the ``owner'' of the option.
+
+\bd[Holder / Owner]
+A \textbf{holder}, or \textbf{owner}, is the buyer of an option.
+\ed
+
+\bd[Sell To Open]
+A \textbf{sell to open} transaction is a transaction that sells the option and, thus, creates a new short position.
+\ed
+
+In practice, for ``sell to open'', one can either sell a call or a put option. As before, the seller of a call option is
+said to be ``bearish'' on the underlying asset, while the seller of a put option is said to be ``bullish''. In both
+cases, the seller of the option is said to be ``short'' the option contract, and in the jargon of options, is referred
+to as the ``writer'' of the option.
+
+\bd[Writer]
+A \textbf{writer} is the seller of an option.
+\ed
+
+An option holder who invokes the right to buy or sell is said to ``exercise'' the option.
+
+\bd[Exercise]
+\textbf{Exercising} an option means invoking the right to buy or sell the underlying asset.
+\ed
+
+Hence, call option holders exercise to buy stock, while put holders exercise to sell. The holder may exercise the option
+at any time after taking possession of it and before the expiration date. They do not have to wait until the expiration
+date itself before exercising.\footnote{Based on if the option can be exercised only on the expiration date or at any
+time up to the expiration date, we distinguish between ``European'' and ``American'' options, however, most European
+options are not stock options. Note that the terms ``American'' and ``European'' do not refer to the location of the
+option or the exchange. Most of the options that are traded on exchanges are American. European options are generally
+easier to analyze than American options, and some of the properties of an American option are frequently deduced from
+those of its European counterpart.} Whenever a holder exercises an option, somewhere a writer is assigned the obligation
+to fulfill the terms of the option contract: Thus, if a call holder exercises the right to buy, a call writer is
+assigned the obligation to sell; conversely, if a put holder exercises the right to sell, a put writer is assigned the
+obligation to buy.
+
+
+
+
 The abovementioned four specifications: underlying asset, expiration date, strike price, and type, uniquely describe
 any option contract.
 
@@ -334,26 +372,6 @@ A \textbf{series of options} is a group of options of any type (calls and puts) 
 expiration date, but different strike prices.
 \ed
 
-\bd[Opening Transaction]
-An \textbf{opening transaction} is the initial transaction that creates a new position in an option.
-\ed
-
-There are two types of opening transactions: ``buy to open'' and ``sell to open''.
-
-\bd[Buy To Open]
-A \textbf{buy to open} transaction is an opening transaction that creates a new long position in an option.
-\ed
-
-In practice, for buy to open, one can either buy a call or a put option. The buyer of a call option is said to be
-``bullish'' on the underlying asset, while the buyer of a put option is said to be ``bearish'' on the underlying asset.
-
-\bd[Sell To Open]
-A \textbf{sell to open} transaction is a transaction that creates a new short position in an option.
-\ed
-
-In practice, for sell to open, one can either sell a call or a put option. The seller of a call option is said to be
-``bearish'' on the underlying asset, while the seller of a put option is said to be ``bullish'' on the underlying asset.
-
 \bd[Closing Transaction]
 A \textbf{closing transaction} is a transaction that closes an existing position in an option.
 \ed
@@ -364,16 +382,9 @@ There are two types of closing transactions: ``buy to close'' and ``sell to clos
 A \textbf{buy to close} transaction is a closing transaction that closes an existing short position in an option.
 \ed
 
-In practice, for buy to close, the
-
 \bd[Sell To Close]
 A \textbf{sell to close} transaction is a closing transaction that closes an existing long position in an option.
 \ed
-
-
-
-
-
 
 An option is a ``wasting'' asset; that is, it has only an initial value that declines (or ``wastes'' away) as time
 passes. It may even expire worthless, or the holder may have to exercise it in order to recover some value before
@@ -382,8 +393,6 @@ also a security by itself, but it is a derivative security. The option is irrevo
 stock; its price fluctuates as the price of the underlying stock rises or falls. Splits and stock dividends in the
 underlying stock affect the terms of listed options, although cash dividends do not. The holder of a call does not
 receive any cash dividends paid by the underlying stock.
-
-
 
 Whereas it costs nothing to enter into a forward or futures contract, there is a cost to acquiring an option.
 
