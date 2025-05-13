@@ -246,26 +246,24 @@ that gives the buyer the right to buy or sell, and the seller the obligation to 
 specified price $K$ at a specified future date $T$.
 \ed
 
-It should be emphasized that what distinguishes options from futures and forwards, is that an option gives the buyer
-the right to buy or sell. The buyer does not have to exercise this right, if it is not advantageous to do so. On the
-other hand, the seller of the option is obligated to sell or buy the underlying asset if the buyer chooses to exercise
-the option.
+What distinguishes options from futures and forwards, is that an option gives the buyer the right to buy or sell.
+They do not have to exercise it, if it is not advantageous to do so. Opposite, the seller of the option is obligated
+to sell or buy the underlying asset if the buyer chooses to exercise the option. \v
 
-Although, as we already said, the undrelying asset can be anything, in practice, the underlying asset is usually a
-stock or a stock index. In what follows, we will be using the term option to refer to stock options, unless otherwise
-specified.
+Although, as we said, the undrelying asset can be anything, in practice, it is usually a stock or an index. In what
+follows, we will be using the term option to refer to stock options, unless otherwise specified.
 
 \bd[Strike Price / Exercise Price]
 The specified price $K$ in an option is called the \textbf{strike} or \textbf{exercise price}.
 \ed
 
-Strike prices are generally spaced 5 points apart for stocks, although for more expensive stocks, the striking prices
-may be 10 points apart, while for less expensive stocks, they may be 2.5 points apart. However, these intervals are not
-set in stone, since the exchange may alter them to improve depth and liquidity.
+Strike prices are spaced 5 points apart for stocks, although for more expensive stocks, the striking prices may be
+10 points apart, while for less expensive stocks, they may be 2.5 points apart. These intervals are not set in
+stone, since the exchange may alter them to improve depth and liquidity.
 
 \be
-A \$35 stock might, for example, have options with strike prices of \$30, \$35, and \$40, while a \$255 stock might
-have one at \$250 and one at \$260. A cheaper stoke, say \$17, might have strikes at \$15, \$17.50, and \$20.
+A \$35 stock might have options with strike prices of \$30 and \$40. A \$255 stock might have one at \$250 and one at
+\$260. A cheaper stoke, say \$17, might have strikes at \$15, \$17.50, and \$20.
 \ee
 
 \bd[Expiration Date / Maturity]
@@ -288,72 +286,8 @@ A \textbf{put option} is an option that gives the holder the right to sell an un
 date $T$ for a specified price $K$.
 \ed
 
-Hence, there are four types of participants in options markets:
-\bit
-\item Buyers of calls.
-\item Sellers of calls.
-\item Buyers of puts.
-\item Sellers of puts.
-\eit
-
-Each one of these four categories are considered to be a so called ``opening transaction'', that creates a new position
-in an option.
-
-\bd[Opening Transaction]
-An \textbf{opening transaction} is the initial transaction that creates a new position in an option.
-\ed
-
-An opening transaction can be further classified as either a ``buy to open'' or a ``sell to open'' transaction.
-
-\bd[Buy To Open]
-A \textbf{buy to open} transaction is a transaction that buys the option and, thus, creates a new long position.
-\ed
-
-In practice, for ``buy to open'', one can either buy a call or a put option. As it makes sense, the buyer of a call
-option is said to be ``bullish'' on the underlying asset, while the buyer of a put option is said to be ``bearish''. In
-both cases, the buyer of the option is said to be ``long'' the option contract, and in the jargon of options, is
-referred to as the ``holder'' or the ``owner'' of the option.
-
-\bd[Holder / Owner]
-A \textbf{holder}, or \textbf{owner}, is the buyer of an option.
-\ed
-
-\bd[Sell To Open]
-A \textbf{sell to open} transaction is a transaction that sells the option and, thus, creates a new short position.
-\ed
-
-In practice, for ``sell to open'', one can either sell a call or a put option. As before, the seller of a call option is
-said to be ``bearish'' on the underlying asset, while the seller of a put option is said to be ``bullish''. In both
-cases, the seller of the option is said to be ``short'' the option contract, and in the jargon of options, is referred
-to as the ``writer'' of the option.
-
-\bd[Writer]
-A \textbf{writer} is the seller of an option.
-\ed
-
-An option holder who invokes the right to buy or sell is said to ``exercise'' the option.
-
-\bd[Exercise]
-\textbf{Exercising} an option means invoking the right to buy or sell the underlying asset.
-\ed
-
-Hence, call option holders exercise to buy stock, while put holders exercise to sell. The holder may exercise the option
-at any time after taking possession of it and before the expiration date. They do not have to wait until the expiration
-date itself before exercising.\footnote{Based on if the option can be exercised only on the expiration date or at any
-time up to the expiration date, we distinguish between ``European'' and ``American'' options, however, most European
-options are not stock options. Note that the terms ``American'' and ``European'' do not refer to the location of the
-option or the exchange. Most of the options that are traded on exchanges are American. European options are generally
-easier to analyze than American options, and some of the properties of an American option are frequently deduced from
-those of its European counterpart.} Whenever a holder exercises an option, somewhere a writer is assigned the obligation
-to fulfill the terms of the option contract: Thus, if a call holder exercises the right to buy, a call writer is
-assigned the obligation to sell; conversely, if a put holder exercises the right to sell, a put writer is assigned the
-obligation to buy.
-
-
-
-
-The abovementioned four specifications: underlying asset, expiration date, strike price, and type, uniquely describe
-any option contract.
+These four specifications (underlying asset, strike price, expiration date, and type) uniquely describe any option
+contract.
 
 \be
 An option referred to as an \code{XYZ July 50 Call} is an option to buy (Call) the underlying stock (XYZ) for \$50
@@ -372,6 +306,65 @@ A \textbf{series of options} is a group of options of any type (calls and puts) 
 expiration date, but different strike prices.
 \ed
 
+Going back to option types, calls and puts define four types of participants in options markets: buyers of calls,
+sellers of calls, buyers of puts, and sellers of puts. Each one of these four categories are considered to be a so
+called ``opening transaction'', that creates a new position in an option.
+
+\bd[Opening Transaction]
+An \textbf{opening transaction} is the initial transaction that creates a new position in an option.
+\ed
+
+An opening transaction can be further classified as either a ``buy to open'' or a ``sell to open''.
+
+\bd[Buy To Open]
+A \textbf{buy to open} transaction is a transaction that buys the option, creating a new long position.
+\ed
+
+In practice, for ``buy to open'', one can either buy a call or a put option. As it makes sense, the buyer of a call
+option is said to be ``bullish'' on the underlying asset, while the buyer of a put option is said to be ``bearish''. In
+both cases, the buyer of the option is said to be ``long'' the option contract, and in the jargon of options, is
+referred to as the ``holder'' or the ``owner'' of the option.
+
+\bd[Holder / Owner]
+A \textbf{holder}, or \textbf{owner}, is the buyer of an option.
+\ed
+
+\bd[Sell To Open]
+A \textbf{sell to open} transaction is a transaction that sells the option, creating a new short position.
+\ed
+
+In practice, for ``sell to open'', one can either sell a call or a put option. As before, the seller of a call option is
+said to be ``bearish'' on the underlying asset, while the seller of a put option is said to be ``bullish''. In both
+cases, the seller of the option is said to be ``short'' the option contract, and in the jargon of options, is referred
+to as the ``writer'' of the option.
+
+\bd[Writer]
+A \textbf{writer} is the seller of an option.
+\ed
+
+An option is a ``wasting'' asset; that is, it has only an initial value that declines (or ``wastes'' away) as time
+passes. It may even expire worthless, or the holder may have to exercise it in order to recover some value before
+expiration. An option holder who invokes the right to buy or sell is said to ``exercise'' the option.
+
+\bd[Exercise]
+\textbf{Exercising} an option means invoking the right to buy or sell the underlying asset.
+\ed
+
+Hence, call option holders exercise to buy the underlying stock, while put holders exercise to sell it. The holder may
+exercise the option at any time after taking possession of it and before the expiration date. They do not have to wait
+until the expiration date itself before exercising.\footnote{Based on if the option can be exercised only on the
+expiration date or at any time up to the expiration date, we distinguish between ``European'' and ``American'' options,
+however, most European options are not stock options. Note that the terms ``American'' and ``European'' do not refer to
+the location of the option or the exchange. Most of the options that are traded on exchanges are American. European
+options are generally easier to analyze than American options, and some of the properties of an American option are
+frequently deduced from those of its European counterpart.} \v
+
+Whenever a holder exercises an option, somewhere a writer is assigned the obligation to fulfill the terms of the
+option contract: Thus, if a call holder exercises the right to buy, a call writer is assigned the obligation to
+sell; conversely, if a put holder exercises the right to sell, a put writer is assigned the obligation to buy. \v
+
+Moving on to the ``closing transactions'', these are transactions that close an existing position in an option.
+
 \bd[Closing Transaction]
 A \textbf{closing transaction} is a transaction that closes an existing position in an option.
 \ed
@@ -385,57 +378,3 @@ A \textbf{buy to close} transaction is a closing transaction that closes an exis
 \bd[Sell To Close]
 A \textbf{sell to close} transaction is a closing transaction that closes an existing long position in an option.
 \ed
-
-An option is a ``wasting'' asset; that is, it has only an initial value that declines (or ``wastes'' away) as time
-passes. It may even expire worthless, or the holder may have to exercise it in order to recover some value before
-expiration. Of course, the holder may sell the option in the listed option market before expiration. An option is
-also a security by itself, but it is a derivative security. The option is irrevocably linked to the underlying
-stock; its price fluctuates as the price of the underlying stock rises or falls. Splits and stock dividends in the
-underlying stock affect the terms of listed options, although cash dividends do not. The holder of a call does not
-receive any cash dividends paid by the underlying stock.
-
-Whereas it costs nothing to enter into a forward or futures contract, there is a cost to acquiring an option.
-
-Another crucial difference is that forwards are settled at the end of their life, while futures are, as settled daily.
-
-Many of the participants in futures markets are hedgers. Their aim is to use futures markets to reduce a particular
-risk that they face. When one chooses to use futures markets to hedge a risk, the objective is often to take a
-position that neutralizes the risk as far as possible.
-
-\bd[Perfect Hedge]
-A \textbf{perfect hedge} is a hedge that completely eliminates the risk.
-\ed
-
-Perfect hedges are rare. For the most part, therefore, a study of hedging using futures contracts is a study of the
-ways in which hedges can be constructed so that they perform as close to perfectly as possible.
-
-There are two main types of hedges: short hedges and long hedges.
-
-\bd[Short Hedge]
-A \textbf{short hedge} is a hedge that involves a short position in futures contracts.
-\ed
-
-A short hedge is appropriate when the hedger already owns an asset and expects to sell it at some time in the
-future, or when an asset is not owned right now but will be owned and ready for sale at some time in the future.
-
-\bd[Long Hedge]
-A \textbf{long hedge} is a hedge that involves a long position in futures contracts.
-\ed
-
-The purpose of hedging is to reduce risk. There is no guarantee that the outcome with hedging will be better than the
-outcome without hedging.
-
-There is a fundamental difference between the use of forward contracts and options for hedging. Forward contracts
-are designed to neutralize risk by fixing the price that the hedger will pay or receive for the underlying asset.
-Option contracts, by contrast, provide insurance. They offer a way for investors to protect themselves against
-adverse price movements in the future while still allowing them to benefit from favorable price movements. Unlike
-forwards, options involve the payment of an up-front fee.
-
-Futures and options are similar instruments for speculators in that they both provide a way in which a type of
-leverage can be obtained. However, there is an important difference between the two. When a speculator uses futures,
-the potential loss as well as the potential gain is very large. When options are purchased, no matter how bad things
-get, the speculator's loss is limited to the amount paid for the options.
-
-Derivatives are very versatile instruments.
-
-It is this very versatility that can cause problems.b
