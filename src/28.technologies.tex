@@ -1244,8 +1244,6 @@ delete the remote branch locally).
 
 \subsection{Useful Commands}
 
-In this section I will go through some useful, unrelated to each other, commands that I often use.
-
 \subsubsection{Git Cherry$-$Pick}
 
 Sometimes one may accidentally commit to the wrong branch. In that case she wants to copy paste the commit from the
@@ -1264,9 +1262,7 @@ The \code{git stash} command is very useful when one wants to record the current
 staging area because there are some changes that are not quite ready to be committed and he needs to throw them away
 from working tree but keep them somewhere in memory for future use. This happens a lot when one needs to switch
 branches without committing stuff (maybe he was working on the wrong branch), or to revert back temporarily to where
-he started to check the initial state. \v
-
-In order to do so one can use:
+he started to check the initial state. In order to do so one can use:
 
 \begin{bash}
 # stash only tracked $($staged and unstaged$)$ changes, including an optional message
@@ -1312,7 +1308,89 @@ git stash apply <stash>
 Notice that in case where no specific stash is selected then the most recent one the one on top of stash list will be
 popped/applied.
 
-\newpage
+\subsection{Github Actions}
+
+\bd[Continuous Integration (CI)]
+\textbf{Continuous integration} (\textbf{CI}) is the practice of integrating source code changes frequently and ensuring
+that the integrated codebase is in a workable state.
+\ed
+
+\bd[Continuous Deployment (CD)]
+\textbf{Continuous deployment} (\textbf{CD}) is a software engineering approach in which software functionalities are
+delivered through automated deployments.
+\ed
+
+\bd[Continuous Integration / Continuous Deployment (CI/CD)]
+\textbf{Continuous Integration / Continuous Deployment} (\textbf{CI/CD}) is the combined practices of continuous
+integration (CI) and continuous deployment.
+\ed
+
+\bd[GitHub Actions]
+\textbf{GitHub Actions} is a CI/CD platform that allows the automation of building, testing, and deploying pipelines.
+\ed
+
+In what follows we will dive into the details of GitHub Actions. Starting from low level we will begin by defining the
+``Github runner''.
+
+\bd[Github Runner]
+A \textbf{Github runner}, or simply \textbf{runner}, is a server dedicated for Github Actions.
+\ed
+
+Runners can be either GitHub-hosted (Ubuntu Linux, Microsoft Windows, macOS) or self-hosted. Each runner runs in a
+virtual machine and can run a single ``Github job`` or ``Github action`` at a time. \v
+
+\bd[Github Job]
+A \textbf{Github job}, or simply \textbf{job}, is a set of steps that execute on the same runner.
+\ed
+
+Each step inside a job is a shell script that will be executed. Steps are executed in order and are dependent on each
+other. Since each step is executed on the same runner, one can share data from one step to another. \v
+
+By default, jobs have no dependencies and run in parallel. However, one can set dependencies between jobs. In this
+case, the dependent job will not run until the job it depends on has completed. This is useful when one job needs
+the output of another job to run.
+
+\bd[Github Action]
+A \textbf{Github action}, or simply \textbf{action}, is a custom application that performs a complex but frequently
+repeated task.
+\ed
+
+An action is used to help reduce the amount of repetitive code that one writes in a workflow file. One can write their
+own actions, or they can find actions to use in workflows in the GitHub Marketplace. \v
+
+Finally, jobs and actions are grouped into ``Github workflows'', which is the main component of GitHub Actions that the
+user interacts with.
+
+\bd[Github Workflow]
+\textbf{Github workflow}, or simply \textbf{workflow}, is a configurable automated process that will run one or more
+jobs or actions.
+\ed
+
+Workflows can be triggered manually, at a defined schedule, or, most frequently, by a ``Github event'' in the
+repository.
+
+\bd[Github Event]
+\textbf{Github event}, or simply \textbf{event}, is a specific activity in a repository that triggers a workflow run.
+\ed
+
+Going back to workflows, each workflow must contain one or more events that will trigger it, one or more jobs or
+actions, each of which will execute on a runner and run a series of one or more steps. \v
+
+A repository can have multiple workflows, each one of them defined by a YAML file stored inside the
+\code{.github/workflows} directory in the repository. The workflow file can contain the following sections:
+
+\bit
+\item \textbf{name}: The name of the workflow displayed under repository's ``Actions'' tab. If omitted, the workflow
+file path relative to the root of the repository is displayed instead.
+\item \textbf{run-name}: The name for workflow runs displayed in the list of workflow runs under repository's
+``Actions'' tab. If omitted, an event-specific information for the workflow run is displayed instead.
+\item \textbf{on}: The single or multiple event(s) that trigger(s) the workflow.
+\item \textbf{permissions}: The permissions that will be granted to the workflow.
+\item \textbf{env}: The environment variables that will be available to all jobs in the workflow.
+\item \textbf{defaults}: The default settings for all jobs in the workflow.
+\item \textbf{jobs}: The jobs that will be executed when the workflow is triggered. Each job can contain multiple
+steps, which are executed in order. Each job can also have dependencies on other jobs.
+\eit
 
 \section{Docker}\label{sec:docker}
 
