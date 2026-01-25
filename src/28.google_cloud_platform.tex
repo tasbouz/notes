@@ -1814,7 +1814,240 @@ spec:
 
 Finally, we create the Mongo Express in the same way as MongoDB\@.
 
-%TODO: Write the Google App Engine (GAE) section
+\section{Google App Engine (GAE)}
+
+\bd[Google App Engine (GAE)]
+\textbf{Google App Engine} (\textbf{GAE}) is a platform as a service (PaaS) component of GCP which offers a fully
+managed serverless platform for building and hosting web applications at scale.
+\ed
+
+Some of the benefits of using GAE are:
+\bit
+\item \textbf{Zero Server Management}: GAE abstracts all infrastructure management, so one can focus purely on
+writing code without worrying about provisioning, configuring, or scaling servers.
+\item \textbf{Automatic Scaling}: GAE automatically scales applications up or down based on incoming traffic,
+from zero to unlimited instances, without any manual intervention.
+\item \textbf{Built-In Services}: GAE provides built-in services such as load balancing, health checks,
+application versioning, traffic splitting, and SSL/TLS certificates.
+\item \textbf{Multiple Language Support}: GAE supports popular programming languages including Python, Java, Node.js,
+Go, Ruby, PHP, and .NET Core. One can also bring their own runtime using custom containers.
+\item \textbf{Cost Optimization}: GAE offers a pay-as-you-go pricing model, where one only pays for the resources
+that they use. Applications can even scale to zero when there is no traffic, resulting in zero charges.
+\eit
+
+GAE is a good fit for web applications, mobile backends, API backends, and any application that needs to handle
+variable traffic without managing infrastructure. It sits between GKE (which gives more control but requires managing
+Kubernetes) and Cloud Run (which is more container-focused and event-driven). \v
+
+To enable the App Engine Admin API for the project:
+\begin{bash}
+# enable App Engine Admin API
+gcloud services enable appengine.googleapis.com
+\end{bash}
+
+\subsection{Environments}
+
+GAE offers two types of environments for running applications: ``standard environment'' and ``flexible environment''.
+
+\bd[Standard Environment]
+The \textbf{standard environment} is based on container instances running on Google's infrastructure, designed for
+applications that need to handle rapid scaling.
+\ed
+
+Applications in the standard environment run in a secure sandbox, which allows GAE to distribute requests across
+multiple servers and scale the number of instances to meet traffic demands. The standard environment supports specific
+versions of Python, Java, Node.js, Go, Ruby, and PHP\@. Key characteristics include:
+\bit
+\item Instances start in seconds, enabling rapid scaling.
+\item Can scale to zero instances when there is no traffic.
+\item Designed for applications with sudden and extreme spikes of traffic.
+\item Pricing based on instance hours.
+\eit
+
+\bd[Flexible Environment]
+The \textbf{flexible environment} runs applications in Docker containers on Google Compute Engine virtual machines.
+\ed
+
+The flexible environment is suitable for applications that receive consistent traffic, need custom runtimes, or require
+access to Compute Engine resources. Key characteristics include:
+\bit
+\item Instances start in minutes.
+\item Minimum of one instance running (cannot scale to zero).
+\item Supports any programming language via custom Docker containers.
+\item Allows SSH access to the underlying VM for debugging.
+\item Pricing based on Compute Engine resources (vCPU, memory, disk).
+\eit
+
+As a rule of thumb, one should use the standard environment for most applications, especially when rapid scaling and
+cost efficiency are important. The flexible environment is better suited for applications that need custom runtimes,
+longer-running requests, or native code libraries. \v
+
+\subsection{Application Structure}
+
+A GAE application consists of the following components:
+
+\bd[Application]
+An \textbf{application} is the top-level container that includes the service(s), version(s), and instance(s) that
+make up a GAE deployment.
+\ed
+
+Each GCP project can contain only one GAE application, and once created, the application's region cannot be changed.
+
+\bd[Service]
+A \textbf{service} is a logical component of an application that can run different code independently.
+\ed
+
+Services allow one to structure an application as a set of loosely coupled, independently deployable microservices.
+Each service can have different runtime configurations and can be written in different programming languages. Every
+GAE application has at least one service called ``default''.
+
+\bd[Version]
+A \textbf{version} represents a specific deployment of a service's code and configuration.
+\ed
+
+Each time code is deployed to a service, a new version is created. GAE maintains multiple versions of each service,
+allowing traffic splitting between versions and easy rollbacks to previous versions.
+
+\bd[Instance]
+An \textbf{instance} is the computing unit that GAE uses to automatically scale an application.
+\ed
+
+At any given time, an application can have one or many instances running, with GAE dynamically creating and destroying
+instances based on traffic. Each instance runs one version of a service.
+
+\subsection{Configuration Files}
+
+GAE applications are configured using configuration files that define how the application should be deployed and run.
+
+\bd[app.yaml]
+The \textbf{app.yaml} file is the main configuration file for a GAE application, defining the runtime, handlers,
+scaling, and other settings.
+\ed
+
+The \code{app.yaml} file must be located in the root directory of the application. Here is an example of a basic
+\code{app.yaml} file for a Python application:
+\begin{block}
+runtime: python312
+
+instance_class: F1
+
+automatic_scaling:
+  target_cpu_utilization: 0.65
+  min_instances: 0
+  max_instances: 10
+
+handlers:
+- url: /static
+  static_dir: static
+- url: /.*
+  script: auto
+\end{block}
+
+The most important fields in the \code{app.yaml} file are:
+\bit
+\item \textbf{runtime}: Specifies the runtime environment (e.g.\ \code{python312}, \code{nodejs20}, \code{java21}).
+\item \textbf{service}: (optional) The name of the service. If omitted, the deployment goes to the ``default'' service.
+\item \textbf{instance\_class}: Specifies the instance class (e.g.\ \code{F1}, \code{F2} for standard environment).
+\item \textbf{automatic\_scaling}: Configures automatic scaling behavior including min/max instances and target CPU\@.
+\item \textbf{handlers}: Defines URL patterns and how they should be handled (static files, scripts, etc.).
+\item \textbf{env\_variables}: Environment variables to be passed to the application.
+\item \textbf{entrypoint}: (optional) The command to start the application, overriding the default behavior.
+\eit
+
+For flexible environment applications, the \code{app.yaml} file includes an additional \code{env: flex} field and
+may specify Docker-related configurations:
+\begin{block}
+runtime: python
+env: flex
+
+runtime_config:
+  operating_system: ubuntu22
+  runtime_version: "3.12"
+
+manual_scaling:
+  instances: 1
+
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
+\end{block}
+
+For applications with multiple services, each service has its own \code{app.yaml} file in its directory.
+
+\subsection{gcloud app}
+
+GAE can be accessed using the GCP console, the GCP SDK, or using a REST-based API. As usual, in these notes we will
+focus on the GCP SDK\@. \v
+
+Before deploying any application, one must first create a GAE application for the project. This is a one-time setup
+that specifies the region where the application will be hosted:
+\begin{bash}
+# create a GAE application
+gcloud app create $-$$-$region=<region>
+\end{bash}
+
+Once the application is created, one can deploy code to it. The deployment process reads the \code{app.yaml} file and
+deploys the application accordingly:
+\begin{bash}
+# deploy an application to GAE
+gcloud app deploy
+\end{bash}
+
+By default, all traffic is routed to the newly deployed version. One can use the \code{--no-promote} flag to deploy
+without routing traffic:
+\begin{bash}
+# deploy without routing traffic
+gcloud app deploy $-$$-$no$-$promote
+\end{bash}
+
+To deploy a specific service or from a specific directory:
+\begin{bash}
+# deploy a specific service
+gcloud app deploy <path$-$to$-$app.yaml>
+\end{bash}
+
+To view the deployed application in the browser:
+\begin{bash}
+# open the application in browser
+gcloud app browse
+\end{bash}
+
+To view the application logs:
+\begin{bash}
+# view application logs
+gcloud app logs tail
+\end{bash}
+
+To list all services in the application:
+\begin{bash}
+# list all services
+gcloud app services list
+\end{bash}
+
+To list all versions of a service:
+\begin{bash}
+# list all versions of a service
+gcloud app versions list $-$$-$service=<service>
+\end{bash}
+
+To delete a specific version:
+\begin{bash}
+# delete a specific version
+gcloud app versions delete <version> $-$$-$service=<service>
+\end{bash}
+
+To stop serving traffic to a version (without deleting it):
+\begin{bash}
+# stop a version
+gcloud app versions stop <version> $-$$-$service=<service>
+\end{bash}
+
+To delete an entire service:
+\begin{bash}
+# delete a service
+gcloud app services delete <service>
+\end{bash}
 
 \section{Cloud Run}
 
@@ -2224,27 +2457,26 @@ Finally, one can also schedule a job to run at a specific time by using the ``Cl
 
 With Cloud Scheduler one can set up cron jobs\footnote{For the definition of a cron job check (\ref{def:cron_job}).} to
 be executed at defined times or regular intervals. Each cron job created using Cloud Scheduler is sent to a target
-according to a specified schedule, where the work for the task is accomplished. \v
+according to a specified schedule, where the work for the task is accomplished. The details of working with Cloud
+Scheduler are beyond the scope of these notes, so we will not cover them here.
 
-Cloud Scheduler is designed to provide "at least once" delivery; that is, the job will run at least once per
-scheduled execution. In some rare circumstances, it is possible for a job to run multiple times in association with
-a single instance of the schedule. \v
+\subsection{Comparison with GAE}
 
-To enable the Cloud Scheduler API for the project:
-\begin{bash}
-# enable Cloud Scheduler API
-gcloud services enable cloudscheduler.googleapis.com
-\end{bash}
+While both GAE and Cloud Run are serverless platforms, they have different design philosophies:
+\bit
+\item \textbf{Configuration}: GAE uses \code{app.yaml} for configuration, while Cloud Run uses container images
+and can be configured via command-line flags or YAML manifests.
+\item \textbf{Container Support}: GAE standard environment has limited container support (sandboxed runtimes), while
+Cloud Run is fully container-based from the ground up.
+\item \textbf{Scaling}: Both can scale to zero, but Cloud Run offers more granular control over concurrency.
+\item \textbf{Portability}: Cloud Run containers are more portable since they follow standard specifications.
+\item \textbf{Legacy}: GAE is an older service with more built-in features (like task queues), while Cloud Run is
+newer and more aligned with modern container-based development practices.
+\eit
 
-One can create a job in Cloud Scheduler to trigger the Cloud Run job at a specific time by using:
-\begin{bash}
-# create a job in Cloud Scheduler
-gcloud scheduler jobs create http <scheduler$-$job$-$name> \
-    $-$$-$schedule="<cron$-$schedule>" \
-    $-$$-$uri=<cloud$-$run$-$job$-$url> \
-    $-$$-$http$-$method=POST \
-    $-$$-$oauth$-$service$-$account$-$email=<service$-$account$-$email>
-\end{bash}
+As a general guideline, new applications should consider Cloud Run for its flexibility and container-native approach,
+while GAE remains a solid choice for teams already invested in the GAE ecosystem or those who prefer a more opinionated
+PaaS experience.
 
 \section{Vertex AI}
 
