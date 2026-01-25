@@ -3450,3 +3450,538 @@ def print_ti_info(task_instance: TaskInstance, dag_run: DagRun):
     print(f"DAG Run queued at: {dag_run.queued_at}")
 \end{block}
 \ee
+
+\newpage
+
+\section{Terraform}
+
+\fig{terraform1}{0.3}
+
+\subsection{Infrastructure As Code}
+
+As cloud computing (\ref{def:cloud_computing}) has become increasingly prevalent, organizations face the challenge
+of managing complex infrastructure across multiple cloud providers and on$-$premises environments. Traditionally,
+infrastructure was provisioned manually through UI web consoles or custom CLI scripts, leading to inconsistencies,
+configuration drift, and difficulties in scaling. This gave rise to a new paradigm called ``Infrastructure as
+Code'' (IaC).
+
+\bd[Infrastructure as Code (IaC)]
+\textbf{Infrastructure as Code (IaC)}\footnote{To avoid confusion, it is important to distinguish between Infrastructure
+as Code (IaC) and Infrastructure as a Service (IaaS) (\ref{def:iaas}). In essence, IaC is a methodology for managing
+infrastructure, while IaaS is a type of cloud service model that provides virtualized computing resources over the
+internet.} is the practice of managing and provisioning computing infrastructure through machine$-$readable definition
+files, rather than through manual processes or interactive configuration tools.
+\ed
+
+IaC treats infrastructure configuration as software, applying software engineering practices such as version control,
+testing, and continuous integration to infrastructure management. This approach offers several benefits:
+\bit
+\item \textbf{Consistency}: Infrastructure is defined in code, ensuring that the same configuration is applied every
+time, eliminating human error and configuration drift.
+\item \textbf{Version Control}: Infrastructure definitions can be stored in version control systems like Git, enabling
+tracking of changes, rollbacks, and collaboration.
+\item \textbf{Automation}: Infrastructure can be provisioned and managed automatically, reducing manual effort and
+enabling continuous deployment practices.
+\item \textbf{Documentation}: The code itself serves as documentation of the infrastructure, making it easier to
+understand and maintain.
+\item \textbf{Reusability}: Infrastructure components can be modularized and reused across different projects and
+environments.
+\eit
+
+There are a couple of categories of IaC tools such as:
+\bit
+\item \textbf{Ad Hoc Scripts}: Custom scripts written in languages like Bash, or Python, to automate infrastructure
+provisioning and management.
+\item \textbf{Configuration Management Tools}: Tools like Ansible that focus on configuring and managing existing
+infrastructure.
+\item \textbf{Server Templating Tools}: Tools like GCP Deployment Manager that allow users to define infrastructure
+using templates specific to a cloud provider.
+\item \textbf{Orchestration Tools}: Tools like Kubernetes that provide a higher$-$level abstraction for managing
+containerized applications and their underlying infrastructure.
+\item \textbf{Provisioning Tools}: Tools like Terraform that enable users to define and provision infrastructure across
+multiple cloud providers and on$-$premises environments using a unified language.
+\eit
+
+As it makes sense, in these notes we will focus on the last category of provisioning tools, and more specifically on
+Terraform. \v \newpage
+
+IaC is divided into two main categories: ``declarative'' and ``imperative''.
+
+\bd[Declarative IaC]
+\textbf{Declarative IaC} is an approach where the desired end state of the infrastructure is defined, and the IaC tool
+automatically determines the steps needed to achieve that state.
+\ed
+
+\bd[Imperative IaC]
+\textbf{Imperative IaC} is an approach where the specific commands and steps to achieve the desired infrastructure state
+are explicitly defined.
+\ed
+
+Another distinction in IaC tools is between ``cloud specific'' and ``cloud agnostic'' IaC tools.
+
+\bd[Cloud Specific IaC]
+\textbf{Cloud Specific IaC} tools are designed to work with a specific cloud provider, leveraging its unique features
+and capabilities.
+\ed
+
+\bd[Cloud Agnostic IaC]
+\textbf{Cloud Agnostic IaC} tools are designed to work across multiple cloud providers, providing a unified interface
+for managing infrastructure regardless of the underlying cloud platform.
+\ed
+
+\subsection{Terraform}
+
+\bd[Terraform]
+\textbf{Terraform} is an open$-$source, declarative, cloud agnostic, IaC tool created by HashiCorp that allows users to
+define and provision infrastructure using a declarative configuration language.
+\ed
+
+Terraform was first released in 2014 and has since become one of the most popular IaC tools in the industry. It
+supports a wide range of cloud providers as well as on$-$premises infrastructure, making it a versatile choice for
+managing hybrid and multi$-$cloud environments. \v
+
+Terraform can be installed via Homebrew on macOS:
+
+\begin{bash}
+# install Terraform via Homebrew
+brew install terraform
+\end{bash}
+
+Once installed, one can verify the installation by checking the version:
+
+\begin{bash}
+# show Terraform version
+terraform version
+\end{bash}
+
+Terraform uses a declarative approach to infrastructure management, where users define the desired state of their
+infrastructure using a configuration language called ``HashiCorp Configuration Language'' (HCL), and Terraform
+automatically determines the steps needed to achieve that state.
+
+\bd[HashiCorp Configuration Language (HCL)]
+\textbf{HashiCorp Configuration Language} (\textbf{HCL}) is a configuration language developed by HashiCorp, designed
+to be both human$-$readable and machine$-$friendly.
+\ed
+
+HCL supports several key features that make it powerful for infrastructure configuration:
+\bit
+\item \textbf{Expressions}: HCL supports various expressions including literals, references, operators, and function
+calls.
+\item \textbf{References}: Resources and variables can be referenced using their identifiers, e.g., \code{var.region}.
+\item \textbf{Functions}: Terraform includes built$-$in functions for string manipulation, numeric operations,
+collection transformations, and more.
+\item \textbf{Conditionals}: The ternary operator \code{condition ? true$\_$val : false$\_$val} enables conditional
+logic.
+\item \textbf{Loops}: The \code{for} expression and \code{for$\_$each} meta$-$argument enable iteration over
+collections.
+\eit
+
+Using HCL, users can describe their desired infrastructure in a concise and expressive manner within ``Terraform
+configuration files''.
+
+\bd[Terraform Configuration File]
+\textbf{Terraform configuration files} are HCL (HashiCorp Configuration Language) files with a `.tf` extension that
+define the desired infrastructure state.
+\ed
+
+Configuration files describe what infrastructure components should exist, their properties, and how they relate to each
+other. Let's know proceed to explore these main components.
+
+\subsubsection{Providers}
+
+\bd[Provider]
+A \textbf{provider} is a plugin that Terraform uses to interact with cloud platforms, SaaS providers, and other APIs.
+\ed
+
+Providers are responsible for understanding API interactions and exposing resources. Each provider adds a set of
+resource types and data sources that Terraform can manage. Common providers include GCP, Kubernetes, and many others.\v
+
+Providers are defined in a configuration file named \code{providers.tf}:
+
+\begin{block}
+# Configure the GCP provider in providers.tf
+provider "google" {
+    credentials = file("<PATH_TO_CREDENTIALS_JSON>")
+    project = "my$-$project"
+    region = "my$-$region"
+}
+\end{block}
+
+Each provider has its own set of configuration options, such as authentication credentials, regions, and other
+provider$-$specific settings.
+
+\subsubsection{Resources}
+
+\bd[Resource]
+A \textbf{resource} is an infrastructure object managed by Terraform.
+\ed
+
+Resources are the most important element in Terraform. Each resource block describes one or more infrastructure
+objects. \v
+
+Resources are defined in a configuration file called \code{main.tf}, in which a resource block declares a resource of a
+given type with a given local name:
+
+\begin{block}
+# Declare a resource within main.tf
+resource "<provider>_<resource_type>" "<name>" {
+    argument1 = "value1"
+    argument2 = "value2"
+}
+\end{block}
+
+Each resource type is defined by a provider and has its own set of required and optional arguments.
+
+\subsubsection{Input Variables}
+
+\bd[Input Variable]
+An \textbf{input variable} serves as a parameter for a Terraform configuration, allowing customization without modifying
+the source code.
+\ed
+
+Input variables allow parameterization of configurations, making them reusable and flexible. \v
+
+Input variables can be defined with default values, descriptions, and type constraints in a separate configuration file
+typically named \code{variables.tf}:
+
+\begin{block}
+# Define an input variable in variables.tf
+variable "<name>" {
+    description = "Description of the variable"
+    type = <type>
+    default = <default_value>
+}
+\end{block}
+
+The supported input variable types include:
+\bit
+\item \code{string}: A sequence of Unicode characters.
+\item \code{number}: A numeric value, which can be either integer or float.
+\item \code{bool}: A boolean value, either \code{true} or \code{false}.
+\item \code{list(<type>)}: A sequence of values of the same type.
+\item \code{map(<type>)}: A collection of key$-$value pairs with string keys.
+\item \code{object(\{...\})}: A structural type with named attributes.
+\eit
+
+Input variables must be defined before they can be used in the configuration files, however, just defining input
+variables does not assign them any value (unless a default value is provided, but this is not mandatory).
+\v
+
+Instead, values for input variables are provided at runtime when executing Terraform commands. These values are defined
+in a file named \code{terraform.tfvars}:
+
+\begin{block}
+# Override input variables in terraform.tfvars
+<variable_name> = <value>
+\end{block}
+
+Important to notice, that one can create multiple \code{.tfvars} files for different environments (e.g.,
+\code{dev.tfvars}, \code{prod.tfvars}, etc.) and specify which one to use depending on the environment.
+
+\subsubsection{Output Values}
+
+\bd[Output Value]
+An \textbf{output value} exports information about the infrastructure, making it available to other Terraform
+configurations or for display to the user.
+\ed
+
+Outputs values are useful for extracting information from resources after they are created useful for retrieving
+resource information. \v
+
+Output values are defined in a separate configuration file typically named \code{outputs.tf}:
+
+\begin{block}
+# Define an output value in outputs.tf
+output "<name>" {
+    description = "Description of the output"
+    value = <expression>
+}
+\end{block}
+
+\subsubsection{Modules}
+
+\bd[Module]
+A \textbf{module} is a container for multiple resources that are used together, enabling code reuse and organization.
+\ed
+
+Modules are the main way to package and reuse resource configurations in Terraform. Every Terraform configuration is
+technically a module (the root module), but modules are commonly used to organize code into reusable components. \v
+
+Modules can be defined in separate directories with their own configuration files. To use a module, one references
+it in the \code{main.tf} file:
+
+\begin{block}
+# Use a module in main.tf
+module "<name>" {
+    source = "<module_source>"
+
+    # Module input variables
+    variable = "value"
+}
+\end{block}
+
+\subsubsection{States \& Backends}
+
+\bd[State]
+A \textbf{state} is a file, typically named \code{terraform.tfstate}, that stores information about the infrastructure
+Terraform manages, acting as the source of truth for the infrastructure.
+\ed
+
+State is crucial for Terraform's operation as it maps real$-$world resources to the configuration, keeps track of
+resource metadata and dependencies, caches resource attribute values to improve performance, and improves performance
+for large infrastructures. \v
+
+By default state is stored locally, but for team collaboration, it should be stored remotely using ``backends''.
+
+\bd[Backend]
+A \textbf{backend} determines how Terraform stores state and performs operations.
+\ed
+
+Backends can be configured in a separate configuration file typically named \code{backend.tf}:
+
+\begin{block}
+# Configure a backend in backend.tf
+terraform {
+    backend "<backend_type>" {
+        argument = "value"
+    }
+}
+\end{block}
+
+\subsection{Terraform Core}
+
+For the sake of completeness, it is important to briefly explain how Terraform's architecture performs the task of
+provisioning infrastructure. \v
+
+In essense, Terraform requires as inputs the configuration files described above, and the current state file. These
+inpunts are processed by the ``Terraform core'' which interacts with the provider plugins to manage resources.
+
+\bd[Terraform Core]
+\textbf{Terraform Core} is the central part of Terraform that processes configuration files, manages state, and
+orchestrates the provisioning of infrastructure.
+\ed
+
+\subsection{Basic Workflow}
+
+The typical Terraform workflow consists of several stages. \v
+
+The first ``write'' stage involves writing Terraform configuration files described earlier. After writing configuration,
+one can validate the syntax and consistency:
+
+\begin{bash}
+# validate Terraform configuration files
+terraform validate
+\end{bash}
+
+Additionally, one can format the configuration files to follow standard conventions:
+
+\begin{bash}
+# format Terraform configuration files
+terraform fmt
+\end{bash}
+
+Before using a Terraform configuration, one must initialize the working directory in which Terraform downloads and
+installs provider plugins, initializes the backend for state storage, and downloads modules referenced in the
+configuration files.
+
+\begin{bash}
+# initialize Terraform working directory
+terraform init
+\end{bash}
+
+Once ``write'' stage is complete, the next ``plan'' stage shows what changes Terraform will make to reach the desired
+state:
+
+\begin{bash}
+# show execution plan
+terraform plan
+\end{bash}
+
+The plan output shows:
+\bit
+\item Resources to be created (marked with \code{+})
+\item Resources to be destroyed (marked with \code{$-$})
+\item Resources to be modified (marked with \code{$\sim$})
+\item Resources to be replaced (marked with \code{$-$/+})
+\eit
+
+One can save the plan to a file for later application:
+
+\begin{bash}
+# save execution plan to file
+terraform plan $-$out=tfplan
+\end{bash}
+
+Finally, after the ``plan'' stage comes the ``apply'' stage which executes the planned changes:
+
+\begin{bash}
+# apply changes to infrastructure
+terraform apply
+\end{bash}
+
+Terraform will show the plan and ask for confirmation before making changes. To skip confirmation:
+
+\begin{bash}
+# apply changes without confirmation
+terraform apply $-$auto$-$approve
+\end{bash}
+
+To apply a previously saved plan:
+
+\begin{bash}
+# apply saved plan
+terraform apply tfplan
+\end{bash}
+
+To tear down all infrastructure managed by the configuration:
+
+\begin{bash}
+# destroy all managed infrastructure
+terraform destroy
+\end{bash}
+
+Like apply, this will show a plan and ask for confirmation. Use \code{$-$auto$-$approve} to skip confirmation.
+
+\subsection{Useful Commands}
+
+Beyond the core workflow commands, Terraform provides several utility commands:
+
+\begin{bash}
+# show current state or a specific resource
+terraform show
+terraform show $-$json
+\end{bash}
+
+\begin{bash}
+# list resources in the state
+terraform state list
+\end{bash}
+
+\begin{bash}
+# show attributes of a single resource
+terraform state show <resource_address>
+\end{bash}
+
+\begin{bash}
+# import existing infrastructure into Terraform
+terraform import <resource_address> <resource_id>
+\end{bash}
+
+\begin{bash}
+# refresh state to match real infrastructure
+terraform refresh
+\end{bash}
+
+\begin{bash}
+# generate a visual graph of resources
+terraform graph | dot $-$Tpng > graph.png
+\end{bash}
+
+\begin{bash}
+# open interactive console for testing expressions
+terraform console
+\end{bash}
+
+\subsection{Best Practices}
+
+When working with Terraform, several best practices help maintain clean, reliable, and collaborative infrastructure
+code:
+\bit
+\item \textbf{Use Version Control}: Store all Terraform configurations in Git, treating infrastructure as code that
+follows the same development practices as application code.
+\item \textbf{Use Remote State}: Configure a remote backend with state locking to enable team collaboration and prevent
+concurrent modifications.
+\item \textbf{Use Modules}: Organize code into reusable modules to reduce duplication and improve maintainability.
+\item \textbf{Use Variables}: Parameterize configurations to make them reusable across different environments.
+\item \textbf{Use Workspaces}: Leverage Terraform workspaces to manage multiple environments (development, staging,
+production) from the same configuration.
+\item \textbf{Pin Provider Versions}: Always specify provider versions to ensure consistent behavior across different
+environments and team members.
+\item \textbf{Review Plans Carefully}: Always review the plan output before applying changes, especially in production
+environments.
+\item \textbf{Use Sensitive Variables}: Mark sensitive values (passwords, API keys) as sensitive to prevent them from
+appearing in logs.
+\item \textbf{Implement CI/CD}: Integrate Terraform into CI/CD pipelines for automated testing and deployment of
+infrastructure changes.
+\eit
+
+\subsection{Application: Terraform On GCP}
+
+In this subsection, we will explore how to use Terraform to provision infrastructure on GCP. Starting with the provider
+configuration, one needs to set up the GCP provider in \code{providers.tf}:
+
+\begin{block}
+# GCP Provider in providers.tf
+provider "google" {
+    credentials = file(var.credentials_file)
+    project = var.project_id
+    region = var.region
+}
+\end{block}
+
+Next, we define the input variables in \code{variables.tf}:
+
+\begin{block}
+# Input Variables in variables.tf
+variable "credentials_file" {
+    description = "Path to the GCP credentials JSON file"
+    type = string
+}
+
+variable "project_id" {
+    description = "GCP project ID"
+    type = string
+}
+
+variable "region" {
+    description = "GCP region"
+    type = string
+}
+\end{block}
+
+and we define the values for these variables in \code{terraform.tfvars}.
+
+\begin{block}
+# Variable values in terraform.tfvars
+credentials_file = "credentials.json" # Assuming credentials.json is in the same directory
+project_id = "terraform"
+region = "us$-$central1"
+\end{block}
+
+Before proceeding to resource definition, let's define a backend for state storage in \code{backend.tf}:
+
+\begin{block}
+# GCP Storage Backend in backend.tf
+terraform {
+    backend "gcs" {
+        bucket = "state$-$bucket"
+        prefix = "terraform/state"
+    }
+}
+\end{block}
+
+Now we are ready to define resources in \code{main.tf}. For our example, we will create a GCP Storage Bucket to host
+a simple HTML website:
+
+\begin{block}
+# GCP Storage Bucket in main.tf
+resource "google_storage_bucket" "website_bucket" {
+    name = "website$-$bucket"
+    location = "US"
+}
+
+# Upload an html file to the bucket:
+resource "google_storage_bucket_object" "website_index" {
+    name = "index.html"
+    source = "index.html" # Assuming index.html is in the same directory
+    bucket = google_storage_bucket.website_bucket.name
+}
+
+# Make objects in the bucket publicly accessible:
+resource "google_storage_object_access_control" "public_rule" {
+    bucket = google_storage_bucket.website_bucket.name
+    object = google_storage_bucket_object.website_index.name
+    role = "READER"
+    entity = "allUsers"
+}
+\end{block}
