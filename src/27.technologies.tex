@@ -3985,3 +3985,652 @@ resource "google_storage_object_access_control" "public_rule" {
     entity = "allUsers"
 }
 \end{block}
+
+\section{Claude Code}\label{sec:claude_code}
+
+\fig{claude}{0.15}
+
+\subsection{From Chatbots To Agents}
+
+In the ``Transformers'' chapter of the ``Machine Learning'' part of these notes, we introduced the transformer
+architecture, and we mentioned that its recent success has been mainly in the field of natural language processing,
+and more specifically in the development of large language models (LLMs). Since LLMs are the engine behind everything
+that follows in this section, let's start by giving them a proper definition.
+
+\bd[Large Language Model (LLM)]
+A \textbf{large language model} (\textbf{LLM}) is a machine learning model, typically based on the transformer
+architecture, that is trained on vast amounts of text data to predict the next token in a sequence, and is thereby
+capable of understanding and generating natural language.
+\ed
+
+For years, LLMs were mostly a research topic. This changed on November 30th 2022, when OpenAI released ``ChatGPT'', a
+chatbot built on top of its GPT$-$3.5 model. ChatGPT reached one hundred million users within two months, making it
+the fastest growing consumer application in history, and it introduced the general public to the idea of conversing
+with a machine in natural language. Since source code is, after all, just text, developers quickly realized that LLMs
+were surprisingly good at reading, explaining, and writing code, and a new question emerged: what is the best way to
+integrate this new capability into the daily workflow of a software developer? The answer to this question has evolved
+through four distinct levels of integration, each one giving the model more context and more autonomy than the
+previous one. \v
+
+The first level of integration was the ``chat''. The developer keeps a chatbot open in a browser tab next to the
+editor, describes a problem, copies the relevant code into the chat, and copy$-$pastes the model's answer back into
+the codebase. This works, but it has an obvious flaw: the model knows nothing about the codebase apart from the
+fragments it is shown, and the human acts as the integration layer, manually shuttling context in and results out.
+For anything larger than an isolated function, this back and forth becomes tedious and error prone. \v
+
+The second level was the ``autocomplete''. Instead of the developer going to the model, the model comes into the
+editor. The most famous example is ``GitHub Copilot'', released as a technical preview in 2021 (notably, before
+ChatGPT), which uses an LLM to suggest the next line, or the next block, of code directly at the cursor position,
+based on the surrounding file. The developer accepts, rejects, or edits the suggestion by simply continuing to type.
+Autocomplete removed the copy$-$pasting problem, but the model still only sees a narrow window of context, and it can
+only ever append code where the cursor happens to be. \v
+
+The third level was the ``suggestions'', i.e.\ full assistants embedded in the IDE. Here the chat moves inside the
+editor, and the model becomes aware of the open files, the current selection, and, increasingly, the whole project.
+The developer can ask for a change in natural language, and the assistant proposes complete edits, often spanning
+multiple files, as diffs that the developer reviews and applies. This was a big step forward, but the interaction is
+still fundamentally question and answer: the model proposes, the human executes, and if the change breaks a test, it
+is the human who finds out and comes back with a follow$-$up question. \v
+
+The fourth, and current, level is the ``agent''. Instead of producing a single answer, the model is placed inside a
+loop where it can act on its own.
+
+\bd[AI Agent]
+An \textbf{AI agent} is an LLM that runs in a loop, using ``tools'' to autonomously gather context, take actions in
+an environment, and verify the results of those actions, in order to accomplish a goal defined by the user.
+\ed
+
+The key ingredient that makes agents possible is called ``tool use''.
+
+\bd[Tool Use / Function Calling]
+\textbf{Tool use}, or \textbf{function calling}, is the capability of an LLM to request the execution of external
+functions (e.g.\ reading a file, running a shell command, or calling an API) by producing structured output that a
+surrounding program executes on the model's behalf, feeding the result back into the model's context.
+\ed
+
+It is important to understand that the LLM itself never touches the file system or the network. It simply emits a
+structured request like ``run the test suite'', a surrounding program (often called the ``harness'') executes the
+request, and the output is appended to the conversation so the model can decide what to do next. This gives rise to
+the so called ``agentic loop'', which consists of three repeating phases:
+\bit
+\item \textbf{Gather Context}: The agent explores the environment on its own, e.g.\ by searching the codebase, reading
+files, or fetching documentation, instead of relying on the user to paste in the relevant information.
+\item \textbf{Take Action}: The agent acts on the environment, e.g.\ by editing files, running shell commands, or
+executing scripts.
+\item \textbf{Verify Work}: The agent checks its own results, e.g.\ by running tests, compiling the code, or reading
+error messages, and feeds what it learns back into the next iteration of the loop.
+\eit
+
+The verification phase is what really separates agents from all the previous levels of integration. A model that can
+run the tests, see them fail, read the error message, and fix its own mistake, can iterate towards a working solution
+without a human in the middle of every step. A ``coding agent'' is then simply an AI agent whose tools are the tools
+of a software developer: reading and editing files, running shell commands, searching codebases, and using version
+control. As it makes sense, giving a model this much autonomy also requires giving the human control over what the
+agent is, and is not, allowed to do, and we will see later how this is handled in practice through permission systems. \v
+
+Nowadays, there are many coding agents available such as OpenAI's ``Codex'', Google's ``Gemini CLI'', ``Cursor'', and
+Anthropic's ``Claude Code''. In these notes we will focus on Claude Code, which arguably defined the category, but
+before diving into it, let's first say a few words about the company and the models behind it.
+
+\subsection{Anthropic \& Claude}
+
+Anthropic was founded in 2021 by siblings Dario and Daniela Amodei, together with a group of colleagues who left
+OpenAI, with the explicit mission of building AI systems that are safe, reliable, and interpretable. The company is
+structured as a public benefit corporation, and much of its research agenda revolves around AI safety, most famously
+the training technique called ``Constitutional AI''\footnote{Constitutional AI is a training method developed by
+Anthropic in which a model is trained to critique and revise its own outputs according to a written set of principles
+(a ``constitution''), rather than relying exclusively on human feedback for every judgement.}. In March 2023,
+Anthropic released the first version of its own LLM, named ``Claude''\footnote{The name is widely reported to be a
+homage to Claude Shannon, the father of information theory.}.
+
+\bd[Claude]
+\textbf{Claude} is a family of large language models developed by Anthropic, capable of natural language
+understanding and generation, analysis, mathematics, and, most relevant for this section, coding and agentic tool use.
+\ed
+
+Since the third generation of the family, Claude models come in three sizes, each one trading off capability against
+speed and cost:
+\bit
+\item \textbf{Haiku}: The smallest, fastest, and cheapest model, intended for near real$-$time and high volume use
+cases.
+\item \textbf{Sonnet}: The middle model, offering the best balance between intelligence, speed, and cost, and for this
+reason the everyday workhorse for most tasks.
+\item \textbf{Opus}: The largest and most capable model, intended for the hardest reasoning and long$-$running agentic
+tasks, at a higher price and latency.
+\eit
+
+Claude models are accessible in several ways: through the consumer applications (the \href{https://claude.ai}{web
+application}, and the desktop and mobile applications), through the Anthropic API for developers, through the major
+cloud providers (``Vertex AI'' on GCP, which we cover in the next chapter, and ``Amazon Bedrock'' on AWS), and,
+finally, through Claude Code, which is the subject of the rest of this section.
+
+\subsection{Claude Code}
+
+\bd[Claude Code]
+\textbf{Claude Code} is an agentic coding tool developed by Anthropic that lives in the terminal, understands the
+codebase, and helps developers code faster by executing routine tasks, explaining complex code, and handling entire
+workflows, all through natural language commands.
+\ed
+
+Claude Code was first released as a limited research preview in February 2025, alongside the Claude 3.7 Sonnet model,
+and became generally available in May 2025, alongside the Claude 4 family of models. Interestingly, it started as an
+internal tool built by Anthropic engineers for their own daily work, and it spread so quickly inside the company that
+it was turned into a product. \v
+
+The most distinctive design decision of Claude Code is that it is intentionally low level and unopinionated: instead
+of being yet another IDE, it is a command line program that runs in the terminal. This has a number of advantages.
+First, it works with any editor, since it does not care where the files are edited. Second, it works anywhere a
+terminal works, including remote servers over SSH (which we covered earlier in this chapter), Docker containers
+(\ref{sec:docker}), and CI pipelines. Third, following the Unix philosophy, it is
+composable and scriptable, meaning that it can be combined with other command line tools using pipes, as we will see
+later in the headless mode subsection. \v
+
+Under the hood, Claude Code is exactly the agentic loop we described in the introduction: a Claude model, plus a set
+of built$-$in tools, plus a permission system that keeps the human in control. The most important built$-$in tools
+are:
+\bit
+\item \textbf{Read / Write / Edit}: Read files from, and write or apply targeted edits to, the file system.
+\item \textbf{Glob / Grep}: Find files by name patterns, and search file contents with regular expressions.
+\item \textbf{Bash}: Execute arbitrary shell commands, e.g.\ running tests, using Git, or installing dependencies.
+\item \textbf{WebFetch / WebSearch}: Fetch web pages and search the web, e.g.\ for reading documentation.
+\item \textbf{Task}: Spawn subagents for delegating self$-$contained tasks (more on subagents later).
+\eit
+
+When the user submits a prompt, the model decides which tools it needs, the harness executes them (asking the user
+for permission where required), the results are fed back into the model's context, and the loop repeats until the
+task is done, at which point the model reports back in plain language.
+
+\subsubsection{Installation}
+
+Claude Code can be installed via Homebrew:
+
+\begin{bash}
+# install Claude Code via Homebrew
+brew install $-$$-$cask claude$-$code
+\end{bash}
+
+Alternatively, it can be installed via the native installer:
+
+\begin{bash}
+# install Claude Code via the native installer
+curl $-$fsSL https://claude.ai/install.sh | bash
+\end{bash}
+
+or via npm (assuming Node.js is installed):
+
+\begin{bash}
+# install Claude Code via npm
+npm install $-$g @anthropic$-$ai/claude$-$code
+\end{bash}
+
+Once installed, one can verify the installation by checking the version, or by running the built$-$in health check:
+
+\begin{bash}
+# show Claude Code version
+claude $-$$-$version
+\end{bash}
+
+\begin{bash}
+# check the health of the Claude Code installation
+claude doctor
+\end{bash}
+
+Claude Code keeps itself up to date automatically, but one can also trigger an update manually:
+
+\begin{bash}
+# update Claude Code manually
+claude update
+\end{bash}
+
+Finally, Claude Code needs to be connected to a Claude account. The first time it starts, it walks the user through an
+authentication flow, which supports two options: logging in with a Claude subscription (Pro or Max), or logging in
+through the Anthropic Console with usage based API billing. One can switch accounts at any time using the
+\code{/login} and \code{/logout} commands from within Claude Code.
+
+\subsection{Interactive Mode}
+
+The primary way of using Claude Code is the interactive mode, also called the REPL (Read$-$Eval$-$Print Loop). One
+starts it by simply running \code{claude} from the root of the project:
+
+\begin{bash}
+# start interactive mode
+claude
+\end{bash}
+
+\begin{bash}
+# start interactive mode with an initial prompt
+claude <prompt>
+\end{bash}
+
+Claude Code stores every conversation locally, so a session can always be picked up where it was left off:
+
+\begin{bash}
+# continue the most recent conversation in the current directory
+claude $-$c
+\end{bash}
+
+\begin{bash}
+# open an interactive picker with all past conversations to resume from
+claude $-$r
+\end{bash}
+
+Inside the REPL, the user mostly types plain natural language: ``explain what this repository does'', ``fix the
+failing test in the payments module'', ``refactor this function and add type hints''. On top of that, there is a set
+of special inputs. Messages starting with \code{/} are ``slash commands'' that control the tool itself, messages
+starting with \code{!} are executed directly as shell commands without involving the model, and \code{@} followed by
+a path can be used anywhere in a message to reference a specific file or directory. The most useful built$-$in slash
+commands are:
+\bit
+\item \code{/help}: Show usage help and the list of available commands.
+\item \code{/clear}: Clear the conversation history and start fresh (very useful between unrelated tasks).
+\item \code{/compact}: Summarize the conversation so far and continue with the summary, freeing up context space.
+\item \code{/model}: Select the Claude model to use (e.g.\ Opus, Sonnet, or Haiku).
+\item \code{/init}: Analyze the project and generate a \code{CLAUDE.md} memory file.
+\item \code{/memory}: Open and edit the memory files.
+\item \code{/config}: Open the settings interface.
+\item \code{/permissions}: View and update the permission rules.
+\item \code{/agents}: Create and manage subagents.
+\item \code{/mcp}: Manage MCP servers (more on MCP later).
+\item \code{/hooks}: Configure hooks (more on hooks later).
+\item \code{/review}: Ask for a code review of a pull request.
+\item \code{/cost}: Show token usage statistics for the current session.
+\item \code{/effort}: Set the reasoning effort level of the model.
+\item \code{/doctor}: Check the health of the installation.
+\item \code{/vim}: Enable vim style editing for the input prompt.
+\eit
+
+There is also a handful of keyboard interactions worth memorizing. Pressing \code{Esc} interrupts Claude Code in the
+middle of whatever it is doing (without killing the session), which is the main way to course correct early when it
+goes down the wrong path. Pressing \code{Esc} twice opens the rewind menu, which uses automatically created
+``checkpoints'' to restore the conversation, the code, or both, to an earlier state. Pressing \code{Shift+Tab} cycles
+between the permission modes (more on these later). \v
+
+A final important concept of the interactive mode is the ``context window''. Like every LLM, Claude has a finite
+context window, and long sessions slowly fill it up with file contents, command outputs, and conversation history.
+When the context approaches its limit, Claude Code automatically ``compacts'' the conversation, i.e.\ replaces it
+with a summary of itself, which is exactly what the \code{/compact} command does manually. Since compaction
+inevitably loses detail, a good habit is to use \code{/clear} whenever switching to an unrelated task, keeping the
+context clean and focused.
+
+\subsection{Memory (CLAUDE.md)}
+
+Every Claude Code session starts from a blank slate: the model remembers nothing from previous conversations. Since
+repeating the same instructions at the beginning of every session would be tedious, Claude Code provides a persistent
+memory mechanism in the form of a special file.
+
+\bd[CLAUDE.md]
+A \textbf{CLAUDE.md} file is a special Markdown file that Claude Code automatically pulls into its context at the
+start of every session, acting as its persistent memory for a project.
+\ed
+
+A \code{CLAUDE.md} file typically documents the things one would tell a new colleague on their first day: how to
+build and test the project, the code style conventions, the branching etiquette, which directories matter, and any
+project specific quirks. Memory files exist at multiple levels, and all of the ones that apply are loaded together:
+\bit
+\item \textbf{Enterprise Policy}: A \code{CLAUDE.md} managed centrally by an organization for all its users, e.g.\
+company wide coding standards.
+\item \textbf{Project Memory}: A \code{CLAUDE.md} at the root of the repository, checked into Git and therefore
+shared with the whole team.
+\item \textbf{User Memory}: A personal \code{~/.claude/CLAUDE.md} that applies to all projects of the user, e.g.\
+individual style preferences.
+\eit
+
+Additionally, any \code{CLAUDE.md} can import other files using the \code{@path/to/file} syntax, which allows
+splitting large memories into smaller, focused ones. \v
+
+One rarely writes the initial \code{CLAUDE.md} by hand. Running the \code{/init} command makes Claude Code analyze
+the codebase and generate one automatically, which can then be refined over time. The quickest way to refine it is to
+simply ask: telling Claude Code during a session to e.g.\ ``remember to always use pytest fixtures instead of mocks''
+makes it store the instruction into its memory, while the \code{/memory} command opens the memory files for direct
+editing. Here is an example of a simple \code{CLAUDE.md}:
+
+\begin{block}
+# CLAUDE.md
+
+## Commands
+- make build: build the project
+- make test: run the full test suite
+- make test FILE=<path>: run a single test file (prefer this, for speed)
+
+## Code Style
+- Python 3.12, type hints everywhere
+- Use ruff for formatting and linting
+
+## Workflow
+- Never commit directly to master; always create a feature branch
+- Run the linter and the tests before committing
+\end{block}
+
+A word of advice: the memory files are included in every single prompt, so they should be kept short and to the
+point. A bloated \code{CLAUDE.md} wastes context space and dilutes the instructions that actually matter.
+
+\subsection{Permissions \& Settings}
+
+By design, Claude Code is conservative: out of the box, it can read anything in the project folder, but for any
+action that modifies the system, i.e.\ editing files or running commands, it stops and asks the user for approval.
+For each request, the user can approve it once, approve it for the rest of the session (or permanently), or deny it
+and tell Claude Code what to do differently. On top of this, there is a set of ``permission modes'' that set the
+overall level of autonomy, the most important of which are:
+\bit
+\item \textbf{default}: The standard behavior, where every sensitive action requires approval the first time.
+\item \textbf{acceptEdits}: File edits are accepted automatically, but shell commands still require approval.
+\item \textbf{plan}: Claude Code may only read and analyze, but not modify anything; instead of acting, it produces a
+plan (more on plan mode in the next subsection).
+\item \textbf{bypassPermissions}: Everything is allowed without asking. This mode should only be used in isolated,
+disposable environments, such as a Docker container without internet access.
+\eit
+
+As mentioned before, one can cycle between the modes at any time with \code{Shift+Tab}. \v
+
+Approving the same actions over and over gets old quickly, so Claude Code allows codifying the decisions into
+permission rules, managed either with the \code{/permissions} command or directly in the so called ``settings
+files''. Settings live at several levels, mirroring the memory hierarchy: \code{~/.claude/settings.json} holds the
+personal settings of the user for all projects, \code{.claude/settings.json} holds the project settings which are
+checked into Git and shared with the team, and \code{.claude/settings.local.json} holds personal, project specific
+settings which are not checked in. Permission rules have the form \code{Tool(specifier)} and are placed into
+\code{allow}, \code{ask}, or \code{deny} lists, with deny rules taking precedence over everything else. Here is an
+example of a project \code{.claude/settings.json}:
+
+\begin{block}
+{
+  "permissions": {
+    "allow": [
+      "Bash(make build)",
+      "Bash(make test:*)",
+      "Bash(git diff:*)"
+    ],
+    "deny": [
+      "Read(./.env)",
+      "Read(./secrets/**)",
+      "Bash(curl:*)"
+    ]
+  }
+}
+\end{block}
+
+This example allows building and testing without asking, and at the same time makes the environment and secret files
+completely invisible to Claude Code, which is the recommended way of keeping credentials out of the model's context.
+
+\subsection{Plan Mode \& Extended Thinking}
+
+More often than not, the most dangerous failure mode of a coding agent is not a wrong line of code, but a wrong
+approach applied confidently across half the codebase. For this reason, Claude Code ships with the aforementioned
+``plan mode'', a mode in which it is restricted to read only operations: it can search, read files, and reason, but
+it cannot edit anything or run state changing commands. In plan mode, Claude Code first researches the codebase, then
+presents a structured plan, and only after the user explicitly approves the plan does it switch back to normal mode
+and start implementing it. This is the recommended workflow for any non trivial change: iterating on a plan is much
+cheaper than iterating on a diff. One can enter plan mode with \code{Shift+Tab}, or start a session directly in it:
+
+\begin{bash}
+# start a session in plan mode
+claude $-$$-$permission$-$mode plan
+\end{bash}
+
+Related to planning is the concept of ``extended thinking''. Claude models can spend additional ``thinking'' tokens
+reasoning privately before producing an answer, which measurably improves performance on hard problems, at the cost
+of extra time and tokens. In Claude Code, extended thinking can be toggled on or off with \code{Option+T} (or
+\code{Alt+T} on Linux and Windows), and the amount of reasoning the model puts in can be tuned with the
+\code{/effort} command. It is best used for architectural decisions, tricky debugging sessions, and planning
+multi step implementations, rather than for routine edits.
+
+\subsection{Custom Slash Commands \& Skills}
+
+Beyond the built$-$in slash commands, one can define custom ones for prompts that are used repeatedly. A custom slash
+command is nothing more than a Markdown file containing a prompt template, stored either in the project's
+\code{.claude/commands/} directory (shared with the team through Git), or in the personal \code{~/.claude/commands/}
+directory (available in all projects). The file name becomes the command name, the special placeholder
+\code{\$ARGUMENTS} is replaced by whatever the user types after the command, and an optional YAML frontmatter can
+declare metadata such as a description or the allowed tools. For example, the file
+\code{.claude/commands/fix$-$issue.md}:
+
+\begin{block}
+description: Find and fix a GitHub issue
+argument-hint: [issue number]
+
+Please analyze and fix GitHub issue #$\$$ARGUMENTS:
+1. Use `gh issue view` to get the issue details
+2. Locate the relevant code in the codebase
+3. Implement the fix and add a regression test
+4. Commit following our commit message conventions
+\end{block}
+
+can then be invoked from the REPL as \code{/fix$-$issue 123}. \v
+
+A more powerful generalization of the same idea is the ``skill''.
+
+\bd[Agent Skill]
+An \textbf{agent skill} is a folder, containing a \code{SKILL.md} file with instructions and optionally supporting
+scripts and resources, that packages specialized knowledge Claude Code can load on demand whenever it becomes
+relevant to the task at hand.
+\ed
+
+Skills live in \code{.claude/skills/} (project level) or \code{~/.claude/skills/} (user level), and in recent
+versions of Claude Code the two mechanisms have actually been unified: a file at \code{.claude/commands/deploy.md}
+and a skill at \code{.claude/skills/deploy/SKILL.md} both create a \code{/deploy} command, and both can either be
+invoked explicitly by the user, or be discovered and loaded by the model itself whenever their description matches
+the task at hand (a behavior that can be tuned with frontmatter fields such as
+\code{disable$-$model$-$invocation}). What skills add on top of plain commands is structure: a skill folder can
+bundle supporting scripts, templates, and reference documents next to the instructions. Importantly, Claude Code only
+keeps the one line description of each skill in its context, and reads the full instructions only when needed, a
+pattern called ``progressive disclosure'' which keeps the context window lean no matter how many skills are
+installed. Typical skills include things like ``how to generate our quarterly report'', ``how to work with PDF
+files'', or ``our company's commit conventions''.
+
+\subsection{Subagents}
+
+For large tasks, a single context window can become a bottleneck: exploring a big codebase fills it up with search
+results and file contents long before the actual work starts. Claude Code addresses this with ``subagents''.
+
+\bd[Subagent]
+A \textbf{subagent} is a lightweight instance of Claude Code with its own context window, its own system prompt, and
+its own set of allowed tools, to which the main agent can delegate self$-$contained tasks.
+\ed
+
+When Claude Code delegates a task to a subagent (through the \code{Task} tool we mentioned earlier), the subagent
+does all the heavy lifting in its own context, and only its final report comes back to the main conversation. This
+keeps the main context clean, and, since multiple subagents can run in parallel, it also speeds things up
+considerably. Claude Code comes with general purpose subagents out of the box, but one can also define specialized
+ones, stored as Markdown files with YAML frontmatter in \code{.claude/agents/} (project level) or
+\code{~/.claude/agents/} (user level), and managed conveniently with the \code{/agents} command. For example, a
+dedicated code reviewer in \code{.claude/agents/code$-$reviewer.md}:
+
+\begin{block}
+name: code-reviewer
+description: Expert code review specialist. Use proactively after
+  writing or modifying code.
+tools: Read, Grep, Glob, Bash
+
+You are a senior code reviewer. When invoked, run git diff to see
+the recent changes, and review them for: readability, duplication,
+error handling, test coverage, and exposed secrets. Provide your
+feedback organized by priority, with concrete fix suggestions.
+\end{block}
+
+The \code{description} field is important: it is what the main agent reads when deciding whether to delegate a task
+to this subagent, so phrases like ``use proactively'' actually influence how often it gets used.
+
+\subsection{Hooks}
+
+Instructions in \code{CLAUDE.md} are suggestions: the model follows them almost always, but not with certainty, since
+LLMs are probabilistic by nature. For rules that must hold every single time, Claude Code provides ``hooks''.
+
+\bd[Hook]
+A \textbf{hook} is a user defined shell command that Claude Code executes automatically at a specific point of its
+lifecycle, providing deterministic control over its behavior.
+\ed
+
+Hooks can be attached to a number of lifecycle events, the most important being:
+\bit
+\item \textbf{PreToolUse}: Runs before a tool call, and can block it, e.g.\ preventing edits to protected files.
+\item \textbf{PostToolUse}: Runs after a tool call succeeds, e.g.\ auto formatting every file Claude Code edits.
+\item \textbf{UserPromptSubmit}: Runs when the user submits a prompt, e.g.\ injecting extra context or validating it.
+\item \textbf{Stop}: Runs when Claude Code finishes responding, e.g.\ sending a notification that it is done.
+\item \textbf{SessionStart / SessionEnd}: Run at the beginning and the end of a session, e.g.\ loading development
+context or cleaning up.
+\eit
+
+Hooks are configured in the settings files (or interactively via the \code{/hooks} command) under a \code{hooks} key,
+where each event holds a list of ``matchers'' (which tools the hook applies to) and commands. Each hook command
+receives the details of the event as JSON on its standard input, and can block the action by exiting with a special
+exit code. For example, the following configuration runs a formatter after every file edit:
+
+\begin{block}
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "ruff format ."
+          }
+        ]
+      }
+    ]
+  }
+}
+\end{block}
+
+The rule of thumb is simple: use \code{CLAUDE.md} for guidance, and hooks for guarantees. A hook is a hard,
+deterministic rule that does not depend on the model's mood, which makes hooks the right place for formatters,
+linters, guard rails around sensitive paths, and notifications.
+
+\subsection{Model Context Protocol (MCP)}
+
+The built$-$in tools of Claude Code cover the file system, the shell, and the web, but real work often involves other
+systems: databases, issue trackers, monitoring dashboards, design tools, internal APIs. Before late 2024, connecting
+LLMs to such systems required custom, one off integrations for every combination of AI application and data source.
+Anthropic's answer to this $N \times M$ integration problem is the ``Model Context Protocol''.
+
+\bd[Model Context Protocol (MCP)]
+The \textbf{Model Context Protocol} (\textbf{MCP}) is an open standard, introduced by Anthropic in November 2024,
+that standardizes how AI applications connect to external tools and data sources, through a client$-$server
+architecture in which ``MCP servers'' expose tools, resources, and prompts that any ``MCP client'' can consume.
+\ed
+
+MCP is often described as ``the USB$-$C of AI applications'': just like any USB$-$C device works with any USB$-$C
+port, any MCP server works with any MCP client, so an integration needs to be built only once. The protocol was
+quickly adopted far beyond Anthropic, including by OpenAI and Google, effectively becoming the industry standard, and
+in December 2025 it was donated to the Agentic AI Foundation under the Linux Foundation, cementing its status as a
+vendor neutral standard. Today there are thousands of MCP servers available for tools like GitHub, Slack, PostgreSQL,
+Notion, and virtually every popular developer service. MCP servers communicate with the client either over ``stdio'' (the server runs locally as
+a child process) or over HTTP (the server runs remotely, with OAuth based authentication). \v
+
+Claude Code is an MCP client, and servers are managed with the \code{claude mcp} family of commands:
+
+\begin{bash}
+# add a local $($stdio$)$ MCP server
+claude mcp add <name> $-$$-$ <command>
+\end{bash}
+
+\begin{bash}
+# add a remote $($HTTP$)$ MCP server
+claude mcp add $-$$-$transport http <name> <url>
+\end{bash}
+
+\begin{bash}
+# list all configured MCP servers and their status
+claude mcp list
+\end{bash}
+
+\begin{bash}
+# remove an MCP server
+claude mcp remove <name>
+\end{bash}
+
+Like settings, MCP servers can be configured at different scopes: ``local'' (the default, private to the user and the
+project), ``project'' (stored in a \code{.mcp.json} file at the root of the repository and shared with the team), and
+``user'' (available in all projects of the user), selected with the \code{--scope} flag. Within the REPL, the
+\code{/mcp} command shows the status of the configured servers, the tools they expose, and handles the OAuth
+authentication flow of the remote ones. \v
+
+Once a server is connected, its tools become available to Claude Code exactly like the built$-$in ones, subject to the
+same permission system, so one can type ``look at the recent errors in Sentry and fix the most frequent one'', and
+Claude Code will use the Sentry MCP server for the first half of the sentence and its built$-$in tools for the second.
+
+\subsection{Headless Mode \& CI}
+
+Everything so far was interactive, but as we mentioned in the beginning, Claude Code is also designed to be
+scriptable. Using the \code{$-$p} (print) flag, it runs non interactively: it processes a single prompt, prints the
+result to standard output, and exits.
+
+\begin{bash}
+# run Claude Code non$-$interactively
+claude $-$p <prompt>
+\end{bash}
+
+Being a well behaved command line program, it composes with pipes, which enables patterns like:
+
+\begin{bash}
+# pipe data into Claude Code
+cat error.log | claude $-$p <prompt>
+\end{bash}
+
+\begin{bash}
+# get machine readable output for scripting
+claude $-$p <prompt> $-$$-$output$-$format json
+\end{bash}
+
+The \code{--output-format} flag supports \code{text} (the default), \code{json} (the result plus metadata like cost
+and duration), and \code{stream$-$json} (streaming events as they happen), which makes it straightforward to embed
+Claude Code into scripts and pipelines. In headless mode there is no human to approve permissions, so the allowed
+actions must be granted upfront, e.g.\ with the \code{--allowedTools} flag or with pre configured settings files. \v
+
+This naturally leads to CI, and here everything we learned about GitHub Actions earlier in this chapter comes
+together: Anthropic provides an official GitHub Action (\code{anthropics/claude$-$code$-$action}) which can be set up
+by simply running the \code{/install$-$github$-$app} command from within Claude Code. Once installed, mentioning
+\code{@claude} in any issue or pull request comment makes Claude Code analyze the request, implement the changes, and
+push a branch or open a pull request, entirely within the CI runners. The same building blocks can be used for
+automated code review of every incoming pull request, triaging incoming issues, or fixing failing builds.
+
+\subsection{Beyond The Terminal}
+
+Although the terminal is its home, Claude Code is no longer terminal only. There are official IDE extensions for VS
+Code and the JetBrains family, which embed Claude Code into a panel with inline diffs and IDE aware context (e.g.\
+the current selection and the diagnostics), while keeping the same engine, configuration, and conversation history as
+the CLI. There is a desktop application, and Claude Code is also available on the web, where sessions run in managed
+cloud sandboxes, allowing to kick off several tasks in parallel from the browser (and even from the mobile
+application) and check back later. \v
+
+Finally, the agent harness that powers Claude Code, i.e.\ the agentic loop, the tools, the permission system, the
+memory, and the MCP support, is available as a standalone library.
+
+\bd[Claude Agent SDK]
+The \textbf{Claude Agent SDK} (formerly the Claude Code SDK) is a software development kit, available in TypeScript
+and Python, that exposes the same agent harness that powers Claude Code, allowing developers to build their own
+custom agents on top of it.
+\ed
+
+The renaming from ``Code'' to ``Agent'' is telling: the same loop of gathering context, taking action, and verifying
+work applies well beyond coding, and the SDK is used to build agents for things like customer support, data analysis,
+and business process automation.
+
+\subsection{Best Practices}
+
+Let's close this section with a collection of best practices, distilled from Anthropic's own guidance on agentic
+coding:
+\bit
+\item \textbf{Be Specific}: Vague prompts produce vague results. ``fix the race condition in the session cleanup, and
+add a regression test that fails without the fix'' beats ``fix the bug'' every time.
+\item \textbf{Explore, Plan, Code, Commit}: For non trivial tasks, first ask Claude Code to read the relevant code,
+then ask for a plan (ideally in plan mode), review it, and only then let it implement and commit.
+\item \textbf{Give It A Verification Target}: Agents perform dramatically better when they can check their own work.
+Provide failing tests to make pass, expected outputs, or even screenshots to match, and ask Claude Code to iterate
+until the target is met.
+\item \textbf{Invest In CLAUDE.md}: Keep it short, accurate, and up to date. Every recurring correction you find
+yourself typing belongs there (just ask Claude Code to remember it).
+\item \textbf{Manage The Context}: Use \code{/clear} between unrelated tasks, and delegate exploration heavy work to
+subagents, so the main context stays focused on the task at hand.
+\item \textbf{Course Correct Early}: Watch what Claude Code is doing and press \code{Esc} the moment it heads in the
+wrong direction; a small correction early is much cheaper than reviewing a large wrong diff, and the checkpoints
+(\code{Esc Esc}) can always restore a previous state.
+\item \textbf{Codify, Don't Repeat}: Approvals that you grant every time should become permission rules, prompts that
+you type every week should become slash commands, and rules that must always hold should become hooks.
+\item \textbf{Match The Autonomy To The Risk}: Use plan mode for the risky work, the default mode for everyday work,
+and reserve \code{bypassPermissions} for sandboxed, disposable environments only.
+\eit
+
+As a final remark, it is worth noting how fast this space is moving: essentially everything described in this section
+did not exist before 2025. The details, the commands, and even the products will keep changing, but the underlying
+idea, i.e.\ an LLM in a loop with tools, context, and verification, is very likely here to stay.
