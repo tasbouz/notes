@@ -119,9 +119,9 @@ By substituting the error back to the probability:
 {\setlength{\jot}{10pt}
 \begin{align*}
 &P( \epsilon^{(i)}) = \frac{1}{\sqrt{2 \pi \sigma^2}}
-\cdot exp \Big( - \frac{(\epsilon^{(i)})^2}{2 \sigma^2} \Big) \Rightarrow \\
+\cdot \exp \Big( - \frac{(\epsilon^{(i)})^2}{2 \sigma^2} \Big) \Rightarrow \\
 & P(y^{(i)} | \boldsymbol{x}^{(i)} ; \boldsymbol{w}) = \frac{1}{\sqrt{2 \pi \sigma^2}}
-\cdot exp \Big( - \frac{(y^{(i)} - \boldsymbol{w}^{\intercal} \boldsymbol{x}^{(i)})^2}{2 \sigma^2} \Big)
+\cdot \exp \Big( - \frac{(y^{(i)} - \boldsymbol{w}^{\intercal} \boldsymbol{x}^{(i)})^2}{2 \sigma^2} \Big)
 \end{align*}}
 
 In other words we get that the conditional distribution of $y^{(i)}$ given $\boldsymbol{x}^{(i)}$ and
@@ -156,11 +156,11 @@ Subsequently, for the log-likelihood:
 \begin{align*}
 l (\boldsymbol{w} |y ) &= \ln \mathcal{L} (\boldsymbol{w} |y ) \\
 &= \ln \Big[ \prod_{i=1}^{m} \frac{1}{\sqrt{2 \pi \sigma^2}} \cdot
-exp \Big( - \frac{(y^{(i)} - \boldsymbol{w}^{\intercal} \boldsymbol{x}^{(i)})^2}{2 \sigma^2} \Big) \Big] \\
+\exp \Big( - \frac{(y^{(i)} - \boldsymbol{w}^{\intercal} \boldsymbol{x}^{(i)})^2}{2 \sigma^2} \Big) \Big] \\
 &= \sum_{i=1}^{m} \ln \Big[ \frac{1}{\sqrt{2 \pi \sigma^2}} \cdot
-exp \Big( - \frac{(y^{(i)} - \boldsymbol{w}^{\intercal} \boldsymbol{x}^{(i)})^2}{2 \sigma^2} \Big) \Big] \\
+\exp \Big( - \frac{(y^{(i)} - \boldsymbol{w}^{\intercal} \boldsymbol{x}^{(i)})^2}{2 \sigma^2} \Big) \Big] \\
 &= \sum_{i=1}^{m} \ln \Big[ \frac{1}{\sqrt{2 \pi \sigma^2}} \Big] + \sum_{i=1}^{m}
-\ln \Big[ exp \Big( - \frac{(y^{(i)} - \boldsymbol{w}^{\intercal} \boldsymbol{x}^{(i)})^2}{2 \sigma^2} \Big] \Big) \\
+\ln \Big[ \exp \Big( - \frac{(y^{(i)} - \boldsymbol{w}^{\intercal} \boldsymbol{x}^{(i)})^2}{2 \sigma^2} \Big] \Big) \\
 &= \sum_{i=1}^{m} \ln \Big[ \frac{1}{\sqrt{2 \pi \sigma^2}} \Big] +
 \sum_{i=1}^{m} \Big[ - \frac{(y^{(i)} - \boldsymbol{w}^{\intercal} \boldsymbol{x}^{(i)})^2}{2 \sigma^2} \Big]
 \end{align*}}
@@ -886,12 +886,12 @@ h(\boldsymbol{x}^{(i)})}{1 - h(\boldsymbol{x}^{(i)})} \Big)\\
 - \frac{1 - {y^{(i)}}}{1 - h(\boldsymbol{x}^{(i)})} \Big) \cdot \nabla_{\boldsymbol{w}} h(\boldsymbol{x}^{(i)}) \\
 &= - \frac{1}{m} \sum_{i=1}^{m} \Big( \frac{y^{(i)} \cdot (1 - h(\boldsymbol{x}^{(i)}) - (1 - {y^{(i)}})
 \cdot h(\boldsymbol{x}^{(i)})}{h(\boldsymbol{x}^{(i)}) \cdot (1- h(\boldsymbol{x}^{(i)}))} \Big)
-\cdot \nabla_{\boldsymbol{w}} \Big[ \frac{1}{1 + exp(- \boldsymbol{w}^{\intercal} \boldsymbol{x}^{(i)})} \Big] \\
+\cdot \nabla_{\boldsymbol{w}} \Big[ \frac{1}{1 + \exp(- \boldsymbol{w}^{\intercal} \boldsymbol{x}^{(i)})} \Big] \\
 &= - \frac{1}{m} \sum_{i=1}^{m} \Big( \frac{y^{(i)} - y^{(i)} \cdot h(\boldsymbol{x}^{(i)})
 - h(\boldsymbol{x}^{(i)}) + {y^{(i)}} \cdot h(\boldsymbol{x}^{(i)})}{h(\boldsymbol{x}^{(i)})
 \cdot (1 - h(\boldsymbol{x}^{(i)}))} \Big) \cdot \Big( \frac{(-1)
-\cdot exp(- \boldsymbol{w}^{\intercal} \boldsymbol{x}^{(i)})
-\cdot (-\boldsymbol{x}^{(i)})}{(1 + exp(-\boldsymbol{w}^{\intercal} \boldsymbol{x}^{(i)}))^2} \Big) \\
+\cdot \exp(- \boldsymbol{w}^{\intercal} \boldsymbol{x}^{(i)})
+\cdot (-\boldsymbol{x}^{(i)})}{(1 + \exp(-\boldsymbol{w}^{\intercal} \boldsymbol{x}^{(i)}))^2} \Big) \\
 &= - \frac{1}{m} \sum_{i=1}^{m} \Big( \frac{y^{(i)} - h(\boldsymbol{x}^{(i)})}{h(\boldsymbol{x}^{(i)})
 \cdot (1 - h(\boldsymbol{x}^{(i)}))} \Big) \cdot \Big( h(\boldsymbol{x}^{(i)})^2
 \cdot \frac{1 - h(\boldsymbol{x}^{(i)})}{h(\boldsymbol{x}^{(i)})} \cdot \boldsymbol{x}^{(i)} \Big) \\
@@ -1918,7 +1918,8 @@ a large functional margin represents a confident and a correct prediction. \v
 
 For a linear classifier with the choice of $g$ given above, there's one property of the functional margin that makes
 it not a very good measure of confidence, however. Given our choice of $g$, we note that if we replace
-$\boldsymbol{w}$ with $2\boldsymbol{w}$ and $b$ with $2b$, then since $g \left(\boldsymbol{w}^{\intercal} \boldsymbol{x} +
+$\boldsymbol{w}$ with $2\boldsymbol{w}$ and $b$ with $2b$, then since $g \left(\boldsymbol{w}^{\intercal} \boldsymbol{x}
++
 b\right) = g\left(2\boldsymbol{w}^{\intercal} \boldsymbol{x} + 2b\right)$ this would not change $h_{\boldsymbol{w}, b}
 (\boldsymbol{x})$ at all meaning that $g$, and hence, also $h_{\boldsymbol{w}, b} (\boldsymbol{x})$, depends only on
 the sign, but not on the magnitude, of $\boldsymbol{w}^{\intercal} \boldsymbol{x} + b$. However, replacing the

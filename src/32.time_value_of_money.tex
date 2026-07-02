@@ -115,24 +115,31 @@ received. Compound interest is the most common type of interest used in finance.
 The future value $FV$ of a principal amount $P$ invested today at a compound interest rate $r$ per period, for $t$
 periods, with $n$ number of times of the interest being compounded per period is:
 \bse
-FV = \biggl( \Bigl(P \cdot (1 + \frac{r}{n})^n\Bigr) \cdot (1 + \frac{r}{n})^n\biggr) \cdot \underbrace{\ldots}_{t\text{-times}} = P \cdot (1 + \frac{r}{n})^{nt}
+FV = \biggl( \Bigl(P \cdot (1 + \frac{r}{n})^n\Bigr) \cdot (1 + \frac{r}{n})^n\biggr) \cdot
+\underbrace{\ldots}_{t\text{-times}} = P \cdot (1 + \frac{r}{n})^{nt}
 \ese
 
 Compounding can occur on any time interval, including:
 \bit
 \item \textbf{Annual Compounding}: Compounding once per year: $FV_{\text{annual}} = P \cdot \left(1 + r\right)^{t}$
-\item \textbf{Semi-Annual Compounding}: Compounding twice per year: $FV_{\text{semi-annual}} = P \cdot \left(1 + \frac{r}{2}\right)^{2t}$
-\item \textbf{Quarterly Compounding}: Compounding four times per year: $FV_{\text{quarterly}} = P \cdot \left(1 + \frac{r}{4}\right)^{4t}$
-\item \textbf{Monthly Compounding}: Compounding twelve times per year: $FV_{\text{monthly}} = P \cdot \left(1 + \frac{r}{12}\right)^{12t}$
-\item \textbf{Daily Compounding}: Compounding 365 times per year: $FV_{\text{daily}} = P \cdot \left(1 + \frac{r}{365}\right)^{365t}$
-\item \textbf{Continuous Compounding}: Compounding infinitely many times per year: $FV_{\text{continuous}} = P \cdot e^{rt}$
+\item \textbf{Semi-Annual Compounding}: Compounding twice per year: $FV_{\text{semi-annual}} = P \cdot \left(1 +
+\frac{r}{2}\right)^{2t}$
+\item \textbf{Quarterly Compounding}: Compounding four times per year: $FV_{\text{quarterly}} = P \cdot \left(1 +
+\frac{r}{4}\right)^{4t}$
+\item \textbf{Monthly Compounding}: Compounding twelve times per year: $FV_{\text{monthly}} = P \cdot \left(1 +
+\frac{r}{12}\right)^{12t}$
+\item \textbf{Daily Compounding}: Compounding 365 times per year: $FV_{\text{daily}} = P \cdot \left(1 +
+\frac{r}{365}\right)^{365t}$
+\item \textbf{Continuous Compounding}: Compounding infinitely many times per year: $FV_{\text{continuous}} = P \cdot
+e^{rt}$
 \eit
 
 Notice that for the continuous compounding case:
 \bse
 FV_{\text{continuous}} = \lim_{n \to \infty} \left(P \cdot (1 + \frac{r}{n})^{nt}\right)
 \overset{m=\frac{n}{r}}{=} P \cdot \lim_{m \to \infty} \left((1 + \frac{1}{m})^{mrt}\right)
-= P \cdot \underbrace{\biggl(\lim_{m \to \infty} (1 + \frac{1}{m})^{m}}_{\text{definition of e}} \biggl)^{rt} = P \cdot e^{rt}
+= P \cdot \underbrace{\biggl(\lim_{m \to \infty} (1 + \frac{1}{m})^{m}}_{\text{definition of e}} \biggl)^{rt} = P \cdot
+e^{rt}
 \ese
 
 As the equations indicate, with compound interest the interest for each period is added to the principal at the start
@@ -147,10 +154,17 @@ FV = \text{Principal} + \text{Contract Interest} + \text{Compound Interest}
 Given \$10,000 of principal invested for 5 years at a 4\% annual interest rate, let's compare the impact of annual, to
 semi-annual, to monthly, to continuous compounding:
 \bit
-\item $FV_{\text{annual}} = 10.000 \cdot \left(1 + \frac{0.04}{1}\right)^{1 \cdot 5} = 12,166.53 = \underbrace{\$10,000}_{\text{Principal}} + \underbrace{\$2,000}_{\text{Contract Interest}} + \underbrace{\$166.53}_{\text{Compound Interest}}$
-\item $FV_{\text{semi-annual}} = 10.000 \cdot \left(1 + \frac{0.04}{2}\right)^{2 \cdot 5} = 12,189.94 = \underbrace{\$10,000}_{\text{Principal}} + \underbrace{\$2,000}_{\text{Contract Interest}} + \underbrace{\$189.94}_{\text{Compound Interest}}$
-\item $FV_{\text{monthly}} = 10.000 \cdot \left(1 + \frac{0.04}{12}\right)^{12 \cdot 5} = 12,209.39 = \underbrace{\$10,000}_{\text{Principal}} + \underbrace{\$2,000}_{\text{Contract Interest}} + \underbrace{\$209.39}_{\text{Compound Interest}}$
-\item $FV_{\text{continuous}} = 10.000 \cdot e^{0.04 \cdot 5} = 12,214.03 = \underbrace{\$10,000}_{\text{Principal}} + \underbrace{\$2,000}_{\text{Contract Interest}} + \underbrace{\$214.03}_{\text{Compound Interest}}$
+\item $FV_{\text{annual}} = 10.000 \cdot \left(1 + \frac{0.04}{1}\right)^{1 \cdot 5} = 12,166.53 =
+\underbrace{\$10,000}_{\text{Principal}} + \underbrace{\$2,000}_{\text{Contract Interest}} +
+\underbrace{\$166.53}_{\text{Compound Interest}}$
+\item $FV_{\text{semi-annual}} = 10.000 \cdot \left(1 + \frac{0.04}{2}\right)^{2 \cdot 5} = 12,189.94 =
+\underbrace{\$10,000}_{\text{Principal}} + \underbrace{\$2,000}_{\text{Contract Interest}} +
+\underbrace{\$189.94}_{\text{Compound Interest}}$
+\item $FV_{\text{monthly}} = 10.000 \cdot \left(1 + \frac{0.04}{12}\right)^{12 \cdot 5} = 12,209.39 =
+\underbrace{\$10,000}_{\text{Principal}} + \underbrace{\$2,000}_{\text{Contract Interest}} +
+\underbrace{\$209.39}_{\text{Compound Interest}}$
+\item $FV_{\text{continuous}} = 10.000 \cdot e^{0.04 \cdot 5} = 12,214.03 = \underbrace{\$10,000}_{\text{Principal}} +
+\underbrace{\$2,000}_{\text{Contract Interest}} + \underbrace{\$214.03}_{\text{Compound Interest}}$
 \eit
 
 As we can see, the more frequent the compounding, the higher the future value. It is important to note that in real
@@ -212,14 +226,16 @@ value of each individual cash flow being the discounted value of the future amou
 
 Assumming a compounding discount rate $r$, and $n$ compounds by period, by using the present value equation we get:
 \bse \label{eq:pv_series}
-PV = \frac{CF_1}{(1 + \frac{r}{n})^{n \cdot 1}} + \frac{CF_2}{(1 + \frac{r}{n})^{n \cdot 2}} + \ldots + \frac{CF_T}{(1 + \frac{r}{n})^{n \cdot T}} = \sum_{i=1}^T \frac{CF_i}{(1 + \frac{r}{n})^{n \cdot i}}
+PV = \frac{CF_1}{(1 + \frac{r}{n})^{n \cdot 1}} + \frac{CF_2}{(1 + \frac{r}{n})^{n \cdot 2}} + \ldots + \frac{CF_T}{(1 +
+\frac{r}{n})^{n \cdot T}} = \sum_{i=1}^T \frac{CF_i}{(1 + \frac{r}{n})^{n \cdot i}}
 \ese
 
 Similarly, the future value is simply the sum of the future values of the individual cash flows, with the future value
 of each individual cash flow being the future amount of money the cash flow will be. Assumming a compounding
 discount rate $r$, and $n$ compounds by period, by using the future value equation we get:
 \bse
-FV = CF_1 \cdot (1 + \frac{r}{n})^{n \cdot 1} + CF_2 \cdot (1 + \frac{r}{n})^{n \cdot 2} + \ldots + CF_T \cdot (1 + \frac{r}{n})^{n \cdot T} = \sum_{i=1}^T CF_i \cdot (1 + \frac{r}{n})^{n \cdot i}
+FV = CF_1 \cdot (1 + \frac{r}{n})^{n \cdot 1} + CF_2 \cdot (1 + \frac{r}{n})^{n \cdot 2} + \ldots + CF_T \cdot (1 +
+\frac{r}{n})^{n \cdot T} = \sum_{i=1}^T CF_i \cdot (1 + \frac{r}{n})^{n \cdot i}
 \ese
 
 \subsection{Annuity}
@@ -240,10 +256,12 @@ An \textbf{ordinary annuity} is an annuity in which the payments are made at the
 
 \fig{cf3}{0.5}
 
-For an ordinary annuity things are simple. Since all cash flows are equal i.e.\ $CF_i = CF \: \forall \: i$ the formula for
+For an ordinary annuity things are simple. Since all cash flows are equal i.e.\ $CF_i = CF \: \forall \: i$ the formula
+for
 the present value of a series of cash flows simplifies to:
 \bse
-PV = \sum_{i=1}^T \frac{CF}{(1 + \frac{r}{n})^{n \cdot i}} = CF \cdot \sum_{i=1}^T \frac{1}{\Big((1 + \frac{r}{n})^n \Big)^i}
+PV = \sum_{i=1}^T \frac{CF}{(1 + \frac{r}{n})^{n \cdot i}} = CF \cdot \sum_{i=1}^T \frac{1}{\Big((1 + \frac{r}{n})^n
+\Big)^i}
 \ese
 
 A careful observer will notice that the sum in the above equation is the sum of a geometric series, and by using the
@@ -294,7 +312,8 @@ A \textbf{perpetuity} is an annuity that has no end, or a stream of cash payment
 The present value of a perpetuity is simply the present value of an annuity with an infinite number of cash flows.
 By using the formula for the present value of an annuity and by sending the number of cash flows to infinity we get:
 \bse
-PV = \lim_{T \to \infty} \Big(CF \cdot \frac{1 - (1 + \frac{r}{n})^{-nT}}{1 - (1 + \frac{r}{n})^{-n}}\Big) = CF \cdot \frac{1}{1 - (1 + \frac{r}{n})^{-n}}
+PV = \lim_{T \to \infty} \Big(CF \cdot \frac{1 - (1 + \frac{r}{n})^{-nT}}{1 - (1 + \frac{r}{n})^{-n}}\Big) = CF \cdot
+\frac{1}{1 - (1 + \frac{r}{n})^{-n}}
 \ese
 
 \section{Various Rates}

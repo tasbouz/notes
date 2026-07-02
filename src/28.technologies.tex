@@ -134,7 +134,8 @@ even though it makes no changes to a web page on its own. \v
 The format of a JSON is very simple: it's a collection of key–value pairs separated by a colon, each one in each own
 line. Indentation is not important but it is commonly used to help in human readability. JSON's basic data types are:
 \bit
-\item Number: a signed decimal number that may contain a fractional part, but cannot include non$-$numbers such as NaN\@.
+\item Number: a signed decimal number that may contain a fractional part, but cannot include non$-$numbers such as
+NaN\@.
 \item String: a sequence of zero or more Unicode characters. Strings are delimited with double quotation marks and
 support a backslash escaping syntax.
 \item Boolean: either of the values true or false.
@@ -310,7 +311,8 @@ comma.
 requires the colon be followed by a space.
 \item A question mark can be used in front of a key, in the form \code{?key: value} to allow the key to contain leading
 dashes, square brackets, etc, without quotes.
-\item An associative array can also be specified by text enclosed in curly braces \code{$\{\ldots\}$}, with keys separated from
+\item An associative array can also be specified by text enclosed in curly braces \code{$\{\ldots\}$}, with keys
+separated from
 values by colon and the entries separated by commas (spaces are not required to retain compatibility with JSON).
 \item Strings are ordinarily unquoted, but may be enclosed in double$-$quotes \code{"}, or single$-$quotes \code{'}.
 \item Within double$-$quotes, special characters may be represented with C$-$style escape sequences starting with a
@@ -1919,7 +1921,8 @@ app. In fact, you might see quite a few projects on GitHub doing exactly this no
 In order to begin, at the root of the app project, create a file named \code{docker$-$compose.yaml}.
 
 \bd[docker$-$compose.yaml]
-The \textbf{docker$-$compose.yaml} file is a YAML file defining services, networks, and volumes for a Docker application.
+The \textbf{docker$-$compose.yaml} file is a YAML file defining services, networks, and volumes for a Docker
+application.
 \ed
 
 In the \code{docker$-$compose.yaml} file, we'll start off by defining the schema version. In most cases, it's best to
@@ -2133,7 +2136,8 @@ orchestration technologies.
 Among other things, container orchestration technologies were designed to provide:
 \bit
 \item \textbf{High Availability:} The application has no downtime and it's always accessible by the user.
-\item \textbf{Scalability:} The application has high performance, loads fast and the users have very high response rates.
+\item \textbf{Scalability:} The application has high performance, loads fast and the users have very high response
+rates.
 \item \textbf{Disaster Recovery:} The infrastructure has mechanisms to restore the application to its latest state after
 an unexpected disaster.
 \eit
@@ -2579,7 +2583,8 @@ represented by a line.
 \ed
 
 Two of the most important characteristics of graphs are: ``orientation'' and ``cycles''. Starting with the first,
-depending on how the edges link the vertices, graphs can be divided into two categories: ``undirected'' and ``directed''.
+depending on how the edges link the vertices, graphs can be divided into two categories: ``undirected'' and
+``directed''.
 
 \bd[Undirected Graph]
 An \textbf{undirected graph} is a graph in which edges have no orientations.
@@ -2729,7 +2734,8 @@ Airflow using the powerful Jinja templating engine.
 of workers.
 \eit
 
-Although Airflow has many rich features, several of Airflow's design choices may make it less suitable for certain cases:
+Although Airflow has many rich features, several of Airflow's design choices may make it less suitable for certain
+cases:
 \bit
 \item \textbf{Handling Streaming Pipelines}: Airflow is primarily designed to run recurring or batch-oriented tasks,
 rather than streaming workloads. However, Airflow is often used to process real-time data, pulling data off streams in
@@ -3048,7 +3054,8 @@ condition which is typically related to something that happened in an upstream t
 
 One way to do this is by using the \code{BranchPythonOperator} (a subclass of the \code{BaseOperator}) which is much
 like the \code{PythonOperator} except that it expects a \code{python\_callable} that returns a \code{task\_id} (or list
-of \code{task\_ids}) referencing a task directly downstream from the \code{BranchPythonOperator} task. The \code{task\_id}
+of \code{task\_ids}) referencing a task directly downstream from the \code{BranchPythonOperator} task. The
+\code{task\_id}
 returned is followed, and all the other paths are skipped.
 
 \be
@@ -3119,7 +3126,8 @@ execution will happen at the first \code{schedule} \textbf{after} \code{start\_d
 \item \code{end\_date}: The date beyond which DAG won't run. Defaults to \code{None} for open-ended.
 \item \code{default\_args}: A dictionary of default parameters to be used as constructor parameters when initialising
 operators. Note that operators arguments precede those defined here.
-\item \code{params}: A dictionary of DAG level parameters that are made accessible in templates, namespaced under params.
+\item \code{params}: A dictionary of DAG level parameters that are made accessible in templates, namespaced under
+params.
 These params can be overridden at the task level.
 \item \code{catchup}: Whether to backfill missed runs between the current date and \code{start\_date} (if any).
 \item \code{tags}: A list of tags that can be used to categorize DAGs.
@@ -4066,7 +4074,8 @@ run the tests, see them fail, read the error message, and fix its own mistake, c
 without a human in the middle of every step. A ``coding agent'' is then simply an AI agent whose tools are the tools
 of a software developer: reading and editing files, running shell commands, searching codebases, and using version
 control. As it makes sense, giving a model this much autonomy also requires giving the human control over what the
-agent is, and is not, allowed to do, and we will see later how this is handled in practice through permission systems. \v
+agent is, and is not, allowed to do, and we will see later how this is handled in practice through permission systems.
+\v
 
 Nowadays, there are many coding agents available such as OpenAI's ``Codex'', Google's ``Gemini CLI'', ``Cursor'', and
 Anthropic's ``Claude Code''. In these notes we will focus on Claude Code, which arguably defined the category, but
@@ -4284,6 +4293,7 @@ simply ask: telling Claude Code during a session to e.g.\ ``remember to always u
 makes it store the instruction into its memory, while the \code{/memory} command opens the memory files for direct
 editing. Here is an example of a simple \code{CLAUDE.md}:
 
+%! suppress = SentenceEndWithCapital
 \begin{block}
 # CLAUDE.md
 
@@ -4514,7 +4524,8 @@ port, any MCP server works with any MCP client, so an integration needs to be bu
 quickly adopted far beyond Anthropic, including by OpenAI and Google, effectively becoming the industry standard, and
 in December 2025 it was donated to the Agentic AI Foundation under the Linux Foundation, cementing its status as a
 vendor neutral standard. Today there are thousands of MCP servers available for tools like GitHub, Slack, PostgreSQL,
-Notion, and virtually every popular developer service. MCP servers communicate with the client either over ``stdio'' (the server runs locally as
+Notion, and virtually every popular developer service. MCP servers communicate with the client either over ``stdio''
+(the server runs locally as
 a child process) or over HTTP (the server runs remotely, with OAuth based authentication). \v
 
 Claude Code is an MCP client, and servers are managed with the \code{claude mcp} family of commands:

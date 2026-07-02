@@ -249,7 +249,8 @@ vector space to an element of the vector space, i.e.\ $[e_i,e_j] = v \in V$ for 
 However, since the final result $v$ is again an element of the vector space it can also be expressed as a linear
 combination of the basis $v = v^k e_k$. This $v^k$ is actually the structure constants (again for some fixed $i$ and
 $j$, if we do not fix them we have to include them on the $v^k$ hence, we obtain $v^k \rightarrow
-C^{k}_{\phantom{k}ij}$). This is why it is guaranteed that the structure constants $C^{k}_{\phantom{k}ij}\in K$ exist. \v
+C^{k}_{\phantom{k}ij}$). This is why it is guaranteed that the structure constants $C^{k}_{\phantom{k}ij}\in K$ exist.
+\v
 
 In terms of the structure constants, the anti-symmetry of the Lie bracket reads:
 \bse
@@ -545,7 +546,8 @@ Let's prove that!
 \bq
 Bilinearity and symmetry are automatically satisfied. It remains to show that $\kappa$ is non-degenerate on $H$.
 \ben[label=\roman*)]
-\item Let $\{h_1,\ldots,h_r,e_{r+1},\ldots,e_{d}\}$ be a Cartan-Weyl basis of $L$ and let $\lambda_\alpha\in \Phi$. Then:
+\item Let $\{h_1,\ldots,h_r,e_{r+1},\ldots,e_{d}\}$ be a Cartan-Weyl basis of $L$ and let $\lambda_\alpha\in \Phi$.
+Then:
 \bi{rCl}
 \lambda_\alpha(h_j) \kappa(h_i,e_\alpha)& = & \kappa(h_i,\lambda_\alpha(h_j) e_\alpha)\\
 & = & \kappa(h_i,[h_j,e_\alpha])\\
@@ -1288,8 +1290,8 @@ $\R$. It has a basis $\{J_1,J_2,J_3\}$ satisfying:
 \ese
 
 where the structure constants $C^{k}_{\phantom{k}ij}$ are defined by first ``pulling the index $k$ down'' using the
-Killing form $\kappa_{ab}=C^{m}_{\phantom{m}an} C^{n}_{\phantom{n}bm}$ to obtain $C_{kij} \coloneqq \kappa_{km} C^{m}_{\phantom{m}ij}$,
-and then setting:
+Killing form $\kappa_{ab}=C^{m}_{\phantom{m}an} C^{n}_{\phantom{n}bm}$ to obtain
+$C_{kij} \coloneqq \kappa_{km} C^{m}_{\phantom{m}ij}$, and then setting:
 \bse
 C_{kij} \coloneqq \varepsilon_{ijk} \coloneqq
 \begin{cases}
@@ -1664,7 +1666,8 @@ After calculating the other components similarly, we find:
 Thus, $\kappa_{\rho_{\mathrm{vec}}}(J_i,\xi_j)=\delta_{ij}$ requires that we define $\xi_i \coloneqq -\tfrac{1}{2}
 J_i$. Then, we have:
 \bi{rCl}
-\Omega_{\rho_{\mathrm{vec}}} & \coloneqq & \sum_{i=1}^{3} \rho_{\mathrm{vec}}(J_i) \circ \rho_{\mathrm{vec}}(\xi_i)\\[5pt]
+\Omega_{\rho_{\mathrm{vec}}} & \coloneqq & \sum_{i=1}^{3} \rho_{\mathrm{vec}}(J_i) \circ
+\rho_{\mathrm{vec}}(\xi_i)\\[5pt]
 & = & \sum_{i=1}^{3} \rho_{\mathrm{vec}}(J_i) \circ \rho_{\mathrm{vec}}(-\tfrac{1}{2} J_i)\\[5pt]
 & = & -\frac{1}{2} \sum_{i=1}^{3} (\rho_{\mathrm{vec}}(J_i))^2\\[5pt]
 & = & -\frac{1}{2} \left( \begin{pmatrix} 0 & 0 & 0\\ 0 & 0 & -1\\ 0 & 1 & 0 \end{pmatrix}^{\negmedspace 2} +

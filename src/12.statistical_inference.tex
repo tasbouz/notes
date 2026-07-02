@@ -281,7 +281,7 @@ samples that one could pick out of the population will have a mean $\bar{x}$ ins
 [E[\bar{x}] - 1.96 \sigma_{\bar{x}}, \: E[\bar{x}] + 1.96 \sigma_{\bar{x}}]
 \ese
 
-\fig{confidenceinterval}{0.5}
+\fig{confidenceinterval}{0.6}
 
 The rest of the area (the uncovered one) is called ``significance level'' and it is denoted by $\alpha$. For
 example, for a 95\% confidence interval we have $\alpha = 5\%$.
@@ -381,8 +381,8 @@ s^{2} = \frac{\sum_{i} (x_{i} - \bar{x})^2}{n-1} \quad \text{(sample)}
 and for the standard deviations $\sigma = \sqrt{\sigma^{2}}$ (population) and $s = \sqrt{s^{2}}$ (sample). \v
 
 As we discussed, the distribution of the means taken by multiple samples follows a normal distribution
-$N(\mu, \sfrac{\sigma}{\sqrt{n}})$. Similarly, in the sampling distribution of the variance, the corresponding
-statistic for a sample of sample size $n$ with sample variance $s^{2}$ is the quantity:
+$N \left( \mu, \sfrac{\sigma}{\sqrt{n}} \right)$. Similarly, in the sampling distribution of the variance, the
+corresponding statistic for a sample of sample size $n$ with sample variance $s^{2}$ is the quantity:
 \bse
 \chi^{2} = \frac{(n-1) s^{2}}{\sigma^{2}}
 \ese
@@ -470,6 +470,8 @@ rejected. In other words: the incorrect acceptance of a false null hypothesis.
 The most usual way to do a Type II error is by randomly selecting a sample that approves the null hypothesis.
 Schematically:
 
+\v
+
 \btab[H]
 \centering
 \btb{c|c||c|c}
@@ -481,6 +483,8 @@ Schematically:
 \etb
 \etab
 
+\v
+
 In real life Type II errors are much more important than Type I errors, since failing to detect a real change is
 usually more costly than raising a false alarm. \v
 
@@ -488,7 +492,7 @@ We can use hypothesis testing in combination with the sampling distribution, in 
 statistically significant change in a statistic or not. This is called a ``z-test'' or a ``t-test'' depending on
 the distribution.
 
-\subsection{The z-Test \& The t-Test}
+\subsection{The z-Test \& t-Test}
 
 Here we are focusing on the process of a z-test, but the same applies for a t-test if we change all $z$-values to
 $t$-values and all population standard deviations to sample standard deviations. \v
@@ -521,7 +525,7 @@ value is determined by $\alpha$ and by whether we are using the z or the t distr
 
 Let's see this in a graph!
 
-\fig{criticalregion}{0.5}
+\fig{criticalregion}{0.6}
 
 We know that $(1-\alpha)$ of all random samples will have a mean inside the region $[\mu_{0} - z_{cr} \sigma_{\bar
 {x}}, \: \mu_{0} + z_{cr} \sigma_{\bar{x}}]$ defined by the critical values. The rest $\alpha$ of the samples will
@@ -550,7 +554,7 @@ $z_{cr}$, so it's still part of the previous distribution and $H_{0}$ cannot be 
 $z < -z_{cr}$ or $z > z_{cr}$, then there are two possible cases:
 
 \bit
-\item $z$ is part of the $\alpha$ of the random samples that have a mean outside of $[-z_{cr}, z_{cr}]$, hence the
+\item $z$ is part of the $\alpha$ of the random samples that have a mean outside $[-z_{cr}, z_{cr}]$, hence the
 distribution has not changed, and we are performing a Type I error.
 \item $z$ is part of the $(1 - \alpha)$ of the random samples of a new distribution, so the distribution has
 changed!
@@ -575,7 +579,7 @@ the initial distribution. However, as we decrease $\alpha$, the probability of h
 but the probability of a Type II error increases, because now we are prone to pick a $z$ belonging to a
 ``further-up'' distribution, inside the critical range.
 
-\fig{typeoneerrortradeoff}{0.5}
+\fig{typeoneerrortradeoff}{0.6}
 
 As we can see in the graph, a point right below the critical value is inside the non-rejection region of the null
 distribution, but it may very well belong to the shifted distribution: failing to reject it is exactly a Type II
@@ -592,7 +596,7 @@ hypothesis is true.
 
 In simple words, once we find the $z$ of the sample we calculate the ``remaining area'':
 
-\fig{pvalue}{0.5}
+\fig{pvalue}{0.6}
 
 Hence for the $z$ we calculated, we find through a z-table to which probability it corresponds. This way we find
 the p-value! It's intuitive that in order to reject $H_{0}$ it must be:
@@ -649,7 +653,7 @@ We just reviewed a case where the two populations were independent. However, we 
 two dependent populations. Usually this is the case when we have a population with a ``before'' and an ``after''
 condition, and we want to study if the mean value of the two situations has changed statistically significantly.
 
-\fig{matchedttest}{0.5}
+\fig{matchedttest}{0.6}
 
 Given the ``before'' measurements $(x_{1}, x_{2}, \ldots, x_{n})$ and the ``after'' measurements
 $(x_{1}', x_{2}', \ldots, x_{n}')$ of the same $n$ units, we define the differences $d_{i} = x_{i} - x_{i}'$ for
@@ -679,9 +683,6 @@ So:
 t < -t_{cr} \:\: \text{or} \:\: t > t_{cr} \imp \text{Reject } H_{0} \qquad \qquad
 -t_{cr} \leq t \leq t_{cr} \imp \text{Fail to reject } H_{0}
 \ese
-
-(Same for p-values. Just find the $\alpha$ of degrees of freedom $n-1$ and the t-value we calculated. If
-$p < \alpha$ then we reject $H_{0}$, otherwise we fail to reject it.)
 
 \subsection{Hypothesis Testing For The Variance}
 
@@ -739,8 +740,6 @@ confident. Hence:
 \chi^{2} > \chi^{2}_{cr} \imp \text{Variation \emph{not} due to chance}
 \ese
 
-and in the second case we need to find the reason of variation.
-
 \section{Analysis Of Variance (ANOVA)}
 
 Suppose now that we want to compare the means of more than two populations. One idea would be to test them in
@@ -764,12 +763,10 @@ the probability of performing a Type I error increases as well.
 \ee
 
 In order to avoid this, we use another method for comparing means of more than 2 populations which is called
-``Analysis Of Variance'' or ``ANOVA''! \v
-
-So, given $N$ means $\bar{x}_{1}, \bar{x}_{2}, \ldots, \bar{x}_{N}$ we want to find out if they are all part of the
-same distribution or they belong to different distributions. In order to do so, first we have to introduce two
-concepts: the variability among (or between) the sample means, and the variability around (or within) the
-distributions.
+``Analysis Of Variance'' or ``ANOVA''! So, given $N$ means $\bar{x}_{1}, \bar{x}_{2}, \ldots, \bar{x}_{N}$ we want to
+find out if they are all part of the same distribution or they belong to different distributions. In order to do so,
+first we have to introduce two concepts: the variability among (or between) the sample means, and the variability
+around (or within) the distributions.
 
 \bd[Variance Between]
 The \textbf{variance between} is the variability among the sample means, i.e.\ the distance of each sample mean
@@ -782,7 +779,7 @@ width) of each sample separately, not in relation with something. This internal 
 ``within'' distributions.
 \ed
 
-\fig{anova}{0.5}
+\fig{anova}{0.6}
 
 In ANOVA we are dealing with the ratio:
 \bse
@@ -827,7 +824,8 @@ F_{2} \to \text{Sample}_{2} \to \bar{x}_{2} \qquad \ldots \qquad
 F_{C} \to \text{Sample}_{C} \to \bar{x}_{C}
 \ese
 
-Then we find the grand mean $\bar{\bar{x}}$ by grouping all the samples together and calculating the mean value.
+Then we find the grand mean $\bar{\bar{x}}$ by grouping all the samples together and calculating the mean value. \v
+
 Now we define three deviations:
 
 \bit
@@ -869,9 +867,9 @@ Hence:
 F > F_{cr} \imp \text{Reject } H_{0} \qquad \qquad F \leq F_{cr} \imp \text{Fail to reject } H_{0}
 \ese
 
-where rejecting $H_{0}$ means that the means are coming from different populations.
+where rejecting $H_{0}$ means that the means are coming from different populations. \v
 
-And this is One-Way ANOVA.
+And this is One-Way ANOVA\@.
 
 \subsection{Two-Way ANOVA}
 
@@ -915,7 +913,7 @@ deviation:
 \eit
 
 So what we did is that we splitted the variation even more, in variation coming from the first factor (i.e.\ groups
-or columns) SSC, variation coming from the second factor (i.e.\ blocks or rows) SSB, and the remaining error SSE.
+or columns) SSC, variation coming from the second factor (i.e.\ blocks or rows) SSB, and the remaining error SSE\.
 So now:
 \bse
 \text{SST} = \text{SSC} + \text{SSE} + \text{SSB}

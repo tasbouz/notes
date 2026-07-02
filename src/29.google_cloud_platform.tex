@@ -118,7 +118,8 @@ infrastructure that is provided.
 Application are deployed in an infrastructure stack which is a collection of needed infrastructure that the application
 needs to run on. It is layered and each layer builds on top of the one previous to it, with each layer depending on the
 one below it. The infrastructure stack is composed of the following layers: ``data center'', ``network \& storage'',
-``physical servers'', ``virtualization'', ``operating system'', ``container'', ``runtime'',``data'', and ``application''.
+``physical servers'', ``virtualization'', ``operating system'', ``container'', ``runtime'',``data'', and
+``application''.
 \v
 
 There are a few different service models that are used to describe the level of abstraction of the computing
@@ -198,7 +199,8 @@ application are managed by the vendor, and the customer is free to use the appli
 
 SaaS, also known as ``on-demand software'', or ``web-hosted software'', is usually licensed on a subscription basis
 and is centrally hosted. SaaS apps are typically accessed by users of a web browser and became common delivery models
-for many business applications. SaaS has been incorporated into the strategy of nearly all enterprise software companies.
+for many business applications. SaaS has been incorporated into the strategy of nearly all enterprise software
+companies.
 
 \be
 A great example of SaaS in GCP is Google Workspace, which is a suite of cloud computing, productivity and collaboration
@@ -1111,7 +1113,8 @@ name in the format \code{projects/<project-id>/roles/<role-name>}.
 \ed
 
 Custom roles are created within a project or organization, and they allow to bundle one or more supported permissions
-to meet specific needs that predefined roles don't meet. Custom roles are not maintained by Google; when new permissions,
+to meet specific needs that predefined roles don't meet. Custom roles are not maintained by Google; when new
+permissions,
 features, or services are added to GCP, custom roles will not be updated automatically. \v
 
 As we already mentioned, one creates roles to bundle permissions together, and then grant those roles to principals.
@@ -1304,8 +1307,10 @@ name-value pairs that describe various object qualities. \v
 One can use access control lists (ACLs) to control access to individual objects. One can also IAM to control access to
 all the objects within a bucket or a managed folder. \v
 
-Two of the most important parts of object metadata common to all objects are the object's name and its generation number,
-which together uniquely identify the object within a bucket. Starting with the name, when naming objects in Cloud Storage,
+Two of the most important parts of object metadata common to all objects are the object's name and its generation
+number,
+which together uniquely identify the object within a bucket. Starting with the name, when naming objects in Cloud
+Storage,
 it's essential to adhere to specific requirements to ensure compatibility and prevent errors:
 \bit
 \item Can contain any sequence of valid Unicode characters.

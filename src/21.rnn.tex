@@ -61,7 +61,8 @@ parameters (both weights and biases) and the matrix $V$ represent the output lay
 biases).}
 \end{figure}
 
-Notice here, that if the functions being computed at each time-step are different, i.e.\ $\hat{y}_t = f_t(\boldsymbol{x}_{t})$,
+Notice here, that if the functions being computed at each time-step are different, i.e.\ $\hat{y}_t =
+f_t(\boldsymbol{x}_{t})$,
 then the network will be sensitive to the length of the sequence since it will require $f_1, f_2, \ldots,$ functions
 without us knowing what the number of them should be or with no requirement to stay constant. \v
 
@@ -121,8 +122,8 @@ This is the general architecture of a so-called ``recurrent neural network''.
 
 \bd[Recurrent Neural Network (RNN)]
 A \textbf{recurrent neural network} (\textbf{RNN}) is a class of artificial neural networks where connections between
-units form a directed cycle that creates an internal hidden state of the network which allows it to exhibit dynamic temporal
-behaviour.
+units form a directed cycle that creates an internal hidden state of the network which allows it to exhibit dynamic
+temporal behaviour.
 \ed
 
 For convenience instead of drawing multiple networks in succession, as in the previous figure, we usually draw RNNs as
@@ -131,8 +132,6 @@ follows.
 \vspace{-5pt}
 
 \fig{rnn5}{0.56}
-
-%TODO: Bidirectional RNN
 
 \section{Backpropagation Through Time}
 
@@ -173,7 +172,8 @@ Starting with $V$ the derivation is exactly the same as in the usual backpropaga
 {\setlength{\jot}{5pt}
 \begin{align*}
 \nabla_V J(y_t, \hat{y}_t ; \theta)& = \frac{\partial J}{\partial \hat{y}_t}
-\cdot \frac{\partial \hat{y}_t}{\partial (V \boldsymbol{s}_{t})} \cdot \frac{\partial (V \boldsymbol{s}_{t})}{\partial V} \\
+\cdot \frac{\partial \hat{y}_t}{\partial (V \boldsymbol{s}_{t})} \cdot \frac{\partial (V \boldsymbol{s}_{t})}{\partial
+V} \\
 & = \frac{\partial J}{\partial \hat{y}_t}
 \cdot \frac{ \partial ( O(V \boldsymbol{s}_{t}))}{\partial (V\boldsymbol{s}_{t})} \cdot \boldsymbol{s}_{t}\\
 & = \frac{\partial J}{\partial \hat{y}_t} \cdot O^\prime(V \boldsymbol{s}_{t}) \cdot \boldsymbol{s}_{t}
@@ -186,8 +186,10 @@ network to W. More precisely: \v
 {\setlength{\jot}{5pt}
 \begin{align*}
 \nabla_W J(y_t, \hat{y}_t ; \theta)& = \frac{\partial J}{\partial \hat{y}_t}
-\cdot \frac{\partial \hat{y}_t}{\partial (V \boldsymbol{s}_{t})} \cdot \frac{\partial (V\boldsymbol{s}_{t})}{\partial W} \\
-&= \frac{\partial J}{\partial \hat{y}_t} \cdot \frac{ \partial ( O(V\boldsymbol{s}_{t}))}{\partial (V\boldsymbol{s}_{t})}
+\cdot \frac{\partial \hat{y}_t}{\partial (V \boldsymbol{s}_{t})} \cdot \frac{\partial (V\boldsymbol{s}_{t})}{\partial W}
+\\
+&= \frac{\partial J}{\partial \hat{y}_t} \cdot \frac{ \partial ( O(V\boldsymbol{s}_{t}))}{\partial
+(V\boldsymbol{s}_{t})}
 \cdot V \cdot \frac{\partial (\boldsymbol{s}_{t})} {\partial W} \\
 &= \frac{\partial J}{\partial \hat{y}_t} \cdot O^\prime(V\boldsymbol{s}_{t})
 \cdot V \cdot \frac{\partial (g(U \boldsymbol{x}_{t} + W \boldsymbol{s}_{t-1}))} {\partial W} \\
@@ -222,7 +224,8 @@ By substituting back we obtain:
 \cdot \frac{\partial (U\boldsymbol{x}_{t-1} + W \boldsymbol{s}_{t-2})} {\partial W} \right] \\
 &= \frac{\partial J}{\partial \hat{y}_t} \cdot O^\prime(V\boldsymbol{s}_{t}) \cdot V
 \cdot g^\prime(U\boldsymbol{x}_{t} + W \boldsymbol{s}_{t-1}) \cdot \left[\boldsymbol{s}_{t-1} + W \cdot g^\prime
-(U \boldsymbol{x}_{t-1} + W \boldsymbol{s}_{t-2}) \cdot \frac{\partial (W \boldsymbol{s}_{t-2}))} {\partial W} \right] \\
+(U \boldsymbol{x}_{t-1} + W \boldsymbol{s}_{t-2}) \cdot \frac{\partial (W \boldsymbol{s}_{t-2}))} {\partial W} \right]
+\\
 &= \frac{\partial J}{\partial \hat{y}_t} \cdot O^\prime(V \boldsymbol{s}_{t}) \cdot V
 \cdot g^\prime(U \boldsymbol{x}_{t} + W \boldsymbol{s}_{t-1}) \cdot \left[\boldsymbol{s}_{t-1} + W \cdot g^\prime
 (U \boldsymbol{x}_{t-1} + W \boldsymbol{s}_{t-2}) \cdot \left[\boldsymbol{s}_{t-2} + W
@@ -238,18 +241,22 @@ Finally, for $\nabla_U J(y_t, \hat{y}_t ; \theta)$ we have exactly the same situ
 {\setlength{\jot}{5pt}
 \begin{align*}
 \nabla_U J(y_t, \hat{y}_t ; \theta)& = \frac{\partial J}{\partial \hat{y}_t}
-\cdot \frac{\partial \hat{y}_t}{\partial (V \boldsymbol{s}_{t})} \cdot \frac{\partial (V \boldsymbol{s}_{t})}{\partial U} \\
-&= \frac{\partial J}{\partial \hat{y}_t} \cdot \frac{ \partial ( O(V\boldsymbol{s}_{t}))}{\partial (V\boldsymbol{s}_{t})}
+\cdot \frac{\partial \hat{y}_t}{\partial (V \boldsymbol{s}_{t})} \cdot \frac{\partial (V \boldsymbol{s}_{t})}{\partial
+U} \\
+&= \frac{\partial J}{\partial \hat{y}_t} \cdot \frac{ \partial ( O(V\boldsymbol{s}_{t}))}{\partial
+(V\boldsymbol{s}_{t})}
 \cdot V \cdot \frac{\partial (\boldsymbol{s}_{t})}{\partial U} \\
 &= \frac{\partial J}{\partial \hat{y}_t} \cdot O^\prime(V \boldsymbol{s}_{t}) \cdot V
 \cdot \frac{\partial (g(U \boldsymbol{x}_{t} + W \boldsymbol{s}_{t-1}))} {\partial U} \\
 &= \frac{\partial J}{\partial \hat{y}_t} \cdot O^\prime(V \boldsymbol{s}_{t}) \cdot V
 \cdot g^\prime(U \boldsymbol{x}_{t} + W \boldsymbol{s}_{t-1})
 \cdot \frac{\partial (U \boldsymbol{x}_{t} + W \boldsymbol{s}_{t-1})} {\partial U} \\
-& = \frac{\partial J}{\partial \hat{y}_t} \cdot O^\prime(V \boldsymbol{s}_{t}) \cdot V \cdot g^\prime(U \boldsymbol{x}_{t}
+& = \frac{\partial J}{\partial \hat{y}_t} \cdot O^\prime(V \boldsymbol{s}_{t}) \cdot V \cdot g^\prime(U
+\boldsymbol{x}_{t}
 + W \boldsymbol{s}_{t-1}) \cdot \left[\boldsymbol{x_{t}}
 + W \cdot \frac{\partial(\boldsymbol{s}_{t-1})} {\partial U} \right] \\
-& = \frac{\partial J}{\partial \hat{y}_t} \cdot O^\prime(V \boldsymbol{s}_{t}) \cdot V \cdot g^\prime(U \boldsymbol{x}_{t}
+& = \frac{\partial J}{\partial \hat{y}_t} \cdot O^\prime(V \boldsymbol{s}_{t}) \cdot V \cdot g^\prime(U
+\boldsymbol{x}_{t}
 + W \boldsymbol{s}_{t-1}) \cdot \left[\boldsymbol{x_{t}} + W \cdot \frac{\partial (g(U\boldsymbol{x}_{t-1}
 + W \boldsymbol{s}_{t-2}))} {\partial U}\right] \\
 & = \frac{\partial J}{\partial \hat{y}_t} \cdot O^\prime(V\boldsymbol{s}_{t}) \cdot V \cdot g^\prime(U\boldsymbol{x}_{t}
@@ -378,8 +385,8 @@ the corresponding element of $\boldsymbol{s}_{t-1}$ to produce the ``new'', modi
 This process is called ``selective write''.
 
 \bd[Selective Write]
-\textbf{Selective rite} is the process of deciding what fraction of each element of the previous hidden state should be passed
-to the next hidden state.
+\textbf{Selective rite} is the process of deciding what fraction of each element of the previous hidden state should be
+passed to the next hidden state.
 \ed
 
 \fig{rnn7}{0.68}
@@ -398,7 +405,8 @@ Moving on, the input $\boldsymbol{x}_{t}$ enters the picture. Recall that in pla
 \boldsymbol{s}_{t} = g(U \boldsymbol{x}_t + W \boldsymbol{s}_{t-1})
 \ese
 
-In LSTM, we will simply use $\boldsymbol{h}_{t-1}$ instead of $\boldsymbol{s}_{t-1}$ to compute the new hidden state at the
+In LSTM, we will simply use $\boldsymbol{h}_{t-1}$ instead of $\boldsymbol{s}_{t-1}$ to compute the new hidden state at
+the
 next time-step, i.e.\ :
 \bse
 \boldsymbol{\tilde{s}}_t = g(U \boldsymbol{x}_t + W \boldsymbol{h}_{t-1})
@@ -408,13 +416,16 @@ Notice that $W$ and $U$ are similar to the parameters we used in RNN\@.
 
 \fig{rnn8}{0.68}
 
-Hence, $\boldsymbol{\tilde{s}}_t$ captures all the information from the previous hidden state $\boldsymbol{h}_{t-1}$ and the
+Hence, $\boldsymbol{\tilde{s}}_t$ captures all the information from the previous hidden state $\boldsymbol{h}_{t-1}$ and
+the
 current input $\boldsymbol{x}_t $. However, we may not want to use all this new information and only selectively read
-from it before constructing the new gate hidden state $\boldsymbol{s}_t$. To do this we introduce another gate called the
+from it before constructing the new gate hidden state $\boldsymbol{s}_t$. To do this we introduce another gate called
+the
 ``input gate''.
 
 \bd[Input Gate]
-The \textbf{input gate} $\boldsymbol{i}_{t}$ is a gate that decides what fraction of each element of the new hidden state
+The \textbf{input gate} $\boldsymbol{i}_{t}$ is a gate that decides what fraction of each element of the new hidden
+state
 $\boldsymbol{\tilde{s}}_t$ should be passed to the next hidden state.
 \ed
 
@@ -443,7 +454,8 @@ $\boldsymbol{\tilde{s}}_t$ should be passed to the next hidden state.
 \fig{rnn9}{0.7}
 
 Coming to the final step we want to find a way to combine $\boldsymbol{s}_{t-1}$and $\boldsymbol{\tilde{s}}_t$ to get
-the new hidden state $\boldsymbol{s}_{t}$. In order to do so, we introduce one final gate called the ``forget gate'' that we
+the new hidden state $\boldsymbol{s}_{t}$. In order to do so, we introduce one final gate called the ``forget gate''
+that we
 use in order to forget some parts of $\boldsymbol{s}_{t-1}$.
 
 \bd[Forget Gate]
@@ -508,20 +520,23 @@ follows.
 \fig{rnn15}{0.43}
 
 Now let's try to give an intuition of what LSTM does exactly! During forward propagation the gates control the flow
-of information. They prevent any irrelevant information from being written to the hidden state. Similarly, during backward
-propagation they control the flow of gradients. It is easy to see that during backward pass the gradients will get
-multiplied by the gate. For example, if the hidden state at time $t - 1$ did not contribute much to the hidden state at time $t$
-(either because $\boldsymbol{o}_{t-1} \to 0$ or $\boldsymbol{f}_{t} \to 0$) then during backpropagation the gradients
-flowing into $\boldsymbol{s}_{t-1}$ will vanish. But this kind of vanishing gradient is fine (since
-$\boldsymbol{s}_{t-1}$ did not contribute to $\boldsymbol{s}_{t}$ it makes sense that we don't want to hold it
-responsible for the crimes of $\boldsymbol{s}_{t}$). The key difference from RNNs is that the flow of information and
-gradients is controlled by the gates which ensure that the gradients vanish only when they should (i.e.\ when
-$\boldsymbol{s}_{t-1}$ didn't contribute much to $\boldsymbol{s}_{t}$). \v
+of information. They prevent any irrelevant information from being written to the hidden state. Similarly, during
+backward propagation they control the flow of gradients. It is easy to see that during backward pass the gradients will
+get multiplied by the gate. For example, if the hidden state at time $t - 1$ did not contribute much to the hidden state
+at time $t$(either because $\boldsymbol{o}_{t-1} \to 0$ or $\boldsymbol{f}_{t} \to 0$) then during backpropagation the
+gradients flowing into
+$\boldsymbol{s}_{t-1}$ will vanish. But this kind of vanishing gradient is fine (since $\boldsymbol{s}_{t-1}$ did not
+contribute to $\boldsymbol{s}_{t}$ it
+makes sense that we don't want to hold it responsible for the crimes of $\boldsymbol{s}_{t}$). The key difference from
+RNNs is that
+the flow of information and gradients is controlled by the gates which ensure that the gradients vanish only when they
+should (i.e.\ when $\boldsymbol{s}_{t-1}$ didn't contribute much to $\boldsymbol{s}_{t}$). \v
 
 Coming to how LSTMs solve the problem of vanishing gradients (when they shouldn't vanish) the most important think to
 notice from the diagrams is that the newly introduced gates introduced themselves extra ``hidden'' hidden states
 $\boldsymbol{\tilde{s}}$ and $\boldsymbol{h}_{t}$ which they also depend on in $\boldsymbol{s}_{t}$. In other words
-there is a plethora of ways that each hidden state $\boldsymbol{s}_{t}$ ``reaches'' the loss function $J$ in the end of the
+there is a plethora of ways that each hidden state $\boldsymbol{s}_{t}$ ``reaches'' the loss function $J$ in the end of
+the
 network. It suffices to find just one that does not vanish, since that way we make sure that the information will
 remain in the network through backpropagation. We can show that for any given hidden state $\boldsymbol{s}_{t}$, by
 following the path shown in the figure below, we can ensure that the gradient will not vanish (unless the hidden state

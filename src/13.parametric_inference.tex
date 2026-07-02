@@ -80,7 +80,8 @@ An estimator $\hat{\theta}_{n}$ is called \textbf{consistent} if:
 \ed
 
 \bd[Sampling Deviation]
-Given a true parameter $\theta$ and an estimator $\hat{\theta}_{n}$, we define the \textbf{sampling deviation} $d$ of the
+Given a true parameter $\theta$ and an estimator $\hat{\theta}_{n}$, we define the \textbf{sampling deviation} $d$ of
+the
 estimator $\hat{\theta}_{n}$ as:
 \bse
 d = \hat{\theta}_{n} - E[\hat{\theta}_{n}]
@@ -100,7 +101,8 @@ An estimator $\hat{\theta}_{n}$ is called \textbf{unbiased} if $B=0$.
 \ed
 
 \bd[Variance]
-Given a true parameter $\theta$ and an estimator $\hat{\theta}_{n}$, we define the \textbf{variance} Var of the estimator
+Given a true parameter $\theta$ and an estimator $\hat{\theta}_{n}$, we define the \textbf{variance} Var of the
+estimator
 $\hat{\theta}_{n}$ as:
 \bse
 Var = E[(\hat{\theta}_{n} - E[\hat{\theta}_{n}])^2]
@@ -114,7 +116,8 @@ MSE &= E[(\hat{\theta}_{n} - \theta)^2] \\
 &= E[\hat{\theta}_{n}^2] - E[2 \hat{\theta}_{n} \theta] + E[\theta^2] \\
 &= E[\hat{\theta}_{n}^2] - 2 \theta E[\hat{\theta}_{n}] + \theta^2 \\
 &= E[\hat{\theta}_{n}^2] - 2 \theta E[\hat{\theta}_{n}] + \theta^2 + E^2[\hat{\theta}_{n}] - E^2[\hat{\theta}_{n}] \\
-&= (E[\hat{\theta}_{n}^2] - E^2[\hat{\theta}_{n}]) + (E^2[\hat{\theta}_{n}] - 2 \theta E[\hat{\theta}_{n}] + \theta^2) \\
+&= (E[\hat{\theta}_{n}^2] - E^2[\hat{\theta}_{n}]) + (E^2[\hat{\theta}_{n}] - 2 \theta E[\hat{\theta}_{n}] + \theta^2)
+\\
 &= (E[\hat{\theta}_{n}^2] - E^2[\hat{\theta}_{n}]) + (E[\hat{\theta}_{n}] - \theta)^2 \\
 &= Var + B^2
 \end{align*}
@@ -125,7 +128,8 @@ Hence, we showed that the MSE of an estimator can actually be split into the var
 
 As we explained in the previous section our goal in parametric inference is given a statistical model $(E,
 P_{\theta})$ associated with a sample of i.i.d r.v's $\{ X_{1}, X_{2}, \ldots, X_{n} \}$, by making the assumption
-that there always exists a true parameter $\theta^{*}$ such that $X \sim P_{\theta^{*}}$, to find this true parameter. \v
+that there always exists a true parameter $\theta^{*}$ such that $X \sim P_{\theta^{*}}$, to find this true parameter.
+\v
 
 Our initial step is to define an estimator $\hat{\theta}_{n}$, that subsequently defines a probability distribution
 $P_{\hat{\theta}_{n}}$. Hence, now we have two quantities: the probability distribution we actually want to find
@@ -146,7 +150,8 @@ The total variation distance satisfies the following properties:
 \item $TV(P_{\theta}, P_{\theta}^{\prime}) = TV(P_{\theta}^{\prime}, P_{\theta})$.
 \item $TV(P_{\theta}, P_{\theta}^{\prime}) \geq 0$.
 \item $TV(P_{\theta}, P_{\theta}^{\prime}) =0 \Rightarrow P_{\theta} = P_{\theta}^{\prime}$.
-\item $TV(P_{\theta}, P_{\theta}^{\prime}) \leq TV(P_{\theta}, P_{\theta}^{\prime\prime}) + TV(P_{\theta^{\prime\prime}}, P_{\theta}^{\prime})$.
+\item $TV(P_{\theta}, P_{\theta}^{\prime}) \leq TV(P_{\theta}, P_{\theta}^{\prime\prime}) +
+TV(P_{\theta^{\prime\prime}}, P_{\theta}^{\prime})$.
 \eit
 
 These properties imply that total variation distance is indeed a distance measure between probability distributions

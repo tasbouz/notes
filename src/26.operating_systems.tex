@@ -374,7 +374,8 @@ Multiple commands can be provided in succession as long as they follow the corre
 finish before the next one starts running.
 \item \textbf{\&}: A single ampersand separate commands asynchronously. That means that the next command will start
 immediately after the first, without waiting for the former to end.
-\item \textbf{\&\&}: A double ampersand symbolizes an AND conditional which causes the second command to be executed only
+\item \textbf{\&\&}: A double ampersand symbolizes an AND conditional which causes the second command to be executed
+only
 if the first command ends and exits successfully.
 \item \textbf{|}: A vertical line symbolizes a pipe which connects the output of one command to the input of the next
 (more on that later).
@@ -440,7 +441,8 @@ In Unix-like systems we can create our own custom commands built from other comm
 An \textbf{alias} is a command that we can define ourselves, built from other commands.
 \ed
 
-Aliases can be created by making use of the command \code{alias}. After the command, we give our alias a name followed immediately (no whitespace allowed) by an equal sign, followed immediately (
+Aliases can be created by making use of the command \code{alias}. After the command, we give our alias a name followed
+immediately (no whitespace allowed) by an equal sign, followed immediately (
 no whitespace allowed) by a quoted string containing the meaning to be assigned to the name:
 \begin{bash}
 # create alias
@@ -537,8 +539,10 @@ A \textbf{redirection operator} redirects the output of a command to a specified
 There are 3 redirection operators:
 \bit
 \item \textbf{<}: Changes the source of standard input from the keyboard to the file.
-\item \textbf{>}: Creates a new file and redirects text to it or, if the file exists, it overwrites the existing content.
-\item \textbf{>>}: Creates a new file and redirects text to it or, if the file exists, it appends to the existing content.
+\item \textbf{>}: Creates a new file and redirects text to it or, if the file exists, it overwrites the existing
+content.
+\item \textbf{>>}: Creates a new file and redirects text to it or, if the file exists, it appends to the existing
+content.
 \eit
 
 The first operator is connected to the standard input and used in order to redirect it:
@@ -871,16 +875,20 @@ one uses. Different things happen for bash and different for ZSH. Since ZSH is t
 the notes, and I will ignore bash.}
 \bit
 \item \textbf{/etc/zprofile}: A global configuration script for login shells that applies to all users.
-\item \textbf{$\sim$/.zprofile}: A user's personal configuration script for login shells that applies only to the user. It
+\item \textbf{$\sim$/.zprofile}: A user's personal configuration script for login shells that applies only to the user.
+It
 can be used to extend or override settings in the global configuration script in \code{/etc/zprofile}.
 \item \textbf{/etc/zshrc}: A global configuration script for interactive non-login shells that applies to all users.
-\item \textbf{$\sim$/.zshrc}: A user's personal configuration script for interactive non-login shells that applies only to
+\item \textbf{$\sim$/.zshrc}: A user's personal configuration script for interactive non-login shells that applies only
+to
 the user. It can be used to extend or override settings in the global configuration script in \code{/etc/zshrc}.
 \eit
 
-The \code{$\sim$/.zshrc} startup file is probably the most important startup file from the ordinary user's point of view,
+The \code{$\sim$/.zshrc} startup file is probably the most important startup file from the ordinary user's point of
+view,
 because it is almost always read. Non-login shells read it by default, and most startup files for login shells are
-written in such a way as to read the \code{$\sim$/.zshrc} file as well. Inside \code{$\sim$/.zshrc} we can include anything we
+written in such a way as to read the \code{$\sim$/.zshrc} file as well. Inside \code{$\sim$/.zshrc} we can include
+anything we
 want to run after every login in the shell.
 
 \subsection{Navigation}
@@ -1168,10 +1176,14 @@ The \code{ls} command has a large number of possible options, the most common an
 \hline
 Option& Long Format& Description\\
 \hline
--a & --all & List all files, even those with names that begin with a period, which are normally not listed (that is, hidden).\\
+-a & --all & List all files, even those with names that begin with a period, which are normally not listed (that is,
+hidden).\\
 -A & --almost-all & Like the -a option except it does not list . (current directory) and .. (parent directory).\\
--d & --directory & Ordinarily, if a directory is specified, ls will list the contents of the directory, not the directory itself. Use this option in conjunction with the -l option to see details about the directory rather than its contents.\\
--F & --classify & This option will append an indicator character to the end of each listed name. For example, it will append a forward slash (/) if the name is a directory.\\
+-d & --directory & Ordinarily, if a directory is specified, ls will list the contents of the directory, not the
+directory itself. Use this option in conjunction with the -l option to see details about the directory rather than its
+contents.\\
+-F & --classify & This option will append an indicator character to the end of each listed name. For example, it will
+append a forward slash (/) if the name is a directory.\\
 -h & --human-readable & In long format listings, display file sizes in human-readable format rather than in bytes.\\
 -l  & & Display results in long format.\\
 -r & & Display the results in reverse order. Normally, ls displays its results in ascending alphabetical order.\\
@@ -1262,10 +1274,16 @@ The \code{cp} command has a large number of possible options, the most common of
 \hline
 Option& Long Format& Description\\
 \hline
--a & --archive & Copy the files and directories and all of their attributes, including ownerships and permissions. Normally, copies take on the default attributes of the user performing the copy. We'll take a look at file permissions later.\\
--i & --interactive & Before overwriting an existing file, prompt the user for confirmation. If this option is not specified, cp will silently (meaning there will be no warning) overwrite files.\\
--r & --recursive & Recursively copy directories and their contents. This option (or the -a option) is required when copying directories.\\
--u & --update & When copying files from one directory to another, only copy files that either don't exist or are newer than the existing corresponding files in the destination directory. This is useful when copying large numbers of files as it skips files that don't need to be copied.\\
+-a & --archive & Copy the files and directories and all of their attributes, including ownerships and permissions.
+Normally, copies take on the default attributes of the user performing the copy. We'll take a look at file permissions
+later.\\
+-i & --interactive & Before overwriting an existing file, prompt the user for confirmation. If this option is not
+specified, cp will silently (meaning there will be no warning) overwrite files.\\
+-r & --recursive & Recursively copy directories and their contents. This option (or the -a option) is required when
+copying directories.\\
+-u & --update & When copying files from one directory to another, only copy files that either don't exist or are newer
+than the existing corresponding files in the destination directory. This is useful when copying large numbers of files
+as it skips files that don't need to be copied.\\
 -v & --verbose & Display informative messages as the copy is performed.\\
 \hline
 \end{tabular}
@@ -1294,8 +1312,10 @@ The \code{mv} command has a large number of possible options, the most common of
 \hline
 Option& Long Format& Description\\
 \hline
--i & --interactive & Before overwriting an existing file, prompt the user for confirmation. If this option is not specified, mv will silently overwrite files.\\
--u & --update & When moving files from one directory to another, only move files that either don't exist or are newer than the existing corresponding files in the destination directory.\\
+-i & --interactive & Before overwriting an existing file, prompt the user for confirmation. If this option is not
+specified, mv will silently overwrite files.\\
+-u & --update & When moving files from one directory to another, only move files that either don't exist or are newer
+than the existing corresponding files in the destination directory.\\
 -v & --verbose & Display informative messages as the move is performed.\\
 \hline
 \end{tabular}
@@ -1325,8 +1345,10 @@ The \code{rm} command has a large number of possible options, the most common of
 \hline
 Option& Long Format& Description\\
 \hline
--i & --interactive & Before deleting an existing file, prompt the user for confirmation. If this option is not specified, mv will silently delete files.\\
--r & --recursive & Recursively delete directories. This means that if a directory being deleted has subdirectories, delete them too. To delete a directory, this option must be specified.\\
+-i & --interactive & Before deleting an existing file, prompt the user for confirmation. If this option is not
+specified, mv will silently delete files.\\
+-r & --recursive & Recursively delete directories. This means that if a directory being deleted has subdirectories,
+delete them too. To delete a directory, this option must be specified.\\
 -f & --force & Ignore nonexistent files and do not prompt. This overrides the --interactive option.\\
 -v & --verbose & Display informative messages as the move is performed.\\
 \hline
@@ -1480,7 +1502,8 @@ su $-$
 \end{bash}
 
 After entering the command, we are prompted for the superuser's password. If it is successfully entered, a new shell
-prompt appears indicating that this shell has superuser privileges. This new prompt has a trailing \code{$\#$} rather than
+prompt appears indicating that this shell has superuser privileges. This new prompt has a trailing \code{$\#$} rather
+than
 a \code{$\$$}, and the current working directory is now the home directory for the superuser \code{/root}. \v
 
 Once in the new shell, we can carry out commands as the superuser. When finished, enter exit to return to the previous

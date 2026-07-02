@@ -55,7 +55,8 @@ of $Xf$).
 \item[3.] Since it's a notion of derivative, for any $(p,q)$ tensor field $T$ the Leibnitz rule must be satisfied:
 \bi{rCl}
 \nabla_X T(\omega_1,\dotsc,\omega_p,Y_1,\dotsc,Y_q) &=& (\nabla_X T) (\omega_1,\dotsc,\omega_p,Y_1,\dotsc,Y_q) \\
-& + & T(\nabla_X \omega_1,\dotsc,\omega_p,Y_1,\dotsc,Y_q) + \dotsb + T(\omega_1,\dotsc,\nabla_X \omega_p,Y_1,\dotsc, Y_q) \\
+& + & T(\nabla_X \omega_1,\dotsc,\omega_p,Y_1,\dotsc,Y_q) + \dotsb + T(\omega_1,\dotsc,\nabla_X \omega_p,Y_1,\dotsc,
+Y_q) \\
 & + & T(\omega_1,\dotsc,\omega_p,\nabla_X Y_1,\dotsc,Y_q) + \dotsb + T(\omega_1,\dotsc,\omega_p,Y_1,\dotsc,\nabla_X Y_q)
 \ei
 \item[4.] $\nabla_{fX+Z} T = f\nabla_X T + \nabla_Z T, \, \forall f \in C^{\infty}(M).$ (This is
@@ -88,7 +89,8 @@ Starting with the simplest case of a $(0,0)$ tensor field, i.e.\ a function $f$,
 
 So far so good. Let as consider now the next simplest case of an $(1,0)$ tensor field, i.e.\ a vector field $Y$:
 \bi{rCl"s}
-\nabla_X Y & = & \nabla_{\left(X^i \cibasis{x^i}\right)} \left(Y^m \cibasis{x^m}\right) & (expressed in chart (U,x)) \\[5pt]
+\nabla_X Y & = & \nabla_{\left(X^i \cibasis{x^i}\right)} \left(Y^m \cibasis{x^m}\right) & (expressed in chart (U,x))
+\\[5pt]
 & =& X^i \cdot \nabla_{\left(\cibasis{x^i}\right)} \left(Y^m \cibasis{x^m}\right) & (fourth condition)\\[5pt]
 & =& X^i \left(\nabla_{\left(\cibasis{x^i}\right)} Y^m\right) \cibasis{x^m}
 + X^i \cdot Y^m \cdot \left(\nabla_{\left (\cibasis{x^i}\right)} \cibasis{x^m}\right) & (third condition) \\[5pt]
@@ -124,9 +126,11 @@ This last equation tells us the freedom we have left with on choosing a structur
 $\nabla_X$ acting on an $(1,0)$ tensor field, i.e.\ a vector field. Namely, we need to define all the components of
 $\Gamma^{i}_{nm}$ i.e.\ $(\dim\,M)^3$-many functions in order to define a directional derivative of a vector field. \v
 
-Now we move on to consider the action of $\nabla_X$ in the case of a $(0,1)$ tensor field, i.e.\ a covector field $\omega$:
+Now we move on to consider the action of $\nabla_X$ in the case of a $(0,1)$ tensor field, i.e.\ a covector field
+$\omega$:
 \bi{rCl"s}
-\nabla_X \omega & = & \nabla_{\left(X^i \cibasis{x^i}\right)} \left(\omega_m dx^m\right) & (expressed in chart (U,x))\\[5pt]
+\nabla_X \omega & = & \nabla_{\left(X^i \cibasis{x^i}\right)} \left(\omega_m dx^m\right) & (expressed in chart
+(U,x))\\[5pt]
 & =& X^i \cdot \nabla_{\left(\cibasis{x^i}\right)} \left(\omega_m dx^m\right) & (fourth condition)\\[5pt]
 & =& X^i \left(\nabla_{\left(\cibasis{x^i}\right)} \omega_m\right) dx^m + X^i \cdot \omega_m \cdot \left
 (\nabla_{\left(\cibasis{x^i}\right)} dx^m\right) & (third condition) \\[5pt]
@@ -227,7 +231,8 @@ coordinates. Namely, let $(U,x)$, $(V,y) \in \mathscr{A}$ and $U \cap V \neq \em
 coefficient functions in $(V,y)$ holds:
 \bi{rCl}
 {\Gamma^{i}_{jk}}_{(y)} & \coloneqq & dy^i \left(\nabla_{\cibasis{y^j}} \cibasis{y^k} \right) \\[5pt]
-& = & \cibasis[y^i]{x^q} dx^q \left(\nabla_{\cibasis[x^p]{y^j} \cibasis{x^p}} \cibasis[x^s]{y^k} \cibasis{x^s} \right)\\[5pt]
+& = & \cibasis[y^i]{x^q} dx^q \left(\nabla_{\cibasis[x^p]{y^j} \cibasis{x^p}} \cibasis[x^s]{y^k} \cibasis{x^s}
+\right)\\[5pt]
 & = & \cibasis[y^i]{x^q} dx^q \left(\cibasis[x^p]{y^j} \left[ \left (\nabla_{\cibasis{x^p}} \cibasis[x^s]{y^k} \right)
 \cibasis{x^s} + \cibasis[x^s]{y^k} \left(\nabla_{\cibasis{x^p}} \cibasis{x^s} \right) \right] \right) \\[5pt]
 & = & \cibasis[y^i]{x^q} \cibasis[x^p]{y^j} \cibasis{x^p} \cibasis[x^s]{y^k} \delta^q_s + \cibasis[y^i]{x^q}
@@ -456,7 +461,8 @@ T^{i}_{ab} & \coloneqq T\left(dx^i, \cibasis{x^a}, \cibasis{x^b}\right) \\[5pt]
 - \left[ \cibasis{x^a},\cibasis{x^b} \right] \right) \\[5pt]
 &= dx^i \left( \Gamma^{c}_{ab} \cibasis{x^c} -\Gamma^{c}_{ba} \cibasis{x^c} \right)\\[5pt]
 &= \Gamma^{c}_{ab} dx^i \left( \cibasis{x^c} \right) -\Gamma^{c}_{ba} dx^i \left(\cibasis{x^c})\right)\\[5pt]
-&= \Gamma^{c}_{ab} \delta^{i}_{c} -\Gamma^{c}_{ba} \delta^{i}_{c} = \Gamma^{i}_{ab} - \Gamma^{i}_{ba} = 2 \Gamma^{i}_{[ab]}
+&= \Gamma^{c}_{ab} \delta^{i}_{c} -\Gamma^{c}_{ba} \delta^{i}_{c} = \Gamma^{i}_{ab} - \Gamma^{i}_{ba} = 2
+\Gamma^{i}_{[ab]}
 \end{align*}
 
 \v
@@ -753,7 +759,8 @@ L[\gamma] \coloneqq \int_0^1 d\lambda \, s(\lambda) = \int_0^1 d\lambda \sqrt{g(
 
 \bse
 0
-= \delta L[\gamma] = \int_0^1 d\lambda \cdot \delta \left( \sqrt{g_{\mu \nu}\dot{\gamma^{\mu}} \dot{\gamma^{\nu}}} \right)
+= \delta L[\gamma] = \int_0^1 d\lambda \cdot \delta \left( \sqrt{g_{\mu \nu}\dot{\gamma^{\mu}} \dot{\gamma^{\nu}}}
+\right)
 = \int_0^1 d\lambda \cdot \frac{\delta \left(g_{\mu \nu } \dot{\gamma^{\mu}} \dot{\gamma^{\nu}} \right)}
 {2{\sqrt {g_{\mu \nu } \dot{\gamma^{\mu}} \dot{\gamma^{\nu}}}}}
 \ese

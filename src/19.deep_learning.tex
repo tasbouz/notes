@@ -640,7 +640,8 @@ loss functions for neural networks are more or less the same as those for other 
 models (e.g: MSE and cross entropy loss functions). In most cases, our parametric model defines a probability
 distribution and we simply use the principle of maximum likelihood as we did in supervised learning. Sometimes, we
 take a simpler approach, where rather than predicting a complete probability distribution over $y$, we merely predict
-some statistic of $y$ conditioned on $x$. Specialized loss functions allow us to train a predictor of these estimates. \v
+some statistic of $y$ conditioned on $x$. Specialized loss functions allow us to train a predictor of these estimates.
+\v
 
 It makes sense that the choice of loss function is tightly coupled with the choice of the output activation function
 since the choice of how to represent the output determines the form of the loss function. For example it's logical
@@ -726,7 +727,8 @@ For the biases:
 \nabla_{\boldsymbol{b}^{[L]}} J & = \frac{\partial J}{\partial\hat{y}}
 \cdot \frac{\partial \hat{y}}{\partial a^{[L]}} \cdot \frac{\partial a^{[L]}}{\partial \boldsymbol{b}^{[L]}} \\
 & = \frac{\partial J}{\partial \hat{y}} \cdot \frac{\partial h^{[L]}}{\partial a^{[L]}}
-\cdot \frac{\partial \left( W^{[L]} \boldsymbol{h}^{[L-1]} + \boldsymbol{b}^{[L]} \right)}{\partial \boldsymbol{b}^{[L]}} \\
+\cdot \frac{\partial \left( W^{[L]} \boldsymbol{h}^{[L-1]} + \boldsymbol{b}^{[L]} \right)}{\partial
+\boldsymbol{b}^{[L]}} \\
 & = \frac{\partial J}{\partial \hat{y}} \cdot \frac{\partial g(a^{[L]})}{\partial a^{[L]}} \cdot \mathbb{I} \\
 & = \frac{\partial J}{\partial \hat{y}} \cdot g^\prime (a^{[L]}) \\
 & = \delta^{[L]}
@@ -1654,7 +1656,8 @@ part of the sigmoid family.
 \fig{tanh}{0.3}
 
 Hyperbolic tangent function solves the problem of the logistic function not being zero centered since it compresses 
-all its inputs to the range $[-1,1]$ hence, it is zero centered. However, its gradient still vanishes at saturation since:
+all its inputs to the range $[-1,1]$ hence, it is zero centered. However, its gradient still vanishes at saturation
+since:
 \bse
 (tanh(x))^{\prime} = (1 - tanh^{2}(x))
 \ese

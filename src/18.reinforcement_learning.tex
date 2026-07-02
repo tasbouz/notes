@@ -1324,7 +1324,8 @@ V_6 (s_1) & = \max_{a} \left[ \mathcal{R}_{s_1}^{a} +
 & = \max \left[ \mathcal{R}_{s_1}^{a_1} + 0.5 \left( \mathcal{P}_{s_1 s_1}^{a_1} V_6 (s_1) +
 \mathcal{P}_{s_1 s_2}^{a_1} V_6 (s_2) \right), \mathcal{R}_{s_1}^{a_2} +
 0.5 \left(\mathcal{P}_{s_1 s_1}^{a_2} V_6 (s_1) + \mathcal{P}_{s_1 s_2}^{a_2} V_6 (s_2) \right) \right] \\
-& = \max \left[ 3 + 0.5 \left( (0.5) (4.4) + (0.5) (1.2) \right), 3 + 0.5 \left( (0) (4.4) + (1) (1.2) \right) \right] \\
+& = \max \left[ 3 + 0.5 \left( (0.5) (4.4) + (0.5) (1.2) \right), 3 + 0.5 \left( (0) (4.4) + (1) (1.2) \right) \right]
+\\
 & = \max \left[ 4.4, 3.6 \right] \\
 & = 4.4
 \end{align*}}
@@ -1997,7 +1998,7 @@ always stop evaluating after some time (we will see that in detail in each model
 Summarizing, in model-free control we follow the iterative cycle of policy evaluation and policy improvement, but
 now the evaluation is on the action value function $Q$ and the improvement is $\epsilon$-greedy:
 
-\fig{rl30}{0.55}
+\fig{rl30}{0.62}
 
 So, we have introduced all the important details for model-free control algorithms. Now we move on, on developing
 the algorithms. Keep in mind that we will use everything we mentioned here!
@@ -2055,8 +2056,8 @@ Q(s,a) \gets Q(s,a) + \alpha \left(R + \gamma Q(s^\prime,a^\prime) - Q(s,a) \rig
 \ese
 
 As we can see this is a huge improvement over Monte Carlo, since we update (learning) after each step, instead of
-after each episode. This makes it one of the most important algorithms in reinforcement learning, since it is the
-one that is used most often in model-free control problems due to its efficiency. \v
+after each episode. This makes it one of the most important algorithms, since it is the one that is used most often in
+model-free control problems due to its efficiency. \v
 
 The algorithm is also known by another name, ``SARSA''. The origin of this name is coming by the philosophy behind
 how it works. Let's see it graphically:
@@ -2107,7 +2108,7 @@ prediction (we will not repeat all the details, just check TD($\lambda$)). \v
 So, briefly, we have Monte Carlo that takes all the steps up to the end of the episode and SARSA that takes only one
 step. We can generalize this to ``$n$-step SARSA'', for any number of steps:
 
-\fig{rl33}{0.5}
+\fig{rl33}{0.52}
 
 For each of these models we can define ``$n$-step returns'' $q_t^{(n)}$ as:
 \bit
@@ -2242,12 +2243,11 @@ version for Monte Carlo, but it has so huge variance that is practically unusabl
 
 Q-learning is based on the general idea of estimating the expectation of a distribution through a different
 distribution. Namely, for the expected value of a random variable function $f(x)$ under a distribution $P(x)$ it is:
-{\setlength{\jot}{10pt}
-\begin{align*}
-E_{P} [f(x)] &= \sum_{x} P(x) \cdot f(x) \\
-&= \sum_{x} Q(x) \cdot \frac{P(x)}{Q(x)} \cdot f(x) \\
-&= E_{Q} \left[ \frac{P(x)}{Q(x)} \cdot f(x) \right]
-\end{align*}}
+
+\bse
+E_{P} [f(x)] = \sum_{x} P(x) \cdot f(x) = \sum_{x} Q(x) \cdot \frac{P(x)}{Q(x)} \cdot f(x) = E_{Q} \left[
+\frac{P(x)}{Q(x)} \cdot f(x) \right]
+\ese
 
 \vspace{-10pt}
 
@@ -2440,7 +2440,7 @@ corresponding targets of each model:
 \boldsymbol{w} \coloneqq \boldsymbol{w} + \alpha \left(G_t - \boldsymbol{w}^{T} \boldsymbol{x}(S_t) \right)
 \cdot \boldsymbol{x}(S_t)
 \ese
-
+\vspace{-10pt}
 \bse
 \boldsymbol{w} \coloneqq \boldsymbol{w} + \alpha \left(G_t - \boldsymbol{w}^{T} \boldsymbol{x}(S_t, A_t) \right)
 \cdot \boldsymbol{x}(S_t, A_t)
@@ -2452,7 +2452,7 @@ A_{t+1})$):
 \boldsymbol{w} \coloneqq \boldsymbol{w} + \alpha \left(R_{t+1} + \gamma \boldsymbol{w}^{T} \boldsymbol{x}(S_{t+1})
 - \boldsymbol{w}^{T} \boldsymbol{x}(S_t) \right) \cdot \boldsymbol{x}(S_t)
 \ese
-
+\vspace{-10pt}
 \bse
 \boldsymbol{w} \coloneqq \boldsymbol{w} + \alpha \left(R_{t+1} + \gamma \boldsymbol{w}^{T} \boldsymbol{x}(S_{t+1},
 A_{t+1}) - \boldsymbol{w}^{T} \boldsymbol{x}(S_t, A_t) \right) \cdot \boldsymbol{x}(S_t, A_t)
@@ -2463,7 +2463,7 @@ A_{t+1}) - \boldsymbol{w}^{T} \boldsymbol{x}(S_t, A_t) \right) \cdot \boldsymbol
 \boldsymbol{w} \coloneqq \boldsymbol{w} + \alpha \left(G_t^\lambda - \boldsymbol{w}^{T} \boldsymbol{x}(S_t) \right)
 \cdot \boldsymbol{x}(S_t)
 \ese
-
+\vspace{-10pt}
 \bse
 \boldsymbol{w} \coloneqq \boldsymbol{w} + \alpha \left(q_t^\lambda - \boldsymbol{w}^{T} \boldsymbol{x}(S_t, A_t)
 \right) \cdot \boldsymbol{x}(S_t, A_t)
@@ -2477,7 +2477,7 @@ $\boldsymbol{w}$ in proportion to the TD error $\delta_t$ and the eligibility tr
 \qquad E_t = \gamma \lambda E_{t-1} + \boldsymbol{x}(S_t), \qquad
 \boldsymbol{w} \coloneqq \boldsymbol{w} + \alpha \: \delta_t \: E_t
 \ese
-
+\vspace{-10pt}
 \bse
 \delta_t = R_{t+1} + \gamma \boldsymbol{w}^{T} \boldsymbol{x}(S_{t+1}, A_{t+1}) - \boldsymbol{w}^{T}
 \boldsymbol{x}(S_t, A_t), \qquad E_t = \gamma \lambda E_{t-1} + \boldsymbol{x}(S_t, A_t), \qquad
@@ -2687,7 +2687,8 @@ called ``actor-critic''.
 \eit
 \eit
 
-\fig{rl35}{0.5}
+\vspace{-10pt}
+\fig{rl35}{0.55}
 
 In actor-critic algorithms we combine both methods in the following way:
 \bit
