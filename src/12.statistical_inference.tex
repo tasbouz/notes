@@ -271,4 +271,690 @@ Observe that for $n \to \infty \Rightarrow \sigma_{\bar {x}} \to 0$. \v
 Summing up according to CLT the sampling distribution of the mean of a population follows a normal distribution with
 mean $E[\bar{X}_{n}]$ and and variance $\sigma_{\bar {x}}$.
 
-% TODO: WIP - My Notes Pages: 1-31
+\section{Confidence Intervals}
+
+Since according to CLT the sampling distribution of the mean follows a normal distribution, we can use everything we
+know about normal distributions. For example we know that 95\% of the values of a normal distribution lie within
+1.96 standard deviations around the mean. For the sampling distribution of the mean this reads: 95\% of all the
+samples that one could pick out of the population will have a mean $\bar{x}$ inside the interval:
+\bse
+[E[\bar{x}] - 1.96 \sigma_{\bar{x}}, \: E[\bar{x}] + 1.96 \sigma_{\bar{x}}]
+\ese
+
+\fig{confidenceinterval}{0.5}
+
+The rest of the area (the uncovered one) is called ``significance level'' and it is denoted by $\alpha$. For
+example, for a 95\% confidence interval we have $\alpha = 5\%$.
+
+\bd[Significance Level]
+The \textbf{significance level} $\alpha$ is the percentage of the sampling distribution of a statistic that is not
+covered by the corresponding confidence interval.
+\ed
+
+In other words, for 95\% confidence intervals, the 95\% of the samples of a population will have mean value:
+\bse
+\bar{x} - 1.96 \frac{\sigma}{\sqrt{n}} \leq \mu \leq \bar{x} + 1.96 \frac{\sigma}{\sqrt{n}}
+\ese
+
+This leads us to the following definition.
+
+\bd[Confidence Interval]
+Given a sample of size $n$ with sample mean $\bar{x}$, drawn out of a population with standard deviation $\sigma$,
+the \textbf{confidence interval} of $(1-\alpha)$ level of confidence for the population mean $\mu$ is defined as:
+\bse
+\bar{x} \pm z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}
+\ese
+
+where $z_{\frac{\alpha}{2}}$ is the $z$-score that leaves an area of $\frac{\alpha}{2}$ on each tail of the standard
+normal distribution.
+\ed
+
+\textbf{Be careful:} A confidence interval is \emph{not} the probability that the population mean lies within the
+interval! The population mean $\mu$ is a fixed (yet unknown) number, and the interval is the random object: if we
+repeat the sampling many times, $(1-\alpha)$ of the confidence intervals we construct will contain $\mu$. \v
+
+Observe that in the definition of the confidence interval we used the standard deviation $\sigma$ of the population,
+which more often than not is unknown to us. In this case we use the standard deviation $s$ of the sample instead,
+but then the sampling distribution of the mean is no longer a normal distribution. It follows the so-called
+``Student's t-distribution'' with $n-1$ degrees of freedom, which we introduced in the previous chapter:
+\bse
+f_{X}(x) = \frac{\Gamma \Big( \frac{n+1}{2} \Big) }{\sqrt{n \pi}
+\Gamma \Big( \frac{n}{2} \Big) } \Big ( 1 + \frac{x^2}{n} \Big)^{- \frac{n + 1}{2}}
+\ese
+
+In general the t-distribution is shorter in the middle and fatter in the tails compared to the normal distribution,
+i.e.\ it gives a greater chance to extreme values, which compensates for the extra uncertainty of not knowing
+$\sigma$. As $n \to \infty$ the t-distribution tends to the normal distribution. \v
+
+Hence, when we have a t-distribution, for a given level of confidence, the confidence intervals will be given by:
+\bse
+\bar{x} \pm t_{cr} \frac{s}{\sqrt{n}}
+\ese
+
+where $s$ is the standard deviation of the sample, and $t_{cr}$ is a specific value (we can find it in t-tables)
+which is specified by the level of confidence (or $\alpha$) and the degrees of freedom, i.e.\ the sample size minus
+one.
+
+\subsection{Margin Of Error \& Sample Size Determination}
+
+The quantity that we add and subtract to the sample mean in order to form a confidence interval has a name of its
+own.
+
+\bd[Margin Of Error]
+The \textbf{margin of error} $E$ of a confidence interval is the quantity:
+\bse
+E = z_{\frac{\alpha}{2}} \frac{\sigma}{\sqrt{n}}
+\ese
+
+so that the confidence interval reads $\bar{x} \pm E$. (Same for t, with $t_{cr}$ and $s$.)
+\ed
+
+Observe that the margin of error depends only on the sample size $n$, the level of confidence $\alpha$, and the
+standard deviation of the population for $z$ (or of the sample for $t$). Since we cannot fix the standard
+deviation, and usually the $\alpha$ is fixed to either $0.05$ or $0.01$, the only thing we can vary is the sample
+size $n$. Solving the definition of the margin of error for $n$ we get:
+\bse
+n = \frac{z_{\frac{\alpha}{2}}^{2} \: \sigma^{2}}{E^{2}}
+\ese
+
+Hence, by specifying $z_{\frac{\alpha}{2}}$, $\sigma$ and $E$ we can come up with the suitable sample size for our
+experiment.
+
+\be
+For 95\% confidence (i.e.\ $z_{\frac{\alpha}{2}} = 1.96$), given a fixed error $E$ that we don't care if we're
+wrong, and a specific standard deviation $\sigma$, we need a sample with sample size $n = (1.96)^{2} \sigma^{2} /
+E^{2}$.
+\ee
+
+Of course $n \to \infty$ as $E \to 0$, i.e.\ the more precision we require, the bigger the sample we have to collect.
+
+\subsection{Confidence Interval For The Variance}
+
+Everything we did so far concerns the population mean $\mu$, but the exact same logic can be applied to the
+population variance $\sigma^{2}$ as well. The notation that we will use for the variances is the same that we have
+been using from the beginning of the chapter:
+\bse
+\sigma^{2} = \frac{\sum_{i} (x_{i} - \mu)^2}{N} \quad \text{(population)} \qquad \qquad
+s^{2} = \frac{\sum_{i} (x_{i} - \bar{x})^2}{n-1} \quad \text{(sample)}
+\ese
+
+and for the standard deviations $\sigma = \sqrt{\sigma^{2}}$ (population) and $s = \sqrt{s^{2}}$ (sample). \v
+
+As we discussed, the distribution of the means taken by multiple samples follows a normal distribution
+$N(\mu, \sfrac{\sigma}{\sqrt{n}})$. Similarly, in the sampling distribution of the variance, the corresponding
+statistic for a sample of sample size $n$ with sample variance $s^{2}$ is the quantity:
+\bse
+\chi^{2} = \frac{(n-1) s^{2}}{\sigma^{2}}
+\ese
+
+which follows a chi-squared distribution with $n-1$ degrees of freedom, which we also introduced in the previous
+chapter. Of course, since variation cannot be negative, it makes sense for it to follow a distribution with a zero
+PDF for $x < 0$. \v
+
+Observe that, contrary to the normal distribution where everything was symmetrical around the mean, the chi-squared
+distribution is not symmetrical. So when we define an $\alpha$, it does not split the distribution in equal parts,
+and instead of one $z_{cr}$ we now have to find two different values $\chi^{2}_{1 - \frac{\alpha}{2}}$ and
+$\chi^{2}_{\frac{\alpha}{2}}$ from a $\chi^{2}$-table, for the given degrees of freedom $n - 1$. (As a convention,
+in $\chi^{2}$ the cumulative probability 1 starts from the left and 0 from the right, opposite of the normal
+distribution which was 0 on the left and 1 on the right.) \v
+
+After doing that, we know that $(1-\alpha)$ of all samples will have a $\chi^{2}$ between the two limits that we
+found:
+\bi{rCl}
+\chi^{2}_{1 - \frac{\alpha}{2}} \: \leq \: \frac{(n-1) s^{2}}{\sigma^{2}} \: \leq \: \chi^{2}_{\frac{\alpha}{2}}
+& \eqv &
+\frac{1}{\chi^{2}_{1 - \frac{\alpha}{2}}} \: \geq \: \frac{\sigma^{2}}{(n-1) s^{2}} \: \geq \:
+\frac{1}{\chi^{2}_{\frac{\alpha}{2}}} \\
+& \eqv & \frac{(n-1) s^{2}}{\chi^{2}_{\frac{\alpha}{2}}} \: \leq \: \sigma^{2} \: \leq \:
+\frac{(n-1) s^{2}}{\chi^{2}_{1 - \frac{\alpha}{2}}}
+\ei
+
+So, we estimated the variance! Exactly the same thing as we did with means. (For standard deviations we just take
+the square root of the inequality.) \v
+
+Observe that as we change the sample size $n$ we change the degrees of freedom, hence the
+$\chi^{2}_{1 - \frac{\alpha}{2}}$ and $\chi^{2}_{\frac{\alpha}{2}}$. In general as $n \to \infty$ the confidence
+interval of $\sigma^{2}$ narrows. The idea is that as $n \to \infty$ the interval converges to a specific value
+which is the ``real'' value of $\sigma^{2}$. However, the law of diminishing returns applies also here: after a
+point, further increase to $n$ does not offer anything.
+
+\section{Hypothesis Testing}
+
+Confidence intervals are one of the two pillars of statistical inference: they estimate a population parameter out
+of a sample. The second pillar answers a slightly different question: given a claim (a ``hypothesis'') about a
+population parameter, does a sample support the claim or not? This process is called ``hypothesis testing'' and, as
+we will see, it heavily relies on the sampling distributions and the confidence intervals we have developed so far.
+
+\subsection{Null \& Alternative Hypotheses}
+
+Let's begin with the two fundamental definitions.
+
+\bd[Null Hypothesis]
+The \textbf{null hypothesis} $H_{0}$ is the default position of a hypothesis test that there is nothing new or
+different, hence what it's given (or assumed), i.e.\ the status quo is correct, and it is assumed true. It always
+contains an equality.
+\ed
+
+\bd[Alternative Hypothesis]
+The \textbf{alternative hypothesis} $H_{a}$ is the contrary to the null hypothesis, hence the other option when the
+null hypothesis is rejected. Usually it's unknown, it's not given, and it's a claim we make opposite to the null
+hypothesis. It never contains an equality, it just rejects the equality of the null hypothesis, hence it proves the
+opposite inequality.
+\ed
+
+Since the null hypothesis is an assumed fact, we accept it. A statistical hypothesis test will either
+\textbf{reject} or \textbf{fail to reject} the null hypothesis. If we reject the null hypothesis it means that the
+alternative hypothesis is true. However, if we fail to reject the null hypothesis, it does not mean that we have
+proven that it's true, because we only \emph{assumed} it was true! \v
+
+\textbf{Be careful:} We can never prove that the null hypothesis is true. We can only do that for the alternative
+hypothesis! \v
+
+Using this idea it's easy to develop the null and alternative hypothesis for any experiment.
+
+\subsection{Type I \& Type II Errors}
+
+Since hypothesis testing is based on samples, and samples carry randomness, there are two distinct ways in which
+our conclusion can be wrong.
+
+\bd[Type I Error]
+A \textbf{Type I error} is the rejection of the null hypothesis when it should have been accepted. In other words:
+the incorrect rejection of a true null hypothesis.
+\ed
+
+\bd[Type II Error]
+A \textbf{Type II error} is the failure to reject the assumption (null hypothesis) when it should have been
+rejected. In other words: the incorrect acceptance of a false null hypothesis.
+\ed
+
+The most usual way to do a Type II error is by randomly selecting a sample that approves the null hypothesis.
+Schematically:
+
+\btab[H]
+\centering
+\btb{c|c||c|c}
+& & \multicolumn{2}{c}{Conclusion} \\
+& & Accept $H_{0}$ & Reject $H_{0}$ \\
+\hline
+\rule{0pt}{12pt} \multirow{2}{*}{Actual Condition} & $H_{0}$ is true & \checkmark & Type I error \\
+& $H_{a}$ is true & Type II error & \checkmark
+\etb
+\etab
+
+In real life Type II errors are much more important than Type I errors, since failing to detect a real change is
+usually more costly than raising a false alarm. \v
+
+We can use hypothesis testing in combination with the sampling distribution, in order to find if there is a
+statistically significant change in a statistic or not. This is called a ``z-test'' or a ``t-test'' depending on
+the distribution.
+
+\subsection{The z-Test \& The t-Test}
+
+Here we are focusing on the process of a z-test, but the same applies for a t-test if we change all $z$-values to
+$t$-values and all population standard deviations to sample standard deviations. \v
+
+Given an assumed population mean $\mu_{0}$, we form the null hypothesis to be:
+\bse
+H_{0}: \mu = \mu_{0}
+\ese
+
+i.e.\ the actual population mean is the given one. Of course the alternative hypothesis is:
+\bse
+H_{a}: \mu \neq \mu_{0}
+\ese
+
+We develop the test given an $\alpha$, i.e.\ a ``significance level'' as we defined it for confidence intervals,
+which now obtains one more interpretation: that of a ``Type I error rate''. It states how tolerant we are to make a
+Type I error. In other words, what percentage of total samples should we accept to produce a Type I error.
+
+\be
+For $\alpha = 5\%$, I am okay to make a Type I error 5 out of 100 times.
+\ee
+
+We call the corresponding $z$ value for a given $\alpha$ the ``critical value''.
+
+\bd[Critical Value]
+The \textbf{critical value} $z_{cr}$ (or $t_{cr}$) is the value of the test statistic that corresponds to the
+chosen significance level $\alpha$, i.e.\ the boundary beyond which the null hypothesis is rejected. The critical
+value is determined by $\alpha$ and by whether we are using the z or the t distribution.
+\ed
+
+Let's see this in a graph!
+
+\fig{criticalregion}{0.5}
+
+We know that $(1-\alpha)$ of all random samples will have a mean inside the region $[\mu_{0} - z_{cr} \sigma_{\bar
+{x}}, \: \mu_{0} + z_{cr} \sigma_{\bar{x}}]$ defined by the critical values. The rest $\alpha$ of the samples will
+have a mean outside this region, but they will still be under the same distribution! \v
+
+Now, we assume that the population mean has changed to some $\mu \neq \mu_{0}$ and we want to test that, so we form
+the null and the alternative hypotheses as above. We gather a sample of size $n$, we compute its mean $\bar{x}$,
+and we want to check if $\bar{x}$ is inside the non-rejection area:
+\bi{rCl}
+\mu_{0} - z_{cr} \sigma_{\bar{x}} \: \leq \: \bar{x} \: \leq \: \mu_{0} + z_{cr} \sigma_{\bar{x}}
+& \eqv &
+- z_{cr} \: \leq \: \frac{\bar{x} - \mu_{0}}{\sigma_{\bar{x}}} \: \leq \: z_{cr}
+\ei
+
+where the middle quantity is nothing but the $z$-score of $\bar{x}$:
+\bse
+z = \frac{\bar{x} - \mu_{0}}{\sfrac{\sigma}{\sqrt{n}}} \qquad \Big( \text{or the t-score of it:} \quad
+t = \frac{\bar{x} - \mu_{0}}{\sfrac{s}{\sqrt{n}}} \Big)
+\ese
+
+Note that we use $\sfrac{\sigma}{\sqrt{n}}$ (or $\sfrac{s}{\sqrt{n}}$) because the sample has a sample size $n$,
+hence $\bar{x}$ lives in the sampling distribution of the mean. \v
+
+Even if the population mean is no longer $\mu_{0}$, the $z$-score of our sample might be between $-z_{cr}$ and
+$z_{cr}$, so it's still part of the previous distribution and $H_{0}$ cannot be rejected. However, if
+$z < -z_{cr}$ or $z > z_{cr}$, then there are two possible cases:
+
+\bit
+\item $z$ is part of the $\alpha$ of the random samples that have a mean outside of $[-z_{cr}, z_{cr}]$, hence the
+distribution has not changed, and we are performing a Type I error.
+\item $z$ is part of the $(1 - \alpha)$ of the random samples of a new distribution, so the distribution has
+changed!
+\eit
+
+Hence the decision rule is:
+\bse
+z < -z_{cr} \:\: \text{or} \:\: z > z_{cr} \imp \text{Reject } H_{0} \qquad \qquad
+-z_{cr} \leq z \leq z_{cr} \imp \text{Fail to reject } H_{0}
+\ese
+
+and when we reject $H_{0}$, we have an $\alpha$ probability of being wrong, i.e.\ of performing a Type I error. \v
+
+It makes sense that the smaller the $\alpha$, the bigger the critical value $z_{cr}$, since the more sure we want
+to be, the broader the range of possible means for our samples. Hence as $\alpha \to 0$, while it's ``difficult''
+to find a $z$ out of statistical significance ranges, once we find it, it's very unlikely to have a Type I error.
+This is why $\alpha$ is the probability of having a Type I error! \v
+
+So the smaller the $\alpha$, the more ``difficult'' to find a $z$ outside the critical range (i.e.\ a statistically
+significant $z$), but once we find it, the less the probability of having committed a Type I error when we reject
+the initial distribution. However, as we decrease $\alpha$, the probability of having a Type I error decreases,
+but the probability of a Type II error increases, because now we are prone to pick a $z$ belonging to a
+``further-up'' distribution, inside the critical range.
+
+\fig{typeoneerrortradeoff}{0.5}
+
+As we can see in the graph, a point right below the critical value is inside the non-rejection region of the null
+distribution, but it may very well belong to the shifted distribution: failing to reject it is exactly a Type II
+error.
+
+\subsection{The p-Value}
+
+An alternative way to decide for rejecting $H_{0}$ or not is using the ``p-value''. (Exactly the same way!)
+
+\bd[p-Value]
+We define as \textbf{p-value} the probability of finding the observed (or more extreme) results when the null
+hypothesis is true.
+\ed
+
+In simple words, once we find the $z$ of the sample we calculate the ``remaining area'':
+
+\fig{pvalue}{0.5}
+
+Hence for the $z$ we calculated, we find through a z-table to which probability it corresponds. This way we find
+the p-value! It's intuitive that in order to reject $H_{0}$ it must be:
+\bse
+p < \alpha \qquad (\text{which translates to} \:\: z < -z_{cr} \:\: \text{or} \:\: z > z_{cr})
+\ese
+
+Same result, different way of expressing it! (Same for t-tests. Just find the $\alpha$ of degrees of freedom $n-1$
+and the $t$-value we calculated. If $p < \alpha$ then we reject $H_{0}$, otherwise we fail to reject it.)
+
+\subsection{Hypothesis Testing For Two Populations}
+
+So far we have been testing a single population against an assumed value $\mu_{0}$. However, very often we want to
+compare two populations with each other. There are two distinct cases: the populations can be independent, or
+dependent (matched). \v
+
+Starting with the independent case, we are given two independent populations with mean values $\mu_{1}, \mu_{2}$
+and standard deviations $\sigma_{1}, \sigma_{2}$. By ``independent'', we mean that measurements on one population
+do not affect the other. We create our hypotheses as:
+\bse
+H_{0}: \mu_{1} - \mu_{2} = D_{0} \qquad \qquad H_{a}: \mu_{1} - \mu_{2} \neq D_{0}
+\ese
+
+where $D_{0}$ is the assumed difference of the means. (For example $D_{0} = 0$ tests whether the two populations
+have the same mean.) The sample differences of the means $\bar{x}_{1} - \bar{x}_{2}$ satisfy a normal distribution
+centered at $D_{0}$ with standard deviation:
+\bse
+\sigma^{*} = \sqrt{\frac{\sigma_{1}^{2}}{n_{1}} + \frac{\sigma_{2}^{2}}{n_{2}}}
+\ese
+
+where $n_{1}, n_{2}$ are the two sample sizes. Hence the corresponding $z$-score of the observed difference is:
+\bse
+z = \frac{(\bar{x}_{1} - \bar{x}_{2}) - D_{0}}{\sqrt{\frac{\sigma_{1}^{2}}{n_{1}} + \frac{\sigma_{2}^{2}}{n_{2}}}}
+\ese
+
+We pick an $\alpha$, and by choosing $\alpha$ we have chosen a $z_{cr}$. As before:
+\bse
+z < -z_{cr} \:\: \text{or} \:\: z > z_{cr} \imp \text{Reject } H_{0} \qquad \qquad
+-z_{cr} \leq z \leq z_{cr} \imp \text{Fail to reject } H_{0}
+\ese
+
+and we have an $\alpha$ probability of being wrong and performing a Type I error. As before, the ``remaining''
+uncovered area defined by $z$ is called the p-value, and it should be $p < \alpha$ for us to reject $H_{0}$. \v
+
+In the case that we don't know $\sigma_{1}, \sigma_{2}$, we simply estimate them by using the sample standard
+deviations $s_{1}$ and $s_{2}$ of the samples. Then we perform a t-test:
+\bse
+t = \frac{(\bar{x}_{1} - \bar{x}_{2}) - D_{0}}{\sqrt{\frac{s_{1}^{2}}{n_{1}} + \frac{s_{2}^{2}}{n_{2}}}}
+\ese
+
+and finally by fixing $\alpha$ we obtain a $t_{cr}$ and we repeat the same steps. \v
+
+We just reviewed a case where the two populations were independent. However, we can develop a matched t-test for
+two dependent populations. Usually this is the case when we have a population with a ``before'' and an ``after''
+condition, and we want to study if the mean value of the two situations has changed statistically significantly.
+
+\fig{matchedttest}{0.5}
+
+Given the ``before'' measurements $(x_{1}, x_{2}, \ldots, x_{n})$ and the ``after'' measurements
+$(x_{1}', x_{2}', \ldots, x_{n}')$ of the same $n$ units, we define the differences $d_{i} = x_{i} - x_{i}'$ for
+all $i$, and we calculate the mean difference:
+\bse
+\bar{d} = E[d_{i}]
+\ese
+
+Under the null hypothesis that nothing has changed, the distribution of $\bar{d}$ has mean value 0, hence:
+\bse
+H_{0}: \bar{d} = 0 \qquad \qquad H_{a}: \bar{d} \neq 0
+\ese
+
+Now we follow the same procedure of a t-test. We pick a level of confidence (e.g.\ $\alpha = 0.05$), and since we
+have $n$ sample size the degrees of freedom are $n-1$. Out of this we obtain a $t_{cr}$. We already know $\bar{d}$
+and we also calculate $s_{d}$, i.e.\ the standard deviation of the differences. We find the t-value of $\bar{d}$:
+\bse
+t = \frac{\bar{d} - 0}{\sfrac{s_{d}}{\sqrt{n}}} = \frac{\sqrt{n} \: \bar{d}}{s_{d}}
+\ese
+
+\textbf{Careful:} What we did, is that we assumed that the initial distribution of $\bar{d}$ (the one we compare
+our sample right now) had mean value 0 (this is why we subtract 0), and since we're doing a t-test it had the
+standard deviation of the given samples. \v
+
+So:
+\bse
+t < -t_{cr} \:\: \text{or} \:\: t > t_{cr} \imp \text{Reject } H_{0} \qquad \qquad
+-t_{cr} \leq t \leq t_{cr} \imp \text{Fail to reject } H_{0}
+\ese
+
+(Same for p-values. Just find the $\alpha$ of degrees of freedom $n-1$ and the t-value we calculated. If
+$p < \alpha$ then we reject $H_{0}$, otherwise we fail to reject it.)
+
+\subsection{Hypothesis Testing For The Variance}
+
+Exactly as we did for confidence intervals, hypothesis testing can also be applied to variances instead of means.
+We assume that the variance has changed, and we form the hypotheses:
+\bse
+H_{0}: \sigma^{2} = \sigma_{0}^{2} \qquad \qquad H_{a}: \sigma^{2} \neq \sigma_{0}^{2}
+\ese
+
+We pick a sample of sample size $n$, and we measure its variance $s^{2}$. We pick a level of confidence $\alpha$,
+and by using degrees of freedom $n-1$, we obtain $\chi^{2}_{1 - \frac{\alpha}{2}}$ and
+$\chi^{2}_{\frac{\alpha}{2}}$ from a $\chi^{2}$-table. We calculate the $\chi^{2}$ of our sample as:
+\bse
+\chi^{2} = \frac{(n-1) s^{2}}{\sigma_{0}^{2}}
+\ese
+
+and the decision rule is:
+\bse
+\chi^{2}_{1 - \frac{\alpha}{2}} \leq \chi^{2} \leq \chi^{2}_{\frac{\alpha}{2}} \imp \text{Fail to reject } H_{0}
+\qquad \qquad
+\chi^{2} < \chi^{2}_{1 - \frac{\alpha}{2}} \:\: \text{or} \:\: \chi^{2} > \chi^{2}_{\frac{\alpha}{2}}
+\imp \text{Reject } H_{0}
+\ese
+
+For two samples $(n_{1}, s_{1}^{2})$ and $(n_{2}, s_{2}^{2})$ we define the F-ratio as:
+\bse
+F = \frac{s_{1}^{2}}{s_{2}^{2}}
+\ese
+
+which follows the so-called ``F-distribution'' with $n_{1} - 1$ and $n_{2} - 1$ degrees of freedom, and we repeat
+the same steps: fix an $\alpha$, obtain the critical values from an F-table, and compare.
+
+\subsection{The Chi-Squared Goodness Of Fit Test}
+
+The chi-squared distribution provides us with one more very useful test, which checks how well an observed
+distribution of categorical data fits a theoretically expected one. In order to do this we define:
+
+\bit
+\item $O_{i}$: the number of observations of type $i$
+\item $E_{i}$: the number of observations of type $i$ expected theoretically
+\item $i$: the types of observations
+\eit
+
+Given this we calculate the $\chi^{2}$ of our sample as:
+\bse
+\chi^{2} = \sum_{i} \frac{(O_{i} - E_{i})^{2}}{E_{i}}
+\ese
+
+As before, we have degrees of freedom equal to the number of types minus one, and by choosing a level of confidence
+$\alpha$, we can obtain through a $\chi^{2}$-test-table the value of $\chi^{2}_{cr}$. This value $\chi^{2}_{cr}$ is
+the maximum value of the $\chi^{2}$-value of variance that we can accept due to chance, being $(1 - \alpha)$
+confident. Hence:
+\bse
+\chi^{2} \leq \chi^{2}_{cr} \imp \text{Variation due to chance} \qquad \qquad
+\chi^{2} > \chi^{2}_{cr} \imp \text{Variation \emph{not} due to chance}
+\ese
+
+and in the second case we need to find the reason of variation.
+
+\section{Analysis Of Variance (ANOVA)}
+
+Suppose now that we want to compare the means of more than two populations. One idea would be to test them in
+pairs with the tools we already have:
+\bse
+H_{0}: \bar{x}_{1} = \bar{x}_{2}, \:\: \alpha = 0.05 \qquad
+H_{0}: \bar{x}_{1} = \bar{x}_{3}, \:\: \alpha = 0.05 \qquad \ldots
+\ese
+
+However, following this procedure the alphas are compound together, hence in the end the final level of confidence
+would be:
+\bse
+(0.95) \cdot (0.95) \cdots (0.95) = (0.95)^{\binom{N}{2}}
+\ese
+
+where $N$ is the number of populations. This number decreases significantly as $N$ grows.
+
+\be
+For $N = 3$: $(0.95)^{3} \approx 0.85$, which gives $\alpha = 0.15$ instead of $\alpha = 0.05$. As $N$ increases,
+the probability of performing a Type I error increases as well.
+\ee
+
+In order to avoid this, we use another method for comparing means of more than 2 populations which is called
+``Analysis Of Variance'' or ``ANOVA''! \v
+
+So, given $N$ means $\bar{x}_{1}, \bar{x}_{2}, \ldots, \bar{x}_{N}$ we want to find out if they are all part of the
+same distribution or they belong to different distributions. In order to do so, first we have to introduce two
+concepts: the variability among (or between) the sample means, and the variability around (or within) the
+distributions.
+
+\bd[Variance Between]
+The \textbf{variance between} is the variability among the sample means, i.e.\ the distance of each sample mean
+from the grand mean of all the samples.
+\ed
+
+\bd[Variance Within]
+The \textbf{variance within} is the variability around (inside) each distribution. We measure the spread (or
+width) of each sample separately, not in relation with something. This internal spread is why it's called
+``within'' distributions.
+\ed
+
+\fig{anova}{0.5}
+
+In ANOVA we are dealing with the ratio:
+\bse
+\frac{\text{Variance Between}}{\text{Variance Within}} = \frac{\text{Distance from grand mean}}{\text{Internal
+spread}}
+\ese
+
+Of course:
+\bse
+\text{Total Variance} = \text{Variance Between} + \text{Variance Within}
+\ese
+
+The general idea of ANOVA is:
+\bse
+\frac{\text{Variance Between}}{\text{Variance Within}} \gg 1 \imp \text{Reject } H_{0} \qquad \qquad
+\frac{\text{Variance Between}}{\text{Variance Within}} \lesssim 1 \imp \text{Fail to reject } H_{0}
+\ese
+
+That was the general concept of ANOVA. Now let's see the different ANOVAs in detail.
+
+\subsection{One-Way ANOVA}
+
+In ANOVA the hypotheses are always of the form:
+\bse
+H_{0}: \text{The means are coming from the same distribution (equal)}
+\ese
+\bse
+H_{a}: \text{The means are coming from different distributions (unequal)}
+\ese
+
+In One-Way ANOVA we have a single ``factor'' which can take some values and creates different groups (or columns).
+
+\be
+For the year of the students: $1, 2, 3, \ldots, C$, each year is a group, and we study e.g.\ the grades of each
+group.
+\ee
+
+For each of the $C$ groups we collect a sample of sample size $n$ and we find the mean value:
+\bse
+F_{1} \to \text{Sample}_{1} \to \bar{x}_{1} \qquad
+F_{2} \to \text{Sample}_{2} \to \bar{x}_{2} \qquad \ldots \qquad
+F_{C} \to \text{Sample}_{C} \to \bar{x}_{C}
+\ese
+
+Then we find the grand mean $\bar{\bar{x}}$ by grouping all the samples together and calculating the mean value.
+Now we define three deviations:
+
+\bit
+\item Sum of Squares Total: $\ds \text{SST} = \sum_{\text{all data}} (x_{i} - \bar{\bar{x}})^{2}$ \:\: (Total)
+\item Sum of Squares Column: $\ds \text{SSC} = n \sum_{j=1}^{C} (\bar{x}_{j} - \bar{\bar{x}})^{2}$ \:\: (Between)
+\item Sum of Squares Error: $\ds \text{SSE} = \sum_{j=1}^{C} \sum_{i=1}^{n} (x_{ij} - \bar{x}_{j})^{2}$ \:\:
+(Within)
+\eit
+
+so that:
+\bse
+\text{Total Variance} = \text{Variance Between} + \text{Variance Within} \qquad \text{or} \qquad
+\text{SST} = \text{SSC} + \text{SSE}
+\ese
+
+Now, using SST, SSC and SSE, and by keeping in mind that we have $C$ samples (based on the factor) of $n$ sample
+size each, we define:
+
+\bit
+\item Degrees of freedom of columns (or groups): $\text{dof}_{C} = C - 1$
+\item Degrees of freedom of error (or observations): $\text{dof}_{E} = C(n - 1)$
+\eit
+
+Using the degrees of freedom we define:
+
+\bit
+\item Mean Sum of Squares Columns: $\ds \text{MSC} = \frac{\text{SSC}}{\text{dof}_{C}}$
+\item Mean Sum of Squares Error: $\ds \text{MSE} = \frac{\text{SSE}}{\text{dof}_{E}}$
+\eit
+
+Finally we define:
+\bse
+F = \frac{\text{MSC}}{\text{MSE}} \qquad \Big( = \frac{\text{Variance Between}}{\text{Variance Within}} \Big)
+\ese
+
+which follows an F-distribution, and given a level of confidence $\alpha$ we obtain an $F_{cr}$ from an F-table.
+Hence:
+\bse
+F > F_{cr} \imp \text{Reject } H_{0} \qquad \qquad F \leq F_{cr} \imp \text{Fail to reject } H_{0}
+\ese
+
+where rejecting $H_{0}$ means that the means are coming from different populations.
+
+And this is One-Way ANOVA.
+
+\subsection{Two-Way ANOVA}
+
+In Two-Way ANOVA we have multiple samples that differ based on a factor, and each observation in each sample
+differs based on another factor.
+
+\be
+Grades for a course of specific students in different years:
+\bit
+\item Factor 1: Years (columns). Splits into different samples (columns).
+\item Factor 2: Student (rows). Each sample contains the same students (rows).
+\eit
+\ee
+
+This specific Two-Way ANOVA is called ``Two-Way ANOVA without replications'' because each student appears in each
+year only once. If a student could appear twice (e.g.\ students may retake the exam in the same year) then we'd
+have ``Two-Way ANOVA with replications''. First let's check without replication.
+
+\subsubsection{Two-Way ANOVA Without Replications}
+
+As before, we can calculate each individual sample mean $\bar{x}_{1}, \bar{x}_{2}, \ldots, \bar{x}_{C}$, and the
+grand mean $\bar{\bar{x}}$. But now we can also calculate the mean of each row, since they are split based on a
+common factor (e.g.\ student):
+\bse
+\bar{x}_{R_{1}}, \: \bar{x}_{R_{2}}, \: \ldots, \: \bar{x}_{R_{B}}
+\ese
+
+So we have:
+
+\bit
+\item $\bar{x}_{1}, \bar{x}_{2}, \ldots, \bar{x}_{C}$: for groups (columns)
+\item $\bar{x}_{R_{1}}, \bar{x}_{R_{2}}, \ldots, \bar{x}_{R_{B}}$: for entries (rows)
+\item $\bar{\bar{x}}$: overall mean (grand)
+\eit
+
+In the previous case we didn't have the second one! As before we compute SST and SSC, but now we have an extra
+deviation:
+
+\bit
+\item Sum of Squares Block: $\ds \text{SSB} = C \sum_{i=1}^{B} (\bar{x}_{R_{i}} - \bar{\bar{x}})^{2}$ \:\: (Rows)
+\eit
+
+So what we did is that we splitted the variation even more, in variation coming from the first factor (i.e.\ groups
+or columns) SSC, variation coming from the second factor (i.e.\ blocks or rows) SSB, and the remaining error SSE.
+So now:
+\bse
+\text{SST} = \text{SSC} + \text{SSE} + \text{SSB}
+\ese
+
+Again, as before, we define the degrees of freedom, for the first two same as before:
+\bse
+\text{dof}_{C} = C - 1 \qquad \qquad \text{dof}_{B} = B - 1 \qquad \qquad \text{dof}_{E} = (C-1)(B-1)
+\ese
+
+and the mean sums of squares $\text{MSC} = \sfrac{\text{SSC}}{\text{dof}_{C}}$ and
+$\text{MSE} = \sfrac{\text{SSE}}{\text{dof}_{E}}$, but now we also include the blocks:
+\bse
+\text{MSB} = \frac{\text{SSB}}{\text{dof}_{B}}
+\ese
+
+So again we define the F-ratio as:
+\bse
+F_{C} = \frac{\text{MSC}}{\text{MSE}}
+\ese
+
+but now we also have an F-ratio for blocks (rows):
+\bse
+F_{B} = \frac{\text{MSB}}{\text{MSE}}
+\ese
+
+So, for each of the two F's we can perform two single ``One-Way'' ANOVAs, but now we are also based on the
+different factors!
+
+\subsubsection{Two-Way ANOVA With Replications}
+
+In a Two-Way ANOVA with replications, for each block (row) based on a factor, of each group (column) based on
+another factor, we have multiple datapoints. In this case, for each block, we find the mean value of all
+repetitions. By doing so, we end up to a ``Two-Way ANOVA without repetitions'', and everything is the same as
+before! \v
+
+But, since we now work with mean values, we also get some error from there. We call this error ``error from
+interactions'' and using a programming language we can calculate it. We won't do it now! \v
+
+This summarizes ANOVAs, and with it the classical statistics that we can do with the normal distribution and
+similar distributions. In the next chapter we will revisit statistical inference in a more formal setting, and
+develop the theory of parametric inference.

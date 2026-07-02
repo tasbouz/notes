@@ -1886,4 +1886,903 @@ of $\lambda$. \v
 
 \fig{rl29}{0.3}
 
-% TODO: WIP - My Notes Pages: 59-85
+\subsection{Model-Free Control}
+
+We have finally reached the true reinforcement learning problem, where the MDP model is unknown (or it is known but
+it is too big to use) and we want to find the optimal policy of behaving. Everything that we did up to this point, we
+did it in order to be able to solve the model-free control problem. \v
+
+Before proceeding to introduce the algorithms, we need to make some important notices. Firstly, in model-free control
+we distinguish between two categories of learning.
+
+\bd[On-Policy Learning]
+In \textbf{on-policy learning} we learn about policy $\pi$ from experience sampled from $\pi$. In other words, we
+learn the policy that we follow.
+\ed
+
+\bd[Off-Policy Learning]
+In \textbf{off-policy learning} we learn about policy $\pi$ from experience sampled from $\mu$, where $\mu$ is a
+policy followed by another agent. In other words, we learn the policy that someone else follows, while we follow
+policy $\mu$ (e.g.\ observing what another agent is doing).
+\ed
+
+We will begin by introducing on-policy algorithms (since this is what we have been doing up to here), and then we
+will move on to off-policy algorithms. \v
+
+Secondly, in order to develop algorithms for model-free control problems we will follow the same basic idea of
+model-based control (as in dynamical programming) which is an iterative cycle of policy evaluation and policy
+improvement. This will bring us to the third and most important concept in model-free control. In model-based
+prediction and control, the whole MDP was known, so the transition probabilities under actions
+$\mathcal{P}_{s s^\prime}^{a}$ were known. So when we used policy iteration and value iteration to predict and
+control respectively, knowing the state value function $V_{\pi}$ and $V_{*}$ respectively was enough. In model-based
+prediction $V_{\pi}$ was all we needed (since we evaluated $\pi$), and in model-based control $V_{*}$ was all we
+needed since once we knew the optimal state value functions for all states, we knew how to behave, simply by going
+from $s$ to the $s^\prime$ where $V_{*}(s^\prime)$ was the highest. And we knew which action leads from $s$ to
+$s^\prime$ since we knew $\mathcal{P}_{s s^\prime}^{a}$. In other words:
+\bse
+\pi^\prime(s) = \argmax_{a} \left[ \mathcal{R}_{s}^{a} + \gamma \sum_{s^{\prime}} \mathcal{P}_{s s^\prime}^{a}
+V(s^\prime) \right]
+\ese
+
+Moving on to model-free prediction, state value functions were still enough since we had a given policy $\pi$ (that
+we needed to evaluate) and we knew which action to take at each state. \v
+
+However, now in model-free control, state value functions are not enough! Even if we knew the optimal state value
+function $V_{*}(s)$, and we want to move from $s$ to $s^\prime$ where $V_{*}(s^\prime)$ is the highest, we don't
+know which action $a$ leads from $s$ to $s^\prime$, since we don't know $\mathcal{P}_{s s^\prime}^{a}$. Hence, in
+model-free control, in order to solve this problem we move from state value functions to action value functions
+$Q(s,a)$. That way, by learning $Q(s,a)$ at each state, we know which action $a$ has the highest value, so we
+perform it to head us to the next (unknown a priori to us) state $s^\prime$. In other words:
+\bse
+\pi^\prime(s) = \argmax_{a} Q(s,a)
+\ese
+
+So, by switching from state value functions to action value functions we can solve this problem. However, not
+knowing $\mathcal{P}_{s s^\prime}^{a}$ brings another problem also. Namely, since as in value iteration, we will act
+greedily by picking the best policy based on our current estimate of $Q(s,a)$, and because we don't know
+$\mathcal{P}_{s s^\prime}^{a}$, we cannot be sure that we have seen all subsequent states from $s$ in order to pick
+the best. Hence, the algorithms might stuck to one specific policy and keep improving, having as a consequence to
+never visit some states far away from the policy that might have been better. \v
+
+This is a very well known problem in reinforcement learning called the ``exploration problem'', where we have to
+balance somehow the agent between improving policies and exploring new ones, so we don't stuck to a non-optimal
+policy. A very simple trick to somehow fix the problem, which is also one of the best working ones, is called
+``$\epsilon$-greedy exploration''.
+
+\bd[$\epsilon$-Greedy Exploration]
+The simple idea of \textbf{$\epsilon$-greedy exploration} for ensuring continual exploration is that all $m$ actions
+of a state $s$ are tried with non-zero probability. Namely, by defining $\epsilon \in [0,1]$, we choose the greedy
+action (one coming from $\argmax Q(s,a)$) with probability $1-\epsilon$, and an action at random with probability
+$\epsilon$. Formally:
+\bse
+\pi(a|s)=\Big\{ \begin{array}{lr} \sfrac{\epsilon}{m} + 1 - \epsilon, \:\: \text{ if } a^{*} =\argmax_{a} Q(s,a) \\
+\sfrac{\epsilon}{m}, \qquad \quad \:\:\:\: \text{ otherwise} \end{array}
+\ese
+\ed
+
+That way we solve the problem of continuing exploration, since we can prove (but we will skip the proof) that for
+any $\epsilon$-greedy policy $\pi$, the $\epsilon$-greedy policy $\pi^\prime$ with respect to $Q_{\pi}$ is an
+improvement, i.e.\ $V_{\pi^\prime}(s) \geq V_{\pi}(s)$. \v
+
+However, at some point the exploration needs to stop, because we need the best optimal policy, and this policy
+cannot include the random effect coming from $\epsilon$. Hence, we need to introduce a way so the exploration is
+sufficient enough so the best optimal policy can be achieved, and also that it stops at some point. The most famous
+idea of achieving that is called ``Greedy in the Limit with Infinite Exploration'' (GLIE).
+
+\bd[Greedy in the Limit with Infinite Exploration (GLIE)]
+\textbf{Greedy in the Limit with Infinite Exploration} (\textbf{GLIE}) assures that:
+\bit
+\item All state-action pairs are explored infinitely many times:
+\bse
+\lim_{k \to \infty} N_{k}(s,a) = \infty
+\ese
+
+\item The policy converges on a greedy policy:
+\bse
+\lim_{k \to \infty} \pi_{k}(a|s) = \mathcal{I} \left(a = \argmax_{a^\prime} Q_{k}(s,a^\prime) \right)
+\ese
+\eit
+\ed
+
+In order to make $\epsilon$-greedy GLIE we need to reduce $\epsilon$ (i.e.\ the probability of randomly picking
+actions) as we keep exploring ($k \to \infty$), so:
+\bse
+\epsilon_{k} = \frac{1}{k} \imp \epsilon_{k} \to 0 \:\: \text{as} \:\: k \to \infty
+\ese
+
+So now we fixed both exploration and ending to exploration! As a final note, as we did in value iteration, since we
+don't really need to evaluate the policy completely before improving the policy (evaluation is not our goal) we can
+always stop evaluating after some time (we will see that in detail in each model). \v
+
+Summarizing, in model-free control we follow the iterative cycle of policy evaluation and policy improvement, but
+now the evaluation is on the action value function $Q$ and the improvement is $\epsilon$-greedy:
+
+\fig{rl30}{0.55}
+
+So, we have introduced all the important details for model-free control algorithms. Now we move on, on developing
+the algorithms. Keep in mind that we will use everything we mentioned here!
+
+\subsubsection{Monte Carlo Control}
+
+Monte Carlo in model-free control is simply the idea of Monte Carlo in model-free prediction after taking into
+account all we said in the introduction. \v
+
+Namely, after we initialize $N$ and $Q$ for all pairs of state-action, we initialize a random policy $\pi$, and by
+using value iteration we update $\pi$ by acting $\epsilon$-greedy after each episode (we don't need to run more
+episodes since we don't care about exact evaluation). Of course, during value iteration we update action value
+functions instead of state value functions, using the Monte Carlo learning update rule:
+\bse
+Q(s,a) \gets Q(s,a) + \frac{1}{N(s,a)} \left(G_t - Q(s,a) \right)
+\ese
+
+Let's see the complete algorithm in pseudocode:
+
+\begin{block}
+Algorithm parameters: small $\epsilon > 0$, discount $\gamma \in [0,1]$
+Initialize:
+    $\pi \gets$ an arbitrary $\epsilon$-greedy policy
+    $N(s,a) \gets 0, \:\: \forall (s,a)$
+    $Q(s,a) \gets$ arbitrarily$, \:\: \forall (s,a)$
+    $k \gets 0$, number of episodes for updating $\epsilon$
+Repeat forever (for each episode):
+    $k \gets k+1$, $\:\: \epsilon \gets \sfrac{1}{k}$
+    Generate an episode following $\pi$: $\:\: S_0, A_0, R_1, \ldots, S_{T-1}, A_{T-1}, R_T$
+    $G \gets 0$
+    Loop for each step of episode, $t = T-1, T-2, \ldots, 0$:
+        $G \gets R_{t+1} + \gamma G$
+        Unless the pair $(S_t, A_t)$ appears earlier in the episode:
+            $N(S_t, A_t) \gets N(S_t, A_t) + 1$
+            $Q(S_t, A_t) \gets Q(S_t, A_t) + \sfrac{1}{N(S_t, A_t)} \: (G - Q(S_t, A_t))$
+            $A^{*} \gets \argmax_a Q(S_t, a)$
+            For all $a \in \mathcal{A}(S_t)$:
+                $\pi(a|S_t) \gets 1 - \epsilon + \sfrac{\epsilon}{|\mathcal{A}(S_t)|}$ if $a = A^{*}$, else $\sfrac{\epsilon}{|\mathcal{A}(S_t)|}$
+\end{block}
+
+Notice that since we made the $\epsilon$-greedy policy GLIE (by reducing $\epsilon$ after each episode), one can
+prove that the algorithm converges to the optimal action value function, $Q(s,a) \to Q_{*}(s,a)$.
+
+\subsubsection{SARSA}
+
+Temporal difference in model-free control is simply the idea of temporal difference in model-free prediction, after
+we take into account all we said in the introduction. \v
+
+Namely, after we initialize $Q$ for all pairs of state-action, we initialize a random policy $\pi$, and by using
+value iteration we update $\pi$ by acting $\epsilon$-greedy after each step (we don't need to run more steps since
+we don't care about exact evaluation). Of course, during value iteration we update action value functions instead of
+state value functions, using the temporal difference learning update rule:
+\bse
+Q(s,a) \gets Q(s,a) + \alpha \left(R + \gamma Q(s^\prime,a^\prime) - Q(s,a) \right)
+\ese
+
+As we can see this is a huge improvement over Monte Carlo, since we update (learning) after each step, instead of
+after each episode. This makes it one of the most important algorithms in reinforcement learning, since it is the
+one that is used most often in model-free control problems due to its efficiency. \v
+
+The algorithm is also known by another name, ``SARSA''. The origin of this name is coming by the philosophy behind
+how it works. Let's see it graphically:
+
+\fig{rl31}{0.6}
+
+Since the sequence is $S \to A \to R \to S^\prime \to A^\prime$, the algorithm is called ``SARSA''. From now on we
+will refer to this algorithm as SARSA instead of TD, since it is most known as SARSA. \v
+
+Finally, let's see the complete algorithm in pseudocode:
+
+\begin{block}
+Algorithm parameters: small $\epsilon > 0$, discount $\gamma \in [0,1]$, step size $\alpha \in (0,1]$
+Initialize:
+    $Q(s,a) \gets$ arbitrarily$, \:\: \forall (s,a)$
+    $k \gets 0$, number of episodes for updating $\epsilon$
+Repeat forever (for each episode):
+    Initialize $S$
+    Choose $A$ from $S$ using policy derived $\epsilon$-greedily from $Q$
+    Loop for each step of episode:
+        Take action $A$, observe $R, S^\prime$
+        Choose $A^\prime$ from $S^\prime$ using policy derived $\epsilon$-greedily from $Q$
+        $Q(S,A) \gets Q(S,A) + \alpha \: (R + \gamma Q(S^\prime, A^\prime) - Q(S,A))$
+        $S \gets S^\prime$, $\:\: A \gets A^\prime$
+    Until $S$ is terminal
+    $k \gets k+1$, $\:\: \epsilon \gets \sfrac{1}{k}$
+\end{block}
+
+In general when we let SARSA run and we observe its learning abilities we observe a trend like this:
+
+\fig{rl32}{0.55}
+
+Namely, in the beginning it takes many steps to finish an episode since SARSA moves around randomly trying to
+explore the environment. However, as steps go to infinity, episodes finish much faster since it knows the optimal
+way (i.e.\ the minimum number of steps per episode). \v
+
+So, we introduced both Monte Carlo and SARSA (a.k.a.\ TD) for model-free control. Now, as we did in model-free
+prediction, we will develop a generalized framework that combines SARSA (one step) and Monte Carlo ($\infty$ steps)
+in one framework, and generalizes to even better algorithms. We will follow the same philosophy as in model-free
+prediction. Firstly, by exploring $n$-step algorithms, and then introducing the $\lambda$-return to combine them.
+The final algorithm, unsurprisingly, is called ``SARSA($\lambda$)''.
+
+\subsubsection{SARSA($\lambda$)}
+
+Finally, we will develop SARSA($\lambda$), in the exact same way that we developed TD($\lambda$) in model-free
+prediction (we will not repeat all the details, just check TD($\lambda$)). \v
+
+So, briefly, we have Monte Carlo that takes all the steps up to the end of the episode and SARSA that takes only one
+step. We can generalize this to ``$n$-step SARSA'', for any number of steps:
+
+\fig{rl33}{0.5}
+
+For each of these models we can define ``$n$-step returns'' $q_t^{(n)}$ as:
+\bit
+\item For $n=1$ (SARSA):
+\bse
+q_t^{(1)} = R_{t+1} + \gamma Q(S_{t+1}, A_{t+1})
+\ese
+
+\item For $n=2$:
+\bse
+q_t^{(2)} = R_{t+1} + \gamma R_{t+2} + \gamma^2 Q(S_{t+2}, A_{t+2})
+\ese
+
+\item For $n=\infty$ (Monte Carlo):
+\bse
+q_t^{(\infty)} = R_{t+1} + \gamma R_{t+2} + \ldots + \gamma^{T-1} R_T
+\ese
+\eit
+
+We can group together all these returns by defining the ``$n$-step return''.
+
+\bd[$n$-step Return (For Model-Free Control)]
+We define the \textbf{$n$-step return} as:
+\bse
+q_t^{(n)} = R_{t+1} + \gamma R_{t+2} + \ldots + \gamma^{n-1} R_{t+n} + \gamma^{n} Q(S_{t+n}, A_{t+n})
+\ese
+\ed
+
+Subsequently, we define the ``$n$-step SARSA'' learning as the following update rule.
+
+\bd[$n$-step SARSA Learning]
+We define \textbf{$n$-step SARSA learning} as:
+\bse
+Q(S_t, A_t) \gets Q(S_t, A_t) + \alpha \left(q_t^{(n)} - Q(S_t, A_t) \right)
+\ese
+\ed
+
+As before, both $q_t^{(n)}$ and the update rule collapse to Monte Carlo and SARSA for $n=\infty$ and $n=1$
+respectively. Finally, as before, we combine all these models together by defining $\lambda \in [0,1]$ and taking
+the geometric mean of all $n$-step returns.
+
+\bd[$\lambda$-Return (For Model-Free Control)]
+We define the \textbf{$\lambda$-return} as:
+\bse
+q_t^\lambda = (1-\lambda) \sum_{n=1}^{\infty} \lambda^{n-1} q_t^{(n)}
+\ese
+\ed
+
+Same philosophy as before, each term contributes less and less since the factors of $\lambda$ in front of the
+returns decay as $n \to \infty$ (see TD($\lambda$) for extra details).
+
+\bd[SARSA($\lambda$) Learning]
+We define the \textbf{SARSA($\lambda$) learning} as:
+\bse
+Q(S_t, A_t) \gets Q(S_t, A_t) + \alpha \left(q_t^{\lambda} - Q(S_t, A_t) \right)
+\ese
+\ed
+
+As in TD($\lambda$), SARSA($\lambda$) has the same problems of Monte Carlo, which is that we need to wait up to the
+end of the episode in order to know $q_t^\lambda$ and update $Q$. However this is the ``Forward-View
+SARSA($\lambda$)''. We can solve this problem with the ``Backward-View SARSA($\lambda$)''. Just like TD($\lambda$),
+we introduce eligibility traces in an online algorithm (see TD($\lambda$) for details). \v
+
+In TD($\lambda$) we only cared for state value functions, so the eligibility traces were a function of the state.
+But in SARSA($\lambda$) we use the action value function, hence we have one eligibility trace for each pair of
+state-action, i.e.\ the eligibility trace is a function of both state and action. Hence, according to the theory we
+developed in TD($\lambda$), we define the eligibility trace as follows.
+
+\bd[Eligibility Trace (For Model-Free Control)]
+The \textbf{eligibility trace} of a state-action pair $(s,a)$ at time $t$ is defined as:
+\bse
+E_t(s,a) = \gamma \lambda E_{t-1}(s,a) + \mathcal{I}(S_t=s, A_t=a)
+\ese
+
+with $E_0(s,a) = 0$ and $\mathcal{I}(S_t=s, A_t=a)$ meaning ``1 if the state is $s$ and the action is $a$, 0
+otherwise''.
+\ed
+
+Finally, in proportion to the TD($\lambda$) error $\delta_t = q_t^\lambda - Q(S_t, A_t)$ and the eligibility trace
+$E_t(s,a)$, in Backward-View SARSA($\lambda$) we keep an eligibility trace for every pair of state-action $(s,a)$
+and we update the action value function $Q(s,a)$ for every state $s$ and action $a$ in proportion to the eligibility
+trace (by using SARSA($\lambda$) learning of course):
+\bse
+Q(s,a) \gets Q(s,a) + \alpha \left(q_t^{\lambda} - Q(S_t, A_t) \right) E_t(s,a)
+\ese
+
+Backward-View SARSA($\lambda$) has the same benefits of TD($\lambda$), namely we update all the path weighted by the
+eligibility trace rather than only the final step (for more details, check the gridworld example in the
+TD($\lambda$) section). \v
+
+Finally let's write down a pseudoalgorithm for SARSA($\lambda$):
+
+\begin{block}
+Algorithm parameters: small $\epsilon > 0$, discount $\gamma \in [0,1]$, step size $\alpha \in (0,1]$, $\lambda \in [0,1]$
+Initialize:
+    $Q(s,a) \gets$ arbitrarily$, \:\: \forall (s,a)$
+    $k \gets 0$, number of episodes for updating $\epsilon$
+Repeat forever (for each episode):
+    $E(s,a) \gets 0, \:\: \forall (s,a)$
+    Initialize $S$, $A$
+    Repeat (for each step of episode):
+        Take action $A$, observe $R, S^\prime$
+        Choose $A^\prime$ from $S^\prime$ using policy derived $\epsilon$-greedily from $Q$
+        $\delta \gets R + \gamma Q(S^\prime, A^\prime) - Q(S,A)$
+        $E(S,A) \gets E(S,A) + 1$
+        For all $s \in \mathcal{S}$, $a \in \mathcal{A}(s)$:
+            $Q(s,a) \gets Q(s,a) + \alpha \: \delta \: E(s,a)$
+            $E(s,a) \gets \gamma \: \lambda \: E(s,a)$
+        $S \gets S^\prime$, $\:\: A \gets A^\prime$
+    Until $S$ is terminal
+    $k \gets k+1$, $\:\: \epsilon \gets \sfrac{1}{k}$
+\end{block}
+
+That was SARSA($\lambda$) algorithm! \v
+
+Up to that point we saw Monte Carlo, SARSA and SARSA($\lambda$). The common characteristic of all these three
+algorithms is that they always follow the policy that they evaluate and try to improve. In other words (as we said
+in the introduction of model-free control), all these algorithms are on-policy algorithms. \v
+
+Now, as a final step in model-free control we will introduce one final algorithm that is actually an off-policy
+algorithm, called ``Q-learning'', which is equally important in reinforcement learning as SARSA. As we said in the
+introduction, in off-policy learning we evaluate target policy $\pi(a|s)$ to compute $Q_{\pi}(s,a)$ while following
+behaviour policy $\mu(a|s)$. This is important because we can learn from observing humans or other agents, reuse
+experience generated from old policies, learn about optimal policy while following exploratory policy and learn
+about multiple policies while following one policy.
+
+\subsubsection{Q-Learning}
+
+Q-learning is the off-policy version of TD (or TD(0), or SARSA, or SARSA(0)). (Notice that there is an off-policy
+version for Monte Carlo, but it has so huge variance that is practically unusable. This is why we don't mention it.)
+\v
+
+Q-learning is based on the general idea of estimating the expectation of a distribution through a different
+distribution. Namely, for the expected value of a random variable function $f(x)$ under a distribution $P(x)$ it is:
+{\setlength{\jot}{10pt}
+\begin{align*}
+E_{P} [f(x)] &= \sum_{x} P(x) \cdot f(x) \\
+&= \sum_{x} Q(x) \cdot \frac{P(x)}{Q(x)} \cdot f(x) \\
+&= E_{Q} \left[ \frac{P(x)}{Q(x)} \cdot f(x) \right]
+\end{align*}}
+
+\vspace{-10pt}
+
+Hence, by applying this idea to TD in model-free prediction, the update rule would be:
+\bse
+V(S_t) \gets V(S_t) + \alpha \left( \frac{\pi(A_t|S_t)}{\mu(A_t|S_t)} \left(R_{t+1} + \gamma V(S_{t+1}) \right)
+- V(S_t) \right)
+\ese
+
+Finally, by applying this idea to TD (or TD(0), or SARSA, or SARSA(0)) in model-free control, we end up with
+Q-learning. Q-learning works as follows. We consider the action value function $Q(s,a)$, where the next action is
+chosen using the behaviour policy $\mu(a|s)$ (i.e.\ $A_{t+1} \sim \mu(\cdot|S_t)$), but we also consider an
+alternative successor action $A^\prime$ chosen using the target policy $\pi(a|s)$ (i.e.\ $A^\prime \sim
+\pi(\cdot|S_t)$). Then we update $Q(S_t, A_t)$ towards the value of the alternative action, i.e.:
+\bse
+Q(S_t, A_t) \gets Q(S_t, A_t) + \alpha \left(R_{t+1} + \gamma Q(S_{t+1}, A^\prime) - Q(S_t, A_t) \right)
+\ese
+
+Finally, after the update we will improve both policies $\pi$ and $\mu$ in the following way:
+\bit
+\item Upgrade $\pi$ policy greedily with respect to $Q(s,a)$:
+\bse
+\pi(S_{t+1}) = \argmax_{a^\prime} Q(S_{t+1}, a^\prime)
+\ese
+
+\item Upgrade $\mu$ policy $\epsilon$-greedily with respect to $Q(s,a)$.
+\eit
+
+The Q-learning target then simplifies:
+{\setlength{\jot}{10pt}
+\begin{align*}
+R_{t+1} + \gamma Q(S_{t+1}, A^\prime) &= R_{t+1} + \gamma Q \left(S_{t+1}, \argmax_{a^\prime} Q(S_{t+1}, a^\prime)
+\right) \\
+&= R_{t+1} + \gamma \max_{a^\prime} Q(S_{t+1}, a^\prime)
+\end{align*}}
+
+\vspace{-10pt}
+
+So finally, the update rule reads:
+\bse
+Q(S, A) \gets Q(S, A) + \alpha \left(R + \gamma \max_{a^\prime} Q(S^\prime, a^\prime) - Q(S, A) \right)
+\ese
+
+Graphically:
+
+\fig{rl34}{0.55}
+
+where in the last part we pick the max action. \v
+
+Finally, we can prove (but we won't) that Q-learning converges to the optimal policy, since it converges to the
+optimal action value function, $Q(s,a) \to Q_{*}(s,a)$. That was Q-learning algorithm!
+
+\subsubsection*{Recap: Solving Markov Decision Processes}
+
+Now, we are done! We have finally introduced all the important algorithms for solving MDPs. Let's recap by gathering
+everything here:
+
+\btab[H]
+\centering
+\begin{tabular}{lll}
+\toprule
+& \textbf{Full Backup (DP)} & \textbf{Sample Backup (TD)} \\
+\midrule
+Bellman expectation equation for $V_{\pi}(s)$ & Iterative Policy Evaluation & TD \\
+Bellman expectation equation for $Q_{\pi}(s,a)$ & Q-Policy Iteration & SARSA \\
+Bellman optimality equation for $Q_{*}(s,a)$ & Q-Value Iteration & Q-Learning \\
+\bottomrule
+\end{tabular}
+\etab
+
+Now we have finished with the basic and fundamental part of solving MDPs. In the next section we will introduce ways
+of improving these algorithms, or introducing ideas to solve MDPs by making use of what we have introduced. That
+way, we will be able to scale up these algorithms for MDPs with huge number of states, e.g.\ backgammon which has
+$10^{20}$ states, or Go which has $10^{170}$ states, or even to algorithms with continuous state space, e.g.\ a
+helicopter which lives in a continuous state space. So, let's move on on introducing algorithms and techniques for
+improving the way of solving MDPs.
+
+\section{Scaling MDP Solutions}
+
+In this section we will introduce various ways of scaling up (or improving) the algorithms for solving MDPs.
+
+\subsection{Value Function Approximation}
+
+Up to that point we represented value functions as look-up tables, i.e.\ $V_{\pi}(s)$ is an $|\mathcal{S}|$ table
+with values for each state, and $Q_{\pi}(s,a)$ is an $|\mathcal{S}| \times |\mathcal{A}|$ matrix with values for
+each state-action pair. Thus, as the number of states and actions increase, both value functions increase in size
+making it too hard to store them in memory and too slow to use them for computations. \v
+
+In this section we will follow a different approach, similar to the ``linear regression'' we introduced in
+supervised learning. Namely, we will estimate the value functions with function approximations:
+\bse
+\hat{V}(s; \boldsymbol{w}) \approx V_{\pi}(s), \qquad \hat{Q}(s, a; \boldsymbol{w}) \approx Q_{\pi}(s,a)
+\ese
+
+where $\boldsymbol{w}$ are parameters that we will determine via fitting data to models (e.g.\ Monte Carlo, TD,
+\ldots). So, let's develop ``value function approximation''! As we've seen before, we use state value functions for
+prediction and action value functions for control, so we will develop the theory in parallel for both value
+functions. (The theory is identical to what we did in linear regression, so we won't explain every step in detail!)
+\v
+
+We represent states, or states and actions, by feature vectors:
+\bse
+\boldsymbol{x}(s) = \begin{bmatrix} x_1(s) \\[1ex] \vdots \\[1ex] x_n(s) \end{bmatrix}, \qquad
+\boldsymbol{x}(s,a) = \begin{bmatrix} x_1(s,a) \\[1ex] \vdots \\[1ex] x_n(s,a) \end{bmatrix}
+\ese
+
+and we define a parameter vector $\boldsymbol{w}$ as:
+\bse
+\boldsymbol{w} = \begin{bmatrix} w_1 \\[1ex] \vdots \\[1ex] w_n \end{bmatrix}
+\ese
+
+That way, we can define the estimate value functions as a linear combination of feature vectors and parameters:
+\bse
+\hat{V}(s; \boldsymbol{w}) = \boldsymbol{w}^{T} \boldsymbol{x}(s), \qquad
+\hat{Q}(s, a; \boldsymbol{w}) = \boldsymbol{w}^{T} \boldsymbol{x}(s,a)
+\ese
+
+Notice that in the case that we choose the feature vectors to be:
+\bse
+\boldsymbol{x}(s) = \begin{bmatrix} \mathcal{I}(s=s_1) \\[1ex] \vdots \\[1ex] \mathcal{I}(s=s_n) \end{bmatrix}
+\ese
+
+a.k.a.\ each feature actually represents the corresponding state itself, then $\hat{V}(s; \boldsymbol{w})$ takes the
+form of a look-up table, similar to what we have developed in the previous section (similarly for $\hat{Q}(s,a;
+\boldsymbol{w})$). Hence, what we are developing here can be seen as a generalization of what we've done so far! \v
+
+Moving on, we can define differentiable cost functions $J(\boldsymbol{w})$ as:
+\bse
+J(\boldsymbol{w}) = \frac{1}{2} E_{\pi} \left[ \left(V_{\pi}(s) - \boldsymbol{w}^{T} \boldsymbol{x}(s) \right)^2
+\right], \qquad
+J(\boldsymbol{w}) = \frac{1}{2} E_{\pi} \left[ \left(Q_{\pi}(s,a) - \boldsymbol{w}^{T} \boldsymbol{x}(s,a) \right)^2
+\right]
+\ese
+
+for $\hat{V}$ and $\hat{Q}$ respectively. These cost functions work in the same way as in linear regression, hence
+they measure the expected value of the squared error of our estimator. Hence, by minimizing $J$ we can determine
+$\boldsymbol{w}$. For this specific problem, we will use stochastic gradient descent for the minimization of $J$.
+Stochastic gradient descent works in the same way as gradient descent with the difference that instead of using a
+collection of data points, it uses just one random data point. Let's see it in detail. \v
+
+Let's focus on $\hat{V}$. First we need the derivative:
+{\setlength{\jot}{10pt}
+\begin{align*}
+\frac{\partial J}{\partial \boldsymbol{w}} &= \frac{\partial}{\partial \boldsymbol{w}} \left( \frac{1}{2} E_{\pi}
+\left[ \left(V_{\pi}(s) - \boldsymbol{w}^{T} \boldsymbol{x}(s) \right)^2 \right] \right) \\
+&= E_{\pi} \left[ \frac{1}{2} \frac{\partial}{\partial \boldsymbol{w}} \left(V_{\pi}(s) - \boldsymbol{w}^{T}
+\boldsymbol{x}(s) \right)^2 \right] \\
+&= E_{\pi} \left[ \frac{1}{2} \cdot 2 \cdot \left(V_{\pi}(s) - \boldsymbol{w}^{T} \boldsymbol{x}(s) \right) \cdot
+\frac{\partial}{\partial \boldsymbol{w}} \left(V_{\pi}(s) - \boldsymbol{w}^{T} \boldsymbol{x}(s) \right) \right] \\
+&= - E_{\pi} \left[ \left(V_{\pi}(s) - \boldsymbol{w}^{T} \boldsymbol{x}(s) \right) \cdot \boldsymbol{x}(s) \right]
+\end{align*}}
+
+\vspace{-10pt}
+
+Similarly:
+\bse
+\frac{\partial J}{\partial \boldsymbol{w}} = - E_{\pi} \left[ \left(Q_{\pi}(s,a) - \boldsymbol{w}^{T}
+\boldsymbol{x}(s,a) \right) \cdot \boldsymbol{x}(s,a) \right]
+\ese
+
+So, by using stochastic gradient descent, we would sample the gradient, so the expected value would disappear and
+would be substituted by a single observation:
+\bse
+\frac{\partial J}{\partial \boldsymbol{w}} = - \left(V_{\pi}(s) - \boldsymbol{w}^{T} \boldsymbol{x}(s) \right)
+\cdot \boldsymbol{x}(s), \qquad
+\frac{\partial J}{\partial \boldsymbol{w}} = - \left(Q_{\pi}(s,a) - \boldsymbol{w}^{T} \boldsymbol{x}(s,a) \right)
+\cdot \boldsymbol{x}(s,a)
+\ese
+
+and finally the update rule:
+\bse
+\boldsymbol{w} \coloneqq \boldsymbol{w} - \alpha \frac{\partial J}{\partial \boldsymbol{w}}
+\ese
+
+using the corresponding derivative depending if we do prediction ($\hat{V}$) or control ($\hat{Q}$). We can prove
+(but we won't) that stochastic gradient descent converges to a global optimum. \v
+
+Now, comes the important part! In supervised learning we did know the labels of what we wanted to predict (in our
+case $V_{\pi}(s)$ and $Q_{\pi}(s,a)$), so we could run gradient descent. However, in reinforcement learning we don't
+actually know $V_{\pi}(s)$ and $Q_{\pi}(s,a)$. If we did, we would have been done since we would know how to behave
+in the MDP\@. In other words reinforcement learning is not a supervised problem since there is no supervisor! \v
+
+Hence, what we are going to do is to substitute $V_{\pi}(s)$, or $Q_{\pi}(s,a)$, with the target from a model that
+we have developed in the previous sections! So, by taking this into account, let's write down the update rules for
+stochastic gradient descent for each of the models, simply by substituting $V_{\pi}$ and $Q_{\pi}$ with the
+corresponding targets of each model:
+\bit
+\item Monte Carlo ($V_{\pi} \to G_t$, $\:\: Q_{\pi} \to G_t$):
+\bse
+\boldsymbol{w} \coloneqq \boldsymbol{w} + \alpha \left(G_t - \boldsymbol{w}^{T} \boldsymbol{x}(S_t) \right)
+\cdot \boldsymbol{x}(S_t)
+\ese
+
+\bse
+\boldsymbol{w} \coloneqq \boldsymbol{w} + \alpha \left(G_t - \boldsymbol{w}^{T} \boldsymbol{x}(S_t, A_t) \right)
+\cdot \boldsymbol{x}(S_t, A_t)
+\ese
+
+\item TD ($V_{\pi} \to R_{t+1} + \gamma \hat{V}(S_{t+1})$, $\:\: Q_{\pi} \to R_{t+1} + \gamma \hat{Q}(S_{t+1},
+A_{t+1})$):
+\bse
+\boldsymbol{w} \coloneqq \boldsymbol{w} + \alpha \left(R_{t+1} + \gamma \boldsymbol{w}^{T} \boldsymbol{x}(S_{t+1})
+- \boldsymbol{w}^{T} \boldsymbol{x}(S_t) \right) \cdot \boldsymbol{x}(S_t)
+\ese
+
+\bse
+\boldsymbol{w} \coloneqq \boldsymbol{w} + \alpha \left(R_{t+1} + \gamma \boldsymbol{w}^{T} \boldsymbol{x}(S_{t+1},
+A_{t+1}) - \boldsymbol{w}^{T} \boldsymbol{x}(S_t, A_t) \right) \cdot \boldsymbol{x}(S_t, A_t)
+\ese
+
+\item Forward-View TD($\lambda$) ($V_{\pi} \to G_t^\lambda$, $\:\: Q_{\pi} \to q_t^\lambda$):
+\bse
+\boldsymbol{w} \coloneqq \boldsymbol{w} + \alpha \left(G_t^\lambda - \boldsymbol{w}^{T} \boldsymbol{x}(S_t) \right)
+\cdot \boldsymbol{x}(S_t)
+\ese
+
+\bse
+\boldsymbol{w} \coloneqq \boldsymbol{w} + \alpha \left(q_t^\lambda - \boldsymbol{w}^{T} \boldsymbol{x}(S_t, A_t)
+\right) \cdot \boldsymbol{x}(S_t, A_t)
+\ese
+
+\item Backward-View TD($\lambda$) ($V_{\pi} \to G_t^\lambda$, $\:\: Q_{\pi} \to q_t^\lambda$, $\:\: E$): as in the
+previous section, we keep an eligibility trace, which now is a function of the parameters, and we update
+$\boldsymbol{w}$ in proportion to the TD error $\delta_t$ and the eligibility trace $E_t$:
+\bse
+\delta_t = R_{t+1} + \gamma \boldsymbol{w}^{T} \boldsymbol{x}(S_{t+1}) - \boldsymbol{w}^{T} \boldsymbol{x}(S_t),
+\qquad E_t = \gamma \lambda E_{t-1} + \boldsymbol{x}(S_t), \qquad
+\boldsymbol{w} \coloneqq \boldsymbol{w} + \alpha \: \delta_t \: E_t
+\ese
+
+\bse
+\delta_t = R_{t+1} + \gamma \boldsymbol{w}^{T} \boldsymbol{x}(S_{t+1}, A_{t+1}) - \boldsymbol{w}^{T}
+\boldsymbol{x}(S_t, A_t), \qquad E_t = \gamma \lambda E_{t-1} + \boldsymbol{x}(S_t, A_t), \qquad
+\boldsymbol{w} \coloneqq \boldsymbol{w} + \alpha \: \delta_t \: E_t
+\ese
+\eit
+
+This is the way we can apply stochastic gradient descent to value function approximation. However, this is an
+incremental way of approaching value functions. It is simple and appealing but it is not sample efficient. We can
+switch to a batch approach that actually seeks to find the best fitting function given the agent's experience
+(``training data''). This approach is similar to the batch approach we had introduced in supervised learning, since
+we will not incrementally improve the estimator but we will use a training set to fit the value functions. Let's see
+how it works! \v
+
+The idea behind batch gradient descent is that (as before) we have our estimator value functions as a linear
+combination of features:
+\bse
+\hat{V}(s; \boldsymbol{w}) = \boldsymbol{w}^{T} \boldsymbol{x}(s), \qquad
+\hat{Q}(s, a; \boldsymbol{w}) = \boldsymbol{w}^{T} \boldsymbol{x}(s,a)
+\ese
+
+and a training dataset consisting of pairs of states-values, or state-actions-values:
+\bse
+D = \left\{ \left(s_1, V_1^{\pi}\right), \left(s_2, V_2^{\pi}\right), \ldots, \left(s_T, V_T^{\pi}\right) \right\},
+\qquad
+D = \left\{ \left((s_1, a_1), q_1^{\pi}\right), \left((s_2, a_2), q_2^{\pi}\right), \ldots,
+\left((s_T, a_T), q_T^{\pi}\right) \right\}
+\ese
+
+By defining a cost function based on least squares as:
+\bse
+J(\boldsymbol{w}) = \sum_{t=1}^{T} \left(V_t^{\pi} - \hat{V}(s_t; \boldsymbol{w}) \right)^2, \qquad
+J(\boldsymbol{w}) = \sum_{t=1}^{T} \left(q_t^{\pi} - \hat{Q}(s_t, a_t; \boldsymbol{w}) \right)^2
+\ese
+
+we find the parameters $\boldsymbol{w}$ by minimizing it using the dataset $D$. As in linear regression we can
+solve it either through the normal equation or by using gradient descent. We will not repeat them again here, for
+details check the linear regression chapter. \v
+
+Finally, as before, the problem in reinforcement learning is that we don't know the true values of $V_t^{\pi}$ (or
+$q_t^{\pi}$). So as before, we will substitute them with estimators from the different models. Again, we will not
+repeat them again since we have already mentioned them previously. \v
+
+So, that was value function approximation! Next, we will introduce another big part of improving algorithms called
+``policy approximation'', in which we optimize the policy directly, instead of using value functions.
+
+\subsection{Policy Approximation}
+
+In the previous section, we approximated value functions by using estimator functions:
+\bse
+\hat{V}(s; \boldsymbol{w}) \approx V_{\pi}(s), \qquad \hat{Q}(s, a; \boldsymbol{w}) \approx Q_{\pi}(s,a)
+\ese
+
+and we tried to train a model by fitting data in order to minimize a cost function and determine $\boldsymbol{w}$.
+In this section, we will shift our focus from value functions to policies, and we will parametrize the policy
+directly:
+\bse
+\pi_{\boldsymbol{\theta}}(s, a) = P(a \mid s; \boldsymbol{\theta})
+\ese
+
+and we will develop methods to determine the best $\boldsymbol{\theta}$ in order to obtain an optimal policy. \v
+
+Policy based models come with their own pros and cons. Namely:
+\bit
+\item Advantages:
+\bit
+\item Better convergence properties.
+\item Effective in high dimensional or continuous action spaces.
+\item Can learn stochastic policies, which in some cases are better than deterministic policies (e.g.\ games).
+\eit
+\item Disadvantages:
+\bit
+\item Typically converge to a local rather than global optimum.
+\item Typically it is inefficient and has high variance.
+\eit
+\eit
+
+Now, let's see how we can optimize a policy! More or less, we are gonna follow the same approach as in value
+function approximation, i.e.\ we will derive the best parameters by optimizing a cost function, that measures the
+quality of a policy $\pi_{\boldsymbol{\theta}}$. In policy approximation we can have different forms of cost
+functions depending on the nature of the problem. Namely:
+\bit
+\item In episodic environments we can use the ``episodic start value'':
+\bse
+J_1(\boldsymbol{\theta}) = V^{\pi_{\boldsymbol{\theta}}}(s_1) = E_{\pi_{\boldsymbol{\theta}}} [V_1]
+\ese
+
+\item In continuing environments we can use the ``continuous average value'':
+\bse
+J_{avV}(\boldsymbol{\theta}) = \sum_{s} d^{\pi_{\boldsymbol{\theta}}}(s) \cdot V^{\pi_{\boldsymbol{\theta}}}(s)
+\ese
+
+\item Or, in continuing environments again, we can use the ``continuous average reward per time-step'':
+\bse
+J_{avR}(\boldsymbol{\theta}) = \sum_{s} d^{\pi_{\boldsymbol{\theta}}}(s) \sum_{a}
+\pi_{\boldsymbol{\theta}}(s, a) \cdot \mathcal{R}_{s}^{a}
+\ese
+\eit
+
+where $d^{\pi_{\boldsymbol{\theta}}}(s)$ is the stationary distribution of the Markov chain for
+$\pi_{\boldsymbol{\theta}}$. \v
+
+In all cases, we are dealing with the same optimization problem: find the $\boldsymbol{\theta}$ that maximizes $J$.
+(Notice that now $J$ is a measure of how good a policy is, so we maximize it instead of minimizing it!) So, once
+again, we end up with an optimization problem. We will try to optimize $J$ with the usual approach of gradient
+ascent (instead of descent, since we are looking for a maximum, so we climb up instead of down). Gradient ascent
+works in the same way as gradient descent with the difference that now we add the derivative term:
+\bse
+\boldsymbol{\theta} \coloneqq \boldsymbol{\theta} + \alpha \frac{\partial J}{\partial \boldsymbol{\theta}}
+\ese
+
+Now we are left with the problem of calculating the derivative term. In some cases we can use the definition of the
+derivative, and estimate the derivative of $J$ by perturbing $\boldsymbol{\theta}$ by a small amount $\epsilon$ and
+calculating the finite differences:
+\bse
+\nabla_{\boldsymbol{\theta}} J = \frac{J(\boldsymbol{\theta} + \epsilon) - J(\boldsymbol{\theta})}{\epsilon},
+\qquad \epsilon \ll 1
+\ese
+
+We have the advantage that we can compute it even when the policy is not differentiable, however it is quite noisy
+and inefficient. \v
+
+In most of the cases though, we compute the policy gradient analytically as we did in previous chapters. Namely, by
+assuming that the policy $\pi_{\boldsymbol{\theta}}$ is differentiable whenever it is non-zero and that we know
+$\nabla_{\boldsymbol{\theta}} \pi_{\boldsymbol{\theta}}(s,a)$, we do the following. (Let's focus on
+$J_{avR}(\boldsymbol{\theta})$ since it's the most generic one):
+{\setlength{\jot}{10pt}
+\begin{align*}
+\nabla_{\boldsymbol{\theta}} J_{avR}(\boldsymbol{\theta}) &= \nabla_{\boldsymbol{\theta}} \left[ \sum_{s}
+d^{\pi_{\boldsymbol{\theta}}}(s) \sum_{a} \pi_{\boldsymbol{\theta}}(s, a) \cdot \mathcal{R}_{s}^{a} \right] \\
+&= \sum_{s} d^{\pi_{\boldsymbol{\theta}}}(s) \sum_{a} \nabla_{\boldsymbol{\theta}}
+\pi_{\boldsymbol{\theta}}(s, a) \cdot \mathcal{R}_{s}^{a} \\
+&= \sum_{s} d^{\pi_{\boldsymbol{\theta}}}(s) \sum_{a} \pi_{\boldsymbol{\theta}}(s, a) \cdot
+\frac{\nabla_{\boldsymbol{\theta}} \pi_{\boldsymbol{\theta}}(s, a)}{\pi_{\boldsymbol{\theta}}(s, a)} \cdot
+\mathcal{R}_{s}^{a} \\
+&= \sum_{s} d^{\pi_{\boldsymbol{\theta}}}(s) \sum_{a} \pi_{\boldsymbol{\theta}}(s, a) \cdot
+\nabla_{\boldsymbol{\theta}} \ln \pi_{\boldsymbol{\theta}}(s, a) \cdot \mathcal{R}_{s}^{a} \\
+&= E_{\pi_{\boldsymbol{\theta}}} \left[ \nabla_{\boldsymbol{\theta}} \ln \pi_{\boldsymbol{\theta}}(s, a) \cdot
+\mathcal{R}_{s}^{a} \right]
+\end{align*}}
+
+\vspace{-10pt}
+
+where in the third equality we multiplied and divided by $\pi_{\boldsymbol{\theta}}(s, a)$, and in the fourth
+equality we used the derivative of the logarithm ($\nabla \ln f = \sfrac{\nabla f}{f}$).
+
+\bd[Score Function]
+We call the gradient of the logarithm of a policy, the \textbf{score function}:
+\bse
+\text{Score Function} = \nabla_{\boldsymbol{\theta}} \ln \pi_{\boldsymbol{\theta}}(s, a)
+\ese
+
+(In other words, the gradient of the likelihood.)
+\ed
+
+Hence the gradient is just the expected value of the score function of the policy weighted by the reward. We showed
+this formula only for $J_{avR}(\boldsymbol{\theta})$, however it generalizes for all forms of $J$. More
+specifically, we can prove the ``policy gradient theorem'' (but we won't) that states:
+
+\bt[Policy Gradient Theorem]
+For any differentiable policy $\pi_{\boldsymbol{\theta}}(s, a)$, and for any policy cost function $J$, the policy
+gradient is:
+\bse
+\nabla_{\boldsymbol{\theta}} J(\boldsymbol{\theta}) = E_{\pi_{\boldsymbol{\theta}}} \left[
+\nabla_{\boldsymbol{\theta}} \ln \pi_{\boldsymbol{\theta}}(s, a) \cdot Q^{\pi_{\boldsymbol{\theta}}}(s, a) \right]
+\ese
+\et
+
+So, by using this formula for the gradient of $J$ we know how to update through gradient ascent:
+\bse
+\boldsymbol{\theta} \coloneqq \boldsymbol{\theta} + \alpha \nabla_{\boldsymbol{\theta}} J(\boldsymbol{\theta})
+\ese
+
+Finally, as before, we can use any algorithm that we have developed (Monte Carlo, TD, \ldots) in order to estimate
+$Q$. Then we end up with ``Monte Carlo policy gradient'' (also known as ``REINFORCE'') etc. (We will not write them
+down in detail, everything is the same as before.) \v
+
+So, that was in a nutshell the policy approximation theory. Notice that in the final step, when we computed the
+policy gradient theorem, we put into the picture all the algorithms we developed previously in order to compute $Q$.
+This means, that all the problems that we had with these models are also present here! (E.g.\ Monte Carlo policy
+gradient still has high variance because Monte Carlo has high variance as a model.) \v
+
+Now, we move on to the third and final way to improve our algorithms of solving MDPs which is to mix ideas of both
+value function approximation and policy approximation, so we have the best of two worlds. The result of this
+mixture is called ``actor-critic'' models. Let's see that\ldots
+
+\subsection{Actor-Critic}
+
+Up to that point we have seen ``value approximation'' where we approximate value functions and ``policy
+approximation'' where we approximate policies. In this section we will combine these two approaches into one model
+called ``actor-critic''.
+\bit
+\item Value-Based:
+\bit
+\item Learnt value function.
+\item Implicit policy.
+\eit
+\item Policy-Based:
+\bit
+\item No value function.
+\item Learnt policy.
+\eit
+\item Actor-Critic:
+\bit
+\item Learnt value function.
+\item Learnt policy.
+\eit
+\eit
+
+\fig{rl35}{0.5}
+
+In actor-critic algorithms we combine both methods in the following way:
+\bit
+\item \textbf{Critic}: Updates action value function parameters $\boldsymbol{w}$.
+\item \textbf{Actor}: Updates policy parameters $\boldsymbol{\theta}$, in direction suggested by the critic.
+\eit
+
+So, the critic is solving a familiar problem: policy evaluation. In other words how good is policy
+$\pi_{\boldsymbol{\theta}}$ for current parameters $\boldsymbol{\theta}$ (with the methods we saw in previous
+sections). Then, the actor updates $\boldsymbol{\theta}$ by policy gradient. Now let's see how we can combine the
+two methods:
+\bit
+\item From value function approximation:
+\bse
+\hat{Q}(s, a; \boldsymbol{w}) \approx Q^{\pi_{\boldsymbol{\theta}}}(s, a)
+\ese
+
+\item From policy approximation:
+\bse
+\nabla_{\boldsymbol{\theta}} J(\boldsymbol{\theta}) = E_{\pi_{\boldsymbol{\theta}}} \left[
+\nabla_{\boldsymbol{\theta}} \ln \pi_{\boldsymbol{\theta}}(s, a) \cdot Q^{\pi_{\boldsymbol{\theta}}}(s, a) \right]
+\ese
+\eit
+
+Hence, in actor-critic the gradient of the cost function is:
+\bse
+\nabla_{\boldsymbol{\theta}} J(\boldsymbol{\theta}) = E_{\pi_{\boldsymbol{\theta}}} \left[
+\nabla_{\boldsymbol{\theta}} \ln \pi_{\boldsymbol{\theta}}(s, a) \cdot \hat{Q}(s, a; \boldsymbol{w}) \right]
+\ese
+
+And similarly we update the parameters:
+\bse
+\boldsymbol{\theta} \coloneqq \boldsymbol{\theta} + \alpha \nabla_{\boldsymbol{\theta}} J(\boldsymbol{\theta})
+\ese
+
+As before, since we combine two methods we also get the disadvantages from these methods. E.g.\ approximating the
+policy gradient introduces bias and a biased policy gradient may not find the right solution! (Bias coming from
+value function approximation affects policy gradient coming from policy approximation.) Hence, we must be careful
+when we choose value function approximation, so we can reduce the bias of the model. On the other side, we also
+have variance problems with the actor-critic model (again coming from the variance of the two models we combine).
+Let's see in detail a way to reduce variance! \v
+
+Notice that for any function of the states $B(s)$ (that we will call ``baseline function'') holds:
+{\setlength{\jot}{10pt}
+\begin{align*}
+E_{\pi_{\boldsymbol{\theta}}} \left[ \nabla_{\boldsymbol{\theta}} \ln \pi_{\boldsymbol{\theta}}(s, a) \cdot B(s)
+\right] &= \sum_{s} d^{\pi_{\boldsymbol{\theta}}}(s) \sum_{a} \pi_{\boldsymbol{\theta}}(s, a) \cdot
+\nabla_{\boldsymbol{\theta}} \ln \pi_{\boldsymbol{\theta}}(s, a) \cdot B(s) \\
+&= \sum_{s} d^{\pi_{\boldsymbol{\theta}}}(s) \cdot B(s) \sum_{a} \nabla_{\boldsymbol{\theta}}
+\pi_{\boldsymbol{\theta}}(s, a) \\
+&= \sum_{s} d^{\pi_{\boldsymbol{\theta}}}(s) \cdot B(s) \cdot \nabla_{\boldsymbol{\theta}}
+\underbrace{\sum_{a} \pi_{\boldsymbol{\theta}}(s, a)}_{1} \\
+&= \sum_{s} d^{\pi_{\boldsymbol{\theta}}}(s) \cdot B(s) \cdot \underbrace{\nabla_{\boldsymbol{\theta}}
+1}_{0} \\
+&= 0
+\end{align*}}
+
+\vspace{-10pt}
+
+In other words, we can add (or subtract) any function $B(s)$ to the actor-critic gradient since its contribution is
+zero. Hence, by defining an ``advantage function'':
+
+\bd[Advantage Function]
+The \textbf{advantage function} $A^{\pi_{\boldsymbol{\theta}}}(s,a)$ is defined as:
+\bse
+A^{\pi_{\boldsymbol{\theta}}}(s, a) = Q^{\pi_{\boldsymbol{\theta}}}(s, a) - B^{\pi_{\boldsymbol{\theta}}}(s)
+\ese
+
+where $B^{\pi_{\boldsymbol{\theta}}}(s)$ is a baseline function.
+\ed
+
+we can rewrite the actor-critic gradient as:
+\bse
+\nabla_{\boldsymbol{\theta}} J(\boldsymbol{\theta}) = E_{\pi_{\boldsymbol{\theta}}} \left[
+\nabla_{\boldsymbol{\theta}} \ln \pi_{\boldsymbol{\theta}}(s, a) \cdot A^{\pi_{\boldsymbol{\theta}}}(s, a) \right]
+\ese
+
+The advantage function can significantly reduce the variance of the policy gradient! One good question is what
+should the baseline function $B^{\pi_{\boldsymbol{\theta}}}(s)$ be. A good choice is the state value function
+$V^{\pi_{\boldsymbol{\theta}}}(s)$. Hence:
+\bse
+B^{\pi_{\boldsymbol{\theta}}}(s) = V^{\pi_{\boldsymbol{\theta}}}(s) \imp
+A^{\pi_{\boldsymbol{\theta}}}(s, a) = Q^{\pi_{\boldsymbol{\theta}}}(s, a) - V^{\pi_{\boldsymbol{\theta}}}(s)
+\ese
+
+In this case the critic should estimate both value functions $V$ and $Q$ by two different sets of parameters
+$\boldsymbol{v}$ and $\boldsymbol{w}$:
+\bse
+\hat{V}(s; \boldsymbol{v}) \approx V^{\pi_{\boldsymbol{\theta}}}(s), \qquad
+\hat{Q}(s, a; \boldsymbol{w}) \approx Q^{\pi_{\boldsymbol{\theta}}}(s, a), \qquad
+\hat{A}(s, a) = \hat{Q}(s, a; \boldsymbol{w}) - \hat{V}(s; \boldsymbol{v})
+\ese
+
+and update both value functions! \v
+
+There are many other techniques that we can apply to actor-critic in order to improve it (e.g.\ eligibility traces,
+natural policy gradient and others). However, we will stop here since the goal of this chapter was to introduce
+actor-critic algorithms!
